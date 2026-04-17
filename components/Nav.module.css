@@ -1,0 +1,105 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid #e2e2e2;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.links a:hover { opacity: 0.5; }
+
+.dropdown { position: relative; }
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  min-width: 160px;
+  padding: 0.5rem 0;
+}
+
+.dropdown:hover .dropdownMenu { display: block; }
+
+.dropdownMenu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+
+.dropdownMenu li a:hover { background: #fafafa; }
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.menuToggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #000;
+}
+
+@media (max-width: 768px) {
+  .menuToggle { display: flex; }
+
+  .links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 1rem 2rem;
+  }
+
+  .links.open { display: flex; }
+
+  .links li { width: 100%; padding: 0.5rem 0; border-bottom: 1px solid #f3f3f3; }
+
+  .dropdownMenu {
+    position: static;
+    border: none;
+    display: block;
+    padding: 0.5rem 0 0 1rem;
+  }
+}

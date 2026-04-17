@@ -1,0 +1,26 @@
+.page { max-width: 800px; margin: 0 auto; padding: 2rem; }
+
+.back {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.back:hover { opacity: 1; }
+
+.header { margin-bottom: 2rem; }
+
+.date { font-size: 0.7rem; color: #aaadb0; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+
+.header h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 300; line-height: 1.3; }
+
+.image { margin-bottom: 2.5rem; }
+
+.body { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.body p { font-size: 1rem; font-weight: 300; line-height: 1.9; }
+
+.placeholder { color: #aaadb0; font-style: italic; }

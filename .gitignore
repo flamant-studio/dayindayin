@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# placeholder images stay local — real assets served from storage later
+# public/images/*.jpg uncommit if you want placeholders in repo

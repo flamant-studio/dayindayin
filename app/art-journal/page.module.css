@@ -1,0 +1,39 @@
+.page { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+.hero { padding: 5rem 0 2rem; text-align: center; }
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem 0 5rem;
+}
+
+.card { display: block; }
+
+.cardImage {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #f3f3f3;
+  margin-bottom: 1rem;
+}
+
+.cardBody { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.date { font-size: 0.7rem; color: #aaadb0; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.cardBody h2 { font-size: 1rem; font-weight: 500; line-height: 1.4; }
+
+.excerpt { font-size: 0.85rem; color: #666; font-style: italic; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}

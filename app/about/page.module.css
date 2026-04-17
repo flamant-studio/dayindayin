@@ -1,0 +1,45 @@
+.page { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+.hero {
+  padding: 5rem 0 3rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sub {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #aaadb0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.bio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  padding: 3rem 0 5rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.text p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+@media (max-width: 768px) {
+  .bio { grid-template-columns: 1fr; gap: 2rem; }
+}
