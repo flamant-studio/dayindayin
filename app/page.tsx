@@ -37,7 +37,7 @@ export default function Home() {
 
       <section className={styles.intro}>
         <div className={styles.introText}>
-          <p>We all have <em>superpowers</em>. Mine is making something out of nothing. Colour is the fabric of my entire being. I am curious about <em>"the human condition"</em>. How to be human in these strange times.</p>
+          <p>We all have <em>superpowers</em>. Mine is making something out of nothing. Colour is the fabric of my entire being. I am curious about <em>&ldquo;the human condition&rdquo;</em>. How to be human in these strange times.</p>
           <p><em>My disability</em> (chronic autoimmune pain syndrome) and my personal history is the canvas for every artwork I create. I consider myself an outsider artist.</p>
           <p>I am a textile artist involved in <em>a love affair</em> with embroidery and hand tufting. Slowly and gently, my artistic voice sounds more and more familiar to me.</p>
           <Link href="/about" className={styles.cta}>Full story</Link>

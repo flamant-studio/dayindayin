@@ -12,7 +12,7 @@ export default function Footer() {
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
       </nav>
       <p className={styles.copy}>
-        All art and photos by Stine Weirsøe Flamant. Please don't reproduce without authorisation.
+        All art and photos by Stine Weirsøe Flamant. Please don&apos;t reproduce without authorisation.
       </p>
     </footer>
   );

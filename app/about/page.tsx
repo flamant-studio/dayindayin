@@ -18,7 +18,7 @@ export default function About() {
         <div className={styles.text}>
           <p>
             We all have <em>superpowers</em>. Mine is making something out of nothing. Colour is the fabric of my entire being.
-            I am curious about "the human condition" — how to be human in these strange times, and what humanity looks like when you observe from the edges or from deep within.
+            I am curious about &ldquo;the human condition&rdquo; — how to be human in these strange times, and what humanity looks like when you observe from the edges or from deep within.
           </p>
           <p>
             My disability (chronic autoimmune pain syndrome) and my personal history is the canvas for every artwork I create.

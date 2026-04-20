@@ -23,7 +23,7 @@ export default function Practical() {
         </section>
         <section>
           <h2>Copyright</h2>
-          <p>All art and photos by Stine Weirsøe Flamant. Please don't reproduce without authorisation.</p>
+          <p>All art and photos by Stine Weirsøe Flamant. Please don&apos;t reproduce without authorisation.</p>
         </section>
       </div>
     </div>
