@@ -1,0 +1,64 @@
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+.page h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.page .updated {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+.page h2 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 2.5rem 0 0.75rem;
+}
+
+.page p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.page ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.page li {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+.page a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.page a:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 3rem 1.25rem 5rem;
+  }
+}

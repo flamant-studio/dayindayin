@@ -1,7 +1,10 @@
 import { Resend } from "resend";
 import { NextRequest } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy init — avoids build-time throw when RESEND_API_KEY is not set
+function getResend(): Resend {
+  return new Resend(process.env.RESEND_API_KEY ?? "re_placeholder_key");
+}
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -21,6 +24,7 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "Contact email not configured" }, { status: 500 });
   }
 
+  const resend = getResend();
   const { error } = await resend.emails.send({
     from: "DayInDayIn <noreply@dayindayin.dk>",
     to,

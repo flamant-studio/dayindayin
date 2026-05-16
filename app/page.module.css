@@ -167,8 +167,111 @@
   text-align: center;
 }
 
+/* ── Shop section ────────────────────────────────────────────────── */
+
+.shopSection {
+  padding: 4rem 2rem 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.shopHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.shopTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.shopViewAll {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.shopViewAll:hover {
+  opacity: 1;
+}
+
+.shopGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #e2e2e2;
+}
+
+.shopCard {
+  background: #fff;
+  overflow: hidden;
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.shopCard:hover {
+  opacity: 0.85;
+}
+
+.shopCardImage {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: #f5f3f0;
+  overflow: hidden;
+}
+
+.shopCardPlaceholder {
+  position: absolute;
+  inset: 0;
+  background: #ede9e3;
+}
+
+.shopCardInfo {
+  padding: 0.75rem 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.shopCardTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.shopCardPrice {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.shopEmpty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #fafafa;
+}
+
+.shopEmpty p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
   .grid { grid-template-columns: 1fr; }
   .intro { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 2rem; }
   .introImage { order: -1; }
+  .shopGrid { grid-template-columns: repeat(2, 1fr); }
+  .shopSection { padding: 3rem 1.25rem 4rem; }
 }

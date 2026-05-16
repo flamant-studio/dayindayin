@@ -28,6 +28,7 @@ export default function Nav() {
             <li><Link href="/fine-art#photography" onClick={() => setMobileOpen(false)}>Photography</Link></li>
           </ul>
         </li>
+        <li><Link href="/shop" onClick={() => setMobileOpen(false)}>Shop</Link></li>
         <li><Link href="/art-journal" onClick={() => setMobileOpen(false)}>Art Journal</Link></li>
         <li><Link href="/archive" onClick={() => setMobileOpen(false)}>Archive</Link></li>
         <li><Link href="/about" onClick={() => setMobileOpen(false)}>Bio</Link></li>
