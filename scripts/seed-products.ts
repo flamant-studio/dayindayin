@@ -71,6 +71,8 @@ const LIST_COLLECTIONS = `
   }
 `
 
+// In API 2025-01, variants are no longer part of ProductInput.
+// Products are created first (with a default $0 variant), then the variant is updated.
 const CREATE_PRODUCT = `
   mutation CreateProduct($input: ProductInput!) {
     productCreate(input: $input) {
@@ -79,17 +81,19 @@ const CREATE_PRODUCT = `
         handle
         title
         variants(first: 1) {
-          edges {
-            node {
-              id
-            }
-          }
+          edges { node { id } }
         }
       }
-      userErrors {
-        field
-        message
-      }
+      userErrors { field message }
+    }
+  }
+`
+
+const UPDATE_VARIANT = `
+  mutation UpdateVariant($input: ProductVariantInput!) {
+    productVariantUpdate(input: $input) {
+      productVariant { id price sku }
+      userErrors { field message }
     }
   }
 `
@@ -122,7 +126,7 @@ async function fetchCollectionIds(token: string): Promise<Record<string, string>
 
 async function main() {
   console.log(`Seeding ${PRODUCT_COUNT} products into Shopify...`)
-  console.log('Expected runtime: ~20–30 minutes\n')
+  console.log('Expected runtime: ~35–45 minutes (2 API calls per product)\n')
 
   const token = await getToken()
 
@@ -158,15 +162,7 @@ async function main() {
           descriptionHtml: `<p>${product.description}</p>`,
           productType: product.format,
           tags: product.tags,
-          status: 'DRAFT', // Set to ACTIVE manually after Gelato image upload
-          variants: [
-            {
-              price: product.priceKr.toString(),
-              sku: product.did,
-              taxable: true,
-              requiresShipping: true,
-            },
-          ],
+          status: 'DRAFT',
           metafields: [
             {
               namespace: 'did',
@@ -191,6 +187,19 @@ async function main() {
       }
 
       const shopifyProduct = result.productCreate.product!
+
+      // Update the auto-created default variant with correct price + SKU
+      const variantId = shopifyProduct.variants.edges[0]?.node.id
+      if (variantId) {
+        await adminMutation(token, UPDATE_VARIANT, {
+          input: {
+            id: variantId,
+            price: product.priceKr.toString(),
+            sku: product.did,
+          },
+        })
+      }
+
       console.log(`  ✓ [${++created}/${PRODUCT_COUNT}] ${product.title}`)
 
       // Assign to collection
