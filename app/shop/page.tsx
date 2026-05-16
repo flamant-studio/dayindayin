@@ -1,59 +1,62 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { getProducts, formatPrice } from '@/lib/shopify/products'
 import styles from './page.module.css'
 
 export const metadata = {
-  title: 'Shop — Day In Day In',
-  description:
-    'Art prints, canvases, mugs, and totes. Original works by Stine Weirsøe Flamant. Printed by Gelato, shipped to EU, UK, and Norway.',
+  title: 'Shop',
+  description: 'Art prints, canvases, and wall hangings by Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
 }
 
+const FILTERS = [
+  { label: 'All',         href: '/shop' },
+  { label: 'Tufted',     href: '/shop/collections/tufted-works' },
+  { label: 'Embroidery', href: '/shop/collections/embroidery' },
+  { label: 'Paintings',  href: '/shop/collections/paintings' },
+  { label: 'Photography',href: '/shop/collections/photography' },
+  { label: 'Mixed',      href: '/shop/collections/mixed' },
+  { label: 'Archive',    href: '/shop/collections/archive' },
+]
+
 export default async function ShopPage() {
-  const products = await getProducts().catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+  const products = await getProducts(96).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
 
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <h1 className={styles.title}>Shop</h1>
         <p className={styles.subtitle}>
-          Art prints, canvases, mugs, and totes. All prints are Stine&apos;s own work.
-          Fulfilled by Gelato — printed and shipped to order. Ships to EU, UK, and Norway
-          within 3–7 business days.
+          {products.length > 0
+            ? `${products.length} prints available`
+            : 'Art prints by Stine Weirsøe Flamant. Printed by Gelato on demand.'}
         </p>
       </header>
 
+      <div className={styles.filterBar}>
+        {FILTERS.map((f) => (
+          <Link key={f.href} href={f.href} className={styles.filter}>
+            {f.label}
+          </Link>
+        ))}
+      </div>
+
       {products.length === 0 ? (
         <div className={styles.empty}>
-          <h2 className={styles.emptyTitle}>Coming soon</h2>
-          <p className={styles.emptyText}>
-            The shop is being stocked. Follow along or check back shortly — the
-            first products will be up soon.
-          </p>
-          <Link href="/fine-art" className={styles.emptyCta}>
-            See the artwork first
-          </Link>
+          <p>Products are being set up. Check back shortly.</p>
+          <Link href="/about" className={styles.emptyCta}>About the artist</Link>
         </div>
       ) : (
         <div className={styles.grid}>
           {products.map((p) => (
             <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-              <div className={styles.imageWrap}>
-                {p.firstImage ? (
-                  <Image
-                    src={p.firstImage.url}
-                    alt={p.firstImage.altText ?? p.title}
-                    fill
-                    sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className={styles.image}
-                  />
-                ) : (
-                  <div className={styles.imagePlaceholder} />
-                )}
+              <div className={styles.cardImg}>
+                {p.firstImage
+                  ? <img src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} />
+                  : <div className={styles.cardPlaceholder} />
+                }
               </div>
-              <div className={styles.info}>
-                <span className={styles.productTitle}>{p.title}</span>
-                <span className={styles.price}>{formatPrice(p.minPrice.amount)}</span>
+              <div className={styles.cardInfo}>
+                <span className={styles.cardTitle}>{p.title}</span>
+                <span className={styles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
               </div>
             </Link>
           ))}

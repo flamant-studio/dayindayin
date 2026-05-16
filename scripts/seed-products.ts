@@ -1,19 +1,15 @@
 /**
  * seed-products.ts
  *
- * Creates all products in Shopify with correct pricing, descriptions, tags,
- * and collection assignment.
+ * Creates all products in Shopify via REST API.
+ * Shopify Admin API 2025-01 removed variants from ProductInput in GraphQL —
+ * REST POST /products.json still supports variants in one call.
  *
- * DO NOT RUN until:
- *   1. seed-collections.ts has been run and verified
- *   2. Gelato is installed and connected in Shopify admin
- *   3. SHOPIFY_STORE_DOMAIN, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET are set in .env.local
+ * Prerequisites:
+ *   1. seed-collections.ts has been run
+ *   2. .env.local has SHOPIFY_STORE_DOMAIN, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET
  *
- * Run with:
  *   npx tsx scripts/seed-products.ts
- *
- * The script creates products in batches, pausing between them to respect API rate limits.
- * Expected runtime: ~20–30 minutes for 285 products.
  */
 
 import * as dotenv from 'dotenv'
@@ -43,194 +39,112 @@ async function getToken(): Promise<string> {
   return data.access_token
 }
 
-async function adminMutation<T>(token: string, mutation: string, variables: Record<string, unknown>): Promise<T> {
-  const res = await fetch(`https://${DOMAIN}/admin/api/${API_VERSION}/graphql.json`, {
-    method: 'POST',
+async function rest<T>(token: string, method: string, path: string, body?: unknown): Promise<T> {
+  const res = await fetch(`https://${DOMAIN}/admin/api/${API_VERSION}${path}`, {
+    method,
     headers: {
       'Content-Type': 'application/json',
       'X-Shopify-Access-Token': token,
     },
-    body: JSON.stringify({ query: mutation, variables }),
+    ...(body ? { body: JSON.stringify(body) } : {}),
   })
-  const json = await res.json()
-  if (json.errors?.length) throw new Error(`GraphQL: ${JSON.stringify(json.errors)}`)
-  return json.data as T
+  if (!res.ok) {
+    const err = await res.text()
+    throw new Error(`REST ${method} ${path}: ${res.status} — ${err.slice(0, 200)}`)
+  }
+  return res.json() as Promise<T>
 }
 
-// Step 1: Fetch all existing collections to get their Shopify IDs
-const LIST_COLLECTIONS = `
-  query ListCollections($first: Int!) {
-    collections(first: $first) {
-      edges {
-        node {
-          id
-          handle
-        }
-      }
-    }
-  }
-`
-
-// In API 2025-01, variants are no longer part of ProductInput.
-// Products are created first (with a default $0 variant), then the variant is updated.
-const CREATE_PRODUCT = `
-  mutation CreateProduct($input: ProductInput!) {
-    productCreate(input: $input) {
-      product {
-        id
-        handle
-        title
-        variants(first: 1) {
-          edges { node { id } }
-        }
-      }
-      userErrors { field message }
-    }
-  }
-`
-
-const UPDATE_VARIANT = `
-  mutation UpdateVariant($input: ProductVariantInput!) {
-    productVariantUpdate(input: $input) {
-      productVariant { id price sku }
-      userErrors { field message }
-    }
-  }
-`
-
-const ADD_TO_COLLECTION = `
-  mutation AddToCollection($id: ID!, $productIds: [ID!]!) {
-    collectionAddProducts(id: $id, productIds: $productIds) {
-      collection {
-        id
-      }
-      userErrors {
-        field
-        message
-      }
-    }
-  }
-`
-
-async function fetchCollectionIds(token: string): Promise<Record<string, string>> {
-  const data = await adminMutation<{
-    collections: { edges: Array<{ node: { id: string; handle: string } }> }
-  }>(token, LIST_COLLECTIONS, { first: 250 })
-
-  const map: Record<string, string> = {}
-  for (const { node } of data.collections.edges) {
-    map[node.handle] = node.id
+async function fetchCollectionMap(token: string): Promise<Record<string, number>> {
+  const data = await rest<{ custom_collections: Array<{ id: number; handle: string }> }>(
+    token, 'GET', '/custom_collections.json?limit=250'
+  )
+  const map: Record<string, number> = {}
+  for (const c of data.custom_collections) {
+    map[c.handle] = c.id
   }
   return map
 }
 
 async function main() {
-  console.log(`Seeding ${PRODUCT_COUNT} products into Shopify...`)
-  console.log('Expected runtime: ~35–45 minutes (2 API calls per product)\n')
+  console.log(`Seeding ${PRODUCT_COUNT} products into Shopify via REST API...`)
 
   const token = await getToken()
 
-  // Build collection handle → Shopify ID map
   console.log('Fetching collection IDs...')
-  const collectionIds = await fetchCollectionIds(token)
-  console.log(`Found ${Object.keys(collectionIds).length} collections\n`)
+  const collectionMap = await fetchCollectionMap(token)
+  console.log(`Found ${Object.keys(collectionMap).length} collections\n`)
 
   let created = 0
   let failed = 0
 
   for (const product of ALL_PRODUCTS) {
-    const catalogCollection = COLLECTIONS.find((c) => c.id === product.collectionId)
-    const collectionShopifyId = catalogCollection
-      ? collectionIds[catalogCollection.handle]
-      : undefined
+    const catalogCollection = COLLECTIONS.find(c => c.id === product.collectionId)
+    const collectionId = catalogCollection ? collectionMap[catalogCollection.handle] : undefined
 
     try {
-      const result = await adminMutation<{
-        productCreate: {
+      const result = await rest<{ product: { id: number; handle: string } }>(
+        token, 'POST', '/products.json',
+        {
           product: {
-            id: string
-            handle: string
-            title: string
-            variants: { edges: Array<{ node: { id: string } }> }
-          } | null
-          userErrors: Array<{ field: string; message: string }>
-        }
-      }>(token, CREATE_PRODUCT, {
-        input: {
-          title: product.title,
-          handle: product.handle,
-          descriptionHtml: `<p>${product.description}</p>`,
-          productType: product.format,
-          tags: product.tags,
-          status: 'DRAFT',
-          metafields: [
-            {
-              namespace: 'did',
-              key: 'id',
-              value: product.did,
-              type: 'single_line_text_field',
-            },
-            {
-              namespace: 'gelato',
-              key: 'product_uid',
-              value: product.gelatoProductUid,
-              type: 'single_line_text_field',
-            },
-          ],
-        },
-      })
-
-      if (result.productCreate.userErrors.length > 0) {
-        console.error(`  ERROR ${product.handle}:`, result.productCreate.userErrors)
-        failed++
-        continue
-      }
-
-      const shopifyProduct = result.productCreate.product!
-
-      // Update the auto-created default variant with correct price + SKU
-      const variantId = shopifyProduct.variants.edges[0]?.node.id
-      if (variantId) {
-        await adminMutation(token, UPDATE_VARIANT, {
-          input: {
-            id: variantId,
-            price: product.priceKr.toString(),
-            sku: product.did,
+            title: product.title,
+            handle: product.handle,
+            body_html: `<p>${product.description}</p>`,
+            product_type: product.format,
+            tags: product.tags.join(', '),
+            status: 'draft',
+            variants: [
+              {
+                price: product.priceKr.toFixed(2),
+                sku: product.did,
+                taxable: true,
+                requires_shipping: true,
+                inventory_management: null,
+              },
+            ],
+            metafields: [
+              {
+                namespace: 'did',
+                key: 'id',
+                value: product.did,
+                type: 'single_line_text_field',
+              },
+              {
+                namespace: 'gelato',
+                key: 'product_uid',
+                value: product.gelatoProductUid,
+                type: 'single_line_text_field',
+              },
+            ],
           },
-        })
-      }
+        }
+      )
 
+      const shopifyProductId = result.product.id
       console.log(`  ✓ [${++created}/${PRODUCT_COUNT}] ${product.title}`)
 
-      // Assign to collection
-      if (collectionShopifyId) {
+      if (collectionId) {
         try {
-          await adminMutation(token, ADD_TO_COLLECTION, {
-            id: collectionShopifyId,
-            productIds: [shopifyProduct.id],
+          await rest(token, 'POST', '/collects.json', {
+            collect: { product_id: shopifyProductId, collection_id: collectionId },
           })
         } catch {
-          console.warn(`    (collection assignment failed for ${product.handle})`)
+          // Collection assignment is non-fatal
         }
       }
 
-      // Pause to respect rate limits
-      await new Promise((r) => setTimeout(r, 600))
+      await new Promise(r => setTimeout(r, 500))
     } catch (err) {
-      console.error(`  FAILED ${product.handle}:`, err)
+      console.error(`  FAILED [${product.handle}]:`, err instanceof Error ? err.message : err)
       failed++
     }
   }
 
-  console.log(`\nDone. Created: ${created}, Failed: ${failed}`)
+  console.log(`\nDone. Created: ${created}  Failed: ${failed}`)
   console.log('\nNext steps:')
-  console.log('1. Go to Shopify admin → Products')
-  console.log('2. For each product, use Gelato app to upload the artwork image')
-  console.log('3. Set product status to Active')
-  console.log('4. Verify prices and collection assignments')
+  console.log('1. In Shopify admin → Products: confirm products created with correct prices')
+  console.log('2. Use Gelato app to attach artwork images to each product')
+  console.log('3. Set products to Active once images are attached')
 }
 
-main().catch((err) => {
-  console.error(err)
-  process.exit(1)
-})
+main().catch(err => { console.error(err); process.exit(1) })

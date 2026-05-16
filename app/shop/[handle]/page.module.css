@@ -1,153 +1,146 @@
 .page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem 5rem;
+  padding: 0 var(--sp-6) var(--sp-16);
 }
 
-/* ── Back link ───────────────────────────────────────────────────── */
-
 .back {
-  padding: 1.5rem 0 0;
+  padding: var(--sp-5) 0 0;
 }
 
 .backLink {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.5;
-  transition: opacity 0.2s;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
 }
 
-.backLink:hover {
-  opacity: 1;
-}
+.backLink:hover { color: var(--c-text); }
 
-/* ── Two-column layout ───────────────────────────────────────────── */
+/* ── Layout ──────────────────────────────────────────────── */
 
 .layout {
   display: grid;
   grid-template-columns: 55fr 45fr;
-  gap: 4rem;
-  margin-top: 2rem;
+  gap: var(--sp-10);
+  margin-top: var(--sp-6);
   align-items: start;
 }
 
-/* ── Images ──────────────────────────────────────────────────────── */
+/* ── Images ──────────────────────────────────────────────── */
 
 .images {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--sp-2);
 }
 
 .mainImage {
   position: relative;
   aspect-ratio: 3/4;
-  background: #f5f3f0;
+  background: var(--c-surface);
   overflow: hidden;
 }
 
-.mainImageEl {
-  object-fit: cover;
-}
+.mainImageEl { object-fit: cover; }
 
 .imagePlaceholder {
   position: absolute;
   inset: 0;
-  background: #ede9e3;
+  background: var(--c-surface);
 }
 
 .thumbGrid {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--sp-2);
   flex-wrap: wrap;
 }
 
 .thumb {
   position: relative;
   width: calc(25% - 0.375rem);
-  aspect-ratio: 1/1;
+  aspect-ratio: 1;
   overflow: hidden;
-  background: #f5f3f0;
+  background: var(--c-surface);
   cursor: pointer;
 }
 
-.thumbImage {
-  object-fit: cover;
-}
+.thumbImage { object-fit: cover; }
 
-/* ── Info column ─────────────────────────────────────────────────── */
+/* ── Info ────────────────────────────────────────────────── */
 
 .infoInner {
   position: sticky;
-  top: 5rem;
+  top: calc(var(--nav-h) + var(--sp-6));
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--sp-5);
 }
 
 .productType {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #888;
+  color: var(--c-muted);
 }
 
 .title {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
 .price {
-  font-size: 1.25rem;
+  font-size: var(--text-2xl);
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
 }
 
 .description {
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   font-weight: 300;
   line-height: 1.8;
-  color: #444;
+  color: #555;
 }
 
-/* ── Variants ────────────────────────────────────────────────────── */
+/* ── Variants ────────────────────────────────────────────── */
 
 .variantLabel {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--sp-2);
+  color: var(--c-muted);
 }
 
 .variantList {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--sp-2);
   flex-wrap: wrap;
 }
 
 .variantBtn {
-  padding: 0.5rem 1rem;
-  border: 1px solid #000;
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--c-border);
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: 500;
-  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--sp-2);
+  color: var(--c-text);
 }
 
 .variantBtn:hover {
-  background: #000;
-  color: #fff;
+  border-color: var(--c-text);
+  background: var(--c-text);
+  color: var(--c-white);
 }
 
 .variantSoldOut {
@@ -157,79 +150,62 @@
 }
 
 .soldOutBadge {
-  font-size: 0.65rem;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-/* ── Buy button ──────────────────────────────────────────────────── */
+/* ── Buy button ──────────────────────────────────────────── */
 
 .buyBtn {
   display: block;
-  padding: 1rem 2rem;
-  background: #000;
-  color: #fff;
+  padding: var(--sp-4) var(--sp-6);
+  background: var(--c-accent);
+  color: var(--c-white);
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
-  transition: opacity 0.2s;
-  margin-top: 0.5rem;
+  transition: background var(--t-fast);
 }
 
-.buyBtn:hover {
-  opacity: 0.8;
-}
+.buyBtn:hover { background: #c03a20; }
 
 .soldOut {
-  padding: 1rem 2rem;
-  border: 1px solid #ccc;
-  color: #999;
-  font-size: 0.85rem;
+  padding: var(--sp-4) var(--sp-6);
+  border: 1px solid var(--c-border);
+  color: var(--c-muted);
+  font-size: var(--text-sm);
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 0.5rem;
 }
 
-/* ── Fulfillment note ────────────────────────────────────────────── */
+/* ── Fulfillment note ────────────────────────────────────── */
 
 .fulfillmentNote {
-  border-top: 1px solid #e2e2e2;
-  padding-top: 1.25rem;
-  margin-top: 0.5rem;
+  border-top: 1px solid var(--c-border);
+  padding-top: var(--sp-5);
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--sp-2);
 }
 
 .fulfillmentNote p {
-  font-size: 0.8rem;
-  color: #777;
+  font-size: var(--text-sm);
+  color: var(--c-muted);
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* ── Mobile ──────────────────────────────────────────────────────── */
+/* ── Mobile ──────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .page {
-    padding: 0 1.25rem 4rem;
-  }
-
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .infoInner {
-    position: static;
-  }
-
-  .thumb {
-    width: calc(33.33% - 0.33rem);
-  }
+  .page { padding: 0 var(--sp-5) var(--sp-12); }
+  .layout { grid-template-columns: 1fr; gap: var(--sp-6); }
+  .infoInner { position: static; }
+  .thumb { width: calc(33.33% - 0.33rem); }
 }

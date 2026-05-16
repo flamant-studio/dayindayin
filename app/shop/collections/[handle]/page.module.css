@@ -4,58 +4,53 @@
   padding-bottom: var(--sp-16);
 }
 
-/* ── Header ─────────────────────────────────────────────── */
+/* ── Hero ────────────────────────────────────────────────── */
 
-.header {
-  padding: var(--sp-10) var(--sp-6) var(--sp-5);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--sp-6);
-  border-bottom: 1px solid var(--c-border);
+.hero {
+  background: var(--swatch, var(--c-surface));
+  padding: var(--sp-12) var(--sp-6) var(--sp-10);
 }
+
+.heroInner {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.back {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(0,0,0,0.5);
+  transition: color var(--t-fast);
+  align-self: flex-start;
+}
+
+.back:hover { color: var(--c-text); }
 
 .title {
   font-family: var(--font-display);
-  font-size: var(--text-5xl);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1;
 }
 
-.subtitle {
-  font-size: var(--text-sm);
-  color: var(--c-muted);
+.desc {
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.7;
+  color: #444;
+  max-width: 520px;
 }
 
-/* ── Filter bar ─────────────────────────────────────────── */
-
-.filterBar {
-  display: flex;
-  gap: 0;
-  padding: 0 var(--sp-6);
-  border-bottom: 1px solid var(--c-border);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.filterBar::-webkit-scrollbar { display: none; }
-
-.filter {
-  padding: var(--sp-3) var(--sp-4);
+.count {
   font-size: var(--text-sm);
+  color: rgba(0,0,0,0.45);
   font-weight: 500;
-  color: var(--c-muted);
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: color var(--t-fast), border-color var(--t-fast);
 }
 
-.filter:hover {
-  color: var(--c-text);
-}
-
-/* ── Product grid ───────────────────────────────────────── */
+/* ── Grid ────────────────────────────────────────────────── */
 
 .grid {
   display: grid;
@@ -114,7 +109,7 @@
   color: var(--c-muted);
 }
 
-/* ── Empty ──────────────────────────────────────────────── */
+/* ── Empty ───────────────────────────────────────────────── */
 
 .empty {
   padding: var(--sp-16) var(--sp-6);
@@ -142,15 +137,11 @@
 
 .emptyCta:hover { background: var(--c-text); color: var(--c-white); }
 
-/* ── Responsive ─────────────────────────────────────────── */
+/* ── Responsive ──────────────────────────────────────────── */
 
-@media (max-width: 1100px) {
-  .grid { grid-template-columns: repeat(3, 1fr); }
-}
+@media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 
 @media (max-width: 768px) {
-  .header { flex-direction: column; gap: var(--sp-2); padding: var(--sp-6) var(--sp-5) var(--sp-4); }
-  .title { font-size: var(--text-4xl); }
-  .filterBar { padding: 0 var(--sp-5); }
+  .hero { padding: var(--sp-8) var(--sp-5); }
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
