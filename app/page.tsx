@@ -1,97 +1,93 @@
-import Image from "next/image";
-import Link from "next/link";
-import styles from "./page.module.css";
-import ContactForm from "@/components/ContactForm";
-import { getProducts, formatPrice } from "@/lib/shopify/products";
+import Link from 'next/link'
+import { getProducts, formatPrice } from '@/lib/shopify/products'
+import styles from './page.module.css'
 
-const BLOB_BASE = "https://29kekabbrd49avje.public.blob.vercel-storage.com";
+const COLLECTIONS = [
+  { handle: 'tufted-works',  label: 'Tufted Works',  color: '#E8D5C4', desc: 'Wool & colour. Hand-tufted originals as prints.' },
+  { handle: 'embroidery',    label: 'Embroidery',    color: '#C4D5C8', desc: 'Thread, fabric, and something to say.' },
+  { handle: 'paintings',     label: 'Paintings',     color: '#C4C8D5', desc: 'Instinctive, colourful, without apology.' },
+  { handle: 'photography',   label: 'Photography',   color: '#D5C4C8', desc: 'Studio still lifes and found moments.' },
+  { handle: 'mixed',         label: 'Mixed Works',   color: '#D5D0C4', desc: 'Collage and experiment.' },
+  { handle: 'archive',       label: 'Archive',       color: '#D0C4D5', desc: 'Early works. Available for the first time.' },
+]
 
-const categories = [
-  { slug: "tufting", label: "Hand Tufting", tagline: "Cosmos, Christmas, rainbows and everything in between", image: `${BLOB_BASE}/tufting/hero.jpg` },
-  { slug: "embroidery", label: "Embroidery", tagline: "Powerful flowers, powerful words", image: `${BLOB_BASE}/embroidery/hero.jpg` },
-  { slug: "painting", label: "Paintings", tagline: "Flora and fauna of the colourful universe", image: `${BLOB_BASE}/painting/hero.jpg` },
-  { slug: "photography", label: "Photography", tagline: "Inside and outside the DayinDayin world, one minute at a time", image: `${BLOB_BASE}/photography/hero.jpg` },
-];
-
-export default async function Home() {
-  const featuredProducts = await getProducts(4).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+export default async function HomePage() {
+  const products = await getProducts(8).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
 
   return (
     <>
+      {/* ── Hero ─────────────────────────────────────────────── */}
       <section className={styles.hero}>
-        <h1 className={styles.heroName}>Stine Weirsøe Flamant</h1>
-        <p className={styles.heroTagline}>Contemporary artist in a love affair with embroidery and hand tufting</p>
-        <h2 className={styles.heroHeading}>Contemporary art objects from the feminine realm</h2>
-      </section>
-
-      <section className={styles.grid}>
-        {categories.map((cat) => (
-          <Link key={cat.slug} href={`/fine-art#${cat.slug}`} className={styles.card}>
-            <div className={styles.cardImage}>
-              <Image src={cat.image} alt={cat.label} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
-            </div>
-            <div className={styles.cardBody}>
-              <h3>{cat.label}</h3>
-              <p>{cat.tagline}</p>
-            </div>
-          </Link>
-        ))}
-      </section>
-
-      <section className={styles.intro}>
-        <div className={styles.introText}>
-          <p>We all have <em>superpowers</em>. Mine is making something out of nothing. Colour is the fabric of my entire being. I am curious about <em>&ldquo;the human condition&rdquo;</em>. How to be human in these strange times.</p>
-          <p><em>My disability</em> (chronic autoimmune pain syndrome) and my personal history is the canvas for every artwork I create. I consider myself an outsider artist.</p>
-          <p>I am a textile artist involved in <em>a love affair</em> with embroidery and hand tufting. Slowly and gently, my artistic voice sounds more and more familiar to me.</p>
-          <Link href="/about" className={styles.cta}>Full story</Link>
-        </div>
-        <div className={styles.introImage}>
-          <Image src={`${BLOB_BASE}/profile/stine.jpg`} alt="Stine Weirsøe Flamant" width={480} height={600} style={{ objectFit: "cover" }} />
+        <div className={styles.heroBg} />
+        <div className={styles.heroContent}>
+          <span className={styles.heroLabel}>Copenhagen, Denmark</span>
+          <h1 className={styles.heroTitle}>Art made by hand.<br />Printed for your wall.</h1>
+          <p className={styles.heroSub}>
+            Tufting, embroidery, paintings and photography by Stine Weirsøe Flamant.
+            Printed on demand by Gelato. Ships to EU, UK &amp; Norway.
+          </p>
+          <Link href="/shop" className={styles.heroCta}>Shop all prints</Link>
         </div>
       </section>
 
-      <section className={styles.shopSection}>
-        <div className={styles.shopHeader}>
-          <h2 className={styles.shopTitle}>Shop</h2>
-          <Link href="/shop" className={styles.shopViewAll}>All products &rarr;</Link>
+      {/* ── New In ───────────────────────────────────────────── */}
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.sectionTitle}>New In</h2>
+          <Link href="/shop" className={styles.viewAll}>All products →</Link>
         </div>
-        {featuredProducts.length > 0 ? (
-          <div className={styles.shopGrid}>
-            {featuredProducts.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.shopCard}>
-                <div className={styles.shopCardImage}>
-                  {p.firstImage ? (
-                    <Image
-                      src={p.firstImage.url}
-                      alt={p.firstImage.altText ?? p.title}
-                      fill
-                      sizes="(max-width: 600px) 50vw, 25vw"
-                      style={{ objectFit: "cover" }}
-                    />
-                  ) : (
-                    <div className={styles.shopCardPlaceholder} />
-                  )}
+
+        {products.length > 0 ? (
+          <div className={styles.productGrid}>
+            {products.map((p) => (
+              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
+                <div className={styles.cardImg}>
+                  {p.firstImage
+                    ? <img src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} />
+                    : <div className={styles.cardPlaceholder} />
+                  }
                 </div>
-                <div className={styles.shopCardInfo}>
-                  <span className={styles.shopCardTitle}>{p.title}</span>
-                  <span className={styles.shopCardPrice}>{formatPrice(p.minPrice.amount)}</span>
+                <div className={styles.cardInfo}>
+                  <span className={styles.cardTitle}>{p.title}</span>
+                  <span className={styles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
                 </div>
               </Link>
             ))}
           </div>
         ) : (
-          <div className={styles.shopEmpty}>
-            <p>The shop is being stocked. Art prints, canvases, mugs, and totes coming soon.</p>
-            <Link href="/shop" className={styles.cta}>Go to shop</Link>
+          <div className={styles.comingSoon}>
+            <p>Products are being added. Check back shortly.</p>
+            <Link href="/shop" className={styles.heroCta}>Go to shop</Link>
           </div>
         )}
       </section>
 
-      <section className={styles.contact}>
-        <h2>Want to get in touch? Drop me a line!</h2>
-        <p>Allow a few days for a response. Due to my disability, I ask for your understanding.</p>
-        <ContactForm />
+      {/* ── Collections ──────────────────────────────────────── */}
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.sectionTitle}>Collections</h2>
+        </div>
+        <div className={styles.collectionGrid}>
+          {COLLECTIONS.map((c) => (
+            <Link key={c.handle} href={`/shop/collections/${c.handle}`} className={styles.collectionCard}>
+              <div className={styles.collectionSwatch} style={{ background: c.color }} />
+              <div className={styles.collectionInfo}>
+                <span className={styles.collectionLabel}>{c.label}</span>
+                <span className={styles.collectionDesc}>{c.desc}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Artist strip ─────────────────────────────────────── */}
+      <section className={styles.artistStrip}>
+        <p className={styles.artistText}>
+          Stine Weirsøe Flamant is a Copenhagen artist working in tufting, embroidery, painting, and photography.
+          Every print is a reproduction of an original work, made by hand in her studio.
+        </p>
+        <Link href="/about" className={styles.artistLink}>About Stine →</Link>
       </section>
     </>
-  );
+  )
 }

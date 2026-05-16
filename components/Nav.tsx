@@ -1,39 +1,79 @@
-"use client";
-import Link from "next/link";
-import { useState } from "react";
-import styles from "./Nav.module.css";
+'use client'
+import Link from 'next/link'
+import { useState } from 'react'
+import styles from './Nav.module.css'
+
+const COLLECTIONS = [
+  { href: '/shop/collections/tufted-works', label: 'Tufted Works' },
+  { href: '/shop/collections/embroidery',   label: 'Embroidery' },
+  { href: '/shop/collections/paintings',    label: 'Paintings' },
+  { href: '/shop/collections/photography',  label: 'Photography' },
+  { href: '/shop/collections/mixed',        label: 'Mixed Works' },
+  { href: '/shop/collections/archive',      label: 'Archive' },
+]
 
 export default function Nav() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
-    <nav className={styles.nav}>
-      <Link href="/" className={styles.logo}>Day In Day In</Link>
+    <>
+      <nav className={styles.nav}>
+        <Link href="/" className={styles.logo} onClick={() => setOpen(false)}>
+          Day In Day In
+        </Link>
 
-      <button
-        className={styles.menuToggle}
-        onClick={() => setMobileOpen(!mobileOpen)}
-        aria-label="Toggle menu"
-      >
-        <span /><span /><span />
-      </button>
+        <ul className={`${styles.links} ${open ? styles.open : ''}`}>
+          <li>
+            <Link href="/shop" className={styles.primary} onClick={() => setOpen(false)}>
+              Shop
+            </Link>
+          </li>
+          <li className={styles.hasDropdown}>
+            <span className={styles.dropTrigger}>Collections</span>
+            <ul className={styles.dropdown}>
+              {COLLECTIONS.map((c) => (
+                <li key={c.href}>
+                  <Link href={c.href} onClick={() => setOpen(false)}>{c.label}</Link>
+                </li>
+              ))}
+              <li className={styles.dropDivider}>
+                <Link href="/shop" onClick={() => setOpen(false)}>All products →</Link>
+              </li>
+            </ul>
+          </li>
+          <li className={styles.hasDropdown}>
+            <span className={styles.dropTrigger}>Artist</span>
+            <ul className={styles.dropdown}>
+              <li><Link href="/about" onClick={() => setOpen(false)}>About Stine</Link></li>
+              <li><Link href="/fine-art" onClick={() => setOpen(false)}>Fine Art</Link></li>
+              <li><Link href="/archive" onClick={() => setOpen(false)}>Archive</Link></li>
+              <li><Link href="/art-journal" onClick={() => setOpen(false)}>Art Journal</Link></li>
+            </ul>
+          </li>
+          <li><Link href="/practical" onClick={() => setOpen(false)}>Shipping & FAQ</Link></li>
+        </ul>
 
-      <ul className={`${styles.links} ${mobileOpen ? styles.open : ""}`}>
-        <li className={styles.dropdown}>
-          <Link href="/fine-art">Fine Art</Link>
-          <ul className={styles.dropdownMenu}>
-            <li><Link href="/fine-art#tufting" onClick={() => setMobileOpen(false)}>Tufting</Link></li>
-            <li><Link href="/fine-art#embroidery" onClick={() => setMobileOpen(false)}>Embroidery</Link></li>
-            <li><Link href="/fine-art#painting" onClick={() => setMobileOpen(false)}>Painting</Link></li>
-            <li><Link href="/fine-art#photography" onClick={() => setMobileOpen(false)}>Photography</Link></li>
-          </ul>
-        </li>
-        <li><Link href="/shop" onClick={() => setMobileOpen(false)}>Shop</Link></li>
-        <li><Link href="/art-journal" onClick={() => setMobileOpen(false)}>Art Journal</Link></li>
-        <li><Link href="/archive" onClick={() => setMobileOpen(false)}>Archive</Link></li>
-        <li><Link href="/about" onClick={() => setMobileOpen(false)}>Bio</Link></li>
-        <li><Link href="/practical" onClick={() => setMobileOpen(false)}>Practical</Link></li>
-      </ul>
-    </nav>
-  );
+        <div className={styles.actions}>
+          <Link href="/shop" className={styles.cartBtn} aria-label="Cart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+          </Link>
+          <button
+            className={styles.burger}
+            onClick={() => setOpen(!open)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+          >
+            <span className={open ? styles.burgerLineTop : ''} />
+            <span className={open ? styles.burgerLineMid : ''} />
+            <span className={open ? styles.burgerLineBot : ''} />
+          </button>
+        </div>
+      </nav>
+      {open && <div className={styles.overlay} onClick={() => setOpen(false)} />}
+    </>
+  )
 }

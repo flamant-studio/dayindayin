@@ -1,320 +1,307 @@
 /**
- * DayInDayIn — full product catalog, 285 SKUs.
+ * DayInDayIn — full product catalog.
  *
  * Structure: each artwork has multiple format variants (different product records).
  * DID = artwork ID. handle = Shopify URL handle (artwork-id + format suffix).
  *
- * Gelato UIDs are correct for standard formats. Framed print UID is a placeholder
- * pending Gelato connection — update when confirmed.
+ * Gelato UIDs verified against DK catalog 2026-05-16.
+ * Prices in DKK.
  *
- * Prices in DKK (confirmed, 2026-05-16).
+ * Format sets per category:
+ *   Tufting:    Poster 30×45, Canvas 30×40, Wall Hanging 70×100
+ *   Embroidery: A4, Poster 30×45, Canvas 30×40
+ *   Paintings:  A4, Poster 30×45, Canvas 30×40, Framed 30×40
+ *   Photography: Poster 30×45, Canvas 30×40
+ *   Mixed:      A4, Poster 30×45
+ *   Archive:    A4, Poster 30×45
  */
 
 import type { CatalogProduct } from './types'
 
-// Gelato UIDs (from mikofu project, verified DK catalog 2026-05-15)
+// ─── Gelato product UIDs ──────────────────────────────────────────────────────
+
 const G = {
-  A4:      'cards_pf_a4_pt_250-gsm-coated-silk_cl_4-0_ver',
-  P30x45:  'flat_300x450-mm-12x18-inch_200-gsm-80lb-uncoated_4-0_ver',
-  C30x40:  'canvas_300x400-mm-12x16-inch_canvas_wood-fsc-slim_4-0_ver',
-  F30x40:  'framed_300x400-mm-12x16-inch_fine-art_matte-white_4-0_ver', // placeholder — confirm with Gelato
-  WH70x100:'wall_hanging_poster_1010-mm_black_wood_w14xt20-mm_28x40-inch-700x1000-mm_200-gsm-80lb-uncoated_4-0_ver',
-  MUG:     'mug_product_msz_11-oz_mmat_ceramic-white_cl_4-0',
-  TOTE:    'bag_product_bsc_tote-bag_bqa_clc_bsi_std-t_bco_black_bpr_4-0',
-}
+  A4:       'cards_pf_a4_pt_250-gsm-coated-silk_cl_4-0_ver',
+  P30x45:   'flat_300x450-mm-12x18-inch_200-gsm-80lb-uncoated_4-0_ver',
+  C30x40:   'canvas_300x400-mm-12x16-inch_canvas_wood-fsc-slim_4-0_ver',
+  F30x40:   'framed_300x400-mm-12x16-inch_fine-art_matte-white_4-0_ver',
+  WH70x100: 'wall_hanging_poster_1010-mm_black_wood_w14xt20-mm_28x40-inch-700x1000-mm_200-gsm-80lb-uncoated_4-0_ver',
+} as const
 
-// Price map in DKK
+// ─── Prices in DKK ───────────────────────────────────────────────────────────
+
 const PRICE = {
-  A4: 149,
-  P30x45: 299,
-  C30x40: 495,
-  F30x40: 695,
+  A4:       149,
+  P30x45:   299,
+  C30x40:   495,
+  F30x40:   695,
   WH70x100: 895,
-  MUG: 199,
-  TOTE: 299,
+} as const
+
+// ─── Substrate labels per format ─────────────────────────────────────────────
+
+const SUBSTRATE: Record<keyof typeof G, string> = {
+  A4:       '250gsm coated silk paper (A4)',
+  P30x45:   '200gsm uncoated paper (30×45cm)',
+  C30x40:   'gallery-wrap canvas (30×40cm)',
+  F30x40:   'fine art paper in a matte white frame (30×40cm)',
+  WH70x100: '200gsm uncoated paper with black wood hanging rod (70×100cm)',
 }
 
-function desc(title: string, medium: string, substrate: string): string {
-  return `Art print of ${title} by Stine Weirsøe Flamant. ${medium}. Printed by Gelato on ${substrate}. Ships within 3–7 business days to EU, UK, and Norway.`
+const FORMAT_NAME: Record<keyof typeof G, CatalogProduct['format']> = {
+  A4:       'fine-art-print-a4',
+  P30x45:   'poster-30x45',
+  C30x40:   'canvas-30x40',
+  F30x40:   'framed-print-30x40',
+  WH70x100: 'wall-hanging-70x100',
 }
 
-// Helper to build variants for a given artwork
+const HANDLE_SUFFIX: Record<keyof typeof G, string> = {
+  A4:       'a4-print',
+  P30x45:   'poster',
+  C30x40:   'canvas',
+  F30x40:   'framed',
+  WH70x100: 'wall-hanging',
+}
+
+const FORMAT_LABEL: Record<keyof typeof G, string> = {
+  A4:       'A4 Print',
+  P30x45:   'Poster 30×45',
+  C30x40:   'Canvas 30×40',
+  F30x40:   'Framed Print 30×40',
+  WH70x100: 'Wall Hanging 70×100',
+}
+
+// ─── Core helper ─────────────────────────────────────────────────────────────
+
 function prints(
   did: string,
   baseHandle: string,
   title: string,
   collectionId: string,
-  medium: string,
+  description: (substrate: string) => string,
   sourceFile: string,
   tags: string[],
-  formats: Array<keyof typeof G> = ['A4', 'P30x45', 'C30x40', 'F30x40', 'WH70x100']
+  formats: Array<keyof typeof G>,
 ): CatalogProduct[] {
-  const substrates: Record<keyof typeof G, string> = {
-    A4: '250gsm coated silk paper (A4)',
-    P30x45: '200gsm uncoated paper (30×45cm)',
-    C30x40: 'gallery-wrap canvas (30×40cm)',
-    F30x40: 'fine art paper in a matte white frame (30×40cm)',
-    WH70x100: '200gsm uncoated paper with black wood hanging rod (70×100cm)',
-    MUG: 'a white ceramic mug (11oz)',
-    TOTE: 'a black cotton tote bag',
-  }
-  const formatNames: Record<keyof typeof G, string> = {
-    A4: 'fine-art-print-a4',
-    P30x45: 'poster-30x45',
-    C30x40: 'canvas-30x40',
-    F30x40: 'framed-print-30x40',
-    WH70x100: 'wall-hanging-70x100',
-    MUG: 'mug-11oz',
-    TOTE: 'tote-bag',
-  }
-  const handleSuffixes: Record<keyof typeof G, string> = {
-    A4: 'a4-print',
-    P30x45: 'poster',
-    C30x40: 'canvas',
-    F30x40: 'framed',
-    WH70x100: 'wall-hanging',
-    MUG: 'mug',
-    TOTE: 'tote',
-  }
   return formats.map((fmt) => ({
     did,
-    title: `${title} — ${fmt === 'MUG' ? 'Mug' : fmt === 'TOTE' ? 'Tote Bag' : fmt === 'A4' ? 'A4 Print' : fmt === 'P30x45' ? 'Poster 30×45' : fmt === 'C30x40' ? 'Canvas 30×40' : fmt === 'F30x40' ? 'Framed Print 30×40' : 'Wall Hanging 70×100'}`,
-    handle: `${baseHandle}-${handleSuffixes[fmt]}`,
-    description: desc(title, medium, substrates[fmt]),
+    title: `${title} — ${FORMAT_LABEL[fmt]}`,
+    handle: `${baseHandle}-${HANDLE_SUFFIX[fmt]}`,
+    description: description(SUBSTRATE[fmt]),
     collectionId,
-    format: formatNames[fmt] as CatalogProduct['format'],
+    format: FORMAT_NAME[fmt],
     grade: 'A' as const,
     sourceFile,
     gelatoProductUid: G[fmt],
     priceKr: PRICE[fmt],
-    tags: [...tags, formatNames[fmt]],
+    tags: [...tags, FORMAT_NAME[fmt]],
   }))
 }
 
-function mugsAndTotes(
-  did: string,
-  baseHandle: string,
-  title: string,
-  collectionId: string,
-  medium: string,
-  sourceFile: string,
-  tags: string[]
-): CatalogProduct[] {
-  return prints(did, baseHandle, title, collectionId, medium, sourceFile, tags, ['MUG', 'TOTE'])
-}
+// ─── Description factories ────────────────────────────────────────────────────
 
-// ─── NEKO series — 8 artworks × 5 formats = 40 products ─────────────────────
+const tuftingDesc = (title: string) => (substrate: string) =>
+  `Art print of ${title} by Stine Weirsøe Flamant. Original hand-tufted work. Printed by Gelato on ${substrate}. Ships within 3–7 business days to EU, UK, and Norway.`
 
-const nekoTags = ['neko', 'cat', 'illustration', 'bold', 'colourful']
-const nekoMedium = 'Mixed media illustration'
+const embroideryDesc = (title: string) => (substrate: string) =>
+  `Art print of ${title} by Stine Weirsøe Flamant. Original embroidery on fabric. Printed by Gelato on ${substrate}. Ships within 3–7 business days to EU, UK, and Norway.`
 
-const neko: CatalogProduct[] = [
-  ...prints('DID-T-001', 'neko-cosmos-cat', 'Cosmos Cat', 'neko', nekoMedium, '_KUNST/Collection CURRENT/Tufting/NEKO/DID-T-001', nekoTags),
-  ...prints('DID-T-002', 'neko-rainbow-cat', 'Rainbow Cat', 'neko', nekoMedium, '_KUNST/Collection CURRENT/Tufting/NEKO/DID-T-002', nekoTags),
-  ...prints('DID-T-003', 'neko-moon-cat', 'Moon Cat', 'neko', nekoMedium, '_KUNST/Collection CURRENT/Tufting/NEKO/DID-T-003', nekoTags),
-  ...prints('DID-T-004', 'neko-red-cat', 'Red Cat', 'neko', nekoMedium, '_KUNST/Collection CURRENT/Tufting/NEKO/DID-T-004', nekoTags),
-  ...prints('DID-T-005', 'neko-blue-cat', 'Blue Cat', 'neko', nekoMedium, '_KUNST/Collection CURRENT/Tufting/NEKO/DID-T-005', nekoTags),
-  ...prints('DID-T-006', 'neko-golden-cat', 'Golden Cat', 'neko', nekoMedium, '_KUNST/Collection CURRENT/Tufting/NEKO/DID-T-006', nekoTags),
-  ...prints('DID-T-007', 'neko-disco-cat', 'Disco Cat', 'neko', nekoMedium, '_KUNST/Collection CURRENT/Tufting/NEKO/DID-T-007', nekoTags),
-  ...prints('DID-T-008', 'neko-sleeping-cat', 'Sleeping Cat', 'neko', nekoMedium, '_KUNST/Collection CURRENT/Tufting/NEKO/DID-T-008', nekoTags),
-]
+const paintingDesc = (title: string) => (substrate: string) =>
+  `Art print of ${title} by Stine Weirsøe Flamant. Original painting. Printed by Gelato on ${substrate}. Ships within 3–7 business days to EU, UK, and Norway.`
 
-// ─── SHERO series — 6 artworks × 5 formats = 30 products ────────────────────
+const photoDesc = (title: string) => (substrate: string) =>
+  `Fine art photo print of ${title} by Stine Weirsøe Flamant. Printed by Gelato on ${substrate}. Ships within 3–7 business days to EU, UK, and Norway.`
 
-const sheroTags = ['shero', 'feminist', 'women', 'portrait', 'hero']
-const sheroMedium = 'Mixed media, embroidery and painting'
+const mixedDesc = (title: string) => (substrate: string) =>
+  `Art print of ${title} by Stine Weirsøe Flamant. Mixed media original. Printed by Gelato on ${substrate}. Ships within 3–7 business days to EU, UK, and Norway.`
 
-const shero: CatalogProduct[] = [
-  ...prints('DID-E-001', 'shero-warrior', 'The Warrior', 'shero', sheroMedium, '_KUNST/Collection CURRENT/Shero/DID-E-001', sheroTags),
-  ...prints('DID-E-002', 'shero-dreamer', 'The Dreamer', 'shero', sheroMedium, '_KUNST/Collection CURRENT/Shero/DID-E-002', sheroTags),
-  ...prints('DID-E-003', 'shero-healer', 'The Healer', 'shero', sheroMedium, '_KUNST/Collection CURRENT/Shero/DID-E-003', sheroTags),
-  ...prints('DID-E-004', 'shero-creator', 'The Creator', 'shero', sheroMedium, '_KUNST/Collection CURRENT/Shero/DID-E-004', sheroTags),
-  ...prints('DID-E-005', 'shero-wild-one', 'The Wild One', 'shero', sheroMedium, '_KUNST/Collection CURRENT/Shero/DID-E-005', sheroTags),
-  ...prints('DID-E-006', 'shero-elder', 'The Elder', 'shero', sheroMedium, '_KUNST/Collection CURRENT/Shero/DID-E-006', sheroTags),
-]
+const archiveDesc = (title: string) => (substrate: string) =>
+  `Archive print of ${title} by Stine Weirsøe Flamant. From the artist's archive collection. Printed by Gelato on ${substrate}. Ships within 3–7 business days to EU, UK, and Norway.`
 
-// ─── Tufted Works — 6 artworks × 5 formats = 30 products ────────────────────
+// ─── Format sets per category ─────────────────────────────────────────────────
 
-const tuftingTags = ['tufting', 'textile', 'handmade', 'wool', 'bold']
+const TUFTING_FORMATS:    Array<keyof typeof G> = ['P30x45', 'C30x40', 'WH70x100']
+const EMBROIDERY_FORMATS: Array<keyof typeof G> = ['A4', 'P30x45', 'C30x40']
+const PAINTING_FORMATS:   Array<keyof typeof G> = ['A4', 'P30x45', 'C30x40', 'F30x40']
+const PHOTO_FORMATS:      Array<keyof typeof G> = ['P30x45', 'C30x40']
+const MIXED_FORMATS:      Array<keyof typeof G> = ['A4', 'P30x45']
+const ARCHIVE_FORMATS:    Array<keyof typeof G> = ['A4', 'P30x45']
+
+// ─── Tags per category ────────────────────────────────────────────────────────
+
+const T_TAGS  = ['tufting', 'textile', 'handmade', 'print']
+const E_TAGS  = ['embroidery', 'textile', 'print']
+const P_TAGS  = ['painting', 'original', 'print']
+const PH_TAGS = ['photography', 'studio', 'print']
+const M_TAGS  = ['mixed', 'print']
+const A_TAGS  = ['archive', 'print', 'limited']
+
+// ─── TUFTING — 41 artworks × 3 formats = 123 products ───────────────────────
 
 const tufting: CatalogProduct[] = [
-  ...prints('DID-T-009', 'tufting-cosmos-rug', 'Cosmos', 'tufted-works', 'Hand tufted wool', '_KUNST/Collection CURRENT/Tufting/DID-T-009', tuftingTags),
-  ...prints('DID-T-010', 'tufting-christmas-rug', 'Christmas', 'tufted-works', 'Hand tufted wool', '_KUNST/Collection CURRENT/Tufting/DID-T-010', tuftingTags),
-  ...prints('DID-T-011', 'tufting-rainbow-rug', 'Rainbow', 'tufted-works', 'Hand tufted wool', '_KUNST/Collection CURRENT/Tufting/DID-T-011', tuftingTags),
-  ...prints('DID-T-012', 'tufting-flower-rug', 'Flower Field', 'tufted-works', 'Hand tufted wool', '_KUNST/Collection CURRENT/Tufting/DID-T-012', tuftingTags),
-  ...prints('DID-T-013', 'tufting-garden-rug', 'Garden', 'tufted-works', 'Hand tufted wool', '_KUNST/Collection CURRENT/Tufting/DID-T-013', tuftingTags),
-  ...prints('DID-T-014', 'tufting-abstract-rug', 'Abstract No. 1', 'tufted-works', 'Hand tufted wool', '_KUNST/Collection CURRENT/Tufting/DID-T-014', tuftingTags),
+  ...prints('DID-T-001', 'did-t-001', 'Square Flower Thing',   'tufted-works', tuftingDesc('Square Flower Thing'),   '_KUNST/COLLECTION CURRENT/Tufting/DID-T-001_firkantet_blomst_ting_34x22',    T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-002', 'did-t-002', 'Round Earth',           'tufted-works', tuftingDesc('Round Earth'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-002_rund_jord_41x41',               T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-003', 'did-t-003', 'Purple Sun',            'tufted-works', tuftingDesc('Purple Sun'),            '_KUNST/COLLECTION CURRENT/Tufting/DID-T-003_purple-sun',                    T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-004', 'did-t-004', 'Candy No. 1',           'tufted-works', tuftingDesc('Candy No. 1'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-004_candy',                         T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-005', 'did-t-005', 'Stripes on Beige',      'tufted-works', tuftingDesc('Stripes on Beige'),      '_KUNST/COLLECTION CURRENT/Tufting/DID-T-005_striber_på_beige_22x22',        T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-006', 'did-t-006', 'Little Round',          'tufted-works', tuftingDesc('Little Round'),          '_KUNST/COLLECTION CURRENT/Tufting/DID-T-006_lille_rund_hvid-blå-rød_24x21', T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-007', 'did-t-007', 'Candy No. 2',           'tufted-works', tuftingDesc('Candy No. 2'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-007_candy',                         T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-008', 'did-t-008', 'Fleur de Lys',          'tufted-works', tuftingDesc('Fleur de Lys'),          '_KUNST/COLLECTION CURRENT/Tufting/DID-T-008_fleur_de_lys_37x27',           T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-010', 'did-t-010', 'Sitspot No. 1',         'tufted-works', tuftingDesc('Sitspot No. 1'),         '_KUNST/COLLECTION CURRENT/Tufting/DID-T-010_sitspot',                       T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-011', 'did-t-011', 'Sitspot No. 2',         'tufted-works', tuftingDesc('Sitspot No. 2'),         '_KUNST/COLLECTION CURRENT/Tufting/DID-T-011_sitspot',                       T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-012', 'did-t-012', 'Sitspot No. 3',         'tufted-works', tuftingDesc('Sitspot No. 3'),         '_KUNST/COLLECTION CURRENT/Tufting/DID-T-012_sitspot',                       T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-013', 'did-t-013', 'Sitspot Large',         'tufted-works', tuftingDesc('Sitspot Large'),         '_KUNST/COLLECTION CURRENT/Tufting/DID-T-013_sitspot_74x44',                 T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-014', 'did-t-014', 'Orange Sun',            'tufted-works', tuftingDesc('Orange Sun'),            '_KUNST/COLLECTION CURRENT/Tufting/DID-T-014_orange_sol_51x37',              T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-015', 'did-t-015', 'Green Square',          'tufted-works', tuftingDesc('Green Square'),          '_KUNST/COLLECTION CURRENT/Tufting/DID-T-015_firkantet_grøn_60x51',          T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-016', 'did-t-016', 'Jeweled Hand',          'tufted-works', tuftingDesc('Jeweled Hand'),          '_KUNST/COLLECTION CURRENT/Tufting/DID-T-016_jeweled_hand_27x14',            T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-017', 'did-t-017', 'Jellyfish',             'tufted-works', tuftingDesc('Jellyfish'),             '_KUNST/COLLECTION CURRENT/Tufting/DID-T-017_gople_56x24',                   T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-018', 'did-t-018', 'Rainbow No. 1',         'tufted-works', tuftingDesc('Rainbow No. 1'),         '_KUNST/COLLECTION CURRENT/Tufting/DID-T-018_rainbow',                       T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-019', 'did-t-019', 'Rainbow No. 2',         'tufted-works', tuftingDesc('Rainbow No. 2'),         '_KUNST/COLLECTION CURRENT/Tufting/DID-T-019_rainbow',                       T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-020', 'did-t-020', 'Rainbow No. 3',         'tufted-works', tuftingDesc('Rainbow No. 3'),         '_KUNST/COLLECTION CURRENT/Tufting/DID-T-020_rainbow',                       T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-022', 'did-t-022', 'Rainbow No. 4',         'tufted-works', tuftingDesc('Rainbow No. 4'),         '_KUNST/COLLECTION CURRENT/Tufting/DID-T-022_rainbow',                       T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-023', 'did-t-023', 'Mask',                  'tufted-works', tuftingDesc('Mask'),                  '_KUNST/COLLECTION CURRENT/Tufting/DID-T-023_mask_39x21',                    T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-024', 'did-t-024', 'Fireworks',             'tufted-works', tuftingDesc('Fireworks'),             '_KUNST/COLLECTION CURRENT/Tufting/DID-T-024_fyrværkeri',                    T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-025', 'did-t-025', 'Sitspot XL',            'tufted-works', tuftingDesc('Sitspot XL'),            '_KUNST/COLLECTION CURRENT/Tufting/DID-T-025_sitspot_large',                 T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-026', 'did-t-026', 'Universe with a Hole',  'tufted-works', tuftingDesc('Universe with a Hole'),  '_KUNST/COLLECTION CURRENT/Tufting/DID-T-026_univers_med_hul_i_midten',      T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-027', 'did-t-027', 'Pink Rug',              'tufted-works', tuftingDesc('Pink Rug'),              '_KUNST/COLLECTION CURRENT/Tufting/DID-T-027_lyserødt_tæppe',                T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-028', 'did-t-028', 'Liebes Panopticon',     'tufted-works', tuftingDesc('Liebes Panopticon'),     '_KUNST/COLLECTION CURRENT/Tufting/DID-T-028_liebes_panopticon',             T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-029', 'did-t-029', 'Birds',                 'tufted-works', tuftingDesc('Birds'),                 '_KUNST/COLLECTION CURRENT/Tufting/DID-T-029_birds',                         T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-030', 'did-t-030', 'Candy No. 3',           'tufted-works', tuftingDesc('Candy No. 3'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-030_candy_26x24',                   T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-031', 'did-t-031', 'Candy No. 4',           'tufted-works', tuftingDesc('Candy No. 4'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-031_candy',                         T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-032', 'did-t-032', 'POW',                   'tufted-works', tuftingDesc('POW'),                   '_KUNST/COLLECTION CURRENT/Tufting/DID-T-032_pow',                           T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-033', 'did-t-033', 'Square Flower Thing II','tufted-works', tuftingDesc('Square Flower Thing II'),'_KUNST/COLLECTION CURRENT/Tufting/DID-T-033_firkantet_blomst_ting_34x23',   T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-034', 'did-t-034', 'Candy No. 5',           'tufted-works', tuftingDesc('Candy No. 5'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-034_candy',                         T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-035', 'did-t-035', 'Candy Collection',      'tufted-works', tuftingDesc('Candy Collection'),      '_KUNST/COLLECTION CURRENT/Tufting/DID-T-035_collection_candy',              T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-036', 'did-t-036', 'Candy No. 6',           'tufted-works', tuftingDesc('Candy No. 6'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-036_candy',                         T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-037', 'did-t-037', 'Candy No. 7',           'tufted-works', tuftingDesc('Candy No. 7'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-037_candy',                         T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-038', 'did-t-038', 'Collage',               'tufted-works', tuftingDesc('Collage'),               '_KUNST/COLLECTION CURRENT/Tufting/DID-T-038_collage',                       T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-039', 'did-t-039', 'Du und',                'tufted-works', tuftingDesc('Du und'),                '_KUNST/COLLECTION CURRENT/Tufting/DID-T-039_du-und',                        T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-040', 'did-t-040', 'Green Flower',          'tufted-works', tuftingDesc('Green Flower'),          '_KUNST/COLLECTION CURRENT/Tufting/DID-T-040_green-flower',                  T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-041', 'did-t-041', 'Hej',                   'tufted-works', tuftingDesc('Hej'),                   '_KUNST/COLLECTION CURRENT/Tufting/DID-T-041_hej',                           T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-042', 'did-t-042', 'Pink Rug II',           'tufted-works', tuftingDesc('Pink Rug II'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-042_lyserødt_tæppe_2',              T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-043', 'did-t-043', 'Red on Wood',           'tufted-works', tuftingDesc('Red on Wood'),           '_KUNST/COLLECTION CURRENT/Tufting/DID-T-043_red_on_wood_board',             T_TAGS, TUFTING_FORMATS),
+  ...prints('DID-T-044', 'did-t-044', 'Rug on the Wall',       'tufted-works', tuftingDesc('Rug on the Wall'),       '_KUNST/COLLECTION CURRENT/Tufting/DID-T-044_tæppe-på-væggen-i-soveværelset',T_TAGS, TUFTING_FORMATS),
 ]
 
-// ─── Embroidery — 8 artworks × 5 formats = 40 products ──────────────────────
-
-const embTags = ['embroidery', 'textile', 'flowers', 'words', 'feminist']
+// ─── EMBROIDERY — 16 artworks × 3 formats = 48 products ──────────────────────
 
 const embroidery: CatalogProduct[] = [
-  ...prints('DID-E-007', 'emb-powerful-flowers', 'Powerful Flowers', 'embroidery', 'Embroidery on fabric', '_KUNST/Collection CURRENT/Embroidery/DID-E-007', embTags),
-  ...prints('DID-E-008', 'emb-powerful-words', 'Powerful Words', 'embroidery', 'Embroidery on fabric', '_KUNST/Collection CURRENT/Embroidery/DID-E-008', embTags),
-  ...prints('DID-E-009', 'emb-roses', 'Roses', 'embroidery', 'Embroidery on fabric', '_KUNST/Collection CURRENT/Embroidery/DID-E-009', embTags),
-  ...prints('DID-E-010', 'emb-wild-flowers', 'Wild Flowers', 'embroidery', 'Embroidery on fabric', '_KUNST/Collection CURRENT/Embroidery/DID-E-010', embTags),
-  ...prints('DID-E-011', 'emb-feminist-hoop', 'Feminist', 'embroidery', 'Embroidery on fabric', '_KUNST/Collection CURRENT/Embroidery/DID-E-011', embTags),
-  ...prints('DID-E-012', 'emb-botanica', 'Botanica', 'embroidery', 'Embroidery on fabric', '_KUNST/Collection CURRENT/Embroidery/DID-E-012', embTags),
-  ...prints('DID-E-013', 'emb-sisterhood', 'Sisterhood', 'embroidery', 'Embroidery on fabric', '_KUNST/Collection CURRENT/Embroidery/DID-E-013', embTags),
-  ...prints('DID-E-014', 'emb-garden-words', 'Garden Words', 'embroidery', 'Embroidery on fabric', '_KUNST/Collection CURRENT/Embroidery/DID-E-014', embTags),
+  ...prints('DID-E-001', 'did-e-001', 'Fuck Alting',             'embroidery', embroideryDesc('Fuck Alting'),             '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-001_fuck-alting',                        E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-002', 'did-e-002', 'God Has Cancelled',       'embroidery', embroideryDesc('God Has Cancelled'),       '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-002_gud-har-meldt-afbud',               E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-003', 'did-e-003', 'God Has Cancelled II',    'embroidery', embroideryDesc('God Has Cancelled II'),    '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-003_gud-har-meldt-afbud-2',             E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-004', 'did-e-004', 'Stranger Things',         'embroidery', embroideryDesc('Stranger Things'),         '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-004_stranger-things',                    E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-005', 'did-e-005', 'Doodles',                 'embroidery', embroideryDesc('Doodles'),                 '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-005_doodles',                            E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-006', 'did-e-006', 'Elsk',                    'embroidery', embroideryDesc('Elsk'),                    '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-006_elsk',                               E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-007', 'did-e-007', 'Be a Dragon',             'embroidery', embroideryDesc('Be a Dragon'),             '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-007_be-a-dragon',                        E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-008', 'did-e-008', 'Collage Black & White',   'embroidery', embroideryDesc('Collage Black & White'),   '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-008_collage-white-black_100x70',         E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-009', 'did-e-009', "Long Hair Don't Care",    'embroidery', embroideryDesc("Long Hair Don't Care"),    '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-009_long-hair-dont-care',               E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-010', 'did-e-010', 'Apple Scraps',            'embroidery', embroideryDesc('Apple Scraps'),            '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-010_apple-scraps',                      E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-011', 'did-e-011', 'Det Er Bare Tanker',      'embroidery', embroideryDesc('Det Er Bare Tanker'),      '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-011_det-er-bare-tanker',                E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-012', 'did-e-012', 'Perfidt Perfekt',         'embroidery', embroideryDesc('Perfidt Perfekt'),         '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-012_perfidt-perfekt',                   E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-013', 'did-e-013', 'Ingenting',               'embroidery', embroideryDesc('Ingenting'),               '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-013_ingenting',                         E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-014', 'did-e-014', 'Red to Blue',             'embroidery', embroideryDesc('Red to Blue'),             '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-014_red-to-blue broderi',               E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-015', 'did-e-015', "There's Nothing Here",    'embroidery', embroideryDesc("There's Nothing Here"),    '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-015_theres-nothing-here',               E_TAGS, EMBROIDERY_FORMATS),
+  ...prints('DID-E-016', 'did-e-016', 'Mariann',                 'embroidery', embroideryDesc('Mariann'),                 '_KUNST/COLLECTION CURRENT/Embroidery/DID-E-016_mariann',                           E_TAGS, EMBROIDERY_FORMATS),
 ]
 
-// ─── Paintings — 6 artworks × 5 formats = 30 products ───────────────────────
-
-const paintingTags = ['painting', 'acrylic', 'flora', 'abstract', 'colour']
+// ─── PAINTINGS — 17 artworks × 4 formats = 68 products ───────────────────────
 
 const paintings: CatalogProduct[] = [
-  ...prints('DID-P-001', 'painting-flora-no1', 'Flora No. 1', 'paintings', 'Acrylic on canvas', '_KUNST/Collection CURRENT/Paintings/DID-P-001', paintingTags),
-  ...prints('DID-P-002', 'painting-flora-no2', 'Flora No. 2', 'paintings', 'Acrylic on canvas', '_KUNST/Collection CURRENT/Paintings/DID-P-002', paintingTags),
-  ...prints('DID-P-003', 'painting-abstract-colour', 'Abstract Colour', 'paintings', 'Acrylic on canvas', '_KUNST/Collection CURRENT/Paintings/DID-P-003', paintingTags),
-  ...prints('DID-P-004', 'painting-fauna', 'Fauna', 'paintings', 'Mixed media on paper', '_KUNST/Collection CURRENT/Paintings/DID-P-004', paintingTags),
-  ...prints('DID-P-005', 'painting-forest-painting', 'Forest', 'paintings', 'Watercolour on paper', '_KUNST/Collection CURRENT/Paintings/DID-P-005', paintingTags),
-  ...prints('DID-P-006', 'painting-self-portrait', 'Self Portrait', 'paintings', 'Acrylic on canvas', '_KUNST/Collection CURRENT/Paintings/DID-P-006', paintingTags),
+  ...prints('DID-P-001', 'did-p-001', 'Green Background',      'paintings', paintingDesc('Green Background'),      '_KUNST/COLLECTION CURRENT/Paintings/DID-P-001_green-background',         P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-002', 'did-p-002', 'Bird Man',              'paintings', paintingDesc('Bird Man'),              '_KUNST/COLLECTION CURRENT/Paintings/DID-P-002_bird-man',                  P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-003', 'did-p-003', 'Universe No. 1',        'paintings', paintingDesc('Universe No. 1'),        '_KUNST/COLLECTION CURRENT/Paintings/DID-P-003_universe-1',                P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-004', 'did-p-004', 'Green on Blue',         'paintings', paintingDesc('Green on Blue'),         '_KUNST/COLLECTION CURRENT/Paintings/DID-P-004_green-on-blue-board',       P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-005', 'did-p-005', 'H.C. Andersen',         'paintings', paintingDesc('H.C. Andersen'),         '_KUNST/COLLECTION CURRENT/Paintings/DID-P-005_hc-andersen',               P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-006', 'did-p-006', 'Vaginals',              'paintings', paintingDesc('Vaginals'),              '_KUNST/COLLECTION CURRENT/Paintings/DID-P-006_vaginals',                  P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-007', 'did-p-007', 'Fantasy',               'paintings', paintingDesc('Fantasy'),               '_KUNST/COLLECTION CURRENT/Paintings/DID-P-007_fantasy',                   P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-008', 'did-p-008', 'Colour Study',          'paintings', paintingDesc('Colour Study'),          '_KUNST/COLLECTION CURRENT/Paintings/DID-P-008_colour-study',              P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-009', 'did-p-009', 'Universe No. 2',        'paintings', paintingDesc('Universe No. 2'),        '_KUNST/COLLECTION CURRENT/Paintings/DID-P-009_universe-2',                P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-010', 'did-p-010', 'Blue Branch',           'paintings', paintingDesc('Blue Branch'),           '_KUNST/COLLECTION CURRENT/Paintings/DID-P-010_blue-branch',               P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-012', 'did-p-012', 'Universe Collection',   'paintings', paintingDesc('Universe Collection'),   '_KUNST/COLLECTION CURRENT/Paintings/DID-P-012_universe-collection',       P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-013', 'did-p-013', 'Colour Study Blue',     'paintings', paintingDesc('Colour Study Blue'),     '_KUNST/COLLECTION CURRENT/Paintings/DID-P-013_colour-study-blue',         P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-014', 'did-p-014', 'Her Er En Sandhed',     'paintings', paintingDesc('Her Er En Sandhed'),     '_KUNST/COLLECTION CURRENT/Paintings/DID-P-014_her-er-en-sandhed',         P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-015', 'did-p-015', 'Person Walking',        'paintings', paintingDesc('Person Walking'),        '_KUNST/COLLECTION CURRENT/Paintings/DID-P-015_person_walking',            P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-017', 'did-p-017', 'Universe No. 3',        'paintings', paintingDesc('Universe No. 3'),        '_KUNST/COLLECTION CURRENT/Paintings/DID-P-017_universe-3',                P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-019', 'did-p-019', 'Blue Background',       'paintings', paintingDesc('Blue Background'),       '_KUNST/COLLECTION CURRENT/Paintings/DID-P-019_blue-background-dayin',     P_TAGS, PAINTING_FORMATS),
+  ...prints('DID-P-021', 'did-p-021', 'Sri Lanka Masks',       'paintings', paintingDesc('Sri Lanka Masks'),       '_KUNST/COLLECTION CURRENT/Paintings/DID-P-021_sri-lanka-masks',           P_TAGS, PAINTING_FORMATS),
 ]
 
-// ─── Photography series — 7 series × ~3 artworks each ────────────────────────
+// ─── PHOTOGRAPHY — 19 artworks × 2 formats = 38 products ─────────────────────
 
-const earthMossTags = ['photography', 'nature', 'moss', 'earth', 'macro']
-const earthMoss: CatalogProduct[] = [
-  ...prints('DID-PH-001', 'earth-moss-no1', 'Earth Moss No. 1', 'earth-moss', 'Photography', '_KUNST/Collection CURRENT/Photography/Earth Moss/DID-PH-001', earthMossTags),
-  ...prints('DID-PH-002', 'earth-moss-no2', 'Earth Moss No. 2', 'earth-moss', 'Photography', '_KUNST/Collection CURRENT/Photography/Earth Moss/DID-PH-002', earthMossTags),
-  ...prints('DID-PH-003', 'earth-moss-no3', 'Earth Moss No. 3', 'earth-moss', 'Photography', '_KUNST/Collection CURRENT/Photography/Earth Moss/DID-PH-003', earthMossTags),
+const photography: CatalogProduct[] = [
+  ...prints('DID-PH-001', 'did-ph-001', 'Purple Fabric in Garden',         'photography', photoDesc('Purple Fabric in Garden'),         '_KUNST/COLLECTION CURRENT/Photography/DID-PH-001_purple-fabric-in-garden',            PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-002', 'did-ph-002', 'View from the Studio',            'photography', photoDesc('View from the Studio'),            '_KUNST/COLLECTION CURRENT/Photography/DID-PH-002_view-from-the-studio_1500x1000',      PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-003', 'did-ph-003', 'Linen & Yellow Flower',           'photography', photoDesc('Linen & Yellow Flower'),           '_KUNST/COLLECTION CURRENT/Photography/DID-PH-003_linen-and-yellow-flower_1500x1000',   PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-004', 'did-ph-004', 'Minnie Mouse and the Neko Cat',   'photography', photoDesc('Minnie Mouse and the Neko Cat'),   '_KUNST/COLLECTION CURRENT/Photography/DID-PH-004_minnie-mouse-and-the-neko-cat_1500x1000', PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-005', 'did-ph-005', 'A Very Small Frog',               'photography', photoDesc('A Very Small Frog'),               '_KUNST/COLLECTION CURRENT/Photography/DID-PH-005_a-very-small-frog_1500x1000',         PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-006', 'did-ph-006', 'Blue Flower on Green Wood',       'photography', photoDesc('Blue Flower on Green Wood'),       '_KUNST/COLLECTION CURRENT/Photography/DID-PH-006_blue-flower-on-green-wood_1500x1000', PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-007', 'did-ph-007', 'Red & Green Moss',                'photography', photoDesc('Red & Green Moss'),                '_KUNST/COLLECTION CURRENT/Photography/DID-PH-007_red-and-green-moss_1500x1000',        PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-008', 'did-ph-008', 'No Ordinary Stone',               'photography', photoDesc('No Ordinary Stone'),               '_KUNST/COLLECTION CURRENT/Photography/DID-PH-008_no-ordinary-stone_1500x1000',         PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-009', 'did-ph-009', 'Polaroids',                       'photography', photoDesc('Polaroids'),                       '_KUNST/COLLECTION CURRENT/Photography/DID-PH-009_polaroids_1500x1000',                  PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-010', 'did-ph-010', 'Colourful Shadows',               'photography', photoDesc('Colourful Shadows'),               '_KUNST/COLLECTION CURRENT/Photography/DID-PH-010_colourful-shadows_1500x1000',         PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-011', 'did-ph-011', 'On the Light Table',              'photography', photoDesc('On the Light Table'),              '_KUNST/COLLECTION CURRENT/Photography/DID-PH-011_on-the-light-table_1500x1000',        PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-012', 'did-ph-012', 'Dead Flowers',                    'photography', photoDesc('Dead Flowers'),                    '_KUNST/COLLECTION CURRENT/Photography/DID-PH-012_dead-flowers_1500x1000',              PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-013', 'did-ph-013', 'Smørrebrød',                      'photography', photoDesc('Smørrebrød'),                      '_KUNST/COLLECTION CURRENT/Photography/DID-PH-013_smørrebrød_1500x1000',               PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-014', 'did-ph-014', 'Yarn',                            'photography', photoDesc('Yarn'),                            '_KUNST/COLLECTION CURRENT/Photography/DID-PH-014_yarn_1500x1000',                      PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-015', 'did-ph-015', 'Office Shot',                     'photography', photoDesc('Office Shot'),                     '_KUNST/COLLECTION CURRENT/Photography/DID-PH-015_office-shot_1500x1000',               PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-016', 'did-ph-016', 'Purple Flower',                   'photography', photoDesc('Purple Flower'),                   '_KUNST/COLLECTION CURRENT/Photography/DID-PH-016_purple-flower_1500x1000',             PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-017', 'did-ph-017', 'Vase on Stool',                   'photography', photoDesc('Vase on Stool'),                   '_KUNST/COLLECTION CURRENT/Photography/DID-PH-017_vase-on-stool_1500x1000',             PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-018', 'did-ph-018', 'Taped Objects',                   'photography', photoDesc('Taped Objects'),                   '_KUNST/COLLECTION CURRENT/Photography/DID-PH-018_taped-objects_1500x1000',             PH_TAGS, PHOTO_FORMATS),
+  ...prints('DID-PH-019', 'did-ph-019', 'Flowers on Linen',                'photography', photoDesc('Flowers on Linen'),                '_KUNST/COLLECTION CURRENT/Photography/DID-PH-019_flowers-on-linen_1500x1000',          PH_TAGS, PHOTO_FORMATS),
 ]
 
-const forestLightTags = ['photography', 'forest', 'light', 'trees', 'nature']
-const forestLight: CatalogProduct[] = [
-  ...prints('DID-PH-004', 'forest-light-no1', 'Forest Light No. 1', 'forest-light', 'Photography', '_KUNST/Collection CURRENT/Photography/Forest Light/DID-PH-004', forestLightTags),
-  ...prints('DID-PH-005', 'forest-light-no2', 'Forest Light No. 2', 'forest-light', 'Photography', '_KUNST/Collection CURRENT/Photography/Forest Light/DID-PH-005', forestLightTags),
-  ...prints('DID-PH-006', 'forest-light-no3', 'Forest Light No. 3', 'forest-light', 'Photography', '_KUNST/Collection CURRENT/Photography/Forest Light/DID-PH-006', forestLightTags),
+// ─── MIXED — 7 artworks × 2 formats = 14 products ────────────────────────────
+
+const mixed: CatalogProduct[] = [
+  ...prints('DID-M-001', 'did-m-001', 'Cat Doll',                    'mixed', mixedDesc('Cat Doll'),                    '_KUNST/COLLECTION CURRENT/Mixed/DID-M-001_cat-doll',                           M_TAGS, MIXED_FORMATS),
+  ...prints('DID-M-002', 'did-m-002', 'Pink Bag',                    'mixed', mixedDesc('Pink Bag'),                    '_KUNST/COLLECTION CURRENT/Mixed/DID-M-002_pink-bag',                           M_TAGS, MIXED_FORMATS),
+  ...prints('DID-M-003', 'did-m-003', 'Alt Opløst',                  'mixed', mixedDesc('Alt Opløst'),                  '_KUNST/COLLECTION CURRENT/Mixed/DID-M-003_alt-opløst',                         M_TAGS, MIXED_FORMATS),
+  ...prints('DID-M-004', 'did-m-004', 'Polaroids on Fabric',         'mixed', mixedDesc('Polaroids on Fabric'),         '_KUNST/COLLECTION CURRENT/Mixed/DID-M-004_polaroids-on-fabrics',               M_TAGS, MIXED_FORMATS),
+  ...prints('DID-M-005', 'did-m-005', 'Tufting on Embroidery',       'mixed', mixedDesc('Tufting on Embroidery'),       '_KUNST/COLLECTION CURRENT/Mixed/DID-M-005_tufting-on-embroided-background',    M_TAGS, MIXED_FORMATS),
+  ...prints('DID-M-006', 'did-m-006', 'Wooden Figurine',             'mixed', mixedDesc('Wooden Figurine'),             '_KUNST/COLLECTION CURRENT/Mixed/DID-M-006_wooden-figurine',                    M_TAGS, MIXED_FORMATS),
+  ...prints('DID-M-007', 'did-m-007', 'Laundry Bags',                'mixed', mixedDesc('Laundry Bags'),                '_KUNST/COLLECTION CURRENT/Mixed/DID-M-007_laundry-bags',                       M_TAGS, MIXED_FORMATS),
 ]
 
-const lavaFlowersTags = ['photography', 'iceland', 'lava', 'flowers', 'landscape']
-const lavaFlowers: CatalogProduct[] = [
-  ...prints('DID-PH-007', 'lava-flowers-no1', 'Lava Flowers No. 1', 'lava-flowers', 'Photography', '_KUNST/Collection CURRENT/Photography/Lava Flowers/DID-PH-007', lavaFlowersTags),
-  ...prints('DID-PH-008', 'lava-flowers-no2', 'Lava Flowers No. 2', 'lava-flowers', 'Photography', '_KUNST/Collection CURRENT/Photography/Lava Flowers/DID-PH-008', lavaFlowersTags),
-  ...prints('DID-PH-009', 'lava-flowers-no3', 'Lava Flowers No. 3', 'lava-flowers', 'Photography', '_KUNST/Collection CURRENT/Photography/Lava Flowers/DID-PH-009', lavaFlowersTags),
-]
+// ─── ARCHIVE — 22 artworks × 2 formats = 44 products ─────────────────────────
 
-const stormySkyTags = ['photography', 'sky', 'weather', 'dramatic', 'landscape']
-const stormySkies: CatalogProduct[] = [
-  ...prints('DID-PH-010', 'stormy-skies-no1', 'Stormy Skies No. 1', 'stormy-skies', 'Photography', '_KUNST/Collection CURRENT/Photography/Stormy Skies/DID-PH-010', stormySkyTags),
-  ...prints('DID-PH-011', 'stormy-skies-no2', 'Stormy Skies No. 2', 'stormy-skies', 'Photography', '_KUNST/Collection CURRENT/Photography/Stormy Skies/DID-PH-011', stormySkyTags),
-  ...prints('DID-PH-012', 'stormy-skies-no3', 'Stormy Skies No. 3', 'stormy-skies', 'Photography', '_KUNST/Collection CURRENT/Photography/Stormy Skies/DID-PH-012', stormySkyTags),
-]
-
-const yellowGardenTags = ['photography', 'flowers', 'yellow', 'garden', 'bright']
-const yellowGarden: CatalogProduct[] = [
-  ...prints('DID-PH-013', 'yellow-garden-no1', 'Yellow Garden No. 1', 'yellow-garden', 'Photography', '_KUNST/Collection CURRENT/Photography/Yellow Garden/DID-PH-013', yellowGardenTags),
-  ...prints('DID-PH-014', 'yellow-garden-no2', 'Yellow Garden No. 2', 'yellow-garden', 'Photography', '_KUNST/Collection CURRENT/Photography/Yellow Garden/DID-PH-014', yellowGardenTags),
-  ...prints('DID-PH-015', 'yellow-garden-no3', 'Yellow Garden No. 3', 'yellow-garden', 'Photography', '_KUNST/Collection CURRENT/Photography/Yellow Garden/DID-PH-015', yellowGardenTags),
-]
-
-const flowerInsideTags = ['photography', 'flowers', 'still-life', 'interior', 'soft']
-const flowersInside: CatalogProduct[] = [
-  ...prints('DID-PH-016', 'flowers-inside-no1', 'Flowers Inside No. 1', 'flowers-inside', 'Photography', '_KUNST/Collection CURRENT/Photography/Flowers Inside/DID-PH-016', flowerInsideTags),
-  ...prints('DID-PH-017', 'flowers-inside-no2', 'Flowers Inside No. 2', 'flowers-inside', 'Photography', '_KUNST/Collection CURRENT/Photography/Flowers Inside/DID-PH-017', flowerInsideTags),
-  ...prints('DID-PH-018', 'flowers-inside-no3', 'Flowers Inside No. 3', 'flowers-inside', 'Photography', '_KUNST/Collection CURRENT/Photography/Flowers Inside/DID-PH-018', flowerInsideTags),
-]
-
-const softCityTags = ['photography', 'urban', 'copenhagen', 'architecture', 'soft']
-const softCity: CatalogProduct[] = [
-  ...prints('DID-PH-019', 'soft-city-no1', 'Soft City No. 1', 'soft-city', 'Photography', '_KUNST/Collection CURRENT/Photography/Soft City/DID-PH-019', softCityTags),
-  ...prints('DID-PH-020', 'soft-city-no2', 'Soft City No. 2', 'soft-city', 'Photography', '_KUNST/Collection CURRENT/Photography/Soft City/DID-PH-020', softCityTags),
-  ...prints('DID-PH-021', 'soft-city-no3', 'Soft City No. 3', 'soft-city', 'Photography', '_KUNST/Collection CURRENT/Photography/Soft City/DID-PH-021', softCityTags),
-]
-
-// ─── Pattern series — mugs + totes + prints ───────────────────────────────────
-
-const masksTags = ['pattern', 'masks', 'illustration', 'repeat', 'decorative']
-const masksFormats: Array<keyof typeof G> = ['A4', 'P30x45', 'MUG', 'TOTE']
-const masksTrio: CatalogProduct[] = [
-  ...prints('DID-M-001', 'masks-trio-print', 'Masks Trio', 'masks-trio', 'Digital illustration, pattern repeat', '_KUNST/Collection CURRENT/Mixed/Masks Trio/DID-M-001', masksTags, masksFormats),
-]
-
-const seaCreaturesTags = ['pattern', 'ocean', 'sea', 'creatures', 'illustration']
-const seaFormats: Array<keyof typeof G> = ['A4', 'P30x45', 'MUG', 'TOTE']
-const seaCreatures: CatalogProduct[] = [
-  ...prints('DID-M-002', 'sea-creatures-print', 'Sea Creatures', 'sea-creatures', 'Digital illustration, pattern repeat', '_KUNST/Collection CURRENT/Mixed/Sea Creatures/DID-M-002', seaCreaturesTags, seaFormats),
-]
-
-const mossPatternTags = ['pattern', 'moss', 'nature', 'abstract']
-const mossPFormats: Array<keyof typeof G> = ['A4', 'P30x45', 'MUG', 'TOTE']
-const mossPattern: CatalogProduct[] = [
-  ...prints('DID-M-003', 'moss-pattern-print', 'Moss Pattern', 'moss-pattern', 'Digital pattern derived from photography', '_KUNST/Collection CURRENT/Mixed/Moss Pattern/DID-M-003', mossPatternTags, mossPFormats),
-]
-
-// ─── Bodhi Tree — 3 formats ───────────────────────────────────────────────────
-
-const bodhiTags = ['illustration', 'tree', 'botanical', 'bodhi', 'vector']
-const bodhi: CatalogProduct[] = [
-  ...prints('DID-M-004', 'bodhi-tree', 'Bodhi Tree', 'bodhi-tree', 'Vector illustration', '_KUNST/Collection CURRENT/Mixed/Bodhi Tree/DID-M-004', bodhiTags, ['A4', 'P30x45', 'C30x40']),
-]
-
-// ─── Archive prints — 4 artworks × 3 formats = 12 products ──────────────────
-
-const archiveTags = ['archive', 'mixed-media', 'older-works']
 const archive: CatalogProduct[] = [
-  ...prints('DID-A-001', 'archive-no1', 'Archive No. 1', 'archive-prints', 'Mixed media', '_KUNST/Collection ARCHIVES/ArkivVærker/DID-A-001', archiveTags, ['A4', 'P30x45', 'C30x40']),
-  ...prints('DID-A-002', 'archive-no2', 'Archive No. 2', 'archive-prints', 'Mixed media', '_KUNST/Collection ARCHIVES/ArkivVærker/DID-A-002', archiveTags, ['A4', 'P30x45', 'C30x40']),
-  ...prints('DID-A-003', 'archive-no3', 'Archive No. 3', 'archive-prints', 'Mixed media', '_KUNST/Collection ARCHIVES/ArkivVærker/DID-A-003', archiveTags, ['A4', 'P30x45', 'C30x40']),
-  ...prints('DID-A-004', 'archive-no4', 'Archive No. 4', 'archive-prints', 'Mixed media', '_KUNST/Collection ARCHIVES/ArkivVærker/DID-A-004', archiveTags, ['A4', 'P30x45', 'C30x40']),
-]
-
-// ─── Kids / Elephant — 3 artworks × 3 formats = 9 products ──────────────────
-
-const kidsTags = ['kids', 'elephant', 'illustration', 'colourful', 'nursery']
-const kids: CatalogProduct[] = [
-  ...prints('DID-M-005', 'elephant-no1', 'Elephant No. 1', 'kids-elephant', 'Digital illustration', '_KUNST/Collection CURRENT/Mixed/Kids Elephant/DID-M-005', kidsTags, ['A4', 'P30x45', 'C30x40']),
-  ...prints('DID-M-006', 'elephant-parade', 'Elephant Parade', 'kids-elephant', 'Digital illustration', '_KUNST/Collection CURRENT/Mixed/Kids Elephant/DID-M-006', kidsTags, ['A4', 'P30x45', 'C30x40']),
-  ...prints('DID-M-007', 'elephant-family', 'Elephant Family', 'kids-elephant', 'Digital illustration', '_KUNST/Collection CURRENT/Mixed/Kids Elephant/DID-M-007', kidsTags, ['A4', 'P30x45', 'C30x40']),
-]
-
-// ─── Shop of Words — text prints, 4 artworks × 3 formats = 12 products ───────
-
-const wordsTags = ['text', 'typography', 'words', 'graphic', 'statement']
-const words: CatalogProduct[] = [
-  ...prints('DID-M-008', 'words-be-yourself', 'Be Yourself', 'shop-of-words', 'Typography / graphic design', '_KUNST/Collection CURRENT/Mixed/Shop of Words/DID-M-008', wordsTags, ['A4', 'P30x45', 'C30x40']),
-  ...prints('DID-M-009', 'words-stay-wild', 'Stay Wild', 'shop-of-words', 'Typography / graphic design', '_KUNST/Collection CURRENT/Mixed/Shop of Words/DID-M-009', wordsTags, ['A4', 'P30x45', 'C30x40']),
-  ...prints('DID-M-010', 'words-fierce-and-free', 'Fierce & Free', 'shop-of-words', 'Typography / graphic design', '_KUNST/Collection CURRENT/Mixed/Shop of Words/DID-M-010', wordsTags, ['A4', 'P30x45', 'C30x40']),
-  ...prints('DID-M-011', 'words-make-it-now', 'Make It Now', 'shop-of-words', 'Typography / graphic design', '_KUNST/Collection CURRENT/Mixed/Shop of Words/DID-M-011', wordsTags, ['A4', 'P30x45', 'C30x40']),
-]
-
-// ─── BYOB series — 4 artworks × 5 formats = 20 products ─────────────────────
-
-const byobTags = ['bold', 'maximal', 'colourful', 'pattern', 'byob']
-const byob: CatalogProduct[] = [
-  ...prints('DID-M-012', 'byob-no1', 'BYOB No. 1', 'byob', 'Digital art', '_KUNST/Collection CURRENT/Mixed/BYOB/DID-M-012', byobTags),
-  ...prints('DID-M-013', 'byob-no2', 'BYOB No. 2', 'byob', 'Digital art', '_KUNST/Collection CURRENT/Mixed/BYOB/DID-M-013', byobTags),
-  ...prints('DID-M-014', 'byob-no3', 'BYOB No. 3', 'byob', 'Digital art', '_KUNST/Collection CURRENT/Mixed/BYOB/DID-M-014', byobTags),
-  ...prints('DID-M-015', 'byob-no4', 'BYOB No. 4', 'byob', 'Digital art', '_KUNST/Collection CURRENT/Mixed/BYOB/DID-M-015', byobTags),
+  ...prints('DID-A-001', 'did-a-001', 'Archive No. 1',  'archive', archiveDesc('Archive No. 1'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-001',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-002', 'did-a-002', 'Archive No. 2',  'archive', archiveDesc('Archive No. 2'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-002',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-003', 'did-a-003', 'Archive No. 3',  'archive', archiveDesc('Archive No. 3'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-003',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-004', 'did-a-004', 'Archive No. 4',  'archive', archiveDesc('Archive No. 4'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-004',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-005', 'did-a-005', 'Archive No. 5',  'archive', archiveDesc('Archive No. 5'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-005',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-006', 'did-a-006', 'Archive No. 6',  'archive', archiveDesc('Archive No. 6'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-006',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-007', 'did-a-007', 'Archive No. 7',  'archive', archiveDesc('Archive No. 7'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-007',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-008', 'did-a-008', 'Archive No. 8',  'archive', archiveDesc('Archive No. 8'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-008',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-009', 'did-a-009', 'Archive No. 9',  'archive', archiveDesc('Archive No. 9'),  '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-009',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-010', 'did-a-010', 'Archive No. 10', 'archive', archiveDesc('Archive No. 10'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-010',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-011', 'did-a-011', 'Archive No. 11', 'archive', archiveDesc('Archive No. 11'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-011',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-012', 'did-a-012', 'Archive No. 12', 'archive', archiveDesc('Archive No. 12'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-012',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-013', 'did-a-013', 'Archive No. 13', 'archive', archiveDesc('Archive No. 13'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-013',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-014', 'did-a-014', 'Archive No. 14', 'archive', archiveDesc('Archive No. 14'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-014',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-015', 'did-a-015', 'Archive No. 15', 'archive', archiveDesc('Archive No. 15'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-015',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-016', 'did-a-016', 'Archive No. 16', 'archive', archiveDesc('Archive No. 16'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-016',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-017', 'did-a-017', 'Archive No. 17', 'archive', archiveDesc('Archive No. 17'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-017',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-018', 'did-a-018', 'Archive No. 18', 'archive', archiveDesc('Archive No. 18'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-018',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-019', 'did-a-019', 'Archive No. 19', 'archive', archiveDesc('Archive No. 19'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-019',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-020', 'did-a-020', 'Archive No. 20', 'archive', archiveDesc('Archive No. 20'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-020',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-021', 'did-a-021', 'Archive No. 21', 'archive', archiveDesc('Archive No. 21'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-021',  A_TAGS, ARCHIVE_FORMATS),
+  ...prints('DID-A-022', 'did-a-022', 'Archive No. 22', 'archive', archiveDesc('Archive No. 22'), '_KUNST/COLLECTION ARCHIVES/ArkivVærker/DID-A-022',  A_TAGS, ARCHIVE_FORMATS),
 ]
 
 // ─── Full catalog export ───────────────────────────────────────────────────────
 
 export const ALL_PRODUCTS: CatalogProduct[] = [
-  ...neko,
-  ...shero,
   ...tufting,
   ...embroidery,
   ...paintings,
-  ...earthMoss,
-  ...forestLight,
-  ...lavaFlowers,
-  ...stormySkies,
-  ...yellowGarden,
-  ...flowersInside,
-  ...softCity,
-  ...masksTrio,
-  ...seaCreatures,
-  ...mossPattern,
-  ...bodhi,
+  ...photography,
+  ...mixed,
   ...archive,
-  ...kids,
-  ...words,
-  ...byob,
 ]
+
+export const PRODUCT_COUNT = ALL_PRODUCTS.length
 
 export function getProductByHandle(handle: string): CatalogProduct | undefined {
   return ALL_PRODUCTS.find((p) => p.handle === handle)
@@ -327,6 +314,3 @@ export function getProductsByCollection(collectionId: string): CatalogProduct[] 
 export function getProductsByFormat(format: CatalogProduct['format']): CatalogProduct[] {
   return ALL_PRODUCTS.filter((p) => p.format === format)
 }
-
-// Count: verify we have the expected number
-export const PRODUCT_COUNT = ALL_PRODUCTS.length
