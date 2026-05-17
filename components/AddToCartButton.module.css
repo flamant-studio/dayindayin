@@ -1,0 +1,45 @@
+.btn {
+  display: block;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: var(--c-accent);
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  margin-top: 0.5rem;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.btn:disabled {
+  cursor: default;
+}
+
+.adding {
+  opacity: 0.7;
+}
+
+.added {
+  background: var(--c-accent-2);
+}
+
+.soldOut {
+  padding: 1rem 2rem;
+  border: 1px solid var(--c-border);
+  color: var(--c-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 0.5rem;
+}

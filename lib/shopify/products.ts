@@ -88,6 +88,25 @@ export async function getProducts(first = 96): Promise<NormalizedProduct[]> {
     .filter((p) => p.status === 'ACTIVE')
 }
 
+export async function getProductsByTag(tag: string, first = 96): Promise<NormalizedProduct[]> {
+  const data = await adminFetch<{
+    products: { edges: { node: ShopifyProduct }[] }
+  }>({
+    query: `
+      query GetProductsByTag($q: String!, $first: Int!) {
+        products(first: $first, query: $q, sortKey: CREATED_AT, reverse: true) {
+          edges { node { ${PRODUCT_FIELDS} } }
+        }
+      }
+    `,
+    variables: { q: `tag:${tag} AND status:active`, first },
+    revalidate: 300,
+  })
+  return data.products.edges
+    .map((e) => normalizeProduct(e.node))
+    .filter((p) => p.status === 'ACTIVE')
+}
+
 export async function getProductByHandle(handle: string): Promise<NormalizedProduct | null> {
   const data = await adminFetch<{
     products: { edges: { node: ShopifyProduct }[] }
