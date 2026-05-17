@@ -110,14 +110,37 @@
 }
 
 .cartBtn {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--sp-2);
   color: var(--c-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
   transition: opacity var(--t-fast);
 }
 
 .cartBtn:hover { opacity: 0.5; }
+
+.cartCount {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--c-accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
 
 /* ── Burger ────────────────────────────────────────────── */
 

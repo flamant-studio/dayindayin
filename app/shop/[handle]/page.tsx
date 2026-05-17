@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getProductByHandle, formatPrice, checkoutUrl } from '@/lib/shopify/products'
+import AddToCartButton from '@/components/AddToCartButton'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 
@@ -120,13 +121,12 @@ export default async function ProductPage({ params }: PageProps) {
             )}
 
             {/* Buy button — uses first available variant */}
-            {firstVariant && firstVariant.availableForSale ? (
-              <a
-                href={checkoutUrl(firstVariant.id)}
-                className={styles.buyBtn}
-              >
-                Buy now — {formatPrice(product.minPrice.amount)}
-              </a>
+            {firstVariant ? (
+              <AddToCartButton
+                variantId={firstVariant.id}
+                price={formatPrice(product.minPrice.amount)}
+                available={firstVariant.availableForSale}
+              />
             ) : (
               <div className={styles.soldOut}>Currently sold out</div>
             )}
