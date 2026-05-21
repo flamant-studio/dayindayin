@@ -13,7 +13,7 @@
 
 import * as dotenv from 'dotenv'
 import { resolve } from 'path'
-import { readFileSync, writeFileSync, unlinkSync, existsSync } from 'fs'
+import { readFileSync, unlinkSync, existsSync } from 'fs'
 import { execSync } from 'child_process'
 import { tmpdir } from 'os'
 import { put } from '@vercel/blob'
@@ -23,16 +23,13 @@ dotenv.config({ path: resolve(process.cwd(), '.env.local') })
 const GELATO_API_KEY = process.env.GELATO_API_KEY!
 const STORE_ID       = '51ee1b39-75e6-4c19-af02-cfd7cb771a4a'
 
-// ─── FILL THIS IN when you have a horizontal template ID ─────────────────────
-const TEMPLATE_ID         = 'PASTE_HORIZONTAL_TEMPLATE_ID_HERE'
-const ARTWORK_PLACEHOLDER = 'PASTE_PLACEHOLDER_NAME_HERE'   // from GET /v1/templates/{id}
-// ─────────────────────────────────────────────────────────────────────────────
+const TEMPLATE_ID         = '18600284-2b9d-433a-af02-d728dc81e83b'
+const ARTWORK_PLACEHOLDER = 'Tourism_1.png'
 
-// Run: curl -s "https://ecommerce.gelatoapis.com/v1/templates/${TEMPLATE_ID}" \
-//       -H "X-API-KEY: $GELATO_API_KEY" | jq '.variants[0].templateVariantId, .imagePlaceholders[].name'
-const TEMPLATE_VARIANTS: string[] = [
-  // Paste variant IDs here after fetching from Gelato
-  // e.g. 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', // A4 landscape
+const TEMPLATE_VARIANTS = [
+  '12c93580-97d9-4815-8565-9febbe8cf35d', // A3 (29.7×42 cm) horizontal
+  '64b85284-3389-4855-8ef5-a8b1c6109616', // 15×20 cm horizontal
+  '4c6df0a8-18b9-49df-a44f-3d9979aa9acb', // 21×29.7 cm horizontal
 ]
 
 const PRINT_BASE   = '/Users/flamant-mini/Dropbox/_KUNST/Studio/print ready'
