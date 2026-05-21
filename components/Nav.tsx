@@ -1,62 +1,110 @@
 'use client'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useCart } from './CartProvider'
 import styles from './Nav.module.css'
 
-const COLLECTIONS = [
-  { href: '/shop/collections/tufted-works', label: 'Tufted Works' },
-  { href: '/shop/collections/embroidery',   label: 'Embroidery' },
-  { href: '/shop/collections/paintings',    label: 'Paintings' },
-  { href: '/shop/collections/photography',  label: 'Photography' },
-  { href: '/shop/collections/mixed',        label: 'Mixed Works' },
-  { href: '/shop/collections/archive',      label: 'Archive' },
+const SHOP_LINKS = [
+  { href: '/shop', label: 'View all →', divider: false, highlight: true },
+  { href: '/shop/collections/tufted-works',  label: 'Tufted Works',   divider: false, highlight: false },
+  { href: '/shop/collections/embroidery',    label: 'Embroidery',     divider: false, highlight: false },
+  { href: '/shop/collections/paintings',     label: 'Paintings',      divider: false, highlight: false },
+  { href: '/shop/collections/photography',   label: 'Photography',    divider: false, highlight: false },
+  { href: '/shop/collections/mixed',         label: 'Mixed Works',    divider: false, highlight: false },
+  { href: '/shop/collections/archive',       label: 'Archive',        divider: false, highlight: false },
 ]
 
+const ARTIST_LINKS = [
+  { href: '/about',       label: 'About Stine' },
+  { href: '/fine-art',    label: 'Fine Art' },
+  { href: '/archive',     label: 'Archive' },
+  { href: '/art-journal', label: 'Art Journal' },
+]
+
+type DropdownName = 'shop' | 'artist'
+
 export default function Nav() {
-  const [open, setOpen] = useState(false)
+  const [dropdown, setDropdown] = useState<DropdownName | null>(null)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const { count, openCart } = useCart()
+  const navRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setDropdown(null)
+      }
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [])
+
+  function toggle(name: DropdownName) {
+    setDropdown(prev => (prev === name ? null : name))
+  }
+
+  function closeAll() {
+    setDropdown(null)
+    setMobileOpen(false)
+  }
 
   return (
     <>
-      <nav className={styles.nav}>
-        <Link href="/" className={styles.logo} onClick={() => setOpen(false)}>
+      <nav ref={navRef} className={styles.nav}>
+        <Link href="/" className={styles.logo} onClick={closeAll}>
           Day In Day In
         </Link>
 
-        <ul className={`${styles.links} ${open ? styles.open : ''}`}>
-          <li>
-            <Link href="/shop" className={styles.primary} onClick={() => setOpen(false)}>
+        <ul className={`${styles.links} ${mobileOpen ? styles.mobileOpen : ''}`}>
+          <li className={styles.hasDropdown}>
+            <button
+              className={`${styles.dropTrigger} ${dropdown === 'shop' ? styles.triggerActive : ''}`}
+              onClick={() => toggle('shop')}
+              aria-expanded={dropdown === 'shop'}
+            >
               Shop
-            </Link>
+            </button>
+            {dropdown === 'shop' && (
+              <ul className={styles.dropdown}>
+                {SHOP_LINKS.map(l => (
+                  <li key={l.href} className={l.highlight ? styles.dropHighlight : undefined}>
+                    <Link href={l.href} onClick={closeAll}>{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
+
           <li className={styles.hasDropdown}>
-            <span className={styles.dropTrigger}>Collections</span>
-            <ul className={styles.dropdown}>
-              {COLLECTIONS.map((c) => (
-                <li key={c.href}>
-                  <Link href={c.href} onClick={() => setOpen(false)}>{c.label}</Link>
-                </li>
-              ))}
-              <li className={styles.dropDivider}>
-                <Link href="/shop" onClick={() => setOpen(false)}>All products →</Link>
-              </li>
-            </ul>
+            <button
+              className={`${styles.dropTrigger} ${dropdown === 'artist' ? styles.triggerActive : ''}`}
+              onClick={() => toggle('artist')}
+              aria-expanded={dropdown === 'artist'}
+            >
+              Artist
+            </button>
+            {dropdown === 'artist' && (
+              <ul className={styles.dropdown}>
+                {ARTIST_LINKS.map(l => (
+                  <li key={l.href}>
+                    <Link href={l.href} onClick={closeAll}>{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
-          <li className={styles.hasDropdown}>
-            <span className={styles.dropTrigger}>Artist</span>
-            <ul className={styles.dropdown}>
-              <li><Link href="/about" onClick={() => setOpen(false)}>About Stine</Link></li>
-              <li><Link href="/fine-art" onClick={() => setOpen(false)}>Fine Art</Link></li>
-              <li><Link href="/archive" onClick={() => setOpen(false)}>Archive</Link></li>
-              <li><Link href="/art-journal" onClick={() => setOpen(false)}>Art Journal</Link></li>
-            </ul>
+
+          <li>
+            <Link href="/practical" onClick={closeAll}>Shipping &amp; FAQ</Link>
           </li>
-          <li><Link href="/practical" onClick={() => setOpen(false)}>Shipping & FAQ</Link></li>
         </ul>
 
         <div className={styles.actions}>
-          <button onClick={openCart} className={styles.cartBtn} aria-label={`Cart${count > 0 ? ` (${count})` : ''}`}>
+          <button
+            onClick={openCart}
+            className={styles.cartBtn}
+            aria-label={`Cart${count > 0 ? ` (${count})` : ''}`}
+          >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
@@ -64,19 +112,21 @@ export default function Nav() {
             </svg>
             {count > 0 && <span className={styles.cartCount}>{count}</span>}
           </button>
+
           <button
             className={styles.burger}
-            onClick={() => setOpen(!open)}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
+            onClick={() => { setMobileOpen(o => !o); setDropdown(null) }}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
           >
-            <span className={open ? styles.burgerLineTop : ''} />
-            <span className={open ? styles.burgerLineMid : ''} />
-            <span className={open ? styles.burgerLineBot : ''} />
+            <span className={mobileOpen ? styles.burgerTop : ''} />
+            <span className={mobileOpen ? styles.burgerMid : ''} />
+            <span className={mobileOpen ? styles.burgerBot : ''} />
           </button>
         </div>
       </nav>
-      {open && <div className={styles.overlay} onClick={() => setOpen(false)} />}
+
+      {mobileOpen && <div className={styles.overlay} onClick={closeAll} />}
     </>
   )
 }
