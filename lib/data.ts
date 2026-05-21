@@ -17,16 +17,38 @@ export interface BlogPost {
   image: string;
 }
 
+const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works'
+
 export const works: Work[] = [
-  { slug: "purple-sun", title: "Purple Sun", category: "tufting", year: "2022", description: "Hand-tufted wool on canvas.", image: "/images/placeholder-tufting.jpg" },
-  { slug: "orange-sun", title: "Orange Sun", category: "tufting", year: "2022", description: "Hand-tufted wool on canvas.", image: "/images/placeholder-tufting.jpg" },
-  { slug: "candy-series-1", title: "Candy Series I", category: "tufting", year: "2021", description: "Hand-tufted wool on canvas.", image: "/images/placeholder-tufting.jpg" },
-  { slug: "powerful-flowers", title: "Powerful Flowers", category: "embroidery", year: "2021", description: "Embroidery on fabric.", image: "/images/placeholder-embroidery.jpg" },
-  { slug: "wir-schaffen-das", title: "Wir Schaffen Das", category: "embroidery", year: "2020", description: "Embroidery on fabric.", image: "/images/placeholder-embroidery.jpg" },
-  { slug: "kosmos", title: "Kosmos", category: "painting", year: "2021", description: "Oil on canvas.", image: "/images/placeholder-painting.jpg" },
-  { slug: "colour-burst", title: "Colour Burst", category: "painting", year: "2020", description: "Acrylic on canvas.", image: "/images/placeholder-painting.jpg" },
-  { slug: "light-fisher", title: "Light Fisher (Lysfisker)", category: "photography", year: "2021", description: "Digital photography.", image: "/images/placeholder-lifestyle.jpg" },
-  { slug: "you-and-i", title: "You and I and Everything Else", category: "photography", year: "2021", description: "Digital photography.", image: "/images/placeholder-lifestyle.jpg" },
+  // Tufting
+  { slug: 'purple-sun',        title: 'Purple Sun',        category: 'tufting',     year: '2019', description: 'Hand-tufted wool on canvas.',  image: `${BLOB}/tufting/purple-sun.jpg` },
+  { slug: 'candy-I',           title: 'Candy I',           category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas.',  image: `${BLOB}/tufting/candy-I.jpg` },
+  { slug: 'orange-sun',        title: 'Orange Sun',        category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas.',  image: `${BLOB}/tufting/orange-sun.jpg` },
+  { slug: 'rainbow-I',         title: 'Rainbow I',         category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas.',  image: `${BLOB}/tufting/rainbow-I.jpg` },
+  { slug: 'birds',             title: 'Birds',             category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas.',  image: `${BLOB}/tufting/birds.jpg` },
+  { slug: 'du-und',            title: 'Du und',            category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas.',  image: `${BLOB}/tufting/du-und.jpg` },
+  { slug: 'hej',               title: 'Hej',               category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas.',  image: `${BLOB}/tufting/hej.jpg` },
+  { slug: 'liebes-panopticon', title: 'Liebes Panopticon', category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas.',  image: `${BLOB}/tufting/liebes-panopticon.jpg` },
+  // Embroidery
+  { slug: 'fuck-alting',         title: 'Fuck Alting',         category: 'embroidery', year: '2020', description: 'Embroidery on fabric.', image: `${BLOB}/embroidery/fuck-alting.jpg` },
+  { slug: 'gud-har-meldt-afbud', title: 'Gud Har Meldt Afbud', category: 'embroidery', year: '2019', description: 'Embroidery on fabric.', image: `${BLOB}/embroidery/gud-har-meldt-afbud.jpg` },
+  { slug: 'elsk',                title: 'Elsk',                category: 'embroidery', year: '2021', description: 'Embroidery on fabric.', image: `${BLOB}/embroidery/elsk.jpg` },
+  { slug: 'be-a-dragon',         title: 'Be a Dragon',         category: 'embroidery', year: '2021', description: 'Embroidery on fabric.', image: `${BLOB}/embroidery/be-a-dragon.jpg` },
+  { slug: 'theres-nothing-here', title: "There's Nothing Here", category: 'embroidery', year: '2020', description: 'Embroidery on fabric.', image: `${BLOB}/embroidery/theres-nothing-here.jpg` },
+  { slug: 'mariann',             title: 'Mariann',             category: 'embroidery', year: '2020', description: 'Embroidery on fabric.', image: `${BLOB}/embroidery/mariann.jpg` },
+  // Paintings
+  { slug: 'universe-1',    title: 'Universe I',   category: 'painting', year: '2021', description: 'Mixed media on canvas.', image: `${BLOB}/painting/universe-1.jpg` },
+  { slug: 'universe-2',    title: 'Universe II',  category: 'painting', year: '2021', description: 'Mixed media on canvas.', image: `${BLOB}/painting/universe-2.jpg` },
+  { slug: 'universe-3',    title: 'Universe III', category: 'painting', year: '2021', description: 'Mixed media on canvas.', image: `${BLOB}/painting/universe-3.jpg` },
+  { slug: 'blue-branch',   title: 'Blue Branch',  category: 'painting', year: '2021', description: 'Mixed media on canvas.', image: `${BLOB}/painting/blue-branch.jpg` },
+  { slug: 'person-walking', title: 'Person Walking', category: 'painting', year: '2021', description: 'Mixed media on canvas.', image: `${BLOB}/painting/person-walking.jpg` },
+  // Photography
+  { slug: 'view-from-the-studio',      title: 'View from the Studio',     category: 'photography', year: '2021', description: 'Fine art photograph.', image: `${BLOB}/photography/view-from-the-studio.jpg` },
+  { slug: 'blue-flower-on-green-wood', title: 'Blue Flower on Green Wood', category: 'photography', year: '2021', description: 'Fine art photograph.', image: `${BLOB}/photography/blue-flower-on-green-wood.jpg` },
+  { slug: 'red-and-green-moss',        title: 'Red and Green Moss',       category: 'photography', year: '2021', description: 'Fine art photograph.', image: `${BLOB}/photography/red-and-green-moss.jpg` },
+  { slug: 'no-ordinary-stone',         title: 'No Ordinary Stone',        category: 'photography', year: '2021', description: 'Fine art photograph.', image: `${BLOB}/photography/no-ordinary-stone.jpg` },
+  { slug: 'taped-objects',             title: 'Taped Objects',            category: 'photography', year: '2021', description: 'Fine art photograph.', image: `${BLOB}/photography/taped-objects.jpg` },
+  { slug: 'flowers-on-linen',          title: 'Flowers on Linen',         category: 'photography', year: '2021', description: 'Fine art photograph.', image: `${BLOB}/photography/flowers-on-linen.jpg` },
 ];
 
 export const blogPosts: BlogPost[] = [
