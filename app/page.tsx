@@ -1,6 +1,18 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getProducts, formatPrice } from '@/lib/shopify/products'
 import styles from './page.module.css'
+
+const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
+
+const LIFESTYLE = [
+  `${BLOB}/lifestyle/ls-01.jpg`,
+  `${BLOB}/lifestyle/ls-04.jpg`,
+  `${BLOB}/lifestyle/ls-05.jpg`,
+  `${BLOB}/lifestyle/ls-07.jpg`,
+  `${BLOB}/lifestyle/ls-03.jpg`,
+  `${BLOB}/lifestyle/ls-09.jpg`,
+]
 
 const COLLECTIONS = [
   { handle: 'tufted-works',  label: 'Tufted Works',  color: '#E8D5C4', desc: 'Wool & colour. Hand-tufted originals as prints.' },
@@ -78,6 +90,15 @@ export default async function HomePage() {
             </Link>
           ))}
         </div>
+      </section>
+
+      {/* ── Lifestyle strip ──────────────────────────────────── */}
+      <section className={styles.lifestyleStrip}>
+        {LIFESTYLE.map((src, i) => (
+          <div key={i} className={styles.lifestyleImg}>
+            <Image src={src} alt="Studio" fill sizes="33vw" style={{ objectFit: 'cover' }} />
+          </div>
+        ))}
       </section>
 
       {/* ── Artist strip ─────────────────────────────────────── */}

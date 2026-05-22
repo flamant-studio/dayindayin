@@ -221,6 +221,37 @@
   line-height: 1.4;
 }
 
+/* ── Lifestyle strip ───────────────────────────────────────────────── */
+
+.lifestyleStrip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 320px;
+  overflow: hidden;
+}
+
+.lifestyleImg {
+  position: relative;
+  overflow: hidden;
+}
+
+.lifestyleImg img {
+  transition: transform 600ms var(--ease);
+}
+
+.lifestyleImg:hover img { transform: scale(1.04); }
+
+@media (max-width: 1100px) {
+  .lifestyleStrip { grid-template-columns: repeat(3, 1fr); height: 280px; }
+}
+
+@media (max-width: 768px) {
+  .lifestyleStrip {
+    grid-template-columns: repeat(3, 1fr);
+    height: 200px;
+  }
+}
+
 /* ── Artist strip ──────────────────────────────────────────────────── */
 
 .artistStrip {
