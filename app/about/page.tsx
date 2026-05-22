@@ -28,30 +28,24 @@ export default function About() {
         </div>
         <div className={styles.text}>
           <p>
-            We all have superpowers. Mine is making something out of nothing.
-            Colour is the fabric of my entire being. I am curious about the
-            human condition — how to be human in these strange times, and what
-            humanity looks like when you observe from the edges or from deep within.
+            We all have <em>superpowers</em>. Mine is making something out of nothing.
+            Colour is the fabric of my entire being. I am curious about &ldquo;the human
+            condition&rdquo; — how to be human in these strange times, and what humanity
+            looks like when you observe from the edges or from deep within.
           </p>
           <p>
-            My disability (chronic autoimmune pain syndrome) is not a footnote —
-            it is the canvas. My personal history, my body, and my politics are all
-            present in every piece I make. I consider myself an outsider artist.
-            Not as a romantic label, but as an honest description of where I stand.
+            My disability (chronic autoimmune pain syndrome) and my personal history
+            is the canvas for every artwork I create. I consider myself an outsider artist.
           </p>
           <p>
-            I work primarily with hand tufting and embroidery. The physical process
-            matters — the repetition, the resistance of the material, the slowness.
-            I also paint, draw, and photograph. Each practice feeds the others.
+            Sometimes my art is literal — working with words and sentences taken from
+            what I see and read, enlarging them on embroidery fabric. Sometimes the
+            political aspect is more subtle or more personal.
           </p>
           <p>
-            Sometimes the work is literal. Words enlarged on embroidery fabric,
-            statements you can read from across the room. Sometimes it&apos;s just
-            colour — an argument for joy, or chaos, or both.
-          </p>
-          <p>
-            Scandinavian, feminist, connected. These are not brand values. They are
-            just accurate.
+            I am a textile artist involved in a love affair with embroidery and hand
+            tufting. Slowly and gently, my artistic voice sounds more and more familiar
+            to me.
           </p>
         </div>
       </section>
