@@ -47,7 +47,7 @@ export default function Nav() {
 
         <ul className={`${styles.links} ${mobileOpen ? styles.mobileOpen : ''}`}>
           <li>
-            <Link href="/shop" onClick={closeAll} className={styles.dropTrigger}>Shop</Link>
+            <Link href="/shop" onClick={closeAll}>Shop</Link>
           </li>
 
           <li className={styles.hasDropdown}>

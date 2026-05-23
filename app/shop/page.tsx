@@ -7,16 +7,6 @@ export const metadata = {
   description: 'Art prints, canvases, and wall hangings by Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
 }
 
-const FILTERS = [
-  { label: 'All',         href: '/shop' },
-  { label: 'Tufted',     href: '/shop/collections/tufted-works' },
-  { label: 'Embroidery', href: '/shop/collections/embroidery' },
-  { label: 'Paintings',  href: '/shop/collections/paintings' },
-  { label: 'Photography',href: '/shop/collections/photography' },
-  { label: 'Mixed',      href: '/shop/collections/mixed' },
-  { label: 'Archive',    href: '/shop/collections/archive' },
-]
-
 export default async function ShopPage() {
   const products = await getProducts(96).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
 
@@ -24,20 +14,10 @@ export default async function ShopPage() {
     <div className={styles.page}>
       <header className={styles.header}>
         <h1 className={styles.title}>Shop</h1>
-        <p className={styles.subtitle}>
-          {products.length > 0
-            ? `${products.length} prints available`
-            : 'Art prints by Stine Weirsøe Flamant. Printed by Gelato on demand.'}
-        </p>
+        {products.length > 0 && (
+          <p className={styles.subtitle}>{products.length} works available</p>
+        )}
       </header>
-
-      <div className={styles.filterBar}>
-        {FILTERS.map((f) => (
-          <Link key={f.href} href={f.href} className={styles.filter}>
-            {f.label}
-          </Link>
-        ))}
-      </div>
 
       {products.length === 0 ? (
         <div className={styles.empty}>
@@ -56,6 +36,9 @@ export default async function ShopPage() {
               </div>
               <div className={styles.cardInfo}>
                 <span className={styles.cardTitle}>{p.title}</span>
+                {p.productType && (
+                  <span className={styles.cardType}>{p.productType}</span>
+                )}
                 <span className={styles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
               </div>
             </Link>

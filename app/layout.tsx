@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import ScrollToTop from '@/components/ScrollToTop'
 import { CartProvider } from '@/components/CartProvider'
 import CartDrawer from '@/components/CartDrawer'
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body>
         <CartProvider>
+          <ScrollToTop />
           <Nav />
           <CartDrawer />
           <main>{children}</main>
