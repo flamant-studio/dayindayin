@@ -15,7 +15,8 @@ const LIFESTYLE = [
 ]
 
 export default async function HomePage() {
-  const products = await getProducts(8).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+  const allRecent = await getProducts(60).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+  const products = allRecent.filter((p) => p.firstImage).slice(0, 8)
 
   return (
     <>

@@ -161,7 +161,7 @@ export default async function ProductPage({ params }: PageProps) {
                       alt={p.firstImage.altText ?? p.title}
                       fill
                       sizes="(max-width: 768px) 50vw, 25vw"
-                      style={{ objectFit: 'contain' }}
+                      style={{ objectFit: 'cover' }}
                     />
                   ) : (
                     <div className={styles.imagePlaceholder} />
