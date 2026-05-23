@@ -44,14 +44,15 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--c-border);
+  gap: 16px;
+  padding: 16px;
 }
 
 .card {
-  background: var(--c-bg);
+  background: var(--c-white);
   overflow: hidden;
   display: block;
+  padding: 8px;
   transition: opacity 0.2s;
 }
 

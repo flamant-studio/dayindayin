@@ -2,12 +2,12 @@
 
 :root {
   /* Colours */
-  --c-bg:          #FAFAF7;
+  --c-bg:          #E8D6CF;
   --c-white:       #FFFFFF;
   --c-text:        #111111;
   --c-muted:       #888480;
-  --c-surface:     #F2EFE7;
-  --c-border:      #E3E0D8;
+  --c-surface:     #DEC8C0;
+  --c-border:      #CEB4AC;
   --c-accent:      #D94F2C;   /* vermillion — primary CTA */
   --c-accent-2:    #2E5D4B;   /* forest green — secondary */
   --c-accent-light:#FCE8E2;
