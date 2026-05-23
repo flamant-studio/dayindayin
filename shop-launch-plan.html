@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dayindayin — Shop Launch Plan</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f4f0;
+    --card: #ffffff;
+    --border: #e0ddd8;
+    --text: #1a1a1a;
+    --muted: #888;
+    --accent: #c4694f;
+    --green: #2a7a50;
+    --blue: #2050cc;
+    --orange: #cc6020;
+    --purple: #7040aa;
+    --yellow: #aa8800;
+    --red: #c0392b;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.6; }
+
+  /* NAV */
+  .sidenav { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #1a1a1a; color: #fff; overflow-y: auto; padding: 24px 0; z-index: 100; }
+  .sidenav h2 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #555; padding: 0 20px; margin: 20px 0 8px; }
+  .sidenav a { display: block; padding: 7px 20px; color: #ccc; text-decoration: none; font-size: 12px; border-left: 2px solid transparent; transition: all 0.15s; }
+  .sidenav a:hover { color: #fff; border-left-color: var(--accent); background: #242424; }
+  .sidenav .brand { padding: 0 20px 20px; border-bottom: 1px solid #333; margin-bottom: 8px; }
+  .sidenav .brand h1 { font-size: 13px; font-weight: 600; color: #fff; }
+  .sidenav .brand p { font-size: 11px; color: #555; margin-top: 2px; }
+
+  /* MAIN */
+  .main { margin-left: 200px; padding: 40px 48px; max-width: 1200px; }
+
+  /* SECTION */
+  .section { margin-bottom: 56px; }
+  .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+  .section-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); min-width: 32px; }
+  .section-title { font-size: 18px; font-weight: 600; color: var(--text); }
+  .section-sub { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+  /* CARDS */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 20px 24px; margin-bottom: 12px; }
+  .card-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+  .card-body { color: #444; }
+  .card-body p { margin-bottom: 6px; }
+  .card-body p:last-child { margin-bottom: 0; }
+
+  /* CORRECTIONS */
+  .correction { display: flex; gap: 16px; padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; }
+  .correction-num { font-size: 11px; font-weight: 700; color: var(--accent); min-width: 28px; padding-top: 1px; }
+  .correction-body strong { font-weight: 700; }
+  .correction-body p { color: #444; margin-top: 3px; }
+  .tag-fixed { background: #e6ffe6; color: var(--green); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-left: 8px; vertical-align: middle; }
+  .tag-warn { background: #fff3e0; color: var(--orange); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-left: 8px; vertical-align: middle; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 24px; }
+  thead th { background: #f8f7f4; text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid #f0ede8; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #faf8f5; }
+  td { padding: 10px 14px; vertical-align: top; }
+  td.num { font-size: 11px; color: var(--muted); font-family: monospace; min-width: 32px; padding-top: 11px; }
+  td.strong { font-weight: 600; color: #1a1a1a; }
+  td.mono { font-family: monospace; font-size: 11px; color: var(--muted); }
+  td.note { color: #666; font-size: 12px; }
+  td.time { color: var(--green); font-weight: 600; font-size: 12px; white-space: nowrap; }
+  td.price { font-weight: 700; color: var(--text); white-space: nowrap; }
+
+  /* STATUS TAGS */
+  .tag { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-right: 3px; white-space: nowrap; }
+  .tag-human { background: #fde8e8; color: var(--red); }
+  .tag-agent { background: #e6f0ff; color: var(--blue); }
+  .tag-done { background: #e6ffe6; color: var(--green); }
+  .tag-hold { background: #fff3e0; color: var(--orange); }
+  .tag-a { background: #e6ffe6; color: var(--green); }
+  .tag-b { background: #e6f0ff; color: var(--blue); }
+  .tag-c { background: #fffde6; color: var(--yellow); }
+  .tag-d { background: #fde8e8; color: var(--red); }
+  .tag-e { background: #f3e6ff; color: var(--purple); }
+
+  /* FILE QUALITY LEGEND */
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 14px 18px; margin-bottom: 20px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+  .legend-item span.tag { font-size: 11px; }
+
+  /* QUESTION ITEMS */
+  .question { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 18px 22px; margin-bottom: 10px; display: flex; gap: 16px; }
+  .question-num { font-size: 12px; font-weight: 700; color: var(--accent); min-width: 36px; padding-top: 1px; }
+  .question-body h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .question-body p { color: #444; margin-bottom: 4px; }
+  .question-body .rec { color: var(--green); font-weight: 600; font-style: italic; }
+  .question-body .blocker { color: var(--red); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* PIPELINE */
+  .pipeline-step { display: flex; gap: 0; margin-bottom: 2px; }
+  .step-num { background: #1a1a1a; color: #fff; font-size: 11px; font-weight: 700; padding: 10px 14px; min-width: 52px; display: flex; align-items: center; justify-content: center; border-radius: 4px 0 0 4px; }
+  .step-body { background: var(--card); border: 1px solid var(--border); border-left: none; padding: 10px 16px; flex: 1; border-radius: 0 4px 4px 0; }
+  .step-body h4 { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
+  .step-body p { color: #555; font-size: 12px; }
+  .step-body .dep { color: var(--accent); font-size: 11px; font-weight: 600; }
+
+  /* ANSWERED QUESTION */
+  .question.answered { opacity: 0.6; }
+  .question.answered .question-body h4::after { content: " ✓"; color: var(--green); font-size: 11px; }
+  .ans { background: #eaf5ee; color: var(--green); border: 1px solid #b8dfc4; padding: 4px 10px; border-radius: 3px; font-size: 11px; font-weight: 700; display: inline-block; margin-top: 6px; }
+
+  /* GATE */
+  .gate { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; margin-bottom: 6px; display: flex; align-items: center; gap: 12px; }
+  .gate-id { background: #1a1a1a; color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 3px; font-family: monospace; white-space: nowrap; }
+  .gate-body { flex: 1; }
+  .gate-body strong { font-weight: 700; }
+  .gate-dep { font-size: 11px; color: var(--accent); font-weight: 600; margin-left: auto; white-space: nowrap; }
+
+  /* COLLECTION HEADER */
+  .coll-header { background: #1a1a1a; color: #fff; padding: 10px 16px; border-radius: 4px 4px 0 0; display: flex; align-items: baseline; gap: 12px; margin-top: 28px; }
+  .coll-header h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+  .coll-header .coll-note { font-size: 11px; color: #888; margin-left: auto; }
+  table.coll { border-radius: 0 0 6px 6px; margin-top: 0; border-top: none; }
+
+  /* AUDIT TABLE */
+  .audit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .audit-item { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .audit-item .label { font-weight: 600; font-size: 13px; }
+  .audit-item .detail { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+  /* SUMMARY BOX */
+  .summary { background: #1a1a1a; color: #fff; border-radius: 8px; padding: 24px 28px; margin-bottom: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .summary-item h3 { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .summary-item p { font-size: 12px; color: #888; margin-top: 2px; }
+
+  /* FORMAT BADGE COLOURS */
+  .fmt { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-right: 2px; white-space: nowrap; }
+  .fmt-pa4 { background: #e6f0ff; color: var(--blue); }
+  .fmt-pst { background: #e6ffe6; color: var(--green); }
+  .fmt-cnv { background: #fff3e0; color: var(--orange); }
+  .fmt-frm { background: #f3e6ff; color: var(--purple); }
+  .fmt-whg { background: #fffde6; color: var(--yellow); }
+  .fmt-mug { background: #fde8e8; color: var(--red); }
+  .fmt-tot { background: #f0f0f0; color: #555; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+  .mono-small { font-family: monospace; font-size: 11px; background: #f0ede8; padding: 2px 6px; border-radius: 3px; }
+  code { font-family: monospace; font-size: 11px; background: #f0ede8; padding: 1px 5px; border-radius: 3px; }
+  .hold-note { color: var(--muted); font-style: italic; font-size: 12px; }
+
+  @media (max-width: 900px) {
+    .sidenav { display: none; }
+    .main { margin-left: 0; padding: 24px; }
+    .audit-grid { grid-template-columns: 1fr; }
+    .summary { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDENAV -->
+<nav class="sidenav">
+  <div class="brand">
+    <h1>dayindayin.dk</h1>
+    <p>Shop Launch Plan · May 2026</p>
+  </div>
+  <h2>Sections</h2>
+  <a href="#overview">Overview</a>
+  <a href="#audit">Plan Audit</a>
+  <a href="#logging">Logging</a>
+  <a href="#split">Human vs. Agent</a>
+  <a href="#products">Product List (285 SKUs · 7 in Gelato)</a>
+  <a href="#pipeline">Autonomous Pipeline</a>
+  <a href="#questions">Questions (22)</a>
+  <h2>New Collections</h2>
+  <a href="#c13">C13 Earth Moss</a>
+  <a href="#c14">C14 Forest Light</a>
+  <a href="#c15">C15 Lava Flowers</a>
+  <a href="#c16">C16 Stormy Skies</a>
+  <a href="#c17">C17 Soft City</a>
+  <a href="#c18">C18 Flowers Inside</a>
+  <a href="#c19">C19 Yellow Garden</a>
+  <a href="#c20">C20 Art Photo Ext.</a>
+  <a href="#c21">C21 Masks Trio</a>
+  <a href="#c22">C22 Sea Creatures</a>
+  <a href="#c23">C23 Moss Pattern</a>
+  <a href="#c24">C24 Bodhi Tree</a>
+  <a href="#c25">C25 Archive</a>
+</nav>
+
+<div class="main">
+
+  <!-- OVERVIEW -->
+  <div id="overview" class="section">
+    <div class="section-header">
+      <span class="section-num">—</span>
+      <span class="section-title">dayindayin Shop Launch Plan</span>
+      <span class="section-sub">Updated May 2026 · 20/22 questions answered</span>
+    </div>
+
+    <div class="summary">
+      <div class="summary-item"><h3>7</h3><p>Products live in Gelato (DRAFT) — 6 Neko + 1 Strong Floral</p></div>
+      <div class="summary-item"><h3>~1.5h</h3><p>Human time remaining (Vercel envs, Payments KYC, DNS, legal review)</p></div>
+      <div class="summary-item"><h3>2</h3><p>Questions still open</p></div>
+      <div class="summary-item"><h3>3</h3><p>Steps to launch: add Vercel env vars → publish products → DNS cutover</p></div>
+    </div>
+
+    <!-- YOUR TASKS -->
+    <div class="card" style="border-color: #c4694f; border-width: 2px;">
+      <div class="card-title" style="color: var(--accent); font-size:14px;">Your Tasks — in order</div>
+      <div class="card-body">
+        <table style="width:100%; border-collapse:collapse; font-size:12px;">
+          <thead><tr style="border-bottom:1px solid var(--border); text-align:left;"><th style="padding:6px 8px; color:var(--muted); font-weight:600;">Step</th><th style="padding:6px 8px; color:var(--muted); font-weight:600;">Task</th><th style="padding:6px 8px; color:var(--muted); font-weight:600;">Time</th><th style="padding:6px 8px; color:var(--muted); font-weight:600;">Where</th></tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f0ede8; opacity:0.5;"><td style="padding:7px 8px; font-weight:700; color:var(--green);">✓</td><td style="padding:7px 8px;"><s>Add store to existing Shopify account</s> — <strong style="color:var(--green);">dayindayin.myshopify.com created</strong></td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">—</td><td style="padding:7px 8px;"></td></tr>
+            <tr style="border-bottom:1px solid #f0ede8;"><td style="padding:7px 8px; font-weight:700; color:#1a1a1a;">2</td><td style="padding:7px 8px;"><strong>Activate Shopify Payments</strong> — KYC, Flamant Tekst &amp; Design CVR, Danish bank account. Eliminates 2% fee.</td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">30 min</td><td style="padding:7px 8px;">Shopify admin → Settings → Payments (after step 1)</td></tr>
+            <tr style="border-bottom:1px solid #f0ede8; opacity:0.5;"><td style="padding:7px 8px; font-weight:700; color:var(--green);">✓</td><td style="padding:7px 8px;"><s>Install Gelato app</s> — <strong style="color:var(--green);">Gelato connected to dayindayin.myshopify.com · storeId: 51ee1b39-75e6-4c19-af02-cfd7cb771a4a</strong></td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">—</td><td style="padding:7px 8px;"></td></tr>
+            <tr style="border-bottom:1px solid #f0ede8; opacity:0.5;"><td style="padding:7px 8px; font-weight:700; color:var(--green);">✓</td><td style="padding:7px 8px;"><s>Connect Gelato account to dayindayin store</s> — <strong style="color:var(--green);">Done. Template 6005fae3 created (A4/A3/A2 vertical). 7 products seeded.</strong></td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">—</td><td style="padding:7px 8px;"></td></tr>
+            <tr style="border-bottom:1px solid #f0ede8; opacity:0.5;"><td style="padding:7px 8px; font-weight:700; color:var(--green);">✓</td><td style="padding:7px 8px;"><s>Copy 3 API tokens</s> — <strong style="color:var(--green);">SHOPIFY_STOREFRONT_TOKEN + SHOPIFY_ADMIN_TOKEN set in .env.local.</strong> <span style="color:var(--orange); font-weight:700;">⚑ Still need adding to Vercel env vars (H-7).</span></td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">—</td><td style="padding:7px 8px;"></td></tr>
+            <tr style="border-bottom:1px solid #f0ede8; opacity:0.5;"><td style="padding:7px 8px; font-weight:700; color:var(--green);">✓</td><td style="padding:7px 8px;"><s>Confirm DID-P-006</s> — <strong style="color:var(--green);">Confirmed. Include.</strong></td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">—</td><td style="padding:7px 8px;"></td></tr>
+            <tr style="border-bottom:1px solid #f0ede8; opacity:0.5;"><td style="padding:7px 8px; font-weight:700; color:#1a1a1a;">7</td><td style="padding:7px 8px;"><s>Confirm DID-P-016</s> — <span style="color:var(--green); font-weight:700;">✓ Done. Personal item, not for sale. Potential lifestyle image.</span></td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">—</td><td style="padding:7px 8px;"></td></tr>
+            <tr style="border-bottom:1px solid #f0ede8;"><td style="padding:7px 8px; font-weight:700; color:#1a1a1a;">8</td><td style="padding:7px 8px;"><strong>Review legal pages</strong> — I'll draft privacy policy, copyright notice, fulfillment T&amp;C. You read and approve before they go live.</td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">15 min</td><td style="padding:7px 8px;">Agent drafts → you review in Shopify admin</td></tr>
+            <tr><td style="padding:7px 8px; font-weight:700; color:#1a1a1a;">9</td><td style="padding:7px 8px;"><strong>DNS cutover at Simply.com</strong> — A record + CNAME. Do this last, after everything is live and confirmed working.</td><td style="padding:7px 8px; color:var(--muted); white-space:nowrap;">10 min</td><td style="padding:7px 8px;"><a href="https://www.simply.com/dk" target="_blank">simply.com/dk</a> → DNS for dayindayin.dk</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px; font-size:11px; color:var(--muted);">Steps 1–5 are the critical path. Once you paste the API tokens in step 5, I can start the code build and run all the way to deployment without stopping. Steps 6–7 are 2 minutes each — just open the folder and look.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">What this is</div>
+      <div class="card-body">
+        <p>A complete plan to extend dayindayin.dk (Stine's portfolio site, already built on Next.js 15) into a Gelato print-on-demand store. Stine's actual artwork files in Dropbox become the print designs. Gelato handles printing and EU shipping. Shopify is the commerce layer. The dayindayin-site codebase gets a /shop section built from mikofu's proven patterns.</p>
+        <p style="margin-top:10px;"><strong>Architecture:</strong> Extend dayindayin-site repo — not a new repo. Add /shop, /shop/[handle], /cart pages. Shop and portfolio live on the same domain.</p>
+        <p style="margin-top:6px;"><strong>No Fluid adaptation layer.</strong> dayindayin is a straight artist store — Claude generates copy once at seed time, no runtime AI.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIT -->
+  <div id="audit" class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Plan Audit — Corrections</span>
+      <span class="section-sub">8 errors found and fixed from first version</span>
+    </div>
+
+    <div class="correction">
+      <div class="correction-num">E-1</div>
+      <div class="correction-body">
+        <strong>Resend is already done</strong> <span class="tag-fixed">Fixed</span>
+        <p>FLA-92 completed 2026-04-20. Resend connected, domain verified, API key in Vercel env vars, contact form live. Phase 0.4 (Resend setup) removed from prerequisites. Only gap: <code>CONTACT_EMAIL_TO</code> is still placeholder — needs Stine's actual email.</p>
+      </div>
+    </div>
+
+    <div class="correction">
+      <div class="correction-num">E-2</div>
+      <div class="correction-body">
+        <strong>Shopify plan recommendation was wrong</strong> <span class="tag-warn">Corrected</span>
+        <p>Said Starter ($5/month). Wrong. Gelato app installation requires at minimum Shopify Basic ($29/month). Starter doesn't support third-party app installs in the same way. See Q-1 below.</p>
+      </div>
+    </div>
+
+    <div class="correction">
+      <div class="correction-num">E-3</div>
+      <div class="correction-body">
+        <strong>Artwork files are richer than stated</strong> <span class="tag-fixed">Fixed</span>
+        <p>Many DID folders contain original RAW camera files (NEF, DNG) and full-res phone JPEGs alongside the 1500×1000px web-ready PNGs. DID-T-003 has 30 phone JPEGs (~4032×3024px). DID-T-014 has Nikon NEF RAW files. DID-E-002 has 31 DNG+NEF files. These are print-ready without upscaling for most formats.</p>
+      </div>
+    </div>
+
+    <div class="correction">
+      <div class="correction-num">E-4</div>
+      <div class="correction-body">
+        <strong>Multiple vector (SVG) assets confirmed — missed in first pass</strong> <span class="tag-fixed">Fixed</span>
+        <p>BYOB collection: <code>shopofwords_byob_print copy.svg</code>, mysake, realeyes, obligatorybeauty — all SVG. Neko paw: <code>nekopaw_yellow_outline.svg</code>, <code>Neko_pote.svg</code>. Tourism: <code>tourism_1.svg</code>. Vectors print at any size — wall hangings, canvases, all formats without quality concerns.</p>
+      </div>
+    </div>
+
+    <div class="correction">
+      <div class="correction-num">E-5</div>
+      <div class="correction-body">
+        <strong>Mixed (DID-M) and Archive (DID-A) categories were missing</strong> <span class="tag-warn">Flagged</span>
+        <p>7 Mixed works and 22 Archive PNG scans not included in first product list. Archive filenames show physical cm dimensions, not pixel counts — file sizes unknown. Held from launch list pending Q-11.</p>
+      </div>
+    </div>
+
+    <div class="correction">
+      <div class="correction-num">E-6</div>
+      <div class="correction-body">
+        <strong>product-candidates.html was built for Mikofu, not dayindayin</strong> <span class="tag-fixed">Fixed</span>
+        <p>The HTML file title says "Mikofu — Product Candidates (Stine's Art)." The assets were researched for Mikofu's Japandi store. Now fully repurposed for dayindayin. No impact on assets themselves — all Dropbox paths are correct.</p>
+      </div>
+    </div>
+
+    <div class="correction">
+      <div class="correction-num">E-7</div>
+      <div class="correction-body">
+        <strong>Shero Patch (8500×4981px) is cloud-only — needs Dropbox sync</strong> <span class="tag-warn">Action needed</span>
+        <p>The highest-resolution asset in the archive is not synced locally. Must trigger Dropbox sync before Gelato upload. See Q-10.</p>
+      </div>
+    </div>
+
+    <div class="correction">
+      <div class="correction-num">E-8</div>
+      <div class="correction-body">
+        <strong>Pattern repeats folder uses date-based filenames — unidentified</strong> <span class="tag-warn">Flagged</span>
+        <p>Files like <code>2021-10-30 10.59.01-1.png</code> are unnamed. The Monsters pattern (5906×5906px) is one of these. Visual inspection needed to match files to product names. Agent can script a preview but human needs to confirm identities.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGGING -->
+  <div id="logging" class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Where Everything Is Logged</span>
+    </div>
+
+    <div class="audit-grid">
+      <div class="audit-item">
+        <div>
+          <div class="label">dayindayin-site/CLAUDE.md</div>
+          <div class="detail">Project memory for all agents. Update when plan is locked. Already exists.</div>
+        </div>
+        <span class="tag tag-done">Exists</span>
+      </div>
+      <div class="audit-item">
+        <div>
+          <div class="label">Linear — FLA-93 through FLA-102</div>
+          <div class="detail">New ticket series for each phase. Agent can create via Linear MCP if confirmed.</div>
+        </div>
+        <span class="tag tag-hold">Pending Q-19</span>
+      </div>
+      <div class="audit-item">
+        <div>
+          <div class="label">dayindayin-site/catalog/artwork-catalog.csv</div>
+          <div class="detail">Master product catalog. Currently empty. Agent populates from 285-SKU list once confirmed.</div>
+        </div>
+        <span class="tag tag-hold">Empty</span>
+      </div>
+      <div class="audit-item">
+        <div>
+          <div class="label">dayindayin-site/shop-decisions.md</div>
+          <div class="detail">Fluid-style append-only decision log for every autonomous choice. Agent creates when build starts.</div>
+        </div>
+        <span class="tag tag-agent">Agent creates</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUMAN VS AGENT -->
+  <div id="split" class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Human vs. Agent — Exact Breakdown</span>
+    </div>
+
+    <p style="color:var(--muted); margin-bottom:20px; font-size:13px;">Everything below <em>truly human-gated</em> requires a login, a payment method, or a judgment call. Everything labeled <em>autonomous</em> can be scripted and run without you.</p>
+
+    <h3 style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:10px;">Truly Human-Gated — Cannot Be Automated</h3>
+    <table>
+      <thead><tr><th>#</th><th>Action</th><th>Why Human-Only</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td class="num">H-1</td><td class="strong">Create Shopify store</td><td class="note">Requires account, payment method, legal entity info. Creates <code>dayindayin.myshopify.com</code>.</td><td class="time">20 min</td></tr>
+        <tr><td class="num">H-2</td><td class="strong">Activate Shopify Payments</td><td class="note">KYC, Danish bank account, CVR number. Eliminates 2% transaction fee. Flamant Tekst &amp; Design CVR works.</td><td class="time">30 min</td></tr>
+        <tr><td class="num">H-3</td><td class="strong">Install Gelato app from Shopify App Store</td><td class="note">OAuth flow in Shopify admin UI — cannot be scripted.</td><td class="time">10 min</td></tr>
+        <tr><td class="num">H-4</td><td class="strong">Connect Gelato account to dayindayin store</td><td class="note">Gelato dashboard → My Stores → connect to new Shopify store.</td><td class="time">5 min</td></tr>
+        <tr><td class="num">H-5</td><td class="strong">DNS cutover at Simply.com</td><td class="note">Add A record + CNAME. Requires Simply.com login. Do this last.</td><td class="time">10 min</td></tr>
+        <tr><td class="num">H-6</td><td class="strong">Fill in Stine's email address</td><td class="note"><code>CONTACT_EMAIL_TO</code> env var is still placeholder. Orders and contact go here.</td><td class="time">1 min</td></tr>
+        <tr><td class="num">H-7</td><td class="strong">Add env vars to Vercel project</td><td class="note">Requires Vercel project access: SHOPIFY_STORE_DOMAIN, SHOPIFY_STOREFRONT_TOKEN, SHOPIFY_ADMIN_TOKEN, GELATO_API_KEY (reuse from mikofu), ANTHROPIC_API_KEY (reuse).</td><td class="time">10 min</td></tr>
+        <tr><td class="num">H-8</td><td class="strong">Confirm artwork inclusions/exclusions</td><td class="note">Judgment call on suitability. Primarily Q-8, Q-9, Q-12 below.</td><td class="time">30 min</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:var(--muted); margin-top:-16px; margin-bottom:24px;"><strong>Total: ~2 hours, across 2 sessions (Shopify setup first; DNS last).</strong></p>
+
+    <h3 style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:10px;">Fully Autonomous — Agent Does Without Prompting</h3>
+    <table>
+      <thead><tr><th>#</th><th>Action</th><th>How</th><th>Needs</th></tr></thead>
+      <tbody>
+        <tr><td class="num">A-1</td><td class="strong">Port Shopify lib from mikofu</td><td class="note">Copy + strip Supabase/signals/pricing. Keep: storefront.ts, queries.ts, client.ts, cart ops.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-2</td><td class="strong">Build shop pages</td><td class="note">/shop listing, /shop/[handle] detail, /cart. CSS modules matching dayindayin aesthetic.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-3</td><td class="strong">CartContext + cart icon in Nav</td><td class="note">Client-side cart state, localStorage persistence, item count badge.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-4</td><td class="strong">Update lib/data.ts with real Blob images</td><td class="note">Replace placeholder paths with Vercel Blob URLs. FLA-87a already uploaded category heroes.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-5</td><td class="strong">Build 285-SKU product catalog in code</td><td class="note">lib/artworks/catalog.ts — structured against confirmed list below.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-6</td><td class="strong">Build Gelato product UID map</td><td class="note">lib/gelato/products.ts — all 7 formats, costs, prices, proven UIDs from mikofu.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-7</td><td class="strong">Generate product descriptions (Claude Haiku)</td><td class="note">Batch script: cached system prompt (Stine's voice), per-SKU user message. Output: JSON map.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-8</td><td class="strong">Build Shopify product seed script</td><td class="note">Creates all 285 Shopify products. Idempotent — safe to re-run. Needs H-1 to execute.</td><td><span class="tag tag-agent">After H-1</span></td></tr>
+        <tr><td class="num">A-9</td><td class="strong">Check file dimensions of all Dropbox artworks</td><td class="note">Script reads each file, outputs pixel dimensions. Flags Grade D (1500×1000) for upscale decision.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-10</td><td class="strong">AI upscale Grade D files (if Q-7 confirmed)</td><td class="note">Real-ESRGAN via CLI. Runs locally. ~5 min per image. Outputs to staging folder.</td><td><span class="tag tag-agent">After Q-7</span></td></tr>
+        <tr><td class="num">A-11</td><td class="strong">Upload design files to Gelato via API</td><td class="note">For each artwork: read file from Dropbox, POST to Gelato upload endpoint, store returned file ID.</td><td><span class="tag tag-agent">After H-3+H-4</span></td></tr>
+        <tr><td class="num">A-12</td><td class="strong">Link Gelato products to Shopify variants</td><td class="note">POST to Gelato /v3/stores/{storeId}/products for each SKU. Links variant ID + productUid + fileId.</td><td><span class="tag tag-agent">After A-8+A-11</span></td></tr>
+        <tr><td class="num">A-13</td><td class="strong">Apply descriptions to Shopify products</td><td class="note">PATCH each product with Claude-generated HTML via Admin API.</td><td><span class="tag tag-agent">After A-7+A-8</span></td></tr>
+        <tr><td class="num">A-14</td><td class="strong">Homepage shop section</td><td class="note">Server-side featured products grid between intro and contact form.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-15</td><td class="strong">Work detail → shop CTA</td><td class="note">"Available as prints and objects" prompt on /works/[slug] pages.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-16</td><td class="strong">Populate artwork-catalog.csv</td><td class="note">Fill all rows from confirmed product list. Master reference for humans + agents.</td><td><span class="tag tag-done">Now</span></td></tr>
+        <tr><td class="num">A-17</td><td class="strong">Deploy to Vercel</td><td class="note">git push dev → verify preview URL → merge to main → production.</td><td><span class="tag tag-agent">After H-7</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:10px; margin-top:24px;">Needs Human Decision, Then Autonomous Execution</h3>
+    <table>
+      <thead><tr><th>#</th><th>Decision Needed From You</th><th>Then Agent Does</th></tr></thead>
+      <tbody>
+        <tr><td class="num">D-1</td><td class="strong">Upscaling strategy (see Q-7)</td><td class="note">If confirmed: run Real-ESRGAN batch on all Grade D artworks. If no: exclude D artworks from formats that need >1500px.</td></tr>
+        <tr><td class="num">D-2</td><td class="strong">Photography inclusions (smørrebrød, office-shot, purple-flower)</td><td class="note">Exclude flagged IDs from seed script. These look personal/domestic.</td></tr>
+        <tr><td class="num">D-3</td><td class="strong">DID-P-006 (vaginals) — confirm what it is</td><td class="note">Include or exclude from catalog.</td></tr>
+        <tr><td class="num">D-4</td><td class="strong">DID-P-016 (seb-livingroom) — for sale?</td><td class="note">Include or exclude.</td></tr>
+        <tr><td class="num">D-5</td><td class="strong">Artwork title confirmation in English</td><td class="note">Agent proposes English titles from Danish slug names, you approve or edit. Then write into catalog.csv.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PRODUCT LIST -->
+  <div id="products" class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Launch Product List — 285 SKUs</span>
+      <span class="section-sub">25 collections · 7 live in Gelato (DRAFT) · publish to activate</span>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="tag tag-a">A</span> RAW camera file (NEF/DNG/TIFF) — print-ready all formats</div>
+      <div class="legend-item"><span class="tag tag-b">B</span> Full-res phone JPEG (~4032×3024px) — good for A4/mug/tote; borderline poster; upscale for canvas+</div>
+      <div class="legend-item"><span class="tag tag-c">C</span> Vector SVG/.ai — any size, any format</div>
+      <div class="legend-item"><span class="tag tag-d">D</span> Web PNG only (1500×1000px) — needs AI upscale; passable for mug only as-is</div>
+      <div class="legend-item"><span class="tag tag-e">E</span> Unknown — verify before including</div>
+    </div>
+
+    <div class="legend" style="margin-bottom:12px;">
+      <div style="width:100%; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:6px;">Vertical template (6005fae3) — portrait prints</div>
+      <div class="legend-item"><span class="fmt fmt-pa4">A4</span> 21×29.7 cm — €20 / ~149 DKK</div>
+      <div class="legend-item"><span class="fmt fmt-pa4">A3</span> 29.7×42 cm — €25.95 / ~194 DKK</div>
+      <div class="legend-item"><span class="fmt fmt-pa4">A2</span> 42×59.4 cm — €35.95 / ~268 DKK</div>
+    </div>
+    <div class="legend" style="margin-bottom:24px;">
+      <div style="width:100%; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:6px;">Horizontal template (18600284) — landscape prints</div>
+      <div class="legend-item"><span class="fmt fmt-pst">A5</span> 15×20 cm — €15.95 / ~119 DKK</div>
+      <div class="legend-item"><span class="fmt fmt-pst">A4</span> 21×29.7 cm — €19.95 / ~149 DKK</div>
+      <div class="legend-item"><span class="fmt fmt-pst">A3</span> 29.7×42 cm — €25.95 / ~194 DKK</div>
+    </div>
+
+    <!-- C1 NEKO -->
+    <div class="coll-header"><h3>Collection 1 — NEKO / Paw</h3><span class="coll-note">Source: _KUNST/Studio/Shop of Words/ · All confirmed large or vector · 15 products</span></div>
+    <div style="background:#e6ffe6; border:1px solid #a0d4a0; border-radius:6px; padding:12px 16px; margin-bottom:12px; font-size:12px;">
+      <strong style="color:var(--green);">✓ 6 products live in Gelato — DRAFT in Shopify</strong> · Template: <code>6005fae3</code> · Sizes: A4 / A3 / A2 fine art prints (Stine's branding in margin) · Artwork variants confirmed correct per product.
+      <br>Colorways seeded: Yellow Outline · Yellow Neon · Yellow &amp; Blue · Pink · Lilac · Yellow II (outline1)
+      <br><strong style="color:var(--orange);">⚑ Action needed:</strong> Go to Shopify admin → Products → select all 6 → set to Active to make purchasable.
+    </div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Shopify Handle</th></tr></thead>
+      <tbody>
+        <tr style="background:#f0fff0;"><td class="num">1</td><td class="strong">Neko Paw — Neon Yellow / Poster</td><td class="note">nekopaw_yellow_neon.png · 4961×7016px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">neko-paw-neon-yellow-poster</td></tr>
+        <tr style="background:#f0fff0;"><td class="num">2</td><td class="strong">Neko Paw — Neon Yellow / Art Print</td><td class="note">Same file · <span style="color:var(--green); font-weight:700;">✓ Gelato DRAFT</span></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">neko-paw-neon-yellow-print</td></tr>
+        <tr><td class="num">3</td><td class="strong">Neko Paw — Neon Yellow / Mug</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">neko-paw-neon-yellow-mug</td></tr>
+        <tr style="background:#f0fff0;"><td class="num">4</td><td class="strong">Neko Paw — Pink / Poster</td><td class="note">nekopaw_pink_outline.png · ~4961×7016px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">neko-paw-pink-poster</td></tr>
+        <tr style="background:#f0fff0;"><td class="num">5</td><td class="strong">Neko Paw — Pink / Art Print</td><td class="note">Same file · <span style="color:var(--green); font-weight:700;">✓ Gelato DRAFT</span></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">neko-paw-pink-print</td></tr>
+        <tr style="background:#f0fff0;"><td class="num">6</td><td class="strong">Neko Paw — Lilac / Poster</td><td class="note">nekopaw_lilac_outline.png</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">neko-paw-lilac-poster</td></tr>
+        <tr style="background:#f0fff0;"><td class="num">7</td><td class="strong">Neko Paw — Lilac / Art Print</td><td class="note">Same file · <span style="color:var(--green); font-weight:700;">✓ Gelato DRAFT</span></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">neko-paw-lilac-print</td></tr>
+        <tr style="background:#f0fff0;"><td class="num">8</td><td class="strong">Neko Paw — Yellow &amp; Blue / Poster</td><td class="note">nekopaw_yellow_blue.png · 4961×7016px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">neko-paw-yellow-blue-poster</td></tr>
+        <tr><td class="num">9</td><td class="strong">Neko Paw — Yellow &amp; Blue / Mug</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">neko-paw-yellow-blue-mug</td></tr>
+        <tr><td class="num">10</td><td class="strong">Neko Paw + Text / Wall Hanging</td><td class="note">Neko_paw_text.png · 8192×8192px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">neko-paw-text-wall-hanging</td></tr>
+        <tr><td class="num">11</td><td class="strong">Neko Paw + Text / Canvas</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">neko-paw-text-canvas</td></tr>
+        <tr><td class="num">12</td><td class="strong">Neko Paw + Text / Mug</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">neko-paw-text-mug</td></tr>
+        <tr><td class="num">13</td><td class="strong">Neko Paw + Text / Tote</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">neko-paw-text-tote</td></tr>
+        <tr><td class="num">14</td><td class="strong">Neko Paw — Yellow Outline / Art Print</td><td class="note">nekopaw_yellow_outline.svg · vector</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">neko-paw-yellow-print</td></tr>
+        <tr><td class="num">15</td><td class="strong">Neko Paw — Yellow Outline / Mug</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">neko-paw-yellow-mug</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C2 BYOB -->
+    <div class="coll-header"><h3>Collection 2 — Shop of Words / BYOB</h3><span class="coll-note">Source: Shop of Words/udsagn - printklar/shopofwords_collection_byob/ · SVG originals · 12 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Text</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">16</td><td class="strong">BEAUTY / Art Print</td><td class="note">shopofwords_byob_print copy.svg</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">byob-beauty-print</td></tr>
+        <tr><td class="num">17</td><td class="strong">BEAUTY / Poster</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">byob-beauty-poster</td></tr>
+        <tr><td class="num">18</td><td class="strong">BEAUTY / Mug</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">byob-beauty-mug</td></tr>
+        <tr><td class="num">19</td><td class="strong">OBLIGATORY BEAUTY / Art Print</td><td class="note">shopofwords_obligatorybeauty_print copy.svg</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">byob-obligatory-beauty-print</td></tr>
+        <tr><td class="num">20</td><td class="strong">OBLIGATORY BEAUTY / Poster</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">byob-obligatory-beauty-poster</td></tr>
+        <tr><td class="num">21</td><td class="strong">OBLIGATORY BEAUTY / Tote</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">byob-obligatory-beauty-tote</td></tr>
+        <tr><td class="num">22</td><td class="strong">MY SAKE / Art Print</td><td class="note">shopofwords_mysake_print copy.svg</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">byob-my-sake-print</td></tr>
+        <tr><td class="num">23</td><td class="strong">MY SAKE / Mug</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">byob-my-sake-mug</td></tr>
+        <tr><td class="num">24</td><td class="strong">MY SAKE / Tote</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">byob-my-sake-tote</td></tr>
+        <tr><td class="num">25</td><td class="strong">REAL EYES / Art Print</td><td class="note">shopofwords_realeyes_print copy.svg</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">byob-real-eyes-print</td></tr>
+        <tr><td class="num">26</td><td class="strong">REAL EYES / Poster</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">byob-real-eyes-poster</td></tr>
+        <tr><td class="num">27</td><td class="strong">REAL EYES / Mug</td><td class="note">Same SVG</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">byob-real-eyes-mug</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C3 CANDY RAINBOW -->
+    <div class="coll-header"><h3>Collection 3 — Tufting: Candy &amp; Rainbow</h3><span class="coll-note">DID-T-003, DID-T-004, DID-T-014, DID-T-018 · 12 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>DID</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">28</td><td class="strong">Purple Sun / Art Print</td><td class="mono">DID-T-003</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">purple-sun-print</td></tr>
+        <tr><td class="num">29</td><td class="strong">Purple Sun / Poster</td><td class="mono">DID-T-003</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">purple-sun-poster</td></tr>
+        <tr><td class="num">30</td><td class="strong">Purple Sun / Mug</td><td class="mono">DID-T-003</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">purple-sun-mug</td></tr>
+        <tr><td class="num">31</td><td class="strong">Purple Sun / Tote</td><td class="mono">DID-T-003</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">purple-sun-tote</td></tr>
+        <tr><td class="num">32</td><td class="strong">Orange Sun / Art Print</td><td class="mono">DID-T-014</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">orange-sun-print</td></tr>
+        <tr><td class="num">33</td><td class="strong">Orange Sun / Poster</td><td class="mono">DID-T-014</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">orange-sun-poster</td></tr>
+        <tr><td class="num">34</td><td class="strong">Orange Sun / Canvas</td><td class="mono">DID-T-014</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">orange-sun-canvas</td></tr>
+        <tr><td class="num">35</td><td class="strong">Orange Sun / Mug</td><td class="mono">DID-T-014</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">orange-sun-mug</td></tr>
+        <tr><td class="num">36</td><td class="strong">Rainbow / Art Print</td><td class="mono">DID-T-018</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">rainbow-print</td></tr>
+        <tr><td class="num">37</td><td class="strong">Rainbow / Mug</td><td class="mono">DID-T-018</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">rainbow-mug</td></tr>
+        <tr><td class="num">38</td><td class="strong">Candy / Art Print</td><td class="mono">DID-T-004</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">candy-print</td></tr>
+        <tr><td class="num">39</td><td class="strong">Candy / Mug</td><td class="mono">DID-T-004</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">candy-mug</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C4 BOTANICAL -->
+    <div class="coll-header"><h3>Collection 4 — Tufting: Botanical &amp; Nature</h3><span class="coll-note">DID-T-001, DID-T-002, DID-T-017, DID-T-029, DID-T-040 · 12 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>DID</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">40</td><td class="strong">Flower Thing / Art Print</td><td class="mono">DID-T-001</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">flower-thing-print</td></tr>
+        <tr><td class="num">41</td><td class="strong">Flower Thing / Mug</td><td class="mono">DID-T-001</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">flower-thing-mug</td></tr>
+        <tr><td class="num">42</td><td class="strong">Round Earth / Art Print</td><td class="mono">DID-T-002</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">round-earth-print</td></tr>
+        <tr><td class="num">43</td><td class="strong">Round Earth / Mug</td><td class="mono">DID-T-002</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">round-earth-mug</td></tr>
+        <tr><td class="num">44</td><td class="strong">Jellyfish / Art Print</td><td class="mono">DID-T-017</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">jellyfish-print</td></tr>
+        <tr><td class="num">45</td><td class="strong">Jellyfish / Poster</td><td class="mono">DID-T-017</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">jellyfish-poster</td></tr>
+        <tr><td class="num">46</td><td class="strong">Jellyfish / Mug</td><td class="mono">DID-T-017</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">jellyfish-mug</td></tr>
+        <tr><td class="num">47</td><td class="strong">Birds / Art Print</td><td class="mono">DID-T-029</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">birds-print</td></tr>
+        <tr><td class="num">48</td><td class="strong">Birds / Mug</td><td class="mono">DID-T-029</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">birds-mug</td></tr>
+        <tr><td class="num">49</td><td class="strong">Green Flower / Art Print</td><td class="mono">DID-T-040</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">green-flower-print</td></tr>
+        <tr><td class="num">50</td><td class="strong">Green Flower / Mug</td><td class="mono">DID-T-040</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">green-flower-mug</td></tr>
+        <tr><td class="num">51</td><td class="strong">Green Flower / Tote</td><td class="mono">DID-T-040</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">green-flower-tote</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C5 BOLD SHAPES -->
+    <div class="coll-header"><h3>Collection 5 — Tufting: Bold Shapes</h3><span class="coll-note">DID-T-023 (15 RAW), DID-T-026, DID-T-028 · 8 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>DID</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">52</td><td class="strong">Tufted Mask / Art Print</td><td class="mono">DID-T-023</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">tufted-mask-print</td></tr>
+        <tr><td class="num">53</td><td class="strong">Tufted Mask / Poster</td><td class="mono">DID-T-023</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">tufted-mask-poster</td></tr>
+        <tr><td class="num">54</td><td class="strong">Tufted Mask / Canvas</td><td class="mono">DID-T-023</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">tufted-mask-canvas</td></tr>
+        <tr><td class="num">55</td><td class="strong">Tufted Mask / Mug</td><td class="mono">DID-T-023</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">tufted-mask-mug</td></tr>
+        <tr><td class="num">56</td><td class="strong">Universe with Hole / Art Print</td><td class="mono">DID-T-026</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">universe-hole-print</td></tr>
+        <tr><td class="num">57</td><td class="strong">Universe with Hole / Mug</td><td class="mono">DID-T-026</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">universe-hole-mug</td></tr>
+        <tr><td class="num">58</td><td class="strong">Liebes Panopticon / Art Print</td><td class="mono">DID-T-028</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">liebes-panopticon-print</td></tr>
+        <tr><td class="num">59</td><td class="strong">Liebes Panopticon / Poster</td><td class="mono">DID-T-028</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">liebes-panopticon-poster</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C6 EMBROIDERY TEXT -->
+    <div class="coll-header"><h3>Collection 6 — Embroidery: Text Works</h3><span class="coll-note">DID-E-001, DID-E-002 (31 RAW), DID-E-006 (14 RAW), DID-E-011, DID-E-013, DID-E-015 · 14 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>DID</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">60</td><td class="strong">Fuck Alting / Art Print</td><td class="mono">DID-E-001</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">fuck-alting-print</td></tr>
+        <tr><td class="num">61</td><td class="strong">Fuck Alting / Mug</td><td class="mono">DID-E-001</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">fuck-alting-mug</td></tr>
+        <tr><td class="num">62</td><td class="strong">Fuck Alting / Tote</td><td class="mono">DID-E-001</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">fuck-alting-tote</td></tr>
+        <tr><td class="num">63</td><td class="strong">God Cancelled / Art Print</td><td class="mono">DID-E-002</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">god-cancelled-print</td></tr>
+        <tr><td class="num">64</td><td class="strong">God Cancelled / Poster</td><td class="mono">DID-E-002</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">god-cancelled-poster</td></tr>
+        <tr><td class="num">65</td><td class="strong">God Cancelled / Canvas</td><td class="mono">DID-E-002</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">god-cancelled-canvas</td></tr>
+        <tr><td class="num">66</td><td class="strong">God Cancelled / Mug</td><td class="mono">DID-E-002</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">god-cancelled-mug</td></tr>
+        <tr><td class="num">67</td><td class="strong">Elsk (Love) / Art Print</td><td class="mono">DID-E-006</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">elsk-print</td></tr>
+        <tr><td class="num">68</td><td class="strong">Elsk (Love) / Poster</td><td class="mono">DID-E-006</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">elsk-poster</td></tr>
+        <tr><td class="num">69</td><td class="strong">Elsk (Love) / Mug</td><td class="mono">DID-E-006</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">elsk-mug</td></tr>
+        <tr><td class="num">70</td><td class="strong">Det er bare tanker / Art Print</td><td class="mono">DID-E-011</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">det-er-bare-tanker-print</td></tr>
+        <tr><td class="num">71</td><td class="strong">Det er bare tanker / Mug</td><td class="mono">DID-E-011</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">det-er-bare-tanker-mug</td></tr>
+        <tr><td class="num">72</td><td class="strong">Ingenting (Nothing) / Art Print</td><td class="mono">DID-E-013</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">ingenting-print</td></tr>
+        <tr><td class="num">73</td><td class="strong">There's Nothing Here / Mug</td><td class="mono">DID-E-015</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">theres-nothing-here-mug</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C7 EMBROIDERY FIGURATIVE -->
+    <div class="coll-header"><h3>Collection 7 — Embroidery: Figurative</h3><span class="coll-note">DID-E-007 (8 RAW), DID-E-014, DID-E-016 · 8 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>DID</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">74</td><td class="strong">Be a Dragon / Art Print</td><td class="mono">DID-E-007</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">be-a-dragon-print</td></tr>
+        <tr><td class="num">75</td><td class="strong">Be a Dragon / Poster</td><td class="mono">DID-E-007</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">be-a-dragon-poster</td></tr>
+        <tr><td class="num">76</td><td class="strong">Be a Dragon / Mug</td><td class="mono">DID-E-007</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">be-a-dragon-mug</td></tr>
+        <tr><td class="num">77</td><td class="strong">Be a Dragon / Tote</td><td class="mono">DID-E-007</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">be-a-dragon-tote</td></tr>
+        <tr><td class="num">78</td><td class="strong">Red to Blue / Art Print</td><td class="mono">DID-E-014</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">red-to-blue-print</td></tr>
+        <tr><td class="num">79</td><td class="strong">Red to Blue / Mug</td><td class="mono">DID-E-014</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">red-to-blue-mug</td></tr>
+        <tr><td class="num">80</td><td class="strong">Mariann / Art Print</td><td class="mono">DID-E-016</td><td><span class="tag tag-e">E</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">mariann-print</td></tr>
+        <tr><td class="num">81</td><td class="strong">Mariann / Mug</td><td class="mono">DID-E-016</td><td><span class="tag tag-e">E</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">mariann-mug</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C8 PATTERNS -->
+    <div class="coll-header"><h3>Collection 8 — Patterns &amp; Repeats</h3><span class="coll-note">Kaninskoven (4000px), Monsters (5906px), Greek Sea Creatures, Rabbit+Dots (7087px) · 10 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">82</td><td class="strong">Kaninskoven (Rabbit Forest) / Tote</td><td class="note">Kaninskoven_Lille.png · 4000×4000px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">kaninskoven-tote</td></tr>
+        <tr><td class="num">83</td><td class="strong">Kaninskoven / Mug</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">kaninskoven-mug</td></tr>
+        <tr><td class="num">84</td><td class="strong">Kaninskoven / Art Print</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">kaninskoven-print</td></tr>
+        <tr><td class="num">85</td><td class="strong">Monsters — Blue &amp; Pink / Poster</td><td class="note">2021-10-30 10.59.01-1.png · 5906×5906px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">monsters-poster</td></tr>
+        <tr><td class="num">86</td><td class="strong">Monsters — Blue &amp; Pink / Canvas</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">monsters-canvas</td></tr>
+        <tr><td class="num">87</td><td class="strong">Monsters — Blue &amp; Pink / Mug</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">monsters-mug</td></tr>
+        <tr><td class="num">88</td><td class="strong">Monsters — Blue &amp; Pink / Tote</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">monsters-tote</td></tr>
+        <tr><td class="num">89</td><td class="strong">Greek Sea Creatures / Art Print</td><td class="note">Greek_sea_creatures-bluewhite.png · verify size</td><td><span class="tag tag-e">E</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">greek-sea-creatures-print</td></tr>
+        <tr><td class="num">90</td><td class="strong">Greek Sea Creatures / Mug</td><td class="note">Same file</td><td><span class="tag tag-e">E</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">greek-sea-creatures-mug</td></tr>
+        <tr><td class="num">91</td><td class="strong">Rabbit &amp; Dots / Poster</td><td class="note">Rabbitanddots_transp.png · 7087×4961px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">rabbit-dots-poster</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C9 PHOTOGRAPHY -->
+    <div class="coll-header"><h3>Collection 9 — Photography: Art Series</h3><span class="coll-note">Print-ready art photos from Studio/print ready/ + DID-PH series · 12 products</span></div>
+    <div style="background:#e6ffe6; border:1px solid #a0d4a0; border-radius:6px; padding:12px 16px; margin-bottom:12px; font-size:12px;">
+      <strong style="color:var(--green);">✓ Strong Floral live in Gelato — DRAFT in Shopify</strong> · A4 / A3 / A2 fine art prints · Artwork: Strongfloral-1.jpeg via Vercel Blob.
+      <br><strong style="color:var(--orange);">⚑ Action needed:</strong> Publish in Shopify admin → Products.
+    </div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">92</td><td class="strong">Purple Fabric in Garden / Art Print</td><td class="note">DID-PH-001 · 16 RAW files</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">purple-fabric-print</td></tr>
+        <tr><td class="num">93</td><td class="strong">Purple Fabric in Garden / Poster</td><td class="note">Same RAW</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">purple-fabric-poster</td></tr>
+        <tr><td class="num">94</td><td class="strong">Sheroshine / Art Print</td><td class="note">Sheroshine_1swf2023.jpeg · 3517×3517px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">sheroshine-print</td></tr>
+        <tr><td class="num">95</td><td class="strong">Sheroshine / Canvas</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">sheroshine-canvas</td></tr>
+        <tr><td class="num">96</td><td class="strong">Sheroshine / Mug</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">sheroshine-mug</td></tr>
+        <tr style="background:#f0fff0;"><td class="num">97</td><td class="strong">Strong Floral / Art Print</td><td class="note">Strongfloral-1.jpeg · 3024×4032px · <span style="color:var(--green); font-weight:700;">✓ Gelato DRAFT</span></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">strong-floral-print</td></tr>
+        <tr style="background:#f0fff0;"><td class="num">98</td><td class="strong">Strong Floral / Poster</td><td class="note">Same file · <span style="color:var(--green); font-weight:700;">✓ Gelato DRAFT</span></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">strong-floral-poster</td></tr>
+        <tr><td class="num">99</td><td class="strong">Imprint of Movement / Art Print</td><td class="note">Imprintofmovement...jpeg · print-ready folder</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">imprint-of-movement-print</td></tr>
+        <tr><td class="num">100</td><td class="strong">Imprint of Movement / Canvas</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">imprint-of-movement-canvas</td></tr>
+        <tr><td class="num">101</td><td class="strong">Colourful Shadows / Art Print</td><td class="note">DID-PH-010 web PNG · needs upscale</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">colourful-shadows-print</td></tr>
+        <tr><td class="num">102</td><td class="strong">Dead Flowers / Art Print</td><td class="note">DID-PH-012 web PNG</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">dead-flowers-print</td></tr>
+        <tr><td class="num">103</td><td class="strong">Dead Flowers / Mug</td><td class="note">Same file</td><td><span class="tag tag-d">D</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">dead-flowers-mug</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C10 TOURISM -->
+    <div class="coll-header"><h3>Collection 10 — Tourism Series</h3><span class="coll-note">Studio/print ready/Tourism_1-4.tiff · All TIFF originals 4032×3024px · 8 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">104</td><td class="strong">Tourism I / Art Print</td><td class="note">Tourism_1.tiff · 4032×3024px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">tourism-1-print</td></tr>
+        <tr><td class="num">105</td><td class="strong">Tourism I / Poster</td><td class="note">Same TIFF</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">tourism-1-poster</td></tr>
+        <tr><td class="num">106</td><td class="strong">Tourism II / Art Print</td><td class="note">Tourism_2.tiff · 3024×4032px portrait</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">tourism-2-print</td></tr>
+        <tr><td class="num">107</td><td class="strong">Tourism II / Poster</td><td class="note">Same TIFF</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">tourism-2-poster</td></tr>
+        <tr><td class="num">108</td><td class="strong">Tourism III / Art Print</td><td class="note">Tourism_3.1.tiff · 4032×3024px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">tourism-3-print</td></tr>
+        <tr><td class="num">109</td><td class="strong">Tourism III / Poster</td><td class="note">Same TIFF</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">tourism-3-poster</td></tr>
+        <tr><td class="num">110</td><td class="strong">Tourism IV / Art Print</td><td class="note">Tourism_4.tiff · 4032×3024px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">tourism-4-print</td></tr>
+        <tr><td class="num">111</td><td class="strong">Tourism IV / Poster</td><td class="note">Same TIFF</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">tourism-4-poster</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C11 KIDS -->
+    <div class="coll-header"><h3>Collection 11 — Kids / Elephant Series</h3><span class="coll-note">_STINE/Design/Elefant_*.png · All 3694×3024px · ✓ Confirmed for sale · 8 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">112</td><td class="strong">Elephant — Green / Art Print</td><td class="note">Elefant_groen.png · 3694×3024px</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">elephant-green-print</td></tr>
+        <tr><td class="num">113</td><td class="strong">Elephant — Green / Mug</td><td class="note">Same file</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">elephant-green-mug</td></tr>
+        <tr><td class="num">114</td><td class="strong">Elephant — Yellow / Art Print</td><td class="note">Elefant_gul.png · same dimensions</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">elephant-yellow-print</td></tr>
+        <tr><td class="num">115</td><td class="strong">Elephant — Yellow / Mug</td><td class="note">Same file</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">elephant-yellow-mug</td></tr>
+        <tr><td class="num">116</td><td class="strong">Elephant — Purple / Art Print</td><td class="note">Elefant_lilla.png · same dimensions</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">elephant-purple-print</td></tr>
+        <tr><td class="num">117</td><td class="strong">Elephant — Purple / Mug</td><td class="note">Same file</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">elephant-purple-mug</td></tr>
+        <tr><td class="num">118</td><td class="strong">Elephant — Red / Art Print</td><td class="note">Elefant_roed.png · same dimensions</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">elephant-red-print</td></tr>
+        <tr><td class="num">119</td><td class="strong">Elephant — Red / Mug</td><td class="note">Same file</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">elephant-red-mug</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C12 SHERO -->
+    <div class="coll-header"><h3>Collection 12 — SHERO</h3><span class="coll-note">Shero Patch 8500×5000px (cloud — sync first), Pow Patch TIFF, Sheroshine art photo · 9 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">120</td><td class="strong">SHERO Patch / Poster</td><td class="note">shero_patch_pink-blue_8500x5000.png — CLOUD, sync Dropbox first</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">shero-patch-poster</td></tr>
+        <tr><td class="num">121</td><td class="strong">SHERO Patch / Wall Hanging</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">shero-patch-wall-hanging</td></tr>
+        <tr><td class="num">122</td><td class="strong">SHERO Patch / Canvas</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">shero-patch-canvas</td></tr>
+        <tr><td class="num">123</td><td class="strong">SHERO Patch / Mug</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">shero-patch-mug</td></tr>
+        <tr><td class="num">124</td><td class="strong">SHERO Patch / Tote</td><td class="note">Same file</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">shero-patch-tote</td></tr>
+        <tr><td class="num">125</td><td class="strong">POW / Art Print</td><td class="note">Pow_Patch.tiff · TIFF original</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">pow-print</td></tr>
+        <tr><td class="num">126</td><td class="strong">POW / Mug</td><td class="note">Same TIFF</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">pow-mug</td></tr>
+        <tr><td class="num">127</td><td class="strong">POW / Tote</td><td class="note">Same TIFF</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">pow-tote</td></tr>
+        <tr><td class="num">128</td><td class="strong">Sheroshine / Framed Print</td><td class="note">Sheroshine_1swf2023.jpeg · 3517×3517px</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">sheroshine-framed</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C13 EARTH MOSS -->
+    <div id="c13" class="coll-header"><h3>Collection 13 — Stine Foto: Earth Moss</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_earth_moss_2021/" target="_blank">_KUNST/Stine foto/_photo_earth_moss_2021/</a> · 93 images, DNG+JPG, 4032×3024 · Grade A/B · 15 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">129</td><td class="strong">Earth Moss — First Light / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_earth_moss_2021/2021-02-20%2011.53.56.jpg" target="_blank">2021-02-20 11.53.56.jpg · 4032×3024</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">earth-moss-first-light-print</td></tr>
+        <tr><td class="num">130</td><td class="strong">Earth Moss — First Light / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">earth-moss-first-light-poster</td></tr>
+        <tr><td class="num">131</td><td class="strong">Earth Moss — First Light / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">earth-moss-first-light-framed</td></tr>
+        <tr><td class="num">132</td><td class="strong">Earth Moss — First Light / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">earth-moss-first-light-canvas</td></tr>
+        <tr><td class="num">133</td><td class="strong">Earth Moss — First Light / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">earth-moss-first-light-wall-hanging</td></tr>
+        <tr><td class="num">134</td><td class="strong">Earth Moss — Deep Green / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_earth_moss_2021/2021-02-20%2012.00.00.jpg" target="_blank">2021-02-20 12.00.00.jpg · 4032×3024</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">earth-moss-deep-green-print</td></tr>
+        <tr><td class="num">135</td><td class="strong">Earth Moss — Deep Green / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">earth-moss-deep-green-poster</td></tr>
+        <tr><td class="num">136</td><td class="strong">Earth Moss — Deep Green / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">earth-moss-deep-green-framed</td></tr>
+        <tr><td class="num">137</td><td class="strong">Earth Moss — Deep Green / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">earth-moss-deep-green-canvas</td></tr>
+        <tr><td class="num">138</td><td class="strong">Earth Moss — Deep Green / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">earth-moss-deep-green-wall-hanging</td></tr>
+        <tr><td class="num">139</td><td class="strong">Earth Moss — Mineral / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_earth_moss_2021/2021-02-20%2012.04.04.jpg" target="_blank">2021-02-20 12.04.04.jpg · 4032×3024</a> — ⚑ confirm best hero</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">earth-moss-mineral-print</td></tr>
+        <tr><td class="num">140</td><td class="strong">Earth Moss — Mineral / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">earth-moss-mineral-poster</td></tr>
+        <tr><td class="num">141</td><td class="strong">Earth Moss — Mineral / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">earth-moss-mineral-framed</td></tr>
+        <tr><td class="num">142</td><td class="strong">Earth Moss — Mineral / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">earth-moss-mineral-canvas</td></tr>
+        <tr><td class="num">143</td><td class="strong">Earth Moss — Mineral / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">earth-moss-mineral-wall-hanging</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C14 FOREST LIGHT -->
+    <div id="c14" class="coll-header"><h3>Collection 14 — Stine Foto: Forest Light</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_in-the-forest_2021/" target="_blank">_KUNST/Stine foto/_photo_in-the-forest_2021/</a> · 91 images, DNG+JPG, 4032×3024 · Grade A/B · 15 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">144</td><td class="strong">Forest Light — March Morning / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_in-the-forest_2021/2021-03-04%2010.39.19.jpg" target="_blank">2021-03-04 10.39.19.jpg · 4032×3024</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">forest-light-march-morning-print</td></tr>
+        <tr><td class="num">145</td><td class="strong">Forest Light — March Morning / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">forest-light-march-morning-poster</td></tr>
+        <tr><td class="num">146</td><td class="strong">Forest Light — March Morning / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">forest-light-march-morning-framed</td></tr>
+        <tr><td class="num">147</td><td class="strong">Forest Light — March Morning / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">forest-light-march-morning-canvas</td></tr>
+        <tr><td class="num">148</td><td class="strong">Forest Light — March Morning / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">forest-light-march-morning-wall-hanging</td></tr>
+        <tr><td class="num">149</td><td class="strong">Forest Light — White Branch / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_in-the-forest_2021/2021-03-04%2010.48.09.jpg" target="_blank">2021-03-04 10.48.09.jpg · 4032×3024</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">forest-light-white-branch-print</td></tr>
+        <tr><td class="num">150</td><td class="strong">Forest Light — White Branch / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">forest-light-white-branch-poster</td></tr>
+        <tr><td class="num">151</td><td class="strong">Forest Light — White Branch / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">forest-light-white-branch-framed</td></tr>
+        <tr><td class="num">152</td><td class="strong">Forest Light — White Branch / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">forest-light-white-branch-canvas</td></tr>
+        <tr><td class="num">153</td><td class="strong">Forest Light — White Branch / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">forest-light-white-branch-wall-hanging</td></tr>
+        <tr><td class="num">154</td><td class="strong">Forest Light — Evening / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_in-the-forest_2021/2021-03-06%2019.07.30.jpg" target="_blank">2021-03-06 19.07.30.jpg · 4032×3024</a> — ⚑ confirm hero</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">forest-light-evening-print</td></tr>
+        <tr><td class="num">155</td><td class="strong">Forest Light — Evening / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">forest-light-evening-poster</td></tr>
+        <tr><td class="num">156</td><td class="strong">Forest Light — Evening / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">forest-light-evening-framed</td></tr>
+        <tr><td class="num">157</td><td class="strong">Forest Light — Evening / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">forest-light-evening-canvas</td></tr>
+        <tr><td class="num">158</td><td class="strong">Forest Light — Evening / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">forest-light-evening-wall-hanging</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C15 LAVA FLOWERS -->
+    <div id="c15" class="coll-header"><h3>Collection 15 — Stine Foto: Flowers on Lava</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_flowers-on-lavastone/" target="_blank">_KUNST/Stine foto/_photo_flowers-on-lavastone/</a> · 62 images, 6016×4016 (Canon DSLR) · Grade B+ · 15 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">159</td><td class="strong">Lava Flowers I / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_flowers-on-lavastone/2020-06-16%2010.29.11.jpg" target="_blank">2020-06-16 10.29.11.jpg · 6016×4016</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">lava-flowers-i-print</td></tr>
+        <tr><td class="num">160</td><td class="strong">Lava Flowers I / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">lava-flowers-i-poster</td></tr>
+        <tr><td class="num">161</td><td class="strong">Lava Flowers I / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">lava-flowers-i-framed</td></tr>
+        <tr><td class="num">162</td><td class="strong">Lava Flowers I / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">lava-flowers-i-canvas</td></tr>
+        <tr><td class="num">163</td><td class="strong">Lava Flowers I / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">lava-flowers-i-wall-hanging</td></tr>
+        <tr><td class="num">164</td><td class="strong">Lava Flowers II / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_flowers-on-lavastone/" target="_blank">⚑ select hero 2 from 62 shots · 6016×4016</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">lava-flowers-ii-print</td></tr>
+        <tr><td class="num">165</td><td class="strong">Lava Flowers II / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">lava-flowers-ii-poster</td></tr>
+        <tr><td class="num">166</td><td class="strong">Lava Flowers II / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">lava-flowers-ii-framed</td></tr>
+        <tr><td class="num">167</td><td class="strong">Lava Flowers II / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">lava-flowers-ii-canvas</td></tr>
+        <tr><td class="num">168</td><td class="strong">Lava Flowers II / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">lava-flowers-ii-wall-hanging</td></tr>
+        <tr><td class="num">169</td><td class="strong">Lava Flowers III / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_flowers-on-lavastone/" target="_blank">⚑ select hero 3 from 62 shots · 6016×4016</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">lava-flowers-iii-print</td></tr>
+        <tr><td class="num">170</td><td class="strong">Lava Flowers III / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">lava-flowers-iii-poster</td></tr>
+        <tr><td class="num">171</td><td class="strong">Lava Flowers III / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">lava-flowers-iii-framed</td></tr>
+        <tr><td class="num">172</td><td class="strong">Lava Flowers III / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">lava-flowers-iii-canvas</td></tr>
+        <tr><td class="num">173</td><td class="strong">Lava Flowers III / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">lava-flowers-iii-wall-hanging</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C16 STORMY SKIES -->
+    <div id="c16" class="coll-header"><h3>Collection 16 — Stine Foto: Stormy Skies</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_stormy_skies/" target="_blank">_KUNST/Stine foto/_photo_stormy_skies/</a> · 2 images, 6016×4016 (Canon DSLR) · Grade B+ · 10 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">174</td><td class="strong">Stormy Skies I / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_stormy_skies/2019-05-25%2020.48.40.jpg" target="_blank">2019-05-25 20.48.40.jpg · 6016×4016</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">stormy-skies-i-print</td></tr>
+        <tr><td class="num">175</td><td class="strong">Stormy Skies I / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">stormy-skies-i-poster</td></tr>
+        <tr><td class="num">176</td><td class="strong">Stormy Skies I / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">stormy-skies-i-framed</td></tr>
+        <tr><td class="num">177</td><td class="strong">Stormy Skies I / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">stormy-skies-i-canvas</td></tr>
+        <tr><td class="num">178</td><td class="strong">Stormy Skies I / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">stormy-skies-i-wall-hanging</td></tr>
+        <tr><td class="num">179</td><td class="strong">Stormy Skies II / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_stormy_skies/2019-05-25%2020.48.52.jpg" target="_blank">2019-05-25 20.48.52.jpg · 6016×4016</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">stormy-skies-ii-print</td></tr>
+        <tr><td class="num">180</td><td class="strong">Stormy Skies II / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">stormy-skies-ii-poster</td></tr>
+        <tr><td class="num">181</td><td class="strong">Stormy Skies II / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">stormy-skies-ii-framed</td></tr>
+        <tr><td class="num">182</td><td class="strong">Stormy Skies II / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">stormy-skies-ii-canvas</td></tr>
+        <tr><td class="num">183</td><td class="strong">Stormy Skies II / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">stormy-skies-ii-wall-hanging</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C17 SOFT CITY -->
+    <div id="c17" class="coll-header"><h3>Collection 17 — Soft City Series</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_STINE/dayindayin.dk/softcity_original/" target="_blank">_STINE/dayindayin.dk/softcity_original/</a> · 16 images, 3264×2448 · Grade B · 15 products · ⚑ pending Q-22</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">184</td><td class="strong">Soft City I / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_STINE/dayindayin.dk/softcity_original/31254095327_2bffea9c33_o.jpg" target="_blank">31254095327_2bffea9c33_o.jpg · 3264×2448</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">soft-city-i-print</td></tr>
+        <tr><td class="num">185</td><td class="strong">Soft City I / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">soft-city-i-poster</td></tr>
+        <tr><td class="num">186</td><td class="strong">Soft City I / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">soft-city-i-framed</td></tr>
+        <tr><td class="num">187</td><td class="strong">Soft City I / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">soft-city-i-canvas</td></tr>
+        <tr><td class="num">188</td><td class="strong">Soft City I / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">soft-city-i-wall-hanging</td></tr>
+        <tr><td class="num">189</td><td class="strong">Soft City II / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_STINE/dayindayin.dk/softcity_original/31254095587_aaa953d281_o.jpg" target="_blank">31254095587_aaa953d281_o.jpg · 3264×2448</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">soft-city-ii-print</td></tr>
+        <tr><td class="num">190</td><td class="strong">Soft City II / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">soft-city-ii-poster</td></tr>
+        <tr><td class="num">191</td><td class="strong">Soft City II / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">soft-city-ii-framed</td></tr>
+        <tr><td class="num">192</td><td class="strong">Soft City II / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">soft-city-ii-canvas</td></tr>
+        <tr><td class="num">193</td><td class="strong">Soft City II / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">soft-city-ii-wall-hanging</td></tr>
+        <tr><td class="num">194</td><td class="strong">Soft City III / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_STINE/dayindayin.dk/softcity_original/32321261758_98e3343bfb_o.jpg" target="_blank">32321261758_98e3343bfb_o.jpg · 3264×2448</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">soft-city-iii-print</td></tr>
+        <tr><td class="num">195</td><td class="strong">Soft City III / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">soft-city-iii-poster</td></tr>
+        <tr><td class="num">196</td><td class="strong">Soft City III / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">soft-city-iii-framed</td></tr>
+        <tr><td class="num">197</td><td class="strong">Soft City III / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">soft-city-iii-canvas</td></tr>
+        <tr><td class="num">198</td><td class="strong">Soft City III / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">soft-city-iii-wall-hanging</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C18 FLOWERS INSIDE -->
+    <div id="c18" class="coll-header"><h3>Collection 18 — Stine Foto: Flowers Inside</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_flowers_inside/" target="_blank">_KUNST/Stine foto/_photo_flowers_inside/</a> · 37 images, 6016×4016 (Canon DSLR) · Grade B+ · 10 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">199</td><td class="strong">Flowers Inside I / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_flowers_inside/2019-05-27%2011.34.14.jpg" target="_blank">2019-05-27 11.34.14.jpg · 6016×4016</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">flowers-inside-i-print</td></tr>
+        <tr><td class="num">200</td><td class="strong">Flowers Inside I / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">flowers-inside-i-poster</td></tr>
+        <tr><td class="num">201</td><td class="strong">Flowers Inside I / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">flowers-inside-i-framed</td></tr>
+        <tr><td class="num">202</td><td class="strong">Flowers Inside I / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">flowers-inside-i-canvas</td></tr>
+        <tr><td class="num">203</td><td class="strong">Flowers Inside I / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">flowers-inside-i-wall-hanging</td></tr>
+        <tr><td class="num">204</td><td class="strong">Flowers Inside II / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_flowers_inside/2019-05-27%2011.37.12.jpg" target="_blank">2019-05-27 11.37.12.jpg · 6016×4016</a> — ⚑ confirm best hero</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">flowers-inside-ii-print</td></tr>
+        <tr><td class="num">205</td><td class="strong">Flowers Inside II / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">flowers-inside-ii-poster</td></tr>
+        <tr><td class="num">206</td><td class="strong">Flowers Inside II / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">flowers-inside-ii-framed</td></tr>
+        <tr><td class="num">207</td><td class="strong">Flowers Inside II / Canvas</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">flowers-inside-ii-canvas</td></tr>
+        <tr><td class="num">208</td><td class="strong">Flowers Inside II / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">flowers-inside-ii-wall-hanging</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C19 YELLOW GARDEN -->
+    <div id="c19" class="coll-header"><h3>Collection 19 — Stine Foto: Yellow Garden</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_yellow_garden_flowers_linen/" target="_blank">_KUNST/Stine foto/_photo_yellow_garden_flowers_linen/</a> · 5 DSC files (Canon DSLR) · Grade A · 10 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">209</td><td class="strong">Yellow Garden I / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_yellow_garden_flowers_linen/_DSC0318.JPG" target="_blank">_DSC0318.JPG · Canon DSLR, A-grade</a></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">yellow-garden-i-print</td></tr>
+        <tr><td class="num">210</td><td class="strong">Yellow Garden I / Poster</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">yellow-garden-i-poster</td></tr>
+        <tr><td class="num">211</td><td class="strong">Yellow Garden I / Framed</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">yellow-garden-i-framed</td></tr>
+        <tr><td class="num">212</td><td class="strong">Yellow Garden I / Canvas</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">yellow-garden-i-canvas</td></tr>
+        <tr><td class="num">213</td><td class="strong">Yellow Garden I / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">yellow-garden-i-wall-hanging</td></tr>
+        <tr><td class="num">214</td><td class="strong">Yellow Garden II / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/STINE%20FOTO/_photo_yellow_garden_flowers_linen/_DSC0320.JPG" target="_blank">_DSC0320.JPG · Canon DSLR, A-grade</a></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">yellow-garden-ii-print</td></tr>
+        <tr><td class="num">215</td><td class="strong">Yellow Garden II / Poster</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">yellow-garden-ii-poster</td></tr>
+        <tr><td class="num">216</td><td class="strong">Yellow Garden II / Framed</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">yellow-garden-ii-framed</td></tr>
+        <tr><td class="num">217</td><td class="strong">Yellow Garden II / Canvas</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">yellow-garden-ii-canvas</td></tr>
+        <tr><td class="num">218</td><td class="strong">Yellow Garden II / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">yellow-garden-ii-wall-hanging</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C20 ART PHOTO EXTENDED -->
+    <div id="c20" class="coll-header"><h3>Collection 20 — Art Photography Extended</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/" target="_blank">_KUNST/Studio/print ready/Art photo/</a> · 6 photos, all 3024–4032px · Grade B · 24 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">219</td><td class="strong">Strong Floral / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Strongfloral-1.jpeg" target="_blank">Strongfloral-1.jpeg · 3024×4032</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">strong-floral-print</td></tr>
+        <tr><td class="num">220</td><td class="strong">Strong Floral / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">strong-floral-poster</td></tr>
+        <tr><td class="num">221</td><td class="strong">Strong Floral / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">strong-floral-framed</td></tr>
+        <tr><td class="num">222</td><td class="strong">Strong Floral / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">strong-floral-wall-hanging</td></tr>
+        <tr><td class="num">223</td><td class="strong">February Light / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Fil%2026.02.2023%2018.16.13.jpeg" target="_blank">Fil 26.02.2023 18.16.13.jpeg · 3024×4032</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">february-light-print</td></tr>
+        <tr><td class="num">224</td><td class="strong">February Light / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">february-light-poster</td></tr>
+        <tr><td class="num">225</td><td class="strong">February Light / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">february-light-framed</td></tr>
+        <tr><td class="num">226</td><td class="strong">February Light / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">february-light-wall-hanging</td></tr>
+        <tr><td class="num">227</td><td class="strong">October Botanica I / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Fil%2027.10.2023%2020.59.05.jpeg" target="_blank">Fil 27.10.2023 20.59.05.jpeg · 4032×3024</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">october-botanica-i-print</td></tr>
+        <tr><td class="num">228</td><td class="strong">October Botanica I / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">october-botanica-i-poster</td></tr>
+        <tr><td class="num">229</td><td class="strong">October Botanica I / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">october-botanica-i-framed</td></tr>
+        <tr><td class="num">230</td><td class="strong">October Botanica I / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">october-botanica-i-wall-hanging</td></tr>
+        <tr><td class="num">231</td><td class="strong">October Botanica II / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Fil%2027.10.2023%2020.59.17.jpeg" target="_blank">Fil 27.10.2023 20.59.17.jpeg · 4032×3024</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">october-botanica-ii-print</td></tr>
+        <tr><td class="num">232</td><td class="strong">October Botanica II / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">october-botanica-ii-poster</td></tr>
+        <tr><td class="num">233</td><td class="strong">October Botanica II / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">october-botanica-ii-framed</td></tr>
+        <tr><td class="num">234</td><td class="strong">October Botanica II / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">october-botanica-ii-wall-hanging</td></tr>
+        <tr><td class="num">235</td><td class="strong">October Botanica III / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Fil%2027.10.2023%2020.59.33.jpeg" target="_blank">Fil 27.10.2023 20.59.33.jpeg · 4032×3024</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">october-botanica-iii-print</td></tr>
+        <tr><td class="num">236</td><td class="strong">October Botanica III / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">october-botanica-iii-poster</td></tr>
+        <tr><td class="num">237</td><td class="strong">October Botanica III / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">october-botanica-iii-framed</td></tr>
+        <tr><td class="num">238</td><td class="strong">October Botanica III / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">october-botanica-iii-wall-hanging</td></tr>
+        <tr><td class="num">239</td><td class="strong">June Botanica / Art Print</td><td class="note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Fil%2021.06.2023%2017.52.40.jpeg" target="_blank">Fil 21.06.2023 17.52.40.jpeg · 4032×3024</a></td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">june-botanica-print</td></tr>
+        <tr><td class="num">240</td><td class="strong">June Botanica / Poster</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">june-botanica-poster</td></tr>
+        <tr><td class="num">241</td><td class="strong">June Botanica / Framed</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">june-botanica-framed</td></tr>
+        <tr><td class="num">242</td><td class="strong">June Botanica / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-b">B</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">june-botanica-wall-hanging</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C21 MASKS TRIO -->
+    <div id="c21" class="coll-header"><h3>Collection 21 — Masks Trio</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/masks_trio_blue-green-pink.png" target="_blank">_KUNST/WEBSITE ASSETS/_X_ordbutikken/masks_trio_blue-green-pink.png</a> · 8278×3400px · Grade A · 5 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">243</td><td class="strong">Masks Trio / Poster</td><td class="note">masks_trio_blue-green-pink.png · 8278×3400</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">masks-trio-poster</td></tr>
+        <tr><td class="num">244</td><td class="strong">Masks Trio / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">masks-trio-wall-hanging</td></tr>
+        <tr><td class="num">245</td><td class="strong">Masks Trio / Canvas</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">masks-trio-canvas</td></tr>
+        <tr><td class="num">246</td><td class="strong">Masks Trio / Mug</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">masks-trio-mug</td></tr>
+        <tr><td class="num">247</td><td class="strong">Masks Trio / Tote</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">masks-trio-tote</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C22 GREEK SEA CREATURES -->
+    <div id="c22" class="coll-header"><h3>Collection 22 — Greek Sea Creatures Pattern</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/Pattern%20repeats/Greek_sea_creatures-bluewhite.png" target="_blank">_KUNST/Studio/Pattern repeats/Greek_sea_creatures-bluewhite.png</a> · 4724×4724px · Grade A · 5 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">248</td><td class="strong">Greek Sea Creatures / Poster</td><td class="note">Greek_sea_creatures-bluewhite.png · 4724×4724</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">greek-sea-creatures-poster</td></tr>
+        <tr><td class="num">249</td><td class="strong">Greek Sea Creatures / Canvas</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">greek-sea-creatures-canvas</td></tr>
+        <tr><td class="num">250</td><td class="strong">Greek Sea Creatures / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">greek-sea-creatures-wall-hanging</td></tr>
+        <tr><td class="num">251</td><td class="strong">Greek Sea Creatures / Mug</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">greek-sea-creatures-mug</td></tr>
+        <tr><td class="num">252</td><td class="strong">Greek Sea Creatures / Tote</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">greek-sea-creatures-tote</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C23 MOSS PATTERN -->
+    <div id="c23" class="coll-header"><h3>Collection 23 — Moss Pattern</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/Pattern%20repeats/Moss%20Pattern%20original.png" target="_blank">_KUNST/Studio/Pattern repeats/Moss Pattern original.png</a> · 12171×8000px · Grade A — exceptional resolution · 5 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">253</td><td class="strong">Moss Pattern / Poster</td><td class="note">Moss Pattern original.png · 12171×8000 — exceptional</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">moss-pattern-poster</td></tr>
+        <tr><td class="num">254</td><td class="strong">Moss Pattern / Wall Hanging</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-whg">WHG</span></td><td class="mono">moss-pattern-wall-hanging</td></tr>
+        <tr><td class="num">255</td><td class="strong">Moss Pattern / Canvas</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">moss-pattern-canvas</td></tr>
+        <tr><td class="num">256</td><td class="strong">Moss Pattern / Mug</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">moss-pattern-mug</td></tr>
+        <tr><td class="num">257</td><td class="strong">Moss Pattern / Tote</td><td class="note">Same</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">moss-pattern-tote</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C24 BODHI TREE -->
+    <div id="c24" class="coll-header"><h3>Collection 24 — Bodhi Tree Woodcut</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Studio/Art%20projects/bodhitreeswoodcut_stineflamant.svg" target="_blank">_KUNST/Studio/Art projects/bodhitreeswoodcut_stineflamant.svg</a> · SVG (17MB vector) · Grade C · 4 products</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source File</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">258</td><td class="strong">Bodhi Tree / Art Print</td><td class="note">bodhitreeswoodcut_stineflamant.svg · SVG vector</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">bodhi-tree-print</td></tr>
+        <tr><td class="num">259</td><td class="strong">Bodhi Tree / Poster</td><td class="note">Same</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">bodhi-tree-poster</td></tr>
+        <tr><td class="num">260</td><td class="strong">Bodhi Tree / Mug</td><td class="note">Same</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-mug">MUG</span></td><td class="mono">bodhi-tree-mug</td></tr>
+        <tr><td class="num">261</td><td class="strong">Bodhi Tree / Tote</td><td class="note">Same</td><td><span class="tag tag-c">C</span></td><td><span class="fmt fmt-tot">TOT</span></td><td class="mono">bodhi-tree-tote</td></tr>
+      </tbody>
+    </table>
+
+    <!-- C25 ARCHIVE BEST-OF -->
+    <div id="c25" class="coll-header"><h3>Collection 25 — Archive Best-of</h3><span class="coll-note"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Collection%20ARCHIVES/ArkivV%C3%A6rker/" target="_blank">_KUNST/Collection ARCHIVES/ArkivVærker/</a> · All DID-A files confirmed 3936×2624px · Grade A (NEF-sourced scans) · 24 products · ⚑ titles need confirmation</span></div>
+    <table class="coll">
+      <thead><tr><th>#</th><th>Product Name</th><th>Source (DID)</th><th>Quality</th><th>Format</th><th>Handle</th></tr></thead>
+      <tbody>
+        <tr><td class="num">262</td><td class="strong">Archive Work 01 / Art Print</td><td class="mono"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Collection%20ARCHIVES/ArkivV%C3%A6rker/DID-A-001_29x21.png" target="_blank">DID-A-001 · 29×21cm · 3936×2624px</a></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">archive-01-print</td></tr>
+        <tr><td class="num">263</td><td class="strong">Archive Work 01 / Poster</td><td class="mono">DID-A-001</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">archive-01-poster</td></tr>
+        <tr><td class="num">264</td><td class="strong">Archive Work 01 / Framed</td><td class="mono">DID-A-001</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">archive-01-framed</td></tr>
+        <tr><td class="num">265</td><td class="strong">Archive Work 01 / Canvas</td><td class="mono">DID-A-001</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">archive-01-canvas</td></tr>
+        <tr><td class="num">266</td><td class="strong">Archive Work 02 / Art Print</td><td class="mono"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Collection%20ARCHIVES/ArkivV%C3%A6rker/DID-A-002_18x20.png" target="_blank">DID-A-002 · 18×20cm · 3936×2624px</a></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">archive-02-print</td></tr>
+        <tr><td class="num">267</td><td class="strong">Archive Work 02 / Poster</td><td class="mono">DID-A-002</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">archive-02-poster</td></tr>
+        <tr><td class="num">268</td><td class="strong">Archive Work 02 / Framed</td><td class="mono">DID-A-002</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">archive-02-framed</td></tr>
+        <tr><td class="num">269</td><td class="strong">Archive Work 02 / Canvas</td><td class="mono">DID-A-002</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">archive-02-canvas</td></tr>
+        <tr><td class="num">270</td><td class="strong">Archive Work 03 / Art Print</td><td class="mono"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Collection%20ARCHIVES/ArkivV%C3%A6rker/DID-A-003_16x20.png" target="_blank">DID-A-003 · 16×20cm · 3936×2624px</a></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">archive-03-print</td></tr>
+        <tr><td class="num">271</td><td class="strong">Archive Work 03 / Poster</td><td class="mono">DID-A-003</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">archive-03-poster</td></tr>
+        <tr><td class="num">272</td><td class="strong">Archive Work 03 / Framed</td><td class="mono">DID-A-003</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">archive-03-framed</td></tr>
+        <tr><td class="num">273</td><td class="strong">Archive Work 03 / Canvas</td><td class="mono">DID-A-003</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">archive-03-canvas</td></tr>
+        <tr><td class="num">274</td><td class="strong">Archive Work 04 / Art Print</td><td class="mono"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Collection%20ARCHIVES/ArkivV%C3%A6rker/DID-A-004_17x22.png" target="_blank">DID-A-004 · 17×22cm · 3936×2624px</a></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">archive-04-print</td></tr>
+        <tr><td class="num">275</td><td class="strong">Archive Work 04 / Poster</td><td class="mono">DID-A-004</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">archive-04-poster</td></tr>
+        <tr><td class="num">276</td><td class="strong">Archive Work 04 / Framed</td><td class="mono">DID-A-004</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">archive-04-framed</td></tr>
+        <tr><td class="num">277</td><td class="strong">Archive Work 04 / Canvas</td><td class="mono">DID-A-004</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">archive-04-canvas</td></tr>
+        <tr><td class="num">278</td><td class="strong">Archive Work 05 / Art Print</td><td class="mono"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Collection%20ARCHIVES/ArkivV%C3%A6rker/DID-A-005_26x33.png" target="_blank">DID-A-005 · 26×33cm · 3936×2624px</a></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">archive-05-print</td></tr>
+        <tr><td class="num">279</td><td class="strong">Archive Work 05 / Poster</td><td class="mono">DID-A-005</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">archive-05-poster</td></tr>
+        <tr><td class="num">280</td><td class="strong">Archive Work 05 / Framed</td><td class="mono">DID-A-005</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">archive-05-framed</td></tr>
+        <tr><td class="num">281</td><td class="strong">Archive Work 05 / Canvas</td><td class="mono">DID-A-005</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">archive-05-canvas</td></tr>
+        <tr><td class="num">282</td><td class="strong">Archive Work 06 / Art Print</td><td class="mono"><a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_KUNST/Collection%20ARCHIVES/ArkivV%C3%A6rker/DID-A-006_22x26.png" target="_blank">DID-A-006 · 22×26cm · 3936×2624px</a></td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pa4">P-A4</span></td><td class="mono">archive-06-print</td></tr>
+        <tr><td class="num">283</td><td class="strong">Archive Work 06 / Poster</td><td class="mono">DID-A-006</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-pst">PST</span></td><td class="mono">archive-06-poster</td></tr>
+        <tr><td class="num">284</td><td class="strong">Archive Work 06 / Framed</td><td class="mono">DID-A-006</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-frm">FRM</span></td><td class="mono">archive-06-framed</td></tr>
+        <tr><td class="num">285</td><td class="strong">Archive Work 06 / Canvas</td><td class="mono">DID-A-006</td><td><span class="tag tag-a">A</span></td><td><span class="fmt fmt-cnv">CNV</span></td><td class="mono">archive-06-canvas</td></tr>
+      </tbody>
+    </table>
+
+    <!-- HOLD -->
+    <div class="card" style="border-color: #e8c9a0; background: #fffbf5; margin-top:20px;">
+      <div class="card-title" style="color: var(--orange);">On Hold — Excluded from Launch</div>
+      <div class="card-body">
+        <p><strong>DID-P-006 vaginals</strong> — ✓ Confirmed for sale. Will be added to Paintings collection (C5) at seeding time.</p>
+        <p><strong>DID-P-016 seb-livingroom</strong> — Personal item, not for sale. Reserved as potential lifestyle imagery ("art in our home" section).</p>
+        <p><strong>DID-PH-013 smørrebrød, DID-PH-015 office-shot, DID-PH-016 purple-flower</strong> — Domestic photos, likely not commercial product material. Pending D-2 confirmation.</p>
+        <p><strong>DID-M-001 to DID-M-007 (Mixed)</strong> — 3D objects; flat print viability unclear without visual inspection.</p>
+        <p><strong>DID-A-007 to DID-A-022 (Archive remainder)</strong> — C25 includes works 01–06 (confirmed A-grade). Works 07–22 are the same spec and can be added as a second launch batch once titles are confirmed.</p>
+        <p><strong>Pattern repeats with date filenames</strong> — Files like <code>2021-10-30 10.59.01-1.png</code> (5906×5906px) are unnamed. Monsters pattern and others need visual ID before product names can be assigned. Pending Q-21.</p>
+        <p><strong>_photo_dead_bat</strong> — 19 photos, 6016×4016px. Beautiful composition but niche subject. Holding pending Sebastian's aesthetic call.</p>
+        <p><strong>_photo_snake</strong> — 6 NEF files. Bold image, potentially strong poster. Holding pending call.</p>
+        <p><strong>_photo_johanne_tatoo_mask</strong> — Personal photos of Johanne. Not for shop without explicit consent.</p>
+        <p><strong>Colourrain painting (2023)</strong> — <a href="file:///Users/flamant-mini/Library/CloudStorage/Dropbox/_STINE/dayindayin.dk/Grafisk%20design/Colourrain_stinewflamant2023_painting-1.jpeg" target="_blank">Colourrain_stinewflamant2023_painting-1.jpeg</a> is only 769×1024px. Needs higher-res version to be print-ready.</p>
+        <p><strong>_STINE/Design Form SVGs (Form 2–12)</strong> — 8 large SVG files (complex vector works). Need visual check before assigning product names. High potential if the artwork is strong.</p>
+        <p><strong>Soft City (C17)</strong> — Included provisionally, pending Q-22 confirmation that this is Stine's intended art series for sale.</p>
+        <p><strong>DI broderigarn produktfotos</strong> — Product shots of embroidery yarn. Not artwork — these are lifestyle/marketing assets, not products.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTONOMOUS PIPELINE -->
+  <div id="pipeline" class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Autonomous Operation Process</span>
+      <span class="section-sub">What must be true before agents can run uninterrupted</span>
+    </div>
+
+    <h3 style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:12px;">7 Gates — All Must Be Open Before Full Pipeline Runs</h3>
+
+    <div class="gate" style="opacity:0.5;"><span class="gate-id" style="background:var(--green);">✓ GATE-1</span><div class="gate-body"><s><strong>SHOPIFY_STORE_DOMAIN</strong> set in .env.local</s> — <strong style="color:var(--green);">dayindayin.myshopify.com</strong></div><span class="gate-dep">done</span></div>
+    <div class="gate" style="opacity:0.5;"><span class="gate-id" style="background:var(--green);">✓ GATE-2</span><div class="gate-body"><s><strong>SHOPIFY_STOREFRONT_TOKEN</strong> set</s> — <strong style="color:var(--green);">set in .env.local · add to Vercel</strong></div><span class="gate-dep">done</span></div>
+    <div class="gate" style="opacity:0.5;"><span class="gate-id" style="background:var(--green);">✓ GATE-3</span><div class="gate-body"><s><strong>SHOPIFY_ADMIN_TOKEN</strong> set</s> — <strong style="color:var(--green);">set in .env.local · add to Vercel · rotates every 24h</strong></div><span class="gate-dep">done</span></div>
+    <div class="gate" style="opacity:0.5;"><span class="gate-id" style="background:var(--green);">✓ GATE-4</span><div class="gate-body"><s><strong>Gelato app connected</strong> to dayindayin Shopify store</s> — <strong style="color:var(--green);">storeId: 51ee1b39-75e6-4c19-af02-cfd7cb771a4a · template 6005fae3 · 7 products seeded</strong></div><span class="gate-dep">done</span></div>
+    <div class="gate"><span class="gate-id">GATE-5</span><div class="gate-body"><strong>CONTACT_EMAIL_TO</strong> filled with Stine's actual email</div><span class="gate-dep">→ H-6</span></div>
+    <div class="gate"><span class="gate-id">GATE-6</span><div class="gate-body"><strong>Artwork exclusions confirmed</strong> — D-2 through D-5 decisions made</div><span class="gate-dep">→ Q-8 ✓, Q-9 ✓</span></div>
+    <div class="gate"><span class="gate-id">GATE-7</span><div class="gate-body"><strong>Upscaling strategy confirmed</strong> — accept Grade D limits or run Real-ESRGAN</div><span class="gate-dep">→ Q-7</span></div>
+
+    <hr>
+
+    <h3 style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:12px; margin-top:24px;">Pipeline Sequence (once gates are open)</h3>
+    <p style="color:var(--muted); margin-bottom:16px; font-size:12px;">Steps 1–4 can start NOW — no gates required. Steps 5–11 require gates as shown.</p>
+
+    <div class="pipeline-step">
+      <div class="step-num">1</div>
+      <div class="step-body"><h4>Build shop pages + CartContext + Nav</h4><p>Port Shopify lib from mikofu, build /shop, /shop/[handle], /cart. CSS modules matching dayindayin aesthetic. Works with placeholder data.</p><p class="dep">No gates required — start now</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">2</div>
+      <div class="step-body"><h4>Build product catalog + Gelato map + seed script</h4><p>lib/artworks/catalog.ts from the 285-SKU list above. lib/gelato/products.ts with proven UIDs from mikofu. Seed script structure — waits for GATE-1 to execute.</p><p class="dep">No gates required to build — GATE-1 to execute</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">3</div>
+      <div class="step-body"><h4>Generate product descriptions — Claude Haiku batch</h4><p>Cached system prompt (Stine's outsider artist voice). Per-SKU user message with title, category, year, format. Output: JSON map {handle → {description, metaDescription, altText}}.</p><p class="dep">No gates required — start now</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">4</div>
+      <div class="step-body"><h4>File dimension audit script</h4><p>Reads all Dropbox artwork files, checks pixel dimensions. Outputs report: which files are Grade A/B/C/D/E confirmed. Flags Grade D for upscaling decision.</p><p class="dep">No gates required — start now</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">5</div>
+      <div class="step-body"><h4>AI upscale Grade D files (if Q-7 confirmed)</h4><p>Real-ESRGAN via CLI — free, local, ~5 min per image. Batch all D-grade web PNGs from Dropbox. Outputs 4× upscaled versions (~6000×4000px) to staging folder.</p><p class="dep">GATE-7 required</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">6</div>
+      <div class="step-body"><h4>Upload design files to Gelato API</h4><p>For each artwork: read best available file from Dropbox, POST to Gelato upload endpoint, store returned file ID in JSON map. This entire step is automated via API — no manual Gelato Studio touch needed.</p><p class="dep">GATE-4 required</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">7</div>
+      <div class="step-body"><h4>Run Shopify seed script</h4><p>Creates all 285 Shopify products. Sets title, vendor, product type, tags, metafields, price, images. Creates collections. Idempotent — safe to re-run.</p><p class="dep">GATES 1, 3, 5, 6 required</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">8</div>
+      <div class="step-body"><h4>Link Gelato products to Shopify variants</h4><p>POST to Gelato /v3/stores/{storeId}/products for each SKU. Links Shopify variant ID + Gelato productUid + Gelato fileId. Verify by GET from Gelato.</p><p class="dep">Steps 6 + 7 must complete first</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">9</div>
+      <div class="step-body"><h4>Apply descriptions to Shopify products</h4><p>PATCH each product via Admin API with Claude-generated HTML description from Step 3.</p><p class="dep">Steps 3 + 7 must complete first</p></div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">10</div>
+      <div class="step-body"><h4>Deploy to Vercel</h4><p>git push dev → verify preview URL → all shop pages render → merge to main → production deploy. Playwright tests must pass first.</p><p class="dep">GATE-7 (Vercel env vars) required</p></div>
+    </div>
+    <div class="pipeline-step" style="margin-bottom:0;">
+      <div class="step-num">11</div>
+      <div class="step-body"><h4>Verify live + hand off</h4><p>Open shop, confirm 285 products visible, add to cart, confirm checkout redirect, confirm cdn.shopify.com images load. Log in shop-decisions.md. Flag for human review: place a test order.</p><p class="dep">Sebastian places test order (149 DKK A4 print)</p></div>
+    </div>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div id="questions" class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">Questions for Sebastian</span>
+      <span class="section-sub">22 questions — nothing proceeds to production without answers to Q-1 through Q-7</span>
+    </div>
+
+    <p style="color:var(--muted); margin-bottom:20px; font-size:13px;"><strong>Hard blockers</strong> (Q-1 to Q-7): no Shopify products, no Gelato upload, no deploy until answered. <strong>Soft decisions</strong> (Q-8 onwards): affect the catalog but don't block the code build. Q-21 and Q-22 are new additions from the expanded 285-SKU discovery sweep.</p>
+
+    <div class="question answered">
+      <div class="question-num">Q-1</div>
+      <div class="question-body">
+        <h4>Shopify plan — Basic ($29/month)?</h4>
+        <p>Shopify Starter ($5) can't install third-party apps like Gelato. Basic ($29) is required. Ready to proceed on Basic?</p>
+        <p class="blocker">Hard blocker — H-1 can't start without this</p>
+        <div class="ans">✓ YES — Basic plan</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-2</div>
+      <div class="question-body">
+        <h4>Does a dayindayin Shopify store already exist?</h4>
+        <p>If you've already created <code>dayindayin.myshopify.com</code> at any point, we reuse it. If not, create fresh.</p>
+        <p class="blocker">Hard blocker</p>
+        <div class="ans">✓ No dayindayin store exists yet — but you already have a Shopify account (Mikofu). Add dayindayin as a second store under the same account. Same login, separate store, separate $29/mo plan. No new account needed.</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-3</div>
+      <div class="question-body">
+        <h4>What is Stine's email address for orders and contact?</h4>
+        <p><code>CONTACT_EMAIL_TO</code> in .env is still <code>REPLACE_WITH_STINES_EMAIL</code>. All contact form replies and any order-related routing go here.</p>
+        <p class="blocker">Hard blocker for GATE-5</p>
+        <div class="ans">✓ sebastianhflamant@gmail.com — swap to flamant.dk once Google Workspace is live</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-4</div>
+      <div class="question-body">
+        <h4>Store display name on Shopify checkout and receipts?</h4>
+        <p>Options: "Day In Day In" / "dayindayin" / "Stine Weirsøe Flamant" / "Day In Day In by Stine Weirsøe Flamant". This appears on the hosted checkout page and order confirmation emails.</p>
+        <div class="ans">✓ "Day In Day In" — clean, matches domain</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-5</div>
+      <div class="question-body">
+        <h4>Store currency — DKK?</h4>
+        <p>All prices in the plan are DKK. Shopify Payments pays out in DKK. EU audience. Confirm DKK as the store currency.</p>
+        <div class="ans">✓ DKK confirmed</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-6</div>
+      <div class="question-body">
+        <h4>Shopify Payments — set up now or later?</h4>
+        <p>Shopify Payments eliminates the 2% transaction fee and requires a Danish bank account + Flamant Tekst &amp; Design CVR. Without it, every sale costs 2% extra. Set up now (30 min), or launch first and add later?</p>
+        <p class="rec">Recommendation: set up now. The 2% fee adds up fast even at low volume.</p>
+        <div class="ans">✓ Set up now — Step 2 in your task list above (KYC, Flamant CVR, Danish bank)</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-7</div>
+      <div class="question-body">
+        <h4>Upscaling strategy for Grade D artworks (web PNG 1500×1000px)?</h4>
+        <p><strong>Option A:</strong> Skip all Grade D artworks — only sell what's already print-quality. Simpler launch, fewer SKUs (~80 instead of 128).</p>
+        <p><strong>Option B:</strong> AI upscale with Real-ESRGAN locally — free, runs on this Mac, ~5 min per image, excellent quality. Agents can script the batch. Adds 1–2 hours of processing time.</p>
+        <p><strong>Option C:</strong> Launch Grade D as mug/tote only (1500×1000 is marginal but passable for mug wrap at 8.5"×3.7"). Skip D artworks for all print formats.</p>
+        <p class="rec">Recommendation: Option B. One script, one session, unlocks 40+ additional products.</p>
+        <p class="blocker">Hard blocker for GATE-7</p>
+        <div class="ans">✓ Option B — AI upscale with Real-ESRGAN</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-8</div>
+      <div class="question-body">
+        <h4>DID-P-006 vaginals — what is it, and is it for sale?</h4>
+        <p>The DID folder name suggests the title or subject of this painting. Need to open the folder and confirm. If it's Stine's work and she wants it sold, it goes in. If sensitive or not intended for the shop, it stays out.</p>
+        <p>Path: <code>~/Dropbox/_KUNST/COLLECTION CURRENT/Paintings/DID-P-006_vaginals/</code></p>
+        <div class="ans">✓ Include — confirmed for sale</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-9</div>
+      <div class="question-body">
+        <h4>DID-P-016 seb-livingroom — is this Stine's artwork, and is it for sale?</h4>
+        <p>Could be a painting of Sebastian's living room, or a photo used as reference. Confirm whether this belongs in the shop.</p>
+        <div class="ans">✓ Not for sale. Personal item. Could be used as lifestyle imagery on an "art in our home" page/section — not a product.</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-10</div>
+      <div class="question-body">
+        <h4>Shero Patch (8500×4981px) — trigger Dropbox sync?</h4>
+        <p>The highest-res asset in the entire archive is cloud-only. It needs to sync locally before Gelato upload. Should I wait for it to sync, or hold the SHERO collection from the launch batch and add it separately?</p>
+        <div class="ans">✓ RESOLVED — shero_patch_pink-blue_8500x5000.png is already synced locally (found in WEBSITE ASSETS/_X_ordbutikken/)</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-11</div>
+      <div class="question-body">
+        <h4>Archive artworks — confirmed A-grade, included in C25 (works 01–06). Expand to all 22?</h4>
+        <p>All 22 DID-A PNG scans confirmed at 3936×2624px (Grade A — NEF-sourced). Works 01–06 are in Collection 25. Works 07–22 are identical in quality and can be added as a second batch. The only blocker is visual title confirmation — DID codes tell you the physical dimensions (DID-A-001_29x21.png = 29×21cm work) but not the subject or name of each piece.</p>
+        <p class="rec">Recommendation: include all 22 eventually. Run 01–06 at launch, add 07–22 in the first update after visual review.</p>
+        <div class="ans">✓ Include all 22 — 01–06 at launch, 07–22 added post-launch after visual title review</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-12</div>
+      <div class="question-body">
+        <h4>Kids / Elephant collection — intended buyer and confirm inclusion?</h4>
+        <p>4 elephant illustrations in 4 colorways from <code>_STINE/Design/</code>. Clearly kids-oriented. Were these designed for a specific project or are they Stine's art for general sale? Confirm whether they belong in the dayindayin shop.</p>
+        <div class="ans">✓ Include — confirmed for sale</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-13</div>
+      <div class="question-body">
+        <h4>Shipping, returns, and practical info — update existing /practical page or new /shop/info page?</h4>
+        <p>Customers need to know: Gelato EU fulfillment (3–7 business days), no returns on PoD unless defective, no customs fees for EU buyers. The site already has a /practical page. Update it, or separate shop info page?</p>
+        <div class="ans">✓ Update existing /practical page — agent adds Gelato section. Ship to EU + UK + Norway at launch; US/rest of world after first sales.</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-14</div>
+      <div class="question-body">
+        <h4>BYOB / Shop of Words text graphics — confirm they're Stine's originals and cleared for sale?</h4>
+        <p>BEAUTY, MY SAKE, REAL EYES, OBLIGATORY BEAUTY — these appear to be Stine's original text/graphic designs from the Shop of Words project. Confirm there are no copyright concerns or personal reasons to hold any of them.</p>
+        <div class="ans">✓ English descriptions, Danish titles stay as-is ("Fuck Alting", "Elsk" etc. are the actual names)</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-15</div>
+      <div class="question-body">
+        <h4>DU UND (DID-T-039) and HEJ (DID-T-041) — include?</h4>
+        <p>"Du und" is German for "You and." "Hej" is Danish for "Hi." Both are tufted text pieces. The titles work internationally. Currently in the hold list but can easily be added — just need web PNG upscaling (Grade D). Include?</p>
+        <div class="ans">✓ Yes — include both. Batch upscale with Q-7 Real-ESRGAN run</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-16</div>
+      <div class="question-body">
+        <h4>Is there overlap concern between dayindayin and Mikofu?</h4>
+        <p>The product-candidates.html was originally built for using Stine's artwork in Mikofu. Now it's being used for dayindayin instead. Should the same artwork ever appear in Mikofu too? Or is Stine's art exclusively dayindayin, while Mikofu stays Japandi/dropship?</p>
+        <div class="ans">✓ Stine's art exclusively dayindayin — Mikofu stays Japandi/dropship only. No overlap.</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-17</div>
+      <div class="question-body">
+        <h4>Which 5–8 products on the dayindayin homepage as featured?</h4>
+        <p>The homepage shop section shows server-side featured products. If you don't specify, agent will auto-select based on: Grade A quality first, visual variety (mix of prints, mugs, patterns), and collection breadth. Confirm or override.</p>
+        <p class="rec">Suggested auto-selection: Purple Sun print, God Cancelled poster, Neko Paw mug, Tufted Mask canvas, Kaninskoven tote, Elsk print, Shero Patch poster.</p>
+        <div class="ans">✓ Agent drafts, Sebastian reviews before publish — copyright for Stine's art is the key section</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-18</div>
+      <div class="question-body">
+        <h4>Confirm pricing?</h4>
+        <p>All prices include 25% Danish MOMS (VAT).</p>
+        <table style="margin-top:10px; width:auto;">
+          <thead><tr><th>Format</th><th>Price DKK</th><th>Cost DKK</th><th>Margin</th></tr></thead>
+          <tbody>
+            <tr><td>A4 Fine Art Print</td><td class="price">149</td><td class="note">26</td><td class="time">82%</td></tr>
+            <tr><td>Poster 30×45cm</td><td class="price">299</td><td class="note">61</td><td class="time">80%</td></tr>
+            <tr><td>Canvas 30×40cm</td><td class="price">495</td><td class="note">116</td><td class="time">77%</td></tr>
+            <tr><td>Framed Print 30×40cm</td><td class="price">695</td><td class="note">225</td><td class="time">68%</td></tr>
+            <tr><td>Wall Hanging 70×100cm</td><td class="price">895</td><td class="note">253</td><td class="time">72%</td></tr>
+            <tr><td>Ceramic Mug 11oz</td><td class="price">199</td><td class="note">46</td><td class="time">77%</td></tr>
+            <tr><td>Tote Bag</td><td class="price">299</td><td class="note">90</td><td class="time">70%</td></tr>
+          </tbody>
+        </table>
+        <div class="ans">✓ Pricing confirmed — keep as-is</div>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-19</div>
+      <div class="question-body">
+        <h4>Create Linear tickets FLA-93 through FLA-102 for shop launch phases?</h4>
+        <p>Agent can create these via Linear MCP if you want formal tracking. Or we manage in CLAUDE.md only. Your call.</p>
+        <div class="ans">✓ Yes — agent creates FLA-93+ via Linear MCP once build starts</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="question-num">Q-20</div>
+      <div class="question-body">
+        <h4>Start the code build now (before questions are answered)?</h4>
+        <p>Steps 1–4 of the pipeline have no gate dependencies — shop pages, CartContext, Shopify lib port, product catalog structure, and copy generation can all start immediately using placeholder data. The scripts and Gelato connections wait for the gates.</p>
+        <p class="rec">Recommendation: yes, start steps 1–4 now. Answer Q-1 through Q-7 in parallel. By the time the code is built, the gates will be open.</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="question">
+      <div class="question-num">Q-21</div>
+      <div class="question-body">
+        <h4>Photography hero shot selection — for C13–C19, confirm one hero per series</h4>
+        <p>For Collections 13–19 (the Stine Foto series), the plan suggests specific filenames as heroes but you need to visually pick the strongest shot from each folder. The folders are large (62–217 shots each) — open the folder link in each collection header and pick the shot you want as the primary product image.</p>
+        <p>Critical for: Earth Moss (93 shots), Forest Light (91 shots), Lava Flowers (62 shots), Flowers Inside (37 shots). Stormy Skies and Yellow Garden have only 2 and 5 shots — those are self-selecting.</p>
+        <p class="rec">Recommendation: do this as a 20-minute visual review session before the seeding script runs. Agent can rename/update the catalog.ts once you've confirmed the filenames.</p>
+      </div>
+    </div>
+
+    <div class="question answered">
+      <div class="question-num">Q-22</div>
+      <div class="question-body">
+        <h4>Soft City series — intended for sale?</h4>
+        <p>The 16 photos in <code>_STINE/dayindayin.dk/softcity_original/</code> are 3264×2448px JPEGs stored in Stine's dayindayin.dk folder, suggesting she considered them part of the site at some point. They appear to be an urban photography series. They're in Collection 17 provisionally.</p>
+        <p>Confirm: is this Stine's intentional artistic series she wants to sell as prints? Or are these reference/personal photos that shouldn't go in the shop?</p>
+        <p class="blocker">Soft blocker — if no, remove C17 (−15 SKUs, drops to 270 total)</p>
+        <div class="ans">✓ YES — Stine stored these in dayindayin.dk folder. Intentional series. Include.</div>
+      </div>
+    </div>
+
+  <p style="color:var(--muted); font-size:11px; margin-top:48px; padding-top:16px; border-top:1px solid var(--border);">Updated May 2026 · 285 SKUs across 25 collections · Flamant agents · dayindayin-site/shop-launch-plan.html</p>
+
+</div>
+</body>
+</html>

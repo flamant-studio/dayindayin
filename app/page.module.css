@@ -2,24 +2,31 @@
 
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 88vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
 }
 
-.heroBg {
+.heroMedia {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--c-surface) 0%, #E8D5C4 40%, #D5C4C8 100%);
   z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+  z-index: 1;
 }
 
 .heroContent {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding: var(--sp-16) var(--sp-8) var(--sp-12);
   max-width: 720px;
+  color: var(--c-white);
 }
 
 .heroLabel {
@@ -28,7 +35,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--c-muted);
+  color: rgba(255, 255, 255, 0.65);
   margin-bottom: var(--sp-4);
 }
 
@@ -38,14 +45,15 @@
   font-size: clamp(2.5rem, 7vw, 5.5rem);
   line-height: 1.0;
   letter-spacing: -0.03em;
-  margin-bottom: var(--sp-5);
+  margin-bottom: var(--sp-6);
+  color: var(--c-white);
 }
 
 .heroSub {
   font-size: var(--text-lg);
   font-weight: 300;
   line-height: 1.7;
-  color: #444;
+  color: rgba(255, 255, 255, 0.8);
   max-width: 500px;
   margin-bottom: var(--sp-6);
 }
@@ -55,15 +63,15 @@
   align-items: center;
   gap: var(--sp-2);
   padding: var(--sp-3) var(--sp-6);
-  background: var(--c-text);
-  color: var(--c-white);
+  background: var(--c-white);
+  color: var(--c-text);
   font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0.06em;
-  transition: background var(--t-fast) var(--ease);
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
 }
 
-.heroCta:hover { background: var(--c-accent); }
+.heroCta:hover { background: var(--c-accent); color: var(--c-white); }
 
 /* ── Section ───────────────────────────────────────────────────────── */
 
@@ -297,7 +305,7 @@
 
 @media (max-width: 768px) {
   .heroContent { padding: var(--sp-10) var(--sp-5) var(--sp-10); }
-  .hero { min-height: 60vh; }
+  .hero { min-height: 70vh; }
   .section { padding: var(--sp-8) var(--sp-5); }
   .productGrid { grid-template-columns: repeat(2, 1fr); }
   .collectionGrid { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }

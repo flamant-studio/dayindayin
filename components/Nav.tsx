@@ -4,16 +4,6 @@ import { useState, useEffect, useRef } from 'react'
 import { useCart } from './CartProvider'
 import styles from './Nav.module.css'
 
-const SHOP_LINKS = [
-  { href: '/shop', label: 'View all →', divider: false, highlight: true },
-  { href: '/shop/collections/tufted-works',  label: 'Tufted Works',   divider: false, highlight: false },
-  { href: '/shop/collections/embroidery',    label: 'Embroidery',     divider: false, highlight: false },
-  { href: '/shop/collections/paintings',     label: 'Paintings',      divider: false, highlight: false },
-  { href: '/shop/collections/photography',   label: 'Photography',    divider: false, highlight: false },
-  { href: '/shop/collections/mixed',         label: 'Mixed Works',    divider: false, highlight: false },
-  { href: '/shop/collections/archive',       label: 'Archive',        divider: false, highlight: false },
-]
-
 const ARTIST_LINKS = [
   { href: '/about',       label: 'About Stine' },
   { href: '/fine-art',    label: 'Fine Art' },
@@ -21,7 +11,7 @@ const ARTIST_LINKS = [
   { href: '/art-journal', label: 'Art Journal' },
 ]
 
-type DropdownName = 'shop' | 'artist'
+type DropdownName = 'artist'
 
 export default function Nav() {
   const [dropdown, setDropdown] = useState<DropdownName | null>(null)
@@ -56,23 +46,8 @@ export default function Nav() {
         </Link>
 
         <ul className={`${styles.links} ${mobileOpen ? styles.mobileOpen : ''}`}>
-          <li className={styles.hasDropdown}>
-            <button
-              className={`${styles.dropTrigger} ${dropdown === 'shop' ? styles.triggerActive : ''}`}
-              onClick={() => toggle('shop')}
-              aria-expanded={dropdown === 'shop'}
-            >
-              Shop
-            </button>
-            {dropdown === 'shop' && (
-              <ul className={styles.dropdown}>
-                {SHOP_LINKS.map(l => (
-                  <li key={l.href} className={l.highlight ? styles.dropHighlight : undefined}>
-                    <Link href={l.href} onClick={closeAll}>{l.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            )}
+          <li>
+            <Link href="/shop" onClick={closeAll} className={styles.dropTrigger}>Shop</Link>
           </li>
 
           <li className={styles.hasDropdown}>

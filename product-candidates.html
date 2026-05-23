@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mikofu — Product Candidates (Stine's Art)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f4f0; color: #2c2c2c; padding: 40px 32px; }
+  h1 { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+  .subtitle { color: #888; font-size: 13px; margin-bottom: 6px; }
+  h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #999; margin: 40px 0 10px; border-top: 1px solid #ddd; padding-top: 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 8px; }
+  thead th { text-align: left; padding: 8px 12px; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #aaa; border-bottom: 1px solid #ddd; }
+  tbody tr { border-bottom: 1px solid #eee; }
+  tbody tr:hover { background: #eeecea; }
+  td { padding: 10px 12px; vertical-align: middle; }
+  td:first-child { font-weight: 500; color: #1a1a1a; min-width: 180px; }
+  td.id { font-family: monospace; font-size: 11px; color: #999; min-width: 100px; white-space: nowrap; }
+  td.src { font-size: 12px; white-space: nowrap; min-width: 110px; }
+  td.notes { color: #777; font-size: 12px; }
+  a.view { display: inline-block; background: #2c2c2c; color: white; text-decoration: none; padding: 3px 9px; border-radius: 4px; font-size: 11px; font-weight: 500; margin-right: 4px; white-space: nowrap; }
+  a.view:hover { background: #c4694f; }
+  a.alt { background: #999; }
+  .tag { display: inline-block; background: #e8e5e0; padding: 2px 7px; border-radius: 3px; font-size: 10px; font-weight: 600; color: #666; margin-right: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .tag.text    { background: #f0e6ff; color: #7040aa; }
+  .tag.graphic { background: #e6f0ff; color: #2050cc; }
+  .tag.photo   { background: #e6fff0; color: #207040; }
+  .tag.pattern { background: #fff0e6; color: #cc6020; }
+  .tag.vector  { background: #fffde6; color: #aa8800; }
+  /* source status colours */
+  .ok    { color: #207040; font-weight: 600; }
+  .vec   { color: #2050cc; font-weight: 600; }
+  .cloud { color: #c4694f; font-weight: 600; }
+  .up    { color: #cc8800; font-weight: 600; }
+  /* legend */
+  .legend { display: flex; gap: 24px; margin: 12px 0 36px; font-size: 12px; }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+</style>
+</head>
+<body>
+
+<h1>Mikofu — Print Product Candidates</h1>
+<p class="subtitle">Stine's art · Dropbox audit May 2026 · Click links to open in Finder/Preview</p>
+<div class="legend">
+  <span><b class="ok">✔ Original</b> — RAW/TIFF/NEF on disk, use directly</span>
+  <span><b class="vec">◆ Vector</b> — SVG or .ai source, any size</span>
+  <span><b class="cloud">☁ Large/cloud</b> — confirmed high-res but not synced locally</span>
+  <span><b class="up">↑ Upscale</b> — web PNG only, needs AI upscaling before print</span>
+</div>
+
+<!-- ═══ SHERO ═══ -->
+<h2>SHERO</h2>
+<table>
+<thead><tr><th>Title</th><th>ID</th><th>Tags</th><th>Source</th><th>Notes</th><th>Open</th></tr></thead>
+<tbody>
+<tr>
+  <td>Shero Patch — pink/blue</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="cloud">☁ 8500×4981px</span></td>
+  <td class="notes">The main SHERO graphic. Highest-res asset in the whole archive. Cloud-only, sync first.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shero_patch_pink-blue_8500x5000.png">View</a></td>
+</tr>
+<tr>
+  <td>Sheroshine — art photo</td>
+  <td class="id">—</td>
+  <td><span class="tag photo">photo</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 3517×3517px</span></td>
+  <td class="notes">Print-ready art photo, 2023. SHERO theme. Confirmed readable.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Sheroshine_1swf2023-1.jpeg">View</a></td>
+</tr>
+<tr>
+  <td>Shero package scan (TIFF)</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="cloud">☁ TIFF, cloud</span></td>
+  <td class="notes">Original TIFF scan of SHERO package artwork.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/dayindayin%20artstudio/20200803b0d912fbae2d614ee8fe8b50b9131ce0bddbdb3f1ddc4c277f14ad62ff61df2c/Scan_swf_sheropackage.tiff">View</a></td>
+</tr>
+<tr>
+  <td>Pow Patch (TIFF)</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ TIFF original</span></td>
+  <td class="notes">POW burst graphic from SHERO/Shop of Words project.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Shero%20project%20grafik/Pow_Patch.tiff">View</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/Pow_Patch.tiff">Alt</a></td>
+</tr>
+<tr>
+  <td>Shero grafik — OverPage</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ TIFF original</span></td>
+  <td class="notes">Original TIFF from Shero project grafik folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Shero%20project%20grafik/OverPage-0.tiff">View</a></td>
+</tr>
+<tr>
+  <td>Shero — pink slider</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ 1200×600px</span></td>
+  <td class="notes">Banner only. Use the patch above for any print product.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_slider_shero-pink_1200x600.png">View</a></td>
+</tr>
+<tr>
+  <td>Shero logo</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 2398×1487px</span></td>
+  <td class="notes">SHERO wordmark/logo JPEG. Fine for cards and small merch, upscale for posters.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Shero%20project%20grafik/shero_logo.jpeg">View</a></td>
+</tr>
+<tr>
+  <td>SHERO t-shirt</td>
+  <td class="id">—</td>
+  <td><span class="tag photo">photo</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 4032×3024px</span></td>
+  <td class="notes">Photo of SHERO t-shirt in situ. Product/lifestyle shot.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Shero/2020-01-30%2009.09.34.jpg">View</a></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═══ NEKO / CAT ═══ -->
+<h2>NEKO / CAT</h2>
+<table>
+<thead><tr><th>Title</th><th>ID</th><th>Tags</th><th>Source</th><th>Notes</th><th>Open</th></tr></thead>
+<tbody>
+<tr>
+  <td>Neko Cat Photo</td>
+  <td class="id">DID-PH-004</td>
+  <td><span class="tag photo">photo</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">Direct NEKO reference. No RAW in folder — needs upscaling.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-004_minnie-mouse-and-the-neko-cat_1500x1000/_54_photo_minnie-mouse-and-the-neko-cat_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Neko paw — yellow outline (SVG)</td>
+  <td class="id">—</td>
+  <td><span class="tag vector">vector</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="vec">◆ SVG vector</span></td>
+  <td class="notes">Vector paw mark, yellow outline. Print at any size.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/nekopaw_yellow_outline.svg">SVG</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/nekopaw_yellow_outline.png">PNG</a></td>
+</tr>
+<tr>
+  <td>Neko paw — neon yellow</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 4961×7016px</span></td>
+  <td class="notes">A4 at 300dpi. Confirmed large.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/nekopaw_yellow_neon.png">View</a></td>
+</tr>
+<tr>
+  <td>Neko paw — pink outline</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ ~4961×7016px</span></td>
+  <td class="notes">Same set as neon/blue — same large dimensions expected.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/nekopaw_pink_outline.png">View</a></td>
+</tr>
+<tr>
+  <td>Neko paw — lilac outline</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ ~4961×7016px</span></td>
+  <td class="notes">Same set — same large dimensions expected.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/nekopaw_lilac_outline.png">View</a></td>
+</tr>
+<tr>
+  <td>Neko paw — yellow/blue</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 4961×7016px</span></td>
+  <td class="notes">Two-tone colorway. Confirmed large.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/nekopaw_yellow_blue.png">View</a></td>
+</tr>
+<tr>
+  <td>Neko paw — with text</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span><span class="tag text">text</span></td>
+  <td class="src"><span class="ok">✔ 8192×8192px</span></td>
+  <td class="notes">Paw + NEKO PUSSY POWER text. Massive file, any print size.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Neko_paw_text.png">View</a></td>
+</tr>
+<tr>
+  <td>Neko pote (SVG) — master</td>
+  <td class="id">—</td>
+  <td><span class="tag vector">vector</span></td>
+  <td class="src"><span class="vec">◆ SVG vector</span></td>
+  <td class="notes">SVG paw, artstudio master file.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/dayindayin%20artstudio/Neko_pote.svg">View</a></td>
+</tr>
+<tr>
+  <td>Cats Embrace — art photo</td>
+  <td class="id">—</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="cloud">☁ cloud-only</span></td>
+  <td class="notes">Art photography 2022, cat theme. In print-ready folder, likely high-res.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Catsembrace_stinewflamant2022_artphotography-1.jpeg">View</a></td>
+</tr>
+<tr>
+  <td>Rabbit drawings — pink/peach/yellow</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ check size</span></td>
+  <td class="notes">Rabbit line drawings in colour variants. Verify dimensions.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Rabbitdrawing_pink.jpg">Pink</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Rabbitdrawing_peach.jpg">Peach</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Rabbitdrawing_yellow.jpg">Yellow</a></td>
+</tr>
+<tr>
+  <td>Rabbit + dots (transparent)</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 7087×4961px</span></td>
+  <td class="notes">Halftone dots + rabbit, transparent background. Confirmed large.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Rabbitanddots_transp.png">View</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/%20Bluerabbitlineart.png">Blue</a></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═══ TEXT / WORDS ═══ -->
+<h2>TEXT + WORDS (Shop of Words)</h2>
+<table>
+<thead><tr><th>Title / Text</th><th>ID</th><th>Tags</th><th>Source</th><th>Notes</th><th>Open</th></tr></thead>
+<tbody>
+<tr>
+  <td>"BEAUTY"</td>
+  <td class="id">BYOB</td>
+  <td><span class="tag text">text</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="vec">◆ .ai vector</span></td>
+  <td class="notes">.ai source in byob folder. PNG is only 1779×1443 — use the .ai.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_byob_beauty_print.png">PNG</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/udsagn%20-%20printklar/shopofwords_collection_byob/byob%20ai%20originaler/shopofwords_beauty_print.ai">.ai</a></td>
+</tr>
+<tr>
+  <td>"OBLIGATORY BEAUTY"</td>
+  <td class="id">BYOB</td>
+  <td><span class="tag text">text</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="vec">◆ .ai vector</span></td>
+  <td class="notes">.ai + .tif source available.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_byob_obligatorybeauty_print.png">PNG</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/udsagn%20-%20printklar/shopofwords_collection_byob/byob%20ai%20originaler/shopofwords_obligatorybeauty_print.ai">.ai</a></td>
+</tr>
+<tr>
+  <td>"MY SAKE"</td>
+  <td class="id">BYOB</td>
+  <td><span class="tag text">text</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="vec">◆ .ai vector</span></td>
+  <td class="notes">.ai source available.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_byob_mysake_print.png">PNG</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/udsagn%20-%20printklar/shopofwords_collection_byob/byob%20ai%20originaler/shopofwords_mysake_print.ai">.ai</a></td>
+</tr>
+<tr>
+  <td>"REAL EYES"</td>
+  <td class="id">BYOB</td>
+  <td><span class="tag text">text</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="vec">◆ .ai vector</span></td>
+  <td class="notes">.ai source available.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_byob_realeyes_print.png">PNG</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/udsagn%20-%20printklar/shopofwords_collection_byob/byob%20ai%20originaler/shopofwords_realeyes_print.ai">.ai</a></td>
+</tr>
+<tr>
+  <td>"SHE ARRIVED LATE"</td>
+  <td class="id">SOW</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1200×600px</span></td>
+  <td class="notes">Slider banner only, no .ai found. Needs upscaling or redesign.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_slider_she-arrived-late_1200x600.png">Slider</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_gallery_shearrivedlate_300x300.png">300×300</a></td>
+</tr>
+<tr>
+  <td>"DET ER BARE TANKER"</td>
+  <td class="id">SOW</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1200×600px</span></td>
+  <td class="notes">"It's just thoughts." Slider only.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_slider_det-er-bare-tanker_1200x600.png">Slider</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_gallery_deterbaretanker_300x300.png">300×300</a></td>
+</tr>
+<tr>
+  <td>"INDE INDE INDE"</td>
+  <td class="id">SOW</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1200×600px</span></td>
+  <td class="notes">"Inside inside inside." Slider only.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_slider_inde_1200x600.png">Slider</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_gallery_indeindeinde_300x300.png">300×300</a></td>
+</tr>
+<tr>
+  <td>"WIR SCHAFFEN DAS"</td>
+  <td class="id">SOW</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1200×600px</span></td>
+  <td class="notes">"We can do this." Slider only.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/shopofwords_slider_wirschaffendas_1200x600.png">View</a></td>
+</tr>
+<tr>
+  <td>"HAVSNØD" word collection</td>
+  <td class="id">SOW</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ check size</span></td>
+  <td class="notes">Word collection graphic. Verify dimensions.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/Sow_ordsamling_Havn%C3%B8d-1.png">View</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Shop%20of%20Words/Sow_ordsamling_Havn%C3%B8d-1.png">Alt</a></td>
+</tr>
+<tr>
+  <td>Fuck Alting (embroidery)</td>
+  <td class="id">DID-E-001</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">Bold text embroidery, 6 views. No RAW files in folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-001_fuck-alting/web%20ready/_31_embroidery_fuck-alting_1500x1000_1-min.png">View</a></td>
+</tr>
+<tr>
+  <td>Elsk (embroidery)</td>
+  <td class="id">DID-E-006</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="ok">✔ 14 originals</span></td>
+  <td class="notes">"Love." 14 RAW/TIFF files in folder. 7 web views.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-006_elsk/web%20ready/_36_embroidery_elsk_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Det er bare tanker (embroidery)</td>
+  <td class="id">DID-E-011</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">"It's just thoughts." No RAW files in folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-011_det-er-bare-tanker/web%20ready/_311_embroidery_det-er-bare-tanker_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Ingenting (embroidery)</td>
+  <td class="id">DID-E-013</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">"Nothing." 4 views. No RAW files.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-013_ingenting/web%20ready/_313_embroidery_ingenting_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Perfidt Perfekt (embroidery)</td>
+  <td class="id">DID-E-012</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">"Perfidiously perfect." No RAW files.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-012_perfidt-perfekt/web%20ready/_312_embroidery_perfidt-perfekt_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Be a Dragon (embroidery)</td>
+  <td class="id">DID-E-007</td>
+  <td><span class="tag text">text</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 8 originals</span></td>
+  <td class="notes">8 RAW files in folder. 3 web views.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-007_be-a-dragon/web%20ready/_37_embroidery_be-a-dragon_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>There's Nothing Here (embroidery)</td>
+  <td class="id">DID-E-015</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW files in folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-015_theres-nothing-here/web%20ready/_315_embroidery_theres-nothing-here_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Gud Har Meldt Afbud (embroidery)</td>
+  <td class="id">DID-E-002</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="ok">✔ 31 originals</span></td>
+  <td class="notes">"God cancelled." 31 RAW/TIFF files — best-documented embroidery.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-002_gud-har-meldt-afbud/web%20ready/_32_embroidery_gud-har-meldt-afbud_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Her Er En Sandhed (painting)</td>
+  <td class="id">DID-P-014</td>
+  <td><span class="tag text">text</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">"Here is a truth." No RAW files.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Paintings/DID-P-014_her-er-en-sandhed/web%20ready/_214_painting_her-er-en-sandhed_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>HEJ (tufting)</td>
+  <td class="id">DID-T-041</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">"Hi." Tufted text, 3 views. No RAW files.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Tufting/DID-T-041_hej/web%20ready/_141_tufting_hej_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>DU UND (tufting)</td>
+  <td class="id">DID-T-039</td>
+  <td><span class="tag text">text</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">"You and." Bilingual tufted text, 5 views. No RAW files.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Tufting/DID-T-039_du-und/web%20ready/_139_tufting_du-und_1500x1000_1.png">View</a></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═══ MASKS ═══ -->
+<h2>MASKS — SRI LANKA + TUFTING</h2>
+<table>
+<thead><tr><th>Title</th><th>ID</th><th>Tags</th><th>Source</th><th>Notes</th><th>Open</th></tr></thead>
+<tbody>
+<tr>
+  <td>Sri Lanka Masks — 7 views</td>
+  <td class="id">DID-P-021</td>
+  <td><span class="tag graphic">graphic</span><span class="tag photo">photo</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW files found — web-ready PNGs only. Strong series, worth upscaling.</td>
+  <td>
+    <a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Paintings/DID-P-021_sri-lanka-masks/web%20ready/_221_sri-lanka-masks_1500x1000_1.png">1</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Paintings/DID-P-021_sri-lanka-masks/web%20ready/_221_sri-lanka-masks_1500x1000_2.png">2</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Paintings/DID-P-021_sri-lanka-masks/web%20ready/_221_sri-lanka-masks_1500x1000_3.png">3</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Paintings/DID-P-021_sri-lanka-masks/web%20ready/_221_sri-lanka-masks_1500x1000_4.png">4</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Paintings/DID-P-021_sri-lanka-masks/web%20ready/_221_sri-lanka-masks_1500x1000_5.png">5</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Paintings/DID-P-021_sri-lanka-masks/web%20ready/_221_sri-lanka-masks_1500x1000_6.png">6</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Paintings/DID-P-021_sri-lanka-masks/web%20ready/_221_sri-lanka-masks_1500x1000_7.png">7</a>
+  </td>
+</tr>
+<tr>
+  <td>Masks Trio — blue/green/pink</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ check size</span></td>
+  <td class="notes">Three masks composition. Verify dimensions.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/WEBSITE%20ASSETS/_X_ordbutikken/masks_trio_blue-green-pink.png">View</a></td>
+</tr>
+<tr>
+  <td>Mask Scan 1</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="cloud">☁ scan, cloud</span></td>
+  <td class="notes">Scanned original mask drawing. Should be high-res once synced.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/dayindayin%20artstudio/masker/Scan_swf_mask1.png">View</a></td>
+</tr>
+<tr>
+  <td>Mask Scan 2</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="cloud">☁ scan, cloud</span></td>
+  <td class="notes">Scanned original mask drawing. Should be high-res once synced.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/dayindayin%20artstudio/masker/Scan_swf_mask2.png">View</a></td>
+</tr>
+<tr>
+  <td>Tufting Mask 39×21</td>
+  <td class="id">DID-T-023</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 15 originals</span></td>
+  <td class="notes">15 RAW files in folder. 5 web views.</td>
+  <td>
+    <a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Tufting/DID-T-023_mask_39x21/web%20ready/_123_tufting_mask_39x21_1500x1000_1.png">1</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Tufting/DID-T-023_mask_39x21/web%20ready/_123_tufting_mask_39x21_1500x1000_2.png">2</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Tufting/DID-T-023_mask_39x21/web%20ready/_123_tufting_mask_39x21_1500x1000_3.png">3</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Tufting/DID-T-023_mask_39x21/web%20ready/_123_tufting_mask_39x21_1500x1000_4.png">4</a>
+    <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Tufting/DID-T-023_mask_39x21/web%20ready/_123_tufting_mask_39x21_1500x1000_5.png">5</a>
+  </td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═══ PHOTOGRAPHY ═══ -->
+<h2>PHOTOGRAPHY — STRIKING / GRAPHIC</h2>
+<table>
+<thead><tr><th>Title</th><th>ID</th><th>Tags</th><th>Source</th><th>Notes</th><th>Open</th></tr></thead>
+<tbody>
+<tr>
+  <td>Strong Floral</td>
+  <td class="id">—</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="ok">✔ 3024×4032px</span></td>
+  <td class="notes">In print-ready folder. Confirmed large.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Strongfloral-1.jpeg">View</a></td>
+</tr>
+<tr>
+  <td>Imprint of Movement</td>
+  <td class="id">—</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="ok">✔ print ready</span></td>
+  <td class="notes">Art photography 2023. In print-ready folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/print%20ready/Art%20photo/Imprintofmovement_stinewflamant2023_artphotography-1.jpeg">View</a></td>
+</tr>
+<tr>
+  <td>Purple Fabric in Garden</td>
+  <td class="id">DID-PH-001</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="ok">✔ 16 originals</span></td>
+  <td class="notes">16 RAW files. 3 web views.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-001_purple-fabric-in-garden/web%20ready/_51_photo_purple-fabric-in-garden_1500x1000_1.png">1</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-001_purple-fabric-in-garden/web%20ready/_51_photo_purple-fabric-in-garden_1500x1000_2.png">2</a></td>
+</tr>
+<tr>
+  <td>Colourful Shadows</td>
+  <td class="id">DID-PH-010</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW in folder. Strong colour work.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-010_colourful-shadows_1500x1000/_510_photo_colourful-shadows_1500x1000_1.png">1</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-010_colourful-shadows_1500x1000/_510_photo_colourful-shadows_1500x1000_2.png">2</a></td>
+</tr>
+<tr>
+  <td>On the Light Table</td>
+  <td class="id">DID-PH-011</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW in folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-011_on-the-light-table_1500x1000/_511_photo_on-the-light-table_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Polaroids</td>
+  <td class="id">DID-PH-009</td>
+  <td><span class="tag photo">photo</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW in folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-009_polaroids_1500x1000/_59_photo_polaroids_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Taped Objects</td>
+  <td class="id">DID-PH-018</td>
+  <td><span class="tag photo">photo</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW in folder. Graphic composition.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-018_taped-objects_1500x1000/_518_photo_taped-objects_1500x1000_1.png">1</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-018_taped-objects_1500x1000/_518_photo_taped-objects_1500x1000_2.png">2</a></td>
+</tr>
+<tr>
+  <td>Dead Flowers</td>
+  <td class="id">DID-PH-012</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW in folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-012_dead-flowers_1500x1000/_512_photo_dead-flowers_1500x1000_1.png">1</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-012_dead-flowers_1500x1000/_512_photo_dead-flowers_1500x1000_2.png">2</a></td>
+</tr>
+<tr>
+  <td>Red and Green Moss</td>
+  <td class="id">DID-PH-007</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW in folder. Strong colour contrast.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-007_red-and-green-moss_1500x1000/_57_photo_red-and-green-moss_1500x1000_1.png">1</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-007_red-and-green-moss_1500x1000/_57_photo_red-and-green-moss_1500x1000_2.png">2</a></td>
+</tr>
+<tr>
+  <td>Blue Flower on Green Wood</td>
+  <td class="id">DID-PH-006</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW in folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-006_blue-flower-on-green-wood_1500x1000/_56_photo_blue-flower-on-green-wood_1500x1000_1.png">View</a></td>
+</tr>
+<tr>
+  <td>Colour Palette Blue-Red</td>
+  <td class="id">—</td>
+  <td><span class="tag photo">photo</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ check size</span></td>
+  <td class="notes">12 images in STINE FOTO series. Verify dimensions.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/STINE%20FOTO/_photo_colour_palette_blue-red/2021-04-09%2014.27.53.jpg">View</a></td>
+</tr>
+<tr>
+  <td>Vase on Stool</td>
+  <td class="id">DID-PH-017</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">No RAW in folder.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-017_vase-on-stool_1500x1000/_517_photo_vase-on-stool_1500x1000_1.png">1</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Photography/DID-PH-017_vase-on-stool_1500x1000/_517_photo_vase-on-stool_1500x1000_2.png">2</a></td>
+</tr>
+<tr>
+  <td>Bird + flowers — art photo</td>
+  <td class="id">—</td>
+  <td><span class="tag photo">photo</span></td>
+  <td class="src"><span class="up">↑ 1740×2252px</span></td>
+  <td class="notes">Portrait orientation. Fine up to ~A5 at 300dpi — upscale for larger prints.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Art%20projects/23153979801_c6ca407507_o.jpg">View</a></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═══ PATTERNS ═══ -->
+<h2>PATTERNS + REPEATS</h2>
+<table>
+<thead><tr><th>Title</th><th>ID</th><th>Tags</th><th>Source</th><th>Notes</th><th>Open</th></tr></thead>
+<tbody>
+<tr>
+  <td>Greek Sea Creatures — blue/white</td>
+  <td class="id">—</td>
+  <td><span class="tag pattern">pattern</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ check size</span></td>
+  <td class="notes">Strong repeating graphic. Two size variants — verify dimensions.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/Greek_sea_creatures-bluewhite.png">View</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/greekseacreature-40cm.png">40cm</a></td>
+</tr>
+<tr>
+  <td>Kaninskoven (Rabbit Forest)</td>
+  <td class="id">—</td>
+  <td><span class="tag pattern">pattern</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ check size</span></td>
+  <td class="notes">Seamless finished version available. Verify dimensions.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/pattern%20repeats%20seamless%20finished/Kaninskoven_Rapport.png">Seamless</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/Kaninskoven_Rapport.png">Original</a></td>
+</tr>
+<tr>
+  <td>Cacti pattern</td>
+  <td class="id">—</td>
+  <td><span class="tag pattern">pattern</span></td>
+  <td class="src"><span class="up">↑ check size</span></td>
+  <td class="notes">Seamless finished version.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/pattern%20repeats%20seamless%20finished/cacti.png">View</a></td>
+</tr>
+<tr>
+  <td>Moss Pattern</td>
+  <td class="id">—</td>
+  <td><span class="tag pattern">pattern</span></td>
+  <td class="src"><span class="up">↑ check size</span></td>
+  <td class="notes">Original moss tile.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/Moss%20Pattern%20original.png">View</a></td>
+</tr>
+<tr>
+  <td>Kaninskoven — small tile</td>
+  <td class="id">—</td>
+  <td><span class="tag pattern">pattern</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 4000×4000px</span></td>
+  <td class="notes">Smaller tile variant of the rabbit forest pattern. Confirmed large.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/Kaninskoven_Lille.png">View</a></td>
+</tr>
+<tr>
+  <td>Sea squares pattern</td>
+  <td class="id">—</td>
+  <td><span class="tag pattern">pattern</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="up">↑ 2048×2048px</span></td>
+  <td class="notes">2048×2048px square tile. Borderline for large print — verify use case.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/2021-10-30%2010.59.02.png">View</a></td>
+</tr>
+<tr>
+  <td>Monsters — blue/pink</td>
+  <td class="id">—</td>
+  <td><span class="tag pattern">pattern</span><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 5906×5906px</span></td>
+  <td class="notes">Large square pattern tile. Excellent resolution.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/Pattern%20repeats/2021-10-30%2010.59.01-1.png">View</a></td>
+</tr>
+<tr>
+  <td>Red to Blue (embroidery)</td>
+  <td class="id">DID-E-014</td>
+  <td><span class="tag graphic">graphic</span><span class="tag pattern">pattern</span></td>
+  <td class="src"><span class="up">↑ 1500×1000px</span></td>
+  <td class="notes">Bold colour gradient, also works as textile repeat. No RAW files. 6 views.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-014_red-to-blue%20broderi/web%20ready/_314_embroidery_red-to-blue%20broderi_1500x1000_1.png">1</a>
+      <a class="view alt" href="file:///Users/flamant-mini/Dropbox/_KUNST/COLLECTION%20CURRENT/Embroidery/DID-E-014_red-to-blue%20broderi/web%20ready/_314_embroidery_red-to-blue%20broderi_1500x1000_3.png">3</a></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═══ TOURISM ═══ -->
+<h2>TOURISM — PRINT READY SERIES</h2>
+<table>
+<thead><tr><th>Title</th><th>ID</th><th>Tags</th><th>Source</th><th>Notes</th><th>Open</th></tr></thead>
+<tbody>
+<tr>
+  <td>Tourism 1</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ TIFF 4032×3024px</span></td>
+  <td class="notes">In print-ready folder. TIFF original.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/print%20ready/Tourism_1.tiff">View</a></td>
+</tr>
+<tr>
+  <td>Tourism 2</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ TIFF 3024×4032px</span></td>
+  <td class="notes">Portrait orientation. TIFF original.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/print%20ready/Tourism_2.tiff">View</a></td>
+</tr>
+<tr>
+  <td>Tourism 3</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ TIFF 4032×3024px</span></td>
+  <td class="notes">TIFF original.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/print%20ready/Tourism_3.1.tiff">View</a></td>
+</tr>
+<tr>
+  <td>Tourism 4</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ TIFF 4032×3024px</span></td>
+  <td class="notes">TIFF original.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_KUNST/Studio/print%20ready/Tourism_4.tiff">View</a></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═══ KIDS / ILLUSTRATION ═══ -->
+<h2>KIDS — ELEPHANT ILLUSTRATIONS</h2>
+<table>
+<thead><tr><th>Title</th><th>ID</th><th>Tags</th><th>Source</th><th>Notes</th><th>Open</th></tr></thead>
+<tbody>
+<tr>
+  <td>Elephant — green</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 3694×3024px</span></td>
+  <td class="notes">Kids illustration, green colorway. White background.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_STINE/Design/Elefant_groen.png">View</a></td>
+</tr>
+<tr>
+  <td>Elephant — yellow</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 3694×3024px</span></td>
+  <td class="notes">Kids illustration, yellow colorway.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_STINE/Design/Elefant_gul.png">View</a></td>
+</tr>
+<tr>
+  <td>Elephant — purple</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 3694×3024px</span></td>
+  <td class="notes">Kids illustration, purple colorway.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_STINE/Design/Elefant_lilla.png">View</a></td>
+</tr>
+<tr>
+  <td>Elephant — red</td>
+  <td class="id">—</td>
+  <td><span class="tag graphic">graphic</span></td>
+  <td class="src"><span class="ok">✔ 3694×3024px</span></td>
+  <td class="notes">Kids illustration, red/pink with blue outline. White background.</td>
+  <td><a class="view" href="file:///Users/flamant-mini/Dropbox/_STINE/Design/Elefant_roed.png">View</a></td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin-top:48px; font-size:12px; color:#aaa;">Generated May 2026 · Flamant · ~/Dropbox = /Users/flamant-mini/Dropbox</p>
+</body>
+</html>

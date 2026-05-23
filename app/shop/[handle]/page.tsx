@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getProductByHandle, formatPrice, checkoutUrl } from '@/lib/shopify/products'
+import { getProductByHandle, getProductsByType, formatPrice, checkoutUrl } from '@/lib/shopify/products'
 import AddToCartButton from '@/components/AddToCartButton'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -40,6 +40,9 @@ export default async function ProductPage({ params }: PageProps) {
   const mainImage = product.firstImage
   const otherImages = product.images.slice(1)
   const firstVariant = product.firstVariant
+  const related = product.productType
+    ? await getProductsByType(product.productType, handle, 4).catch(() => [])
+    : []
 
   return (
     <div className={styles.page}>
@@ -139,6 +142,34 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
         </div>
       </div>
+      {related.length > 0 && (
+        <section className={styles.related}>
+          <h2 className={styles.relatedTitle}>More like this</h2>
+          <div className={styles.relatedGrid}>
+            {related.map((p) => (
+              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>
+                <div className={styles.relatedImg}>
+                  {p.firstImage ? (
+                    <Image
+                      src={p.firstImage.url}
+                      alt={p.firstImage.altText ?? p.title}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div className={styles.imagePlaceholder} />
+                  )}
+                </div>
+                <div className={styles.relatedInfo}>
+                  <span className={styles.relatedName}>{p.title}</span>
+                  <span className={styles.relatedPrice}>{formatPrice(p.minPrice.amount)}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }
