@@ -25,9 +25,9 @@ const PRIMARY_TAG: Record<string, string> = {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { handle } = await params
   const col = COLLECTIONS.find((c) => c.handle === handle)
-  if (!col) return { title: 'Collection not found — Day In Day In' }
+  if (!col) return { title: 'Collection not found' }
   return {
-    title: `${col.title} — Day In Day In`,
+    title: col.title,
     description: col.description,
   }
 }
