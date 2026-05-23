@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getProducts, formatPrice } from '@/lib/shopify/products'
+import { getProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
 import styles from './page.module.css'
 
 export const metadata = {
@@ -36,9 +36,7 @@ export default async function ShopPage() {
               </div>
               <div className={styles.cardInfo}>
                 <span className={styles.cardTitle}>{p.title}</span>
-                {p.productType && (
-                  <span className={styles.cardType}>{p.productType}</span>
-                )}
+                <span className={styles.cardType}>{categoryLabel(p)}</span>
                 <span className={styles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
               </div>
             </Link>

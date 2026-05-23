@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getProductByHandle, getProductsByType, formatPrice, checkoutUrl } from '@/lib/shopify/products'
+import { getProductByHandle, getProductsByType, formatPrice, checkoutUrl, categoryLabel } from '@/lib/shopify/products'
 import AddToCartButton from '@/components/AddToCartButton'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -89,9 +89,7 @@ export default async function ProductPage({ params }: PageProps) {
         {/* Info column */}
         <div className={styles.info}>
           <div className={styles.infoInner}>
-            {product.productType && (
-              <p className={styles.productType}>{product.productType}</p>
-            )}
+            <p className={styles.productType}>{categoryLabel(product)}</p>
 
             <h1 className={styles.title}>{product.title}</h1>
 
@@ -155,7 +153,7 @@ export default async function ProductPage({ params }: PageProps) {
                       alt={p.firstImage.altText ?? p.title}
                       fill
                       sizes="(max-width: 768px) 50vw, 25vw"
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'contain' }}
                     />
                   ) : (
                     <div className={styles.imagePlaceholder} />

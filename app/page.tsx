@@ -35,7 +35,7 @@ export default async function HomePage() {
         <div className={styles.heroContent}>
           <span className={styles.heroLabel}>Copenhagen, Denmark</span>
           <h1 className={styles.heroTitle}>Art made by hand.<br />Printed for your wall.</h1>
-          <Link href="/shop" className={styles.heroCta}>Shop all prints</Link>
+          <Link href="/shop" className={styles.heroCta}>Shop all works</Link>
         </div>
       </section>
 

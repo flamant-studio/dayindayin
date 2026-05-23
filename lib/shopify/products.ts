@@ -126,6 +126,27 @@ export async function getProductsByType(productType: string, excludeHandle: stri
     .filter((p) => p.status === 'ACTIVE')
 }
 
+const TAG_CATEGORY: Record<string, string> = {
+  tufting: 'Tufted Works',
+  embroidery: 'Embroidery',
+  painting: 'Painting',
+  photography: 'Photography',
+  'greeting-card': 'Greeting Card',
+  tote: 'Tote Bag',
+  'art-print': 'Art Print',
+}
+
+export function categoryLabel(product: NormalizedProduct): string {
+  for (const tag of product.tags) {
+    const label = TAG_CATEGORY[tag.toLowerCase()]
+    if (label) return label
+  }
+  const t = product.title.toLowerCase()
+  if (t.includes('tote')) return 'Tote Bag'
+  if (t.includes('greeting')) return 'Greeting Card'
+  return 'Art Print'
+}
+
 export async function getProductByHandle(handle: string): Promise<NormalizedProduct | null> {
   const data = await adminFetch<{
     products: { edges: { node: ShopifyProduct }[] }
