@@ -8,7 +8,7 @@ export const metadata = {
 }
 
 export default async function ShopPage() {
-  const products = await getProducts(96).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+  const products = await getProducts(200).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
 
   return (
     <div className={styles.page}>
