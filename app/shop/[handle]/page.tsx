@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getProductByHandle, getProductsByType, formatPrice, checkoutUrl, categoryLabel } from '@/lib/shopify/products'
+import { getProductByHandle, getProductsByTag, formatPrice, checkoutUrl, categoryLabel } from '@/lib/shopify/products'
 import AddToCartButton from '@/components/AddToCartButton'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${product.title} — Day In Day In`,
+    title: product.title,
     description: product.description || `${product.title} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
     openGraph: {
       title: product.title,
@@ -38,11 +38,16 @@ export default async function ProductPage({ params }: PageProps) {
   }
 
   const mainImage = product.firstImage
-  const otherImages = product.images.slice(1)
+  const otherImages = product.images.slice(1).filter(img => img.url)
   const firstVariant = product.firstVariant
-  const related = product.productType
-    ? await getProductsByType(product.productType, handle, 4).catch(() => [])
+
+  // Find the most specific category tag to query related products
+  const CATEGORY_TAGS = ['tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card']
+  const categoryTag = product.tags.find(t => CATEGORY_TAGS.includes(t.toLowerCase()))
+  const related = categoryTag
+    ? await getProductsByTag(categoryTag, 5).catch(() => [])
     : []
+  const relatedFiltered = related.filter(p => p.handle !== handle).slice(0, 4)
 
   return (
     <div className={styles.page}>
@@ -97,8 +102,11 @@ export default async function ProductPage({ params }: PageProps) {
               {formatPrice(product.minPrice.amount)}
             </p>
 
-            {product.description && (
-              <p className={styles.description}>{product.description}</p>
+            {product.descriptionHtml && (
+              <div
+                className={styles.description}
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+              />
             )}
 
             {/* Variant list — shown if multiple variants */}
@@ -140,11 +148,11 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
         </div>
       </div>
-      {related.length > 0 && (
+      {relatedFiltered.length > 0 && (
         <section className={styles.related}>
           <h2 className={styles.relatedTitle}>More like this</h2>
           <div className={styles.relatedGrid}>
-            {related.map((p) => (
+            {relatedFiltered.map((p) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>
                 <div className={styles.relatedImg}>
                   {p.firstImage ? (

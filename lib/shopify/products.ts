@@ -76,7 +76,7 @@ export async function getProducts(first = 96): Promise<NormalizedProduct[]> {
   }>({
     query: `
       query GetProducts($first: Int!) {
-        products(first: $first, sortKey: CREATED_AT, reverse: true) {
+        products(first: $first, query: "status:active", sortKey: CREATED_AT, reverse: true) {
           edges { node { ${PRODUCT_FIELDS} } }
         }
       }
@@ -126,6 +126,9 @@ export async function getProductsByType(productType: string, excludeHandle: stri
     .filter((p) => p.status === 'ACTIVE')
 }
 
+// Specific category tags take priority — 'art-print' is intentionally absent
+// so it falls through to the default, allowing specific tags found later in the
+// tags array (e.g. 'tufting') to win.
 const TAG_CATEGORY: Record<string, string> = {
   tufting: 'Tufted Works',
   embroidery: 'Embroidery',
@@ -133,7 +136,6 @@ const TAG_CATEGORY: Record<string, string> = {
   photography: 'Photography',
   'greeting-card': 'Greeting Card',
   tote: 'Tote Bag',
-  'art-print': 'Art Print',
 }
 
 export function categoryLabel(product: NormalizedProduct): string {
@@ -143,7 +145,7 @@ export function categoryLabel(product: NormalizedProduct): string {
   }
   const t = product.title.toLowerCase()
   if (t.includes('tote')) return 'Tote Bag'
-  if (t.includes('greeting')) return 'Greeting Card'
+  if (t.includes('greeting') || t.includes('card')) return 'Greeting Card'
   return 'Art Print'
 }
 

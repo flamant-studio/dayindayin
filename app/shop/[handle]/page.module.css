@@ -106,6 +106,10 @@
   color: #555;
 }
 
+.description p { margin-bottom: var(--sp-3); }
+.description ul { list-style: disc; padding-left: var(--sp-5); margin-bottom: var(--sp-3); }
+.description li { margin-bottom: var(--sp-1); }
+
 /* ── Variants ────────────────────────────────────────────── */
 
 .variantLabel {
