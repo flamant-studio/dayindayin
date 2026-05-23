@@ -1,5 +1,5 @@
 # DayInDayIn — Claude Code Handover
-*Last updated: 2026-05-21*
+*Last updated: 2026-05-23*
 
 ---
 
@@ -27,7 +27,7 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 
 ---
 
-## Current State (2026-05-21)
+## Current State (2026-05-23)
 
 | Layer | Status |
 |---|---|
@@ -35,15 +35,21 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Shop pages | ✅ Homepage, /shop, /shop/[handle], /shop/collections/[handle] |
 | Cart system | ✅ CartProvider, CartDrawer, AddToCartButton |
 | Design system | ✅ Playfair Display + Inter, vermillion accent |
-| Nav | ✅ Click-toggle dropdown, Shop merged with Collections |
-| Shopify tokens | ✅ SHOPIFY_STOREFRONT_TOKEN + SHOPIFY_ADMIN_TOKEN in Vercel env vars |
-| Gelato — vertical template | ✅ `6005fae3` — A4/A3/A2 portrait. €20/€25.95/€35.95 |
-| Gelato — horizontal template | ✅ `18600284` — A5/A4/A3 landscape. €15.95/€19.95/€25.95 |
-| Gelato products | ✅ 20 products seeded — all DRAFT. Publish in Shopify to activate. |
+| Nav | ✅ Click-toggle dropdown (Artist), direct link (Shop) |
+| Shopify tokens | ✅ SHOPIFY_STOREFRONT_TOKEN + SHOPIFY_ADMIN_TOKEN in .env.local |
+| Gelato — vertical template | ✅ `6005fae3` — A4/A3/A2 portrait. Placeholder: `nekopaw_yellow_neon.png` |
+| Gelato — horizontal template | ✅ `18600284` — A5/A4/A3 landscape. Placeholder: `Tourism_1.png` |
+| Active products | ✅ **599 ACTIVE** in Shopify — published 2026-05-23 |
+| Products in shop | ✅ 200 shown (sorted newest-first); 51 artwork "— Print" batch seeded today |
+| Category labels | ✅ Tag-based: tufting→Tufted Works, embroidery→Embroidery, painting→Painting, photography→Photography |
+| Related products | ✅ By category tag (not raw productType) |
+| Product page description | ✅ HTML rendering with bullet points |
+| Scroll-to-top | ✅ Fires on every route change |
 | Domain dayindayin.dk | 🔲 Not yet pointed to Vercel (Simply.com DNS) |
 | Shopify Payments KYC | 🔲 Pending — eliminates 2% fee |
 | Legal pages | 🔲 Pending — privacy policy, copyright, fulfillment T&C |
 | CONTACT_EMAIL_TO | 🔲 Pending — Stine's actual email in Vercel env vars |
+| Gelato image generation | ⏳ New "— Print" products: preview images pending (async, ~hours) |
 
 **Gelato store ID:** `51ee1b39-75e6-4c19-af02-cfd7cb771a4a`
 
