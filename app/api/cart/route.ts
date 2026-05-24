@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createCart, addToCart, removeFromCart, getCart, normalizeCart } from '@/lib/shopify/storefront'
+import { createCart, addToCart, removeFromCart, getCart, normalizeCart, updateCartLines } from '@/lib/shopify/storefront'
 
 const CART_COOKIE = 'did_cart'
 const CART_MAX_AGE = 60 * 60 * 24 * 30 // 30 days
@@ -56,6 +56,19 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Cart error'
     return NextResponse.json({ error: msg }, { status: 500 })
+  }
+}
+
+// PATCH — update line quantity
+export async function PATCH(request: NextRequest) {
+  const { lineId, quantity } = await request.json()
+  const cartId = request.cookies.get(CART_COOKIE)?.value
+  if (!cartId) return NextResponse.json({ error: 'No cart' }, { status: 400 })
+  try {
+    const cart = await updateCartLines(cartId, [{ id: lineId, quantity }])
+    return NextResponse.json({ cart: normalizeCart(cart) })
+  } catch (err) {
+    return NextResponse.json({ error: String(err) }, { status: 500 })
   }
 }
 

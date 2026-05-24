@@ -48,12 +48,24 @@ const PRODUCT_FIELDS = `
   variants(first: 20) { edges { node { id title price availableForSale } } }
 `
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
+function sanitizeAlt(altText: string | null): string | null {
+  if (!altText || UUID_RE.test(altText.trim())) return null
+  return altText
+}
+
 export function normalizeProduct(p: ShopifyProduct) {
   return {
     ...p,
-    images: p.images.edges.map((e) => e.node),
+    images: p.images.edges.map((e) => ({
+      ...e.node,
+      altText: sanitizeAlt(e.node.altText),
+    })),
     variants: p.variants.edges.map((e) => e.node),
-    firstImage: p.images.edges[0]?.node ?? null,
+    firstImage: p.images.edges[0]?.node
+      ? { ...p.images.edges[0].node, altText: sanitizeAlt(p.images.edges[0].node.altText) }
+      : null,
     firstVariant: p.variants.edges[0]?.node ?? null,
     minPrice: p.priceRangeV2.minVariantPrice,
   }

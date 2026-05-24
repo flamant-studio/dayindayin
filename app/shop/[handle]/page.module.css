@@ -17,6 +17,42 @@
 
 .backLink:hover { color: var(--c-text); }
 
+/* ── Breadcrumb ──────────────────────────────────────────── */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) 0 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumbLink {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+  font-weight: 500;
+  transition: color var(--t-fast);
+}
+
+.breadcrumbLink:hover {
+  color: var(--c-text);
+}
+
+.breadcrumbSep {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+}
+
+.breadcrumbCurrent {
+  font-size: var(--text-xs);
+  color: var(--c-text);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
 /* ── Layout ──────────────────────────────────────────────── */
 
 .layout {
@@ -203,6 +239,41 @@
   color: var(--c-muted);
   font-weight: 300;
   line-height: 1.6;
+}
+
+/* ── Artist strip ────────────────────────────────────────── */
+
+.artistStrip {
+  border-top: 1px solid var(--c-border);
+  padding-top: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.artistName {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--c-text);
+}
+
+.artistBio {
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.artistLink {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+  align-self: flex-start;
+}
+
+.artistLink:hover {
+  color: var(--c-text);
 }
 
 /* ── Related ─────────────────────────────────────────────── */

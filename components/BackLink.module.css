@@ -1,0 +1,14 @@
+.back {
+  padding: var(--sp-5) 0 0;
+}
+
+.backLink {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+
+.backLink:hover {
+  color: var(--c-text);
+}

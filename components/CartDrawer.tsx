@@ -8,7 +8,7 @@ function formatPrice(amount: string) {
 }
 
 export default function CartDrawer() {
-  const { cart, open, loading, closeCart, removeItem } = useCart()
+  const { cart, open, loading, closeCart, removeItem, updateItem } = useCart()
 
   return (
     <>
@@ -48,6 +48,31 @@ export default function CartDrawer() {
                         <p className={styles.itemVariant}>{line.merchandise.title}</p>
                       )}
                       <p className={styles.itemPrice}>{formatPrice(line.merchandise.price.amount)}</p>
+                      <div className={styles.qtyControls}>
+                        <button
+                          className={styles.qtyBtn}
+                          disabled={loading}
+                          aria-label="Decrease quantity"
+                          onClick={() => {
+                            if (line.quantity <= 1) {
+                              removeItem(line.id)
+                            } else {
+                              updateItem(line.id, line.quantity - 1)
+                            }
+                          }}
+                        >
+                          −
+                        </button>
+                        <span className={styles.qtyValue}>{line.quantity}</span>
+                        <button
+                          className={styles.qtyBtn}
+                          disabled={loading}
+                          aria-label="Increase quantity"
+                          onClick={() => updateItem(line.id, line.quantity + 1)}
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                     <button
                       className={styles.removeBtn}
@@ -65,6 +90,7 @@ export default function CartDrawer() {
             </ul>
 
             <div className={styles.footer}>
+              <p className={styles.upsell}>Free shipping on orders over 500 kr to EU.</p>
               <div className={styles.subtotal}>
                 <span>Subtotal</span>
                 <span>{formatPrice(cart.totalAmount.amount)}</span>

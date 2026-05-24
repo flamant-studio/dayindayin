@@ -114,6 +114,19 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
   return data.cartLinesRemove.cart
 }
 
+export async function updateCartLines(
+  cartId: string,
+  lines: { id: string; quantity: number }[]
+): Promise<Cart> {
+  const data = await storefrontFetch<{ cartLinesUpdate: { cart: Cart } }>(
+    `mutation CartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+      cartLinesUpdate(cartId: $cartId, lines: $lines) { cart { ${CART_FRAGMENT} } }
+    }`,
+    { cartId, lines }
+  )
+  return data.cartLinesUpdate.cart
+}
+
 export async function getCart(cartId: string): Promise<Cart | null> {
   const data = await storefrontFetch<{ cart: Cart | null }>(
     `query GetCart($cartId: ID!) {

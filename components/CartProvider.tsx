@@ -11,6 +11,7 @@ interface CartContextValue {
   closeCart: () => void
   addItem: (variantId: string, quantity?: number) => Promise<void>
   removeItem: (lineId: string) => Promise<void>
+  updateItem: (lineId: string, quantity: number) => Promise<void>
 }
 
 const CartContext = createContext<CartContextValue | null>(null)
@@ -42,7 +43,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const res = await fetch('/api/cart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ variantId, quantity }),
+        body: JSON.stringify({ merchandiseId: variantId, quantity }),
       })
       const data = await res.json()
       if (data?.cart) {
@@ -69,6 +70,21 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+  const updateItem = useCallback(async (lineId: string, quantity: number) => {
+    setLoading(true)
+    try {
+      const res = await fetch('/api/cart', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lineId, quantity }),
+      })
+      const data = await res.json()
+      if (data?.cart) setCart(data.cart)
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
   const count = cart?.totalQuantity ?? 0
 
   return (
@@ -76,7 +92,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       cart, count, open, loading,
       openCart: () => setOpen(true),
       closeCart: () => setOpen(false),
-      addItem, removeItem,
+      addItem, removeItem, updateItem,
     }}>
       {children}
     </CartContext.Provider>

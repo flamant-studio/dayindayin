@@ -1,0 +1,58 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.variantLabel {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0;
+}
+
+.variantList {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.variantBtn {
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--c-border);
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--c-text);
+}
+
+.variantBtn:hover:not(:disabled) {
+  border-color: var(--c-text);
+  background: var(--c-text);
+  color: var(--c-white);
+}
+
+.variantSelected {
+  border-color: var(--c-text);
+  background: var(--c-text);
+  color: var(--c-white);
+}
+
+.variantSoldOut {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.soldOutBadge {
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

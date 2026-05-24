@@ -1,8 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getProductByHandle, getProductsByTag, formatPrice, checkoutUrl, categoryLabel, seriesLabel } from '@/lib/shopify/products'
-import AddToCartButton from '@/components/AddToCartButton'
+import { getProductByHandle, getProductsByTag, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
+import BackLink from '@/components/BackLink'
+import ProductOptions from '@/components/ProductOptions'
+import SizeGuide from '@/components/SizeGuide'
+import ImageGallery from '@/components/ImageGallery'
+import RecentlyViewed from '@/components/RecentlyViewed'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 
@@ -46,7 +50,7 @@ export default async function ProductPage({ params }: PageProps) {
   const productSeriesTag = product.tags.find(t => SERIES_TAGS_LIST.includes(t.toLowerCase()))
   const seriesProducts = productSeriesTag
     ? (await getProductsByTag(productSeriesTag, 20).catch(() => []))
-        .filter(p => p.handle !== handle && p.firstImage)
+        .filter(p => p.handle !== handle && p.firstImage && p.firstImage.url)
         .sort((a, b) => parseFloat(a.minPrice.amount) - parseFloat(b.minPrice.amount))
         .slice(0, 6)
     : []
@@ -57,64 +61,90 @@ export default async function ProductPage({ params }: PageProps) {
   const categoryTag = product.tags.find(t => CATEGORY_TAGS.includes(t.toLowerCase()))
   const relatedFiltered = categoryTag
     ? (await getProductsByTag(categoryTag, 10).catch(() => []))
-        .filter(p => p.handle !== handle && p.firstImage && !seriesHandles.has(p.handle))
+        .filter(p => p.handle !== handle && p.firstImage && p.firstImage.url && !seriesHandles.has(p.handle))
         .slice(0, 4)
     : []
 
   const productSeries = seriesLabel(product)
 
+  // Task 7: colorway siblings — products with same title prefix (before last " — ")
+  const titleParts = product.title.split(' — ')
+  const titlePrefix = titleParts.length > 1 ? titleParts.slice(0, -1).join(' — ') : null
+  const colorwaySiblings = titlePrefix
+    ? seriesProducts
+        .filter(p => p.title.startsWith(titlePrefix) && p.firstImage)
+        .map(p => ({
+          href: `/shop/${p.handle}`,
+          url: p.firstImage!.url,
+          alt: p.title,
+        }))
+    : []
+
+  // Build gallery images array
+  const galleryImages = [
+    mainImage ? { url: mainImage.url, alt: mainImage.altText ?? product.title } : null,
+    ...otherImages.map(img => ({ url: img.url, alt: img.altText ?? product.title })),
+  ].filter((img): img is { url: string; alt: string } => img !== null)
+
+  // Task 8: breadcrumbs + JSON-LD
+  const catLabel = categoryLabel(product)
+  const catFilter = categoryTag ?? null
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    image: mainImage?.url,
+    description: product.description ? product.description.slice(0, 160) : undefined,
+    brand: { '@type': 'Brand', name: 'Day In Day In' },
+    offers: {
+      '@type': 'Offer',
+      price: parseFloat(product.minPrice.amount).toFixed(2),
+      priceCurrency: product.minPrice.currencyCode,
+      availability: firstVariant?.availableForSale
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/OutOfStock',
+      url: `https://dayindayin.dk/shop/${handle}`,
+    },
+  }
+
   return (
     <div className={styles.page}>
-      <div className={styles.back}>
-        <Link href="/shop" className={styles.backLink}>
-          &larr; Back to shop
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <BackLink />
+
+      {/* Breadcrumb */}
+      <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+        <Link href="/shop" className={styles.breadcrumbLink}>Shop</Link>
+        <span className={styles.breadcrumbSep}>/</span>
+        <Link
+          href={catFilter ? `/shop?filter=${catFilter}` : '/shop'}
+          className={styles.breadcrumbLink}
+        >
+          {catLabel}
         </Link>
-      </div>
+        <span className={styles.breadcrumbSep}>/</span>
+        <span className={styles.breadcrumbCurrent}>{product.title}</span>
+      </nav>
 
       <div className={styles.layout}>
         {/* Image column */}
-        <div className={styles.images}>
-          <div className={styles.mainImage}>
-            {mainImage ? (
-              <Image
-                src={mainImage.url}
-                alt={mainImage.altText ?? product.title}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 55vw"
-                className={styles.mainImageEl}
-              />
-            ) : (
-              <div className={styles.imagePlaceholder} />
-            )}
-          </div>
-          {otherImages.length > 0 && (
-            <div className={styles.thumbGrid}>
-              {otherImages.map((img, i) => (
-                <div key={i} className={styles.thumb}>
-                  <Image
-                    src={img.url}
-                    alt={img.altText ?? `${product.title} — image ${i + 2}`}
-                    fill
-                    sizes="20vw"
-                    className={styles.thumbImage}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <ImageGallery
+          images={galleryImages}
+          colorwaySiblings={colorwaySiblings.length > 0 ? colorwaySiblings : undefined}
+        />
 
         {/* Info column */}
         <div className={styles.info}>
           <div className={styles.infoInner}>
-            <p className={styles.productType}>{categoryLabel(product)}</p>
-
+            <p className={styles.productType}>{catLabel}</p>
             <h1 className={styles.title}>{product.title}</h1>
-
-            <p className={styles.price}>
-              {formatPrice(product.minPrice.amount)}
-            </p>
+            <p className={styles.price}>{formatPrice(product.minPrice.amount)}</p>
 
             {product.descriptionHtml && (
               <div
@@ -123,35 +153,10 @@ export default async function ProductPage({ params }: PageProps) {
               />
             )}
 
-            {/* Variant list — shown if multiple variants */}
-            {product.variants.length > 1 && (
-              <div className={styles.variants}>
-                <p className={styles.variantLabel}>Options</p>
-                <div className={styles.variantList}>
-                  {product.variants.map((v) => (
-                    <a
-                      key={v.id}
-                      href={v.availableForSale ? checkoutUrl(v.id) : undefined}
-                      className={`${styles.variantBtn} ${!v.availableForSale ? styles.variantSoldOut : ''}`}
-                      aria-disabled={!v.availableForSale}
-                    >
-                      {v.title}
-                      {!v.availableForSale && <span className={styles.soldOutBadge}>Sold out</span>}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
+            <ProductOptions variants={product.variants} />
 
-            {/* Buy button — uses first available variant */}
-            {firstVariant ? (
-              <AddToCartButton
-                variantId={firstVariant.id}
-                price={formatPrice(product.minPrice.amount)}
-                available={firstVariant.availableForSale}
-              />
-            ) : (
-              <div className={styles.soldOut}>Currently sold out</div>
+            {product.variants.length > 1 && (
+              <SizeGuide variants={product.variants} />
             )}
 
             <div className={styles.fulfillmentNote}>
@@ -159,15 +164,25 @@ export default async function ProductPage({ params }: PageProps) {
               <p>Ships within 3–7 business days to EU, UK, and Norway.</p>
               <p>No returns on print-on-demand unless the product arrives defective or damaged.</p>
             </div>
+
+            {/* Task 11: Artist context strip */}
+            <div className={styles.artistStrip}>
+              <p className={styles.artistName}>Original work by Stine Weirsøe Flamant</p>
+              <p className={styles.artistBio}>
+                Copenhagen-based artist working in tufting, embroidery, digital illustration, and photography.
+              </p>
+              <Link href="/about" className={styles.artistLink}>About the artist &rarr;</Link>
+            </div>
           </div>
         </div>
       </div>
-      {seriesProducts.length > 0 && (
+
+      {seriesProducts.length >= 2 && (
         <section className={styles.related}>
           <div className={styles.relatedHeader}>
             <h2 className={styles.relatedTitle}>More from {productSeries}</h2>
             <Link href={`/shop?filter=${productSeriesTag}`} className={styles.relatedViewAll}>
-              View all →
+              View all &rarr;
             </Link>
           </div>
           <p className={styles.relatedSub}>Same series — all sizes and price points</p>
@@ -188,7 +203,7 @@ export default async function ProductPage({ params }: PageProps) {
         </section>
       )}
 
-      {relatedFiltered.length > 0 && (
+      {relatedFiltered.length >= 2 && (
         <section className={styles.related}>
           <h2 className={styles.relatedTitle}>More like this</h2>
           <div className={styles.relatedGrid}>
@@ -207,6 +222,16 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      <RecentlyViewed
+        currentHandle={handle}
+        currentProduct={{
+          handle,
+          title: product.title,
+          imageUrl: mainImage?.url ?? null,
+          price: formatPrice(product.minPrice.amount),
+        }}
+      />
     </div>
   )
 }
