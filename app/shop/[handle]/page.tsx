@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const product = await getProductByHandle(handle).catch(() => null)
 
   if (!product) {
-    return { title: 'Product not found — Day In Day In' }
+    return { title: 'Product not found' }
   }
 
   return {

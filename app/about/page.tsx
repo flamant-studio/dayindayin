@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 const BLOB_BASE = "https://29kekabbrd49avje.public.blob.vercel-storage.com";
 
 export const metadata = {
-  title: "Bio — Day In Day In",
+  title: "Bio",
   description: "About Stine Weirsøe Flamant — artist, tufter, embroiderer, photographer. And about Sebastian, who built the studio.",
 };
 

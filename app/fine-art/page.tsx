@@ -3,7 +3,7 @@ import Link from "next/link";
 import { works, WorkCategory } from "@/lib/data";
 import styles from "./page.module.css";
 
-export const metadata = { title: "Fine Art — Day In Day In" };
+export const metadata = { title: "Fine Art" };
 
 const sections: { id: WorkCategory; label: string; tagline: string }[] = [
   { id: "tufting", label: "Hand Tufting", tagline: "Cosmos, Christmas, rainbows and everything in between" },

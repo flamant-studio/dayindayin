@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styles from './not-found.module.css'
 
 export const metadata = {
-  title: '404 — Day In Day In',
+  title: '404',
 }
 
 export default function NotFound() {

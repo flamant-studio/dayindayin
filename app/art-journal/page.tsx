@@ -3,7 +3,7 @@ import Link from "next/link";
 import { blogPosts } from "@/lib/data";
 import styles from "./page.module.css";
 
-export const metadata = { title: "Art Journal — Day In Day In" };
+export const metadata = { title: "Art Journal" };
 
 export default function ArtJournal() {
   return (

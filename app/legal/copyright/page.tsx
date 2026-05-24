@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Copyright — Day In Day In',
+  title: 'Copyright',
   description: 'Copyright notice for all artwork on DayInDayIn. All works by Stine Weirsøe Flamant.',
 }
 

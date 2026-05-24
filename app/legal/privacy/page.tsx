@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Day In Day In',
+  title: 'Privacy Policy',
   description: 'How DayInDayIn collects, uses, and protects your personal data. GDPR-compliant.',
 }
 

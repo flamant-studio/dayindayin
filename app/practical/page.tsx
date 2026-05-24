@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Practical — Day In Day In",
+  title: "Practical",
   description: "Shipping, returns, commissions, and copyright for DayInDayIn. All prints fulfilled by Gelato.",
 };
 

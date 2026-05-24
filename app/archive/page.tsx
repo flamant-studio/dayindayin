@@ -3,7 +3,7 @@ import Link from "next/link";
 import { works } from "@/lib/data";
 import styles from "./page.module.css";
 
-export const metadata = { title: "Archive — Day In Day In" };
+export const metadata = { title: "Archive" };
 
 export default function Archive() {
   return (
