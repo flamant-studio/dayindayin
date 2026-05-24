@@ -52,6 +52,7 @@ export async function POST(request: NextRequest) {
       isNew = true
     }
 
+    if (!cart) return NextResponse.json({ error: 'Product not available — may not be published to Online Store' }, { status: 422 })
     return cartResponse(normalizeCart(cart), isNew || !cartId ? cart.id : undefined)
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Cart error'
