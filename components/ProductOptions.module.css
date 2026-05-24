@@ -56,3 +56,11 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+.lowStock {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}

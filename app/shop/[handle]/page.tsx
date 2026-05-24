@@ -7,6 +7,9 @@ import ProductOptions from '@/components/ProductOptions'
 import SizeGuide from '@/components/SizeGuide'
 import ImageGallery from '@/components/ImageGallery'
 import RecentlyViewed from '@/components/RecentlyViewed'
+import StickyATC from '@/components/StickyATC'
+import ShareButtons from '@/components/ShareButtons'
+import { ProductProvider } from '@/contexts/ProductContext'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 
@@ -140,11 +143,25 @@ export default async function ProductPage({ params }: PageProps) {
         />
 
         {/* Info column */}
+        <ProductProvider>
         <div className={styles.info}>
           <div className={styles.infoInner}>
             <p className={styles.productType}>{catLabel}</p>
             <h1 className={styles.title}>{product.title}</h1>
             <p className={styles.price}>{formatPrice(product.minPrice.amount)}</p>
+
+            {/* Series / category tags */}
+            {product.tags.filter(t => [...['tufting','embroidery','painting','photography','tote','greeting-card','shero','neko','sea-monsters','botanical','floral','faces','sommerby']].includes(t.toLowerCase())).length > 0 && (
+              <div className={styles.tagRow}>
+                {product.tags
+                  .filter(t => ['tufting','embroidery','painting','photography','tote','greeting-card','shero','neko','sea-monsters','botanical','floral','faces','sommerby'].includes(t.toLowerCase()))
+                  .map(tag => (
+                    <Link key={tag} href={`/shop?filter=${tag.toLowerCase()}`} className={styles.tagLink}>
+                      {tag}
+                    </Link>
+                  ))}
+              </div>
+            )}
 
             {product.descriptionHtml && (
               <div
@@ -153,7 +170,13 @@ export default async function ProductPage({ params }: PageProps) {
               />
             )}
 
-            <ProductOptions variants={product.variants} />
+            <ProductOptions
+              variants={product.variants}
+              handle={handle}
+              productTitle={product.title}
+            />
+            {/* Sentinel: StickyATC watches this to know when ATC scrolls out of view */}
+            <div id="atc-sentinel" />
 
             {product.variants.length > 1 && (
               <SizeGuide variants={product.variants} />
@@ -165,7 +188,7 @@ export default async function ProductPage({ params }: PageProps) {
               <p>No returns on print-on-demand unless the product arrives defective or damaged.</p>
             </div>
 
-            {/* Task 11: Artist context strip */}
+            {/* Artist context strip */}
             <div className={styles.artistStrip}>
               <p className={styles.artistName}>Original work by Stine Weirsøe Flamant</p>
               <p className={styles.artistBio}>
@@ -173,8 +196,16 @@ export default async function ProductPage({ params }: PageProps) {
               </p>
               <Link href="/about" className={styles.artistLink}>About the artist &rarr;</Link>
             </div>
+
+            <ShareButtons
+              url={`https://dayindayin.dk/shop/${handle}`}
+              title={product.title}
+              imageUrl={mainImage?.url ?? null}
+            />
           </div>
         </div>
+        <StickyATC title={product.title} imageUrl={mainImage?.url ?? null} />
+        </ProductProvider>
       </div>
 
       {seriesProducts.length >= 2 && (

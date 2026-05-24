@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { useCart } from './CartProvider'
+import CurrencyToggle from './CurrencyToggle'
 import styles from './Nav.module.css'
 
 const ARTIST_LINKS = [
@@ -72,11 +73,15 @@ export default function Nav() {
           </li>
 
           <li>
+            <Link href="/collections" onClick={closeAll}>Collections</Link>
+          </li>
+          <li>
             <Link href="/practical" onClick={closeAll}>Shipping &amp; FAQ</Link>
           </li>
         </ul>
 
         <div className={styles.actions}>
+          <CurrencyToggle />
           <button
             onClick={openCart}
             className={styles.cartBtn}

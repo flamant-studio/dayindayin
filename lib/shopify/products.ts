@@ -17,6 +17,7 @@ export interface ShopifyVariant {
   title: string
   price: string
   availableForSale: boolean
+  inventoryQuantity: number | null
 }
 
 export interface ShopifyProduct {
@@ -45,7 +46,7 @@ const PRODUCT_FIELDS = `
     maxVariantPrice { amount currencyCode }
   }
   images(first: 8) { edges { node { url altText width height } } }
-  variants(first: 20) { edges { node { id title price availableForSale } } }
+  variants(first: 20) { edges { node { id title price availableForSale inventoryQuantity } } }
 `
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i

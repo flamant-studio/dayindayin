@@ -1,0 +1,66 @@
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--c-white);
+  border-top: 1px solid var(--c-border);
+  transform: translateY(100%);
+  transition: transform 250ms var(--ease);
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+}
+
+.barVisible {
+  transform: translateY(0);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price {
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  white-space: nowrap;
+}
+
+.btn {
+  flex-shrink: 0;
+  padding: 0.625rem 1.5rem;
+  background: var(--c-text);
+  color: var(--c-white);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: background var(--t-fast);
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) { background: var(--c-accent); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+.added { background: var(--c-accent-2) !important; }
+
+/* On mobile, account for bottom nav */
+@media (max-width: 768px) {
+  .bar { bottom: 56px; }
+  .title { display: none; }
+  .btn { width: 100%; }
+  .inner { gap: 0.5rem; }
+}

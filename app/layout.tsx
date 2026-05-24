@@ -7,6 +7,7 @@ import ScrollToTop from '@/components/ScrollToTop'
 import { CartProvider } from '@/components/CartProvider'
 import CartDrawer from '@/components/CartDrawer'
 import CookieBanner from '@/components/CookieBanner'
+import Analytics from '@/components/Analytics'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
           <CookieBanner />
+          <Analytics />
         </CartProvider>
       </body>
     </html>

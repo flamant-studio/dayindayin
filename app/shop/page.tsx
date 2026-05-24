@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getProducts, getProductsByTag, formatPrice, categoryLabel } from '@/lib/shopify/products'
+import ShopFilterNav from '@/components/ShopFilterNav'
+import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
 
 export const metadata = {
@@ -8,28 +10,7 @@ export const metadata = {
   description: 'Art prints, canvases, and wall hangings by Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
 }
 
-const TYPE_NAV = [
-  { label: 'All', value: null },
-  { label: 'Tufted Works', value: 'tufting' },
-  { label: 'Embroidery', value: 'embroidery' },
-  { label: 'Painting', value: 'painting' },
-  { label: 'Photography', value: 'photography' },
-  { label: 'Tote Bags', value: 'tote' },
-  { label: 'Greeting Cards', value: 'greeting-card' },
-]
-
 const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
-
-const SERIES_NAV = [
-  { label: 'All series', value: null },
-  { label: 'SHERO', value: 'shero' },
-  { label: 'NEKO', value: 'neko' },
-  { label: 'Sea Monsters', value: 'sea-monsters' },
-  { label: 'Botanical', value: 'botanical' },
-  { label: 'Floral', value: 'floral' },
-  { label: 'Faces', value: 'faces' },
-  { label: 'Sommerby', value: 'sommerby' },
-]
 
 const SORT_OPTIONS = [
   { label: 'Newest', value: 'newest' },
@@ -118,37 +99,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
         </div>
       </header>
 
-      <nav className={styles.subnav}>
-        <div className={styles.subnavRow}>
-          <span className={styles.subnavLabel}>Type</span>
-          {TYPE_NAV.map((item) => {
-            const isActive = item.value === activeTag || (item.value === null && !activeTag)
-            const href = item.value ? `/shop?filter=${item.value}` : '/shop'
-            return (
-              <Link key={item.label} href={href}
-                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}>
-                {item.label}
-              </Link>
-            )
-          })}
-        </div>
-        <div className={styles.subnavRow}>
-          <span className={styles.subnavLabel}>Series</span>
-          {SERIES_NAV.map((item) => {
-            const isActive =
-              item.value === null
-                ? !isSeriesFilter
-                : item.value === activeTag
-            const href = item.value ? `/shop?filter=${item.value}` : '/shop'
-            return (
-              <Link key={item.label} href={href}
-                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}>
-                {item.label}
-              </Link>
-            )
-          })}
-        </div>
-      </nav>
+      <ShopFilterNav activeTag={activeTag} />
 
       {products.length === 0 ? (
         <div className={styles.empty}>
@@ -167,6 +118,12 @@ export default async function ShopPage({ searchParams }: PageProps) {
                     fill
                     sizes="(max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw"
                     className={styles.cardImgEl}
+                  />
+                  <WishlistButton
+                    handle={p.handle}
+                    title={p.title}
+                    imageUrl={p.firstImage?.url ?? null}
+                    price={formatPrice(p.minPrice.amount)}
                   />
                 </div>
                 <div className={styles.cardInfo}>

@@ -17,11 +17,12 @@ export default function Footer() {
           <div className={styles.col}>
             <span className={styles.colTitle}>Shop</span>
             <Link href="/shop">All products</Link>
-            <Link href="/shop/collections/tufted-works">Tufted Works</Link>
-            <Link href="/shop/collections/embroidery">Embroidery</Link>
-            <Link href="/shop/collections/paintings">Paintings</Link>
-            <Link href="/shop/collections/photography">Photography</Link>
-            <Link href="/shop/collections/archive">Archive</Link>
+            <Link href="/collections">Collections</Link>
+            <Link href="/shop?filter=tufting">Tufted Works</Link>
+            <Link href="/shop?filter=embroidery">Embroidery</Link>
+            <Link href="/shop?filter=painting">Paintings</Link>
+            <Link href="/shop?filter=photography">Photography</Link>
+            <Link href="/saved">Saved</Link>
           </div>
           <div className={styles.col}>
             <span className={styles.colTitle}>Artist</span>

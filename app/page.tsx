@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getProducts, formatPrice } from '@/lib/shopify/products'
 import NewsletterSignup from '@/components/NewsletterSignup'
+import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
@@ -66,6 +67,12 @@ export default async function HomePage() {
                     ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
                     : <div className={styles.cardPlaceholder} />
                   }
+                  <WishlistButton
+                    handle={p.handle}
+                    title={p.title}
+                    imageUrl={p.firstImage?.url ?? null}
+                    price={formatPrice(p.minPrice.amount)}
+                  />
                 </div>
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{p.title}</span>
