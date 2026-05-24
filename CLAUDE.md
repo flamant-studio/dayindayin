@@ -1,5 +1,5 @@
 # DayInDayIn — Claude Code Handover
-*Last updated: 2026-05-23*
+*Last updated: 2026-05-24*
 
 ---
 
@@ -27,29 +27,35 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 
 ---
 
-## Current State (2026-05-23)
+## Current State (2026-05-24)
 
 | Layer | Status |
 |---|---|
 | Next.js site | ✅ Live on Vercel |
 | Shop pages | ✅ Homepage, /shop, /shop/[handle], /shop/collections/[handle] |
-| Cart system | ✅ CartProvider, CartDrawer, AddToCartButton |
+| Cart system | ✅ **WORKING** — add/remove/qty controls, Shopify checkout |
+| Online Store publish | ✅ All 671 active products published to Online Store channel (2026-05-24) |
 | Design system | ✅ Playfair Display + Inter, vermillion accent |
-| Nav | ✅ Click-toggle dropdown (Artist), direct link (Shop) |
+| Nav | ✅ Desktop header + mobile bottom tab bar (Home/Shop/Artist/Cart) |
 | Shopify tokens | ✅ SHOPIFY_STOREFRONT_TOKEN + SHOPIFY_ADMIN_TOKEN in .env.local |
 | Gelato — vertical template | ✅ `6005fae3` — A4/A3/A2 portrait. Placeholder: `nekopaw_yellow_neon.png` |
 | Gelato — horizontal template | ✅ `18600284` — A5/A4/A3 landscape. Placeholder: `Tourism_1.png` |
-| Active products | ✅ **599 ACTIVE** in Shopify — published 2026-05-23 |
-| Products in shop | ✅ 200 shown (sorted newest-first); 51 artwork "— Print" batch seeded today |
+| Active products | ✅ **671 ACTIVE** in Shopify, all published to Online Store |
+| Products in shop | ✅ 103 with images shown (rest pending Gelato mockup generation) |
 | Category labels | ✅ Tag-based: tufting→Tufted Works, embroidery→Embroidery, painting→Painting, photography→Photography |
-| Related products | ✅ By category tag (not raw productType) |
-| Product page description | ✅ HTML rendering with bullet points |
-| Scroll-to-top | ✅ Fires on every route change |
+| Series filters | ✅ SHERO/NEKO/Sea Monsters/Botanical/Floral/Faces/Sommerby — tags backfilled |
+| Product pages | ✅ Breadcrumb, variant selector, size guide, image gallery, lightbox, cross-sells, JSON-LD |
+| SEO | ✅ sitemap.xml (273 URLs), robots.txt (App Router), OG image |
+| Cookie banner | ✅ localStorage-based, z-index 250 |
+| RecentlyViewed | ✅ localStorage-based, shows on product pages |
+| Search | ✅ /search?q= — full-text across title/description/tags |
+| robots.txt | ✅ App Router generated (public/robots.txt removed — was conflicting) |
 | Domain dayindayin.dk | 🔲 Not yet pointed to Vercel (Simply.com DNS) |
 | Shopify Payments KYC | 🔲 Pending — eliminates 2% fee |
 | Legal pages | 🔲 Pending — privacy policy, copyright, fulfillment T&C |
 | CONTACT_EMAIL_TO | 🔲 Pending — Stine's actual email in Vercel env vars |
-| Gelato image generation | ⏳ New "— Print" products: preview images pending (async, ~hours) |
+| Newsletter API | 🔲 Signup shows "Thank you" but doesn't subscribe — needs Mailchimp/Klaviyo |
+| Gelato image generation | ⏳ Some newer products pending mockup images (async, hours-days) |
 
 **Gelato store ID:** `51ee1b39-75e6-4c19-af02-cfd7cb771a4a`
 
