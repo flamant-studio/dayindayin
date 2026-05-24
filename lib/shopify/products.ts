@@ -126,6 +126,24 @@ export async function getProductsByType(productType: string, excludeHandle: stri
     .filter((p) => p.status === 'ACTIVE')
 }
 
+export const SERIES_TAGS: Record<string, string> = {
+  shero:          'SHERO',
+  neko:           'NEKO',
+  'sea-monsters': 'Sea Monsters',
+  botanical:      'Botanical',
+  floral:         'Floral',
+  faces:          'Faces',
+  sommerby:       'Sommerby',
+}
+
+export function seriesLabel(product: NormalizedProduct): string | null {
+  for (const tag of product.tags) {
+    const label = SERIES_TAGS[tag.toLowerCase()]
+    if (label) return label
+  }
+  return null
+}
+
 // Specific category tags take priority — 'art-print' is intentionally absent
 // so it falls through to the default, allowing specific tags found later in the
 // tags array (e.g. 'tufting') to win.

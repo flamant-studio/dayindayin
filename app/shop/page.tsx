@@ -7,7 +7,7 @@ export const metadata = {
   description: 'Art prints, canvases, and wall hangings by Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
 }
 
-const SUBNAV = [
+const TYPE_NAV = [
   { label: 'All', value: null },
   { label: 'Tufted Works', value: 'tufting' },
   { label: 'Embroidery', value: 'embroidery' },
@@ -17,19 +17,28 @@ const SUBNAV = [
   { label: 'Greeting Cards', value: 'greeting-card' },
 ]
 
+const SERIES_NAV = [
+  { label: 'SHERO', value: 'shero' },
+  { label: 'NEKO', value: 'neko' },
+  { label: 'Sea Monsters', value: 'sea-monsters' },
+  { label: 'Botanical', value: 'botanical' },
+  { label: 'Floral', value: 'floral' },
+  { label: 'Faces', value: 'faces' },
+  { label: 'Sommerby', value: 'sommerby' },
+]
+
 interface PageProps {
-  searchParams: Promise<{ category?: string }>
+  searchParams: Promise<{ filter?: string }>
 }
 
 export default async function ShopPage({ searchParams }: PageProps) {
-  const { category } = await searchParams
-  const activeTag = SUBNAV.find((i) => i.value === category)?.value ?? null
+  const { filter } = await searchParams
+  const activeTag = filter ?? null
 
   const raw = activeTag
     ? await getProductsByTag(activeTag, 200).catch(() => [])
     : await getProducts(200).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
 
-  // Hide products with no image yet (Gelato previews generate async)
   const products = raw.filter((p) => p.firstImage)
 
   return (
@@ -42,19 +51,31 @@ export default async function ShopPage({ searchParams }: PageProps) {
       </header>
 
       <nav className={styles.subnav}>
-        {SUBNAV.map((item) => {
-          const isActive = item.value === activeTag
-          const href = item.value ? `/shop?category=${item.value}` : '/shop'
-          return (
-            <Link
-              key={item.label}
-              href={href}
-              className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
-            >
-              {item.label}
-            </Link>
-          )
-        })}
+        <div className={styles.subnavRow}>
+          <span className={styles.subnavLabel}>Type</span>
+          {TYPE_NAV.map((item) => {
+            const isActive = item.value === activeTag || (item.value === null && !activeTag)
+            const href = item.value ? `/shop?filter=${item.value}` : '/shop'
+            return (
+              <Link key={item.label} href={href}
+                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}>
+                {item.label}
+              </Link>
+            )
+          })}
+        </div>
+        <div className={styles.subnavRow}>
+          <span className={styles.subnavLabel}>Series</span>
+          {SERIES_NAV.map((item) => {
+            const isActive = item.value === activeTag
+            return (
+              <Link key={item.label} href={`/shop?filter=${item.value}`}
+                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}>
+                {item.label}
+              </Link>
+            )
+          })}
+        </div>
       </nav>
 
       {products.length === 0 ? (

@@ -213,18 +213,40 @@
   padding-top: var(--sp-8);
 }
 
+.relatedHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--sp-2);
+}
+
 .relatedTitle {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: var(--sp-6);
+}
+
+.relatedViewAll {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+
+.relatedViewAll:hover { color: var(--c-text); }
+
+.relatedSub {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+  margin-bottom: var(--sp-5);
 }
 
 .relatedGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  margin-top: var(--sp-5);
 }
 
 .relatedCard {

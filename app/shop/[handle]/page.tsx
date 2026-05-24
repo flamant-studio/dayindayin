@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getProductByHandle, getProductsByTag, formatPrice, checkoutUrl, categoryLabel } from '@/lib/shopify/products'
+import { getProductByHandle, getProductsByTag, formatPrice, checkoutUrl, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import AddToCartButton from '@/components/AddToCartButton'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -41,13 +41,27 @@ export default async function ProductPage({ params }: PageProps) {
   const otherImages = product.images.slice(1).filter(img => img.url)
   const firstVariant = product.firstVariant
 
-  // Find the most specific category tag to query related products
+  // Series cross-sell — same series, all product types, cheapest first
+  const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
+  const productSeriesTag = product.tags.find(t => SERIES_TAGS_LIST.includes(t.toLowerCase()))
+  const seriesProducts = productSeriesTag
+    ? (await getProductsByTag(productSeriesTag, 20).catch(() => []))
+        .filter(p => p.handle !== handle && p.firstImage)
+        .sort((a, b) => parseFloat(a.minPrice.amount) - parseFloat(b.minPrice.amount))
+        .slice(0, 6)
+    : []
+  const seriesHandles = new Set(seriesProducts.map(p => p.handle))
+
+  // Category related — same medium, different designs, excluding series dupes
   const CATEGORY_TAGS = ['tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card']
   const categoryTag = product.tags.find(t => CATEGORY_TAGS.includes(t.toLowerCase()))
-  const related = categoryTag
-    ? await getProductsByTag(categoryTag, 5).catch(() => [])
+  const relatedFiltered = categoryTag
+    ? (await getProductsByTag(categoryTag, 10).catch(() => []))
+        .filter(p => p.handle !== handle && p.firstImage && !seriesHandles.has(p.handle))
+        .slice(0, 4)
     : []
-  const relatedFiltered = related.filter(p => p.handle !== handle).slice(0, 4)
+
+  const productSeries = seriesLabel(product)
 
   return (
     <div className={styles.page}>
@@ -148,6 +162,32 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
         </div>
       </div>
+      {seriesProducts.length > 0 && (
+        <section className={styles.related}>
+          <div className={styles.relatedHeader}>
+            <h2 className={styles.relatedTitle}>More from {productSeries}</h2>
+            <Link href={`/shop?filter=${productSeriesTag}`} className={styles.relatedViewAll}>
+              View all →
+            </Link>
+          </div>
+          <p className={styles.relatedSub}>Same series — all sizes and price points</p>
+          <div className={styles.relatedGrid}>
+            {seriesProducts.map((p) => (
+              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>
+                <div className={styles.relatedImg}>
+                  <Image src={p.firstImage!.url} alt={p.firstImage!.altText ?? p.title}
+                    fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
+                </div>
+                <div className={styles.relatedInfo}>
+                  <span className={styles.relatedName}>{p.title}</span>
+                  <span className={styles.relatedPrice}>{formatPrice(p.minPrice.amount)}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
       {relatedFiltered.length > 0 && (
         <section className={styles.related}>
           <h2 className={styles.relatedTitle}>More like this</h2>
@@ -155,17 +195,8 @@ export default async function ProductPage({ params }: PageProps) {
             {relatedFiltered.map((p) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>
                 <div className={styles.relatedImg}>
-                  {p.firstImage ? (
-                    <Image
-                      src={p.firstImage.url}
-                      alt={p.firstImage.altText ?? p.title}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  ) : (
-                    <div className={styles.imagePlaceholder} />
-                  )}
+                  <Image src={p.firstImage!.url} alt={p.firstImage!.altText ?? p.title}
+                    fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
                 </div>
                 <div className={styles.relatedInfo}>
                   <span className={styles.relatedName}>{p.title}</span>

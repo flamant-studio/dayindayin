@@ -31,22 +31,44 @@
 /* ── Subnav ─────────────────────────────────────────────── */
 
 .subnav {
-  display: flex;
-  gap: var(--sp-1);
-  padding: var(--sp-3) var(--sp-6);
   border-bottom: 1px solid var(--c-border);
+}
+
+.subnavRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-6);
   overflow-x: auto;
   scrollbar-width: none;
 }
 
-.subnav::-webkit-scrollbar { display: none; }
+.subnavRow:first-child {
+  padding-top: var(--sp-3);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.subnavRow:last-child { padding-bottom: var(--sp-3); }
+
+.subnavRow::-webkit-scrollbar { display: none; }
+
+.subnavLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  white-space: nowrap;
+  padding-right: var(--sp-2);
+  opacity: 0.6;
+}
 
 .navLink {
   font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: var(--sp-2) var(--sp-3);
+  padding: var(--sp-1) var(--sp-3);
   border: 1px solid transparent;
   white-space: nowrap;
   color: var(--c-muted);
