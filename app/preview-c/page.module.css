@@ -1,0 +1,258 @@
+/* ── Design C: Quiet / Kinfolk ──────────────────────────────────────────── */
+/* Warm linen background, centered composition, featherweight typography */
+
+.page {
+  background: #FAF8F5;
+  color: #1C1916;
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+/* Preview banner */
+.previewBanner {
+  background: #A65640;
+  color: #FAF8F5;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ── Hero ─────────────────────────────────── */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem 5rem;
+  gap: 0;
+}
+
+.heroEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9A9590;
+  margin-bottom: 2rem;
+}
+
+.heroFrame {
+  position: relative;
+  width: min(640px, 90vw);
+  height: min(520px, 70vw);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.heroSub {
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #7A7670;
+  margin-bottom: 2.5rem;
+}
+
+.heroCta {
+  display: inline-block;
+  padding: 0.75rem 2.5rem;
+  border: 1px solid #C0B8B0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1C1916;
+  transition: border-color 150ms, background 150ms;
+}
+
+.heroCta:hover {
+  border-color: #A65640;
+  background: rgba(166, 86, 64, 0.06);
+}
+
+/* ── Rule ─────────────────────────────────── */
+
+.rule {
+  height: 1px;
+  background: #E0DAD4;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ── Works ─────────────────────────────────── */
+
+.works {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem 3rem;
+}
+
+.worksLabel {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9A9590;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem 2rem;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+}
+
+.cardImg {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: #EDE8E2;
+  margin-bottom: 1rem;
+  transition: box-shadow 300ms;
+}
+
+.card:hover .cardImg {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+
+.cardImgEl {
+  object-fit: cover;
+  transition: transform 500ms cubic-bezier(0.25, 0, 0, 1);
+}
+
+.card:hover .cardImgEl { transform: scale(1.03); }
+
+.cardTitle {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #4A4540;
+  margin-bottom: 0.25rem;
+}
+
+.cardPrice {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: #9A9590;
+  letter-spacing: 0.04em;
+}
+
+.worksFooter {
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid #E0DAD4;
+  margin-top: 3rem;
+}
+
+.worksAll {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #A65640;
+  transition: opacity 150ms;
+}
+
+.worksAll:hover { opacity: 0.65; }
+
+/* ── Artist note ─────────────────────────────── */
+
+.note {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-height: 520px;
+  overflow: hidden;
+}
+
+.noteImg {
+  position: relative;
+  min-height: 400px;
+}
+
+.noteText {
+  background: #1C1916;
+  color: #FAF8F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  gap: 1.25rem;
+}
+
+.noteLabel {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250,248,245,0.45);
+}
+
+.noteBody {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(250,248,245,0.80);
+  max-width: 420px;
+}
+
+.noteLink {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(250,248,245,0.55);
+  border-bottom: 1px solid rgba(250,248,245,0.25);
+  display: inline-block;
+  padding-bottom: 2px;
+  transition: color 150ms, border-color 150ms;
+  align-self: flex-start;
+}
+
+.noteLink:hover {
+  color: #FAF8F5;
+  border-color: rgba(250,248,245,0.6);
+}
+
+/* ── Responsive ─────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1.25rem 4rem; }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
+  }
+
+  .works { padding: 3rem 1.25rem 2rem; }
+
+  .note {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .noteImg { min-height: 280px; }
+
+  .noteText { padding: 2.5rem 1.25rem; }
+}

@@ -1,0 +1,256 @@
+/* ── Design B: Graphic / Poster ────────────────────────────────────────── */
+/* Newsprint background, oversized type, catalog list layout, yellow flash */
+
+.page {
+  background: #F2EFE5;
+  color: #0D0D0B;
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+/* Preview banner */
+.previewBanner {
+  background: #E8C020;
+  color: #0D0D0B;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ── Hero ─────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem 3rem 3rem;
+  overflow: hidden;
+}
+
+.heroInset {
+  position: absolute;
+  top: 2.5rem;
+  right: 3rem;
+  width: clamp(160px, 25vw, 320px);
+  height: clamp(200px, 32vw, 420px);
+}
+
+.heroType {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.heroBy {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 13rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroDisciplines {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.heroCta {
+  display: inline-block;
+  background: #0D0D0B;
+  color: #F2EFE5;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 1rem 2.5rem;
+  text-transform: uppercase;
+  transition: background 150ms;
+}
+
+.heroCta:hover { background: #E8C020; color: #0D0D0B; }
+
+/* ── Catalog ─────────────────────────────── */
+
+.catalog {
+  padding: 0 3rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.catalogHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 2px solid #0D0D0B;
+  padding-top: 1rem;
+  margin-bottom: 0;
+}
+
+.catalogNum {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.catalogAll {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #555;
+  transition: color 150ms;
+}
+
+.catalogAll:hover { color: #0D0D0B; }
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2rem 72px 1fr auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  text-decoration: none;
+  transition: background 150ms;
+}
+
+.row:hover {
+  background: rgba(232, 192, 32, 0.12);
+}
+
+.rowIndex {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #999;
+  letter-spacing: 0.04em;
+}
+
+.rowThumb {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #DDD;
+}
+
+.rowTitle {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #0D0D0B;
+}
+
+.rowType {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #888;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.rowPrice {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #0D0D0B;
+  white-space: nowrap;
+}
+
+/* ── Statement ─────────────────────────────── */
+
+.statement {
+  border-top: 2px solid #0D0D0B;
+}
+
+.statementInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.statementText {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 640px;
+}
+
+.statementLink {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #0D0D0B;
+  border-bottom: 2px solid #E8C020;
+  padding-bottom: 2px;
+  transition: border-color 150ms;
+}
+
+.statementLink:hover { border-color: #0D0D0B; }
+
+/* ── Responsive ─────────────────────────────── */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 1.5rem 1.25rem 2rem;
+    min-height: 80vh;
+  }
+
+  .heroInset {
+    right: 1.25rem;
+    top: 1.5rem;
+    width: 110px;
+    height: 140px;
+  }
+
+  .catalog {
+    padding: 0 1.25rem 3rem;
+  }
+
+  .row {
+    grid-template-columns: 2rem 56px 1fr auto;
+    gap: 0.75rem;
+  }
+
+  .rowThumb {
+    width: 56px;
+    height: 56px;
+  }
+
+  .rowType { display: none; }
+
+  .statementInner {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 1.25rem;
+  }
+}
