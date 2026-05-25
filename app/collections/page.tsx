@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { getProductsByTag, formatPrice } from '@/lib/shopify/products'
+import { getProductsByTag } from '@/lib/shopify/products'
+import CollectionSlideshow from '@/components/CollectionSlideshow'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 
@@ -47,12 +47,6 @@ const COLLECTIONS = [
     accent: '#7A6B8A',
   },
   {
-    title: 'Sommerby',
-    description: 'Light and shadow from the summer house. A quieter, more personal side of the archive.',
-    tag: 'sommerby',
-    accent: '#8A7B5C',
-  },
-  {
     title: 'Tufted Works',
     description: 'Handmade tufted textiles — the most labour-intensive of the media, and the most physical.',
     tag: 'tufting',
@@ -71,34 +65,22 @@ async function CollectionCard({
 }: { title: string; description: string; tag: string; accent: string }) {
   const products = await getProductsByTag(tag, 50).catch(() => [])
   const withImages = products.filter((p) => p.firstImage)
-  const previews = withImages.slice(0, 4)
+  const slideImages = withImages.slice(0, 4).map((p) => ({
+    url: p.firstImage!.url,
+    alt: p.firstImage!.altText ?? p.title,
+  }))
   const count = withImages.length
 
   return (
     <Link href={`/shop?filter=${tag}`} className={styles.card}>
-      <div className={styles.cardGrid}>
-        {previews.map((p) => (
-          <div key={p.id} className={styles.cardThumb}>
-            <Image
-              src={p.firstImage!.url}
-              alt={p.firstImage!.altText ?? p.title}
-              fill
-              sizes="(max-width: 768px) 25vw, 12vw"
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
-        ))}
-        {Array.from({ length: 4 - previews.length }).map((_, i) => (
-          <div key={`ph-${i}`} className={`${styles.cardThumb} ${styles.cardThumbEmpty}`} />
-        ))}
-      </div>
+      <CollectionSlideshow images={slideImages} />
       <div className={styles.cardBody}>
         <div className={styles.cardAccent} style={{ background: accent }} />
         <div className={styles.cardText}>
           <h2 className={styles.cardTitle}>{title}</h2>
-          {count > 0 && <p className={styles.cardCount}>{count} work{count !== 1 ? 's' : ''}</p>}
+          {count > 0 && <p className={styles.cardCount}>{count} product{count !== 1 ? 's' : ''}</p>}
           <p className={styles.cardDesc}>{description}</p>
-          <span className={styles.cardCta}>View works →</span>
+          <span className={styles.cardCta}>View products →</span>
         </div>
       </div>
     </Link>

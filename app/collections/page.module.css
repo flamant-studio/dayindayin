@@ -44,29 +44,6 @@
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
 
-.cardGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  aspect-ratio: 4/3;
-  gap: 2px;
-  background: var(--c-border);
-}
-
-.cardThumb {
-  position: relative;
-  overflow: hidden;
-}
-
-.cardThumb img {
-  transition: transform 400ms var(--ease);
-}
-
-.card:hover .cardThumb img { transform: scale(1.04); }
-
-.cardThumbEmpty {
-  background: var(--c-surface);
-}
 
 .cardBody {
   display: flex;

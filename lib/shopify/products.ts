@@ -146,7 +146,6 @@ export const SERIES_TAGS: Record<string, string> = {
   botanical:      'Botanical',
   floral:         'Floral',
   faces:          'Faces',
-  sommerby:       'Sommerby',
 }
 
 export function seriesLabel(product: NormalizedProduct): string | null {
