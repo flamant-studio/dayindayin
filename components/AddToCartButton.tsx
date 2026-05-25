@@ -24,6 +24,9 @@ export default function AddToCartButton({ variantId, price, available = true }: 
       await addItem(variantId)
       setState('added')
       setTimeout(() => setState('idle'), 2000)
+      if (typeof window !== 'undefined' && (window as any).posthog) {
+        (window as any).posthog.capture('add_to_cart', { variant_id: variantId, price })
+      }
     } catch {
       setState('idle')
     }
