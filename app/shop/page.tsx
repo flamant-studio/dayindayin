@@ -84,7 +84,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
           {products.length > 0 && (
             <p className={styles.subtitle}>
               {showAll
-                ? `${totalCount} works available`
+                ? `${totalCount} products`
                 : (
                   <>
                     Showing {Math.min(PAGE_SIZE, totalCount)} of {totalCount}
@@ -118,7 +118,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
       {products.length === 0 ? (
         <div className={styles.empty}>
           <p>{activeTag ? `Nothing in this filter yet — check back soon.` : 'No products yet — check back soon.'}</p>
-          {activeTag && <Link href="/shop" className={styles.emptyCta}>Browse all works</Link>}
+          {activeTag && <Link href="/shop" className={styles.emptyCta}>Browse all products</Link>}
         </div>
       ) : (
         <>
@@ -151,7 +151,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
           {hasMore && (
             <div className={styles.loadMore}>
               <Link href={showAllHref()} className={styles.loadMoreLink}>
-                Show all {totalCount} works →
+                Show all {totalCount} products →
               </Link>
             </div>
           )}

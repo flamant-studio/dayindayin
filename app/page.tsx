@@ -26,7 +26,7 @@ export default async function HomePage() {
           <span className={styles.heroLabel}>Copenhagen, Denmark</span>
           <h1 className={styles.heroTitle}>Art made by hand.<br />Printed for your wall.</h1>
           <p className={styles.heroSub}>Original works by Copenhagen artist Stine Weirsøe Flamant. Every print made on demand — no mass production.</p>
-          <Link href="/shop" className={styles.heroCta}>Shop all works</Link>
+          <Link href="/shop" className={styles.heroCta}>Shop all prints</Link>
         </div>
 
         {/* Right panel — lifestyle image (full-bleed on mobile) */}
@@ -46,7 +46,7 @@ export default async function HomePage() {
             <span className={styles.heroLabel}>Copenhagen, Denmark</span>
             <h1 className={styles.heroTitle}>Art made by hand.<br />Printed for your wall.</h1>
             <p className={styles.heroSub}>Original works by Copenhagen artist Stine Weirsøe Flamant. Every print made on demand — no mass production.</p>
-            <Link href="/shop" className={styles.heroCta}>Shop all works</Link>
+            <Link href="/shop" className={styles.heroCta}>Shop all prints</Link>
           </div>
         </div>
       </section>
@@ -110,7 +110,7 @@ export default async function HomePage() {
             </div>
           ))}
         </section>
-        <p className={styles.lifestyleCaption}>See all works in the shop →</p>
+        <p className={styles.lifestyleCaption}>See all products in the shop →</p>
       </Link>
     </>
   )

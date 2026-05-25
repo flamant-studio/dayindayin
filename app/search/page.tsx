@@ -50,7 +50,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
             type="search"
             name="q"
             defaultValue={query}
-            placeholder="Search works, series, tags…"
+            placeholder="Search products, series, tags…"
             className={styles.input}
             autoFocus
           />
@@ -60,8 +60,8 @@ export default async function SearchPage({ searchParams }: PageProps) {
 
       {query && results.length === 0 && (
         <div className={shopStyles.empty}>
-          <p>No works matched your search.</p>
-          <Link href="/shop" className={shopStyles.emptyCta}>Browse all works</Link>
+          <p>No products matched your search.</p>
+          <Link href="/shop" className={shopStyles.emptyCta}>Browse all products</Link>
         </div>
       )}
 

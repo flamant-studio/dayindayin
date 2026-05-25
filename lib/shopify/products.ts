@@ -161,12 +161,15 @@ export function seriesLabel(product: NormalizedProduct): string | null {
 // so it falls through to the default, allowing specific tags found later in the
 // tags array (e.g. 'tufting') to win.
 const TAG_CATEGORY: Record<string, string> = {
-  tufting: 'Tufted Works',
-  embroidery: 'Embroidery',
-  painting: 'Painting',
-  photography: 'Photography',
+  tufting:         'Tufted Work',
+  embroidery:      'Embroidery',
+  framed:          'Framed Print',
+  mug:             'Mug',
+  postcard:        'Postcard',
+  apparel:         'Apparel',
+  photography:     'Photo Print',
   'greeting-card': 'Greeting Card',
-  tote: 'Tote Bag',
+  tote:            'Tote Bag',
 }
 
 export function categoryLabel(product: NormalizedProduct): string {
