@@ -4,6 +4,7 @@ import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/ScrollToTop'
+import BackToTopButton from '@/components/BackToTopButton'
 import { CartProvider } from '@/components/CartProvider'
 import CartDrawer from '@/components/CartDrawer'
 import CookieBanner from '@/components/CookieBanner'
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CartDrawer />
           <main>{children}</main>
           <Footer />
+          <BackToTopButton />
           <CookieBanner />
           <Analytics />
         </CartProvider>

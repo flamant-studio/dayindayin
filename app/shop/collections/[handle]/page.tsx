@@ -42,8 +42,12 @@ export default async function CollectionPage({ params }: PageProps) {
 
   return (
     <div className={styles.page}>
+      <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+        <Link href="/collections" className={styles.breadcrumbLink}>Collections</Link>
+        <span className={styles.breadcrumbSep}>/</span>
+        <span className={styles.breadcrumbCurrent}>{col.title}</span>
+      </nav>
       <header className={styles.header}>
-        <Link href="/shop" className={styles.back}>&larr; All products</Link>
         <h1 className={styles.title}>{col.title}</h1>
         <p className={styles.description}>{col.description}</p>
       </header>

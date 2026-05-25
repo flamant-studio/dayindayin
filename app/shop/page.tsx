@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, getProductsByTag, formatPrice, categoryLabel } from '@/lib/shopify/products'
+import { getProducts, getProductsByTag, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
@@ -10,7 +10,22 @@ export const metadata = {
   description: 'Art prints, canvases, and wall hangings by Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
 }
 
-const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
+const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces']
+
+const FILTER_LABELS: Record<string, string> = {
+  'art-print':   'Art Prints',
+  'framed':      'Framed Prints',
+  'mug':         'Mugs',
+  'apparel':     'Apparel',
+  'postcard':    'Postcards',
+  'tote':        'Tote Bags',
+  'shero':       'SHERO',
+  'neko':        'NEKO',
+  'sea-monsters':'Sea Monsters',
+  'botanical':   'Botanical',
+  'floral':      'Floral',
+  'faces':       'Faces',
+}
 
 const SORT_OPTIONS = [
   { label: 'Newest', value: 'newest' },
@@ -63,6 +78,13 @@ export default async function ShopPage({ searchParams }: PageProps) {
     return qs ? `/shop?${qs}` : '/shop'
   }
 
+  function clearFilterHref() {
+    const params = new URLSearchParams()
+    if (activeSort !== 'newest') params.set('sort', activeSort)
+    const qs = params.toString()
+    return qs ? `/shop?${qs}` : '/shop'
+  }
+
   // Build show-all href (preserve filter + sort)
   function showAllHref() {
     const params = new URLSearchParams()
@@ -95,6 +117,12 @@ export default async function ShopPage({ searchParams }: PageProps) {
                 )
               }
             </p>
+          )}
+          {activeTag && FILTER_LABELS[activeTag] && (
+            <span className={styles.filterChip}>
+              {FILTER_LABELS[activeTag]}
+              <Link href={clearFilterHref()} className={styles.filterChipClear} aria-label="Clear filter">×</Link>
+            </span>
           )}
         </div>
         <div className={styles.sortRow}>
@@ -139,6 +167,9 @@ export default async function ShopPage({ searchParams }: PageProps) {
                     imageUrl={p.firstImage?.url ?? null}
                     price={formatPrice(p.minPrice.amount)}
                   />
+                  {seriesLabel(p) && (
+                    <span className={styles.cardBadge}>{seriesLabel(p)}</span>
+                  )}
                 </div>
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{p.title}</span>

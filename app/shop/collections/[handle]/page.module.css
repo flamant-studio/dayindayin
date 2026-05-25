@@ -2,6 +2,29 @@
   min-height: 60vh;
 }
 
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem 0;
+  font-size: 0.6875rem;
+}
+
+.breadcrumbLink {
+  color: var(--c-muted);
+  font-weight: 500;
+  transition: color var(--t-fast);
+}
+
+.breadcrumbLink:hover { color: var(--c-text); }
+
+.breadcrumbSep { color: var(--c-muted); }
+
+.breadcrumbCurrent {
+  color: var(--c-text);
+  font-weight: 500;
+}
+
 .header {
   padding: 4rem 2rem 2.5rem;
   max-width: 900px;
@@ -50,13 +73,15 @@
 
 .card {
   background: var(--c-surface);
-  overflow: hidden;
   display: block;
   padding: 8px;
-  transition: opacity 0.2s;
+  transition: box-shadow 0.25s, transform 0.25s;
 }
 
-.card:hover { opacity: 0.85; }
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.11);
+  transform: translateY(-2px);
+}
 
 .imageWrap {
   position: relative;

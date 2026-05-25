@@ -37,23 +37,17 @@
   display: block;
   background: var(--c-white);
   overflow: hidden;
-  transition: box-shadow var(--t-base);
+  transition: box-shadow var(--t-base), transform var(--t-base);
+  border-left: 3px solid transparent; /* overridden by inline style */
 }
 
 .card:hover {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  transform: translateY(-2px);
 }
 
 
-.cardBody {
-  display: flex;
-  align-items: stretch;
-}
-
-.cardAccent {
-  width: 4px;
-  flex-shrink: 0;
-}
+.cardBody {}
 
 .cardText {
   padding: var(--sp-4) var(--sp-5);
@@ -71,9 +65,11 @@
 }
 
 .cardCount {
-  font-size: var(--text-xs);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--c-muted);
 }
 

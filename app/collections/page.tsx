@@ -72,10 +72,9 @@ async function CollectionCard({
   const count = withImages.length
 
   return (
-    <Link href={`/shop?filter=${tag}`} className={styles.card}>
+    <Link href={`/shop?filter=${tag}`} className={styles.card} style={{ borderLeft: `3px solid ${accent}` }}>
       <CollectionSlideshow images={slideImages} />
       <div className={styles.cardBody}>
-        <div className={styles.cardAccent} style={{ background: accent }} />
         <div className={styles.cardText}>
           <h2 className={styles.cardTitle}>{title}</h2>
           {count > 0 && <p className={styles.cardCount}>{count} product{count !== 1 ? 's' : ''}</p>}

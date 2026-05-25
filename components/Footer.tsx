@@ -19,8 +19,9 @@ export default function Footer() {
             <Link href="/shop">All products</Link>
             <Link href="/collections">Collections</Link>
             <Link href="/shop?filter=art-print">Art Prints</Link>
-            <Link href="/shop?filter=tote">Tote Bags</Link>
-            <Link href="/shop?filter=greeting-card">Greeting Cards</Link>
+            <Link href="/shop?filter=framed">Framed Prints</Link>
+            <Link href="/shop?filter=mug">Mugs</Link>
+            <Link href="/shop?filter=postcard">Postcards</Link>
             <Link href="/saved">Saved</Link>
           </div>
           <div className={styles.col}>

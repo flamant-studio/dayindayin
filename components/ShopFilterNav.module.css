@@ -1,5 +1,9 @@
 .subnav {
   border-bottom: 1px solid var(--c-border);
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 20;
+  background: var(--c-bg);
 }
 
 /* Mobile toggle button — hidden on desktop */

@@ -50,7 +50,7 @@ export default async function ProductPage({ params }: PageProps) {
   const firstVariant = product.firstVariant
 
   // Series cross-sell — same series, all product types, cheapest first
-  const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
+  const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces']
   const productSeriesTag = product.tags.find(t => SERIES_TAGS_LIST.includes(t.toLowerCase()))
   const seriesProducts = productSeriesTag
     ? (await getProductsByTag(productSeriesTag, 20).catch(() => []))
@@ -183,11 +183,14 @@ export default async function ProductPage({ params }: PageProps) {
               <SizeGuide variants={product.variants} />
             )}
 
-            <div className={styles.fulfillmentNote}>
-              <p>Fulfilled by Gelato. Printed on demand and shipped directly to you.</p>
-              <p>Ships within 3–7 business days to EU, UK, and Norway.</p>
-              <p>No returns on print-on-demand unless the product arrives defective or damaged.</p>
-            </div>
+            <details className={styles.fulfillmentAccordion}>
+              <summary className={styles.fulfillmentSummary}>Shipping &amp; Returns</summary>
+              <div className={styles.fulfillmentNote}>
+                <p>Fulfilled by Gelato. Printed on demand and shipped directly to you.</p>
+                <p>Ships within 3–7 business days to EU, UK, and Norway.</p>
+                <p>No returns on print-on-demand unless the product arrives defective or damaged.</p>
+              </div>
+            </details>
 
             {/* Artist context strip */}
             <div className={styles.artistStrip}>

@@ -59,6 +59,9 @@ export default function ImageGallery({ images, colorwaySiblings }: Props) {
         ) : (
           <div className={styles.imagePlaceholder} />
         )}
+        {images.length > 1 && (
+          <span className={styles.imageCounter}>{images.length} photos</span>
+        )}
       </div>
 
       {thumbImages.length > 0 && (
