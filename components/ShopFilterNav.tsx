@@ -7,6 +7,7 @@ const TYPE_NAV = [
   { label: 'All', value: null },
   { label: 'Art Prints', value: 'art-print' },
   { label: 'Framed Prints', value: 'framed' },
+  { label: 'Posters', value: 'poster' },
   { label: 'Mugs', value: 'mug' },
   { label: 'Apparel', value: 'apparel' },
   { label: 'Postcards', value: 'postcard' },

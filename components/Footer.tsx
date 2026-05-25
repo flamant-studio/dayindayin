@@ -20,6 +20,7 @@ export default function Footer() {
             <Link href="/collections">Collections</Link>
             <Link href="/shop?filter=art-print">Art Prints</Link>
             <Link href="/shop?filter=framed">Framed Prints</Link>
+            <Link href="/shop?filter=poster">Posters</Link>
             <Link href="/shop?filter=mug">Mugs</Link>
             <Link href="/shop?filter=postcard">Postcards</Link>
             <Link href="/saved">Saved</Link>

@@ -15,6 +15,7 @@ const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', '
 const FILTER_LABELS: Record<string, string> = {
   'art-print':   'Art Prints',
   'framed':      'Framed Prints',
+  'poster':      'Posters',
   'mug':         'Mugs',
   'apparel':     'Apparel',
   'postcard':    'Postcards',

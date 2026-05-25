@@ -165,6 +165,7 @@ const TAG_CATEGORY: Record<string, string> = {
   framed:          'Framed Print',
   mug:             'Mug',
   postcard:        'Postcard',
+  poster:          'Poster',
   apparel:         'Apparel',
   photography:     'Photo Print',
   'greeting-card': 'Greeting Card',

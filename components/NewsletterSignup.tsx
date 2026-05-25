@@ -5,11 +5,31 @@ import styles from './NewsletterSignup.module.css'
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (!email.trim()) return
-    setSubmitted(true)
+    if (!email.trim() || loading) return
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}))
+        setError(j.error ?? 'Something went wrong. Please try again.')
+      } else {
+        setSubmitted(true)
+      }
+    } catch {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -21,20 +41,24 @@ export default function NewsletterSignup() {
         {submitted ? (
           <p className={styles.success}>Thank you — we&#39;ll be in touch.</p>
         ) : (
-          <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            <input
-              type="email"
-              className={styles.input}
-              placeholder="Your email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              aria-label="Email address"
-            />
-            <button type="submit" className={styles.btn}>
-              Subscribe
-            </button>
-          </form>
+          <>
+            <form className={styles.form} onSubmit={handleSubmit} noValidate>
+              <input
+                type="email"
+                className={styles.input}
+                placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                aria-label="Email address"
+                disabled={loading}
+              />
+              <button type="submit" className={styles.btn} disabled={loading}>
+                {loading ? '…' : 'Subscribe'}
+              </button>
+            </form>
+            {error && <p className={styles.error}>{error}</p>}
+          </>
         )}
       </div>
     </section>

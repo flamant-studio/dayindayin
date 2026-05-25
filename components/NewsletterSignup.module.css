@@ -82,6 +82,12 @@
   margin: var(--sp-2) 0 0;
 }
 
+.error {
+  font-size: var(--text-sm);
+  color: #c0392b;
+  margin: var(--sp-1) 0 0;
+}
+
 @media (max-width: 480px) {
   .section {
     padding: var(--sp-8) var(--sp-5);
