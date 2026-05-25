@@ -71,9 +71,27 @@
   border-color: var(--c-text);
 }
 
+.mobileToggleRow {
+  display: none;
+  align-items: center;
+}
+
+.clearFilter {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--c-muted);
+  padding: var(--sp-3) var(--sp-5);
+  white-space: nowrap;
+  transition: color var(--t-fast);
+}
+
+.clearFilter:hover { color: var(--c-accent); }
+
 /* Mobile */
 @media (max-width: 768px) {
-  .mobileToggle { display: flex; }
+  .mobileToggleRow { display: flex; }
+  .mobileToggle { display: flex; flex: 1; }
 
   .rows {
     display: none;

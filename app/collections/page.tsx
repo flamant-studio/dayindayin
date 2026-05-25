@@ -69,8 +69,10 @@ const COLLECTIONS = [
 async function CollectionCard({
   title, description, tag, accent,
 }: { title: string; description: string; tag: string; accent: string }) {
-  const products = await getProductsByTag(tag, 4).catch(() => [])
-  const previews = products.filter((p) => p.firstImage).slice(0, 4)
+  const products = await getProductsByTag(tag, 50).catch(() => [])
+  const withImages = products.filter((p) => p.firstImage)
+  const previews = withImages.slice(0, 4)
+  const count = withImages.length
 
   return (
     <Link href={`/shop?filter=${tag}`} className={styles.card}>
@@ -94,6 +96,7 @@ async function CollectionCard({
         <div className={styles.cardAccent} style={{ background: accent }} />
         <div className={styles.cardText}>
           <h2 className={styles.cardTitle}>{title}</h2>
+          {count > 0 && <p className={styles.cardCount}>{count} work{count !== 1 ? 's' : ''}</p>}
           <p className={styles.cardDesc}>{description}</p>
           <span className={styles.cardCta}>View works →</span>
         </div>

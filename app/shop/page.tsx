@@ -30,9 +30,15 @@ export default async function ShopPage({ searchParams }: PageProps) {
   const activeSort = sort ?? 'newest'
   const showAll = limit === 'all'
 
-  const raw = activeTag
-    ? await getProductsByTag(activeTag, 200).catch(() => [])
-    : await getProducts(200).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+  const NON_PRINT_TAGS = ['tote', 'greeting-card']
+
+  const raw = activeTag === 'art-print'
+    ? (await getProducts(200).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)).filter(
+        p => !p.tags.some(t => NON_PRINT_TAGS.includes(t.toLowerCase()))
+      )
+    : activeTag
+      ? await getProductsByTag(activeTag, 200).catch(() => [])
+      : await getProducts(200).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
 
   let products = raw.filter((p) => p.firstImage)
 
@@ -79,7 +85,15 @@ export default async function ShopPage({ searchParams }: PageProps) {
             <p className={styles.subtitle}>
               {showAll
                 ? `${totalCount} works available`
-                : `Showing ${Math.min(PAGE_SIZE, totalCount)} of ${totalCount}`}
+                : (
+                  <>
+                    Showing {Math.min(PAGE_SIZE, totalCount)} of {totalCount}
+                    {totalCount > PAGE_SIZE && (
+                      <Link href={showAllHref()} className={styles.showAllInline}>— show all</Link>
+                    )}
+                  </>
+                )
+              }
             </p>
           )}
         </div>
@@ -103,8 +117,8 @@ export default async function ShopPage({ searchParams }: PageProps) {
 
       {products.length === 0 ? (
         <div className={styles.empty}>
-          <p>No works in this category yet. Check back soon.</p>
-          <Link href="/shop" className={styles.emptyCta}>Browse all works</Link>
+          <p>{activeTag ? `Nothing in this filter yet — check back soon.` : 'No products yet — check back soon.'}</p>
+          {activeTag && <Link href="/shop" className={styles.emptyCta}>Browse all works</Link>}
         </div>
       ) : (
         <>

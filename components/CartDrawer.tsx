@@ -1,7 +1,10 @@
 'use client'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import { useCart } from './CartProvider'
 import styles from './CartDrawer.module.css'
+
+const FREE_SHIPPING_THRESHOLD = 500
 
 function formatPrice(amount: string) {
   return `DKK ${parseFloat(amount).toFixed(0)}`
@@ -9,6 +12,11 @@ function formatPrice(amount: string) {
 
 export default function CartDrawer() {
   const { cart, open, loading, closeCart, removeItem, updateItem } = useCart()
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
 
   return (
     <>
@@ -25,8 +33,16 @@ export default function CartDrawer() {
 
         {(!cart || cart.lines.length === 0) ? (
           <div className={styles.empty}>
-            <p>Your cart is empty.</p>
-            <button className={styles.continueShopping} onClick={closeCart}>Continue shopping</button>
+            <svg className={styles.emptyIcon} width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            <div className={styles.emptyText}>
+              <p className={styles.emptyHeading}>Your basket is empty</p>
+              <p className={styles.emptySubtext}>Discover original works by Stine Weirsøe Flamant</p>
+            </div>
+            <button className={styles.continueShopping} onClick={closeCart}>Browse the shop</button>
           </div>
         ) : (
           <>
@@ -90,7 +106,23 @@ export default function CartDrawer() {
             </ul>
 
             <div className={styles.footer}>
-              <p className={styles.upsell}>Free shipping on orders over 500 kr to EU.</p>
+              {(() => {
+                const total = parseFloat(cart.totalAmount.amount)
+                const remaining = FREE_SHIPPING_THRESHOLD - total
+                const pct = Math.min(100, (total / FREE_SHIPPING_THRESHOLD) * 100)
+                return (
+                  <div className={styles.freeShipping}>
+                    <div className={styles.freeShippingBar}>
+                      <div className={styles.freeShippingFill} style={{ width: `${pct}%` }} />
+                    </div>
+                    <p className={styles.freeShippingText}>
+                      {remaining > 0
+                        ? <>Spend <strong>{Math.ceil(remaining)} kr</strong> more for free EU shipping</>
+                        : <>You qualify for free shipping ✓</>}
+                    </p>
+                  </div>
+                )
+              })()}
               <div className={styles.subtotal}>
                 <span>Subtotal</span>
                 <span>{formatPrice(cart.totalAmount.amount)}</span>

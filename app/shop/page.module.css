@@ -32,7 +32,21 @@
 .subtitle {
   font-size: var(--text-sm);
   color: var(--c-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
 }
+
+.showAllInline {
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--t-fast);
+}
+
+.showAllInline:hover { color: var(--c-text); }
 
 /* ── Sort ───────────────────────────────────────────────── */
 
@@ -195,13 +209,13 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   padding: var(--sp-3) var(--sp-8);
-  border: 1px solid var(--c-text);
-  transition: background var(--t-fast), color var(--t-fast);
+  background: var(--c-text);
+  color: var(--c-white);
+  transition: opacity var(--t-fast);
 }
 
 .loadMoreLink:hover {
-  background: var(--c-text);
-  color: var(--c-white);
+  opacity: 0.8;
 }
 
 /* ── Empty ──────────────────────────────────────────────── */

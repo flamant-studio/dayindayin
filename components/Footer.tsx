@@ -18,10 +18,9 @@ export default function Footer() {
             <span className={styles.colTitle}>Shop</span>
             <Link href="/shop">All products</Link>
             <Link href="/collections">Collections</Link>
-            <Link href="/shop?filter=tufting">Tufted Works</Link>
-            <Link href="/shop?filter=embroidery">Embroidery</Link>
-            <Link href="/shop?filter=painting">Paintings</Link>
-            <Link href="/shop?filter=photography">Photography</Link>
+            <Link href="/shop?filter=art-print">Art Prints</Link>
+            <Link href="/shop?filter=tote">Tote Bags</Link>
+            <Link href="/shop?filter=greeting-card">Greeting Cards</Link>
             <Link href="/saved">Saved</Link>
           </div>
           <div className={styles.col}>

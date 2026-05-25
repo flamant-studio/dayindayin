@@ -9,6 +9,7 @@ import ImageGallery from '@/components/ImageGallery'
 import RecentlyViewed from '@/components/RecentlyViewed'
 import StickyATC from '@/components/StickyATC'
 import ShareButtons from '@/components/ShareButtons'
+import SelectedPrice from '@/components/SelectedPrice'
 import { ProductProvider } from '@/contexts/ProductContext'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -148,7 +149,7 @@ export default async function ProductPage({ params }: PageProps) {
           <div className={styles.infoInner}>
             <p className={styles.productType}>{catLabel}</p>
             <h1 className={styles.title}>{product.title}</h1>
-            <p className={styles.price}>{formatPrice(product.minPrice.amount)}</p>
+            <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
 
             {/* Series / category tags */}
             {product.tags.filter(t => [...['tufting','embroidery','painting','photography','tote','greeting-card','shero','neko','sea-monsters','botanical','floral','faces','sommerby']].includes(t.toLowerCase())).length > 0 && (
@@ -236,7 +237,7 @@ export default async function ProductPage({ params }: PageProps) {
 
       {relatedFiltered.length >= 2 && (
         <section className={styles.related}>
-          <h2 className={styles.relatedTitle}>More like this</h2>
+          <h2 className={styles.relatedTitle}>You might also like</h2>
           <div className={styles.relatedGrid}>
             {relatedFiltered.map((p) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>

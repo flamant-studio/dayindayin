@@ -110,7 +110,7 @@ export default function Nav() {
 
       {mobileOpen && <div className={styles.overlay} onClick={closeAll} />}
 
-      {/* ── Mobile bottom tab bar ──────────────────────────── */}
+      {/* ── Mobile bottom tab bar ─────────────────────────── */}
       <nav className={styles.mobileTabBar} aria-label="Mobile navigation">
         <Link href="/" className={`${styles.mobileTab} ${pathname === '/' ? styles.mobileTabActive : ''}`}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -148,8 +148,6 @@ export default function Nav() {
         </button>
       </nav>
 
-      {/* Spacer so content isn't hidden behind the tab bar on mobile */}
-      <div className={styles.mobileNavSpacer} aria-hidden="true" />
     </>
   )
 }

@@ -49,6 +49,8 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   aspect-ratio: 4/3;
+  gap: 2px;
+  background: var(--c-border);
 }
 
 .cardThumb {
@@ -91,6 +93,13 @@
   letter-spacing: -0.02em;
 }
 
+.cardCount {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--c-muted);
+}
+
 .cardDesc {
   font-size: var(--text-sm);
   font-weight: 300;
@@ -116,6 +125,8 @@
 }
 
 @media (max-width: 768px) {
-  .page { padding: var(--sp-8) var(--sp-5) var(--sp-12); }
-  .grid { grid-template-columns: 1fr; }
+  .page { padding: var(--sp-6) var(--sp-5) var(--sp-12); }
+  .header { margin-bottom: var(--sp-6); }
+  .title { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+  .grid { grid-template-columns: 1fr; gap: var(--sp-4); }
 }

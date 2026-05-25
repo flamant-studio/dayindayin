@@ -161,9 +161,18 @@
   color: var(--c-text);
 }
 
+.cardType {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
 .cardPrice {
   font-size: var(--text-sm);
   color: var(--c-muted);
+  margin-top: var(--sp-1);
 }
 
 /* ── Coming soon ───────────────────────────────────────────────────── */
@@ -367,6 +376,12 @@
 
   .heroContentMobile .heroTitle {
     font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .heroContentMobile .heroCta {
+    align-self: stretch;
+    text-align: center;
+    justify-content: center;
   }
 
   .section { padding: var(--sp-8) var(--sp-5); }

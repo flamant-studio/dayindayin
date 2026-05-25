@@ -39,7 +39,6 @@ export default function StickyATC({ title, imageUrl }: Props) {
     <div className={`${styles.bar} ${visible ? styles.barVisible : ''}`} aria-hidden={!visible}>
       <div className={styles.inner}>
         <span className={styles.title}>{title}</span>
-        {selectedPrice && <span className={styles.price}>{selectedPrice}</span>}
         <button
           className={`${styles.btn} ${state === 'added' ? styles.added : ''}`}
           onClick={handleAdd}
@@ -48,7 +47,7 @@ export default function StickyATC({ title, imageUrl }: Props) {
         >
           {state === 'adding' && 'Adding…'}
           {state === 'added' && 'Added ✓'}
-          {state === 'idle' && 'Add to cart'}
+          {state === 'idle' && (selectedPrice ? `Add to cart — ${selectedPrice}` : 'Add to cart')}
         </button>
       </div>
     </div>

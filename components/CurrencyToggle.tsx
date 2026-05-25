@@ -27,17 +27,19 @@ export default function CurrencyToggle() {
   }, [])
 
   return (
-    <div className={styles.toggle} role="group" aria-label="Currency">
+    <select
+      className={styles.select}
+      value={currency}
+      onChange={(e) => {
+        const c = e.target.value as Currency
+        setCurrencyPreference(c)
+        setCurrencyState(c)
+      }}
+      aria-label="Currency"
+    >
       {CURRENCIES.map((c) => (
-        <button
-          key={c}
-          className={`${styles.btn} ${currency === c ? styles.active : ''}`}
-          onClick={() => { setCurrencyPreference(c); setCurrencyState(c) }}
-          aria-pressed={currency === c}
-        >
-          {c}
-        </button>
+        <option key={c} value={c}>{c}</option>
       ))}
-    </div>
+    </select>
   )
 }

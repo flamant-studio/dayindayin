@@ -52,7 +52,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
             defaultValue={query}
             placeholder="Search works, series, tags…"
             className={styles.input}
-            autoFocus={!query}
+            autoFocus
           />
           <button type="submit" className={styles.button}>Search</button>
         </form>

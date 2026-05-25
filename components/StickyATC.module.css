@@ -33,11 +33,6 @@
   white-space: nowrap;
 }
 
-.price {
-  font-size: var(--text-sm);
-  color: var(--c-muted);
-  white-space: nowrap;
-}
 
 .btn {
   flex-shrink: 0;
@@ -59,8 +54,8 @@
 
 /* On mobile, account for bottom nav */
 @media (max-width: 768px) {
-  .bar { bottom: 56px; }
+  .bar { bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
   .title { display: none; }
   .btn { width: 100%; }
-  .inner { gap: 0.5rem; }
+  .inner { gap: 0.5rem; padding: 0.75rem 1rem; }
 }

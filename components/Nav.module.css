@@ -272,9 +272,6 @@
   display: none;
 }
 
-.mobileNavSpacer {
-  display: none;
-}
 
 @media (max-width: 768px) {
   .mobileTabBar {
@@ -289,12 +286,6 @@
     padding-bottom: env(safe-area-inset-bottom);
     justify-content: space-around;
     align-items: stretch;
-  }
-
-  .mobileNavSpacer {
-    display: block;
-    height: 60px;
-    flex-shrink: 0;
   }
 
   .mobileTab {

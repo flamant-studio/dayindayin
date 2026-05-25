@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, formatPrice } from '@/lib/shopify/products'
+import { getProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
@@ -76,6 +76,7 @@ export default async function HomePage() {
                 </div>
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{p.title}</span>
+                  <span className={styles.cardType}>{categoryLabel(p)}</span>
                   <span className={styles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
                 </div>
               </Link>
