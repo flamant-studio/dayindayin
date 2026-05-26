@@ -37,6 +37,47 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
+function getStudioNote(tags: string[]): { medium: string; note: string } | null {
+  const t = tags.map(x => x.toLowerCase())
+  if (t.includes('tufting')) return {
+    medium: 'Tufted Work',
+    note: 'Made on a tufting frame, hand-cut and finished. Tufting is a slow process — each piece takes days. The pile height and density are chosen by hand, giving each work a texture that doesn\'t come through in photos.',
+  }
+  if (t.includes('embroidery')) return {
+    medium: 'Embroidery',
+    note: 'Worked by hand on canvas or linen. Embroidery is where Stine\'s work started — needle and thread before everything else. Most pieces take weeks, worked in short sessions between other things.',
+  }
+  if (t.includes('shero')) return {
+    medium: 'SHERO Series',
+    note: 'SHERO is Stine\'s long-running feminist pop-art series. Bold lettering, bright palettes, direct messages. The series started in 2018 and is still evolving — each piece a new variation on the same insistence.',
+  }
+  if (t.includes('neko')) return {
+    medium: 'NEKO Series',
+    note: 'NEKO (猫 — Japanese for cat) is Stine\'s most graphic series. Flat shapes, high-contrast palettes, icon-like simplicity. The paw motif appears in dozens of variations across print, textile, and digital.',
+  }
+  if (t.includes('sea-monsters')) return {
+    medium: 'Sea Monsters',
+    note: 'An ongoing bestiary of imaginary sea creatures. Part folklore, part biology textbook, part pattern design. Each monster is invented from scratch — drawn first in the studio, then refined into a repeating print.',
+  }
+  if (t.includes('photography')) return {
+    medium: 'Photography',
+    note: 'Shot on location — Denmark, Sri Lanka, across Europe. Stine\'s photography is about stillness: the moment just before or just after something happened. Printed in limited editions on fine art paper.',
+  }
+  if (t.includes('painting')) return {
+    medium: 'Painting',
+    note: 'Studio paintings in acrylic and oil stick, worked on canvas on the floor. Layers built up and scraped back over multiple sessions. Each painting is a unique original — the prints are faithful reproductions.',
+  }
+  if (t.includes('botanical') || t.includes('floral')) return {
+    medium: 'Botanical',
+    note: 'Plants collected, pressed, and redrawn. The botanical series is obsessively detailed — each leaf and stem traced from life. A quieter thread running through the studio alongside the louder, bolder work.',
+  }
+  if (t.includes('faces')) return {
+    medium: 'Faces',
+    note: 'Portrait studies — some recognisable, some invented. The Faces series is about looking directly at someone and letting them look back. Worked in mixed media on canvas and paper.',
+  }
+  return null
+}
+
 export default async function ProductPage({ params }: PageProps) {
   const { handle } = await params
   const product = await getProductByHandle(handle).catch(() => null)
@@ -211,6 +252,16 @@ export default async function ProductPage({ params }: PageProps) {
         <StickyATC title={product.title} imageUrl={mainImage?.url ?? null} />
         </ProductProvider>
       </div>
+
+      {(() => {
+        const note = getStudioNote(product.tags)
+        return note ? (
+          <section className={styles.studioNote}>
+            <span className={styles.studioNoteMedium}>{note.medium}</span>
+            <p className={styles.studioNoteText}>{note.note}</p>
+          </section>
+        ) : null
+      })()}
 
       {seriesProducts.length >= 2 && (
         <section className={styles.related}>

@@ -310,6 +310,35 @@
   color: var(--c-text);
 }
 
+/* ── Studio note ─────────────────────────────────────────── */
+
+.studioNote {
+  margin: var(--sp-12) 0 0;
+  padding: var(--sp-10) var(--sp-10);
+  background: var(--c-studio);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.studioNoteMedium {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.studioNoteText {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 780px;
+}
+
 /* ── Related ─────────────────────────────────────────────── */
 
 .related {
@@ -421,6 +450,8 @@
   .infoInner { position: static; }
   .thumb { width: calc(33.33% - 0.33rem); }
   .relatedGrid { grid-template-columns: repeat(2, 1fr); }
+  .studioNote { padding: var(--sp-8) var(--sp-5); }
+  .studioNoteText { font-size: clamp(1.1rem, 4vw, 1.4rem); }
 }
 
 /* ── Print ───────────────────────────────────────────────── */

@@ -19,35 +19,26 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────── */}
+      {/* ── Hero — full-bleed ────────────────────────────────── */}
       <section className={styles.hero}>
-        {/* Left panel — desktop only */}
-        <div className={styles.heroLeft}>
-          <span className={styles.heroLabel}>Copenhagen, Denmark</span>
-          <h1 className={styles.heroTitle}>Art made by hand.<br />Printed for your wall.</h1>
-          <p className={styles.heroSub}>Original works by Copenhagen artist Stine Weirsøe Flamant. Every print made on demand — no mass production.</p>
-          <Link href="/shop" className={styles.heroCta}>Shop all prints</Link>
-        </div>
-
-        {/* Right panel — lifestyle image (full-bleed on mobile) */}
-        <div className={styles.heroRight}>
+        <div className={styles.heroBg}>
           <Image
             src={`${BLOB}/lifestyle/ls-01.jpg`}
             alt="Art by Stine Weirsøe Flamant"
             fill
             priority
-            sizes="(max-width: 768px) 100vw, 45vw"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
           />
-          {/* Overlay only on mobile */}
-          <div className={styles.heroOverlayMobile} />
-          {/* Mobile content — overlaid on image */}
-          <div className={styles.heroContentMobile}>
-            <span className={styles.heroLabel}>Copenhagen, Denmark</span>
-            <h1 className={styles.heroTitle}>Art made by hand.<br />Printed for your wall.</h1>
-            <p className={styles.heroSub}>Original works by Copenhagen artist Stine Weirsøe Flamant. Every print made on demand — no mass production.</p>
-            <Link href="/shop" className={styles.heroCta}>Shop all prints</Link>
-          </div>
+        </div>
+        <div className={styles.heroOverlay} />
+        <div className={styles.heroContent}>
+          <span className={styles.heroLabel}>Copenhagen, Denmark</span>
+          <h1 className={styles.heroTitle}>Art made<br />by hand.</h1>
+          <p className={styles.heroSub}>
+            Original works by Stine Weirsøe Flamant — tufted textiles, embroidery, painting, photography. Every print made on demand.
+          </p>
+          <Link href="/shop" className={styles.heroCta}>Shop all prints</Link>
         </div>
       </section>
 
@@ -88,6 +79,29 @@ export default async function HomePage() {
             <Link href="/shop" className={styles.heroCta}>Go to shop</Link>
           </div>
         )}
+      </section>
+
+      {/* ── Editorial — featured work ─────────────────────────── */}
+      <section className={styles.editorial}>
+        <div className={styles.editorialImage}>
+          <Image
+            src={`${BLOB}/works/painting/universe-1.jpg`}
+            alt="Universe I — painting by Stine Weirsøe Flamant"
+            fill
+            sizes="(max-width: 768px) 100vw, 55vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+        </div>
+        <div className={styles.editorialBody}>
+          <span className={styles.editorialSeries}>Painting — from the studio</span>
+          <h2 className={styles.editorialTitle}>Universe I</h2>
+          <p className={styles.editorialNote}>
+            Started on the floor of the studio. Acrylic and oil stick, built up over several sessions — layers added and scraped back until the colour felt right. The Universe series is Stine&apos;s oldest ongoing body of work: each canvas a different attempt to paint something without edges.
+          </p>
+          <Link href="/shop?filter=painting" className={styles.editorialLink}>
+            Shop paintings →
+          </Link>
+        </div>
       </section>
 
       {/* ── Artist statement ─────────────────────────────────── */}

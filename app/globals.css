@@ -11,6 +11,9 @@
   --c-accent:      #D94F2C;   /* vermillion — primary CTA */
   --c-accent-2:    #2E5D4B;   /* forest green — secondary */
   --c-accent-light:#FCE8E2;
+  --c-studio:      #1D2218;   /* deep studio dark — richer than pure black */
+  --c-parchment:   #F5EDE4;   /* light warm paper */
+  --c-ochre:       #C4902A;   /* warm yellow/ochre — from Neko artworks */
 
   /* Typography */
   --font-display: var(--font-playfair), 'Playfair Display', Georgia, serif;
