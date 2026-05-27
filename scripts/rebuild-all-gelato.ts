@@ -2,11 +2,11 @@
  * rebuild-all-gelato.ts
  *
  * Full rebuild of all Gelato products.
- * All templates updated to use 'background' (main) / 'background2' (secondary) placeholders.
- * Postcards SKIPPED — template can't be edited yet.
+ * All templates use 'background' (primary) / 'background2' (secondary) placeholder names.
+ * Postcards SKIPPED — template layer name unknown.
  *
- * Step 1: Delete all non-postcard Gelato products
- * Step 2: Recreate all products with correct placeholder names
+ * Strategy: variant-level imagePlaceholders for ALL products.
+ * Probe each template → get variant IDs → create with variants[].imagePlaceholders.
  *
  * Run: npx tsx scripts/rebuild-all-gelato.ts
  */
@@ -33,6 +33,8 @@ const T = {
   tshirt:           '461771cb-a59e-4d1b-b767-18bab73d6f6c',
   sheroCard:        'e6ba01e0-1fec-4f4b-807a-f5f396aa93e9',
 }
+
+// All products use variant-level imagePlaceholders — no PATCH needed
 
 // ─── Descriptions ─────────────────────────────────────────────────────────────
 function printDesc(title: string, medium: string): string {
@@ -125,8 +127,8 @@ interface Product {
   title: string
   description: string
   tags: string[]
-  bg: string          // 'background' placeholder fileUrl
-  bg2?: string        // 'background2' placeholder fileUrl (2-creative products)
+  bg: string
+  bg2?: string
 }
 
 const PRODUCTS: Product[] = [
@@ -396,7 +398,7 @@ const PRODUCTS: Product[] = [
     bg: `${BLOB}/works/photography/${slug}.jpg`,
   })),
 
-  // ── Square prints (2 placeholders: main artwork + watermark) ──────────────
+  // ── Square prints (bg=artwork, bg2=watermark) ──────────────────────────────
   { templateId: T.square, title: 'Sheroshine — I',
     description: squareDesc('Sheroshine — I', 'A striking analogue-process photograph by Stine Weirsøe Flamant.'),
     tags: ['sheroshine', 'photography', 'art-print', 'square'],
@@ -420,17 +422,17 @@ const PRODUCTS: Product[] = [
 
   // Procreate — square (also use watermark)
   ...([
-    { slug: 'sleeping-cat',    title: 'Sleeping Cat',     tags: ['neko'] },
-    { slug: 'floating-poppies',title: 'Floating Poppies', tags: ['floral'] },
-    { slug: 'night-poppies',   title: 'Night Poppies',    tags: ['floral'] },
-    { slug: 'poppy-field',     title: 'Poppy Field',      tags: ['floral'] },
-    { slug: 'forget-me-not',   title: 'Forget-Me-Not',    tags: [] },
+    { slug: 'sleeping-cat',      title: 'Sleeping Cat',        tags: ['neko'] },
+    { slug: 'floating-poppies',  title: 'Floating Poppies',    tags: ['floral'] },
+    { slug: 'night-poppies',     title: 'Night Poppies',       tags: ['floral'] },
+    { slug: 'poppy-field',       title: 'Poppy Field',         tags: ['floral'] },
+    { slug: 'forget-me-not',     title: 'Forget-Me-Not',       tags: [] },
     { slug: 'sea-monsters-gold', title: 'Sea Monsters — Gold', tags: ['sea-monsters'] },
-    { slug: 'sea-monsters-cream', title: 'Sea Monsters — Cream', tags: ['sea-monsters'] },
-    { slug: 'geometric-garden', title: 'Geometric Garden', tags: [] },
-    { slug: 'mask-conformist', title: 'Mask — Conformist', tags: ['faces'] },
-    { slug: 'fist-blue',       title: 'The Fist — Blue',  tags: ['shero'] },
-    { slug: 'fist-ink',        title: 'The Fist — Ink',   tags: ['shero'] },
+    { slug: 'sea-monsters-cream',title: 'Sea Monsters — Cream',tags: ['sea-monsters'] },
+    { slug: 'geometric-garden',  title: 'Geometric Garden',    tags: [] },
+    { slug: 'mask-conformist',   title: 'Mask — Conformist',   tags: ['faces'] },
+    { slug: 'fist-blue',         title: 'The Fist — Blue',     tags: ['shero'] },
+    { slug: 'fist-ink',          title: 'The Fist — Ink',      tags: ['shero'] },
   ] as const).map(({ slug, title, tags }) => ({
     templateId: T.square,
     title,
@@ -548,7 +550,7 @@ const PRODUCTS: Product[] = [
     description: MUG_DESC, tags: ['neko', 'cat', 'mug', 'yellow', 'blue'],
     bg: `${BLOB}/gelato/neko/nekopaw_yellow_blue.png` },
 
-  // ── Tote bags (2 placeholders: same image on front and back) ──────────────
+  // ── Tote bags (bg=front, bg2=back — same image both sides) ────────────────
   { templateId: T.tote, title: 'Shop of Words — Beauty (Tote)',
     description: TOTE_DESC, tags: ['shop-of-words', 'tote', 'beauty', 'text-art'],
     bg:  `${BLOB}/gelato/totes/sow-beauty.jpg`,
@@ -580,7 +582,7 @@ const PRODUCTS: Product[] = [
     tags: ['neko', 'cat', 'apparel', 'tshirt', 'embroidery', 'yellow'],
     bg: `${BLOB}/gelato/neko/nekopaw_yellow_outline.png` },
 
-  // ── Shero greeting card (2 placeholders: front + inside) ──────────────────
+  // ── Shero greeting card (bg=front, bg2=inside) ────────────────────────────
   { templateId: T.sheroCard, title: 'SHERO — Greeting Cards (Pack of 10)',
     description: SHERO_CARD_DESC,
     tags: ['shero', 'greeting-card', 'card', 'pack'],
@@ -590,23 +592,29 @@ const PRODUCTS: Product[] = [
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/** Convert a slug like 'universe-1' to 'Universe I', 'blue-branch' to 'Blue Branch' */
-function slugToTitle(slug: string): string {
-  return slug
-    .replace(/-(\d+)$/, (_, n) => ' ' + toRoman(parseInt(n)))
-    .replace(/-([ivxlcdm]+)$/i, ' $1')
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, c => c.toUpperCase())
-}
-
-function toRoman(n: number): string {
-  const vals = [['I','II','III','IV','V','VI','VII','VIII','IX','X'] as const]
-  return n <= 10 ? (['I','II','III','IV','V','VI','VII','VIII','IX','X'] as const)[n - 1] : String(n)
-}
-
 async function delay(ms: number) { return new Promise(r => setTimeout(r, ms)) }
 
-// ─── Step 1: Delete all non-postcard Gelato products ─────────────────────────
+// ─── Template probing ─────────────────────────────────────────────────────────
+
+async function probeAllTemplates(): Promise<Map<string, string[]>> {
+  const allTemplateIds = [...new Set(PRODUCTS.map(p => p.templateId))]
+  const map = new Map<string, string[]>()
+
+  for (const id of allTemplateIds) {
+    const r = await fetch(`https://ecommerce.gelatoapis.com/v1/templates/${id}`, {
+      headers: { 'X-API-KEY': KEY }
+    })
+    const j = await r.json() as any
+    const variants: string[] = (j.variants ?? []).map((v: any) => v.id as string)
+    map.set(id, variants)
+    process.stdout.write('.')
+    await delay(200)
+  }
+  console.log()
+  return map
+}
+
+// ─── Step 1: List and delete ──────────────────────────────────────────────────
 
 async function listAllProducts(): Promise<{ id: string; title: string }[]> {
   const all: { id: string; title: string }[] = []
@@ -626,10 +634,6 @@ async function listAllProducts(): Promise<{ id: string; title: string }[]> {
   return all
 }
 
-function isPostcard(title: string): boolean {
-  return /postcard/i.test(title)
-}
-
 async function deleteProduct(id: string): Promise<boolean> {
   const r = await fetch(
     `https://ecommerce.gelatoapis.com/v1/stores/${STORE}/products/${id}`,
@@ -638,12 +642,16 @@ async function deleteProduct(id: string): Promise<boolean> {
   return r.ok || r.status === 404
 }
 
-// ─── Step 2: Create products ──────────────────────────────────────────────────
+// ─── Step 2: Create with variant-level imagePlaceholders (all products) ──────
 
-async function createProduct(p: Product): Promise<string> {
-  const imagePlaceholders = p.bg2
-    ? [{ name: 'background', fileUrl: p.bg }, { name: 'background2', fileUrl: p.bg2 }]
-    : [{ name: 'background', fileUrl: p.bg }]
+async function createProductWithImages(p: Product, templateVariantIds: string[]): Promise<string> {
+  const variants = templateVariantIds.map(templateVariantId => {
+    const imagePlaceholders: { name: string; fileUrl: string }[] = [
+      { name: 'background', fileUrl: p.bg },
+    ]
+    if (p.bg2) imagePlaceholders.push({ name: 'background2', fileUrl: p.bg2 })
+    return { templateVariantId, imagePlaceholders }
+  })
 
   const r = await fetch(
     `https://ecommerce.gelatoapis.com/v1/stores/${STORE}/products:create-from-template`,
@@ -655,69 +663,82 @@ async function createProduct(p: Product): Promise<string> {
         title: p.title,
         description: p.description,
         tags: p.tags,
-        imagePlaceholders,
+        variants,
       }),
     }
   )
   const json = await r.json() as any
-  if (!r.ok) throw new Error(`${r.status}: ${JSON.stringify(json).slice(0, 200)}`)
+  if (!r.ok) throw new Error(`${r.status}: ${JSON.stringify(json).slice(0, 300)}`)
   return json.id as string
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log('═══════════════════════════════════════════════')
-  console.log(' Rebuild all Gelato products (background fix)  ')
-  console.log('═══════════════════════════════════════════════\n')
+  console.log('═══════════════════════════════════════════════════')
+  console.log(' Rebuild all Gelato products — PATCH + variant API ')
+  console.log('═══════════════════════════════════════════════════\n')
+
+  // Step 0: Probe all templates for variant IDs
+  console.log('Step 0 — Probing all templates for variant IDs...')
+  const templateVariants = await probeAllTemplates()
+  console.log(`  ${templateVariants.size} templates probed\n`)
+  for (const [id, vids] of templateVariants) {
+    const label = Object.entries(T).find(([, v]) => v === id)?.[0] ?? id.slice(0, 8)
+    console.log(`  ${label}: ${vids.length} variants`)
+  }
+  console.log()
 
   // Step 1: List and delete
   console.log('Step 1 — Listing all current Gelato products...')
   const existing = await listAllProducts()
-  const toDelete = existing.filter(p => !isPostcard(p.title))
-  const postcards = existing.filter(p => isPostcard(p.title))
+  const toDelete = existing.filter(p => !/postcard/i.test(p.title))
+  const postcards = existing.filter(p => /postcard/i.test(p.title))
   console.log(`  Found ${existing.length} total (${toDelete.length} to delete, ${postcards.length} postcards kept)\n`)
 
   console.log('Step 2 — Deleting non-postcard products...')
-  let deleted = 0, failed = 0
+  let deleted = 0, deleteFailed = 0
   for (const p of toDelete) {
     process.stdout.write(`  DELETE "${p.title.slice(0, 40)}"... `)
     const ok = await deleteProduct(p.id)
     if (ok) { deleted++; process.stdout.write('✓\n') }
-    else    { failed++;  process.stdout.write('✗\n') }
+    else    { deleteFailed++; process.stdout.write('✗\n') }
     await delay(250)
   }
-  console.log(`  ${deleted} deleted, ${failed} failed\n`)
+  console.log(`  ${deleted} deleted, ${deleteFailed} failed\n`)
 
-  // Step 3: Recreate
-  console.log(`Step 3 — Creating ${PRODUCTS.length} products with 'background' placeholder...\n`)
+  // Step 3: Recreate — variant-level imagePlaceholders for all
+  console.log(`Step 3 — Creating ${PRODUCTS.length} products...\n`)
   let created = 0, errored = 0
   const errors: string[] = []
 
   for (const p of PRODUCTS) {
     process.stdout.write(`  ▸ ${p.title.slice(0, 50)}... `)
     try {
-      const id = await createProduct(p)
+      const variantIds = templateVariants.get(p.templateId)
+      if (!variantIds?.length) throw new Error(`No variant IDs for template ${p.templateId}`)
+      const id = await createProductWithImages(p, variantIds)
       console.log(`✓ ${id}`)
       created++
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e)
-      console.log(`✗ ${msg.slice(0, 80)}`)
+      console.log(`✗ ${msg.slice(0, 100)}`)
       errors.push(`${p.title}: ${msg}`)
       errored++
     }
-    await delay(400)
+    await delay(300)
   }
 
-  console.log('\n═══════════════════════════════════════════════')
+  console.log('\n═══════════════════════════════════════════════════')
   console.log(`  Done. Created: ${created}  Errors: ${errored}`)
   if (errors.length) {
     console.log('\nErrors:')
     errors.forEach(e => console.log('  •', e))
   }
-  console.log('\nGelato will generate mockup images asynchronously.')
-  console.log('Run publish-to-online-store.ts to republish to Shopify.')
-  console.log('═══════════════════════════════════════════════')
+  console.log('\nNext: run publish-to-online-store.ts to republish to Shopify.')
+  console.log('Gelato generates mockup images asynchronously (allow 30 min–2 hrs).')
+  console.log('This time artwork is set at create time — no PATCH needed.')
+  console.log('═══════════════════════════════════════════════════')
 }
 
 main().catch(err => { console.error(err); process.exit(1) })
