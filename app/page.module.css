@@ -130,21 +130,18 @@
 .cardImg {
   position: relative;
   aspect-ratio: 4/5;
-  background: #EDE7DF;
+  background: var(--c-surface);
   overflow: hidden;
 }
 
 .cardImgEl {
-  object-fit: cover;
-  transition: transform 500ms var(--ease);
+  object-fit: contain;
 }
-
-.card:hover .cardImgEl { transform: scale(1.04); }
 
 .cardPlaceholder {
   position: absolute;
   inset: 0;
-  background: #EDE7DF;
+  background: var(--c-surface);
 }
 
 .cardInfo {
