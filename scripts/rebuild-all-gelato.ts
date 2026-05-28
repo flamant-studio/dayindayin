@@ -692,9 +692,8 @@ async function main() {
   // Step 1: List and delete
   console.log('Step 1 — Listing all current Gelato products...')
   const existing = await listAllProducts()
-  const toDelete = existing.filter(p => !/postcard/i.test(p.title))
-  const postcards = existing.filter(p => /postcard/i.test(p.title))
-  console.log(`  Found ${existing.length} total (${toDelete.length} to delete, ${postcards.length} postcards kept)\n`)
+  const toDelete = existing
+  console.log(`  Found ${existing.length} total (all will be deleted)\n`)
 
   console.log('Step 2 — Deleting non-postcard products...')
   let deleted = 0, deleteFailed = 0
