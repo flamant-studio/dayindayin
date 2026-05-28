@@ -157,7 +157,7 @@
 }
 
 .cardImgEl {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .cardPlaceholder {
