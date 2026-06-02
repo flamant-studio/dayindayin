@@ -452,7 +452,7 @@ const rows = [
       p.description,
       slug(p.title),
       url(p.file[0], p.file[1]),
-      'true',
+      'Yes',
     ].map(escapeCSV).join(',')
   ),
 ]
