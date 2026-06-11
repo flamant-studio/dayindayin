@@ -11,7 +11,7 @@ interface Props {
 
 export default function AddToCartButton({ variantId, price, available = true }: Props) {
   const { addItem } = useCart()
-  const [state, setState] = useState<'idle' | 'adding' | 'added'>('idle')
+  const [state, setState] = useState<'idle' | 'adding' | 'added' | 'error'>('idle')
 
   if (!available) {
     return <div className={styles.soldOut}>Currently sold out</div>
@@ -28,18 +28,20 @@ export default function AddToCartButton({ variantId, price, available = true }: 
         (window as any).posthog.capture('add_to_cart', { variant_id: variantId, price })
       }
     } catch {
-      setState('idle')
+      setState('error')
+      setTimeout(() => setState('idle'), 3000)
     }
   }
 
   return (
     <button
-      className={`${styles.btn} ${state === 'added' ? styles.added : ''} ${state === 'adding' ? styles.adding : ''}`}
+      className={`${styles.btn} ${state === 'added' ? styles.added : ''} ${state === 'adding' ? styles.adding : ''} ${state === 'error' ? styles.error : ''}`}
       onClick={handleClick}
       disabled={state !== 'idle'}
     >
       {state === 'adding' && 'Adding…'}
       {state === 'added' && 'Added to cart ✓'}
+      {state === 'error' && 'Try again'}
       {state === 'idle' && `Add to cart — ${price}`}
     </button>
   )

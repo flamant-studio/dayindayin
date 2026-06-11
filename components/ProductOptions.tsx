@@ -22,9 +22,18 @@ interface Props {
   productTitle?: string
 }
 
-// Gelato writes A4 as "21×29.7 cm / 8×12" / ..." — normalize to "A4 (21×29.7 cm) / ..."
+// Normalize Gelato-generated variant titles to clean size labels
 function normalizeTitle(title: string): string {
-  return title.replace(/21[×x]29\.7\s*cm\s*\/\s*8[×x]12"\s*\//i, 'A4 (21×29.7 cm) /')
+  let t = title
+  // Strip " - Vertical" / " - Horizontal" orientation suffix
+  t = t.replace(/\s*-\s*(Vertical|Horizontal)$/i, '').trim()
+  // "21x29.7 cm / 8x12"" → "A4"
+  t = t.replace(/21[×x]29\.7\s*cm\s*\/\s*8[×x]12[""″].*/i, 'A4')
+  // "15x20 cm / 6x8"" → "A5"
+  t = t.replace(/15[×x]20\s*cm\s*\/\s*6[×x]8[""″].*/i, 'A5')
+  // "A3 (29.7 x 42  cm)" / "A2 (42 x 59.4  cm)" → "A3" / "A2"
+  t = t.replace(/^(A\d+)\s*\(.*\)$/, '$1')
+  return t
 }
 
 interface Parsed { sizeKey: string; sizeDisplay: string; frameColor: string }

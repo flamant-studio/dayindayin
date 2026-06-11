@@ -49,6 +49,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       if (data?.cart) {
         setCart(data.cart)
         setOpen(true)
+      } else if (data?.error) {
+        throw new Error(data.error)
       }
     } finally {
       setLoading(false)
