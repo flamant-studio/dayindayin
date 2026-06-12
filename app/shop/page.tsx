@@ -49,12 +49,12 @@ export default async function ShopPage({ searchParams }: PageProps) {
   const NON_PRINT_TAGS = ['tote', 'greeting-card']
 
   const raw = activeTag === 'art-print'
-    ? (await getProducts(200).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)).filter(
+    ? (await getProducts(250).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)).filter(
         p => !p.tags.some(t => NON_PRINT_TAGS.includes(t.toLowerCase()))
       )
     : activeTag
-      ? await getProductsByTag(activeTag, 200).catch(() => [])
-      : await getProducts(200).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+      ? await getProductsByTag(activeTag, 250).catch(() => [])
+      : await getProducts(250).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
 
   let products = raw.filter((p) => p.firstImage)
 

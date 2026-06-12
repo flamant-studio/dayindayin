@@ -102,7 +102,7 @@ export default async function ProductPage({ params }: PageProps) {
   const seriesHandles = new Set(seriesProducts.map(p => p.handle))
 
   // Category related — same medium, different designs, excluding series dupes
-  const CATEGORY_TAGS = ['tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card']
+  const CATEGORY_TAGS = ['tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card', 'mug', 'apparel']
   const categoryTag = product.tags.find(t => CATEGORY_TAGS.includes(t.toLowerCase()))
   const relatedFiltered = categoryTag
     ? (await getProductsByTag(categoryTag, 10).catch(() => []))
