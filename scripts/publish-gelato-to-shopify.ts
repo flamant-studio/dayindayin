@@ -46,11 +46,21 @@ interface GelatoProduct {
 }
 
 async function getGelatoProducts(): Promise<GelatoProduct[]> {
-  const res = await fetch(`https://ecommerce.gelatoapis.com/v1/stores/${STORE_ID}/products?limit=100`, {
-    headers: { 'X-API-KEY': GELATO_API_KEY },
-  })
-  const data = await res.json() as { products?: GelatoProduct[]; data?: GelatoProduct[] }
-  return data.products ?? data.data ?? []
+  const all: GelatoProduct[] = []
+  let offset = 0
+  const limit = 100
+  while (true) {
+    const res = await fetch(`https://ecommerce.gelatoapis.com/v1/stores/${STORE_ID}/products?limit=${limit}&offset=${offset}`, {
+      headers: { 'X-API-KEY': GELATO_API_KEY },
+    })
+    const data = await res.json() as { products?: GelatoProduct[]; data?: GelatoProduct[] }
+    const page = data.products ?? data.data ?? []
+    all.push(...page)
+    if (page.length < limit) break
+    offset += limit
+    await new Promise(r => setTimeout(r, 200))
+  }
+  return all
 }
 
 async function getGelatoProduct(id: string): Promise<GelatoProduct> {
@@ -89,16 +99,13 @@ async function main() {
     const products = await getGelatoProducts()
     total = products.length
 
-    // For each product, check variants for externalId
+    // Use variant externalIds from list response (no individual calls needed)
     shopifyIds = []
     for (const p of products) {
-      // Need to fetch individual product to get variant externalIds
-      const detail = await getGelatoProduct(p.id)
-      const variantWithId = detail.variants?.find(v => v.externalId)
+      const variantWithId = p.variants?.find(v => v.externalId)
       if (variantWithId?.externalId) {
         shopifyIds.push(variantWithId.externalId)
       }
-      await new Promise(r => setTimeout(r, 100))
     }
 
     synced = shopifyIds.length
