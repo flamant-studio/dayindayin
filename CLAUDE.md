@@ -27,7 +27,7 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 
 ---
 
-## Current State (2026-05-24)
+## Current State (2026-06-12)
 
 | Layer | Status |
 |---|---|
@@ -40,11 +40,12 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Shopify tokens | ✅ SHOPIFY_STOREFRONT_TOKEN + SHOPIFY_ADMIN_TOKEN in .env.local |
 | Gelato — vertical template | ✅ `6005fae3` — A4/A3/A2 portrait. Placeholder: `nekopaw_yellow_neon.png` |
 | Gelato — horizontal template | ✅ `18600284` — A5/A4/A3 landscape. Placeholder: `Tourism_1.png` |
-| Active products | ✅ **671 ACTIVE** in Shopify, all published to Online Store |
-| Products in shop | ✅ 103 with images shown (rest pending Gelato mockup generation) |
+| Active products | ✅ **75 LIVE** — all published to Online Store (2026-06-12). 76th pending Gelato sync. |
+| Multi-size variants | ✅ All poster products have A4/A3/A2 (vertical) or A5/A4/A3 (horizontal) variants |
+| Products in shop | ⏳ 75 live, mockup images still generating async in Gelato (hours-days) |
 | Category labels | ✅ Tag-based: tufting→Tufted Works, embroidery→Embroidery, painting→Painting, photography→Photography |
 | Series filters | ✅ SHERO/NEKO/Sea Monsters/Botanical/Floral/Faces/Sommerby — tags backfilled |
-| Product pages | ✅ Breadcrumb, variant selector, size guide, image gallery, lightbox, cross-sells, JSON-LD |
+| Product pages | ✅ Breadcrumb, variant selector (A4/A3/A2), size guide, image gallery, lightbox, cross-sells, JSON-LD |
 | SEO | ✅ sitemap.xml (273 URLs), robots.txt (App Router), OG image |
 | Cookie banner | ✅ localStorage-based, z-index 250 |
 | RecentlyViewed | ✅ localStorage-based, shows on product pages |
@@ -55,7 +56,9 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Legal pages | 🔲 Pending — privacy policy, copyright, fulfillment T&C |
 | CONTACT_EMAIL_TO | 🔲 Pending — Stine's actual email in Vercel env vars |
 | Newsletter API | 🔲 Signup shows "Thank you" but doesn't subscribe — needs Mailchimp/Klaviyo |
-| Gelato image generation | ⏳ Some newer products pending mockup images (async, hours-days) |
+| Other product types | 🔲 Mugs, totes, water bottles, tank tops, dad caps — CSVs ready in `DayInDayIn Images/`, not yet imported |
+| Gelato image generation | ⏳ All 76 poster products pending mockup images (async, hours-days) |
+| 76th product | ⏳ 1 product pending Gelato→Shopify sync — run `npx tsx scripts/publish-gelato-to-shopify.ts` to catch it |
 
 **Gelato store ID:** `51ee1b39-75e6-4c19-af02-cfd7cb771a4a`
 
@@ -98,18 +101,22 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | `6005fae3` | Vertical portrait | A4 / A3 / A2 | €20 / €25.95 / €35.95 | `nekopaw_yellow_neon.png` |
 | `18600284` | Horizontal landscape | A5 / A4 / A3 | €15.95 / €19.95 / €25.95 | `Tourism_1.png` |
 
-**Products seeded (20 total — all DRAFT):**
-- Neko Paw x6 colorways (vertical)
-- Strong Floral (vertical)
-- Sheroshine (vertical)
-- Mask I / II / III (vertical)
-- Zebra (vertical)
-- Tourism I / II / III / IV (horizontal)
-- Elephant Green / Yellow / Lilac / Red (horizontal)
+**Products seeded (76 total — all LIVE with 3 size variants):**
+- 28 vertical artworks → template `6005fae3` → A4/A3/A2 variants
+- 35 horizontal artworks → template `18600284` → A5/A4/A3 variants
+- 13 square artworks → vertical template (bordered)
 
-**Seed scripts:** `scripts/seed-gelato-*.ts` — one per batch. Pattern: upload to Vercel Blob → `create-from-template` with `imagePlaceholders`.
+**Seed script:** `scripts/seed-gelato-posters-multisize.ts` — comprehensive, uses GitHub raw URLs directly (no Vercel Blob needed). Deletes existing products then recreates with multi-size variants.
 
-**To add more products:** create template in Gelato if needed, fetch variant IDs with `GET /v1/templates/{id}`, write/copy a seed script, run with `npx tsx scripts/seed-gelato-XXX.ts`.
+**Publish script:** `scripts/publish-gelato-to-shopify.ts` — finds synced products and publishes to Online Store. Run after any new seeding. Note: mutation format must be `input: [{ publicationId: "..." }]` (NOT `publicationIds`).
+
+**To add more products:** update `seed-gelato-posters-multisize.ts` arrays, or write new script for non-poster types. For mugs/totes/caps, CSV import via Gelato UI is fine (single variant is correct for those).
+
+**HARD RULES (learned 2026-06-11, cost a full evening):**
+- Posters: NEVER via CSV import — it creates single-variant products (no size selector). Always the seed script.
+- Before ANY seeding: `curl` one image URL and confirm 200 — the repo must be public for Gelato to fetch artwork.
+- Template UIDs must be fetched from the live API, never derived from the catalog — derived UIDs silently fail all rows but one.
+- Canary rule: 1 product end-to-end (created → synced → visible → cart works) before any batch.
 
 **Large PNG/TIFF files:** convert to JPEG via `sips -s format jpeg -s formatOptions 95` before upload.
 

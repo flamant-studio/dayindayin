@@ -7,11 +7,11 @@
 
 | # | Task | Status | Proof |
 |---|------|--------|-------|
-| N1 | Fix "Neko Paw — Yellow & Blue" publishing_error → 76/76 posters live | 🔲 | — |
-| N2 | Mug batch: 76 artworks via Gelato template API → Shopify | 🔲 | — |
-| N3 | Tote batch: 76 artworks via Gelato template API → Shopify | 🔲 | — |
-| N4 | Tank top batch: 76 artworks via Gelato template API → Shopify | 🔲 | — |
-| N5 | Publish all new Gelato products to Online Store | 🔲 | — |
+| N1 | Fix "Neko Paw — Yellow & Blue" publishing_error → 76/76 posters live | ✅ | publish script: 76/76 published |
+| N2 | Mug batch: 76 artworks via Gelato template API → Shopify | ⏳ | 23/76 done, running |
+| N3 | Tote batch: 76 artworks via Gelato template API → Shopify | ⏳ | 9/76 done, running |
+| N4 | Tank top batch: 76 artworks via Gelato template API → Shopify | ⏳ | 4/76 done, running |
+| N5 | Publish all new Gelato products to Online Store | 🔲 | after N2-N4 complete |
 
 Definition of done per task:
 - N1: `npx tsx scripts/publish-gelato-to-shopify.ts` shows 76 published
