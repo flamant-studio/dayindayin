@@ -22,7 +22,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
   let results: Awaited<ReturnType<typeof getProducts>> = []
 
   if (query) {
-    const all = await getProducts(200).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+    const all = await getProducts(250).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
     const lower = query.toLowerCase()
     results = all.filter((p) => {
       if (p.title.toLowerCase().includes(lower)) return true
