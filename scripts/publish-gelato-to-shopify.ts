@@ -65,21 +65,30 @@ async function getGelatoProducts(): Promise<GelatoProduct[]> {
 }
 
 async function publishProduct(token: string, shopifyProductId: string, title: string): Promise<boolean> {
-  const res = await shopifyGql(token,
-    `mutation Publish($id: ID!, $pubId: ID!) {
-      publishablePublish(id: $id, input: { publicationIds: [$pubId] }) {
-        userErrors { field message }
-      }
-    }`,
-    { id: `gid://shopify/Product/${shopifyProductId}`, pubId: ONLINE_STORE_PUB_ID }
-  )
-  const errs = (res.data?.publishablePublish as { userErrors: Array<{ message: string }> })?.userErrors ?? []
-  if (errs.length > 0) {
-    console.error(`  ✗ ${title}: ${JSON.stringify(errs)}`)
-    return false
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const res = await shopifyGql(token,
+      `mutation Publish($id: ID!, $pubId: ID!) {
+        publishablePublish(id: $id, input: { publicationIds: [$pubId] }) {
+          userErrors { field message }
+        }
+      }`,
+      { id: `gid://shopify/Product/${shopifyProductId}`, pubId: ONLINE_STORE_PUB_ID }
+    )
+    if ((res as unknown as { errors?: string }).errors === 'Throttled') {
+      console.log(`  ↺ throttled, retry in 10s...`)
+      await new Promise(r => setTimeout(r, 10000))
+      continue
+    }
+    const errs = (res.data?.publishablePublish as { userErrors: Array<{ message: string }> })?.userErrors ?? []
+    if (errs.length > 0) {
+      console.error(`  ✗ ${title}: ${JSON.stringify(errs)}`)
+      return false
+    }
+    console.log(`  ✓ ${title}`)
+    return true
   }
-  console.log(`  ✓ ${title}`)
-  return true
+  console.error(`  ✗ ${title}: throttle retries exhausted`)
+  return false
 }
 
 async function main() {
@@ -106,7 +115,7 @@ async function main() {
   for (const p of synced) {
     const ok = await publishProduct(token, p.externalId!, p.title)
     if (ok) published++; else failed++
-    await new Promise(r => setTimeout(r, 200))
+    await new Promise(r => setTimeout(r, 500))
   }
 
   console.log(`\nDone. Published: ${published} | Failed: ${failed}`)

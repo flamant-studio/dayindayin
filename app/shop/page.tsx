@@ -46,7 +46,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
   const activeSort = sort ?? 'newest'
   const showAll = limit === 'all'
 
-  const NON_PRINT_TAGS = ['tote', 'greeting-card']
+  const NON_PRINT_TAGS = ['tote', 'greeting-card', 'mug', 'drinkware', 'apparel', 'tank-top']
 
   const raw = activeTag === 'art-print'
     ? (await getProducts(250).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)).filter(
