@@ -83,6 +83,36 @@ export function checkoutUrl(variantGid: string, quantity = 1): string {
   return `https://${process.env.SHOPIFY_STORE_DOMAIN}/cart/${numericId}:${quantity}`
 }
 
+type HandlesPage = {
+  products: {
+    edges: { node: { handle: string } }[]
+    pageInfo: { hasNextPage: boolean; endCursor: string }
+  }
+}
+
+export async function getAllProductHandles(): Promise<string[]> {
+  const handles: string[] = []
+  let cursor: string | null = null
+  while (true) {
+    const page: HandlesPage = await adminFetch<HandlesPage>({
+      query: `
+        query GetHandles($first: Int!, $after: String) {
+          products(first: $first, after: $after, query: "status:active", sortKey: CREATED_AT, reverse: true) {
+            edges { node { handle } }
+            pageInfo { hasNextPage endCursor }
+          }
+        }
+      `,
+      variables: { first: 250, after: cursor },
+      revalidate: 3600,
+    })
+    handles.push(...page.products.edges.map((e: { node: { handle: string } }) => e.node.handle))
+    if (!page.products.pageInfo.hasNextPage) break
+    cursor = page.products.pageInfo.endCursor
+  }
+  return handles
+}
+
 export async function getProducts(first = 96): Promise<NormalizedProduct[]> {
   const data = await adminFetch<{
     products: { edges: { node: ShopifyProduct }[] }

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getProducts } from '@/lib/shopify/products'
+import { getAllProductHandles } from '@/lib/shopify/products'
 
 const BASE = 'https://dayindayin.dk'
 
@@ -33,12 +33,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  // Dynamic product pages from Shopify
+  // Dynamic product pages from Shopify (paginated — handles all 300+ products)
   let productPages: MetadataRoute.Sitemap = []
   try {
-    const products = await getProducts(250)
-    productPages = products.map((p) => ({
-      url: `${BASE}/shop/${p.handle}`,
+    const handles = await getAllProductHandles()
+    productPages = handles.map((handle) => ({
+      url: `${BASE}/shop/${handle}`,
       lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
