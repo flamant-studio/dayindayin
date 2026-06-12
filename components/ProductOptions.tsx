@@ -22,7 +22,7 @@ interface Props {
   productTitle?: string
 }
 
-// Normalize Gelato-generated variant titles to clean size labels
+// Normalize Gelato-generated variant titles to clean display labels
 function normalizeTitle(title: string): string {
   let t = title
   // Strip " - Vertical" / " - Horizontal" orientation suffix
@@ -33,6 +33,13 @@ function normalizeTitle(title: string): string {
   t = t.replace(/15[×x]20\s*cm\s*\/\s*6[×x]8[""″].*/i, 'A5')
   // "A3 (29.7 x 42  cm)" / "A2 (42 x 59.4  cm)" → "A3" / "A2"
   t = t.replace(/^(A\d+)\s*\(.*\)$/, '$1')
+  // Tank top / apparel: "White - XL - DTG (Direct-to-garment)" → "XL"
+  const sizeMatch = t.match(/\b(XS|S|M|L|XL|2XL|3XL|XXL)\b/)
+  if (sizeMatch && t.toLowerCase().includes('dtg')) return sizeMatch[1]
+  // Mug: "Ceramic White / Design Option 1" → "White · A"
+  //      "Ceramic Black / Design Option 2" → "Black · B"
+  const mugMatch = t.match(/Ceramic\s+(White|Black)\s*\/\s*Design Option\s*(\d+)/i)
+  if (mugMatch) return `${mugMatch[1]} · ${mugMatch[2] === '1' ? 'A' : 'B'}`
   return t
 }
 
