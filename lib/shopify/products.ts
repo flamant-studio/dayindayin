@@ -18,6 +18,7 @@ export interface ShopifyVariant {
   price: string
   availableForSale: boolean
   inventoryQuantity: number | null
+  featuredImage: { url: string; altText: string | null } | null
 }
 
 export interface ShopifyProduct {
@@ -46,7 +47,7 @@ const PRODUCT_FIELDS = `
     maxVariantPrice { amount currencyCode }
   }
   images(first: 8) { edges { node { url altText width height } } }
-  variants(first: 20) { edges { node { id title price availableForSale inventoryQuantity } } }
+  variants(first: 20) { edges { node { id title price availableForSale inventoryQuantity featuredImage { url altText } } } }
 `
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
@@ -200,6 +201,8 @@ const TAG_CATEGORY: Record<string, string> = {
   photography:     'Photo Print',
   'greeting-card': 'Greeting Card',
   tote:            'Tote Bag',
+  'water-bottle':  'Water Bottle',
+  'wood-print':    'Wood Print',
 }
 
 export function categoryLabel(product: NormalizedProduct): string {
