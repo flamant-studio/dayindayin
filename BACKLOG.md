@@ -3,6 +3,25 @@
 
 ---
 
+## Night Run 2026-06-12 — 5 Tasks
+
+| # | Task | Status | Proof |
+|---|------|--------|-------|
+| N1 | Fix "Neko Paw — Yellow & Blue" publishing_error → 76/76 posters live | 🔲 | — |
+| N2 | Mug batch: 76 artworks via Gelato template API → Shopify | 🔲 | — |
+| N3 | Tote batch: 76 artworks via Gelato template API → Shopify | 🔲 | — |
+| N4 | Tank top batch: 76 artworks via Gelato template API → Shopify | 🔲 | — |
+| N5 | Publish all new Gelato products to Online Store | 🔲 | — |
+
+Definition of done per task:
+- N1: `npx tsx scripts/publish-gelato-to-shopify.ts` shows 76 published
+- N2: ≥1 mug product appears on /shop and can be added to cart
+- N3: ≥1 tote product appears on /shop
+- N4: ≥1 tank top product appears on /shop
+- N5: publish script runs clean (0 failures)
+
+---
+
 ## 20 Pending Tasks
 
 ### UX / Features
