@@ -35,7 +35,12 @@ export default function SizeGuide({ variants }: Props) {
 
   const titles = variants.map((v) => v.title)
   const matched = ALL_ROWS.filter((row) => matchesVariant(row, titles))
-  const rows = matched.length > 0 ? matched : ALL_ROWS
+
+  // Only show size guide for products with recognisable print sizes (A4/A3/etc.)
+  // Mugs, tank tops, totes have no matching rows — don't show a misleading guide.
+  if (matched.length === 0) return null
+
+  const rows = matched
 
   return (
     <div className={styles.wrapper}>
