@@ -44,6 +44,17 @@ function normalizeTitle(title: string): string {
 }
 
 interface Parsed { sizeKey: string; sizeDisplay: string; frameColor: string }
+interface MugParsed { color: string; design: string }
+
+function parseMug(title: string): MugParsed | null {
+  const m = title.match(/Ceramic\s+(White|Black)\s*\/\s*Design Option\s*(\d+)/i)
+  if (!m) return null
+  return { color: m[1], design: m[2] === '1' ? 'A' : 'B' }
+}
+
+function isMugLayout(variants: Variant[]): boolean {
+  return variants.length === 4 && variants.every(v => parseMug(v.title) !== null)
+}
 
 function parseFramed(title: string): Parsed | null {
   const t = normalizeTitle(title)
@@ -74,7 +85,8 @@ function isFramedLayout(variants: Variant[]): boolean {
 export default function ProductOptions({ variants, handle, productTitle }: Props) {
   const { setSelected: publishSelected } = useProduct()
 
-  const isFramed = isFramedLayout(variants)
+  const isMug = isMugLayout(variants)
+  const isFramed = !isMug && isFramedLayout(variants)
 
   const parsedVariants = isFramed
     ? variants.map(v => ({ ...v, parsed: parseFramed(v.title)! }))
@@ -93,9 +105,14 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
   const firstAvailableParsed = parsedVariants?.find(v => v.availableForSale) ?? parsedVariants?.[0]
   const firstAvailable = variants.find(v => v.availableForSale) ?? variants[0]
 
+  const mugVariants = isMug ? variants.map(v => ({ ...v, mug: parseMug(v.title)! })) : null
+  const mugFirstAvailable = mugVariants?.find(v => v.availableForSale) ?? mugVariants?.[0]
+
   const [selected, setSelected]       = useState<Variant>(firstAvailable)
   const [selectedSize, setSelectedSize]   = useState<string>(firstAvailableParsed?.parsed.sizeKey ?? sizes[0] ?? '')
   const [selectedFrame, setSelectedFrame] = useState<string>(firstAvailableParsed?.parsed.frameColor ?? frames[0] ?? '')
+  const [selectedMugColor, setSelectedMugColor] = useState<string>(mugFirstAvailable?.mug.color ?? 'White')
+  const [selectedMugDesign, setSelectedMugDesign] = useState<string>(mugFirstAvailable?.mug.design ?? 'A')
 
   useEffect(() => {
     publishSelected(firstAvailable.id, formatPrice(firstAvailable.price))
@@ -120,6 +137,18 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
     publishSelected(v.id, formatPrice(v.price))
   }
 
+  function pickMugColor(color: string) {
+    setSelectedMugColor(color)
+    const matched = mugVariants?.find(v => v.mug.color === color && v.mug.design === selectedMugDesign)
+    if (matched && matched.availableForSale) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price)) }
+  }
+
+  function pickMugDesign(design: string) {
+    setSelectedMugDesign(design)
+    const matched = mugVariants?.find(v => v.mug.color === selectedMugColor && v.mug.design === design)
+    if (matched && matched.availableForSale) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price)) }
+  }
+
   const isLowStock =
     selected.availableForSale &&
     selected.inventoryQuantity != null &&
@@ -140,6 +169,77 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
           <>
             <AddToCartButton variantId={v.id} price={formatPrice(v.price)} available={false} />
             {handle && <BackInStock handle={handle} title={productTitle ?? ''} />}
+          </>
+        )}
+      </div>
+    )
+  }
+
+  // 2D picker for mugs (color × design side)
+  if (isMug && mugVariants) {
+    const mugColors = ['White', 'Black']
+    const mugDesigns = ['A', 'B']
+    return (
+      <div className={styles.wrapper}>
+        <div className={styles.selectorGroup}>
+          <p className={styles.selectorLabel}>
+            Color <span className={styles.selectorValue}>{selectedMugColor}</span>
+          </p>
+          <div className={styles.selectorRow}>
+            {mugColors.map(color => {
+              const hasAvailable = mugVariants.some(v => v.mug.color === color && v.availableForSale)
+              return (
+                <button
+                  key={color}
+                  className={[
+                    styles.selectorBtn,
+                    selectedMugColor === color ? styles.selectorSelected : '',
+                    !hasAvailable ? styles.variantSoldOut : '',
+                  ].filter(Boolean).join(' ')}
+                  onClick={() => hasAvailable && pickMugColor(color)}
+                  disabled={!hasAvailable}
+                  aria-pressed={selectedMugColor === color}
+                >
+                  {color}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        <div className={styles.selectorGroup}>
+          <p className={styles.selectorLabel}>
+            Design <span className={styles.selectorValue}>{selectedMugDesign === 'A' ? 'Side A' : 'Side B'}</span>
+          </p>
+          <div className={styles.selectorRow}>
+            {mugDesigns.map(design => {
+              const hasAvailable = mugVariants.some(v => v.mug.color === selectedMugColor && v.mug.design === design && v.availableForSale)
+              return (
+                <button
+                  key={design}
+                  className={[
+                    styles.selectorBtn,
+                    selectedMugDesign === design ? styles.selectorSelected : '',
+                    !hasAvailable ? styles.variantSoldOut : '',
+                  ].filter(Boolean).join(' ')}
+                  onClick={() => hasAvailable && pickMugDesign(design)}
+                  disabled={!hasAvailable}
+                  aria-pressed={selectedMugDesign === design}
+                >
+                  {design === 'A' ? 'Side A' : 'Side B'}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
+        {selected.availableForSale ? (
+          <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available />
+        ) : (
+          <>
+            <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available={false} />
+            {handle && <BackInStock handle={handle} title={productTitle ?? ''} variantTitle={selected.title} />}
           </>
         )}
       </div>
