@@ -331,9 +331,13 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
   }
 
   // Flat list for all other variant types
+  const CLOTHING_SIZES = new Set(['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', 'XXL', 'XXXL'])
+  const allAreSizes = variants.every(v => CLOTHING_SIZES.has(normalizeTitle(v.title)))
+  const variantGroupLabel = allAreSizes ? 'Size' : 'Options'
+
   return (
     <div className={styles.wrapper}>
-      <p className={styles.variantLabel}>Options</p>
+      <p className={styles.variantLabel}>{variantGroupLabel}</p>
       <div className={styles.variantList}>
         {variants.map((v) => (
           <button
