@@ -152,7 +152,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
       ) : (
         <>
           <div className={styles.grid}>
-            {displayed.map((p) => (
+            {displayed.map((p, i) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
                 <div className={styles.cardImg}>
                   <Image
@@ -161,6 +161,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
                     fill
                     sizes="(max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw"
                     className={styles.cardImgEl}
+                    priority={i < 4}
                   />
                   <WishlistButton
                     handle={p.handle}
