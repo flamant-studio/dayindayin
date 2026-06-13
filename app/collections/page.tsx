@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getProductsByTag } from '@/lib/shopify/products'
+import { getAllProductsByTag } from '@/lib/shopify/products'
 import CollectionSlideshow from '@/components/CollectionSlideshow'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -63,7 +63,7 @@ const COLLECTIONS = [
 async function CollectionCard({
   title, description, tag, accent,
 }: { title: string; description: string; tag: string; accent: string }) {
-  const products = await getProductsByTag(tag, 50).catch(() => [])
+  const products = await getAllProductsByTag(tag).catch(() => [])
   const withImages = products.filter((p) => p.firstImage)
   const slideImages = withImages.slice(0, 4).map((p) => ({
     url: p.firstImage!.url,
