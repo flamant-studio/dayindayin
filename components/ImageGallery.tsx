@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import ImageLightbox from './ImageLightbox'
+import { useProduct } from '@/contexts/ProductContext'
 import styles from './ImageGallery.module.css'
 
 interface GalleryImage {
@@ -16,8 +17,12 @@ interface Props {
 
 export default function ImageGallery({ images, colorwaySiblings }: Props) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const { selectedImage } = useProduct()
 
-  const mainImage = images[0]
+  const baseMain = images[0]
+  const mainImage = selectedImage
+    ? { url: selectedImage, alt: baseMain?.alt ?? '' }
+    : baseMain
   const thumbImages = images.slice(1)
 
   function openAt(index: number) {

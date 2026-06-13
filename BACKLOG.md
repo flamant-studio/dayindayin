@@ -8,9 +8,9 @@
 | # | Task | Status | Proof |
 |---|------|--------|-------|
 | N1 | Fix "Neko Paw — Yellow & Blue" publishing_error → 76/76 posters live | ✅ | publish script: 76/76 published |
-| N2 | Mug batch: 76 artworks via Gelato template API → Shopify | ⏳ | 23/76 done, running |
-| N3 | Tote batch: 76 artworks via Gelato template API → Shopify | ⏳ | 9/76 done, running |
-| N4 | Tank top batch: 76 artworks via Gelato template API → Shopify | ⏳ | 4/76 done, running |
+| N2 | Mug batch: 76 artworks via Gelato template API → Shopify | ⏳ | 59/76 done, running |
+| N3 | Tote batch: 76 artworks via Gelato template API → Shopify | ⏳ | 73/76 done, almost done |
+| N4 | Tank top batch: 76 artworks via Gelato template API → Shopify | ⏳ | 20/76 done, ~25 min left |
 | N5 | Publish all new Gelato products to Online Store | 🔲 | after N2-N4 complete |
 
 Definition of done per task:

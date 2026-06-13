@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vercel/blob": "^2.3.3",
+    "dotenv": "^17.4.2",
     "next": "16.2.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -21,6 +22,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "playwright": "^1.60.0",
     "typescript": "^5"
   }
 }

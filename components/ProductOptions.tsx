@@ -14,6 +14,7 @@ interface Variant {
   price: string
   availableForSale: boolean
   inventoryQuantity?: number | null
+  featuredImage?: { url: string; altText: string | null } | null
 }
 
 interface Props {
@@ -115,38 +116,38 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
   const [selectedMugDesign, setSelectedMugDesign] = useState<string>(mugFirstAvailable?.mug.design ?? 'A')
 
   useEffect(() => {
-    publishSelected(firstAvailable.id, formatPrice(firstAvailable.price))
+    publishSelected(firstAvailable.id, formatPrice(firstAvailable.price), firstAvailable.featuredImage?.url)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function pickSize(size: string) {
     setSelectedSize(size)
     const matched = parsedVariants?.find(v => v.parsed.sizeKey === size && v.parsed.frameColor === selectedFrame)
-    if (matched) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price)) }
+    if (matched) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price), matched.featuredImage?.url) }
   }
 
   function pickFrame(frame: string) {
     setSelectedFrame(frame)
     const matched = parsedVariants?.find(v => v.parsed.sizeKey === selectedSize && v.parsed.frameColor === frame)
-    if (matched) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price)) }
+    if (matched) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price), matched.featuredImage?.url) }
   }
 
   function selectVariant(v: Variant) {
     if (!v.availableForSale) return
     setSelected(v)
-    publishSelected(v.id, formatPrice(v.price))
+    publishSelected(v.id, formatPrice(v.price), v.featuredImage?.url)
   }
 
   function pickMugColor(color: string) {
     setSelectedMugColor(color)
     const matched = mugVariants?.find(v => v.mug.color === color && v.mug.design === selectedMugDesign)
-    if (matched && matched.availableForSale) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price)) }
+    if (matched && matched.availableForSale) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price), matched.featuredImage?.url) }
   }
 
   function pickMugDesign(design: string) {
     setSelectedMugDesign(design)
     const matched = mugVariants?.find(v => v.mug.color === selectedMugColor && v.mug.design === design)
-    if (matched && matched.availableForSale) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price)) }
+    if (matched && matched.availableForSale) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price), matched.featuredImage?.url) }
   }
 
   const isLowStock =
