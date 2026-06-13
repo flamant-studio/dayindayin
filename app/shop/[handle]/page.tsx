@@ -102,7 +102,7 @@ export default async function ProductPage({ params }: PageProps) {
   const seriesHandles = new Set(seriesProducts.map(p => p.handle))
 
   // Category related — same medium, different designs, excluding series dupes
-  const CATEGORY_TAGS = ['tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card', 'mug', 'apparel']
+  const CATEGORY_TAGS = ['tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card', 'postcard', 'mug', 'apparel', 'water-bottle', 'wood-print']
   const categoryTag = product.tags.find(t => CATEGORY_TAGS.includes(t.toLowerCase()))
   const relatedFiltered = categoryTag
     ? (await getProductsByTag(categoryTag, 10).catch(() => []))
@@ -193,10 +193,10 @@ export default async function ProductPage({ params }: PageProps) {
             <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
 
             {/* Series / category tags */}
-            {product.tags.filter(t => [...['tufting','embroidery','painting','photography','tote','greeting-card','shero','neko','sea-monsters','botanical','floral','faces','sommerby']].includes(t.toLowerCase())).length > 0 && (
+            {product.tags.filter(t => ['tufting','embroidery','painting','photography','tote','greeting-card','postcard','mug','apparel','water-bottle','wood-print','shero','neko','sea-monsters','botanical','floral','faces','sommerby'].includes(t.toLowerCase())).length > 0 && (
               <div className={styles.tagRow}>
                 {product.tags
-                  .filter(t => ['tufting','embroidery','painting','photography','tote','greeting-card','shero','neko','sea-monsters','botanical','floral','faces','sommerby'].includes(t.toLowerCase()))
+                  .filter(t => ['tufting','embroidery','painting','photography','tote','greeting-card','postcard','mug','apparel','water-bottle','wood-print','shero','neko','sea-monsters','botanical','floral','faces','sommerby'].includes(t.toLowerCase()))
                   .map(tag => (
                     <Link key={tag} href={`/shop?filter=${tag.toLowerCase()}`} className={styles.tagLink}>
                       {tag}
