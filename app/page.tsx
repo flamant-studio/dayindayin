@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
+import { getAllProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
@@ -23,7 +23,7 @@ const SERIES_CARDS = [
 ]
 
 export default async function HomePage() {
-  const allRecent = await getProducts(60).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+  const allRecent = await getAllProducts().catch(() => [])
   const products = allRecent.filter((p) => p.firstImage).slice(0, 8)
 
   // Build series image map from already-fetched products
