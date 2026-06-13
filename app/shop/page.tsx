@@ -10,22 +10,26 @@ export const metadata = {
   description: 'Art prints, canvases, and wall hangings by Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
 }
 
-const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces']
+const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
 
 const FILTER_LABELS: Record<string, string> = {
-  'art-print':   'Art Prints',
-  'framed':      'Framed Prints',
-  'poster':      'Posters',
-  'mug':         'Mugs',
-  'apparel':     'Apparel',
-  'postcard':    'Postcards',
-  'tote':        'Tote Bags',
-  'shero':       'SHERO',
-  'neko':        'NEKO',
-  'sea-monsters':'Sea Monsters',
-  'botanical':   'Botanical',
-  'floral':      'Floral',
-  'faces':       'Faces',
+  'art-print':      'Art Prints',
+  'framed':         'Framed Prints',
+  'poster':         'Posters',
+  'mug':            'Mugs',
+  'apparel':        'Apparel',
+  'tote':           'Tote Bags',
+  'postcard':       'Postcards',
+  'greeting-card':  'Greeting Cards',
+  'water-bottle':   'Water Bottles',
+  'wood-print':     'Wood Prints',
+  'shero':          'SHERO',
+  'neko':           'NEKO',
+  'sea-monsters':   'Sea Monsters',
+  'botanical':      'Botanical',
+  'floral':         'Floral',
+  'faces':          'Faces',
+  'sommerby':       'Sommerby',
 }
 
 const SORT_OPTIONS = [

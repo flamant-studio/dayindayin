@@ -61,6 +61,7 @@ function inferSeriesTag(title: string): string | null {
   if (t.includes('poppy') || t.includes('poppies') || t.includes('floral') ||
       t.includes('flower') || t.includes('forget-me-not'))             return 'floral'
   if (t.includes('mask') || t.includes('moon face') || t.includes('solar face')) return 'faces'
+  if (t.includes('sommerby'))                                          return 'sommerby'
   return null
 }
 

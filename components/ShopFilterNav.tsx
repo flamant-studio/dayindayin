@@ -10,11 +10,14 @@ const TYPE_NAV = [
   { label: 'Posters', value: 'poster' },
   { label: 'Mugs', value: 'mug' },
   { label: 'Apparel', value: 'apparel' },
-  { label: 'Postcards', value: 'postcard' },
   { label: 'Tote Bags', value: 'tote' },
+  { label: 'Postcards', value: 'postcard' },
+  { label: 'Greeting Cards', value: 'greeting-card' },
+  { label: 'Water Bottles', value: 'water-bottle' },
+  { label: 'Wood Prints', value: 'wood-print' },
 ]
 
-const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces']
+const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
 
 const SERIES_NAV = [
   { label: 'All series', value: null },
@@ -24,6 +27,7 @@ const SERIES_NAV = [
   { label: 'Botanical', value: 'botanical' },
   { label: 'Floral', value: 'floral' },
   { label: 'Faces', value: 'faces' },
+  { label: 'Sommerby', value: 'sommerby' },
 ]
 
 const ALL_NAV = [...TYPE_NAV.filter(n => n.value), ...SERIES_NAV.filter(n => n.value)]

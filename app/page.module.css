@@ -381,6 +381,60 @@
   background: var(--c-bg);
 }
 
+/* ── Series strip ──────────────────────────────────────────────────── */
+
+.seriesSection {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--sp-12) var(--sp-6) var(--sp-6);
+}
+
+.seriesStrip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--sp-3);
+}
+
+.seriesCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  transition: opacity var(--t-fast);
+}
+
+.seriesCard:hover { opacity: 0.8; }
+
+.seriesCardImg {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--c-surface);
+  overflow: hidden;
+}
+
+.seriesCardPlaceholder {
+  position: absolute;
+  inset: 0;
+}
+
+.seriesCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.seriesCardLabel {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--c-text);
+}
+
+.seriesCardSub {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+  font-weight: 400;
+}
+
 /* ── Newsletter section ────────────────────────────────────────────── */
 
 .newsletterSection {
@@ -398,6 +452,7 @@
 @media (max-width: 1100px) {
   .productGrid { grid-template-columns: repeat(3, 1fr); }
   .collectionGrid { grid-template-columns: repeat(2, 1fr); }
+  .seriesStrip { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -421,6 +476,8 @@
   .editorialTitle { font-size: clamp(2rem, 8vw, 3rem); }
 
   .section { padding: var(--sp-8) var(--sp-5); }
+  .seriesSection { padding: var(--sp-8) var(--sp-5) var(--sp-4); }
+  .seriesStrip { grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
   .productGrid { grid-template-columns: repeat(2, 1fr); }
   .collectionGrid { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
   .artistStrip {

@@ -13,9 +13,28 @@ const LIFESTYLE = [
   `${BLOB}/lifestyle/ls-05.jpg`,
 ]
 
+const SERIES_CARDS = [
+  { tag: 'shero',       label: 'SHERO',        sub: 'Feminist pop-art',     accent: '#D94F2C' },
+  { tag: 'neko',        label: 'NEKO',          sub: 'Cats and symbols',     accent: '#2E5D4B' },
+  { tag: 'sea-monsters',label: 'Sea Monsters',  sub: 'Imaginary creatures',  accent: '#4A7A9B' },
+  { tag: 'botanical',   label: 'Botanical',     sub: 'Plants and growth',    accent: '#5C7A48' },
+  { tag: 'floral',      label: 'Floral',        sub: 'Bold florals',         accent: '#B85C78' },
+  { tag: 'faces',       label: 'Faces',         sub: 'Portraits and masks',  accent: '#7A6B8A' },
+]
+
 export default async function HomePage() {
   const allRecent = await getProducts(60).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
   const products = allRecent.filter((p) => p.firstImage).slice(0, 8)
+
+  // Build series image map from already-fetched products
+  const seriesImageMap: Record<string, string> = {}
+  for (const p of allRecent) {
+    if (!p.firstImage) continue
+    for (const tag of p.tags) {
+      const t = tag.toLowerCase()
+      if (!seriesImageMap[t]) seriesImageMap[t] = p.firstImage.url
+    }
+  }
 
   return (
     <>
@@ -79,6 +98,40 @@ export default async function HomePage() {
             <Link href="/shop" className={styles.heroCta}>Go to shop</Link>
           </div>
         )}
+      </section>
+
+      {/* ── Series strip ─────────────────────────────────────── */}
+      <section className={styles.seriesSection}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.sectionTitle}>Browse by Series</h2>
+          <Link href="/collections" className={styles.viewAll}>All collections →</Link>
+        </div>
+        <div className={styles.seriesStrip}>
+          {SERIES_CARDS.map(({ tag, label, sub, accent }) => {
+            const imgUrl = seriesImageMap[tag]
+            return (
+              <Link key={tag} href={`/shop?filter=${tag}`} className={styles.seriesCard}>
+                <div className={styles.seriesCardImg} style={{ borderBottom: `3px solid ${accent}` }}>
+                  {imgUrl ? (
+                    <Image
+                      src={imgUrl}
+                      alt={label}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 16vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div className={styles.seriesCardPlaceholder} style={{ background: accent + '22' }} />
+                  )}
+                </div>
+                <div className={styles.seriesCardInfo}>
+                  <span className={styles.seriesCardLabel}>{label}</span>
+                  <span className={styles.seriesCardSub}>{sub}</span>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
       </section>
 
       {/* ── Editorial — featured work ─────────────────────────── */}
