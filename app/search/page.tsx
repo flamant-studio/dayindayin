@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
+import { getAllProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
 import styles from './page.module.css'
 import shopStyles from '../shop/page.module.css'
 
@@ -19,10 +19,10 @@ export default async function SearchPage({ searchParams }: PageProps) {
   const { q } = await searchParams
   const query = q?.trim() ?? ''
 
-  let results: Awaited<ReturnType<typeof getProducts>> = []
+  let results: Awaited<ReturnType<typeof getAllProducts>> = []
 
   if (query) {
-    const all = await getProducts(250).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+    const all = await getAllProducts().catch(() => [])
     const lower = query.toLowerCase()
     results = all.filter((p) => {
       if (p.title.toLowerCase().includes(lower)) return true

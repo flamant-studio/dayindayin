@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, getProductsByTag, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
+import { getAllProducts, getAllProductsByTag, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
@@ -51,8 +51,8 @@ export default async function ShopPage({ searchParams }: PageProps) {
   const showAll = limit === 'all'
 
   const raw = activeTag
-    ? await getProductsByTag(activeTag, 250).catch(() => [])
-    : await getProducts(250).catch(() => [] as Awaited<ReturnType<typeof getProducts>>)
+    ? await getAllProductsByTag(activeTag).catch(() => [])
+    : await getAllProducts().catch(() => [])
 
   let products = raw.filter((p) => p.firstImage)
 

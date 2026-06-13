@@ -132,6 +132,59 @@ export async function getProducts(first = 96): Promise<NormalizedProduct[]> {
     .filter((p) => p.status === 'ACTIVE')
 }
 
+type ProductsPage = {
+  products: {
+    edges: { node: ShopifyProduct }[]
+    pageInfo: { hasNextPage: boolean; endCursor: string }
+  }
+}
+
+export async function getAllProducts(): Promise<NormalizedProduct[]> {
+  const all: NormalizedProduct[] = []
+  let cursor: string | null = null
+  while (true) {
+    const page: ProductsPage = await adminFetch<ProductsPage>({
+      query: `
+        query GetAllProducts($first: Int!, $after: String) {
+          products(first: $first, after: $after, query: "status:active", sortKey: CREATED_AT, reverse: true) {
+            edges { node { ${PRODUCT_FIELDS} } }
+            pageInfo { hasNextPage endCursor }
+          }
+        }
+      `,
+      variables: { first: 250, after: cursor },
+      revalidate: 300,
+    })
+    all.push(...page.products.edges.map((e) => normalizeProduct(e.node)).filter((p) => p.status === 'ACTIVE'))
+    if (!page.products.pageInfo.hasNextPage) break
+    cursor = page.products.pageInfo.endCursor
+  }
+  return all
+}
+
+export async function getAllProductsByTag(tag: string): Promise<NormalizedProduct[]> {
+  const all: NormalizedProduct[] = []
+  let cursor: string | null = null
+  while (true) {
+    const page: ProductsPage = await adminFetch<ProductsPage>({
+      query: `
+        query GetAllProductsByTag($q: String!, $first: Int!, $after: String) {
+          products(first: $first, after: $after, query: $q, sortKey: CREATED_AT, reverse: true) {
+            edges { node { ${PRODUCT_FIELDS} } }
+            pageInfo { hasNextPage endCursor }
+          }
+        }
+      `,
+      variables: { q: `tag:${tag} AND status:active`, first: 250, after: cursor },
+      revalidate: 300,
+    })
+    all.push(...page.products.edges.map((e) => normalizeProduct(e.node)).filter((p) => p.status === 'ACTIVE'))
+    if (!page.products.pageInfo.hasNextPage) break
+    cursor = page.products.pageInfo.endCursor
+  }
+  return all
+}
+
 export async function getProductsByTag(tag: string, first = 96): Promise<NormalizedProduct[]> {
   const data = await adminFetch<{
     products: { edges: { node: ShopifyProduct }[] }
