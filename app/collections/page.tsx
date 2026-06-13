@@ -58,6 +58,12 @@ const COLLECTIONS = [
     tag: 'embroidery',
     accent: '#2E5D4B',
   },
+  {
+    title: 'Sommerby',
+    description: 'Danish summer — light, colour, and the particular stillness of somewhere you return to every year.',
+    tag: 'sommerby',
+    accent: '#C4694F',
+  },
 ]
 
 async function CollectionCard({
