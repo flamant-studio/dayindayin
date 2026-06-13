@@ -4,7 +4,9 @@ import { getAllProductHandles } from '@/lib/shopify/products'
 const BASE = 'https://dayindayin.dk'
 
 const FILTER_TAGS = [
-  'tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card',
+  'art-print', 'framed', 'poster', 'mug', 'apparel', 'tote',
+  'greeting-card', 'postcard', 'water-bottle', 'wood-print',
+  'tufting', 'embroidery', 'painting', 'photography',
   'shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby',
 ]
 
