@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { getAllProducts, getAllProductsByTag, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
+import ShoppingNudge from '@/components/ShoppingNudge'
 import styles from './page.module.css'
 
 export const metadata = {
@@ -99,6 +100,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
 
   return (
     <div className={styles.page}>
+      <ShoppingNudge />
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <h1 className={styles.title}>Shop</h1>

@@ -1,0 +1,13 @@
+.nudge {
+  font-size: 0.875rem;
+  color: var(--color-muted, #888);
+  font-style: italic;
+  text-align: center;
+  margin: 0 0 1.5rem;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.visible {
+  opacity: 1;
+}
