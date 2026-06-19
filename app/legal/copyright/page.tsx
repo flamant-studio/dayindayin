@@ -48,7 +48,7 @@ export default function CopyrightPage() {
         advertising, product design, or interior projects — contact us to discuss terms.
       </p>
       <p>
-        Email: <a href="mailto:sebastianhflamant@gmail.com">sebastianhflamant@gmail.com</a>
+        Email: <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a>
       </p>
       <p>
         Please include what you are planning to use the artwork for, the specific work or works
@@ -67,7 +67,7 @@ export default function CopyrightPage() {
       <p>
         If you believe any of Stine&apos;s work has been reproduced without permission, please
         let us know at{' '}
-        <a href="mailto:sebastianhflamant@gmail.com">sebastianhflamant@gmail.com</a>.
+        <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a>.
       </p>
     </>
   )

@@ -328,7 +328,15 @@ export function categoryLabel(product: NormalizedProduct): string {
     if (label) return label
   }
   const t = product.title.toLowerCase()
-  if (t.includes('tote')) return 'Tote Bag'
-  if (t.includes('greeting') || t.includes('card')) return 'Greeting Card'
+  if (t.includes('tote bag') || t.includes('tote')) return 'Tote Bag'
+  if (t.includes('greeting card')) return 'Greeting Card'
+  if (t.includes('postcard')) return 'Postcard'
+  if (t.includes('framed print')) return 'Framed Print'
+  if (t.includes('wood print')) return 'Wood Print'
+  if (t.includes('poster')) return 'Poster'
+  if (t.includes('mug')) return 'Mug'
+  if (t.includes('tank top') || t.includes('apparel')) return 'Apparel'
+  if (t.includes('water bottle')) return 'Water Bottle'
+  if (t.includes('fine art print') || t.includes('art print')) return 'Art Print'
   return 'Art Print'
 }

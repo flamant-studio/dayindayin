@@ -14,7 +14,7 @@ export default function PrivacyPage() {
       <h2>Who we are</h2>
       <p>
         Day In Day In is operated by Flamant Tekst &amp; Design, CVR registered in Denmark.
-        Contact: <a href="mailto:sebastianhflamant@gmail.com">sebastianhflamant@gmail.com</a>.
+        Contact: <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a>.
       </p>
       <p>
         This site is the online shop for artwork by Stine Weirsøe Flamant. We take your
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
       </ul>
       <p>
         To exercise any of these rights, contact us at{' '}
-        <a href="mailto:sebastianhflamant@gmail.com">sebastianhflamant@gmail.com</a>.
+        <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a>.
         We will respond within 30 days.
       </p>
       <p>

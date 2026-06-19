@@ -35,8 +35,8 @@ export default function NewsletterSignup() {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <h2 className={styles.heading}>Stay in the loop</h2>
-        <p className={styles.sub}>New works, studio updates, and occasional thoughts from Stine.</p>
+        <h2 className={styles.heading}>New works, studio updates, and occasional thoughts from Stine.</h2>
+        <p className={styles.sub}>No spam. Just the real stuff, when there&apos;s something worth sharing.</p>
 
         {submitted ? (
           <p className={styles.success}>Thank you — we&#39;ll be in touch.</p>

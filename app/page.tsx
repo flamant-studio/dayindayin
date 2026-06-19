@@ -55,9 +55,9 @@ export default async function HomePage() {
           <span className={styles.heroLabel}>Copenhagen, Denmark</span>
           <h1 className={styles.heroTitle}>Art made<br />by hand.</h1>
           <p className={styles.heroSub}>
-            Original works by Stine Weirsøe Flamant — tufted textiles, embroidery, painting, photography. Every print made on demand.
+            Original works by Stine Weirsøe Flamant — tufted textiles, embroidery, painting, photography. Prints from 56 kr, shipped across Europe.
           </p>
-          <Link href="/shop" className={styles.heroCta}>Shop all prints</Link>
+          <Link href="/shop" className={styles.heroCta}>Browse the shop</Link>
         </div>
       </section>
 
