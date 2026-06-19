@@ -47,6 +47,13 @@ export default async function Archive({ searchParams }: PageProps) {
           {filtered.length} {active === "all" ? "original" : CATEGORY_LABELS[active]?.toLowerCase()} work{filtered.length !== 1 ? "s" : ""} —{" "}
           <Link href="/fine-art">view by category →</Link>
         </p>
+        {active === "all" && (
+          <p className={styles.heroNote}>
+            Stine Weirsøe Flamant works across four disciplines: hand tufting, embroidery, painting, and photography.
+            All works are unique originals, made in Copenhagen.{" "}
+            <Link href="/commissions">Commissions open.</Link>
+          </p>
+        )}
       </section>
 
       <div className={styles.filters}>

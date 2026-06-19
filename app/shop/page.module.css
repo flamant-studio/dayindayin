@@ -310,6 +310,50 @@
   opacity: 0.8;
 }
 
+/* ── POD banner ─────────────────────────────────────────── */
+
+.podBanner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--c-border);
+  margin-top: var(--sp-12);
+}
+
+.podItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-8) var(--sp-6);
+  border-right: 1px solid var(--c-border);
+}
+
+.podItem:last-child { border-right: none; }
+
+.podIcon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.podLabel {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.podText {
+  font-size: var(--text-xs);
+  font-weight: 300;
+  color: var(--c-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .podBanner { grid-template-columns: 1fr; }
+  .podItem { border-right: none; border-bottom: 1px solid var(--c-border); }
+  .podItem:last-child { border-bottom: none; }
+}
+
 /* ── Empty ──────────────────────────────────────────────── */
 
 .empty {

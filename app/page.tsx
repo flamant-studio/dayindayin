@@ -87,13 +87,14 @@ export default async function HomePage() {
 
         {products.length > 0 ? (
           <div className={styles.productGrid}>
-            {products.map((p) => (
+            {products.map((p, i) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
                 <div className={styles.cardImg}>
                   {p.firstImage
                     ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
                     : <div className={styles.cardPlaceholder} />
                   }
+                  {i < 4 && <span className={styles.newBadge}>New</span>}
                   <WishlistButton
                     handle={p.handle}
                     title={p.title}

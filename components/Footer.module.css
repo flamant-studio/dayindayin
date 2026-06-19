@@ -88,6 +88,20 @@
 
 .socialLink:hover { color: var(--c-text); }
 
+.bottomRight {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+.sitemapLink {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+
+.sitemapLink:hover { color: var(--c-text); }
+
 .gelato a {
   color: var(--c-muted);
   text-decoration: underline;

@@ -12,6 +12,12 @@ export const dynamic = 'force-dynamic'
 export const metadata = {
   title: 'Shop',
   description: 'Art prints, canvases, and wall hangings by Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
+  alternates: { canonical: '/shop' },
+  openGraph: {
+    title: 'Shop — Day In Day In',
+    description: 'Art prints by Stine Weirsøe Flamant. Printed by Gelato. Ships across EU, UK, and Norway from 56 kr.',
+    images: [{ url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/neko-cat-orange.jpg', width: 1200, height: 900 }],
+  },
 }
 
 const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
@@ -237,6 +243,24 @@ export default async function ShopPage({ searchParams }: PageProps) {
           )}
         </>
       )}
+
+      <div className={styles.podBanner}>
+        <div className={styles.podItem}>
+          <span className={styles.podIcon}>🖨</span>
+          <span className={styles.podLabel}>Printed to order</span>
+          <span className={styles.podText}>Every print is made when you order it — no bulk inventory.</span>
+        </div>
+        <div className={styles.podItem}>
+          <span className={styles.podIcon}>✦</span>
+          <span className={styles.podLabel}>Ships in 5–10 days</span>
+          <span className={styles.podText}>Printed by Gelato and shipped directly to your door across Europe.</span>
+        </div>
+        <div className={styles.podItem}>
+          <span className={styles.podIcon}>◯</span>
+          <span className={styles.podLabel}>Original artwork</span>
+          <span className={styles.podText}>Every print comes from Stine's original art — nothing is generated or licensed in.</span>
+        </div>
+      </div>
     </div>
   )
 }

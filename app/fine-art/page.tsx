@@ -14,11 +14,11 @@ export const metadata = {
   alternates: { canonical: "/fine-art" },
 };
 
-const sections: { id: WorkCategory; label: string; tagline: string }[] = [
+const sections: { id: WorkCategory; label: string; tagline: string; note?: string }[] = [
   { id: "tufting", label: "Hand Tufting", tagline: "Each piece takes days — the pile height, density, and texture chosen entirely by hand. No two are alike." },
   { id: "embroidery", label: "Embroidery", tagline: "Needle and thread on canvas and linen. Where the work started and where it keeps returning." },
   { id: "painting", label: "Paintings", tagline: "Acrylic and oil stick on canvas, worked on the studio floor. Layers built up and scraped back over multiple sessions." },
-  { id: "photography", label: "Photography", tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after." },
+  { id: "photography", label: "Photography", tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after.", note: "Archival inkjet prints on museum-grade paper. Shot on film and digital. All photography prints are available as limited editions — enquire for edition size and pricing." },
 ];
 
 export default function FineArt() {
@@ -74,6 +74,7 @@ export default function FineArt() {
             <div className={styles.sectionHeader}>
               <h2>{section.label} <span className={styles.sectionCount}>({categoryWorks.length})</span></h2>
               <p>{section.tagline}</p>
+              {section.note && <p className={styles.sectionNote}>{section.note}</p>}
             </div>
             <div className={styles.grid}>
               {categoryWorks.map((work) => (

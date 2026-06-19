@@ -31,6 +31,8 @@ export const metadata: Metadata = {
   },
   description:
     'Art made by hand in Copenhagen. Original tufted textiles, embroidery, paintings, and photography by Stine Weirsøe Flamant. Prints from 56 kr, shipped across Europe by Gelato.',
+  authors: [{ name: 'Stine Weirsøe Flamant' }],
+  creator: 'Stine Weirsøe Flamant',
   metadataBase: new URL('https://dayindayin.dk'),
   alternates: {
     canonical: '/',

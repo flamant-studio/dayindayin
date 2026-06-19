@@ -228,6 +228,28 @@
   text-align: center;
 }
 
+/* ── Gelato badge ────────────────────────────────────────── */
+
+.gelatoBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--c-muted);
+  padding: var(--sp-3) 0;
+  border-top: 1px solid var(--c-border);
+}
+
+.gelatoBadge a {
+  color: var(--c-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--t-fast);
+}
+
+.gelatoBadge a:hover { color: var(--c-text); }
+
 /* ── Fulfillment accordion ───────────────────────────────── */
 
 .fulfillmentAccordion {

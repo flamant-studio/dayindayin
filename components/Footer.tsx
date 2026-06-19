@@ -72,8 +72,11 @@ export default function Footer() {
       </div>
 
       <div className={styles.bottom}>
-        <span>© {new Date().getFullYear()} Stine Weirsøe Flamant. All rights reserved.</span>
-        <span className={styles.gelato}>Printed by <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a></span>
+        <span>© {new Date().getFullYear()} Stine Weirsøe Flamant · Flamant Tekst &amp; Design</span>
+        <div className={styles.bottomRight}>
+          <a href="/sitemap.xml" className={styles.sitemapLink}>Sitemap</a>
+          <span className={styles.gelato}>Printed by <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a></span>
+        </div>
       </div>
     </footer>
   )
