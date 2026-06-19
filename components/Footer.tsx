@@ -45,7 +45,7 @@ export default function Footer() {
             <span className={styles.colTitle}>Artist</span>
             <Link href="/about">About Stine</Link>
             <Link href="/fine-art">Fine Art</Link>
-            <Link href="/art-journal">Art Journal</Link>
+            <Link href="/art-journal">Studio Notes</Link>
             <Link href="/contact">Commissions</Link>
           </div>
           <div className={styles.col}>
