@@ -90,6 +90,22 @@ export default function Practical() {
         </section>
 
         <section>
+          <h2>Order Tracking</h2>
+          <p>
+            After your order is confirmed, you will receive a Shopify order confirmation email.
+            When production is complete and your order ships from Gelato, you will receive a separate
+            shipping confirmation email with a tracking link.
+          </p>
+          <p>
+            Production typically takes 1–3 business days. If you haven&apos;t received a shipping
+            email within 4 business days of your order, contact us with your order number and we will check the status.
+          </p>
+          <p>
+            Email: <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a>
+          </p>
+        </section>
+
+        <section>
           <h2>Returns &amp; Damaged Orders</h2>
           <p>
             Because all products are printed on demand specifically for your order, we do

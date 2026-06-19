@@ -38,13 +38,18 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   if (!post) notFound();
 
   const { prev, next } = getAdjacentPosts(slug);
+  const wordCount = post.body ? post.body.join(' ').split(/\s+/).length : post.excerpt.split(/\s+/).length;
+  const readMins = Math.max(1, Math.round(wordCount / 200));
 
   return (
     <div className={styles.page}>
       <Link href="/art-journal" className={styles.back}>← Studio Notes</Link>
       <article>
         <header className={styles.header}>
-          <p className={styles.date}>{new Date(post.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}</p>
+          <p className={styles.date}>
+            {new Date(post.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}
+            {' · '}{readMins} min read
+          </p>
           <h1>{post.title}</h1>
           <p className={styles.excerpt}>{post.excerpt}</p>
         </header>

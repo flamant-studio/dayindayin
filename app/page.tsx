@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAllProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
+import { works } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
@@ -212,6 +213,35 @@ export default async function HomePage() {
           <Link href="/art-journal" className={styles.studioTeaserLink}>Read the notes →</Link>
         </div>
       </section>
+
+      {/* ── From the archive ─────────────────────────────────── */}
+      {(() => {
+        const featured = [works[0], works[19], works[30], works[43]].filter(Boolean)
+        return (
+          <section className={styles.archiveTeaser}>
+            <div className={styles.archiveTeaserHead}>
+              <div>
+                <span className={styles.archiveTeaserLabel}>Original Works</span>
+                <h2 className={styles.archiveTeaserTitle}>From the archive</h2>
+              </div>
+              <Link href="/fine-art" className={styles.archiveTeaserLink}>See all originals →</Link>
+            </div>
+            <div className={styles.archiveTeaserGrid}>
+              {featured.map((w) => (
+                <Link key={w.slug} href={`/works/${w.slug}`} className={styles.archiveTeaserCard}>
+                  <div className={styles.archiveTeaserImg}>
+                    <Image src={w.image} alt={w.title} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
+                  </div>
+                  <div className={styles.archiveTeaserMeta}>
+                    <span className={styles.archiveTeaserName}>{w.title}</span>
+                    <span className={styles.archiveTeaserYear}>{w.year}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )
+      })()}
 
       {/* ── Newsletter ───────────────────────────────────────── */}
       <NewsletterSignup />

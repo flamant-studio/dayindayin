@@ -36,7 +36,8 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 export default async function Archive({ searchParams }: PageProps) {
   const { category } = await searchParams;
   const active = category && CATEGORY_LABELS[category] ? category : "all";
-  const filtered = active === "all" ? works : works.filter((w) => w.category === active);
+  const base = active === "all" ? works : works.filter((w) => w.category === active);
+  const filtered = [...base].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 
   return (
     <div className={styles.page}>

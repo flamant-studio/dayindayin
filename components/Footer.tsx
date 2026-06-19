@@ -8,8 +8,8 @@ export default function Footer() {
         <div className={styles.brand}>
           <span className={styles.logo}>Day In Day In</span>
           <p className={styles.tagline}>
-            Art by Stine Weirsøe Flamant.<br />
-            Original works &amp; prints shipped across Europe.
+            Art made by hand in Copenhagen.<br />
+            Originals on enquiry. Prints shipped across Europe.
           </p>
           <div className={styles.social}>
             <a

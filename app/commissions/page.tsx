@@ -80,6 +80,14 @@ export default function CommissionsPage() {
         </p>
       </section>
 
+      <section className={styles.originals}>
+        <p className={styles.originalsText}>
+          If you want to see what Stine&apos;s work looks like before reaching out,{' '}
+          <Link href="/fine-art">the fine art section</Link> has the full archive of originals —
+          tufted works, embroidery, paintings, and photography.
+        </p>
+      </section>
+
       <section className={styles.cta}>
         <p className={styles.ctaText}>Got something in mind? Reach out.</p>
         <Link href="/contact?subject=Commission%20enquiry" className={styles.ctaBtn}>

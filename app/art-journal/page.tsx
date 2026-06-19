@@ -14,7 +14,7 @@ export default function StudioNotes() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <h1>Studio Notes</h1>
-        <p className={styles.heroSub}>Process, ideas, and what&apos;s been happening in the studio.</p>
+        <p className={styles.heroSub}>Process, ideas, and what&apos;s been happening in the studio. {blogPosts.length} notes.</p>
       </section>
       <div className={styles.grid}>
         {blogPosts.map((post) => (

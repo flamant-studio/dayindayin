@@ -103,6 +103,30 @@ export default function AboutPage() {
         </Link>
       </div>
 
+      {/* ── Process ──────────────────────────────────────────── */}
+      <section className={styles.processNote}>
+        <h2 className={styles.processNoteTitle}>How the work gets made</h2>
+        <div className={styles.processNoteBody}>
+          <p>
+            Tufting happens on a frame. The gun drives loops of wool through a canvas backing,
+            building up a pile layer by layer. A large piece can take ten, twelve, fifteen hours
+            of continuous work. The results look loose and expressive from a distance but are built
+            up with deliberate precision — pile height, density, colour placement.
+          </p>
+          <p>
+            Embroidery is slower. Needle and thread on fabric or canvas, one stitch at a time.
+            Stine&apos;s embroidery work tends toward text — words, sentences, fragments —
+            because there&apos;s something about the physical slowness of stitching that makes
+            language feel earned.
+          </p>
+          <p>
+            Painting is the wildest of the three. Acrylic and oil stick, worked on the studio
+            floor. Layers added and scraped back. Sessions sometimes weeks apart while a canvas
+            dries or settles. The Universe series has been going since 2019.
+          </p>
+        </div>
+      </section>
+
       {/* ── Two ways to collect ──────────────────────────────── */}
       <section className={styles.studio}>
         <p className={styles.studioNote}>

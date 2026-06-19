@@ -82,6 +82,32 @@ const BLOB_WORKS = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/work
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "what-stays-what-goes",
+    title: "What stays, what goes",
+    date: "2026-03-14",
+    excerpt: "Clearing the studio after winter. Notes on what to keep and what to let go.",
+    image: `${BLOB_WORKS}/tufting/bedroom-rug.jpg`,
+    body: [
+      "Every spring I do a version of the same thing: I go through what's hanging on the walls of the studio and ask which pieces have earned their place. Not sentimental. Not whether I still like them. Whether they're still saying something worth saying.",
+      "This year I moved three pieces out and two into the flat. One — a small embroidered panel I made in 2020 during the first lockdown — I've looked at almost every day for five years and it still surprises me. That's the test, I think. The work that keeps surprising you is the work that's alive.",
+      "What goes is harder to explain. Sometimes a piece stops. It made something happen, it did its job, and now it's just an object. There's no grief in that. Objects become art and then sometimes become objects again. The process was real. It's enough.",
+      "I'm starting the new season with three blank stretcher frames and no plan. That's deliberate. The pieces I'm most proud of came from starting with material and following it. I'm trying to trust that again.",
+    ],
+  },
+  {
+    slug: "the-neko-series",
+    title: "On the NEKO series",
+    date: "2025-10-02",
+    excerpt: "Why cats, and why now. The thinking behind the longest-running series.",
+    image: `${BLOB_WORKS}/embroidery/mariann.jpg`,
+    body: [
+      "NEKO started as a joke. I was making a tufted piece and needed a subject that was simple enough to work at a large scale quickly — something with a clear silhouette. I chose a cat sitting with its back to me. It worked. I made another. Then another with a different posture. Then I realised I'd been making the same cat for two years.",
+      "The series grew out of that. What I've come to understand is that the cats aren't really about cats — they're about observation. The specific quality of watching something that isn't watching back. There's no performance in a cat sitting in a patch of sunlight. They're just doing what they're doing, indifferent to whether you find it beautiful.",
+      "That indifference is something I've tried to build into the work. The pieces don't ask for anything from you. They don't explain themselves. If you spend time with them something might open up, or it might not. That's fine. The work exists whether or not you're looking.",
+      "NEKO is the series I return to when I'm not sure what I'm doing. It has clear constraints — cats, symbols, graphic — and within those constraints I keep finding things I didn't expect. That's usually a sign that a body of work is still alive.",
+    ],
+  },
+  {
     slug: "kaleidoscope-pattern-observation",
     title: "Kaleidoscope Pattern Observation",
     date: "2021-09-01",

@@ -47,6 +47,13 @@ export default function ContactPage() {
                 the specific work, and the territory and duration of use.
               </p>
             </div>
+            <div className={styles.infoBlock}>
+              <h2 className={styles.infoHeading}>Response time</h2>
+              <p className={styles.infoText}>
+                Stine reads and responds herself — typically within 2–3 days. For urgent
+                order issues, include your order number.
+              </p>
+            </div>
           </div>
         </div>
       </div>

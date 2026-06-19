@@ -11,6 +11,11 @@ export default function NewsletterSignup() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!email.trim() || loading) return
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+    if (!emailValid) {
+      setError('Please enter a valid email address.')
+      return
+    }
     setLoading(true)
     setError('')
     try {

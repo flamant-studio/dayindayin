@@ -134,6 +134,26 @@
 
 .honest p:last-child { margin-bottom: 0; }
 
+/* Originals note */
+.originals {
+  border-top: 1px solid #E8E4DF;
+  padding: 2rem 0;
+  margin: 1rem 0;
+}
+
+.originalsText {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #555;
+}
+
+.originalsText a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #2C3440;
+}
+
 /* CTA */
 .cta {
   margin: 4rem 0 0;

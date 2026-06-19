@@ -30,6 +30,9 @@ export default function Nav() {
             <Link href="/fine-art" onClick={closeAll}>Fine Art</Link>
           </li>
           <li>
+            <Link href="/commissions" onClick={closeAll}>Commissions</Link>
+          </li>
+          <li>
             <Link href="/about" onClick={closeAll}>About</Link>
           </li>
           <li>

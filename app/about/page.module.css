@@ -101,6 +101,47 @@
 
 .instagramLink:hover { color: var(--c-accent); }
 
+/* ── Process note ────────────────────────────────────────────── */
+
+.processNote {
+  padding: var(--sp-12) 0;
+  border-top: 1px solid var(--c-border);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--sp-8);
+  align-items: start;
+  margin-bottom: var(--sp-12);
+}
+
+.processNoteTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  padding-top: 0.25rem;
+}
+
+.processNoteBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.processNoteBody p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .processNote {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+}
+
 /* ── Process photos ──────────────────────────────────────────── */
 
 .process {

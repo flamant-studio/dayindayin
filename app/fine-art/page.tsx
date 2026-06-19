@@ -102,7 +102,7 @@ export default function FineArt() {
           embroidery, tufting, painting — when she has the space for it. Tell her the size,
           the context, and your budget. She will say yes or no.
         </p>
-        <Link href="/contact?subject=Fine%20Art%20enquiry" className={styles.enquiryBtn}>Send an enquiry →</Link>
+        <Link href="/contact?subject=Fine%20Art%20enquiry" className={styles.enquiryBtn} aria-label="Send an enquiry about original fine art">Send an enquiry →</Link>
       </section>
     </div>
   );

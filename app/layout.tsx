@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: '%s — Day In Day In',
   },
   description:
-    'Art prints, canvases, and wall hangings. Original works by Copenhagen artist Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
+    'Art made by hand in Copenhagen. Original tufted textiles, embroidery, paintings, and photography by Stine Weirsøe Flamant. Prints from 56 kr, shipped across Europe by Gelato.',
   metadataBase: new URL('https://dayindayin.dk'),
   alternates: {
     canonical: '/',
@@ -56,11 +56,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       </head>
       <body>
+        <a href="#main-content" className="skip-to-content">Skip to content</a>
         <CartProvider>
           <ScrollToTop />
           <Nav />
           <CartDrawer />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <Footer />
           <BackToTopButton />
           <CookieBanner />

@@ -117,3 +117,21 @@ ul { list-style: none; }
   margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
   white-space: nowrap; border-width: 0;
 }
+
+/* Skip to content */
+.skip-to-content {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--c-accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform 0.15s;
+}
+
+.skip-to-content:focus {
+  transform: translateX(-50%) translateY(0);
+}
