@@ -23,6 +23,7 @@ export default function StudioNotes() {
               <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
             </div>
             <div className={styles.cardBody}>
+              <p className={styles.date}>{new Date(post.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}</p>
               <h2>{post.title}</h2>
               <p className={styles.excerpt}>{post.excerpt}</p>
             </div>

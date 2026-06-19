@@ -16,18 +16,50 @@ const CATEGORY_LABELS: Record<string, string> = {
   photography: "Photography",
 };
 
-export default function Archive() {
+const FILTERS = [
+  { key: "all", label: "All" },
+  { key: "tufting", label: "Tufting" },
+  { key: "embroidery", label: "Embroidery" },
+  { key: "painting", label: "Painting" },
+  { key: "photography", label: "Photography" },
+];
+
+interface PageProps {
+  searchParams: Promise<{ category?: string }>;
+}
+
+export default async function Archive({ searchParams }: PageProps) {
+  const { category } = await searchParams;
+  const active = category && CATEGORY_LABELS[category] ? category : "all";
+  const filtered = active === "all" ? works : works.filter((w) => w.category === active);
+
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
         <h1>All Works</h1>
-        <p>{works.length} original works — <Link href="/fine-art">view by category →</Link></p>
+        <p>
+          {filtered.length} {active === "all" ? "original" : CATEGORY_LABELS[active]?.toLowerCase()} work{filtered.length !== 1 ? "s" : ""} —{" "}
+          <Link href="/fine-art">view by category →</Link>
+        </p>
       </section>
+
+      <div className={styles.filters}>
+        {FILTERS.map(({ key, label }) => (
+          <Link
+            key={key}
+            href={key === "all" ? "/archive" : `/archive?category=${key}`}
+            className={`${styles.filterBtn} ${active === key ? styles.active : ""}`}
+          >
+            {label} {key !== "all" ? `(${works.filter((w) => w.category === key).length})` : `(${works.length})`}
+          </Link>
+        ))}
+      </div>
+
       <div className={styles.grid}>
-        {works.map((work) => (
+        {filtered.map((work) => (
           <Link key={work.slug} href={`/works/${work.slug}`} className={styles.card}>
             <div className={styles.cardImage}>
-              <Image src={work.image} alt={work.title} fill sizes="(max-width: 768px) 50vw, 20vw" style={{ objectFit: "cover" }} />
+              <Image src={work.image} alt={work.title} fill sizes="(max-width: 768px) 33vw, 20vw" style={{ objectFit: "cover" }} />
             </div>
             <p className={styles.title}>{work.title}</p>
             <p className={styles.meta}>{CATEGORY_LABELS[work.category] ?? work.category} · {work.year}</p>

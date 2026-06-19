@@ -11,9 +11,23 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const work = getWork(slug);
+  if (!work) return { title: "Work" };
   return {
-    title: work ? `${work.title} — Original Work` : "Work",
-    description: work ? `${work.description} Original work by Stine Weirsøe Flamant, ${work.year}.` : undefined,
+    title: `${work.title} — Original Work`,
+    description: `${work.description} Original work by Stine Weirsøe Flamant, ${work.year}.`,
+    alternates: { canonical: `/works/${work.slug}` },
+    openGraph: {
+      title: `${work.title} — Stine Weirsøe Flamant`,
+      description: work.description,
+      images: [{ url: work.image, width: 800, height: 800, alt: work.title }],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${work.title} — Stine Weirsøe Flamant`,
+      description: work.description,
+      images: [work.image],
+    },
   };
 }
 
@@ -39,9 +53,33 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
   const label = CATEGORY_LABELS[work.category] ?? work.category
   const medium = CATEGORY_MEDIUM[work.category] ?? work.description
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'VisualArtwork',
+    name: work.title,
+    description: work.description,
+    image: work.image,
+    dateCreated: work.year,
+    artMedium: medium,
+    artworkSurface: work.category === 'tufting' || work.category === 'embroidery' ? 'Canvas' : undefined,
+    creator: {
+      '@type': 'Person',
+      name: 'Stine Weirsøe Flamant',
+      url: 'https://dayindayin.dk/about',
+    },
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      seller: { '@type': 'Organization', name: 'Day In Day In' },
+    },
+    url: `https://dayindayin.dk/works/${work.slug}`,
+  }
+
   return (
-    <div className={styles.page}>
-      <Link href="/fine-art" className={styles.back}>← Fine Art</Link>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <div className={styles.page}>
+        <Link href={`/archive?category=${work.category}`} className={styles.back}>← {label}</Link>
       <div className={styles.layout}>
         <div className={styles.image}>
           <Image
@@ -91,9 +129,14 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
               This is a unique original work. Prints of Stine&apos;s designs are available in the{' '}
               <Link href="/shop">shop</Link> from 56 kr.
             </p>
+
+            <Link href={`/archive?category=${work.category}`} className={styles.moreLink}>
+              See more {label.toLowerCase()} works →
+            </Link>
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -11,9 +11,24 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPost(slug);
+  if (!post) return { title: "Studio Notes" };
   return {
-    title: post ? `${post.title} — Studio Notes` : "Studio Notes",
-    description: post?.excerpt,
+    title: `${post.title} — Studio Notes`,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [{ url: post.image, width: 900, height: 500, alt: post.title }],
+      type: 'article',
+      publishedTime: post.date,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
   };
 }
 
@@ -27,6 +42,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       <Link href="/art-journal" className={styles.back}>← Studio Notes</Link>
       <article>
         <header className={styles.header}>
+          <p className={styles.date}>{new Date(post.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}</p>
           <h1>{post.title}</h1>
           <p className={styles.excerpt}>{post.excerpt}</p>
         </header>

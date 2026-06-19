@@ -186,6 +186,17 @@ export default async function HomePage() {
         <Link href="/about" className={styles.artistLink}>About the artist →</Link>
       </section>
 
+      {/* ── Studio Notes teaser ──────────────────────────────── */}
+      <section className={styles.studioTeaser}>
+        <div className={styles.studioTeaserInner}>
+          <span className={styles.studioTeaserLabel}>Studio Notes</span>
+          <p className={styles.studioTeaserText}>
+            Stine writes occasionally — about the work, the process, and what happens in the studio between finished pieces.
+          </p>
+          <Link href="/art-journal" className={styles.studioTeaserLink}>Read the notes →</Link>
+        </div>
+      </section>
+
       {/* ── Newsletter ───────────────────────────────────────── */}
       <NewsletterSignup />
 

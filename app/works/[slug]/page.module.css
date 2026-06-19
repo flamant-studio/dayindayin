@@ -157,6 +157,18 @@
   text-underline-offset: 3px;
 }
 
+/* ── More link ──────────────────────────────────────────────── */
+
+.moreLink {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+
+.moreLink:hover { color: var(--c-text); }
+
 /* ── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 768px) {

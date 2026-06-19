@@ -54,7 +54,7 @@ export default function FineArt() {
         return (
           <section key={section.id} id={section.id} className={styles.section}>
             <div className={styles.sectionHeader}>
-              <h2>{section.label}</h2>
+              <h2>{section.label} <span className={styles.sectionCount}>({categoryWorks.length})</span></h2>
               <p>{section.tagline}</p>
             </div>
             <div className={styles.grid}>
@@ -86,12 +86,13 @@ export default function FineArt() {
 
       {/* ── Enquiry CTA ────────────────────────────────────────── */}
       <section className={styles.enquiryCta}>
-        <h2>Interested in a piece?</h2>
+        <h2>Each piece exists once.</h2>
         <p>
-          Stine also takes commissions — embroidery, tufting, painting. Tell her the size,
-          the context, and your budget. She will say yes or no directly.
+          If something catches you, reach out. Stine responds directly. She also takes commissions —
+          embroidery, tufting, painting — when she has the space for it. Tell her the size,
+          the context, and your budget. She will say yes or no.
         </p>
-        <Link href="/contact" className={styles.enquiryBtn}>Get in touch →</Link>
+        <Link href="/contact?subject=Fine%20Art%20enquiry" className={styles.enquiryBtn}>Send an enquiry →</Link>
       </section>
     </div>
   );

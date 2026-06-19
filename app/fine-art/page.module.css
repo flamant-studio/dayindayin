@@ -124,6 +124,15 @@
   margin-bottom: var(--sp-6);
 }
 
+.sectionCount {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.65em;
+  font-weight: 400;
+  color: var(--c-muted);
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+}
+
 .sectionHeader h2 {
   font-family: var(--font-display);
   font-size: var(--text-2xl);

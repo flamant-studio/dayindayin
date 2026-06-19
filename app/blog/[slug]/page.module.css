@@ -13,6 +13,8 @@
 
 .header { margin-bottom: 2rem; }
 
+.date { font-size: 0.7rem; color: #aaadb0; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+
 .header h1 {
   font-size: clamp(1.6rem, 4vw, 2.6rem);
   font-weight: 300;

@@ -15,6 +15,27 @@ export default function Practical() {
       <div className={styles.content}>
 
         <section>
+          <h2>Prices</h2>
+          <p>
+            All prices are in Danish Krone (DKK) and include VAT. Gelato print-on-demand
+            pricing reflects production cost plus a margin that supports Stine&apos;s practice.
+          </p>
+          <ul>
+            <li><strong>Art prints (A4/A3/A2):</strong> from 56 kr</li>
+            <li><strong>Framed prints:</strong> from 249 kr</li>
+            <li><strong>Posters (semi-glossy, A3/A2/A1):</strong> from 89 kr</li>
+            <li><strong>Mugs:</strong> from 89 kr</li>
+            <li><strong>Tote bags:</strong> from 119 kr</li>
+            <li><strong>Postcards (pack of 10):</strong> from 79 kr</li>
+            <li><strong>Tank tops:</strong> from 189 kr</li>
+          </ul>
+          <p>
+            For original fine art — tufted works, embroidery, paintings — pricing is by
+            enquiry. <Link href="/fine-art">See the originals →</Link>
+          </p>
+        </section>
+
+        <section>
           <h2>Fulfillment — Gelato Print on Demand</h2>
           <p>
             All prints, canvases, mugs, and totes in this shop are printed on demand by{" "}

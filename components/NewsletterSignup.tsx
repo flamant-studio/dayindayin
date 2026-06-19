@@ -35,8 +35,8 @@ export default function NewsletterSignup() {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <h2 className={styles.heading}>New works, studio updates, and occasional thoughts from Stine.</h2>
-        <p className={styles.sub}>No spam. Just the real stuff, when there&apos;s something worth sharing.</p>
+        <h2 className={styles.heading}>From the studio — direct.</h2>
+        <p className={styles.sub}>When something finishes, something ships, or something&apos;s worth writing about. Stine sends it herself. No algorithm, no schedule.</p>
 
         {submitted ? (
           <p className={styles.success}>Thank you — we&#39;ll be in touch.</p>

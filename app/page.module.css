@@ -516,6 +516,53 @@
   font-weight: 400;
 }
 
+/* ── Studio Notes teaser ───────────────────────────────────────────── */
+
+.studioTeaser {
+  background: var(--c-bg);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  padding: var(--sp-10) var(--sp-8);
+}
+
+.studioTeaserInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.studioTeaserLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.studioTeaserText {
+  font-size: var(--text-base);
+  font-weight: 300;
+  color: var(--c-muted);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.studioTeaserLink {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--c-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color var(--t-fast);
+}
+
+.studioTeaserLink:hover { color: var(--c-accent); }
+
 /* ── Newsletter section ────────────────────────────────────────────── */
 
 .newsletterSection {
@@ -561,6 +608,8 @@
   .seriesStrip { grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
   .productGrid { grid-template-columns: repeat(2, 1fr); }
   .collectionGrid { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+  .studioTeaserInner { flex-direction: column; align-items: flex-start; gap: var(--sp-4); }
+
   .collectSection {
     grid-template-columns: 1fr;
   }

@@ -32,16 +32,29 @@ export const metadata: Metadata = {
   description:
     'Art prints, canvases, and wall hangings. Original works by Copenhagen artist Stine Weirsøe Flamant. Printed by Gelato. Ships to EU, UK, and Norway.',
   metadataBase: new URL('https://dayindayin.dk'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     siteName: 'Day In Day In',
     locale: 'en_US',
     type: 'website',
+    url: 'https://dayindayin.dk',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@dayindayin',
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://29kekabbrd49avje.public.blob.vercel-storage.com" />
+        <link rel="preconnect" href="https://cdn.shopify.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+      </head>
       <body>
         <CartProvider>
           <ScrollToTop />
