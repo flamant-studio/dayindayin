@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getAllProductHandles } from '@/lib/shopify/products'
+import { works, blogPosts } from '@/lib/data'
 
 const BASE = 'https://dayindayin.dk'
 
@@ -16,12 +17,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE, lastModified: now, changeFrequency: 'weekly', priority: 1 },
     { url: `${BASE}/shop`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
-    { url: `${BASE}/search`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/collections`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/fine-art`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/art-journal`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${BASE}/archive`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
+    { url: `${BASE}/art-journal`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${BASE}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${BASE}/practical`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/search`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
     { url: `${BASE}/legal/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${BASE}/legal/copyright`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
   ]
@@ -48,5 +51,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Shopify unavailable — skip product pages
   }
 
-  return [...staticPages, ...filterPages, ...productPages]
+  // Works pages (fine art originals)
+  const workPages: MetadataRoute.Sitemap = works.map((w) => ({
+    url: `${BASE}/works/${w.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
+  // Blog post pages (Studio Notes)
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+    url: `${BASE}/blog/${p.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
+  }))
+
+  return [...staticPages, ...filterPages, ...productPages, ...workPages, ...blogPages]
 }
