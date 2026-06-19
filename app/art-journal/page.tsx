@@ -2,14 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "@/lib/data";
 import styles from "./page.module.css";
+import type { Metadata } from "next";
 
-export const metadata = { title: "Art Journal" };
+export const metadata: Metadata = {
+  title: "Studio Notes",
+  description: "Notes from Stine's Copenhagen studio — process, ideas, and what's been happening.",
+};
 
-export default function ArtJournal() {
+export default function StudioNotes() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <h1>Art Journal</h1>
+        <h1>Studio Notes</h1>
+        <p className={styles.heroSub}>Process, ideas, and what&apos;s been happening in the studio.</p>
       </section>
       <div className={styles.grid}>
         {blogPosts.map((post) => (
@@ -18,7 +23,6 @@ export default function ArtJournal() {
               <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
             </div>
             <div className={styles.cardBody}>
-              <p className={styles.date}>{new Date(post.date).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}</p>
               <h2>{post.title}</h2>
               <p className={styles.excerpt}>{post.excerpt}</p>
             </div>

@@ -234,7 +234,7 @@ export default async function ProductPage({ params }: PageProps) {
               <SizeGuide variants={product.variants} />
             )}
 
-            <details className={styles.fulfillmentAccordion}>
+            <details className={styles.fulfillmentAccordion} open>
               <summary className={styles.fulfillmentSummary}>Shipping &amp; Returns</summary>
               <div className={styles.fulfillmentNote}>
                 <p>Fulfilled by Gelato. Printed on demand and shipped directly to you.</p>

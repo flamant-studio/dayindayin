@@ -9,6 +9,13 @@
   text-transform: uppercase;
 }
 
+.heroSub {
+  margin-top: 1rem;
+  font-size: var(--text-sm, 0.9rem);
+  color: #888;
+  font-weight: 300;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

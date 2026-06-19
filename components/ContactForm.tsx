@@ -1,11 +1,30 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './ContactForm.module.css'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
+const SUBJECTS = [
+  'Commission enquiry',
+  'Order question',
+  'Fine Art / original work',
+  'Wholesale / licensing',
+  'Something else',
+]
+
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>('idle')
+  const [subject, setSubject] = useState('')
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const s = params.get('subject')
+    if (s) {
+      const decoded = decodeURIComponent(s)
+      const match = SUBJECTS.find(opt => decoded.toLowerCase().includes(opt.toLowerCase().split(' ')[0]))
+      if (match) setSubject(match)
+    }
+  }, [])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -15,6 +34,7 @@ export default function ContactForm() {
     const data = {
       name: (form.elements.namedItem('name') as HTMLInputElement).value,
       email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      subject: (form.elements.namedItem('subject') as HTMLSelectElement).value,
       message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
       website: (form.elements.namedItem('website') as HTMLInputElement).value,
     }
@@ -39,6 +59,21 @@ export default function ContactForm() {
 
       <input type="text" name="name" placeholder="Name" required disabled={status === 'submitting'} />
       <input type="email" name="email" placeholder="Email" required disabled={status === 'submitting'} />
+
+      <select
+        name="subject"
+        className={styles.select}
+        value={subject}
+        onChange={e => setSubject(e.target.value)}
+        required
+        disabled={status === 'submitting'}
+      >
+        <option value="" disabled>What&apos;s this about?</option>
+        {SUBJECTS.map(s => (
+          <option key={s} value={s}>{s}</option>
+        ))}
+      </select>
+
       <textarea name="message" placeholder="Message" rows={5} required disabled={status === 'submitting'} />
 
       {status === 'error' && (
