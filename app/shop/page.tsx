@@ -4,7 +4,10 @@ import { getAllProducts, getAllProductsByTag, formatPrice, categoryLabel, series
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
 import ShoppingNudge from '@/components/ShoppingNudge'
+import FluidTracker from '@/components/FluidTracker'
 import styles from './page.module.css'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'Shop',
@@ -100,6 +103,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
 
   return (
     <div className={styles.page}>
+      <FluidTracker collectionHandle={activeTag ?? 'all'} />
       <ShoppingNudge />
       <header className={styles.header}>
         <div className={styles.headerLeft}>

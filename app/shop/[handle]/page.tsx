@@ -11,6 +11,7 @@ import StickyATC from '@/components/StickyATC'
 import ShareButtons from '@/components/ShareButtons'
 import SelectedPrice from '@/components/SelectedPrice'
 import { ProductProvider } from '@/contexts/ProductContext'
+import FluidTracker from '@/components/FluidTracker'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 
@@ -155,6 +156,15 @@ export default async function ProductPage({ params }: PageProps) {
 
   return (
     <div className={styles.page}>
+      <FluidTracker
+        productData={{
+          handle,
+          price: product.minPrice.amount,
+          productType: catLabel,
+          tags: product.tags,
+        }}
+      />
+
       {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
