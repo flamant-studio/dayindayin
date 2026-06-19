@@ -24,12 +24,20 @@ const CATEGORY_LABELS: Record<string, string> = {
   photography: "Photography",
 }
 
+const CATEGORY_MEDIUM: Record<string, string> = {
+  tufting: "Wool tufting on cotton canvas",
+  embroidery: "Hand embroidery on fabric",
+  painting: "Acrylic and oil stick on canvas",
+  photography: "Archival inkjet print",
+}
+
 export default async function WorkPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const work = getWork(slug);
   if (!work) notFound();
 
   const label = CATEGORY_LABELS[work.category] ?? work.category
+  const medium = CATEGORY_MEDIUM[work.category] ?? work.description
 
   return (
     <div className={styles.page}>
@@ -67,7 +75,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             <div className={styles.meta}>
               <div className={styles.metaRow}>
                 <span className={styles.metaKey}>Medium</span>
-                <span className={styles.metaVal}>{work.description}</span>
+                <span className={styles.metaVal}>{medium}</span>
               </div>
               <div className={styles.metaRow}>
                 <span className={styles.metaKey}>Year</span>

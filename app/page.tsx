@@ -151,8 +151,8 @@ export default async function HomePage() {
           <p className={styles.editorialNote}>
             Started on the floor of the studio. Acrylic and oil stick, built up over several sessions — layers added and scraped back until the colour felt right. The Universe series is Stine&apos;s oldest ongoing body of work: each canvas a different attempt to paint something without edges.
           </p>
-          <Link href="/shop?filter=painting" className={styles.editorialLink}>
-            Shop paintings →
+          <Link href="/fine-art#painting" className={styles.editorialLink}>
+            See the originals →
           </Link>
         </div>
       </section>

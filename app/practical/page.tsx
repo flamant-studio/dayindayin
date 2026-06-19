@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Practical",
+  title: "Shipping & FAQ",
   description: "Shipping, returns, commissions, and copyright for DayInDayIn. All prints fulfilled by Gelato.",
 };
 
@@ -10,7 +10,7 @@ export default function Practical() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <h1>Practical</h1>
+        <h1>Shipping &amp; FAQ</h1>
       </section>
       <div className={styles.content}>
 
