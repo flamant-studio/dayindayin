@@ -1,9 +1,59 @@
-import { adminFetch } from './client'
+// Shopify product fetching via Storefront API (static token, no OAuth needed)
 
-export interface ShopifyMoney {
-  amount: string
-  currencyCode: string
+const DOMAIN = process.env.SHOPIFY_STORE_DOMAIN!
+const STOREFRONT_TOKEN = process.env.SHOPIFY_STOREFRONT_TOKEN!
+const API_VERSION = '2025-01'
+
+async function sfFetch<T>(
+  query: string,
+  variables?: Record<string, unknown>,
+  revalidate: number | false = 300
+): Promise<T> {
+  const res = await fetch(`https://${DOMAIN}/api/${API_VERSION}/graphql.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN,
+    },
+    body: JSON.stringify({ query, variables }),
+    ...(revalidate === false ? { cache: 'no-store' } : { next: { revalidate } }),
+  })
+
+  if (!res.ok) throw new Error(`Storefront API error: ${res.status} ${res.statusText}`)
+  const json = await res.json()
+  if (json.errors?.length) throw new Error(`Storefront GraphQL: ${JSON.stringify(json.errors)}`)
+  return json.data as T
 }
+
+// Raw Storefront API types (internal)
+interface SfMoney { amount: string; currencyCode: string }
+interface SfImage { url: string; altText: string | null; width?: number; height?: number }
+
+interface SfVariant {
+  id: string
+  title: string
+  price: SfMoney
+  availableForSale: boolean
+  quantityAvailable: number | null
+  image: { url: string; altText: string | null } | null
+}
+
+interface SfProduct {
+  id: string
+  handle: string
+  title: string
+  description: string
+  descriptionHtml: string
+  productType: string
+  tags: string[]
+  vendor: string
+  priceRange: { minVariantPrice: SfMoney; maxVariantPrice: SfMoney }
+  images: { edges: { node: SfImage }[] }
+  variants: { edges: { node: SfVariant }[] }
+}
+
+// Public types — kept identical so the rest of the app compiles unchanged
+export interface ShopifyMoney { amount: string; currencyCode: string }
 
 export interface ShopifyImage {
   url: string
@@ -39,16 +89,34 @@ export interface ShopifyProduct {
   variants: { edges: { node: ShopifyVariant }[] }
 }
 
-const PRODUCT_FIELDS = `
-  id handle title description descriptionHtml
-  productType tags vendor status
-  priceRangeV2 {
-    minVariantPrice { amount currencyCode }
-    maxVariantPrice { amount currencyCode }
+// Map Storefront response → ShopifyProduct shape used throughout the app
+function toShopifyProduct(p: SfProduct): ShopifyProduct {
+  return {
+    id: p.id,
+    handle: p.handle,
+    title: p.title,
+    description: p.description,
+    descriptionHtml: p.descriptionHtml,
+    productType: p.productType,
+    tags: p.tags,
+    vendor: p.vendor,
+    status: 'ACTIVE',
+    priceRangeV2: p.priceRange,
+    images: p.images,
+    variants: {
+      edges: p.variants.edges.map((e) => ({
+        node: {
+          id: e.node.id,
+          title: e.node.title,
+          price: e.node.price.amount,
+          availableForSale: e.node.availableForSale,
+          inventoryQuantity: e.node.quantityAvailable ?? null,
+          featuredImage: e.node.image ?? null,
+        },
+      })),
+    },
   }
-  images(first: 8) { edges { node { url altText width height } } }
-  variants(first: 20) { edges { node { id title price availableForSale inventoryQuantity featuredImage { url altText } } } }
-`
+}
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
@@ -84,6 +152,29 @@ export function checkoutUrl(variantGid: string, quantity = 1): string {
   return `https://${process.env.SHOPIFY_STORE_DOMAIN}/cart/${numericId}:${quantity}`
 }
 
+const PRODUCT_FIELDS = `
+  id handle title description descriptionHtml
+  productType tags vendor
+  priceRange {
+    minVariantPrice { amount currencyCode }
+    maxVariantPrice { amount currencyCode }
+  }
+  images(first: 8) { edges { node { url altText width height } } }
+  variants(first: 20) { edges { node {
+    id title availableForSale
+    price { amount currencyCode }
+    quantityAvailable
+    image { url altText }
+  } } }
+`
+
+type ProductsPage = {
+  products: {
+    edges: { node: SfProduct }[]
+    pageInfo: { hasNextPage: boolean; endCursor: string }
+  }
+}
+
 type HandlesPage = {
   products: {
     edges: { node: { handle: string } }[]
@@ -95,19 +186,17 @@ export async function getAllProductHandles(): Promise<string[]> {
   const handles: string[] = []
   let cursor: string | null = null
   while (true) {
-    const page: HandlesPage = await adminFetch<HandlesPage>({
-      query: `
-        query GetHandles($first: Int!, $after: String) {
-          products(first: $first, after: $after, query: "status:active", sortKey: CREATED_AT, reverse: true) {
-            edges { node { handle } }
-            pageInfo { hasNextPage endCursor }
-          }
+    const page = await sfFetch<HandlesPage>(
+      `query GetHandles($first: Int!, $after: String) {
+        products(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
+          edges { node { handle } }
+          pageInfo { hasNextPage endCursor }
         }
-      `,
-      variables: { first: 250, after: cursor },
-      revalidate: 3600,
-    })
-    handles.push(...page.products.edges.map((e: { node: { handle: string } }) => e.node.handle))
+      }`,
+      { first: 250, after: cursor },
+      3600
+    )
+    handles.push(...page.products.edges.map((e) => e.node.handle))
     if (!page.products.pageInfo.hasNextPage) break
     cursor = page.products.pageInfo.endCursor
   }
@@ -115,47 +204,31 @@ export async function getAllProductHandles(): Promise<string[]> {
 }
 
 export async function getProducts(first = 96): Promise<NormalizedProduct[]> {
-  const data = await adminFetch<{
-    products: { edges: { node: ShopifyProduct }[] }
-  }>({
-    query: `
-      query GetProducts($first: Int!) {
-        products(first: $first, query: "status:active", sortKey: CREATED_AT, reverse: true) {
-          edges { node { ${PRODUCT_FIELDS} } }
-        }
+  const data = await sfFetch<{ products: { edges: { node: SfProduct }[] } }>(
+    `query GetProducts($first: Int!) {
+      products(first: $first, sortKey: CREATED_AT, reverse: true) {
+        edges { node { ${PRODUCT_FIELDS} } }
       }
-    `,
-    variables: { first },
-  })
-  return data.products.edges
-    .map((e) => normalizeProduct(e.node))
-    .filter((p) => p.status === 'ACTIVE')
-}
-
-type ProductsPage = {
-  products: {
-    edges: { node: ShopifyProduct }[]
-    pageInfo: { hasNextPage: boolean; endCursor: string }
-  }
+    }`,
+    { first }
+  )
+  return data.products.edges.map((e) => normalizeProduct(toShopifyProduct(e.node)))
 }
 
 export async function getAllProducts(): Promise<NormalizedProduct[]> {
   const all: NormalizedProduct[] = []
   let cursor: string | null = null
   while (true) {
-    const page: ProductsPage = await adminFetch<ProductsPage>({
-      query: `
-        query GetAllProducts($first: Int!, $after: String) {
-          products(first: $first, after: $after, query: "status:active", sortKey: CREATED_AT, reverse: true) {
-            edges { node { ${PRODUCT_FIELDS} } }
-            pageInfo { hasNextPage endCursor }
-          }
+    const page = await sfFetch<ProductsPage>(
+      `query GetAllProducts($first: Int!, $after: String) {
+        products(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
+          edges { node { ${PRODUCT_FIELDS} } }
+          pageInfo { hasNextPage endCursor }
         }
-      `,
-      variables: { first: 250, after: cursor },
-      revalidate: 300,
-    })
-    all.push(...page.products.edges.map((e) => normalizeProduct(e.node)).filter((p) => p.status === 'ACTIVE'))
+      }`,
+      { first: 250, after: cursor }
+    )
+    all.push(...page.products.edges.map((e) => normalizeProduct(toShopifyProduct(e.node))))
     if (!page.products.pageInfo.hasNextPage) break
     cursor = page.products.pageInfo.endCursor
   }
@@ -166,19 +239,16 @@ export async function getAllProductsByTag(tag: string): Promise<NormalizedProduc
   const all: NormalizedProduct[] = []
   let cursor: string | null = null
   while (true) {
-    const page: ProductsPage = await adminFetch<ProductsPage>({
-      query: `
-        query GetAllProductsByTag($q: String!, $first: Int!, $after: String) {
-          products(first: $first, after: $after, query: $q, sortKey: CREATED_AT, reverse: true) {
-            edges { node { ${PRODUCT_FIELDS} } }
-            pageInfo { hasNextPage endCursor }
-          }
+    const page = await sfFetch<ProductsPage>(
+      `query GetAllProductsByTag($q: String!, $first: Int!, $after: String) {
+        products(first: $first, after: $after, query: $q, sortKey: CREATED_AT, reverse: true) {
+          edges { node { ${PRODUCT_FIELDS} } }
+          pageInfo { hasNextPage endCursor }
         }
-      `,
-      variables: { q: `tag:${tag} AND status:active`, first: 250, after: cursor },
-      revalidate: 300,
-    })
-    all.push(...page.products.edges.map((e) => normalizeProduct(e.node)).filter((p) => p.status === 'ACTIVE'))
+      }`,
+      { q: `tag:${tag}`, first: 250, after: cursor }
+    )
+    all.push(...page.products.edges.map((e) => normalizeProduct(toShopifyProduct(e.node))))
     if (!page.products.pageInfo.hasNextPage) break
     cursor = page.products.pageInfo.endCursor
   }
@@ -186,41 +256,38 @@ export async function getAllProductsByTag(tag: string): Promise<NormalizedProduc
 }
 
 export async function getProductsByTag(tag: string, first = 96): Promise<NormalizedProduct[]> {
-  const data = await adminFetch<{
-    products: { edges: { node: ShopifyProduct }[] }
-  }>({
-    query: `
-      query GetProductsByTag($q: String!, $first: Int!) {
-        products(first: $first, query: $q, sortKey: CREATED_AT, reverse: true) {
-          edges { node { ${PRODUCT_FIELDS} } }
-        }
+  const data = await sfFetch<{ products: { edges: { node: SfProduct }[] } }>(
+    `query GetProductsByTag($q: String!, $first: Int!) {
+      products(first: $first, query: $q, sortKey: CREATED_AT, reverse: true) {
+        edges { node { ${PRODUCT_FIELDS} } }
       }
-    `,
-    variables: { q: `tag:${tag} AND status:active`, first },
-    revalidate: 300,
-  })
-  return data.products.edges
-    .map((e) => normalizeProduct(e.node))
-    .filter((p) => p.status === 'ACTIVE')
+    }`,
+    { q: `tag:${tag}`, first }
+  )
+  return data.products.edges.map((e) => normalizeProduct(toShopifyProduct(e.node)))
 }
 
 export async function getProductsByType(productType: string, excludeHandle: string, first = 4): Promise<NormalizedProduct[]> {
-  const data = await adminFetch<{
-    products: { edges: { node: ShopifyProduct }[] }
-  }>({
-    query: `
-      query GetProductsByType($q: String!, $first: Int!) {
-        products(first: $first, query: $q, sortKey: CREATED_AT, reverse: true) {
-          edges { node { ${PRODUCT_FIELDS} } }
-        }
+  const data = await sfFetch<{ products: { edges: { node: SfProduct }[] } }>(
+    `query GetProductsByType($q: String!, $first: Int!) {
+      products(first: $first, query: $q, sortKey: CREATED_AT, reverse: true) {
+        edges { node { ${PRODUCT_FIELDS} } }
       }
-    `,
-    variables: { q: `product_type:${productType} AND status:active NOT handle:${excludeHandle}`, first },
-    revalidate: 300,
-  })
-  return data.products.edges
-    .map((e) => normalizeProduct(e.node))
-    .filter((p) => p.status === 'ACTIVE')
+    }`,
+    { q: `product_type:${productType} NOT handle:${excludeHandle}`, first }
+  )
+  return data.products.edges.map((e) => normalizeProduct(toShopifyProduct(e.node)))
+}
+
+export async function getProductByHandle(handle: string): Promise<NormalizedProduct | null> {
+  const data = await sfFetch<{ product: SfProduct | null }>(
+    `query GetProductByHandle($handle: String!) {
+      product(handle: $handle) { ${PRODUCT_FIELDS} }
+    }`,
+    { handle },
+    false
+  )
+  return data.product ? normalizeProduct(toShopifyProduct(data.product)) : null
 }
 
 export const SERIES_TAGS: Record<string, string> = {
@@ -240,9 +307,6 @@ export function seriesLabel(product: NormalizedProduct): string | null {
   return null
 }
 
-// Specific category tags take priority — 'art-print' is intentionally absent
-// so it falls through to the default, allowing specific tags found later in the
-// tags array (e.g. 'tufting') to win.
 const TAG_CATEGORY: Record<string, string> = {
   tufting:         'Tufted Work',
   embroidery:      'Embroidery',
@@ -267,22 +331,4 @@ export function categoryLabel(product: NormalizedProduct): string {
   if (t.includes('tote')) return 'Tote Bag'
   if (t.includes('greeting') || t.includes('card')) return 'Greeting Card'
   return 'Art Print'
-}
-
-export async function getProductByHandle(handle: string): Promise<NormalizedProduct | null> {
-  const data = await adminFetch<{
-    products: { edges: { node: ShopifyProduct }[] }
-  }>({
-    query: `
-      query GetProductByHandle($q: String!) {
-        products(first: 1, query: $q) {
-          edges { node { ${PRODUCT_FIELDS} } }
-        }
-      }
-    `,
-    variables: { q: `handle:${handle} AND status:active` },
-    revalidate: 300,
-  })
-  const node = data.products.edges[0]?.node
-  return node ? normalizeProduct(node) : null
 }
