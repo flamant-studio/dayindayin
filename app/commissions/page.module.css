@@ -99,23 +99,31 @@
   gap: 1.25rem;
 }
 
-.steps li {
+.step {
   counter-increment: steps;
   display: grid;
   grid-template-columns: 2rem 1fr;
   gap: 1rem;
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: #444;
+  align-items: start;
 }
 
-.steps li::before {
-  content: counter(steps);
+.stepNum {
+  display: block;
   font-size: 0.7rem;
   font-weight: 500;
   color: #C4694F;
   letter-spacing: 0.05em;
   padding-top: 0.3rem;
+}
+
+.stepNum::before {
+  content: counter(steps);
+}
+
+.stepBody {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #444;
 }
 
 /* Honest section */

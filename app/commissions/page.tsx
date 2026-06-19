@@ -55,18 +55,17 @@ export default function CommissionsPage() {
       <section className={styles.how}>
         <h2>How it works</h2>
         <ol className={styles.steps}>
-          <li>
-            <strong>Send a brief.</strong> Be specific: size, context, what it&apos;s for, your budget. Stine reads everything and responds honestly — she&apos;ll say yes, no, or let&apos;s talk.
-          </li>
-          <li>
-            <strong>Short conversation.</strong> If the project feels right, you&apos;ll exchange a few messages to align on scope. No lengthy back-and-forth.
-          </li>
-          <li>
-            <strong>50% deposit to start.</strong> Work begins when the deposit is in. You&apos;ll see progress photos at key milestones.
-          </li>
-          <li>
-            <strong>Delivery &amp; final payment.</strong> Balance due on completion. Shipping across Europe included; outside Europe at cost.
-          </li>
+          {[
+            { label: 'Send a brief.', desc: 'Be specific: size, context, what it\'s for, your budget. Stine reads everything and responds honestly — she\'ll say yes, no, or let\'s talk.' },
+            { label: 'Short conversation.', desc: 'If the project feels right, you\'ll exchange a few messages to align on scope. No lengthy back-and-forth.' },
+            { label: '50% deposit to start.', desc: 'Work begins when the deposit is in. You\'ll see progress photos at key milestones.' },
+            { label: 'Delivery & final payment.', desc: 'Balance due on completion. Shipping across Europe included; outside Europe at cost.' },
+          ].map((step) => (
+            <li key={step.label} className={styles.step}>
+              <span className={styles.stepNum} />
+              <span className={styles.stepBody}><strong>{step.label}</strong> {step.desc}</span>
+            </li>
+          ))}
         </ol>
       </section>
 
