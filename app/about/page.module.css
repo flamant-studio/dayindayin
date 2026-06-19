@@ -116,6 +116,54 @@
   transform: scale(1.03);
 }
 
+/* ── Statement pull-quote ────────────────────────────────────── */
+
+.statement {
+  max-width: 700px;
+  margin: 0 auto var(--sp-12);
+  padding: var(--sp-8) 0;
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  text-align: center;
+}
+
+.statementQuote {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  font-weight: 400;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--c-text);
+  margin-bottom: var(--sp-4);
+}
+
+.statementAttr {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+/* ── Studio notes link ───────────────────────────────────────── */
+
+.studioNotes {
+  text-align: center;
+  padding: var(--sp-8) 0 var(--sp-4);
+}
+
+.studioNotesLink {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.studioNotesLink:hover {
+  color: var(--c-text);
+}
+
 /* ── Studio note ─────────────────────────────────────────────── */
 
 .studio {

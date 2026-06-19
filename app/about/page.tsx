@@ -79,6 +79,22 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── Artist statement ─────────────────────────────────── */}
+      <section className={styles.statement}>
+        <p className={styles.statementQuote}>
+          &ldquo;I make art with what I have, from where I am. I am driven to make the unseen visible —
+          to give it mass and substance, so that the world becomes larger for all of us.&rdquo;
+        </p>
+        <p className={styles.statementAttr}>Stine Weirsøe Flamant, 2022</p>
+      </section>
+
+      {/* ── Studio Notes link ────────────────────────────────── */}
+      <div className={styles.studioNotes}>
+        <Link href="/art-journal" className={styles.studioNotesLink}>
+          Studio Notes — process, ideas, and what&apos;s been happening in the studio →
+        </Link>
+      </div>
+
       {/* ── Two ways to collect ──────────────────────────────── */}
       <section className={styles.studio}>
         <p className={styles.studioNote}>
