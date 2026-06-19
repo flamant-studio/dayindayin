@@ -79,14 +79,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Studio note ──────────────────────────────────────── */}
+      {/* ── Two ways to collect ──────────────────────────────── */}
       <section className={styles.studio}>
         <p className={styles.studioNote}>
-          This shop is built and maintained by Sebastian Weirsøe Flamant under{' '}
-          <span className={styles.studioCompany}>Flamant Tekst &amp; Design</span>.
-          The work is Stine's. The infrastructure just makes sure it can reach you.
+          There are two ways to collect this work. The{' '}
+          <Link href="/fine-art">Fine Art section</Link>{' '}
+          holds original pieces — hand-tufted textiles, embroidery, unique works on canvas.
+          These are one-of-a-kind; enquiries are handled directly.
+          For prints, mugs, totes, and more, the{' '}
+          <Link href="/shop">shop</Link>{' '}
+          ships across Europe from 56 kr.
         </p>
-        <Link href="/shop" className={styles.shopCta}>Browse the shop →</Link>
+        <div className={styles.studioLinks}>
+          <Link href="/fine-art" className={styles.shopCta}>Original works →</Link>
+          <Link href="/shop" className={styles.shopCtaSecondary}>Browse the shop →</Link>
+        </div>
       </section>
 
     </div>

@@ -136,9 +136,11 @@
   max-width: 480px;
 }
 
-.studioCompany {
-  font-style: italic;
-  color: var(--c-text);
+.studioLinks {
+  display: flex;
+  gap: var(--sp-5);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .shopCta {
@@ -152,6 +154,19 @@
 
 .shopCta:hover {
   color: var(--c-accent);
+}
+
+.shopCtaSecondary {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+
+.shopCtaSecondary:hover {
+  color: var(--c-text);
 }
 
 /* ── Responsive ──────────────────────────────────────────────── */

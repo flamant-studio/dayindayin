@@ -32,7 +32,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
         <div className={styles.body}>
           <p>{post.excerpt}</p>
-          <p className={styles.placeholder}>[Full post content goes here]</p>
         </div>
       </article>
     </div>

@@ -76,8 +76,7 @@ export default function Practical() {
             <li>A brief description of the issue</li>
           </ul>
           <p>
-            Email:{" "}
-            <a href="mailto:sebastianhflamant@gmail.com">sebastianhflamant@gmail.com</a>
+            Email: <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a>
           </p>
           <p>
             We will respond within 48 hours (usually sooner) and arrange a replacement.
@@ -102,8 +101,8 @@ export default function Practical() {
           </p>
           <p>
             Contact via the{" "}
-            <Link href="/#contact">contact form on the homepage</Link> or email{" "}
-            <a href="mailto:sebastianhflamant@gmail.com">sebastianhflamant@gmail.com</a>.
+            <Link href="/contact">contact form</Link> or email{" "}
+            <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a>.
           </p>
         </section>
 
@@ -119,7 +118,7 @@ export default function Practical() {
           </p>
           <p>
             For licensing inquiries:{" "}
-            <a href="mailto:sebastianhflamant@gmail.com">sebastianhflamant@gmail.com</a>
+            <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a>
           </p>
         </section>
 

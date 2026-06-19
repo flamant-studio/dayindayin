@@ -3,21 +3,48 @@ import Link from "next/link";
 import { works, WorkCategory } from "@/lib/data";
 import styles from "./page.module.css";
 
-export const metadata = { title: "Fine Art" };
+export const metadata = {
+  title: "Fine Art — Original Works",
+  description: "Original works by Stine Weirsøe Flamant — hand-tufted textiles, embroidery, paintings, and photography. Unique pieces available on enquiry.",
+};
 
 const sections: { id: WorkCategory; label: string; tagline: string }[] = [
-  { id: "tufting", label: "Hand Tufting", tagline: "Cosmos, Christmas, rainbows and everything in between" },
-  { id: "embroidery", label: "Embroidery", tagline: "Powerful flowers, powerful words" },
-  { id: "painting", label: "Paintings", tagline: "Flora and fauna of the colourful universe" },
-  { id: "photography", label: "Photography", tagline: "Inside and outside the DayinDayin world, one minute at a time" },
+  { id: "tufting", label: "Hand Tufting", tagline: "Each piece takes days — the pile height, density, and texture chosen entirely by hand. No two are alike." },
+  { id: "embroidery", label: "Embroidery", tagline: "Needle and thread on canvas and linen. Where the work started and where it keeps returning." },
+  { id: "painting", label: "Paintings", tagline: "Acrylic and oil stick on canvas, worked on the studio floor. Layers built up and scraped back over multiple sessions." },
+  { id: "photography", label: "Photography", tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after." },
 ];
 
 export default function FineArt() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
+        <span className={styles.heroLabel}>Original Works</span>
         <h1>Fine Art</h1>
+        <p className={styles.heroSub}>
+          These are the originals — unique pieces made by hand in Stine&apos;s Copenhagen studio.
+          Not prints. Not reproductions. Each one exists once.
+        </p>
       </section>
+
+      {/* ── Distinction banner ─────────────────────────────────── */}
+      <div className={styles.distinctionBanner}>
+        <div className={styles.distinctionBlock}>
+          <span className={styles.distinctionLabel}>Original Fine Art</span>
+          <p className={styles.distinctionText}>
+            Unique pieces — tufting, embroidery, paintings, photography. Available on enquiry. Priced individually.
+          </p>
+          <span className={styles.distinctionTag}>You are here</span>
+        </div>
+        <div className={styles.distinctionDivider} />
+        <div className={styles.distinctionBlock}>
+          <span className={styles.distinctionLabel}>Print Shop</span>
+          <p className={styles.distinctionText}>
+            High-quality prints of Stine&apos;s work, printed on demand by Gelato. Ships across Europe. From 56 kr.
+          </p>
+          <Link href="/shop" className={styles.distinctionLink}>Go to the shop →</Link>
+        </div>
+      </div>
 
       {sections.map((section) => {
         const categoryWorks = works.filter((w) => w.category === section.id);
@@ -31,16 +58,38 @@ export default function FineArt() {
               {categoryWorks.map((work) => (
                 <Link key={work.slug} href={`/works/${work.slug}`} className={styles.card}>
                   <div className={styles.cardImage}>
-                    <Image src={work.image} alt={work.title} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: "cover" }} />
+                    <Image
+                      src={work.image}
+                      alt={work.title}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      style={{ objectFit: "cover" }}
+                    />
+                    <div className={styles.cardOverlay}>
+                      <span className={styles.cardEnquire}>Enquire →</span>
+                    </div>
                   </div>
-                  <p className={styles.cardTitle}>{work.title}</p>
-                  <p className={styles.cardYear}>{work.year}</p>
+                  <div className={styles.cardMeta}>
+                    <p className={styles.cardTitle}>{work.title}</p>
+                    <p className={styles.cardYear}>{work.year}</p>
+                  </div>
+                  <p className={styles.cardAvail}>Original — available on enquiry</p>
                 </Link>
               ))}
             </div>
           </section>
         );
       })}
+
+      {/* ── Enquiry CTA ────────────────────────────────────────── */}
+      <section className={styles.enquiryCta}>
+        <h2>Interested in a piece?</h2>
+        <p>
+          Stine also takes commissions — embroidery, tufting, painting. Tell her the size,
+          the context, and your budget. She will say yes or no directly.
+        </p>
+        <Link href="/contact" className={styles.enquiryBtn}>Get in touch →</Link>
+      </section>
     </div>
   );
 }
