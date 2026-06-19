@@ -25,6 +25,9 @@ export default function FineArt() {
           These are the originals — unique pieces made by hand in Stine&apos;s Copenhagen studio.
           Not prints. Not reproductions. Each one exists once.
         </p>
+        <Link href="/archive" className={styles.heroArchiveLink}>
+          View all {works.length} works →
+        </Link>
       </section>
 
       {/* ── Distinction banner ─────────────────────────────────── */}

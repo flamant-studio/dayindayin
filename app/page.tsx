@@ -157,6 +157,27 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* ── Two ways to collect ──────────────────────────────── */}
+      <section className={styles.collectSection}>
+        <div className={styles.collectBlock}>
+          <span className={styles.collectLabel}>Original Fine Art</span>
+          <h2 className={styles.collectTitle}>One of a kind.</h2>
+          <p className={styles.collectDesc}>
+            Tufted textiles, embroidery, paintings, and photography — made by hand in Stine&apos;s Copenhagen studio. Each piece exists once. Available on enquiry, priced individually.
+          </p>
+          <Link href="/fine-art" className={styles.collectCta}>See original works</Link>
+        </div>
+        <div className={styles.collectDivider} aria-hidden />
+        <div className={styles.collectBlock}>
+          <span className={styles.collectLabel}>Print Shop</span>
+          <h2 className={styles.collectTitle}>Art for every wall.</h2>
+          <p className={styles.collectDesc}>
+            High-quality prints of Stine&apos;s work, printed on demand by Gelato. Art prints, framed prints, mugs, totes, postcards. From 56 kr — shipped across Europe.
+          </p>
+          <Link href="/shop" className={styles.collectCtaSecondary}>Browse the shop</Link>
+        </div>
+      </section>
+
       {/* ── Artist statement ─────────────────────────────────── */}
       <section className={styles.artistStrip}>
         <p className={styles.artistText}>

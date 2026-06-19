@@ -34,8 +34,19 @@
   color: var(--c-muted);
   line-height: 1.7;
   max-width: 520px;
-  margin: 0 auto;
+  margin: 0 auto var(--sp-4);
 }
+
+.heroArchiveLink {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+
+.heroArchiveLink:hover { color: var(--c-text); }
 
 /* ── Distinction banner ─────────────────────────────────────── */
 

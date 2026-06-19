@@ -20,9 +20,13 @@ export default function ContactForm() {
     const params = new URLSearchParams(window.location.search)
     const s = params.get('subject')
     if (s) {
-      const decoded = decodeURIComponent(s)
-      const match = SUBJECTS.find(opt => decoded.toLowerCase().includes(opt.toLowerCase().split(' ')[0]))
-      if (match) setSubject(match)
+      const decoded = decodeURIComponent(s).toLowerCase()
+      if (decoded.startsWith('enquiry') || decoded.includes('fine art') || decoded.includes('original')) {
+        setSubject('Fine Art / original work')
+      } else {
+        const match = SUBJECTS.find(opt => decoded.includes(opt.toLowerCase().split(' ')[0]))
+        if (match) setSubject(match)
+      }
     }
   }, [])
 
