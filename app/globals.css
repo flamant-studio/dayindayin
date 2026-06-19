@@ -1,6 +1,8 @@
 /* ─── Design Tokens ────────────────────────────────────────────────────────── */
 
 :root {
+  color-scheme: light;
+
   /* Colours */
   --c-bg:          #F0EBE3;
   --c-white:       #FFFFFF;

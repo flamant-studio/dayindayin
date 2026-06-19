@@ -13,6 +13,7 @@ export default function BackToTopButton() {
 
   return (
     <button
+      type="button"
       className={`${styles.btn} ${visible ? styles.visible : ''}`}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Back to top"

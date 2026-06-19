@@ -54,6 +54,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
         <meta name="theme-color" content="#F0EBE3" />
+        <meta name="color-scheme" content="light" />
+        <meta name="robots" content="max-image-preview:large" />
         <link rel="preconnect" href="https://29kekabbrd49avje.public.blob.vercel-storage.com" />
         <link rel="preconnect" href="https://cdn.shopify.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />

@@ -91,7 +91,7 @@ export default function ContactForm() {
 
       <label className={styles.label}>
         <span className={styles.labelText}>Message</span>
-        <textarea name="message" placeholder="What would you like to know?" rows={5} required disabled={status === 'submitting'} aria-required="true" />
+        <textarea name="message" placeholder="What would you like to know?" rows={5} required disabled={status === 'submitting'} aria-required="true" maxLength={2000} />
       </label>
 
       {status === 'error' && (

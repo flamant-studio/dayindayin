@@ -203,7 +203,7 @@ export default async function HomePage() {
       {/* ── Artist statement ─────────────────────────────────── */}
       <section className={styles.artistStrip}>
         <p className={styles.artistText}>
-          Stine makes art with her hands — tufted textiles, embroidered canvas, photography, digital illustration. Each piece starts in the studio and ends on your wall.
+          Stine Weirsøe Flamant makes art with her hands in Copenhagen — tufted textiles, embroidered canvas, paintings, and photography. Everything in this shop is her work. Nothing is licensed in.
         </p>
         <Link href="/about" className={styles.artistLink}>About the artist →</Link>
       </section>

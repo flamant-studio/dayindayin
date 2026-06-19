@@ -49,7 +49,8 @@ export default function CommissionsPage() {
         <span className={styles.heroLabel}>Original Work</span>
         <h1>Commissions</h1>
         <p className={styles.heroSub}>
-          Stine takes commissions selectively — when she has the space for it and the brief is interesting. No middlemen. You speak directly with her.
+          Stine takes commissions selectively — when the brief is interesting and the timing works.
+          No intermediaries. You speak directly with her. Embroidery, hand tufting, and painting.
         </p>
       </section>
 

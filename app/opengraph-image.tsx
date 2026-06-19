@@ -40,13 +40,25 @@ export default function OpenGraphImage() {
           <div
             style={{
               fontFamily: 'sans-serif',
-              fontSize: 28,
+              fontSize: 26,
               color: '#888480',
               fontWeight: 400,
               marginTop: '8px',
+              lineHeight: 1.5,
             }}
           >
             Art by Stine Weirsøe Flamant
+          </div>
+          <div
+            style={{
+              fontFamily: 'sans-serif',
+              fontSize: 18,
+              color: '#B0A89E',
+              fontWeight: 300,
+              marginTop: '4px',
+            }}
+          >
+            Prints from 56 kr · Ships to EU, UK &amp; Norway
           </div>
         </div>
 

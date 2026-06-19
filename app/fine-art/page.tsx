@@ -39,8 +39,8 @@ export default function FineArt() {
         <span className={styles.heroLabel}>Original Works</span>
         <h1>Fine Art</h1>
         <p className={styles.heroSub}>
-          These are the originals — unique pieces made by hand in Stine&apos;s Copenhagen studio.
-          Not prints. Not reproductions. Each one exists once.
+          Unique pieces made by hand in Stine&apos;s Copenhagen studio.
+          Not prints. Not reproductions. Each one exists once — available on enquiry.
         </p>
         <Link href="/archive" className={styles.heroArchiveLink}>
           View all {works.length} works →
