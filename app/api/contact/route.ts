@@ -8,7 +8,7 @@ function getResend(): Resend {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { name, email, message, website } = body;
+  const { name, email, subject, message, website } = body;
 
   // Honeypot: bots fill the hidden "website" field
   if (website) {
@@ -24,13 +24,15 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "Contact email not configured" }, { status: 500 });
   }
 
+  const subjectLine = subject ? `${subject} — from ${name}` : `New message from ${name}`;
+
   const resend = getResend();
   const { error } = await resend.emails.send({
     from: "DayInDayIn <noreply@dayindayin.dk>",
     to,
     replyTo: email,
-    subject: `New message from ${name}`,
-    text: `From: ${name} <${email}>\n\n${message}`,
+    subject: subjectLine,
+    text: `From: ${name} <${email}>\nSubject: ${subject || 'Not specified'}\n\n${message}`,
   });
 
   if (error) {
