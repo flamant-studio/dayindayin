@@ -64,9 +64,11 @@ export default function Footer() {
           <div className={styles.col}>
             <span className={styles.colTitle}>Info</span>
             <Link href="/practical">Shipping &amp; FAQ</Link>
+            <Link href="/commissions">Commissions</Link>
+            <Link href="/contact">Contact</Link>
+            <a href="mailto:stine@dayindayin.dk" className={styles.emailLink}>stine@dayindayin.dk</a>
             <Link href="/legal/privacy">Privacy</Link>
             <Link href="/legal/copyright">Copyright</Link>
-            <Link href="/contact">Contact</Link>
           </div>
         </div>
       </div>

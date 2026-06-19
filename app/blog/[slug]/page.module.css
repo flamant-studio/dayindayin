@@ -16,9 +16,11 @@
 .date { font-size: 0.7rem; color: #aaadb0; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
 
 .header h1 {
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
-  font-weight: 300;
-  line-height: 1.25;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   margin-bottom: 0.75rem;
 }
 
@@ -42,10 +44,21 @@
 }
 
 .body p {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 300;
-  line-height: 1.9;
+  line-height: 1.95;
   color: var(--c-text, #2C3440);
+}
+
+.body p:first-child::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  padding-right: 0.1em;
+  padding-top: 0.1em;
+  color: var(--c-accent);
 }
 
 .shareRow {

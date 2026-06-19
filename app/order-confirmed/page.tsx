@@ -30,6 +30,23 @@ export default function OrderConfirmedPage() {
           <Link href="/shop" className={styles.primary}>Continue shopping</Link>
           <Link href="/contact" className={styles.secondary}>Contact us</Link>
         </div>
+        <div className={styles.timeline}>
+          <p className={styles.timelineLabel}>What happens next</p>
+          {[
+            { step: '1', label: 'Production', desc: '1–3 business days at a Gelato facility near you' },
+            { step: '2', label: 'Shipping', desc: '2–5 business days to your door' },
+            { step: '3', label: 'Confirmation email', desc: 'Tracking link sent when production is complete' },
+          ].map(({ step, label, desc }) => (
+            <div key={step} className={styles.timelineStep}>
+              <span className={styles.timelineNum}>{step}</span>
+              <div>
+                <span className={styles.timelineStepLabel}>{label}</span>
+                <span className={styles.timelineStepDesc}>{desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div className={styles.note}>
           <p className={styles.noteText}>
             No returns on print-on-demand unless the product arrives defective or damaged.

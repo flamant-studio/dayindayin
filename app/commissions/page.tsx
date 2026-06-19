@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import NewsletterSignup from '@/components/NewsletterSignup'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -124,6 +125,8 @@ export default function CommissionsPage() {
           Or email <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a> directly.
         </p>
       </section>
+
+      <NewsletterSignup />
     </div>
   )
 }

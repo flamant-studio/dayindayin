@@ -155,6 +155,17 @@ export default async function ProductPage({ params }: PageProps) {
     },
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dayindayin.dk' },
+      { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://dayindayin.dk/shop' },
+      { '@type': 'ListItem', position: 3, name: catLabel, item: `https://dayindayin.dk/shop?filter=${catFilter ?? ''}` },
+      { '@type': 'ListItem', position: 4, name: product.title, item: `https://dayindayin.dk/shop/${handle}` },
+    ],
+  }
+
   return (
     <div className={styles.page}>
       <FluidTracker
@@ -167,10 +178,8 @@ export default async function ProductPage({ params }: PageProps) {
       />
 
       {/* JSON-LD structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       <BackLink />
 

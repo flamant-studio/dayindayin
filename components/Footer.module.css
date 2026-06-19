@@ -108,6 +108,12 @@
   text-underline-offset: 2px;
 }
 
+.emailLink {
+  font-size: var(--text-xs) !important;
+  color: var(--c-accent) !important;
+  font-style: italic;
+}
+
 @media (max-width: 900px) {
   .inner {
     grid-template-columns: 1fr;

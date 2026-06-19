@@ -206,6 +206,24 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── Contact block ────────────────────────────────────── */}
+      <section className={styles.contactBlock}>
+        <h2 className={styles.contactBlockTitle}>Get in touch</h2>
+        <p className={styles.contactBlockSub}>
+          For commissions, press, or general enquiries — Stine responds directly.
+        </p>
+        <div className={styles.contactBlockLinks}>
+          <a href="mailto:stine@dayindayin.dk" className={styles.contactEmail}>
+            stine@dayindayin.dk
+          </a>
+          <a href="https://www.instagram.com/dayindayin" target="_blank" rel="noopener noreferrer" className={styles.contactSocial}>
+            Instagram →
+          </a>
+          <Link href="/commissions" className={styles.contactSocial}>Commissions →</Link>
+          <Link href="/contact" className={styles.contactSocial}>Contact form →</Link>
+        </div>
+      </section>
+
     </div>
   )
 }

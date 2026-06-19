@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { works, WorkCategory } from "@/lib/data";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -114,6 +115,8 @@ export default function FineArt() {
         </p>
         <Link href="/contact?subject=Fine%20Art%20enquiry" className={styles.enquiryBtn} aria-label="Send an enquiry about original fine art">Send an enquiry →</Link>
       </section>
+
+      <NewsletterSignup />
     </div>
   );
 }

@@ -3,7 +3,13 @@ import styles from "./page.module.css";
 
 export const metadata = {
   title: "Shipping & FAQ",
-  description: "Shipping, returns, commissions, and copyright for DayInDayIn. All prints fulfilled by Gelato.",
+  description: "Shipping times, returns policy, print prices, commissions, and copyright for Day In Day In. All prints fulfilled on demand by Gelato across Europe.",
+  alternates: { canonical: "/practical" },
+  openGraph: {
+    title: "Shipping & FAQ — Day In Day In",
+    description: "Shipping times, returns policy, print prices, and commissions for Day In Day In. All prints fulfilled on demand by Gelato.",
+    type: "website",
+  },
 };
 
 const FAQ_ITEMS = [

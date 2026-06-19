@@ -1,32 +1,39 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import styles from './CookieBanner.module.css'
 
 const CONSENT_KEY = 'did_cookie_consent'
 
 export default function CookieBanner() {
-  const [accepted, setAccepted] = useState<boolean | null>(null)
+  const [decided, setDecided] = useState<boolean | null>(null)
 
   useEffect(() => {
-    setAccepted(!!localStorage.getItem(CONSENT_KEY))
+    setDecided(!!localStorage.getItem(CONSENT_KEY))
   }, [])
 
-  function accept() {
-    localStorage.setItem(CONSENT_KEY, '1')
-    setAccepted(true)
+  function decide(value: 'accept' | 'decline') {
+    localStorage.setItem(CONSENT_KEY, value)
+    setDecided(true)
   }
 
   // null = not yet checked (avoid hydration mismatch)
-  if (accepted !== false) return null
+  if (decided !== false) return null
 
   return (
     <div className={styles.banner} role="region" aria-label="Cookie consent">
       <p className={styles.text}>
-        We use cookies for cart functionality. No tracking or advertising cookies.
+        We use technically necessary cookies (cart, session). No tracking or advertising.{' '}
+        <Link href="/legal/privacy" className={styles.learnMore}>Privacy policy</Link>
       </p>
-      <button className={styles.btn} onClick={accept}>
-        Accept
-      </button>
+      <div className={styles.actions}>
+        <button className={styles.btnSecondary} onClick={() => decide('decline')}>
+          Decline
+        </button>
+        <button className={styles.btn} onClick={() => decide('accept')}>
+          Accept
+        </button>
+      </div>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Copyright',
   description: 'Copyright notice for all artwork on DayInDayIn. All works by Stine Weirsøe Flamant.',
+  robots: { index: false, follow: false },
 }
 
 export default function CopyrightPage() {

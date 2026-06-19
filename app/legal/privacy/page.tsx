@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How DayInDayIn collects, uses, and protects your personal data. GDPR-compliant.',
+  robots: { index: false, follow: false },
 }
 
 export default function PrivacyPage() {

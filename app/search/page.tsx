@@ -10,6 +10,7 @@ export const dynamic = 'force-dynamic'
 export const metadata = {
   title: 'Search',
   description: 'Search art prints and works by Stine Weirsøe Flamant.',
+  robots: { index: false, follow: true },
 }
 
 interface PageProps {

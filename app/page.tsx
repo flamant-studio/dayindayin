@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAllProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
-import { works } from '@/lib/data'
+import { works, blogPosts } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
@@ -74,6 +74,10 @@ export default async function HomePage() {
           <div className={styles.heroCtas}>
             <Link href="/shop" className={styles.heroCta}>Browse the shop</Link>
             <Link href="/fine-art" className={styles.heroCtaSecondary}>See original works</Link>
+          </div>
+          <div className={styles.heroTrustRow}>
+            <span className={styles.heroTrustDot} aria-hidden="true" />
+            <span className={styles.heroTrustText}>Shop open · Ships to EU, UK &amp; Norway · Printed by Gelato</span>
           </div>
         </div>
       </section>
@@ -205,15 +209,36 @@ export default async function HomePage() {
       </section>
 
       {/* ── Studio Notes teaser ──────────────────────────────── */}
-      <section className={styles.studioTeaser}>
-        <div className={styles.studioTeaserInner}>
-          <span className={styles.studioTeaserLabel}>Studio Notes</span>
-          <p className={styles.studioTeaserText}>
-            Stine writes occasionally — about the work, the process, and what happens in the studio between finished pieces.
-          </p>
-          <Link href="/art-journal" className={styles.studioTeaserLink}>Read the notes →</Link>
-        </div>
-      </section>
+      {(() => {
+        const notes = blogPosts.slice(0, 3)
+        return (
+          <section className={styles.notesTeaser}>
+            <div className={styles.notesTeaserHead}>
+              <div>
+                <span className={styles.notesTeaserLabel}>Studio Notes</span>
+                <h2 className={styles.notesTeaserTitle}>From the studio</h2>
+              </div>
+              <Link href="/art-journal" className={styles.notesTeaserViewAll}>All notes →</Link>
+            </div>
+            <div className={styles.notesTeaserGrid}>
+              {notes.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.notesTeaserCard}>
+                  <div className={styles.notesTeaserImg}>
+                    <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                  </div>
+                  <div className={styles.notesTeaserBody}>
+                    <span className={styles.notesTeaserDate}>
+                      {new Date(post.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}
+                    </span>
+                    <span className={styles.notesTeaserPostTitle}>{post.title}</span>
+                    <span className={styles.notesTeaserExcerpt}>{post.excerpt}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )
+      })()}
 
       {/* ── From the archive ─────────────────────────────────── */}
       {(() => {

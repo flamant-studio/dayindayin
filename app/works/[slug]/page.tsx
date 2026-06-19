@@ -125,8 +125,16 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                 <span className={styles.metaVal}>{work.year}</span>
               </div>
               <div className={styles.metaRow}>
+                <span className={styles.metaKey}>Dimensions</span>
+                <span className={styles.metaVal}>Available on enquiry</span>
+              </div>
+              <div className={styles.metaRow}>
                 <span className={styles.metaKey}>Type</span>
                 <span className={styles.metaVal}>Unique original</span>
+              </div>
+              <div className={styles.metaRow}>
+                <span className={styles.metaKey}>Location</span>
+                <span className={styles.metaVal}>Copenhagen, Denmark</span>
               </div>
             </div>
 
