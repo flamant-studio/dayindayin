@@ -228,6 +228,27 @@
   text-align: center;
 }
 
+/* ── Delivery estimate ───────────────────────────────────── */
+
+.deliveryEstimate {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--c-text);
+  padding: var(--sp-3) 0;
+}
+
+.deliveryDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6FCF97;
+  flex-shrink: 0;
+}
+
 /* ── Gelato badge ────────────────────────────────────────── */
 
 .gelatoBadge {

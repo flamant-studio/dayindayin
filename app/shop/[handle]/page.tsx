@@ -31,10 +31,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: product.title,
     description: product.description || `${product.title} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
+    alternates: { canonical: `/shop/${handle}` },
     openGraph: {
-      title: product.title,
-      description: product.description || '',
+      title: `${product.title} — Day In Day In`,
+      description: product.description || `${product.title} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
       images: product.firstImage ? [{ url: product.firstImage.url }] : [],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: product.title,
+      description: product.description || `${product.title} by Stine Weirsøe Flamant.`,
+      images: product.firstImage ? [product.firstImage.url] : [],
     },
   }
 }
@@ -243,6 +251,11 @@ export default async function ProductPage({ params }: PageProps) {
             {product.variants.length > 1 && (
               <SizeGuide variants={product.variants} />
             )}
+
+            <div className={styles.deliveryEstimate}>
+              <span className={styles.deliveryDot} />
+              <span>Estimated delivery: 5–10 business days to EU</span>
+            </div>
 
             <div className={styles.gelatoBadge}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">

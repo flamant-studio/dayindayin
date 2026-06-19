@@ -2,7 +2,9 @@ import Link from 'next/link'
 import styles from './not-found.module.css'
 
 export const metadata = {
-  title: '404',
+  title: '404 — Page not found',
+  description: 'This page does not exist.',
+  robots: { index: false, follow: false },
 }
 
 export default function NotFound() {

@@ -22,9 +22,19 @@ const sections: { id: WorkCategory; label: string; tagline: string; note?: strin
   { id: "photography", label: "Photography", tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after.", note: "Archival inkjet prints on museum-grade paper. Shot on film and digital. All photography prints are available as limited editions — enquire for edition size and pricing." },
 ];
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dayindayin.dk' },
+    { '@type': 'ListItem', position: 2, name: 'Fine Art', item: 'https://dayindayin.dk/fine-art' },
+  ],
+}
+
 export default function FineArt() {
   return (
     <div className={styles.page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <section className={styles.hero}>
         <span className={styles.heroLabel}>Original Works</span>
         <h1>Fine Art</h1>
@@ -36,6 +46,21 @@ export default function FineArt() {
           View all {works.length} works →
         </Link>
       </section>
+
+      {/* ── Stats strip ───────────────────────────────────────── */}
+      <div className={styles.statsStrip}>
+        {[
+          { num: works.length.toString(), label: 'Works in archive' },
+          { num: '4', label: 'Media' },
+          { num: '2019', label: 'Practicing since' },
+          { num: 'CPH', label: 'Based in Copenhagen' },
+        ].map(({ num, label }) => (
+          <div key={label} className={styles.statItem}>
+            <span className={styles.statNum}>{num}</span>
+            <span className={styles.statLabel}>{label}</span>
+          </div>
+        ))}
+      </div>
 
       {/* ── Category nav ──────────────────────────────────────── */}
       <nav className={styles.catNav}>

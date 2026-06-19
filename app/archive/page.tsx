@@ -79,6 +79,16 @@ export default async function Archive({ searchParams }: PageProps) {
           </Link>
         ))}
       </div>
+
+      <section className={styles.archiveCta}>
+        <p className={styles.archiveCtaText}>
+          All originals are available on enquiry. If something catches you, reach out.
+        </p>
+        <div className={styles.archiveCtaLinks}>
+          <Link href="/contact?subject=Archive%20enquiry" className={styles.archiveCtaBtn}>Send an enquiry</Link>
+          <Link href="/commissions" className={styles.archiveCtaSecondary}>Commission a work →</Link>
+        </div>
+      </section>
     </div>
   );
 }

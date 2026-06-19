@@ -80,11 +80,29 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
     url: `https://dayindayin.dk/works/${work.slug}`,
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dayindayin.dk' },
+      { '@type': 'ListItem', position: 2, name: 'Fine Art', item: 'https://dayindayin.dk/fine-art' },
+      { '@type': 'ListItem', position: 3, name: label, item: `https://dayindayin.dk/archive?category=${work.category}` },
+      { '@type': 'ListItem', position: 4, name: work.title, item: `https://dayindayin.dk/works/${work.slug}` },
+    ],
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <div className={styles.page}>
-        <Link href={`/archive?category=${work.category}`} className={styles.back}>← {label}</Link>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+          <Link href="/fine-art" className={styles.breadcrumbLink}>Fine Art</Link>
+          <span className={styles.breadcrumbSep}>/</span>
+          <Link href={`/archive?category=${work.category}`} className={styles.breadcrumbLink}>{label}</Link>
+          <span className={styles.breadcrumbSep}>/</span>
+          <span className={styles.breadcrumbCurrent}>{work.title}</span>
+        </nav>
       <div className={styles.layout}>
         <div className={styles.image}>
           <Image

@@ -101,9 +101,10 @@ export default function CollectionsPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
+        <span className={styles.headerLabel}>Browse by series</span>
         <h1 className={styles.title}>Collections</h1>
         <p className={styles.sub}>
-          Browse by series — each collection is a different thread running through the same body of work.
+          Each series is a different thread running through Stine&apos;s work — a recurring subject, palette, or obsession. Some are years in the making.
         </p>
       </div>
       <div className={styles.grid}>

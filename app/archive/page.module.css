@@ -86,3 +86,53 @@
 
 @media (max-width: 900px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── Archive CTA ─────────────────────────────────────────── */
+
+.archiveCta {
+  padding: var(--sp-12) var(--sp-6);
+  text-align: center;
+  border-top: 1px solid var(--c-border);
+  margin-top: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+}
+
+.archiveCtaText {
+  font-size: var(--text-base);
+  font-weight: 300;
+  color: var(--c-muted);
+  max-width: 440px;
+  line-height: 1.7;
+}
+
+.archiveCtaLinks {
+  display: flex;
+  gap: var(--sp-5);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.archiveCtaBtn {
+  padding: var(--sp-3) var(--sp-7);
+  background: var(--c-text);
+  color: var(--c-white);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: background var(--t-fast);
+}
+
+.archiveCtaBtn:hover { background: var(--c-accent); }
+
+.archiveCtaSecondary {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+
+.archiveCtaSecondary:hover { color: var(--c-text); }

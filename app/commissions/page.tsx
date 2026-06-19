@@ -5,12 +5,19 @@ import styles from './page.module.css'
 
 export const metadata: Metadata = {
   title: 'Commissions',
-  description: 'Commission an original work from Stine Weirsøe Flamant — embroidery, hand tufting, or painting. Direct, selective, honest about timelines.',
+  description: 'Commission an original work from Stine Weirsøe Flamant — embroidery, hand tufting, or painting. Direct, selective, honest about timelines. 4–10 week lead times.',
   alternates: { canonical: '/commissions' },
   openGraph: {
     title: 'Commissions — Day In Day In',
     description: 'Commission an original work from Stine Weirsøe Flamant. Embroidery, hand tufting, or painting. 4–10 week lead times. You speak directly with Stine.',
     images: [{ url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works/embroidery/elsk.jpg', width: 800, height: 800 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Commissions — Day In Day In',
+    description: 'Commission an original work from Stine Weirsøe Flamant. 4–10 week lead times.',
+    images: ['https://29kekabbrd49avje.public.blob.vercel-storage.com/works/embroidery/elsk.jpg'],
   },
 }
 
