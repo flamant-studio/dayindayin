@@ -108,8 +108,8 @@
 }
 
 .catNavLink:hover {
-  color: var(--c-text);
-  border-bottom-color: var(--c-text);
+  color: var(--c-accent);
+  border-bottom-color: var(--c-accent);
 }
 
 .catNavCount {

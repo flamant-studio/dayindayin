@@ -71,8 +71,8 @@
 .navLink:hover { color: var(--c-text); }
 
 .navLinkActive {
-  color: var(--c-text);
-  border-color: var(--c-text);
+  color: var(--c-accent);
+  border-color: var(--c-accent);
 }
 
 .mobileToggleRow {

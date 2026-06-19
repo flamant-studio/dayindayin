@@ -133,7 +133,7 @@ export default async function HomePage() {
             const imgUrl = seriesImageMap[tag]
             return (
               <Link key={tag} href={`/shop?filter=${tag}`} className={styles.seriesCard}>
-                <div className={styles.seriesCardImg} style={{ borderBottom: `3px solid ${accent}` }}>
+                <div className={styles.seriesCardImg}>
                   {imgUrl ? (
                     <Image
                       src={imgUrl}
@@ -147,7 +147,7 @@ export default async function HomePage() {
                   )}
                 </div>
                 <div className={styles.seriesCardInfo}>
-                  <span className={styles.seriesCardLabel}>{label}</span>
+                  <span className={styles.seriesCardLabel} style={{ color: accent }}>{label}</span>
                   <span className={styles.seriesCardSub}>{sub}</span>
                 </div>
               </Link>

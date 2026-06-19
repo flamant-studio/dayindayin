@@ -39,7 +39,7 @@ export default function Nav() {
             <Link href="/collections" onClick={closeAll} className={pathname.startsWith('/collections') ? styles.linkActive : ''}>Collections</Link>
           </li>
           <li>
-            <Link href="/practical" onClick={closeAll} className={pathname === '/practical' ? styles.linkActive : ''}>Shipping &amp; FAQ</Link>
+            <Link href="/practical" onClick={closeAll} className={pathname === '/practical' ? styles.linkActive : ''}>Info</Link>
           </li>
         </ul>
 

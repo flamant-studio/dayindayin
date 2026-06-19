@@ -7,7 +7,7 @@ import styles from './CartDrawer.module.css'
 const FREE_SHIPPING_THRESHOLD = 500
 
 function formatPrice(amount: string) {
-  return `DKK ${parseFloat(amount).toFixed(0)}`
+  return `${parseFloat(amount).toFixed(0)} kr`
 }
 
 export default function CartDrawer() {
@@ -39,7 +39,7 @@ export default function CartDrawer() {
               <path d="M16 10a4 4 0 01-8 0"/>
             </svg>
             <div className={styles.emptyText}>
-              <p className={styles.emptyHeading}>Your basket is empty</p>
+              <p className={styles.emptyHeading}>Your cart is empty</p>
               <p className={styles.emptySubtext}>Discover original works by Stine Weirsøe Flamant</p>
             </div>
             <button className={styles.continueShopping} onClick={closeCart}>Browse the shop</button>
@@ -66,6 +66,7 @@ export default function CartDrawer() {
                       <p className={styles.itemPrice}>{formatPrice(line.merchandise.price.amount)}</p>
                       <div className={styles.qtyControls}>
                         <button
+                          type="button"
                           className={styles.qtyBtn}
                           disabled={loading}
                           aria-label="Decrease quantity"
@@ -81,6 +82,7 @@ export default function CartDrawer() {
                         </button>
                         <span className={styles.qtyValue}>{line.quantity}</span>
                         <button
+                          type="button"
                           className={styles.qtyBtn}
                           disabled={loading}
                           aria-label="Increase quantity"
@@ -91,6 +93,7 @@ export default function CartDrawer() {
                       </div>
                     </div>
                     <button
+                      type="button"
                       className={styles.removeBtn}
                       onClick={() => removeItem(line.id)}
                       disabled={loading}

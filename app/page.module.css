@@ -166,17 +166,17 @@
 .card {
   background: var(--c-surface);
   display: block;
-  transition: box-shadow var(--t-base);
+  transition: transform var(--t-base) var(--ease);
 }
 
 .card:hover {
-  box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+  transform: translateY(-3px);
 }
 
 .cardImg {
   position: relative;
   aspect-ratio: 4/5;
-  background: var(--c-surface);
+  background: #ffffff;
   overflow: hidden;
 }
 
@@ -822,6 +822,8 @@
   .heroContent { padding: 0 var(--sp-5) var(--sp-10); }
   .heroTitle { font-size: clamp(2.8rem, 10vw, 4rem); }
   .heroCta { align-self: stretch; text-align: center; justify-content: center; }
+  .heroTrustText { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 280px; }
+  .heroSub { font-size: var(--text-base); }
 
   .editorial {
     grid-template-columns: 1fr;

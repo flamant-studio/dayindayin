@@ -74,11 +74,11 @@
 .mainImage {
   position: relative;
   aspect-ratio: 3/4;
-  background: var(--c-surface);
+  background: #ffffff;
   overflow: hidden;
 }
 
-.mainImageEl { object-fit: cover; }
+.mainImageEl { object-fit: contain; }
 
 .imagePlaceholder {
   position: absolute;
@@ -97,7 +97,7 @@
   width: calc(25% - 0.375rem);
   aspect-ratio: 1;
   overflow: hidden;
-  background: var(--c-surface);
+  background: #ffffff;
   cursor: pointer;
 }
 
@@ -439,7 +439,7 @@
 .relatedImg {
   position: relative;
   aspect-ratio: 4/5;
-  background: var(--c-surface);
+  background: #ffffff;
   overflow: hidden;
 }
 
