@@ -24,22 +24,22 @@ export default function Nav() {
 
         <ul className={`${styles.links} ${mobileOpen ? styles.mobileOpen : ''}`}>
           <li>
-            <Link href="/shop" onClick={closeAll}>Shop</Link>
+            <Link href="/shop" onClick={closeAll} className={pathname.startsWith('/shop') ? styles.linkActive : ''}>Shop</Link>
           </li>
           <li>
-            <Link href="/fine-art" onClick={closeAll}>Fine Art</Link>
+            <Link href="/fine-art" onClick={closeAll} className={pathname === '/fine-art' || pathname.startsWith('/works') ? styles.linkActive : ''}>Fine Art</Link>
           </li>
           <li>
-            <Link href="/commissions" onClick={closeAll}>Commissions</Link>
+            <Link href="/commissions" onClick={closeAll} className={pathname === '/commissions' ? styles.linkActive : ''}>Commissions</Link>
           </li>
           <li>
-            <Link href="/about" onClick={closeAll}>About</Link>
+            <Link href="/about" onClick={closeAll} className={pathname === '/about' ? styles.linkActive : ''}>About</Link>
           </li>
           <li>
-            <Link href="/collections" onClick={closeAll}>Collections</Link>
+            <Link href="/collections" onClick={closeAll} className={pathname.startsWith('/collections') ? styles.linkActive : ''}>Collections</Link>
           </li>
           <li>
-            <Link href="/practical" onClick={closeAll}>Shipping &amp; FAQ</Link>
+            <Link href="/practical" onClick={closeAll} className={pathname === '/practical' ? styles.linkActive : ''}>Shipping &amp; FAQ</Link>
           </li>
         </ul>
 

@@ -74,6 +74,13 @@
   border-bottom-color: var(--c-text);
 }
 
+.catNavCount {
+  font-size: 0.65rem;
+  color: var(--c-muted);
+  margin-left: 0.35rem;
+  opacity: 0.7;
+}
+
 /* ── Distinction banner ─────────────────────────────────────── */
 
 .distinctionBanner {

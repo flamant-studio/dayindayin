@@ -16,6 +16,16 @@ export const metadata = {
 
 const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
 
+const SERIES_DESCRIPTIONS: Record<string, string> = {
+  shero: 'Feminist pop-art in bold textile and print. The SHERO series celebrates strength, resistance, and the power of naming.',
+  neko: 'Cats as symbols — of independence, curiosity, and quiet rebellion. The NEKO series began in 2022 and keeps growing.',
+  'sea-monsters': 'Imaginary creatures from somewhere beneath the surface. The Sea Monsters series plays with fear, beauty, and the unknown.',
+  botanical: 'Plants, growth, and the patient life of natural forms. Observed from the studio and from the edges of roads.',
+  floral: 'Bold, close-up florals that push colour and form to the edge of abstraction.',
+  faces: 'Portraits, masks, and the human face in all its complexity — from Sri Lanka to the Copenhagen streets.',
+  sommerby: 'Work from the Sommerby summer series — warm, loose, and full of Danish light.',
+}
+
 const FILTER_LABELS: Record<string, string> = {
   'art-print':      'Art Prints',
   'framed':         'Framed Prints',
@@ -171,6 +181,12 @@ export default async function ShopPage({ searchParams }: PageProps) {
 
       <ShopFilterNav activeTag={activeTag} />
 
+      {isSeriesFilter && activeTag && SERIES_DESCRIPTIONS[activeTag] && (
+        <div className={styles.seriesBanner}>
+          <p className={styles.seriesBannerText}>{SERIES_DESCRIPTIONS[activeTag]}</p>
+        </div>
+      )}
+
       {products.length === 0 ? (
         <div className={styles.empty}>
           <p>{activeTag ? `Nothing in this filter yet — check back soon.` : 'No products yet — check back soon.'}</p>
@@ -199,6 +215,9 @@ export default async function ShopPage({ searchParams }: PageProps) {
                   {seriesLabel(p) && (
                     <span className={styles.cardBadge}>{seriesLabel(p)}</span>
                   )}
+                  <div className={styles.cardHoverOverlay}>
+                    <span className={styles.cardViewHint}>View product →</span>
+                  </div>
                 </div>
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{p.title}</span>

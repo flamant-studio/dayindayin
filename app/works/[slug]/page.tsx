@@ -53,6 +53,10 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
   const label = CATEGORY_LABELS[work.category] ?? work.category
   const medium = CATEGORY_MEDIUM[work.category] ?? work.description
 
+  const related = works
+    .filter((w) => w.category === work.category && w.slug !== work.slug)
+    .slice(0, 3)
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'VisualArtwork',
@@ -136,6 +140,28 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
           </div>
         </div>
       </div>
+
+      {related.length > 0 && (
+        <section className={styles.related}>
+          <div className={styles.relatedHead}>
+            <h2 className={styles.relatedTitle}>More {label.toLowerCase()}</h2>
+            <Link href={`/archive?category=${work.category}`} className={styles.relatedViewAll}>
+              See all {label.toLowerCase()} works →
+            </Link>
+          </div>
+          <div className={styles.relatedGrid}>
+            {related.map((r) => (
+              <Link key={r.slug} href={`/works/${r.slug}`} className={styles.relatedCard}>
+                <div className={styles.relatedImg}>
+                  <Image src={r.image} alt={r.title} fill sizes="(max-width: 768px) 33vw, 22vw" style={{ objectFit: 'cover' }} />
+                </div>
+                <span className={styles.relatedName}>{r.title}</span>
+                <span className={styles.relatedYear}>{r.year}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
     </>
   );

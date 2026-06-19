@@ -12,7 +12,7 @@ export default function NotFound() {
         <p className={styles.code}>404</p>
         <h1 className={styles.title}>Nothing here</h1>
         <p className={styles.text}>
-          The page you&apos;re looking for doesn&apos;t exist, or may have moved.
+          The page you&apos;re looking for doesn&apos;t exist, or may have moved. Some works get retired, some links evolve.
         </p>
         <div className={styles.actions}>
           <Link href="/shop" className={styles.primary}>Browse the shop</Link>

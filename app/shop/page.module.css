@@ -166,6 +166,37 @@
   background: var(--c-surface);
 }
 
+.cardHoverOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--sp-3);
+  transition: background var(--t-base);
+  pointer-events: none;
+}
+
+.card:hover .cardHoverOverlay {
+  background: rgba(0,0,0,0.18);
+}
+
+.cardViewHint {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--t-base), transform var(--t-base);
+}
+
+.card:hover .cardViewHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .cardInfo {
   padding: var(--sp-3) var(--sp-4) var(--sp-4);
   display: flex;
@@ -230,6 +261,22 @@
   font-size: var(--text-sm);
   color: var(--c-muted);
   margin-top: var(--sp-1);
+}
+
+/* ── Series banner ──────────────────────────────────────── */
+
+.seriesBanner {
+  padding: var(--sp-4) var(--sp-6);
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.seriesBannerText {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  color: var(--c-muted);
+  line-height: 1.7;
+  max-width: 600px;
 }
 
 /* ── Load more ──────────────────────────────────────────── */

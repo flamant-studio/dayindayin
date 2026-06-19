@@ -126,6 +126,67 @@
   color: #444;
 }
 
+/* Pricing section */
+.pricing {
+  margin: 3rem 0;
+}
+
+.pricing h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.pricingNote {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.priceCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.priceCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  border: 1px solid #E8E4DF;
+  background: #F8F7F4;
+}
+
+.priceCardMedium {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9A9590;
+}
+
+.priceCardRange {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2C3440;
+}
+
+.priceCardNote {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .priceCards { grid-template-columns: 1fr; }
+}
+
 /* Honest section */
 .honest {
   margin: 3rem 0;

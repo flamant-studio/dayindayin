@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: 'Commissions',
   description: 'Commission an original work from Stine Weirsøe Flamant — embroidery, hand tufting, or painting. Direct, selective, honest about timelines.',
   alternates: { canonical: '/commissions' },
+  openGraph: {
+    title: 'Commissions — Day In Day In',
+    description: 'Commission an original work from Stine Weirsøe Flamant. Embroidery, hand tufting, or painting. 4–10 week lead times. You speak directly with Stine.',
+    images: [{ url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works/embroidery/elsk.jpg', width: 800, height: 800 }],
+  },
 }
 
 const TYPES = [
@@ -67,6 +72,29 @@ export default function CommissionsPage() {
             </li>
           ))}
         </ol>
+      </section>
+
+      <section className={styles.pricing}>
+        <h2>Indicative pricing</h2>
+        <p className={styles.pricingNote}>
+          Commission pricing depends on size, medium, and complexity. These are starting points — not maximums. Stine will give you a quote after you send a brief.
+        </p>
+        <div className={styles.priceCards}>
+          {[
+            { medium: 'Embroidery', range: '2,500–8,000 kr', note: 'Small canvas to large-format panel' },
+            { medium: 'Hand Tufting', range: '4,000–15,000 kr', note: 'Floor or wall piece, 50×50cm and up' },
+            { medium: 'Painting', range: '3,000–12,000 kr', note: 'Acrylic and oil stick on canvas' },
+          ].map(({ medium, range, note }) => (
+            <div key={medium} className={styles.priceCard}>
+              <span className={styles.priceCardMedium}>{medium}</span>
+              <span className={styles.priceCardRange}>{range}</span>
+              <span className={styles.priceCardNote}>{note}</span>
+            </div>
+          ))}
+        </div>
+        <p className={styles.pricingNote}>
+          All prices exclude shipping. International shipping of large originals is quoted separately. A 50% deposit is required to start; balance due on completion.
+        </p>
       </section>
 
       <section className={styles.honest}>

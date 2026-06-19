@@ -45,6 +45,21 @@
 
 .links a:hover { opacity: 0.5; }
 
+.linkActive {
+  opacity: 1 !important;
+  position: relative;
+}
+
+.linkActive::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: var(--c-accent);
+}
+
 /* ── Dropdown trigger (button) ─────────────────────────── */
 
 .dropTrigger {
@@ -311,9 +326,13 @@
     font-family: inherit;
   }
 
-  .mobileTab:hover,
-  .mobileTabActive {
+  .mobileTab:hover {
     color: var(--c-text);
+  }
+
+  .mobileTabActive {
+    color: var(--c-accent);
+    font-weight: 600;
   }
 
   .mobileTabCartWrap {

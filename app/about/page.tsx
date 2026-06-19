@@ -7,6 +7,12 @@ const BLOB_BASE = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
 export const metadata = {
   title: 'About',
   description: 'Stine Weirsøe Flamant — contemporary artist, Copenhagen. Embroidery, tufting, photography, painting.',
+  openGraph: {
+    title: 'About Stine Weirsøe Flamant',
+    description: 'Contemporary artist based in Copenhagen. Embroidery, hand tufting, painting, and photography — made by hand.',
+    images: [{ url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/about/stine-portrait.jpg', width: 800, height: 1000 }],
+  },
+  alternates: { canonical: '/about' },
 }
 
 export default function AboutPage() {
@@ -125,6 +131,27 @@ export default function AboutPage() {
             dries or settles. The Universe series has been going since 2019.
           </p>
         </div>
+      </section>
+
+      {/* ── Milestones ───────────────────────────────────────── */}
+      <section className={styles.milestones}>
+        <h2 className={styles.milestonesTitle}>Selected work &amp; milestones</h2>
+        <ul className={styles.milestoneList}>
+          {[
+            { year: '2019', text: 'Began the Universe series — ongoing body of work in acrylic and oil stick.' },
+            { year: '2020', text: 'Started hand tufting. First large-format tufted pieces exhibited.' },
+            { year: '2021', text: 'SHERO series — feminist pop-art embroidery and textile work.' },
+            { year: '2022', text: 'NEKO series — cats as symbols of independence and curiosity. First print editions.' },
+            { year: '2023', text: 'Sea Monsters series. Expanded into mixed-media and large-format works.' },
+            { year: '2024', text: 'DayInDayIn launched as an independent art brand and print shop.' },
+            { year: '2025', text: 'Botanical and Floral series. Print shop expanded across Europe via Gelato.' },
+          ].map(({ year, text }) => (
+            <li key={year} className={styles.milestone}>
+              <span className={styles.milestoneYear}>{year}</span>
+              <span className={styles.milestoneText}>{text}</span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* ── Two ways to collect ──────────────────────────────── */}

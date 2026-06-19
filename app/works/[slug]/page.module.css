@@ -169,6 +169,71 @@
 
 .moreLink:hover { color: var(--c-text); }
 
+/* ── Related works ──────────────────────────────────────────── */
+
+.related {
+  margin-top: var(--sp-16);
+  padding-top: var(--sp-8);
+  border-top: 1px solid var(--c-border);
+}
+
+.relatedHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--sp-6);
+}
+
+.relatedTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+.relatedViewAll {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+
+.relatedViewAll:hover { color: var(--c-text); }
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+}
+
+.relatedCard {
+  display: block;
+}
+
+.relatedImg {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--c-surface);
+  margin-bottom: var(--sp-3);
+  transition: opacity var(--t-base);
+}
+
+.relatedCard:hover .relatedImg { opacity: 0.85; }
+
+.relatedName {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.relatedYear {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 768px) {

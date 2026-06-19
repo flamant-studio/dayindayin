@@ -6,6 +6,12 @@ import styles from "./page.module.css";
 export const metadata = {
   title: "Fine Art — Original Works",
   description: "Original works by Stine Weirsøe Flamant — hand-tufted textiles, embroidery, paintings, and photography. Unique pieces available on enquiry.",
+  openGraph: {
+    title: "Fine Art — Original Works by Stine Weirsøe Flamant",
+    description: "Unique original works — tufted textiles, embroidery, paintings, and photography. Each piece made by hand in Copenhagen and available on enquiry.",
+    images: [{ url: "https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/neko-cat-orange.jpg", width: 1200, height: 900 }],
+  },
+  alternates: { canonical: "/fine-art" },
 };
 
 const sections: { id: WorkCategory; label: string; tagline: string }[] = [
@@ -32,11 +38,14 @@ export default function FineArt() {
 
       {/* ── Category nav ──────────────────────────────────────── */}
       <nav className={styles.catNav}>
-        {sections.map((s) => (
-          <a key={s.id} href={`#${s.id}`} className={styles.catNavLink}>
-            {s.label}
-          </a>
-        ))}
+        {sections.map((s) => {
+          const count = works.filter((w) => w.category === s.id).length
+          return (
+            <a key={s.id} href={`#${s.id}`} className={styles.catNavLink}>
+              {s.label} <span className={styles.catNavCount}>{count}</span>
+            </a>
+          )
+        })}
       </nav>
 
       {/* ── Distinction banner ─────────────────────────────────── */}
