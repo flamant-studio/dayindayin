@@ -54,11 +54,34 @@ export default async function ShopPage({ searchParams }: PageProps) {
   const activeSort = sort ?? 'newest'
   const showAll = limit === 'all'
 
-  const raw = activeTag
+  // Series filters use Shopify tag queries; type filters use title-based categoryLabel matching
+  const isTypeFilter = activeTag !== null && !SERIES_VALUES.includes(activeTag)
+  const raw = (activeTag && !isTypeFilter)
     ? await getAllProductsByTag(activeTag).catch(() => [])
     : await getAllProducts().catch(() => [])
 
-  let products = raw.filter((p) => p.firstImage)
+  // Map filter keys to categoryLabel() return values for title-based matching
+  const TYPE_LABEL_MAP: Record<string, string> = {
+    'art-print':     'Art Print',
+    'framed':        'Framed Print',
+    'poster':        'Poster',
+    'mug':           'Mug',
+    'apparel':       'Apparel',
+    'tote':          'Tote Bag',
+    'postcard':      'Postcard',
+    'greeting-card': 'Greeting Card',
+    'water-bottle':  'Water Bottle',
+    'wood-print':    'Wood Print',
+  }
+
+  let products = raw.filter((p) => {
+    if (!p.firstImage) return false
+    if (isTypeFilter && activeTag) {
+      const targetLabel = TYPE_LABEL_MAP[activeTag]
+      return targetLabel ? categoryLabel(p) === targetLabel : true
+    }
+    return true
+  })
 
   // Apply sort
   if (activeSort === 'price-asc') {
