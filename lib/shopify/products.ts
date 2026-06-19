@@ -186,7 +186,7 @@ export async function getAllProductHandles(): Promise<string[]> {
   const handles: string[] = []
   let cursor: string | null = null
   while (true) {
-    const page = await sfFetch<HandlesPage>(
+    const page: HandlesPage = await sfFetch<HandlesPage>(
       `query GetHandles($first: Int!, $after: String) {
         products(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
           edges { node { handle } }
@@ -219,7 +219,7 @@ export async function getAllProducts(): Promise<NormalizedProduct[]> {
   const all: NormalizedProduct[] = []
   let cursor: string | null = null
   while (true) {
-    const page = await sfFetch<ProductsPage>(
+    const page: ProductsPage = await sfFetch<ProductsPage>(
       `query GetAllProducts($first: Int!, $after: String) {
         products(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
           edges { node { ${PRODUCT_FIELDS} } }
@@ -239,7 +239,7 @@ export async function getAllProductsByTag(tag: string): Promise<NormalizedProduc
   const all: NormalizedProduct[] = []
   let cursor: string | null = null
   while (true) {
-    const page = await sfFetch<ProductsPage>(
+    const page: ProductsPage = await sfFetch<ProductsPage>(
       `query GetAllProductsByTag($q: String!, $first: Int!, $after: String) {
         products(first: $first, after: $after, query: $q, sortKey: CREATED_AT, reverse: true) {
           edges { node { ${PRODUCT_FIELDS} } }
