@@ -31,7 +31,10 @@
   overflow: hidden;
   background: #f3f3f3;
   margin-bottom: 1rem;
+  transition: transform 0.3s ease;
 }
+
+.card:hover .cardImage { transform: scale(1.02); }
 
 .cardBody { display: flex; flex-direction: column; gap: 0.5rem; }
 
@@ -39,8 +42,21 @@
 
 .cardBody h2 { font-size: 1rem; font-weight: 500; line-height: 1.4; }
 
-.excerpt { font-size: 0.85rem; color: #666; font-style: italic; line-height: 1.6; }
+.excerpt {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 @media (max-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+}
+
+@media (max-width: 480px) {
   .grid { grid-template-columns: 1fr; }
 }

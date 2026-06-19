@@ -90,6 +90,17 @@
   color: var(--c-text);
 }
 
+.instagramLink {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
+
+.instagramLink:hover { color: var(--c-accent); }
+
 /* ── Process photos ──────────────────────────────────────────── */
 
 .process {

@@ -163,6 +163,14 @@ export function getPost(slug: string) {
   return blogPosts.find((p) => p.slug === slug);
 }
 
+export function getAdjacentPosts(slug: string) {
+  const idx = blogPosts.findIndex((p) => p.slug === slug);
+  return {
+    prev: idx > 0 ? blogPosts[idx - 1] : null,
+    next: idx < blogPosts.length - 1 ? blogPosts[idx + 1] : null,
+  };
+}
+
 export function getWorksByCategory(category: WorkCategory) {
   return works.filter((w) => w.category === category);
 }

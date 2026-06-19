@@ -36,8 +36,21 @@ export default async function HomePage() {
     }
   }
 
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Day In Day In',
+    url: 'https://dayindayin.dk',
+    logo: 'https://dayindayin.dk/icon.png',
+    sameAs: ['https://www.instagram.com/dayindayin'],
+    description: 'Art prints and original works by Copenhagen artist Stine Weirsøe Flamant. Print-on-demand by Gelato, shipped across Europe.',
+    foundingLocation: { '@type': 'Place', name: 'Copenhagen, Denmark' },
+    founder: { '@type': 'Person', name: 'Stine Weirsøe Flamant' },
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       {/* ── Hero — full-bleed ────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
@@ -55,9 +68,12 @@ export default async function HomePage() {
           <span className={styles.heroLabel}>Copenhagen, Denmark</span>
           <h1 className={styles.heroTitle}>Art made<br />by hand.</h1>
           <p className={styles.heroSub}>
-            Original works by Stine Weirsøe Flamant — tufted textiles, embroidery, painting, photography. Prints from 56 kr, shipped across Europe.
+            Stine Weirsøe Flamant makes art with her hands in Copenhagen. Originals on enquiry. Prints from 56 kr, shipped across Europe.
           </p>
-          <Link href="/shop" className={styles.heroCta}>Browse the shop</Link>
+          <div className={styles.heroCtas}>
+            <Link href="/shop" className={styles.heroCta}>Browse the shop</Link>
+            <Link href="/fine-art" className={styles.heroCtaSecondary}>See original works</Link>
+          </div>
         </div>
       </section>
 

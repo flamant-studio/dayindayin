@@ -1,0 +1,175 @@
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.hero {
+  padding: 5rem 0 3rem;
+  text-align: center;
+}
+
+.heroLabel {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9A9590;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.heroSub {
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Type cards */
+.types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: 1px solid #E8E4DF;
+  border-bottom: 1px solid #E8E4DF;
+}
+
+.typeCard {
+  padding: 1.5rem;
+  background: #F8F7F4;
+}
+
+.typeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+}
+
+.typeLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.typeTimeline {
+  font-size: 0.7rem;
+  color: #9A9590;
+  letter-spacing: 0.05em;
+}
+
+.typeDesc {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.65;
+}
+
+/* Steps */
+.how {
+  margin: 3rem 0;
+}
+
+.how h2,
+.honest h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.steps {
+  list-style: none;
+  padding: 0;
+  counter-reset: steps;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.steps li {
+  counter-increment: steps;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #444;
+}
+
+.steps li::before {
+  content: counter(steps);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #C4694F;
+  letter-spacing: 0.05em;
+  padding-top: 0.3rem;
+}
+
+/* Honest section */
+.honest {
+  margin: 3rem 0;
+  padding: 2.5rem;
+  background: #F0EDE8;
+}
+
+.honest p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.honest p:last-child { margin-bottom: 0; }
+
+/* CTA */
+.cta {
+  margin: 4rem 0 0;
+  text-align: center;
+}
+
+.ctaText {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.ctaBtn {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  background: #C4694F;
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.ctaBtn:hover { background: #a8583f; }
+
+.ctaSub {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.ctaSub a { color: inherit; text-decoration: underline; }
+
+/* Mobile */
+@media (max-width: 640px) {
+  .types { grid-template-columns: 1fr; }
+  .steps li { grid-template-columns: 1.5rem 1fr; }
+  .honest { padding: 1.5rem; }
+}

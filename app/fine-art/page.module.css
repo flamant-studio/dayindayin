@@ -48,6 +48,32 @@
 
 .heroArchiveLink:hover { color: var(--c-text); }
 
+/* Category nav */
+.catNav {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: var(--sp-8);
+  overflow-x: auto;
+}
+
+.catNavLink {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.catNavLink:hover {
+  color: var(--c-text);
+  border-bottom-color: var(--c-text);
+}
+
 /* ── Distinction banner ─────────────────────────────────────── */
 
 .distinctionBanner {
@@ -225,6 +251,15 @@
 }
 
 /* ── Enquiry CTA ────────────────────────────────────────────── */
+
+.enquiryCtaLabel {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
 
 .enquiryCta {
   border-top: 1px solid var(--c-border);

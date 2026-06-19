@@ -30,6 +30,15 @@ export default function FineArt() {
         </Link>
       </section>
 
+      {/* ── Category nav ──────────────────────────────────────── */}
+      <nav className={styles.catNav}>
+        {sections.map((s) => (
+          <a key={s.id} href={`#${s.id}`} className={styles.catNavLink}>
+            {s.label}
+          </a>
+        ))}
+      </nav>
+
       {/* ── Distinction banner ─────────────────────────────────── */}
       <div className={styles.distinctionBanner}>
         <div className={styles.distinctionBlock}>
@@ -86,6 +95,7 @@ export default function FineArt() {
 
       {/* ── Enquiry CTA ────────────────────────────────────────── */}
       <section className={styles.enquiryCta}>
+        <span className={styles.enquiryCtaLabel}>Collecting original work</span>
         <h2>Each piece exists once.</h2>
         <p>
           If something catches you, reach out. Stine responds directly. She also takes commissions —

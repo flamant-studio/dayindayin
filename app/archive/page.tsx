@@ -4,11 +4,6 @@ import { works } from "@/lib/data";
 import styles from "./page.module.css";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "All Works",
-  description: "Complete archive of original works by Stine Weirsøe Flamant — tufting, embroidery, painting, photography.",
-};
-
 const CATEGORY_LABELS: Record<string, string> = {
   tufting: "Hand Tufting",
   embroidery: "Embroidery",
@@ -26,6 +21,16 @@ const FILTERS = [
 
 interface PageProps {
   searchParams: Promise<{ category?: string }>;
+}
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const { category } = await searchParams;
+  const label = category ? CATEGORY_LABELS[category] : null;
+  return {
+    title: label ? `${label} — All Works` : "All Works",
+    description: "Complete archive of original works by Stine Weirsøe Flamant — tufting, embroidery, painting, photography.",
+    alternates: { canonical: "/archive" },
+  };
 }
 
 export default async function Archive({ searchParams }: PageProps) {

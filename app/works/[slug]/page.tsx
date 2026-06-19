@@ -127,7 +127,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
             <p className={styles.note}>
               This is a unique original work. Prints of Stine&apos;s designs are available in the{' '}
-              <Link href="/shop">shop</Link> from 56 kr.
+              <Link href={`/search?q=${encodeURIComponent(work.title)}`}>shop</Link> from 56 kr.
             </p>
 
             <Link href={`/archive?category=${work.category}`} className={styles.moreLink}>

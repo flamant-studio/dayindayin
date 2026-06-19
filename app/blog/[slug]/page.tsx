@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { blogPosts, getPost } from "@/lib/data";
+import { blogPosts, getPost, getAdjacentPosts } from "@/lib/data";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 
@@ -37,6 +37,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const post = getPost(slug);
   if (!post) notFound();
 
+  const { prev, next } = getAdjacentPosts(slug);
+
   return (
     <div className={styles.page}>
       <Link href="/art-journal" className={styles.back}>← Studio Notes</Link>
@@ -62,6 +64,25 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           }
         </div>
       </article>
+
+      {(prev || next) && (
+        <nav className={styles.pagination}>
+          <div className={styles.paginationInner}>
+            {prev ? (
+              <Link href={`/blog/${prev.slug}`} className={styles.paginationLink}>
+                <span className={styles.paginationDir}>← Previous</span>
+                <span className={styles.paginationTitle}>{prev.title}</span>
+              </Link>
+            ) : <div />}
+            {next ? (
+              <Link href={`/blog/${next.slug}`} className={`${styles.paginationLink} ${styles.paginationRight}`}>
+                <span className={styles.paginationDir}>Next →</span>
+                <span className={styles.paginationTitle}>{next.title}</span>
+              </Link>
+            ) : <div />}
+          </div>
+        </nav>
+      )}
     </div>
   );
 }

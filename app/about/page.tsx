@@ -54,6 +54,14 @@ export default function AboutPage() {
             I am a textile artist involved in a love affair with embroidery and hand tufting.
             Slowly and gently, my artistic voice sounds more and more familiar to me.
           </p>
+          <a
+            href="https://www.instagram.com/dayindayin"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.instagramLink}
+          >
+            @dayindayin on Instagram →
+          </a>
         </div>
       </section>
 

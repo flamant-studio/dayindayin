@@ -70,9 +70,13 @@ export default async function SearchPage({ searchParams }: PageProps) {
       )}
 
       {query && results.length === 0 && (
-        <div className={shopStyles.empty}>
-          <p>No products matched your search.</p>
-          <Link href="/shop" className={shopStyles.emptyCta}>Browse all products</Link>
+        <div className={styles.noResults}>
+          <p className={styles.noResultsText}>Nothing matched &ldquo;{query}&rdquo; in the shop.</p>
+          <p className={styles.noResultsHint}>Try a series name (SHERO, NEKO, Botanical) or product type (mug, poster, tote).</p>
+          <div className={styles.noResultsLinks}>
+            <Link href="/shop" className={styles.noResultsCta}>Browse all products</Link>
+            <Link href="/archive" className={styles.noResultsAlt}>Search original works →</Link>
+          </div>
         </div>
       )}
 

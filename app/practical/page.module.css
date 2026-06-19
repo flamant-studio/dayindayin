@@ -9,3 +9,28 @@
 .content section h2 { font-size: 1rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
 
 .content section p { font-size: 0.95rem; font-weight: 300; line-height: 1.8; color: #444; }
+
+.content section ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+.content section li { font-size: 0.95rem; font-weight: 300; line-height: 1.8; color: #444; margin-bottom: 0.25rem; }
+
+/* Pricing table */
+.priceTable { width: 100%; border-collapse: collapse; margin: 1.25rem 0; }
+
+.priceRow { border-bottom: 1px solid #E8E4DF; }
+.priceRow:first-child { border-top: 1px solid #E8E4DF; }
+
+.priceLabel {
+  padding: 0.75rem 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #444;
+}
+
+.priceValue {
+  padding: 0.75rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2C3440;
+  text-align: right;
+  white-space: nowrap;
+}

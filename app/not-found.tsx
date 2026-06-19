@@ -18,6 +18,13 @@ export default function NotFound() {
           <Link href="/shop" className={styles.primary}>Browse the shop</Link>
           <Link href="/" className={styles.secondary}>Back to home</Link>
         </div>
+        <div className={styles.also}>
+          <Link href="/fine-art" className={styles.alsoLink}>Fine Art</Link>
+          <span className={styles.alsoDot}>·</span>
+          <Link href="/archive" className={styles.alsoLink}>All Works</Link>
+          <span className={styles.alsoDot}>·</span>
+          <Link href="/art-journal" className={styles.alsoLink}>Studio Notes</Link>
+        </div>
       </div>
     </div>
   )
