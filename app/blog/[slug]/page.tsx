@@ -11,7 +11,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPost(slug);
-  return { title: post ? post.title : "Post" };
+  return {
+    title: post ? `${post.title} — Studio Notes` : "Studio Notes",
+    description: post?.excerpt,
+  };
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
@@ -21,17 +24,26 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <div className={styles.page}>
-      <Link href="/art-journal" className={styles.back}>← Art Journal</Link>
+      <Link href="/art-journal" className={styles.back}>← Studio Notes</Link>
       <article>
         <header className={styles.header}>
-          <p className={styles.date}>{new Date(post.date).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}</p>
           <h1>{post.title}</h1>
+          <p className={styles.excerpt}>{post.excerpt}</p>
         </header>
         <div className={styles.image}>
-          <Image src={post.image} alt={post.title} width={900} height={500} style={{ objectFit: "cover", width: "100%", height: "auto" }} />
+          <Image
+            src={post.image}
+            alt={post.title}
+            width={900}
+            height={500}
+            style={{ objectFit: "cover", width: "100%", height: "auto" }}
+          />
         </div>
         <div className={styles.body}>
-          <p>{post.excerpt}</p>
+          {post.body
+            ? post.body.map((para, i) => <p key={i}>{para}</p>)
+            : <p>{post.excerpt}</p>
+          }
         </div>
       </article>
     </div>

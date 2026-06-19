@@ -15,6 +15,7 @@ export interface BlogPost {
   date: string;
   excerpt: string;
   image: string;
+  body?: string[];
 }
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works'
@@ -77,13 +78,81 @@ export const works: Work[] = [
   { slug: 'purple-flower',      title: 'Purple Flower',      category: 'photography', year: '2021', description: 'Fine art photograph.', image: `${BLOB}/photography/purple-flower.jpg` },
 ];
 
+const BLOB_WORKS = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works'
+
 export const blogPosts: BlogPost[] = [
-  { slug: "kaleidoscope-pattern-observation", title: "Kaleidoscope Pattern Observation", date: "2021-09-01", excerpt: "Observations on pattern, colour, and the infinite.", image: "/images/placeholder-work.jpg" },
-  { slug: "dont-shoot-we-are-humans", title: "Don't Shoot We Are Humans", date: "2021-08-15", excerpt: "On humanity and the political dimension of art.", image: "/images/placeholder-work.jpg" },
-  { slug: "working-title-modern-things", title: "Working Title Modern Things", date: "2021-07-20", excerpt: "Notes on working with modern materials and old techniques.", image: "/images/placeholder-work.jpg" },
-  { slug: "most-leafy-plants-are-feminine", title: "Most Leafy Plants Are Feminine", date: "2021-07-01", excerpt: "A meditation on femininity, nature, and growth.", image: "/images/placeholder-work.jpg" },
-  { slug: "the-fall", title: "The Fall", date: "2021-06-10", excerpt: "On endings, transitions, and new beginnings.", image: "/images/placeholder-work.jpg" },
-  { slug: "fylgja", title: "Fylgja", date: "2021-05-20", excerpt: "Norse mythology and the spirit that follows.", image: "/images/placeholder-work.jpg" },
+  {
+    slug: "kaleidoscope-pattern-observation",
+    title: "Kaleidoscope Pattern Observation",
+    date: "2021-09-01",
+    excerpt: "Observations on pattern, colour, and the infinite.",
+    image: `${BLOB_WORKS}/tufting/rainbow-I.jpg`,
+    body: [
+      "There is something that happens when a pattern starts to repeat — a moment where your eye stops tracking the individual elements and begins to read the whole. It becomes something else. A texture. A field. A kind of hum.",
+      "I've been thinking about this a lot lately, working on pieces where the pattern is the point. Not decoration. Not background. The pattern itself as the subject. The kaleidoscope as a model: the same fragment, rotated, reflected, multiplied — and suddenly it has presence.",
+      "Colour behaves differently in pattern than it does in isolation. A yellow that would be cheerful on its own becomes electric in repetition. A red that reads as aggressive alone settles into something ceremonial. I find this endlessly interesting. The infinite in the small.",
+    ],
+  },
+  {
+    slug: "dont-shoot-we-are-humans",
+    title: "Don't Shoot We Are Humans",
+    date: "2021-08-15",
+    excerpt: "On humanity and the political dimension of art.",
+    image: `${BLOB_WORKS}/embroidery/fuck-alting.jpg`,
+    body: [
+      "I didn't set out to make political art. But at some point I realised that everything I make is political, because I am a person with a body in a world that has opinions about that body. There's no neutral.",
+      "The embroidery work especially. There's something about the slowness of it — the hours and hours of hand stitching — that feels like a form of insistence. I am here. I am making something. I refuse to be invisible.",
+      "The title of this note comes from a phrase I kept returning to during a difficult period. It sounds like a protest sign. It sounds like pleading. It's both. I think a lot of my work lives in that gap between the two.",
+    ],
+  },
+  {
+    slug: "working-title-modern-things",
+    title: "Working Title Modern Things",
+    date: "2021-07-20",
+    excerpt: "Notes on working with modern materials and old techniques.",
+    image: `${BLOB_WORKS}/painting/universe-1.jpg`,
+    body: [
+      "Tufting is a technique from the mid-20th century carpet industry, scaled down and repurposed for fine art. Every time I explain it to someone, they say: 'Oh, like a rug?' And yes. Exactly like a rug. That's part of what I find interesting about it.",
+      "There's a hierarchy built into how we think about materials and techniques. Oil on canvas sits near the top. Textiles — woven, stitched, tufted — sit lower, associated with craft, with women's work, with the domestic and the utilitarian. I find that hierarchy worth interrogating.",
+      "I'm not interested in elevating textile work by distancing it from its origins. I'm interested in the origins themselves. The fact that this started in factories, in households, in the everyday. The 'modern things' in the title are partially a joke. The technique is old. The insistence on using it is the modern thing.",
+    ],
+  },
+  {
+    slug: "most-leafy-plants-are-feminine",
+    title: "Most Leafy Plants Are Feminine",
+    date: "2021-07-01",
+    excerpt: "A meditation on femininity, nature, and growth.",
+    image: `${BLOB_WORKS}/painting/blue-branch.jpg`,
+    body: [
+      "Someone said this to me once, completely seriously, as botanical explanation. I don't know if it's scientifically true. But I've been thinking about it since — the way we gender things that have no gender, and what that reveals about us.",
+      "Plants in art have a long history of meaning something other than themselves. Roses for love, willows for grief, oak for strength. The botanical vocabulary is ancient and loaded. When I draw leaves, I'm drawing into that weight whether I want to or not.",
+      "What I'm trying to do is reclaim some of that. Not the assigned meanings but the shapes themselves. The specific way a leaf curls. The exact green of new growth before it hardens. Growth as a fact rather than a metaphor — though it can be both.",
+    ],
+  },
+  {
+    slug: "the-fall",
+    title: "The Fall",
+    date: "2021-06-10",
+    excerpt: "On endings, transitions, and new beginnings.",
+    image: `${BLOB_WORKS}/tufting/birds.jpg`,
+    body: [
+      "I've been thinking about falls. The season, the act, the mythology. There's a specific melancholy to the time when things are ending that I find very productive. I don't mean this in a morbid way. I mean that endings clarify.",
+      "A piece I'm working on keeps returning to the image of birds in migration. They leave. They know to leave. They have a direction encoded in them that I find enviable and mysterious. Seasonal. Purposeful. The fall is part of their year the way it's part of ours — a signal.",
+      "The tufting on this piece is deliberately irregular. The pile height varies. In some places the backing shows through. I wanted the impermanence visible in the work rather than smoothed over.",
+    ],
+  },
+  {
+    slug: "fylgja",
+    title: "Fylgja",
+    date: "2021-05-20",
+    excerpt: "Norse mythology and the spirit that follows.",
+    image: `${BLOB_WORKS}/tufting/purple-sun.jpg`,
+    body: [
+      "In Norse mythology, a fylgja is a spirit that accompanies a person through life — a kind of double, or attendant, that is part of your being but separate from it. You can't see your own fylgja. Others sometimes can.",
+      "I've been drawn to this idea because it names something I've always felt but didn't have language for. The sense of something that travels with you. That is you, in some sense, but also witnesses you. The creative practice as fylgja — the thing that follows me through everything, that others encounter through the work.",
+      "The piece I named after this concept is one of my earliest tufted works. The purple felt right. Saturated, a little ceremonial, slightly out of ordinary time. That's what I was going for.",
+    ],
+  },
 ];
 
 export function getWork(slug: string) {
