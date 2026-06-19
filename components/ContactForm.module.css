@@ -5,6 +5,20 @@
   max-width: 520px;
 }
 
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.labelText {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
 .form input,
 .form textarea,
 .select {

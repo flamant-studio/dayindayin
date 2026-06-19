@@ -15,9 +15,26 @@ export const metadata = {
   alternates: { canonical: '/about' },
 }
 
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Stine Weirsøe Flamant',
+  url: 'https://dayindayin.dk/about',
+  jobTitle: 'Artist',
+  description: 'Contemporary artist based in Copenhagen. Working in hand tufting, embroidery, painting, and photography.',
+  sameAs: ['https://www.instagram.com/dayindayin'],
+  image: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/about/stine-portrait.jpg',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Day In Day In',
+    url: 'https://dayindayin.dk',
+  },
+}
+
 export default function AboutPage() {
   return (
     <div className={styles.page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className={styles.hero}>

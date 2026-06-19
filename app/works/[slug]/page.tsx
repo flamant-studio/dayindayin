@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { works, getWork } from "@/lib/data";
 import { notFound } from "next/navigation";
+import ShareButtons from "@/components/ShareButtons";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -137,6 +138,12 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             <Link href={`/archive?category=${work.category}`} className={styles.moreLink}>
               See more {label.toLowerCase()} works →
             </Link>
+
+            <ShareButtons
+              url={`https://dayindayin.dk/works/${work.slug}`}
+              title={`${work.title} — ${label} by Stine Weirsøe Flamant`}
+              imageUrl={work.image}
+            />
           </div>
         </div>
       </div>

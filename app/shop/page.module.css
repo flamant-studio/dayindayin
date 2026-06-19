@@ -48,6 +48,15 @@
 
 .showAllInline:hover { color: var(--c-text); }
 
+.socialProof {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  opacity: 0.7;
+}
+
 /* ── Sort ───────────────────────────────────────────────── */
 
 .sortRow {

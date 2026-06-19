@@ -446,12 +446,14 @@
 
 @media (max-width: 768px) {
   .page { padding: 0 var(--sp-5) var(--sp-12); }
-  .layout { grid-template-columns: 1fr; gap: var(--sp-6); }
-  .infoInner { position: static; }
+  .layout { grid-template-columns: 1fr; gap: var(--sp-4); }
+  .infoInner { position: static; gap: var(--sp-4); }
+  .title { font-size: clamp(1.5rem, 5vw, 2rem); }
   .thumb { width: calc(33.33% - 0.33rem); }
   .relatedGrid { grid-template-columns: repeat(2, 1fr); }
   .studioNote { padding: var(--sp-8) var(--sp-5); }
   .studioNoteText { font-size: clamp(1.1rem, 4vw, 1.4rem); }
+  .tagRow { flex-wrap: wrap; }
 }
 
 /* ── Print ───────────────────────────────────────────────── */

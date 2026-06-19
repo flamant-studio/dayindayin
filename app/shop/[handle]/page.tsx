@@ -234,12 +234,13 @@ export default async function ProductPage({ params }: PageProps) {
               <SizeGuide variants={product.variants} />
             )}
 
-            <details className={styles.fulfillmentAccordion} open>
+            <details className={styles.fulfillmentAccordion}>
               <summary className={styles.fulfillmentSummary}>Shipping &amp; Returns</summary>
               <div className={styles.fulfillmentNote}>
-                <p>Fulfilled by Gelato. Printed on demand and shipped directly to you.</p>
-                <p>Ships within 3–7 business days to EU, UK, and Norway.</p>
-                <p>No returns on print-on-demand unless the product arrives defective or damaged.</p>
+                <p>Printed on demand by Gelato and shipped directly to you.</p>
+                <p>Production: 2–4 business days. Delivery: 2–5 days within EU. <strong>Estimated total: 5–10 days from order.</strong></p>
+                <p>Ships to EU, UK, and Norway. International shipping available at checkout.</p>
+                <p>No returns on print-on-demand unless the product arrives defective or damaged. Contact us within 14 days of delivery.</p>
               </div>
             </details>
 

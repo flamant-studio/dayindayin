@@ -61,24 +61,38 @@ export default function ContactForm() {
       {/* Honeypot */}
       <input type="text" name="website" tabIndex={-1} aria-hidden="true" style={{ display: 'none' }} />
 
-      <input type="text" name="name" placeholder="Name" required disabled={status === 'submitting'} />
-      <input type="email" name="email" placeholder="Email" required disabled={status === 'submitting'} />
+      <label className={styles.label}>
+        <span className={styles.labelText}>Name</span>
+        <input type="text" name="name" placeholder="Your name" required disabled={status === 'submitting'} aria-required="true" />
+      </label>
 
-      <select
-        name="subject"
-        className={styles.select}
-        value={subject}
-        onChange={e => setSubject(e.target.value)}
-        required
-        disabled={status === 'submitting'}
-      >
-        <option value="" disabled>What&apos;s this about?</option>
-        {SUBJECTS.map(s => (
-          <option key={s} value={s}>{s}</option>
-        ))}
-      </select>
+      <label className={styles.label}>
+        <span className={styles.labelText}>Email</span>
+        <input type="email" name="email" placeholder="your@email.com" required disabled={status === 'submitting'} aria-required="true" />
+      </label>
 
-      <textarea name="message" placeholder="Message" rows={5} required disabled={status === 'submitting'} />
+      <label className={styles.label}>
+        <span className={styles.labelText}>Subject</span>
+        <select
+          name="subject"
+          className={styles.select}
+          value={subject}
+          onChange={e => setSubject(e.target.value)}
+          required
+          disabled={status === 'submitting'}
+          aria-required="true"
+        >
+          <option value="" disabled>What&apos;s this about?</option>
+          {SUBJECTS.map(s => (
+            <option key={s} value={s}>{s}</option>
+          ))}
+        </select>
+      </label>
+
+      <label className={styles.label}>
+        <span className={styles.labelText}>Message</span>
+        <textarea name="message" placeholder="What would you like to know?" rows={5} required disabled={status === 'submitting'} aria-required="true" />
+      </label>
 
       {status === 'error' && (
         <p className={styles.error}>Something went wrong — please try again.</p>

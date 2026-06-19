@@ -171,29 +171,30 @@
 /* ── Statement pull-quote ────────────────────────────────────── */
 
 .statement {
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto var(--sp-12);
-  padding: var(--sp-8) 0;
-  border-top: 1px solid var(--c-border);
-  border-bottom: 1px solid var(--c-border);
+  padding: var(--sp-12) var(--sp-6);
+  border-top: 2px solid var(--c-accent);
   text-align: center;
 }
 
 .statementQuote {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.55;
   font-style: italic;
   color: var(--c-text);
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-5);
+  letter-spacing: -0.01em;
 }
 
 .statementAttr {
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--c-muted);
+  color: var(--c-accent);
+  font-weight: 600;
 }
 
 /* ── Studio notes link ───────────────────────────────────────── */
