@@ -5,16 +5,16 @@
 }
 
 .page h1 {
+  font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  letter-spacing: -0.03em;
   margin-bottom: 0.75rem;
 }
 
 .page .updated {
   font-size: 0.8rem;
-  color: #888;
+  color: var(--c-muted);
   font-weight: 400;
   margin-bottom: 3rem;
 }
@@ -31,7 +31,7 @@
   font-size: 0.95rem;
   font-weight: 300;
   line-height: 1.8;
-  color: #444;
+  color: var(--c-text);
   margin-bottom: 1rem;
 }
 
@@ -44,7 +44,7 @@
   font-size: 0.95rem;
   font-weight: 300;
   line-height: 1.8;
-  color: #444;
+  color: var(--c-text);
   margin-bottom: 0.3rem;
 }
 

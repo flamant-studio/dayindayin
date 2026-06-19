@@ -126,7 +126,7 @@
 .stepBody {
   font-size: 0.95rem;
   line-height: 1.65;
-  color: #444;
+  color: var(--c-text);
 }
 
 /* Pricing section */

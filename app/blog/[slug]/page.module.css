@@ -13,7 +13,7 @@
 
 .header { margin-bottom: 2rem; }
 
-.date { font-size: 0.7rem; color: #aaadb0; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.date { font-size: 0.7rem; color: var(--c-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
 
 .header h1 {
   font-family: var(--font-display);

@@ -51,7 +51,7 @@
 
 .featuredDate {
   font-size: 0.7rem;
-  color: #aaa;
+  color: var(--c-muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -66,7 +66,7 @@
 
 .featuredExcerpt {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--c-muted);
   line-height: 1.7;
   font-style: italic;
 }
@@ -102,7 +102,7 @@
   position: relative;
   aspect-ratio: 4/3;
   overflow: hidden;
-  background: #f3f3f3;
+  background: var(--c-surface);
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }
@@ -111,7 +111,7 @@
 
 .cardBody { display: flex; flex-direction: column; gap: 0.5rem; }
 
-.date { font-size: 0.7rem; color: #aaadb0; letter-spacing: 0.1em; text-transform: uppercase; }
+.date { font-size: 0.7rem; color: var(--c-muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
 .cardBody h2 { font-size: 1rem; font-weight: 500; line-height: 1.4; }
 
