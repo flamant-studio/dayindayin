@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { works } from '@/lib/data'
 import { getProductByHandle, getProductsByTag, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import BackLink from '@/components/BackLink'
 import ProductOptions from '@/components/ProductOptions'
@@ -326,6 +327,40 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      {(() => {
+        // Cross-sell: show originals from the same medium (tufting/embroidery/painting/photography)
+        const mediumTag = product.tags.find(t => ['tufting','embroidery','painting','photography'].includes(t.toLowerCase()))
+        if (!mediumTag) return null
+        const originals = works.filter(w => w.category === mediumTag.toLowerCase() as 'tufting' | 'embroidery' | 'painting' | 'photography').slice(0, 4)
+        if (originals.length === 0) return null
+        const mediumLabel = mediumTag.charAt(0).toUpperCase() + mediumTag.slice(1)
+        return (
+          <section className={styles.originalsSection}>
+            <div className={styles.originalsSectionHead}>
+              <div>
+                <h2 className={styles.originalsSectionTitle}>Original {mediumLabel} works</h2>
+                <p className={styles.originalsSectionSub}>These are the unique originals this print is based on — available on enquiry.</p>
+              </div>
+              <Link href={`/archive?category=${mediumTag.toLowerCase()}`} className={styles.originalsViewAll}>See all originals →</Link>
+            </div>
+            <div className={styles.originalsGrid}>
+              {originals.map(w => (
+                <Link key={w.slug} href={`/works/${w.slug}`} className={styles.originalCard}>
+                  <div className={styles.originalCardImg}>
+                    <Image src={w.image} alt={w.title} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
+                    <div className={styles.originalCardOverlay}>
+                      <span className={styles.originalCardEnquire}>Enquire →</span>
+                    </div>
+                  </div>
+                  <span className={styles.originalCardTitle}>{w.title}</span>
+                  <span className={styles.originalCardYear}>{w.year}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )
+      })()}
 
       <RecentlyViewed
         currentHandle={handle}

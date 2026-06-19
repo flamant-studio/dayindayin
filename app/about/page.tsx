@@ -171,6 +171,24 @@ export default function AboutPage() {
         </ul>
       </section>
 
+      {/* ── Browse by medium ─────────────────────────────────── */}
+      <section className={styles.mediumLinks}>
+        <h2 className={styles.mediumLinksTitle}>Browse the archive by medium</h2>
+        <div className={styles.mediumLinksGrid}>
+          {[
+            { href: '/archive?category=tufting',     label: 'Hand Tufting',  count: 19 },
+            { href: '/archive?category=embroidery',  label: 'Embroidery',    count: 11 },
+            { href: '/archive?category=painting',    label: 'Painting',      count: 10 },
+            { href: '/archive?category=photography', label: 'Photography',   count: 11 },
+          ].map(({ href, label, count }) => (
+            <Link key={href} href={href} className={styles.mediumLink}>
+              <span className={styles.mediumLinkLabel}>{label}</span>
+              <span className={styles.mediumLinkCount}>{count} works</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* ── Two ways to collect ──────────────────────────────── */}
       <section className={styles.studio}>
         <p className={styles.studioNote}>

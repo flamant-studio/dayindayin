@@ -39,6 +39,14 @@ const FAQ_ITEMS = [
     q: "Can I use the artwork commercially?",
     a: "Purchasing a print gives you a physical product for personal use. It does not transfer reproduction rights. For editorial, interior, or product design licensing, email stine@dayindayin.dk with what you have in mind.",
   },
+  {
+    q: "What is Gelato, and why are prints made this way?",
+    a: "Gelato is a European print fulfilment network. When you order, your print is produced at the Gelato facility nearest to you — which means shorter shipping distances, faster delivery, and no overproduction. Nothing sits in a warehouse. The model also means we can offer a wide range of sizes and formats without holding stock.",
+  },
+  {
+    q: "What print quality can I expect?",
+    a: "Gelato uses professional-grade printing on museum-quality paper (for art prints and posters) or canvas. Art prints use archival inks on 250g or 300g paper. Mugs and apparel use dye-sublimation for sharp, lasting colour. If you're unhappy with the print quality for any reason, contact us within 14 days.",
+  },
 ];
 
 const faqJsonLd = {

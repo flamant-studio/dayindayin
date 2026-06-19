@@ -43,6 +43,26 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const wordCount = post.body ? post.body.join(' ').split(/\s+/).length : post.excerpt.split(/\s+/).length;
   const readMins = Math.max(1, Math.round(wordCount / 200));
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image,
+    datePublished: post.date,
+    author: {
+      '@type': 'Person',
+      name: 'Stine Weirsøe Flamant',
+      url: 'https://dayindayin.dk/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Day In Day In',
+      url: 'https://dayindayin.dk',
+    },
+    url: `https://dayindayin.dk/blog/${post.slug}`,
+  }
+
   // Infer related works category from post image URL path
   const imgCategory = (['tufting', 'embroidery', 'painting', 'photography'] as const)
     .find(cat => post.image.includes(`/${cat}/`))
@@ -52,6 +72,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <div className={styles.page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <Link href="/art-journal" className={styles.back}>← Studio Notes</Link>
       <article>
         <header className={styles.header}>
