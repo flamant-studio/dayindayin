@@ -53,6 +53,8 @@ export default function Footer() {
             <Link href="/shop?filter=tote">Tote Bags</Link>
             <Link href="/shop?filter=apparel">Apparel</Link>
             <Link href="/shop?filter=postcard">Postcards</Link>
+            <Link href="/shop?filter=wood-print">Wood Prints</Link>
+            <Link href="/shop?filter=water-bottle">Water Bottles</Link>
             <Link href="/saved">Saved</Link>
           </div>
           <div className={styles.col}>

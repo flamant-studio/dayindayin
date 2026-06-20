@@ -31,7 +31,7 @@ const SERIES_DESCRIPTIONS: Record<string, string> = {
   botanical: 'Plants, growth, and the patient life of natural forms. Observed from the studio and from the edges of roads.',
   floral: 'Bold, close-up florals that push colour and form to the edge of abstraction.',
   faces: 'Portraits, masks, and the human face in all its complexity — from Sri Lanka to the Copenhagen streets.',
-  sommerby: 'Work from the Sommerby summer series — warm, loose, and full of Danish light.',
+  sommerby: 'A Danish summer in paint — long evenings, pale light, the particular peace of a place you return to every year. Stine has been painting Sommerby since 2021.',
 }
 
 const FILTER_LABELS: Record<string, string> = {

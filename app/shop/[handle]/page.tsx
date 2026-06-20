@@ -233,7 +233,7 @@ export default async function ProductPage({ params }: PageProps) {
 
   const productSeries = seriesLabel(product)
 
-  // Task 7: colorway siblings — products with same title prefix (before last " — ")
+  // Colorway siblings — products with same title prefix (before last " — ")
   const titleParts = product.title.split(' — ')
   const titlePrefix = titleParts.length > 1 ? titleParts.slice(0, -1).join(' — ') : null
   const colorwaySiblings = titlePrefix
@@ -245,6 +245,32 @@ export default async function ProductPage({ params }: PageProps) {
           alt: p.title,
         }))
     : []
+
+  // Format siblings — same artwork (by displayTitle match), different product type
+  // Only add fetch if we have a meaningful artwork name
+  const artworkName = displayTitle(product.title)
+  const formatSiblings: Array<{ href: string; type: string; price: string }> = []
+  if (artworkName && artworkName !== product.title && titlePrefix) {
+    const formatCandidates = await getProductsByTitleKeyword(artworkName.split(' — ')[0], 50).catch(() => [])
+    const seen = new Set<string>()
+    for (const p of formatCandidates) {
+      if (p.handle === handle) continue
+      if (!p.firstImage) continue
+      // Must share the same artwork name (exact, or with orientation suffix like "(Portrait)")
+      const pArtwork = displayTitle(p.title)
+      if (pArtwork !== artworkName && !pArtwork.startsWith(artworkName + ' (')) continue
+      const pType = categoryLabel(p)
+      if (seen.has(pType)) continue
+      seen.add(pType)
+      formatSiblings.push({
+        href: `/shop/${p.handle}`,
+        type: pType,
+        price: formatPrice(p.minPrice.amount),
+      })
+    }
+    // Sort by price ascending
+    formatSiblings.sort((a, b) => parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, '')))
+  }
 
   // Build gallery images array — include dimensions for natural aspect ratio rendering
   const galleryImagesRaw = [
@@ -347,6 +373,19 @@ export default async function ProductPage({ params }: PageProps) {
                 <p className={styles.editionNote}>Limited edition · Archival inkjet</p>
               )}
             </div>
+
+            {/* 1b. Format alternatives — same artwork, other product types */}
+            {formatSiblings.length > 0 && (
+              <div className={styles.formatRow}>
+                <span className={styles.formatRowLabel}>Also as:</span>
+                <span className={`${styles.formatChip} ${styles.formatChipActive}`}>{catLabel}</span>
+                {formatSiblings.map(s => (
+                  <a key={s.href} href={s.href} className={styles.formatChip}>
+                    {s.type}
+                  </a>
+                ))}
+              </div>
+            )}
 
             {/* 2. Price */}
             <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />

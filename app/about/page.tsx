@@ -163,6 +163,11 @@ export default function AboutPage() {
             floor. Layers added and scraped back. Sessions sometimes weeks apart while a canvas
             dries or settles. The Universe series has been going since 2019.
           </p>
+          <p>
+            Photography is the quietest. Shot on location — Denmark, Sri Lanka, Copenhagen streets, summer houses.
+            Stine photographs the moment before or after, the thing at the edge of frame.
+            Most of the photography archive was shot on a single camera body over many years of travel and daily observation.
+          </p>
         </div>
       </section>
 
