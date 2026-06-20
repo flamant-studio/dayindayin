@@ -16,6 +16,16 @@ export default function NotFound() {
         <p className={styles.text}>
           The page you&apos;re looking for doesn&apos;t exist, or may have moved. Some works get retired, some links evolve.
         </p>
+        <form method="GET" action="/search" className={styles.searchForm}>
+          <input
+            type="search"
+            name="q"
+            placeholder="Search prints, series, works…"
+            className={styles.searchInput}
+            autoComplete="off"
+          />
+          <button type="submit" className={styles.searchBtn} aria-label="Search">→</button>
+        </form>
         <div className={styles.actions}>
           <Link href="/shop" className={styles.primary}>Browse the shop</Link>
           <Link href="/" className={styles.secondary}>Back to home</Link>

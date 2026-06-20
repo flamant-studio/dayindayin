@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect } from 'react'
 import { useCart } from './CartProvider'
 import styles from './CartDrawer.module.css'
@@ -42,7 +43,7 @@ export default function CartDrawer() {
               <p className={styles.emptyHeading}>Your cart is empty</p>
               <p className={styles.emptySubtext}>Discover original works by Stine Weirsøe Flamant</p>
             </div>
-            <button className={styles.continueShopping} onClick={closeCart}>Browse the shop</button>
+            <Link href="/shop" className={styles.continueShopping} onClick={closeCart}>Browse the shop</Link>
           </div>
         ) : (
           <>

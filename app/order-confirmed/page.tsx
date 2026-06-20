@@ -49,8 +49,7 @@ export default function OrderConfirmedPage() {
 
         <div className={styles.note}>
           <p className={styles.noteText}>
-            No returns on print-on-demand unless the product arrives defective or damaged.
-            In that case, reach out within 14 days with a photo of the issue.
+            If anything arrives damaged or wrong, let us know within 14 days with a photo — we&apos;ll make it right.
           </p>
         </div>
       </div>

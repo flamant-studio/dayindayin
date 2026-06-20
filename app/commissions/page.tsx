@@ -56,6 +56,13 @@ export default function CommissionsPage() {
           Stine takes commissions selectively — when the brief is interesting and the timing works.
           No intermediaries. You speak directly with her. Embroidery, hand tufting, and painting.
         </p>
+        <div className={styles.statStrip}>
+          <span className={styles.stat}><strong>4–10 weeks</strong> typical lead time</span>
+          <span className={styles.statDot} aria-hidden="true" />
+          <span className={styles.stat}><strong>Copenhagen</strong> · ships Europe-wide</span>
+          <span className={styles.statDot} aria-hidden="true" />
+          <span className={styles.stat}><strong>50% deposit</strong> to start</span>
+        </div>
       </section>
 
       <section className={styles.types}>

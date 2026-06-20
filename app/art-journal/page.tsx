@@ -39,7 +39,36 @@ export default async function StudioNotes({ searchParams }: PageProps) {
 
   const [featured, ...rest] = filtered
 
+  const featuredWc = featured
+    ? (featured.body ? featured.body.join(' ').split(/\s+/).length : featured.excerpt.split(/\s+/).length)
+    : 0
+  const featuredMins = featured ? Math.max(1, Math.round(featuredWc / 200)) : 0
+
+  const blogListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Studio Notes — Day In Day In',
+    description: "Notes from Stine Weirsøe Flamant's Copenhagen studio — process, ideas, and what's been happening.",
+    url: 'https://dayindayin.dk/art-journal',
+    author: {
+      '@type': 'Person',
+      name: 'Stine Weirsøe Flamant',
+      url: 'https://dayindayin.dk/about',
+    },
+    blogPost: blogPosts.slice(0, 10).map(p => ({
+      '@type': 'BlogPosting',
+      headline: p.title,
+      description: p.excerpt,
+      image: p.image,
+      datePublished: p.date,
+      url: `https://dayindayin.dk/blog/${p.slug}`,
+      author: { '@type': 'Person', name: 'Stine Weirsøe Flamant' },
+    })),
+  }
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListJsonLd) }} />
     <div className={styles.page}>
       <section className={styles.hero}>
         <h1>Studio Notes</h1>
@@ -88,6 +117,7 @@ export default async function StudioNotes({ searchParams }: PageProps) {
           <div className={styles.featuredBody}>
             <p className={styles.featuredDate}>
               {new Date(featured.date).toLocaleDateString("en-GB", { year: "numeric", month: "long" })}
+              {' · '}{featuredMins} min read
             </p>
             <h2 className={styles.featuredTitle}>{featured.title}</h2>
             <p className={styles.featuredExcerpt}>{featured.excerpt}</p>
@@ -121,5 +151,6 @@ export default async function StudioNotes({ searchParams }: PageProps) {
         </div>
       )}
     </div>
+    </>
   );
 }

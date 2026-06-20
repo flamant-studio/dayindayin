@@ -53,6 +53,10 @@ const FAQ_ITEMS = [
     q: "What print quality can I expect?",
     a: "Gelato uses professional-grade printing on museum-quality paper (for art prints and posters) or canvas. Art prints use archival inks on 250g or 300g paper. Mugs and apparel use dye-sublimation for sharp, lasting colour. If you're unhappy with the print quality for any reason, contact us within 14 days.",
   },
+  {
+    q: "Do you offer wholesale or B2B pricing?",
+    a: "We work selectively with retailers, galleries, and interior designers. Email stine@dayindayin.dk with your shop name, location, and what you have in mind. Minimum order quantities and wholesale pricing are discussed on request.",
+  },
 ];
 
 const faqJsonLd = {

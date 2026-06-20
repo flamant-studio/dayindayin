@@ -78,9 +78,22 @@ export default async function HomePage() {
     founder: { '@type': 'Person', name: 'Stine Weirsøe Flamant' },
   }
 
+  const siteSearchJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Day In Day In',
+    url: 'https://dayindayin.dk',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: 'https://dayindayin.dk/search?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSearchJsonLd) }} />
       {/* ── Hero — full-bleed ────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>

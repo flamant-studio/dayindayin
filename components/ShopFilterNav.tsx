@@ -85,6 +85,7 @@ export default function ShopFilterNav({ activeTag, typeCounts, seriesCounts, tot
                 href={href}
                 onClick={() => setOpen(false)}
                 className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+                aria-current={isActive ? 'page' : undefined}
               >
                 {item.label}
                 {count !== undefined && count > 0 && <span className={styles.navCount}>{count}</span>}
@@ -104,6 +105,7 @@ export default function ShopFilterNav({ activeTag, typeCounts, seriesCounts, tot
                 href={href}
                 onClick={() => setOpen(false)}
                 className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+                aria-current={isActive ? 'page' : undefined}
               >
                 {item.label}
                 {count !== undefined && count > 0 && <span className={styles.navCount}>{count}</span>}

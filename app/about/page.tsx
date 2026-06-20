@@ -23,13 +23,21 @@ const personJsonLd = {
   url: 'https://dayindayin.dk/about',
   jobTitle: 'Artist',
   description: 'Contemporary artist based in Copenhagen. Working in hand tufting, embroidery, painting, and photography.',
-  sameAs: ['https://www.instagram.com/dayindayin'],
+  sameAs: ['https://www.instagram.com/dayindayin', 'https://dayindayin.dk'],
   image: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/about/stine-portrait.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Copenhagen',
+    addressCountry: 'DK',
+  },
+  nationality: { '@type': 'Country', name: 'Denmark' },
   worksFor: {
     '@type': 'Organization',
     name: 'Day In Day In',
     url: 'https://dayindayin.dk',
+    foundingDate: '2024',
   },
+  knowsAbout: ['Hand Tufting', 'Embroidery', 'Acrylic Painting', 'Photography', 'Textile Art'],
 }
 
 export default function AboutPage() {

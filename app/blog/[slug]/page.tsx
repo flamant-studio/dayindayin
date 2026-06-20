@@ -117,8 +117,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
         <div className={styles.body}>
           {post.body
-            ? post.body.map((para, i) => <p key={i}>{para}</p>)
-            : <p>{post.excerpt}</p>
+            ? post.body.map((para, i) => <p key={i} className={i === 0 ? styles.bodyLead : undefined}>{para}</p>)
+            : <p className={styles.bodyLead}>{post.excerpt}</p>
           }
         </div>
 

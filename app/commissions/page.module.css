@@ -67,6 +67,37 @@
   color: var(--c-muted);
 }
 
+.statStrip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  padding: 1rem 1.5rem;
+  background: var(--c-surface, #F0EDE8);
+  border-radius: 2px;
+}
+
+.stat {
+  font-size: 0.78rem;
+  color: var(--c-muted);
+  letter-spacing: 0.02em;
+}
+
+.stat strong {
+  color: var(--c-text);
+  font-weight: 600;
+}
+
+.statDot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--c-border, #E0DDD8);
+}
+
 /* Type cards */
 .types {
   display: grid;

@@ -50,6 +50,11 @@
   color: var(--c-text, #2C3440);
 }
 
+.bodyLead {
+  font-size: 1.2rem !important;
+  line-height: 1.9;
+}
+
 .body p:first-child::first-letter {
   font-family: var(--font-display);
   font-size: 3.5rem;

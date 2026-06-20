@@ -22,15 +22,20 @@ export default function QuickAddButton({ merchandiseId, title }: Props) {
   }
 
   return (
-    <button
-      type="button"
-      className={styles.btn}
-      data-quick-add="true"
-      onClick={handleClick}
-      disabled={loading}
-      aria-label={`Add ${title} to cart`}
-    >
-      {added ? '✓ Added' : '+ Add to cart'}
-    </button>
+    <>
+      <button
+        type="button"
+        className={styles.btn}
+        data-quick-add="true"
+        onClick={handleClick}
+        disabled={loading}
+        aria-label={added ? `${title} added to cart` : `Add ${title} to cart`}
+      >
+        {added ? '✓ Added' : '+ Add to cart'}
+      </button>
+      <span aria-live="polite" aria-atomic="true" className={styles.srOnly}>
+        {added ? `${title} added to cart` : ''}
+      </span>
+    </>
   )
 }

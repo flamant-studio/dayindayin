@@ -35,6 +35,39 @@
   margin-bottom: 2.5rem;
 }
 
+.searchForm {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border: 1px solid var(--c-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--c-text);
+}
+
+.searchInput::placeholder { color: var(--c-muted); }
+
+.searchBtn {
+  padding: 0.65rem 1rem;
+  background: var(--c-accent);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.searchBtn:hover { opacity: 0.85; }
+
 .actions {
   display: flex;
   gap: 1rem;
