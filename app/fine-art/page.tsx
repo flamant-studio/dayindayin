@@ -40,7 +40,7 @@ const sections: { id: WorkCategory; label: string; tagline: string }[] = [
   { id: "photography", label: "Photography",   tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after." },
 ];
 
-const FEATURED_SLUGS = ['liebes-panopticon', 'collage-bw', 'universe-1', 'purple-flower'];
+const FEATURED_SLUGS = ['liebes-panopticon', 'fuck-alting', 'universe-3', 'taped-objects'];
 
 export default function FineArt() {
   const featuredWorks = FEATURED_SLUGS
