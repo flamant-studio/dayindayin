@@ -7,6 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Art prints by Stine Weirsøe Flamant. Made by hand in Copenhagen.',
     start_url: '/',
     display: 'standalone',
+    orientation: 'portrait',
     background_color: '#F8F7F4',
     theme_color: '#2C3440',
     icons: [
@@ -14,10 +15,21 @@ export default function manifest(): MetadataRoute.Manifest {
         src: '/icon.svg',
         sizes: 'any',
         type: 'image/svg+xml',
+        purpose: 'any',
       },
       {
         src: '/apple-icon.png',
         sizes: '180x180',
+        type: 'image/png',
+      },
+      {
+        src: '/icon.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/icon.png',
+        sizes: '512x512',
         type: 'image/png',
       },
     ],

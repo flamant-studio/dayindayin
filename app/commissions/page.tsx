@@ -47,6 +47,10 @@ export default function CommissionsPage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <span className={styles.heroLabel}>Original Work</span>
+        <div className={styles.statusBadge}>
+          <span className={styles.statusDot} />
+          Currently accepting commissions for 2026
+        </div>
         <h1>Commissions</h1>
         <p className={styles.heroSub}>
           Stine takes commissions selectively — when the brief is interesting and the timing works.

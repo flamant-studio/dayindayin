@@ -334,6 +334,12 @@ export default async function ProductPage({ params }: PageProps) {
           <div className={styles.infoInner}>
             <p className={styles.productType}>{catLabel}</p>
             <h1 className={styles.title}>{product.title}</h1>
+            {(catLabel === 'Art Print' || catLabel === 'Framed Print' || catLabel === 'Poster') && (
+              <p className={styles.editionNote}>Open edition · Printed on demand</p>
+            )}
+            {catLabel === 'Photo Print' && (
+              <p className={styles.editionNote}>Limited edition · Archival inkjet</p>
+            )}
             <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
 
             {/* Product specs — show for single-variant products where there's no picker */}

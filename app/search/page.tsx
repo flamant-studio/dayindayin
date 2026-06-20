@@ -72,7 +72,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
         <div className={styles.suggestions}>
           <p className={styles.suggestionsLabel}>Try searching for</p>
           <div className={styles.suggestionsList}>
-            {['SHERO', 'NEKO', 'Sea Monsters', 'Botanical', 'Floral', 'Faces', 'mug', 'poster', 'tote', 'postcard', 'framed'].map((term) => (
+            {['SHERO', 'NEKO', 'Sea Monsters', 'Botanical', 'Floral', 'Faces', 'Sommerby', 'mug', 'poster', 'tote', 'postcard', 'framed'].map((term) => (
               <a key={term} href={`/search?q=${encodeURIComponent(term)}`} className={styles.suggestionChip}>{term}</a>
             ))}
           </div>

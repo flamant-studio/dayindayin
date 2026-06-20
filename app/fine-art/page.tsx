@@ -31,10 +31,26 @@ const breadcrumbJsonLd = {
   ],
 }
 
+const worksItemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Original Works — Stine Weirsøe Flamant',
+  url: 'https://dayindayin.dk/fine-art',
+  numberOfItems: works.length,
+  itemListElement: works.slice(0, 30).map((w, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://dayindayin.dk/works/${w.slug}`,
+    name: w.title,
+    image: w.image,
+  })),
+}
+
 export default function FineArt() {
   return (
     <div className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(worksItemListJsonLd) }} />
       <section className={styles.hero}>
         <span className={styles.heroLabel}>Original Works</span>
         <h1>Fine Art</h1>

@@ -43,26 +43,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const wordCount = post.body ? post.body.join(' ').split(/\s+/).length : post.excerpt.split(/\s+/).length;
   const readMins = Math.max(1, Math.round(wordCount / 200));
 
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.excerpt,
-    image: post.image,
-    datePublished: post.date,
-    author: {
-      '@type': 'Person',
-      name: 'Stine Weirsøe Flamant',
-      url: 'https://dayindayin.dk/about',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Day In Day In',
-      url: 'https://dayindayin.dk',
-    },
-    url: `https://dayindayin.dk/blog/${post.slug}`,
-  }
-
   // Infer related works category from post image URL path
   const imgCategory = (['tufting', 'embroidery', 'painting', 'photography'] as const)
     .find(cat => post.image.includes(`/${cat}/`))
@@ -83,6 +63,35 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     { keyword: 'shop of words', filter: 'art-print',    label: 'art prints' },
   ]
   const shopCta = shopCtaMap.find(({ keyword }) => allText.includes(keyword)) ?? null
+  const seriesKeywords = shopCtaMap.filter(({ keyword }) => allText.includes(keyword)).map(({ keyword }) => keyword)
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image,
+    datePublished: post.date,
+    dateModified: post.date,
+    keywords: ['art', 'Copenhagen', 'Stine Weirsøe Flamant', ...seriesKeywords].join(', '),
+    wordCount,
+    author: {
+      '@type': 'Person',
+      name: 'Stine Weirsøe Flamant',
+      url: 'https://dayindayin.dk/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Day In Day In',
+      url: 'https://dayindayin.dk',
+      logo: { '@type': 'ImageObject', url: 'https://dayindayin.dk/icon.png' },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://dayindayin.dk/blog/${post.slug}`,
+    },
+    url: `https://dayindayin.dk/blog/${post.slug}`,
+  }
 
   return (
     <div className={styles.page}>

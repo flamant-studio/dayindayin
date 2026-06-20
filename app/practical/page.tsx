@@ -121,6 +121,10 @@ export default function Practical() {
               For original fine art — tufted works, embroidery, paintings — pricing is by
               enquiry. <Link href="/fine-art">See the originals →</Link>
             </p>
+            <p>
+              More product types available — dad caps, water bottles, wood prints, greeting cards.{' '}
+              <Link href="/shop">See all products in the shop →</Link>
+            </p>
           </section>
 
           <section id="shipping">

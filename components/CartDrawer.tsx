@@ -143,7 +143,7 @@ export default function CartDrawer() {
                   Secure checkout
                 </span>
                 <span className={styles.trustDot} aria-hidden="true" />
-                <span className={styles.trustItem}>Ships 5–10 days</span>
+                <span className={styles.trustItem}>Delivered in 5–10 business days</span>
                 <span className={styles.trustDot} aria-hidden="true" />
                 <span className={styles.trustItem}>Printed by Gelato</span>
               </div>

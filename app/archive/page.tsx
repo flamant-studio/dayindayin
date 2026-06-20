@@ -39,7 +39,24 @@ export default async function Archive({ searchParams }: PageProps) {
   const base = active === "all" ? works : works.filter((w) => w.category === active);
   const filtered = [...base].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: active === 'all' ? 'All Works — Stine Weirsøe Flamant' : `${CATEGORY_LABELS[active]} — Stine Weirsøe Flamant`,
+    url: `https://dayindayin.dk/archive${active !== 'all' ? `?category=${active}` : ''}`,
+    numberOfItems: filtered.length,
+    itemListElement: filtered.slice(0, 20).map((w, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://dayindayin.dk/works/${w.slug}`,
+      name: w.title,
+      image: w.image,
+    })),
+  }
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
     <div className={styles.page}>
       <section className={styles.hero}>
         <h1>All Works</h1>
@@ -90,5 +107,6 @@ export default async function Archive({ searchParams }: PageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

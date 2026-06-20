@@ -139,7 +139,23 @@ export default async function CollectionsPage() {
     return { title, description, tag, accent, images, count: products.length }
   })
 
+  const collectionsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Collections — Day In Day In',
+    description: 'Curated series by Stine Weirsøe Flamant — SHERO, NEKO, Sea Monsters, Botanical, Floral, Faces, and Sommerby.',
+    url: 'https://dayindayin.dk/collections',
+    hasPart: SERIES_COLLECTIONS.map(({ title, description, tag }) => ({
+      '@type': 'CreativeWork',
+      name: title,
+      description,
+      url: `https://dayindayin.dk/shop?filter=${tag}`,
+    })),
+  }
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionsJsonLd) }} />
     <div className={styles.page}>
       <div className={styles.header}>
         <span className={styles.headerLabel}>Browse by series</span>
@@ -166,5 +182,6 @@ export default async function CollectionsPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

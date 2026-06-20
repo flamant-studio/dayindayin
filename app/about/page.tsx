@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { works } from '@/lib/data'
 import styles from './page.module.css'
 
 const BLOB_BASE = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
@@ -176,12 +177,12 @@ export default function AboutPage() {
       <section className={styles.mediumLinks}>
         <h2 className={styles.mediumLinksTitle}>Browse the archive by medium</h2>
         <div className={styles.mediumLinksGrid}>
-          {[
-            { href: '/archive?category=tufting',     label: 'Hand Tufting',  count: 19 },
-            { href: '/archive?category=embroidery',  label: 'Embroidery',    count: 11 },
-            { href: '/archive?category=painting',    label: 'Painting',      count: 10 },
-            { href: '/archive?category=photography', label: 'Photography',   count: 11 },
-          ].map(({ href, label, count }) => (
+          {([
+            { href: '/archive?category=tufting',     label: 'Hand Tufting',  count: works.filter(w => w.category === 'tufting').length },
+            { href: '/archive?category=embroidery',  label: 'Embroidery',    count: works.filter(w => w.category === 'embroidery').length },
+            { href: '/archive?category=painting',    label: 'Painting',      count: works.filter(w => w.category === 'painting').length },
+            { href: '/archive?category=photography', label: 'Photography',   count: works.filter(w => w.category === 'photography').length },
+          ] as const).map(({ href, label, count }) => (
             <Link key={href} href={href} className={styles.mediumLink}>
               <span className={styles.mediumLinkLabel}>{label}</span>
               <span className={styles.mediumLinkCount}>{count} works</span>

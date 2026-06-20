@@ -23,8 +23,8 @@ export default function CookieBanner() {
   return (
     <div className={styles.banner} role="region" aria-label="Cookie consent">
       <p className={styles.text}>
-        We use technically necessary cookies (cart, session). No tracking or advertising.{' '}
-        <Link href="/legal/privacy" className={styles.learnMore}>Privacy policy</Link>
+        We use cookies to keep your cart working. No tracking, no advertising cookies.{' '}
+        <Link href="/legal/privacy" className={styles.learnMore}>Privacy policy →</Link>
       </p>
       <div className={styles.actions}>
         <button className={styles.btnSecondary} onClick={() => decide('decline')}>

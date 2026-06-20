@@ -46,6 +46,16 @@ const CATEGORY_MEDIUM: Record<string, string> = {
   photography: "Archival inkjet print",
 }
 
+const SERIES_SHOP_FILTERS: Array<{ pattern: RegExp; filter: string; label: string }> = [
+  { pattern: /\bshero\b/i,       filter: 'shero',        label: 'SHERO series' },
+  { pattern: /\bneko\b/i,        filter: 'neko',         label: 'NEKO series' },
+  { pattern: /sea[\s-]monster/i, filter: 'sea-monsters', label: 'Sea Monsters' },
+  { pattern: /botanical/i,       filter: 'botanical',    label: 'Botanical' },
+  { pattern: /floral/i,          filter: 'floral',       label: 'Floral' },
+  { pattern: /\bfaces?\b/i,      filter: 'faces',        label: 'Faces' },
+  { pattern: /sommerby/i,        filter: 'sommerby',     label: 'Sommerby' },
+]
+
 export default async function WorkPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const work = getWork(slug);
@@ -53,6 +63,10 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
   const label = CATEGORY_LABELS[work.category] ?? work.category
   const medium = CATEGORY_MEDIUM[work.category] ?? work.description
+
+  const seriesMatch = SERIES_SHOP_FILTERS.find(s => s.pattern.test(work.title))
+  const shopHref = seriesMatch ? `/shop?filter=${seriesMatch.filter}` : '/shop'
+  const shopLabel = seriesMatch ? `${seriesMatch.label} prints` : 'prints in the shop'
 
   const related = works
     .filter((w) => w.category === work.category && w.slug !== work.slug)
@@ -158,7 +172,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
             <p className={styles.note}>
               This is a unique original work. Prints of Stine&apos;s designs are available in the{' '}
-              <Link href={`/search?q=${encodeURIComponent(work.title)}`}>shop</Link> from 56 kr.
+              <Link href={shopHref}>{shopLabel}</Link> from 56 kr.
             </p>
 
             <Link href={`/archive?category=${work.category}`} className={styles.moreLink}>
