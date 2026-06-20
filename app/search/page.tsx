@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAllProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
+import { displayTitle } from '@/lib/display'
 import { works } from '@/lib/data'
 import styles from './page.module.css'
 import shopStyles from '../shop/page.module.css'
@@ -106,7 +107,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
                   />
                 </div>
                 <div className={shopStyles.cardInfo}>
-                  <span className={shopStyles.cardTitle}>{p.title}</span>
+                  <span className={shopStyles.cardTitle}>{displayTitle(p.title)}</span>
                   <span className={shopStyles.cardType}>{categoryLabel(p)}</span>
                   <span className={shopStyles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
                 </div>

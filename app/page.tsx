@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
+import { displayTitle } from '@/lib/display'
 import { blogPosts } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
@@ -142,7 +143,7 @@ export default async function HomePage() {
                   }
                   <WishlistButton
                     handle={p.handle}
-                    title={p.title}
+                    title={displayTitle(p.title)}
                     imageUrl={p.firstImage?.url ?? null}
                     price={formatPriceLabel(p)}
                   />
@@ -151,7 +152,7 @@ export default async function HomePage() {
                   )}
                 </div>
                 <div className={styles.cardInfo}>
-                  <span className={styles.cardTitle}>{p.title}</span>
+                  <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
                   <span className={styles.cardType}>
                     {seriesLabel(p) ? `${seriesLabel(p)} · ` : ''}{categoryLabel(p)}
                   </span>

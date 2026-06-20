@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAllProducts, formatPrice, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
+import { displayTitle } from '@/lib/display'
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
 import ShoppingNudge from '@/components/ShoppingNudge'
@@ -240,7 +241,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
                   />
                   <WishlistButton
                     handle={p.handle}
-                    title={p.title}
+                    title={displayTitle(p.title)}
                     imageUrl={p.firstImage?.url ?? null}
                     price={formatPrice(p.minPrice.amount)}
                   />
@@ -256,7 +257,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
                   </div>
                 </div>
                 <div className={styles.cardInfo}>
-                  <span className={styles.cardTitle}>{p.title}</span>
+                  <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
                   <span className={styles.cardType}>{categoryLabel(p)}</span>
                   <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
                 </div>

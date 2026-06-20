@@ -152,17 +152,17 @@ export default function FineArt() {
 
       {/* ── Enquiry CTA ────────────────────────────────────────── */}
       <section className={styles.enquiryCta}>
-        <h2>Each piece exists once.</h2>
+        <h2>Want something that exists only once?</h2>
         <p>
-          If something catches you, reach out. Stine responds directly.
-          She also takes commissions when she has the space for it.
+          These are unique originals — made by hand in Copenhagen, priced individually.
+          If a piece catches you, write to Stine directly. She responds to everything.
         </p>
         <div className={styles.enquiryBtns}>
           <Link href="/contact?subject=Fine%20Art%20enquiry" className={styles.enquiryBtn}>
-            Send an enquiry →
+            Send an enquiry
           </Link>
           <Link href="/commissions" className={styles.enquiryBtnSecondary}>
-            Commission new work →
+            Commission a work →
           </Link>
         </div>
       </section>

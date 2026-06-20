@@ -13,6 +13,7 @@ import ShareButtons from '@/components/ShareButtons'
 import SelectedPrice from '@/components/SelectedPrice'
 import { ProductProvider } from '@/contexts/ProductContext'
 import FluidTracker from '@/components/FluidTracker'
+import { displayTitle } from '@/lib/display'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 
@@ -46,20 +47,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: product.firstImage ? [product.firstImage.url] : [],
     },
   }
-}
-
-const TYPE_SUFFIXES = [
-  'Fine Art Print', 'Art Print', 'Framed Print', 'Poster', 'Mug',
-  'Tote Bag', 'Tank Top', 'Greeting Card', 'Postcard', 'Water Bottle',
-  'Wood Print', 'Dad Cap', 'Crewneck', 'Apparel',
-]
-
-function displayTitle(title: string): string {
-  for (const suffix of TYPE_SUFFIXES) {
-    const idx = title.lastIndexOf(` — ${suffix}`)
-    if (idx !== -1) return title.slice(0, idx)
-  }
-  return title
 }
 
 type SpecItem = { label: string; value: string }
@@ -469,7 +456,7 @@ export default async function ProductPage({ params }: PageProps) {
                     fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
                 </div>
                 <div className={styles.relatedInfo}>
-                  <span className={styles.relatedName}>{p.title}</span>
+                  <span className={styles.relatedName}>{displayTitle(p.title)}</span>
                   <span className={styles.relatedPrice}>{formatPrice(p.minPrice.amount)}</span>
                 </div>
               </Link>
@@ -489,7 +476,7 @@ export default async function ProductPage({ params }: PageProps) {
                     fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
                 </div>
                 <div className={styles.relatedInfo}>
-                  <span className={styles.relatedName}>{p.title}</span>
+                  <span className={styles.relatedName}>{displayTitle(p.title)}</span>
                   <span className={styles.relatedPrice}>{formatPrice(p.minPrice.amount)}</span>
                 </div>
               </Link>
@@ -536,7 +523,7 @@ export default async function ProductPage({ params }: PageProps) {
         currentHandle={handle}
         currentProduct={{
           handle,
-          title: product.title,
+          title: displayTitle(product.title),
           imageUrl: mainImage?.url ?? null,
           price: formatPrice(product.minPrice.amount),
         }}
