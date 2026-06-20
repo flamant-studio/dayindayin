@@ -21,6 +21,7 @@ interface Props {
   variants: Variant[]
   handle?: string
   productTitle?: string
+  productType?: string
 }
 
 // Normalize Gelato-generated variant titles to clean display labels
@@ -99,7 +100,7 @@ function isFramedLayout(variants: Variant[]): boolean {
   return variants.length >= 4 && variants.every(v => parseFramed(v.title) !== null)
 }
 
-export default function ProductOptions({ variants, handle, productTitle }: Props) {
+export default function ProductOptions({ variants, handle, productTitle, productType }: Props) {
   const { setSelected: publishSelected } = useProduct()
 
   const isMug = isMugLayout(variants)
@@ -179,20 +180,21 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
     const v = variants[0]
     const isDefaultTitle = v.title === 'Default Title'
     const titleL = (productTitle ?? '').toLowerCase()
+    const typeL = (productType ?? '').toLowerCase()
 
     // Determine expected sizes/options based on product type
     type SizeInfo = { sizes: string[]; frames?: string[] }
     let sizeInfo: SizeInfo | null = null
     if (isDefaultTitle) {
-      if (titleL.includes('framed')) {
+      if (titleL.includes('framed') || typeL.includes('framed')) {
         sizeInfo = { sizes: ['A4', 'A3', 'A2', 'A1'], frames: ['White', 'Wood', 'Black'] }
-      } else if (titleL.includes('art print') || titleL.includes('fine art')) {
+      } else if (titleL.includes('art print') || titleL.includes('fine art') || typeL === 'art print') {
         sizeInfo = { sizes: ['A4', 'A3', 'A2'] }
-      } else if (titleL.includes('poster')) {
+      } else if (titleL.includes('poster') || typeL === 'poster') {
         sizeInfo = { sizes: ['A3', 'A2', 'A1'] }
-      } else if (titleL.includes('tank') || titleL.includes('apparel')) {
+      } else if (titleL.includes('tank') || titleL.includes('apparel') || typeL === 'tank top' || typeL === 'apparel') {
         sizeInfo = { sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL'] }
-      } else if (titleL.includes('mug')) {
+      } else if (titleL.includes('mug') || typeL === 'mug') {
         sizeInfo = { sizes: ['White', 'Black'], frames: ['Side A', 'Side B'] }
       }
     }
@@ -203,7 +205,7 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
           <>
             <div className={styles.selectorGroup}>
               <p className={styles.selectorLabel}>
-                {sizeInfo.frames && !titleL.includes('mug') ? 'Size' : sizeInfo.frames ? 'Colour' : 'Size'}
+                {sizeInfo.frames && !(titleL.includes('mug') || typeL === 'mug') ? 'Size' : sizeInfo.frames ? 'Colour' : 'Size'}
               </p>
               <div className={styles.selectorRow}>
                 {sizeInfo.sizes.map(s => (
@@ -214,12 +216,12 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
             {sizeInfo.frames && (
               <div className={styles.selectorGroup}>
                 <p className={styles.selectorLabel}>
-                  {titleL.includes('mug') ? 'Side' : 'Frame'}
+                  {titleL.includes('mug') || typeL === 'mug' ? 'Side' : 'Frame'}
                 </p>
                 <div className={styles.selectorRow}>
                   {sizeInfo.frames.map(f => (
                     <span key={f} className={styles.infoChip}>
-                      {!titleL.includes('mug') && FRAME_SWATCH[f] && (
+                      {!(titleL.includes('mug') || typeL === 'mug') && FRAME_SWATCH[f] && (
                         <span className={styles.frameSwatch} style={{ background: FRAME_SWATCH[f], borderColor: FRAME_SWATCH_BORDER[f] }} />
                       )}
                       {f}

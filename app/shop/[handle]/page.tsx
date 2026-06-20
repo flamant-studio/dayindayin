@@ -425,6 +425,7 @@ export default async function ProductPage({ params }: PageProps) {
               variants={product.variants}
               handle={handle}
               productTitle={product.title}
+              productType={product.productType}
             />
             {/* Sentinel: StickyATC watches this to know when ATC scrolls out of view */}
             <div id="atc-sentinel" />
