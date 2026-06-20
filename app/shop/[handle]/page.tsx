@@ -193,12 +193,19 @@ export default async function ProductPage({ params }: PageProps) {
     [/floral/i, 'floral'],
     [/\bfaces?\b/i, 'faces'],
   ]
+  // Map detectedSeriesKeyword → shop filter param (sea monster ≠ sea-monsters)
+  const KEYWORD_TO_FILTER: Record<string, string> = {
+    'shero': 'shero', 'neko': 'neko', 'sea monster': 'sea-monsters',
+    'botanical': 'botanical', 'floral': 'floral', 'faces': 'faces',
+  }
   let detectedSeriesKeyword: string | null = null
   for (const [pattern, kw] of SERIES_KEYWORDS) {
     if (pattern.test(product.title)) { detectedSeriesKeyword = kw; break }
   }
   const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces']
   const productSeriesTag = product.tags.find(t => SERIES_TAGS_LIST.includes(t.toLowerCase()))
+  // Resolve the shop filter value used for "View all" links
+  const seriesFilterValue = productSeriesTag ?? (detectedSeriesKeyword ? KEYWORD_TO_FILTER[detectedSeriesKeyword] : null) ?? null
 
   const seriesProducts = (detectedSeriesKeyword ?? productSeriesTag)
     ? (await (detectedSeriesKeyword
@@ -430,7 +437,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className={styles.related}>
           <div className={styles.relatedHeader}>
             <h2 className={styles.relatedTitle}>More from {productSeries}</h2>
-            <Link href={`/shop?filter=${productSeriesTag}`} className={styles.relatedViewAll}>
+            <Link href={seriesFilterValue ? `/shop?filter=${seriesFilterValue}` : '/shop'} className={styles.relatedViewAll}>
               View all &rarr;
             </Link>
           </div>
