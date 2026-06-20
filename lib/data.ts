@@ -85,6 +85,19 @@ const BLOB_WORKS = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/work
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "sommerby-june",
+    title: "Sommerby in June",
+    date: "2026-06-18",
+    excerpt: "Notes from the summer house — new botanical sketches, long light, the garden in its peak moment.",
+    image: `${BLOB_WORKS}/painting/colour-study-blue.jpg`,
+    body: [
+      "I've been at Sommerby for most of June. The garden is at the exact point where everything is slightly too much — too green, too full, the poppies already past their peak and the roses just starting. I've been drawing and painting from the garden every day. Not planned pieces. Studies. The kind of work where you're not sure what you're making until later.",
+      "The botanical series that started in spring is becoming something else here. The earlier work was more formal — close-up, graphic, the plants as subjects. What I'm making now is more about atmosphere. The specific quality of Gørlev light at 8pm in June. The way shadows fall on old garden walls. Less illustration, more field notes.",
+      "I keep thinking about the difference between working in the studio in Copenhagen and working here. In the studio I have material, space, equipment. Here I have a sketchbook and whatever paint I remembered to bring. The limitations do something useful. You can't be ambitious. You can only notice what's in front of you.",
+      "The large NEKO piece from June is drying in the studio. I'll see it again when I get back and decide whether it's done. Distance always helps. The cat is still looking at something off-frame. I'm starting to think she's looking at the garden.",
+    ],
+  },
+  {
     slug: "what-stays-what-goes",
     title: "What stays, what goes",
     date: "2026-03-14",

@@ -51,25 +51,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 type SpecItem = { label: string; value: string }
 
-function getProductSpecs(catLabel: string, variantTitle: string | null | undefined, productTitle?: string): SpecItem[] {
-  // Only meaningful for single-variant products — multi-variant has its own picker
+// Returns material/finish specs — invariant across all variants of a product.
+// Size/format specs are omitted here when there are multiple sizes (the variant picker handles those).
+function getProductSpecs(
+  catLabel: string,
+  variantTitle: string | null | undefined,
+  productTitle?: string,
+  allVariants?: Array<{ title: string }>,
+): SpecItem[] {
+  const multiSize = (allVariants?.length ?? 0) > 1
   switch (catLabel) {
     case 'Art Print':
       return [
-        { label: 'Format', value: 'A4 (21×29.7 cm)' },
+        ...(!multiSize ? [{ label: 'Format', value: 'A4 (21×29.7 cm)' }] : []),
         { label: 'Paper', value: '250 gsm — fine art' },
         { label: 'Finish', value: 'Matte' },
       ]
     case 'Poster':
       return [
-        { label: 'Format', value: 'A3 (29.7×42 cm)' },
+        ...(!multiSize ? [{ label: 'Format', value: 'A3 (29.7×42 cm)' }] : []),
         { label: 'Paper', value: '200 gsm — semi-gloss' },
         { label: 'Finish', value: 'Silk coated' },
       ]
     case 'Framed Print':
       return [
-        { label: 'Format', value: 'A4 (21×29.7 cm)' },
-        { label: 'Frame', value: 'Black wood' },
+        ...(!multiSize ? [{ label: 'Format', value: 'A4 (21×29.7 cm)' }] : []),
+        { label: 'Frame', value: 'Multiple options' },
         { label: 'Glazing', value: 'Acrylic' },
       ]
     case 'Mug':
@@ -390,9 +397,9 @@ export default async function ProductPage({ params }: PageProps) {
             {/* 2. Price */}
             <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
 
-            {/* 3. Specs (single-variant) or variant picker (multi-variant) */}
-            {product.variants.length <= 1 && (() => {
-              const specs = getProductSpecs(catLabel, product.firstVariant?.title, product.title)
+            {/* 3. Material/finish specs — always shown; size specs omitted for multi-variant (picker handles those) */}
+            {(() => {
+              const specs = getProductSpecs(catLabel, product.firstVariant?.title, product.title, product.variants)
               return specs.length > 0 ? (
                 <dl className={styles.specsRow}>
                   {specs.map(s => (
