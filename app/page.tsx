@@ -27,22 +27,30 @@ export default async function HomePage() {
   const allRecent = await getAllProducts().catch(() => [])
   const products = allRecent.filter((p) => p.firstImage).slice(0, 8)
 
-  // Build series image map — prefer flat art images over 3D product mockups
+  // Build series image map — match by title pattern, prefer flat art over 3D mockups
   const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
   const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
+  const SERIES_PATTERNS: Record<string, RegExp> = {
+    'shero':        /\bshero\b/i,
+    'neko':         /\bneko\b/i,
+    'sea-monsters': /sea[\s-]monster/i,
+    'botanical':    /botanical/i,
+    'floral':       /floral/i,
+    'faces':        /\bfaces?\b/i,
+  }
   const seriesImageMap: Record<string, string> = {}
   const seriesImageFallback: Record<string, string> = {}
   for (const p of allRecent) {
     if (!p.firstImage) continue
     const flat = !isMockup(p.title)
-    for (const tag of p.tags) {
-      const t = tag.toLowerCase()
-      if (flat && !seriesImageMap[t]) seriesImageMap[t] = p.firstImage.url
-      if (!flat && !seriesImageFallback[t]) seriesImageFallback[t] = p.firstImage.url
+    for (const [key, pattern] of Object.entries(SERIES_PATTERNS)) {
+      if (!pattern.test(p.title)) continue
+      if (flat && !seriesImageMap[key]) seriesImageMap[key] = p.firstImage.url
+      if (!flat && !seriesImageFallback[key]) seriesImageFallback[key] = p.firstImage.url
     }
   }
-  for (const [tag, url] of Object.entries(seriesImageFallback)) {
-    if (!seriesImageMap[tag]) seriesImageMap[tag] = url
+  for (const [key, url] of Object.entries(seriesImageFallback)) {
+    if (!seriesImageMap[key]) seriesImageMap[key] = url
   }
 
   const orgJsonLd = {
