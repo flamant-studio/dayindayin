@@ -143,7 +143,14 @@ export default async function ProductPage({ params }: PageProps) {
 
   // Task 8: breadcrumbs + JSON-LD
   const catLabel = categoryLabel(product)
-  const catFilter = categoryTag ?? null
+  // Map label → filter value so breadcrumb links work even when product has no tags
+  const CAT_LABEL_TO_FILTER: Record<string, string> = {
+    'Art Print': 'art-print', 'Framed Print': 'framed', 'Poster': 'poster',
+    'Mug': 'mug', 'Apparel': 'apparel', 'Tote Bag': 'tote',
+    'Postcard': 'postcard', 'Greeting Card': 'greeting-card',
+    'Water Bottle': 'water-bottle', 'Wood Print': 'wood-print',
+  }
+  const catFilter = categoryTag ?? CAT_LABEL_TO_FILTER[catLabel] ?? null
 
   const jsonLd = {
     '@context': 'https://schema.org',
