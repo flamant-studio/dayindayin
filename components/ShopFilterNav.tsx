@@ -39,9 +39,12 @@ function getActiveLabel(tag: string | null): string | null {
 
 interface Props {
   activeTag: string | null
+  typeCounts?: Record<string, number>
+  seriesCounts?: Record<string, number>
+  totalCount?: number
 }
 
-export default function ShopFilterNav({ activeTag }: Props) {
+export default function ShopFilterNav({ activeTag, typeCounts, seriesCounts, totalCount }: Props) {
   const [open, setOpen] = useState(false)
   const isSeriesFilter = activeTag !== null && SERIES_VALUES.includes(activeTag)
   const activeLabel = getActiveLabel(activeTag)
@@ -75,6 +78,7 @@ export default function ShopFilterNav({ activeTag }: Props) {
           {TYPE_NAV.map((item) => {
             const isActive = item.value === activeTag || (item.value === null && !activeTag)
             const href = item.value ? `/shop?filter=${item.value}` : '/shop'
+            const count = item.value ? typeCounts?.[item.value] : totalCount
             return (
               <Link
                 key={item.label}
@@ -83,6 +87,7 @@ export default function ShopFilterNav({ activeTag }: Props) {
                 className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
               >
                 {item.label}
+                {count !== undefined && count > 0 && <span className={styles.navCount}>{count}</span>}
               </Link>
             )
           })}
@@ -92,6 +97,7 @@ export default function ShopFilterNav({ activeTag }: Props) {
           {SERIES_NAV.map((item) => {
             const isActive = item.value === null ? !isSeriesFilter : item.value === activeTag
             const href = item.value ? `/shop?filter=${item.value}` : '/shop'
+            const count = item.value ? seriesCounts?.[item.value] : totalCount
             return (
               <Link
                 key={item.label}
@@ -100,6 +106,7 @@ export default function ShopFilterNav({ activeTag }: Props) {
                 className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
               >
                 {item.label}
+                {count !== undefined && count > 0 && <span className={styles.navCount}>{count}</span>}
               </Link>
             )
           })}

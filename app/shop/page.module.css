@@ -205,6 +205,11 @@
   transform: translateY(0);
 }
 
+.card:hover [data-quick-add] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .cardInfo {
   padding: var(--sp-3) var(--sp-4) var(--sp-4);
   display: flex;

@@ -4,6 +4,7 @@ import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel
 import { blogPosts } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
+import QuickAddButton from '@/components/QuickAddButton'
 import styles from './page.module.css'
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
@@ -15,12 +16,13 @@ const LIFESTYLE = [
 ]
 
 const SERIES_CARDS = [
-  { tag: 'shero',       label: 'SHERO',        sub: 'Feminist pop-art',     accent: '#D94F2C' },
-  { tag: 'neko',        label: 'NEKO',          sub: 'Cats and symbols',     accent: '#2E5D4B' },
-  { tag: 'sea-monsters',label: 'Sea Monsters',  sub: 'Imaginary creatures',  accent: '#4A7A9B' },
-  { tag: 'botanical',   label: 'Botanical',     sub: 'Plants and growth',    accent: '#5C7A48' },
-  { tag: 'floral',      label: 'Floral',        sub: 'Bold florals',         accent: '#B85C78' },
-  { tag: 'faces',       label: 'Faces',         sub: 'Portraits and masks',  accent: '#7A6B8A' },
+  { tag: 'shero',       label: 'SHERO',        sub: 'Feminist pop-art',      accent: '#D94F2C' },
+  { tag: 'neko',        label: 'NEKO',          sub: 'Cats and symbols',      accent: '#2E5D4B' },
+  { tag: 'sea-monsters',label: 'Sea Monsters',  sub: 'Imaginary creatures',   accent: '#4A7A9B' },
+  { tag: 'botanical',   label: 'Botanical',     sub: 'Plants and growth',     accent: '#5C7A48' },
+  { tag: 'floral',      label: 'Floral',        sub: 'Bold florals',          accent: '#B85C78' },
+  { tag: 'faces',       label: 'Faces',         sub: 'Portraits and masks',   accent: '#7A6B8A' },
+  { tag: 'sommerby',    label: 'Sommerby',      sub: 'Danish summer light',   accent: '#C4694F' },
 ]
 
 export const revalidate = 60
@@ -33,6 +35,7 @@ const SERIES_KEYWORDS: Array<{ tag: string; keyword: string }> = [
   { tag: 'botanical',    keyword: 'Botanical' },
   { tag: 'floral',       keyword: 'Floral' },
   { tag: 'faces',        keyword: 'Face' },
+  { tag: 'sommerby',     keyword: 'Sommerby' },
 ]
 
 const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
@@ -41,9 +44,9 @@ const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCK
 export default async function HomePage() {
   // Parallel targeted fetches — faster than getAllProducts (500+ items)
   const [products, ...seriesResults] = await Promise.all([
-    getProducts(8).then(all => all.filter(p => p.firstImage)).catch(() => []),
+    getProducts(12).then(all => all.filter(p => p.firstImage)).catch(() => []),
     ...SERIES_KEYWORDS.map(({ keyword }) =>
-      getProductsByTitleKeyword(keyword, 6).catch(() => [])
+      getProductsByTitleKeyword(keyword, 8).catch(() => [])
     ),
   ])
 
@@ -131,6 +134,9 @@ export default async function HomePage() {
                     imageUrl={p.firstImage?.url ?? null}
                     price={formatPriceLabel(p)}
                   />
+                  {p.variants.length === 1 && p.firstVariant?.title === 'Default Title' && p.firstVariant.availableForSale && (
+                    <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
+                  )}
                 </div>
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{p.title}</span>
@@ -275,9 +281,13 @@ export default async function HomePage() {
       {/* ── Lifestyle strip ──────────────────────────────────── */}
       <Link href="/shop" className={styles.lifestyleStripLink}>
         <section className={styles.lifestyleStrip}>
-          {LIFESTYLE.map((src, i) => (
+          {([
+            'Art prints by Stine Weirsøe Flamant displayed on a wall',
+            'Close-up of hand-tufted textile by Stine Weirsøe Flamant',
+            'Studio detail — embroidery and textile work',
+          ] as const).map((alt, i) => (
             <div key={i} className={styles.lifestyleImg}>
-              <Image src={src} alt="Studio" fill sizes="33vw" style={{ objectFit: 'cover' }} />
+              <Image src={LIFESTYLE[i]} alt={alt} fill sizes="33vw" style={{ objectFit: 'cover' }} />
             </div>
           ))}
         </section>

@@ -5,6 +5,7 @@ import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
 import ShoppingNudge from '@/components/ShoppingNudge'
 import FluidTracker from '@/components/FluidTracker'
+import QuickAddButton from '@/components/QuickAddButton'
 import styles from './page.module.css'
 
 export const dynamic = 'force-dynamic'
@@ -122,6 +123,19 @@ export default async function ShopPage({ searchParams }: PageProps) {
   const displayed = showAll ? products : products.slice(0, PAGE_SIZE)
   const hasMore = !showAll && totalCount > PAGE_SIZE
 
+  // Compute per-type and per-series counts for filter nav (from raw, ignoring active filter)
+  const allWithImages = raw.filter(p => p.firstImage)
+  const typeCounts: Record<string, number> = {}
+  const seriesCounts: Record<string, number> = {}
+  for (const p of allWithImages) {
+    const label = categoryLabel(p)
+    const typeKey = Object.entries(TYPE_LABEL_MAP).find(([, v]) => v === label)?.[0]
+    if (typeKey) typeCounts[typeKey] = (typeCounts[typeKey] ?? 0) + 1
+    for (const [series, pattern] of Object.entries(SERIES_TITLE_PATTERNS)) {
+      if (pattern.test(p.title)) seriesCounts[series] = (seriesCounts[series] ?? 0) + 1
+    }
+  }
+
   // Build sort link href helper
   function sortHref(sortVal: string) {
     const params = new URLSearchParams()
@@ -197,7 +211,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
         </div>
       </header>
 
-      <ShopFilterNav activeTag={activeTag} />
+      <ShopFilterNav activeTag={activeTag} typeCounts={typeCounts} seriesCounts={seriesCounts} totalCount={allWithImages.length} />
 
       {isSeriesFilter && activeTag && SERIES_DESCRIPTIONS[activeTag] && (
         <div className={styles.seriesBanner}>
@@ -234,7 +248,11 @@ export default async function ShopPage({ searchParams }: PageProps) {
                     <span className={styles.cardBadge}>{seriesLabel(p)}</span>
                   )}
                   <div className={styles.cardHoverOverlay}>
-                    <span className={styles.cardViewHint}>View product →</span>
+                    {p.variants.length === 1 && p.firstVariant?.title === 'Default Title' && p.firstVariant.availableForSale ? (
+                      <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
+                    ) : (
+                      <span className={styles.cardViewHint}>View product →</span>
+                    )}
                   </div>
                 </div>
                 <div className={styles.cardInfo}>

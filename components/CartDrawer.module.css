@@ -299,3 +299,31 @@
 
 .checkoutBtn:hover { opacity: 0.88; }
 .checkoutBtnLoading { opacity: 0.6; pointer-events: none; }
+
+.trustRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-top: 0.25rem;
+}
+
+.trustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--c-muted);
+  text-transform: uppercase;
+}
+
+.trustDot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--c-border);
+}

@@ -44,7 +44,7 @@ export default function NewsletterSignup() {
         <p className={styles.sub}>When something finishes, something ships, or something&apos;s worth writing about. Stine sends it herself. No algorithm, no schedule.</p>
 
         {submitted ? (
-          <p className={styles.success}>Thank you — we&#39;ll be in touch.</p>
+          <p className={styles.success}>You&apos;re in. Stine will be in touch from the studio — when something finishes, not on a schedule.</p>
         ) : (
           <>
             <form className={styles.form} onSubmit={handleSubmit} noValidate>

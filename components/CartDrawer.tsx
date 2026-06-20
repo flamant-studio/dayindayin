@@ -137,6 +137,16 @@ export default function CartDrawer() {
               >
                 Checkout
               </a>
+              <div className={styles.trustRow}>
+                <span className={styles.trustItem}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                  Secure checkout
+                </span>
+                <span className={styles.trustDot} aria-hidden="true" />
+                <span className={styles.trustItem}>Ships 5–10 days</span>
+                <span className={styles.trustDot} aria-hidden="true" />
+                <span className={styles.trustItem}>Printed by Gelato</span>
+              </div>
             </div>
           </>
         )}

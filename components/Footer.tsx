@@ -73,6 +73,24 @@ export default function Footer() {
         </div>
       </div>
 
+      <div className={styles.trust}>
+        <div className={styles.trustInner}>
+          <span className={styles.trustItem}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Ships to EU, UK &amp; Norway
+          </span>
+          <span className={styles.trustDot} aria-hidden="true" />
+          <span className={styles.trustItem}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Secure checkout via Shopify
+          </span>
+          <span className={styles.trustDot} aria-hidden="true" />
+          <span className={styles.trustItem}>Printed on demand by Gelato</span>
+          <span className={styles.trustDot} aria-hidden="true" />
+          <span className={styles.trustItem}>Art prints from 56 kr</span>
+        </div>
+      </div>
+
       <div className={styles.bottom}>
         <span>© {new Date().getFullYear()} Stine Weirsøe Flamant · Flamant Tekst &amp; Design</span>
         <div className={styles.bottomRight}>
