@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { getProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
 import styles from './page.module.css'
 
+export const metadata = { robots: 'noindex, nofollow' }
+
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
 
 export default async function PreviewB() {
