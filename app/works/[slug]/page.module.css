@@ -54,8 +54,11 @@
 /* ── Image ──────────────────────────────────────────────────── */
 
 .image {
+  position: relative;
   overflow: hidden;
   background: var(--c-surface);
+  aspect-ratio: 3/4;
+  min-height: 400px;
 }
 
 /* ── Info ───────────────────────────────────────────────────── */

@@ -122,9 +122,9 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
           <Image
             src={work.image}
             alt={`${work.title} — ${label} by Stine Weirsøe Flamant, ${work.year}`}
-            width={800}
-            height={900}
-            style={{ objectFit: "cover", width: "100%", height: "auto" }}
+            fill
+            sizes="(max-width: 768px) 100vw, 60vw"
+            style={{ objectFit: "cover" }}
             priority
           />
         </div>
@@ -158,7 +158,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
               </div>
               <div className={styles.metaRow}>
                 <span className={styles.metaKey}>Dimensions</span>
-                <span className={styles.metaVal}>Available on enquiry</span>
+                <span className={styles.metaVal}>{work.dimensions ?? 'Available on enquiry'}</span>
               </div>
               <div className={styles.metaRow}>
                 <span className={styles.metaKey}>Type</span>
