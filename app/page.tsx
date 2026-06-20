@@ -100,14 +100,16 @@ export default async function HomePage() {
       {/* ── Hero — full-bleed ────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image
-            src={`${BLOB}/lifestyle/ls-01.jpg`}
-            alt="Art by Stine Weirsøe Flamant"
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className={styles.heroBgVideo}
+            poster={`${BLOB}/lifestyle/ls-01.jpg`}
+          >
+            <source src="https://29kekabbrd49avje.public.blob.vercel-storage.com/video/hero-loop.mp4" type="video/mp4" />
+          </video>
         </div>
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
