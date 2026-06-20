@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/search`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
     { url: `${BASE}/legal/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${BASE}/legal/copyright`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE}/legal`, lastModified: now, changeFrequency: 'yearly', priority: 0.2 },
   ]
 
   // Shop filter pages (type + series)
@@ -60,10 +61,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  // Blog post pages (Studio Notes)
+  // Blog post pages (Studio Notes) — use actual post date for lastModified
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
-    lastModified: now,
+    lastModified: new Date(p.date),
     changeFrequency: 'monthly' as const,
     priority: 0.5,
   }))

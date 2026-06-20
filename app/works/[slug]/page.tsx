@@ -63,7 +63,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
   if (!work) notFound();
 
   const label = CATEGORY_LABELS[work.category] ?? work.category
-  const medium = CATEGORY_MEDIUM[work.category] ?? work.description
+  const medium = work.materials ?? CATEGORY_MEDIUM[work.category] ?? work.description
 
   const seriesMatch = SERIES_SHOP_FILTERS.find(s => s.pattern.test(work.title))
   const shopHref = seriesMatch ? `/shop?filter=${seriesMatch.filter}` : '/shop'
