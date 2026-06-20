@@ -58,12 +58,28 @@ function isMugLayout(variants: Variant[]): boolean {
 }
 
 function parseFramed(title: string): Parsed | null {
-  const t = normalizeTitle(title)
-  const m = t.match(/^(A\d[^/]*?)\s*\/\s*(White|Wood|Black)\s+frame/i)
-  if (!m) return null
-  const sizeDisplay = m[1].trim()
-  const sizeKey = sizeDisplay.match(/^(A\d)/)?.[1] ?? sizeDisplay
-  return { sizeKey, sizeDisplay, frameColor: m[2] }
+  let t = title
+  // Strip orientation suffix: " - Vertical" / " - Horizontal" at end
+  t = t.replace(/\s*-\s*(Vertical|Horizontal)$/i, '').trim()
+
+  // Find frame color — Gelato uses " - White frame", old format uses " / White frame"
+  const frameMatch = t.match(/\s*[-\/]\s*(White|Wood|Black)\s+frame$/i)
+  if (!frameMatch) return null
+  const frameColor = frameMatch[1]
+  const beforeFrame = t.slice(0, frameMatch.index!).trim()
+
+  // Extract size from beforeFrame
+  // A-notation: "A3 (29.7 x 42  cm)" or just "A3"
+  const aSizeMatch = beforeFrame.match(/^(A[1-4])\b/)
+  if (aSizeMatch) return { sizeKey: aSizeMatch[1], sizeDisplay: aSizeMatch[1], frameColor }
+
+  // Metric dimensions → map to A size
+  if (/21[×x]29\.?7/i.test(beforeFrame)) return { sizeKey: 'A4', sizeDisplay: 'A4', frameColor }
+  if (/29\.?7[×x]42/i.test(beforeFrame))  return { sizeKey: 'A3', sizeDisplay: 'A3', frameColor }
+  if (/42[×x]59\.?4/i.test(beforeFrame))  return { sizeKey: 'A2', sizeDisplay: 'A2', frameColor }
+  if (/59\.?4[×x]84/i.test(beforeFrame))  return { sizeKey: 'A1', sizeDisplay: 'A1', frameColor }
+
+  return null
 }
 
 const SIZE_ORDER  = ['A4', 'A3', 'A2', 'A1']
@@ -158,11 +174,63 @@ export default function ProductOptions({ variants, handle, productTitle }: Props
 
   const allSoldOut = variants.every(v => !v.availableForSale)
 
-  // Single variant — show no selector
+  // Single variant — check if product should show size/option info (Gelato sync lag)
   if (variants.length === 1) {
     const v = variants[0]
+    const isDefaultTitle = v.title === 'Default Title'
+    const titleL = (productTitle ?? '').toLowerCase()
+
+    // Determine expected sizes/options based on product type
+    type SizeInfo = { sizes: string[]; frames?: string[] }
+    let sizeInfo: SizeInfo | null = null
+    if (isDefaultTitle) {
+      if (titleL.includes('framed')) {
+        sizeInfo = { sizes: ['A4', 'A3', 'A2', 'A1'], frames: ['White', 'Wood', 'Black'] }
+      } else if (titleL.includes('art print') || titleL.includes('fine art')) {
+        sizeInfo = { sizes: ['A4', 'A3', 'A2'] }
+      } else if (titleL.includes('poster')) {
+        sizeInfo = { sizes: ['A3', 'A2', 'A1'] }
+      } else if (titleL.includes('tank') || titleL.includes('apparel')) {
+        sizeInfo = { sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL'] }
+      } else if (titleL.includes('mug')) {
+        sizeInfo = { sizes: ['White', 'Black'], frames: ['Side A', 'Side B'] }
+      }
+    }
+
     return (
       <div className={styles.wrapper}>
+        {sizeInfo && (
+          <>
+            <div className={styles.selectorGroup}>
+              <p className={styles.selectorLabel}>
+                {sizeInfo.frames && !titleL.includes('mug') ? 'Size' : sizeInfo.frames ? 'Colour' : 'Size'}
+              </p>
+              <div className={styles.selectorRow}>
+                {sizeInfo.sizes.map(s => (
+                  <span key={s} className={styles.infoChip}>{s}</span>
+                ))}
+              </div>
+            </div>
+            {sizeInfo.frames && (
+              <div className={styles.selectorGroup}>
+                <p className={styles.selectorLabel}>
+                  {titleL.includes('mug') ? 'Side' : 'Frame'}
+                </p>
+                <div className={styles.selectorRow}>
+                  {sizeInfo.frames.map(f => (
+                    <span key={f} className={styles.infoChip}>
+                      {!titleL.includes('mug') && FRAME_SWATCH[f] && (
+                        <span className={styles.frameSwatch} style={{ background: FRAME_SWATCH[f], borderColor: FRAME_SWATCH_BORDER[f] }} />
+                      )}
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            <p className={styles.sizeNote}>Size &amp; options confirmed at checkout</p>
+          </>
+        )}
         {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
         {v.availableForSale ? (
           <AddToCartButton variantId={v.id} price={formatPrice(v.price)} available />

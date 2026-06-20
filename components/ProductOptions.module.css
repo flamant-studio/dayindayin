@@ -140,6 +140,31 @@
   flex-shrink: 0;
 }
 
+/* ── Informational chips (size/option display when full variants not synced) ── */
+
+.infoChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--c-muted);
+  pointer-events: none;
+  user-select: none;
+}
+
+.sizeNote {
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--c-muted);
+  font-style: italic;
+  margin-top: calc(-1 * var(--sp-2));
+}
+
 /* ── Shared states ────────────────────────────────────────── */
 
 .variantSoldOut {
