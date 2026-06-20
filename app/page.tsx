@@ -27,18 +27,18 @@ export default async function HomePage() {
   const allRecent = await getAllProducts().catch(() => [])
   const products = allRecent.filter((p) => p.firstImage).slice(0, 8)
 
-  // Build series image map — prefer art prints over product mockups
-  const PRINT_TYPES = new Set(['art print', 'framed print', 'poster', 'wood print', 'postcard', 'greeting card'])
+  // Build series image map — prefer flat art images over 3D product mockups
+  const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
+  const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
   const seriesImageMap: Record<string, string> = {}
   const seriesImageFallback: Record<string, string> = {}
   for (const p of allRecent) {
     if (!p.firstImage) continue
-    const cat = categoryLabel(p).toLowerCase()
-    const isPrint = PRINT_TYPES.has(cat)
+    const flat = !isMockup(p.title)
     for (const tag of p.tags) {
       const t = tag.toLowerCase()
-      if (isPrint && !seriesImageMap[t]) seriesImageMap[t] = p.firstImage.url
-      if (!isPrint && !seriesImageFallback[t]) seriesImageFallback[t] = p.firstImage.url
+      if (flat && !seriesImageMap[t]) seriesImageMap[t] = p.firstImage.url
+      if (!flat && !seriesImageFallback[t]) seriesImageFallback[t] = p.firstImage.url
     }
   }
   for (const [tag, url] of Object.entries(seriesImageFallback)) {
