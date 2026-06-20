@@ -228,23 +228,44 @@ export default async function HomePage() {
 
       {/* ── Two ways to collect ──────────────────────────────── */}
       <section className={styles.collectSection}>
-        <div className={styles.collectBlock}>
-          <span className={styles.collectLabel}>Original Fine Art</span>
-          <h2 className={styles.collectTitle}>One of a kind.</h2>
-          <p className={styles.collectDesc}>
-            Tufted textiles, embroidery, paintings, and photography — made by hand in Stine&apos;s Copenhagen studio. Each piece exists once. Available on enquiry, priced individually.
-          </p>
-          <Link href="/fine-art" className={styles.collectCta}>See original works</Link>
-        </div>
-        <div className={styles.collectDivider} aria-hidden />
-        <div className={styles.collectBlock}>
-          <span className={styles.collectLabel}>Print Shop</span>
-          <h2 className={styles.collectTitle}>Art for every wall.</h2>
-          <p className={styles.collectDesc}>
-            High-quality prints of Stine&apos;s work, printed on demand by Gelato. Art prints, framed prints, mugs, totes, postcards. From 56 kr — shipped across Europe.
-          </p>
-          <Link href="/shop" className={styles.collectCtaSecondary}>Browse the shop</Link>
-        </div>
+        <Link href="/fine-art" className={styles.collectBlock}>
+          <div className={styles.collectImgWrap}>
+            <Image
+              src={`${BLOB}/works/tufting/liebes-panopticon.jpg`}
+              alt="Liebes Panopticon — Hand Tufted original by Stine Weirsøe Flamant"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className={styles.collectImg}
+            />
+          </div>
+          <div className={styles.collectText}>
+            <span className={styles.collectLabel}>Original Fine Art</span>
+            <h2 className={styles.collectTitle}>One of a kind.</h2>
+            <p className={styles.collectDesc}>
+              Tufted textiles, embroidery, paintings — made by hand in Copenhagen. Each piece exists once. Prices on enquiry.
+            </p>
+            <span className={styles.collectCta}>See original works</span>
+          </div>
+        </Link>
+        <Link href="/shop" className={`${styles.collectBlock} ${styles.collectBlockAlt}`}>
+          <div className={styles.collectImgWrap}>
+            <Image
+              src={`${BLOB}/lifestyle/ls-04.jpg`}
+              alt="Art print by Stine Weirsøe Flamant displayed on a wall"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className={styles.collectImg}
+            />
+          </div>
+          <div className={styles.collectText}>
+            <span className={styles.collectLabel}>Print Shop</span>
+            <h2 className={styles.collectTitle}>Art for every wall.</h2>
+            <p className={styles.collectDesc}>
+              High-quality prints on demand by Gelato. Art prints, framed prints, mugs, totes. From 56 kr — shipped across Europe.
+            </p>
+            <span className={styles.collectCtaSecondary}>Browse the shop</span>
+          </div>
+        </Link>
       </section>
 
       {/* ── Artist statement ─────────────────────────────────── */}

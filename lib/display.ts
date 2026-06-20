@@ -6,8 +6,14 @@ const TYPE_SUFFIXES = [
 
 export function displayTitle(title: string): string {
   for (const suffix of TYPE_SUFFIXES) {
-    const idx = title.lastIndexOf(` — ${suffix}`)
-    if (idx !== -1) return title.slice(0, idx)
+    const pattern = ` — ${suffix}`
+    const idx = title.lastIndexOf(pattern)
+    if (idx !== -1) {
+      // Preserve orientation disambiguation e.g. "Postcard (Portrait)" → keep "(Portrait)"
+      const remainder = title.slice(idx + pattern.length)
+      const orient = remainder.match(/^ \((Portrait|Landscape)\)/)
+      return title.slice(0, idx) + (orient ? ` ${orient[0].trim()}` : '')
+    }
   }
   return title
 }
