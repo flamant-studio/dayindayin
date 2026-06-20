@@ -47,6 +47,80 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
+type SpecItem = { label: string; value: string }
+
+function getProductSpecs(catLabel: string, variantTitle: string | null | undefined): SpecItem[] {
+  // Only meaningful for single-variant products — multi-variant has its own picker
+  switch (catLabel) {
+    case 'Art Print':
+      return [
+        { label: 'Format', value: 'A4 (21×29.7 cm)' },
+        { label: 'Paper', value: '250 gsm — fine art' },
+        { label: 'Finish', value: 'Matte' },
+      ]
+    case 'Poster':
+      return [
+        { label: 'Format', value: 'A3 (29.7×42 cm)' },
+        { label: 'Paper', value: '200 gsm — semi-gloss' },
+        { label: 'Finish', value: 'Silk coated' },
+      ]
+    case 'Framed Print':
+      return [
+        { label: 'Format', value: 'A4 (21×29.7 cm)' },
+        { label: 'Frame', value: 'Black wood' },
+        { label: 'Glazing', value: 'Acrylic' },
+      ]
+    case 'Mug':
+      return [
+        { label: 'Size', value: '11 oz (325 ml)' },
+        { label: 'Material', value: 'Ceramic' },
+        { label: 'Print', value: 'Full wrap' },
+      ]
+    case 'Tote Bag':
+      return [
+        { label: 'Size', value: '38×42 cm' },
+        { label: 'Material', value: 'Natural cotton' },
+        { label: 'Print', value: 'One side' },
+      ]
+    case 'Apparel': {
+      const sizeStr = variantTitle?.includes('XS') ? 'XS–2XL available'
+        : variantTitle?.includes(' M ') || variantTitle?.toLowerCase().includes('- m -') ? 'Unisex M'
+        : variantTitle ?? 'Unisex'
+      return [
+        { label: 'Size', value: sizeStr },
+        { label: 'Style', value: 'Tank top' },
+        { label: 'Material', value: '100% cotton' },
+      ]
+    }
+    case 'Greeting Card':
+      return [
+        { label: 'Qty', value: 'Pack of 10' },
+        { label: 'Format', value: 'A6 folded' },
+        { label: 'Paper', value: '350 gsm, glossy' },
+      ]
+    case 'Postcard':
+      return [
+        { label: 'Qty', value: 'Pack of 10' },
+        { label: 'Format', value: 'A6 (148×105 mm)' },
+        { label: 'Paper', value: '350 gsm' },
+      ]
+    case 'Water Bottle':
+      return [
+        { label: 'Size', value: '17 oz (500 ml)' },
+        { label: 'Material', value: 'Stainless steel' },
+        { label: 'Colour', value: 'White' },
+      ]
+    case 'Wood Print':
+      return [
+        { label: 'Size', value: '200×200 mm' },
+        { label: 'Material', value: 'Birch plywood' },
+        { label: 'Thickness', value: '20 mm' },
+      ]
+    default:
+      return []
+  }
+}
+
 function getStudioNote(tags: string[]): { medium: string; note: string } | null {
   const t = tags.map(x => x.toLowerCase())
   if (t.includes('tufting')) return {
@@ -226,6 +300,21 @@ export default async function ProductPage({ params }: PageProps) {
             <p className={styles.productType}>{catLabel}</p>
             <h1 className={styles.title}>{product.title}</h1>
             <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
+
+            {/* Product specs — show for single-variant products where there's no picker */}
+            {product.variants.length <= 1 && (() => {
+              const specs = getProductSpecs(catLabel, product.firstVariant?.title)
+              return specs.length > 0 ? (
+                <dl className={styles.specsRow}>
+                  {specs.map(s => (
+                    <div key={s.label} className={styles.specItem}>
+                      <dt className={styles.specLabel}>{s.label}</dt>
+                      <dd className={styles.specValue}>{s.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : null
+            })()}
 
             {/* Series / category tags */}
             {product.tags.filter(t => ['tufting','embroidery','painting','photography','tote','greeting-card','postcard','mug','apparel','water-bottle','wood-print','shero','neko','sea-monsters','botanical','floral','faces','sommerby'].includes(t.toLowerCase())).length > 0 && (
