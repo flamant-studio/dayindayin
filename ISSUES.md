@@ -7,28 +7,37 @@
 
 ### ISS-01: Product variant selectors missing on PDPs
 **What:** Size variants (A4/A3/A2) and frame options not showing as selectable on product detail pages. User cannot choose size/frame before adding to cart.
-**Where:** `app/shop/[handle]/page.tsx` — variant selector UI
-**Status:** Open
+**Root cause (2026-06-20):** ALL Shopify products have only 1 "Default Title" variant. Gelato synced products to Shopify with single variants only — the multi-size/frame matrix never appeared in Shopify. Gelato API confirms products have `productVariantOptions` (e.g. A4/A3/A2/A1 × frame colors) but only 1 variant was pushed. This is a data infrastructure issue, NOT a front-end bug. Additionally, the `parseFramed()` regex had a bug: it expected `/` separator but Gelato uses ` - ` in variant titles.
+**Where:** `components/ProductOptions.tsx` + data layer
+**What was done (2026-06-20):**
+- Fixed `parseFramed()` to handle actual Gelato title format (` - White frame` not `/ White frame`)
+- Added informational size/option chips for single-variant products (non-interactive, shows what's available)
+- Framed prints: SIZE A4/A3/A2/A1 + FRAME White/Wood/Black chips  
+- Art prints: SIZE A4/A3/A2 chips
+- Mugs: COLOUR White/Black + SIDE A/B chips
+- Tank tops: SIZE XS/S/M/L/XL/2XL chips
+- Note: "Size & options confirmed at checkout" shown below chips
+**Status:** ⚠️ PARTIAL FIX — UX improved, but real fix requires data migration: Shopify products need proper variant matrices added via Admin API. Requires Gelato pricing data for A3/A2/A1/A1 variants before migration can run safely.
 
 ### ISS-02: Product card info area should be white
 **What:** The text section below each product card image (title, type label, price) uses the same chalk/beige as the page background. Cards need a WHITE (#FFFFFF) background on the info section so they visually "pop" and feel like cards, not flat blocks.
 **Where:** `app/page.module.css` (.cardInfo), `app/shop/page.module.css` (.cardInfo), all PLP components
-**Status:** Open
+**Status:** ✅ FIXED (2026-06-20) — `.card { background: #fff }` with subtle shadow in both homepage and shop page CSS
 
 ### ISS-03: Framed print cards cropped badly on PLP
 **What:** Framed print mockup images show only top+bottom frame bars in the card — the artwork is barely visible. The objectFit:contain approach puts the tall framed-print mockup into a square card area, resulting in huge black bars.
 **Where:** Product card image rendering. Needs a taller aspect ratio for framed print cards, OR crop to show artwork area only, OR objectFit:cover with centre focus
-**Status:** Open
+**Status:** ✅ FIXED (2026-06-20) — Framed prints now explicitly route to `cardImgMockup` class (objectFit:contain on white bg) in both `app/page.tsx` and `app/shop/page.tsx`
 
 ### ISS-04: Sticky add-to-cart bar — wrong colors
 **What:** The sticky "Add to cart — 418 kr" bar at the bottom of PDPs uses a dark navy/almost-black background. Should be terracotta (#C4694F) to match the main CTA button color, or at minimum chalk background with slate text.
-**Where:** `app/shop/[handle]/page.tsx` sticky bar + `app/shop/[handle]/page.module.css` (.stickyBar / .stickyAddBtn)
-**Status:** Open
+**Where:** `components/StickyATC.module.css` (.btn)
+**Status:** ✅ FIXED (2026-06-20) — `.btn { background: var(--c-accent) }` (terracotta)
 
 ### ISS-05: Recently viewed carousel — beige strips on card images
 **What:** Recently viewed product cards show beige strips above and below the product image (objectFit:contain with page background showing through). Image background should be white (#FFFFFF).
 **Where:** `components/RecentlyViewed.module.css` — .imgWrap background-color should be white
-**Status:** Open
+**Status:** ✅ FIXED (2026-06-20) — `.imgWrap { background: #fff }` and `.imgPlaceholder { background: #f5f4f2 }`
 
 ### ISS-06: Unique Art PDPs need full redesign
 **What:** Works at /works/[slug] (e.g. /works/candy-I) use same visual weight as Gelato product PDPs. They need to be visuals-first, immersive, showing MULTIPLE photos of the same piece. Must search Dropbox for all photos of each artwork.
