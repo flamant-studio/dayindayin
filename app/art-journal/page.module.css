@@ -22,6 +22,44 @@
   font-weight: 300;
 }
 
+/* ── Year filter ─────────────────────────────────────────── */
+
+.yearFilter {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.yearBtn {
+  padding: 0.35rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--c-border, #e0dbd4);
+  color: var(--c-muted, #9A9590);
+  background: transparent;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.yearBtn:hover {
+  border-color: var(--c-text, #2C3440);
+  color: var(--c-text, #2C3440);
+}
+
+.yearBtnActive {
+  border-color: var(--c-accent, #C4694F);
+  color: var(--c-accent, #C4694F);
+  background: #C4694F0f;
+}
+
+.empty {
+  text-align: center;
+  color: var(--c-muted);
+  padding: 4rem 0;
+  font-style: italic;
+}
+
 /* ── Featured post ──────────────────────────────────────── */
 
 .featured {

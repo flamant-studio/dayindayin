@@ -22,15 +22,55 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StudioNotes() {
-  const [featured, ...rest] = blogPosts;
+interface PageProps {
+  searchParams: Promise<{ year?: string }>
+}
+
+export default async function StudioNotes({ searchParams }: PageProps) {
+  const { year } = await searchParams
+  const activeYear = year ?? null
+
+  // Available years from posts (descending)
+  const years = [...new Set(blogPosts.map(p => p.date.slice(0, 4)))].sort((a, b) => Number(b) - Number(a))
+
+  const filtered = activeYear
+    ? blogPosts.filter(p => p.date.startsWith(activeYear))
+    : blogPosts
+
+  const [featured, ...rest] = filtered
 
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
         <h1>Studio Notes</h1>
-        <p className={styles.heroSub}>Process, ideas, and what&apos;s been happening in the studio. {blogPosts.length} notes.</p>
+        <p className={styles.heroSub}>
+          Process, ideas, and what&apos;s been happening in the studio.
+          {' '}{blogPosts.length} notes.
+        </p>
       </section>
+
+      {/* ── Year filter ─────────────────────────────────────────── */}
+      <nav className={styles.yearFilter} aria-label="Filter by year">
+        <Link
+          href="/art-journal"
+          className={`${styles.yearBtn} ${!activeYear ? styles.yearBtnActive : ''}`}
+        >
+          All
+        </Link>
+        {years.map(y => (
+          <Link
+            key={y}
+            href={`/art-journal?year=${y}`}
+            className={`${styles.yearBtn} ${activeYear === y ? styles.yearBtnActive : ''}`}
+          >
+            {y}
+          </Link>
+        ))}
+      </nav>
+
+      {filtered.length === 0 && (
+        <p className={styles.empty}>No notes found for {activeYear}.</p>
+      )}
 
       {/* ── Featured post ────────────────────────────────────────── */}
       {featured && (

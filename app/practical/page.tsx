@@ -83,7 +83,8 @@ export default function Practical() {
             { href: "#shipping", label: "Shipping" },
             { href: "#returns", label: "Returns" },
             { href: "#commissions", label: "Commissions" },
-            { href: "#faq", label: "FAQ" },
+            { href: "#process", label: "Process" },
+          { href: "#faq", label: "FAQ" },
             { href: "#legal", label: "Legal" },
           ].map(({ href, label }) => (
             <a key={href} href={href} className={styles.pageNavLink}>{label}</a>
@@ -176,6 +177,30 @@ export default function Practical() {
             <p>
               <Link href="/commissions">See the full commissions page →</Link>
             </p>
+          </section>
+
+          <section id="process">
+            <h2>How your print is made</h2>
+            <p>
+              Every product in this shop is printed on demand — meaning it doesn&apos;t exist until you order it.
+              Here&apos;s what happens after you check out:
+            </p>
+            <ol className={styles.processList}>
+              {[
+                { step: '1', title: 'Order received', desc: 'Your order goes to Gelato immediately. Gelato automatically routes it to the nearest production facility within their European network.' },
+                { step: '2', title: 'Printed to order', desc: 'Your print is produced on archival-grade paper with professional inkjet printers. Mugs use dye-sublimation for sharp, durable colour wrap. Production takes 1–3 business days.' },
+                { step: '3', title: 'Quality check & pack', desc: 'Each item is checked, packed, and dispatched directly from the Gelato facility to your address.' },
+                { step: '4', title: 'Shipped to you', desc: 'You receive a tracking number by email. Delivery within EU takes 2–5 business days from dispatch.' },
+              ].map(({ step, title, desc }) => (
+                <li key={step} className={styles.processStep}>
+                  <span className={styles.processNum}>{step}</span>
+                  <div>
+                    <strong>{title}</strong>
+                    <p>{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </section>
 
           <section id="faq">

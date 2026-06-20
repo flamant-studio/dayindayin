@@ -70,6 +70,20 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     ? works.filter(w => w.category === imgCategory).slice(0, 3)
     : works.slice(0, 3)
 
+  // Detect series/filter from post content for shop CTA
+  const allText = [post.title, post.excerpt, ...(post.body ?? [])].join(' ').toLowerCase()
+  const shopCtaMap: Array<{ keyword: string; filter: string; label: string }> = [
+    { keyword: 'neko',          filter: 'neko',         label: 'NEKO series' },
+    { keyword: 'shero',         filter: 'shero',        label: 'SHERO series' },
+    { keyword: 'sea monster',   filter: 'sea-monsters', label: 'Sea Monsters' },
+    { keyword: 'botanical',     filter: 'botanical',    label: 'Botanical' },
+    { keyword: 'floral',        filter: 'floral',       label: 'Floral' },
+    { keyword: 'tufting',       filter: 'art-print',    label: 'prints' },
+    { keyword: 'embroidery',    filter: 'art-print',    label: 'prints' },
+    { keyword: 'shop of words', filter: 'art-print',    label: 'art prints' },
+  ]
+  const shopCta = shopCtaMap.find(({ keyword }) => allText.includes(keyword)) ?? null
+
   return (
     <div className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
@@ -107,6 +121,18 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           />
         </div>
       </article>
+
+      {shopCta && (
+        <div className={styles.shopCta}>
+          <span className={styles.shopCtaLabel}>Also in the shop</span>
+          <p className={styles.shopCtaText}>
+            Stine&apos;s work is available as high-quality prints, mugs, totes, and more — printed on demand by Gelato and shipped across Europe.
+          </p>
+          <Link href={`/shop?filter=${shopCta.filter}`} className={styles.shopCtaBtn}>
+            Browse {shopCta.label} →
+          </Link>
+        </div>
+      )}
 
       <NewsletterSignup />
 

@@ -138,7 +138,15 @@ export default function FineArt() {
           embroidery, tufting, painting — when she has the space for it. Tell her the size,
           the context, and your budget. She will say yes or no.
         </p>
+        <div className={styles.enquiryPriceGuide}>
+          <span>Embroidery from 2,500 kr</span>
+          <span className={styles.enquiryPriceDot} />
+          <span>Hand tufting from 4,000 kr</span>
+          <span className={styles.enquiryPriceDot} />
+          <span>Paintings from 3,000 kr</span>
+        </div>
         <Link href="/contact?subject=Fine%20Art%20enquiry" className={styles.enquiryBtn} aria-label="Send an enquiry about original fine art">Send an enquiry →</Link>
+        <Link href="/commissions" className={styles.enquiryBtnSecondary}>Commission new work →</Link>
       </section>
 
       <NewsletterSignup />

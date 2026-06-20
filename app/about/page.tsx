@@ -162,6 +162,7 @@ export default function AboutPage() {
             { year: '2023', text: 'Sea Monsters series. Expanded into mixed-media and large-format works.' },
             { year: '2024', text: 'DayInDayIn launched as an independent art brand and print shop.' },
             { year: '2025', text: 'Botanical and Floral series. Print shop expanded across Europe via Gelato.' },
+            { year: '2026', text: 'New botanical summer series. Shop of Words text works. NEKO series continues with large-format tufted pieces.' },
           ].map(({ year, text }) => (
             <li key={year} className={styles.milestone}>
               <span className={styles.milestoneYear}>{year}</span>

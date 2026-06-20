@@ -112,3 +112,53 @@
 }
 
 .pageNavLink:hover { color: var(--c-text); }
+
+/* Process steps */
+.processList {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.processStep {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.processStep:first-child { border-top: 1px solid var(--c-border); }
+
+.processStep > div > strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.processStep > div > p {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--c-muted);
+  line-height: 1.7;
+}
+
+.processNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  border: 1px solid var(--c-border);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--c-muted);
+  margin-top: 0.1rem;
+}

@@ -5,6 +5,12 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'Contact',
   description: 'Get in touch with Stine Weirsøe Flamant. Questions about prints, commissions, or wholesale.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact — Day In Day In',
+    description: 'Get in touch with Stine Weirsøe Flamant. Questions about prints, commissions, or wholesale.',
+    type: 'website',
+  },
 }
 
 export default function ContactPage() {
