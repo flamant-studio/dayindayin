@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllProducts, formatPriceLabel, categoryLabel } from '@/lib/shopify/products'
+import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel } from '@/lib/shopify/products'
 import { blogPosts } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
@@ -23,35 +23,37 @@ const SERIES_CARDS = [
   { tag: 'faces',       label: 'Faces',         sub: 'Portraits and masks',  accent: '#7A6B8A' },
 ]
 
-export default async function HomePage() {
-  const allRecent = await getAllProducts().catch(() => [])
-  const products = allRecent.filter((p) => p.firstImage).slice(0, 8)
+// Keywords to fetch one representative image per series (flat art preferred over mockups)
+const SERIES_KEYWORDS: Array<{ tag: string; keyword: string }> = [
+  { tag: 'shero',        keyword: 'shero' },
+  { tag: 'neko',         keyword: 'neko' },
+  { tag: 'sea-monsters', keyword: 'Sea Monsters' },
+  { tag: 'botanical',    keyword: 'Botanical' },
+  { tag: 'floral',       keyword: 'Floral' },
+  { tag: 'faces',        keyword: 'Face' },
+]
 
-  // Build series image map — match by title pattern, prefer flat art over 3D mockups
-  const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
-  const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
-  const SERIES_PATTERNS: Record<string, RegExp> = {
-    'shero':        /\bshero\b/i,
-    'neko':         /\bneko\b/i,
-    'sea-monsters': /sea[\s-]monster/i,
-    'botanical':    /botanical/i,
-    'floral':       /floral/i,
-    'faces':        /\bfaces?\b/i,
-  }
+const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
+const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
+
+export default async function HomePage() {
+  // Parallel targeted fetches — faster than getAllProducts (500+ items)
+  const [products, ...seriesResults] = await Promise.all([
+    getProducts(8).then(all => all.filter(p => p.firstImage)).catch(() => []),
+    ...SERIES_KEYWORDS.map(({ keyword }) =>
+      getProductsByTitleKeyword(keyword, 6).catch(() => [])
+    ),
+  ])
+
+  // Pick best image per series (flat art > mockup fallback)
   const seriesImageMap: Record<string, string> = {}
-  const seriesImageFallback: Record<string, string> = {}
-  for (const p of allRecent) {
-    if (!p.firstImage) continue
-    const flat = !isMockup(p.title)
-    for (const [key, pattern] of Object.entries(SERIES_PATTERNS)) {
-      if (!pattern.test(p.title)) continue
-      if (flat && !seriesImageMap[key]) seriesImageMap[key] = p.firstImage.url
-      if (!flat && !seriesImageFallback[key]) seriesImageFallback[key] = p.firstImage.url
-    }
-  }
-  for (const [key, url] of Object.entries(seriesImageFallback)) {
-    if (!seriesImageMap[key]) seriesImageMap[key] = url
-  }
+  SERIES_KEYWORDS.forEach(({ tag }, i) => {
+    const prods = seriesResults[i]
+    const flat = prods.find((p) => p.firstImage && !isMockup(p.title))
+    const any  = prods.find((p) => p.firstImage)
+    const best = flat ?? any
+    if (best?.firstImage) seriesImageMap[tag] = best.firstImage.url
+  })
 
   const orgJsonLd = {
     '@context': 'https://schema.org',
