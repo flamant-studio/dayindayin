@@ -17,13 +17,13 @@ const LIFESTYLE = [
 ]
 
 const SERIES_CARDS = [
-  { tag: 'shero',       label: 'SHERO',        sub: 'Feminist pop-art',      accent: '#D94F2C' },
-  { tag: 'neko',        label: 'NEKO',          sub: 'Cats and symbols',      accent: '#2E5D4B' },
-  { tag: 'sea-monsters',label: 'Sea Monsters',  sub: 'Imaginary creatures',   accent: '#4A7A9B' },
-  { tag: 'botanical',   label: 'Botanical',     sub: 'Plants and growth',     accent: '#5C7A48' },
-  { tag: 'floral',      label: 'Floral',        sub: 'Bold florals',          accent: '#B85C78' },
-  { tag: 'faces',       label: 'Faces',         sub: 'Portraits and masks',   accent: '#7A6B8A' },
-  { tag: 'sommerby',    label: 'Sommerby',      sub: 'Danish summer light',   accent: '#C4694F' },
+  { tag: 'shero',       label: 'SHERO',        sub: 'Power, resistance, naming',  accent: '#D94F2C' },
+  { tag: 'neko',        label: 'NEKO',          sub: 'Watching without watching back', accent: '#2E5D4B' },
+  { tag: 'sea-monsters',label: 'Sea Monsters',  sub: 'Creatures from old charts', accent: '#4A7A9B' },
+  { tag: 'botanical',   label: 'Botanical',     sub: 'Leaves, roots, natural form', accent: '#5C7A48' },
+  { tag: 'floral',      label: 'Floral',        sub: 'Colour at the edge of excess', accent: '#B85C78' },
+  { tag: 'faces',       label: 'Faces',         sub: 'The ones that look back',   accent: '#7A6B8A' },
+  { tag: 'sommerby',    label: 'Sommerby',      sub: 'Denmark in long light',     accent: '#C4694F' },
 ]
 
 export const revalidate = 60
