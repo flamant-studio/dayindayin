@@ -183,7 +183,7 @@ export default function AboutPage() {
             { year: '2023', text: 'Sea Monsters series. Expanded into mixed-media and large-format works.' },
             { year: '2024', text: 'DayInDayIn launched as an independent art brand and print shop.' },
             { year: '2025', text: 'Botanical and Floral series. Print shop expanded across Europe via Gelato.' },
-            { year: '2026', text: 'Print shop expanded to 600+ products across 12 product types. New summer botanical series from Sommerby. Large-format NEKO tufted pieces. Shop of Words text works in embroidery and digital.' },
+            { year: '2026', text: 'Print shop expanded across 12 product types. 74 original works catalogued — tufting, embroidery, painting, and photography. New summer botanical series from Sommerby. Shop of Words text prints launched.' },
           ].map(({ year, text }) => (
             <li key={year} className={styles.milestone}>
               <span className={styles.milestoneYear}>{year}</span>
