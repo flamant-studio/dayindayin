@@ -187,6 +187,7 @@
 }
 
 .cardImgArtwork .cardImgEl { object-fit: cover; }
+.cardImgMockup { aspect-ratio: 1/1; }
 .cardImgMockup .cardImgEl { object-fit: contain; }
 
 .cardImgEl {
