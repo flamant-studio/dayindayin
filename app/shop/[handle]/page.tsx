@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { works } from '@/lib/data'
-import { getProductByHandle, getProductsByTag, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
+import { getProductByHandle, getProductsByTag, getProductsByTitleKeyword, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import BackLink from '@/components/BackLink'
 import ProductOptions from '@/components/ProductOptions'
 import SizeGuide from '@/components/SizeGuide'
@@ -184,11 +184,27 @@ export default async function ProductPage({ params }: PageProps) {
   const otherImages = product.images.slice(1).filter(img => img.url)
   const firstVariant = product.firstVariant
 
-  // Series cross-sell — same series, all product types, cheapest first
+  // Series cross-sell — detect series from title (products don't carry series tags in Shopify)
+  const SERIES_KEYWORDS: Array<[RegExp, string]> = [
+    [/\bshero\b/i, 'shero'],
+    [/\bneko\b/i, 'neko'],
+    [/sea[\s-]monster/i, 'sea monster'],
+    [/botanical/i, 'botanical'],
+    [/floral/i, 'floral'],
+    [/\bfaces?\b/i, 'faces'],
+  ]
+  let detectedSeriesKeyword: string | null = null
+  for (const [pattern, kw] of SERIES_KEYWORDS) {
+    if (pattern.test(product.title)) { detectedSeriesKeyword = kw; break }
+  }
   const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces']
   const productSeriesTag = product.tags.find(t => SERIES_TAGS_LIST.includes(t.toLowerCase()))
-  const seriesProducts = productSeriesTag
-    ? (await getProductsByTag(productSeriesTag, 20).catch(() => []))
+
+  const seriesProducts = (detectedSeriesKeyword ?? productSeriesTag)
+    ? (await (detectedSeriesKeyword
+        ? getProductsByTitleKeyword(detectedSeriesKeyword, 20)
+        : getProductsByTag(productSeriesTag!, 20)
+      ).catch(() => []))
         .filter(p => p.handle !== handle && p.firstImage && p.firstImage.url)
         .sort((a, b) => parseFloat(a.minPrice.amount) - parseFloat(b.minPrice.amount))
         .slice(0, 6)

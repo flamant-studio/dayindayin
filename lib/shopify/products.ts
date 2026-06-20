@@ -267,6 +267,18 @@ export async function getProductsByTag(tag: string, first = 96): Promise<Normali
   return data.products.edges.map((e) => normalizeProduct(toShopifyProduct(e.node)))
 }
 
+export async function getProductsByTitleKeyword(keyword: string, first = 20): Promise<NormalizedProduct[]> {
+  const data = await sfFetch<{ products: { edges: { node: SfProduct }[] } }>(
+    `query GetProductsByTitle($q: String!, $first: Int!) {
+      products(first: $first, query: $q, sortKey: CREATED_AT, reverse: true) {
+        edges { node { ${PRODUCT_FIELDS} } }
+      }
+    }`,
+    { q: `title:*${keyword}*`, first }
+  )
+  return data.products.edges.map((e) => normalizeProduct(toShopifyProduct(e.node)))
+}
+
 export async function getProductsByType(productType: string, excludeHandle: string, first = 4): Promise<NormalizedProduct[]> {
   const data = await sfFetch<{ products: { edges: { node: SfProduct }[] } }>(
     `query GetProductsByType($q: String!, $first: Int!) {
@@ -299,10 +311,22 @@ export const SERIES_TAGS: Record<string, string> = {
   faces:          'Faces',
 }
 
+const TITLE_SERIES: Array<[RegExp, string]> = [
+  [/\bshero\b/i, 'SHERO'],
+  [/\bneko\b/i, 'NEKO'],
+  [/sea[\s-]monster/i, 'Sea Monsters'],
+  [/botanical/i, 'Botanical'],
+  [/floral/i, 'Floral'],
+  [/\bfaces?\b/i, 'Faces'],
+]
+
 export function seriesLabel(product: NormalizedProduct): string | null {
   for (const tag of product.tags) {
     const label = SERIES_TAGS[tag.toLowerCase()]
     if (label) return label
+  }
+  for (const [pattern, label] of TITLE_SERIES) {
+    if (pattern.test(product.title)) return label
   }
   return null
 }
