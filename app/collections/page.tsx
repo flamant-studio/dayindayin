@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllProductsByTag } from '@/lib/shopify/products'
+import { getAllProducts } from '@/lib/shopify/products'
 import CollectionSlideshow from '@/components/CollectionSlideshow'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -24,7 +24,6 @@ export const metadata: Metadata = {
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works'
 
-// Series collections — sourced from Shopify tags
 const SERIES_COLLECTIONS = [
   { title: 'SHERO', description: 'Feminist icons and powerful women, rendered in tufting and embroidery. The series that started it all.', tag: 'shero', accent: '#D94F2C' },
   { title: 'NEKO', description: 'Cats as subjects and symbols. Sleeping, watching, disappearing. Japanese-inflected, always graphic.', tag: 'neko', accent: '#2E5D4B' },
@@ -35,7 +34,19 @@ const SERIES_COLLECTIONS = [
   { title: 'Sommerby', description: 'Danish summer — light, colour, and the particular stillness of somewhere you return to every year.', tag: 'sommerby', accent: '#C4694F' },
 ]
 
-// Fine art original collections — link to /fine-art sections, not the shop
+const SERIES_TITLE_PATTERNS: Record<string, RegExp> = {
+  'shero':        /\bshero\b/i,
+  'neko':         /\bneko\b/i,
+  'sea-monsters': /sea[\s-]monster/i,
+  'botanical':    /botanical/i,
+  'floral':       /floral/i,
+  'faces':        /\bfaces?\b/i,
+  'sommerby':     /sommerby/i,
+}
+
+const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
+const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
+
 const FINE_ART_COLLECTIONS = [
   {
     title: 'Hand Tufting',
@@ -55,18 +66,14 @@ const FINE_ART_COLLECTIONS = [
   },
 ]
 
-async function SeriesCard({ title, description, tag, accent }: { title: string; description: string; tag: string; accent: string }) {
-  const products = await getAllProductsByTag(tag).catch(() => [])
-  const withImages = products.filter((p) => p.firstImage)
-  const slideImages = withImages.slice(0, 4).map((p) => ({
-    url: p.firstImage!.url,
-    alt: p.firstImage!.altText ?? p.title,
-  }))
-  const count = withImages.length
+type SlideImage = { url: string; alt: string }
 
+function SeriesCard({ title, description, tag, accent, images, count }: {
+  title: string; description: string; tag: string; accent: string; images: SlideImage[]; count: number
+}) {
   return (
     <Link href={`/shop?filter=${tag}`} className={styles.card} style={{ borderLeft: `3px solid ${accent}` }}>
-      <CollectionSlideshow images={slideImages} />
+      <CollectionSlideshow images={images} />
       <div className={styles.cardBody}>
         <div className={styles.cardText}>
           <h2 className={styles.cardTitle}>{title}</h2>
@@ -97,7 +104,25 @@ function FineArtCard({ title, description, href, accent, image, label }: { title
   )
 }
 
-export default function CollectionsPage() {
+export default async function CollectionsPage() {
+  const allProducts = await getAllProducts().catch(() => [])
+
+  const seriesData = SERIES_COLLECTIONS.map(({ title, description, tag, accent }) => {
+    const pattern = SERIES_TITLE_PATTERNS[tag]
+    const filtered = pattern
+      ? allProducts.filter(p => p.firstImage && pattern.test(p.title))
+      : []
+    // Prefer flat art (non-mockup) for slideshow images
+    const flat = filtered.filter(p => !isMockup(p.title))
+    const rest = filtered.filter(p => isMockup(p.title))
+    const ordered = [...flat, ...rest]
+    const images = ordered.slice(0, 4).map(p => ({
+      url: p.firstImage!.url,
+      alt: p.firstImage!.altText ?? p.title,
+    }))
+    return { title, description, tag, accent, images, count: filtered.length }
+  })
+
   return (
     <div className={styles.page}>
       <div className={styles.header}>
@@ -108,7 +133,7 @@ export default function CollectionsPage() {
         </p>
       </div>
       <div className={styles.grid}>
-        {SERIES_COLLECTIONS.map((c) => (
+        {seriesData.map((c) => (
           <SeriesCard key={c.tag} {...c} />
         ))}
       </div>
