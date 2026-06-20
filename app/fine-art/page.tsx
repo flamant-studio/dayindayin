@@ -135,8 +135,11 @@ export default function FineArt() {
                       sizes="(max-width: 768px) 50vw, 33vw"
                       className={styles.cardImg}
                     />
+                    {work.sold && (
+                      <span className={styles.soldBadge}>Sold</span>
+                    )}
                     <div className={styles.cardOverlay}>
-                      <span className={styles.cardEnquire}>Enquire →</span>
+                      <span className={styles.cardEnquire}>{work.sold ? 'See similar works →' : 'Enquire →'}</span>
                     </div>
                   </div>
                   <div className={styles.cardMeta}>

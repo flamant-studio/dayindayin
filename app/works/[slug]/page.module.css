@@ -126,12 +126,16 @@
   flex-shrink: 0;
 }
 
+.availDotSold { background: var(--c-muted); }
+
 .availLabel {
   font-size: var(--text-xs);
   font-weight: 600;
   color: #5C8C6E;
   letter-spacing: 0.04em;
 }
+
+.availLabelSold { color: var(--c-muted); }
 
 .description {
   font-size: var(--text-base);
@@ -189,6 +193,13 @@
 }
 
 .enquiryBtn:hover { background: #c03a20; }
+
+.enquiryBtnSold {
+  background: var(--c-muted);
+  letter-spacing: 0.06em;
+}
+
+.enquiryBtnSold:hover { background: var(--c-text); }
 
 .meta {
   border-top: 1px solid var(--c-border);

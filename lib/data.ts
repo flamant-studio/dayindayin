@@ -10,6 +10,7 @@ export interface Work {
   gallery?: string[];   // additional views uploaded to Vercel Blob
   dimensions?: string;  // e.g. "37×27 cm"
   materials?: string;   // more specific than CATEGORY_MEDIUM default
+  sold?: boolean;       // true if no longer available
 }
 
 export interface BlogPost {
@@ -28,7 +29,7 @@ const g = (slug: string, n: number) =>
 
 export const works: Work[] = [
   // Tufting
-  { slug: 'purple-sun',        title: 'Purple Sun',        category: 'tufting', year: '2019', description: 'Wool tufting on cotton canvas. One of the earliest pieces — a sun motif in saturated violet.',                                              image: `${BLOB}/tufting/purple-sun.jpg`,        gallery: g('tufting/purple-sun', 5) },
+  { slug: 'purple-sun',        title: 'Purple Sun',        category: 'tufting', year: '2019', description: 'Wool tufting on cotton canvas. One of the earliest pieces — a sun motif in saturated violet.',                                              image: `${BLOB}/tufting/purple-sun.jpg`,        gallery: g('tufting/purple-sun', 5), sold: true },
   { slug: 'candy-I',           title: 'Candy I',           category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. Bold candy-stripe geometry, cut and loop pile.',                                                                image: `${BLOB}/tufting/candy-I.jpg`,           gallery: g('tufting/candy-I', 5) },
   { slug: 'orange-sun',        title: 'Orange Sun',        category: 'tufting', year: '2021', description: 'Wool tufting on canvas. The sun as repeated motif — this one in warm terracotta orange.',                                                   image: `${BLOB}/tufting/orange-sun.jpg`,        gallery: g('tufting/orange-sun', 4) },
   { slug: 'rainbow-I',         title: 'Rainbow I',         category: 'tufting', year: '2021', description: 'Hand-tufted wool, multi-colour arc. Loop pile on cotton canvas backing.',                                                                    image: `${BLOB}/tufting/rainbow-I.jpg`,         gallery: g('tufting/rainbow-I', 4) },
@@ -41,11 +42,11 @@ export const works: Work[] = [
   { slug: 'fleur-de-lys',      title: 'Fleur de Lys',      category: 'tufting', year: '2021', description: 'Wool tufting on canvas. The heraldic lily motif, translated into textile pile.',                                                             image: `${BLOB}/tufting/fleur-de-lys.jpg` },
   { slug: 'jellyfish',         title: 'Jellyfish',         category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. Soft looping forms suggest a jellyfish mid-drift.',                                           dimensions: '56×24 cm', image: `${BLOB}/tufting/jellyfish.jpg`,         gallery: g('tufting/jellyfish', 5) },
   { slug: 'rainbow-II',        title: 'Rainbow II',        category: 'tufting', year: '2021', description: 'Wool tufting on canvas. Second in the rainbow series — denser palette, shifted arch.',                                                       image: `${BLOB}/tufting/rainbow-II.jpg`,        gallery: g('tufting/rainbow-II', 5) },
-  { slug: 'tufted-mask',       title: 'Tufted Mask',       category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. A mask form in textile — somewhere between ritual object and wall piece.',                    dimensions: '39×21 cm', image: `${BLOB}/tufting/tufted-mask.jpg`,       gallery: g('tufting/tufted-mask', 5) },
+  { slug: 'tufted-mask',       title: 'Tufted Mask',       category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. A mask form in textile — somewhere between ritual object and wall piece.',                    dimensions: '39×21 cm', image: `${BLOB}/tufting/tufted-mask.jpg`,       gallery: g('tufting/tufted-mask', 5), sold: true },
   { slug: 'sitspot-large',     title: 'Sitspot Large',     category: 'tufting', year: '2021', description: 'Wool tufting on canvas. Functional in origin, fine art in execution. The large version.',                                 dimensions: '74×44 cm', image: `${BLOB}/tufting/sitspot-large.jpg`,     gallery: g('tufting/sitspot-large', 6) },
   { slug: 'universe-hole',     title: 'Universe with a Hole', category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. A circle with a void at its centre — absence as compositional element.',                                    image: `${BLOB}/tufting/universe-hole.jpg`,     gallery: g('tufting/universe-hole', 7) },
   { slug: 'green-flower',      title: 'Green Flower',      category: 'tufting', year: '2021', description: 'Wool tufting on canvas. A single botanical form in deep green — simple and precise.',                                                        image: `${BLOB}/tufting/green-flower.jpg`,      gallery: g('tufting/green-flower', 1) },
-  { slug: 'pink-rug',          title: 'Pink Rug',          category: 'tufting', year: '2020', description: 'Hand-tufted wool, floor piece. Designed to be walked on — which makes it no less art.',                                                      image: `${BLOB}/tufting/pink-rug.jpg`,          gallery: g('tufting/pink-rug', 5) },
+  { slug: 'pink-rug',          title: 'Pink Rug',          category: 'tufting', year: '2020', description: 'Hand-tufted wool, floor piece. Designed to be walked on — which makes it no less art.',                                                      image: `${BLOB}/tufting/pink-rug.jpg`,          gallery: g('tufting/pink-rug', 5), sold: true },
   { slug: 'bedroom-rug',       title: 'Bedroom Rug',       category: 'tufting', year: '2020', description: 'Wool tufting, floor piece. Made for a specific room — the domestic as subject and site.',                                                    image: `${BLOB}/tufting/bedroom-rug.jpg`,       gallery: g('tufting/bedroom-rug', 5) },
   // Embroidery
   { slug: 'fuck-alting',         title: 'Fuck Alting',            category: 'embroidery', year: '2020', description: 'Hand embroidery on canvas. "Fuck everything" in Danish — direct, undecorated, exactly right.',                                         image: `${BLOB}/embroidery/fuck-alting.jpg`,         gallery: g('embroidery/fuck-alting', 5) },
@@ -222,6 +223,32 @@ export const blogPosts: BlogPost[] = [
       "I'm fascinated by what happens to language when you make it by hand. When you stitch a word letter by letter, something about the time spent starts to attach to the meaning. 'ELSK' — love in Danish — took me three days to embroider. I thought about the word for three days while making it. That's not how you normally read.",
       "The Shop of Words is the informal name I've given to the text-based thread of my practice. Embroidery, tufted lettering, digital works where the word is the motif. It's the most directly political part of what I make — language picked up from what I read and hear, and then slowed down into something material.",
       "Right now I'm working on a large piece with a single sentence in it. I'm not going to write the sentence here — I don't know what it fully means yet. That's part of the work: making it visible in order to find out what it is.",
+    ],
+  },
+  {
+    slug: "on-the-shero-series",
+    title: "On the SHERO series",
+    date: "2025-12-15",
+    excerpt: "Where SHERO came from and what it's become — feminist icons, embroidery, and the politics of naming.",
+    image: `${BLOB_WORKS}/embroidery/fuck-alting.jpg`,
+    body: [
+      "SHERO started with a name. I was thinking about the word 'hero' — how it carries a body, how the default body in that word is male — and I wanted to make that visible. SHERO isn't a portmanteau I invented. It's been around. But putting it into the work, stitching it letter by letter, attaching it to images of women I was drawing — it became something else.",
+      "The series grew sideways from there. First the text works: 'Fuck Alting', 'Ingenting', 'Mariann'. Then the embroidered figures — faces, postures, bodies. The NEKO series is a distant relative. The cats and the women in the SHERO pieces share something: indifference, presence, the refusal to perform for whoever is watching.",
+      "I've been asked whether the work is angry. I don't think that's quite right. It's certain. There's a difference. Anger implies a reaction to something external. What I'm making is a statement that doesn't require anyone else to be wrong. It's enough to be here, to insist on being seen — not seen through, but seen.",
+      "The pieces I'm proudest of in this series are the ones where the politics disappear into the form. Where you stop reading 'feminist artwork' and start reading the work itself. That's the goal: to make something so formally good that the content is just the content.",
+    ],
+  },
+  {
+    slug: "on-the-floor",
+    title: "On the floor",
+    date: "2025-07-10",
+    excerpt: "On floor pieces, domestic space, and the question of what counts as fine art.",
+    image: `${BLOB_WORKS}/tufting/bedroom-rug.jpg`,
+    body: [
+      "I made my first floor piece in 2020. A pink rug. I made it because I wanted to see what tufting felt like at larger scale, under foot. The result surprised me — not because of the technical execution but because of what happened when I put it in a room. It changed the room. Not decoratively. Structurally.",
+      "There's a long argument in art about whether something that serves a function can be art. I don't find that argument interesting. The Bedroom Rug is on the floor. People stand on it. It's also a work I made with intention and care and a clear set of formal decisions about colour and pile height and edge treatment. Why would 'floor' disqualify it?",
+      "The domestic is a subject I keep returning to, partly because it's where most of life happens and partly because it's been systematically undervalued as a subject — especially in work made by women. When I put an artwork on the floor, I'm not lowering it. I'm asking what the floor might be.",
+      "Both floor pieces I've made have sold. I don't know if people bought them as rugs or as art. I hope the distinction blurred.",
     ],
   },
   {

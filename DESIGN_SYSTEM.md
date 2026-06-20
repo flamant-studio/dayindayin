@@ -284,11 +284,39 @@ Max content width: 1280px, centered with `auto` margins.
 
 ---
 
+## WORK STATUS INDICATORS
+
+### Available work
+```
+● Original — price on enquiry
+```
+Sage green dot (#5C8C6E), sage label, 8px dot.
+
+### Sold work
+```
+● Sold — enquire about similar work
+```
+Muted dot and label. Enquiry button shifts to `--c-muted` background.
+
+On fine art grid: `SOLD` badge — dark semi-transparent slate at top-left. 10px / 700wt / 0.12em tracking. Does not block hover interaction.
+
+---
+
+## GALLERY LIGHTBOX
+
+Component: `components/WorksGallery.tsx` + `ImageLightbox.tsx`
+
+- Grid: 2-col on desktop. First image spans full width (16/9 ratio). Remaining images 3/2.
+- Mobile: single column, all images 3/2.
+- Click-to-open: `cursor: zoom-in`. Expand icon appears top-right on hover.
+- Lightbox: full-screen overlay, `objectFit: contain`. Keyboard navigation (← → Esc). Dot indicator for multi-image. Arrows shown only when >1 image.
+- Focus state: `outline: 2px solid var(--c-accent)` with 2px offset.
+
+---
+
 ## OPEN DESIGN ISSUES (cross-reference ISSUES.md)
 
-- ISS-02: Card info area must be white — not yet implemented across all PLPs
-- ISS-03: Framed print card aspect ratio — needs distinct ratio in grid
-- ISS-04: Sticky bar must use Terracotta, not navy
-- ISS-05: Recently viewed image container must be white
-- ISS-06: Original Works PDP — needs Template C implementation
-- ISS-07: Homepage section hierarchy needs restructure per "most important first"
+- ISS-01: Product variants — real fix requires Shopify data migration
+- ISS-08: Homepage video hero — blocked on video asset
+- ISS-09: Design system Canva visual — MD complete; visual board still needed
+*Issues 02–07 resolved.*

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { works, getWork } from "@/lib/data";
 import { notFound } from "next/navigation";
 import ShareButtons from "@/components/ShareButtons";
+import WorksGallery from "@/components/WorksGallery";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -143,8 +144,10 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
           <div className={styles.infoGrid}>
             <div className={styles.infoLeft}>
               <div className={styles.availability}>
-                <span className={styles.availDot} />
-                <span className={styles.availLabel}>Original — price on enquiry</span>
+                <span className={`${styles.availDot} ${work.sold ? styles.availDotSold : ''}`} />
+                <span className={`${styles.availLabel} ${work.sold ? styles.availLabelSold : ''}`}>
+                  {work.sold ? 'Sold — enquire about similar work' : 'Original — price on enquiry'}
+                </span>
               </div>
               <p className={styles.description}>{work.description}</p>
               <p className={styles.note}>
@@ -162,10 +165,10 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             </div>
             <div className={styles.infoRight}>
               <Link
-                href={`/contact?subject=Enquiry: ${encodeURIComponent(work.title)}`}
-                className={styles.enquiryBtn}
+                href={`/contact?subject=${work.sold ? 'Similar+work+enquiry' : `Enquiry:+${encodeURIComponent(work.title)}`}`}
+                className={`${styles.enquiryBtn} ${work.sold ? styles.enquiryBtnSold : ''}`}
               >
-                Enquire about this work
+                {work.sold ? 'Enquire about similar work' : 'Enquire about this work'}
               </Link>
               <div className={styles.meta}>
                 <div className={styles.metaRow}>
@@ -199,19 +202,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             <div className={styles.galleryHeader}>
               <span className={styles.galleryLabel}>Studio views</span>
             </div>
-            <div className={styles.galleryGrid}>
-              {gallery.map((src, i) => (
-                <div key={i} className={styles.galleryItem}>
-                  <Image
-                    src={src}
-                    alt={`${work.title} — view ${i + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-              ))}
-            </div>
+            <WorksGallery images={gallery} title={work.title} />
           </section>
         )}
 
