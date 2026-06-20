@@ -230,7 +230,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
           <div className={styles.grid}>
             {displayed.map((p, i) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-                <div className={`${styles.cardImg} ${isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
+                <div className={`${styles.cardImg} ${categoryLabel(p) === 'Framed Print' ? styles.cardImgMockup : isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
                   <Image
                     src={p.firstImage!.url}
                     alt={p.firstImage!.altText ?? p.title}

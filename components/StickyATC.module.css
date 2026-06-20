@@ -37,7 +37,7 @@
 .btn {
   flex-shrink: 0;
   padding: 0.625rem 1.5rem;
-  background: var(--c-text);
+  background: var(--c-accent);
   color: var(--c-white);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -48,7 +48,7 @@
   white-space: nowrap;
 }
 
-.btn:hover:not(:disabled) { background: var(--c-accent); }
+.btn:hover:not(:disabled) { background: #b35a42; }
 .btn:disabled { opacity: 0.5; cursor: default; }
 .added { background: var(--c-accent-2) !important; }
 

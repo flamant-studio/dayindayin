@@ -33,14 +33,14 @@
 .imgWrap {
   position: relative;
   aspect-ratio: 4/5;
-  background: var(--c-surface);
+  background: #fff;
   overflow: hidden;
 }
 
 .imgPlaceholder {
   position: absolute;
   inset: 0;
-  background: var(--c-surface);
+  background: #f5f4f2;
 }
 
 .info {

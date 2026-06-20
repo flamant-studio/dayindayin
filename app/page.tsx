@@ -136,7 +136,7 @@ export default async function HomePage() {
           <div className={styles.productGrid}>
             {products.map((p) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-                <div className={`${styles.cardImg} ${isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
+                <div className={`${styles.cardImg} ${categoryLabel(p) === 'Framed Print' ? styles.cardImgMockup : isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
                   {p.firstImage
                     ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
                     : <div className={styles.cardPlaceholder} />
