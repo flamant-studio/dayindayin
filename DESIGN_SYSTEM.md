@@ -317,6 +317,5 @@ Component: `components/WorksGallery.tsx` + `ImageLightbox.tsx`
 ## OPEN DESIGN ISSUES (cross-reference ISSUES.md)
 
 - ISS-01: Product variants — real fix requires Shopify data migration
-- ISS-08: Homepage video hero — blocked on video asset
 - ISS-09: Design system Canva visual — MD complete; visual board still needed
-*Issues 02–07 resolved.*
+*Issues 02–08 resolved.*

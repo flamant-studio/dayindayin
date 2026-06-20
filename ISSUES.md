@@ -27,7 +27,7 @@
 ### ISS-03: Framed print cards cropped badly on PLP
 **What:** Framed print mockup images show only top+bottom frame bars in the card — the artwork is barely visible. The objectFit:contain approach puts the tall framed-print mockup into a square card area, resulting in huge black bars.
 **Where:** Product card image rendering. Needs a taller aspect ratio for framed print cards, OR crop to show artwork area only, OR objectFit:cover with centre focus
-**Status:** ✅ FIXED (2026-06-20) — Framed prints now explicitly route to `cardImgMockup` class (objectFit:contain on white bg) in both `app/page.tsx` and `app/shop/page.tsx`
+**Status:** ✅ FIXED (2026-06-21) — `cardImgMockup` now forces `aspect-ratio: 1/1` overriding the default 4/5 container. Gelato mockup images are square; they now fill the card fully with no whitespace strips. Artwork clearly visible.
 
 ### ISS-04: Sticky add-to-cart bar — wrong colors
 **What:** The sticky "Add to cart — 418 kr" bar at the bottom of PDPs uses a dark navy/almost-black background. Should be terracotta (#C4694F) to match the main CTA button color, or at minimum chalk background with slate text.
@@ -67,7 +67,13 @@
 **What:** A video (looping, muted, autoplay) was discussed for the hero section. Currently uses a static lifestyle photo. Need to source/create a short loop of Stine's studio/work process.
 **Where:** `app/page.tsx` hero section
 **Note:** Requires video asset — Sebastian to provide or source
-**Status:** Blocked on asset
+**What was done (2026-06-21):**
+- Found `Loop_detail_relate_swf22.MOV` in `_KUNST/Studio/Art projects/` — 2.9s H.264 tufting loop detail
+- Compressed 7.2MB → 603KB via ffmpeg (crf 28, 1280×960, no audio)
+- Uploaded to Vercel Blob at `video/hero-loop.mp4`
+- Replaced `<Image>` with `<video autoPlay muted loop playsInline poster={ls-01.jpg}>`
+- CSS: `.heroBgVideo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover }`
+**Status:** ✅ FIXED (2026-06-21)
 
 ### ISS-09: Design system — no reference document exists
 **What:** No design system MD file or Canva visual system exists. Needed: typography scale, color palette + usage rules, UX iconography, page templates, section templates, atoms/sub-elements, spacing rules, margin/padding system, reusable artefacts.
