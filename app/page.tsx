@@ -176,8 +176,8 @@ export default async function HomePage() {
       <section className={styles.editorial}>
         <div className={styles.editorialImage}>
           <Image
-            src={`${BLOB}/works/tufting/candy-I.jpg`}
-            alt="Candy I — tufted textile by Stine Weirsøe Flamant"
+            src={`${BLOB}/works/tufting/liebes-panopticon.jpg`}
+            alt="Liebes Panopticon — hand tufted wool by Stine Weirsøe Flamant"
             fill
             sizes="(max-width: 768px) 100vw, 55vw"
             style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -185,12 +185,12 @@ export default async function HomePage() {
         </div>
         <div className={styles.editorialBody}>
           <span className={styles.editorialSeries}>Tufting — from the studio</span>
-          <h2 className={styles.editorialTitle}>Candy I</h2>
+          <h2 className={styles.editorialTitle}>Liebes Panopticon</h2>
           <p className={styles.editorialNote}>
-            Made by hand with a tufting gun on stretched cotton canvas. Bold candy-stripe geometry in cut and loop pile — the kind of colour that stops you in a room. Stine has been tufting since 2019; each piece takes days to finish and exists once.
+            The title takes Foucault's structure of surveillance and puts the word "Liebes" — beloved — in front of it. Coercion in warmth's clothing. Hand-tufted wool on canvas; made over several days in the Copenhagen studio. One of a kind.
           </p>
-          <Link href="/works/candy-I" className={styles.editorialLink}>
-            See the originals →
+          <Link href="/works/liebes-panopticon" className={styles.editorialLink}>
+            See the original →
           </Link>
         </div>
       </section>

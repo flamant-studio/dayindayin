@@ -42,12 +42,22 @@ const sections: { id: WorkCategory; label: string; tagline: string }[] = [
 
 const FEATURED_SLUGS = ['liebes-panopticon', 'fuck-alting', 'universe-3', 'taped-objects'];
 
+const RECENTLY_ADDED_SLUGS = [
+  'purple-fabric-in-garden', 'office-shot', 'yarn', 'smorrebrod',
+  'bedroom-wall-rug', 'red-on-wood', 'stripes-on-beige', 'pink-rug-II',
+  'seb-livingroom', 'green-background', 'long-hair-dont-care', 'gud-har-meldt-afbud-II',
+];
+
 export default function FineArt() {
   const featuredWorks = FEATURED_SLUGS
     .map(slug => works.find(w => w.slug === slug))
     .filter(Boolean) as typeof works;
 
   const [heroWork, ...rowWorks] = featuredWorks;
+
+  const recentlyAdded = RECENTLY_ADDED_SLUGS
+    .map(slug => works.find(w => w.slug === slug))
+    .filter(Boolean) as typeof works;
 
   const availableCount = works.filter(w => !w.sold).length
   const totalCount = works.length
@@ -106,6 +116,32 @@ export default function FineArt() {
             ))}
           </div>
         </div>
+      )}
+
+      {/* ── New additions strip ──────────────────────────────── */}
+      {recentlyAdded.length > 0 && (
+        <section className={styles.recentSection}>
+          <div className={styles.recentHead}>
+            <span className={styles.recentLabel}>New to the archive</span>
+            <span className={styles.recentCount}>{recentlyAdded.length} works added</span>
+          </div>
+          <div className={styles.recentStrip}>
+            {recentlyAdded.map((work) => (
+              <Link key={work.slug} href={`/works/${work.slug}`} className={styles.recentCard}>
+                <div className={styles.recentImg}>
+                  <Image
+                    src={work.image}
+                    alt={work.title}
+                    fill
+                    sizes="(max-width: 768px) 40vw, 180px"
+                    className={styles.recentImgEl}
+                  />
+                </div>
+                <span className={styles.recentTitle}>{work.title}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
       )}
 
       {/* ── Category anchor nav ──────────────────────────────── */}
