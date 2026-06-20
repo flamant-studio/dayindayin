@@ -72,6 +72,8 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
     .filter((w) => w.category === work.category && w.slug !== work.slug)
     .slice(0, 3)
 
+  const gallery = work.gallery ?? []
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'VisualArtwork',
@@ -109,107 +111,133 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+
       <div className={styles.page}>
-        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-          <Link href="/fine-art" className={styles.breadcrumbLink}>Fine Art</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <Link href={`/archive?category=${work.category}`} className={styles.breadcrumbLink}>{label}</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <span className={styles.breadcrumbCurrent}>{work.title}</span>
-        </nav>
-      <div className={styles.layout}>
-        <div className={styles.image}>
+        {/* ── Hero ──────────────────────────────────────────────── */}
+        <div className={styles.hero}>
           <Image
             src={work.image}
             alt={`${work.title} — ${label} by Stine Weirsøe Flamant, ${work.year}`}
             fill
-            sizes="(max-width: 768px) 100vw, 60vw"
-            style={{ objectFit: "cover" }}
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
             priority
           />
-        </div>
-        <div className={styles.info}>
-          <div className={styles.infoInner}>
-            <p className={styles.category}>{label}</p>
-            <h1>{work.title}</h1>
-            <p className={styles.year}>{work.year}</p>
-            <p className={styles.description}>{work.description}</p>
-
-            <div className={styles.availability}>
-              <span className={styles.availDot} />
-              <span className={styles.availLabel}>Original — price on enquiry</span>
-            </div>
-
-            <Link
-              href={`/contact?subject=Enquiry: ${encodeURIComponent(work.title)}`}
-              className={styles.enquiryBtn}
-            >
-              Enquire about this work
-            </Link>
-
-            <div className={styles.meta}>
-              <div className={styles.metaRow}>
-                <span className={styles.metaKey}>Medium</span>
-                <span className={styles.metaVal}>{medium}</span>
-              </div>
-              <div className={styles.metaRow}>
-                <span className={styles.metaKey}>Year</span>
-                <span className={styles.metaVal}>{work.year}</span>
-              </div>
-              <div className={styles.metaRow}>
-                <span className={styles.metaKey}>Dimensions</span>
-                <span className={styles.metaVal}>{work.dimensions ?? 'Available on enquiry'}</span>
-              </div>
-              <div className={styles.metaRow}>
-                <span className={styles.metaKey}>Type</span>
-                <span className={styles.metaVal}>Unique original</span>
-              </div>
-              <div className={styles.metaRow}>
-                <span className={styles.metaKey}>Location</span>
-                <span className={styles.metaVal}>Copenhagen, Denmark</span>
-              </div>
-            </div>
-
-            <p className={styles.note}>
-              This is a unique original work. Prints of Stine&apos;s designs are available in the{' '}
-              <Link href={shopHref}>{shopLabel}</Link> from 56 kr.
-            </p>
-
-            <Link href={`/archive?category=${work.category}`} className={styles.moreLink}>
-              See more {label.toLowerCase()} works →
-            </Link>
-
-            <ShareButtons
-              url={`https://dayindayin.dk/works/${work.slug}`}
-              title={`${work.title} — ${label} by Stine Weirsøe Flamant`}
-              imageUrl={work.image}
-            />
+          <div className={styles.heroOverlay} />
+          <nav className={styles.heroBreadcrumb} aria-label="Breadcrumb">
+            <Link href="/fine-art" className={styles.breadcrumbLink}>Fine Art</Link>
+            <span className={styles.breadcrumbSep}>/</span>
+            <Link href={`/archive?category=${work.category}`} className={styles.breadcrumbLink}>{label}</Link>
+            <span className={styles.breadcrumbSep}>/</span>
+            <span className={styles.breadcrumbCurrent}>{work.title}</span>
+          </nav>
+          <div className={styles.heroContent}>
+            <p className={styles.heroCategory}>{label}</p>
+            <h1 className={styles.heroTitle}>{work.title}</h1>
+            <p className={styles.heroYear}>{work.year}</p>
           </div>
         </div>
-      </div>
 
-      {related.length > 0 && (
-        <section className={styles.related}>
-          <div className={styles.relatedHead}>
-            <h2 className={styles.relatedTitle}>More {label.toLowerCase()}</h2>
-            <Link href={`/archive?category=${work.category}`} className={styles.relatedViewAll}>
-              See all {label.toLowerCase()} works →
-            </Link>
-          </div>
-          <div className={styles.relatedGrid}>
-            {related.map((r) => (
-              <Link key={r.slug} href={`/works/${r.slug}`} className={styles.relatedCard}>
-                <div className={styles.relatedImg}>
-                  <Image src={r.image} alt={r.title} fill sizes="(max-width: 768px) 33vw, 22vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <span className={styles.relatedName}>{r.title}</span>
-                <span className={styles.relatedYear}>{r.year}</span>
+        {/* ── Info ──────────────────────────────────────────────── */}
+        <div className={styles.infoSection}>
+          <div className={styles.infoGrid}>
+            <div className={styles.infoLeft}>
+              <div className={styles.availability}>
+                <span className={styles.availDot} />
+                <span className={styles.availLabel}>Original — price on enquiry</span>
+              </div>
+              <p className={styles.description}>{work.description}</p>
+              <p className={styles.note}>
+                Prints of Stine&apos;s work are available in the{' '}
+                <Link href={shopHref}>{shopLabel}</Link> from 56 kr.
+              </p>
+              <Link href={`/archive?category=${work.category}`} className={styles.moreLink}>
+                See more {label.toLowerCase()} works →
               </Link>
-            ))}
+              <ShareButtons
+                url={`https://dayindayin.dk/works/${work.slug}`}
+                title={`${work.title} — ${label} by Stine Weirsøe Flamant`}
+                imageUrl={work.image}
+              />
+            </div>
+            <div className={styles.infoRight}>
+              <Link
+                href={`/contact?subject=Enquiry: ${encodeURIComponent(work.title)}`}
+                className={styles.enquiryBtn}
+              >
+                Enquire about this work
+              </Link>
+              <div className={styles.meta}>
+                <div className={styles.metaRow}>
+                  <span className={styles.metaKey}>Medium</span>
+                  <span className={styles.metaVal}>{medium}</span>
+                </div>
+                <div className={styles.metaRow}>
+                  <span className={styles.metaKey}>Year</span>
+                  <span className={styles.metaVal}>{work.year}</span>
+                </div>
+                <div className={styles.metaRow}>
+                  <span className={styles.metaKey}>Dimensions</span>
+                  <span className={styles.metaVal}>{work.dimensions ?? 'Available on enquiry'}</span>
+                </div>
+                <div className={styles.metaRow}>
+                  <span className={styles.metaKey}>Edition</span>
+                  <span className={styles.metaVal}>Unique original</span>
+                </div>
+                <div className={styles.metaRow}>
+                  <span className={styles.metaKey}>Location</span>
+                  <span className={styles.metaVal}>Copenhagen, Denmark</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-      )}
-    </div>
+        </div>
+
+        {/* ── Gallery ───────────────────────────────────────────── */}
+        {gallery.length > 0 && (
+          <section className={styles.gallery}>
+            <div className={styles.galleryHeader}>
+              <span className={styles.galleryLabel}>Studio views</span>
+            </div>
+            <div className={styles.galleryGrid}>
+              {gallery.map((src, i) => (
+                <div key={i} className={styles.galleryItem}>
+                  <Image
+                    src={src}
+                    alt={`${work.title} — view ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ── Related ───────────────────────────────────────────── */}
+        {related.length > 0 && (
+          <section className={styles.related}>
+            <div className={styles.relatedHead}>
+              <h2 className={styles.relatedTitle}>More {label.toLowerCase()}</h2>
+              <Link href={`/archive?category=${work.category}`} className={styles.relatedViewAll}>
+                See all {label.toLowerCase()} works →
+              </Link>
+            </div>
+            <div className={styles.relatedGrid}>
+              {related.map((r) => (
+                <Link key={r.slug} href={`/works/${r.slug}`} className={styles.relatedCard}>
+                  <div className={styles.relatedImg}>
+                    <Image src={r.image} alt={r.title} fill sizes="(max-width: 768px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
+                  </div>
+                  <span className={styles.relatedName}>{r.title}</span>
+                  <span className={styles.relatedYear}>{r.year}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
     </>
   );
 }

@@ -26,7 +26,7 @@ const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works'
 export const works: Work[] = [
   // Tufting
   { slug: 'purple-sun',        title: 'Purple Sun',        category: 'tufting',     year: '2019', description: 'Wool tufting on cotton canvas. One of the earliest pieces — a sun motif in saturated violet.',  image: `${BLOB}/tufting/purple-sun.jpg` },
-  { slug: 'candy-I',           title: 'Candy I',           category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas. Bold candy-stripe geometry, cut and loop pile.',  image: `${BLOB}/tufting/candy-I.jpg` },
+  { slug: 'candy-I',           title: 'Candy I',           category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas. Bold candy-stripe geometry, cut and loop pile.',  image: `${BLOB}/tufting/candy-I.jpg`, gallery: [`${BLOB}/tufting/candy-I/photo-1.jpg`, `${BLOB}/tufting/candy-I/photo-2.jpg`, `${BLOB}/tufting/candy-I/photo-3.jpg`, `${BLOB}/tufting/candy-I/photo-4.jpg`, `${BLOB}/tufting/candy-I/photo-5.jpg`] },
   { slug: 'orange-sun',        title: 'Orange Sun',        category: 'tufting',     year: '2021', description: 'Wool tufting on canvas. The sun as repeated motif — this one in warm terracotta orange.',  image: `${BLOB}/tufting/orange-sun.jpg` },
   { slug: 'rainbow-I',         title: 'Rainbow I',         category: 'tufting',     year: '2021', description: 'Hand-tufted wool, multi-colour arc. Loop pile on cotton canvas backing.',  image: `${BLOB}/tufting/rainbow-I.jpg` },
   { slug: 'birds',             title: 'Birds',             category: 'tufting',     year: '2021', description: 'Wool tufting on canvas. Bird silhouettes in flight — stylised, graphic, mid-migration.',  image: `${BLOB}/tufting/birds.jpg` },
