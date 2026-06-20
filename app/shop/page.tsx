@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllProducts, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
+import { getAllProducts, formatPrice, formatPriceLabel, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
 import ShoppingNudge from '@/components/ShoppingNudge'
@@ -240,7 +240,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{p.title}</span>
                   <span className={styles.cardType}>{categoryLabel(p)}</span>
-                  <span className={styles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
+                  <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
                 </div>
               </Link>
             ))}

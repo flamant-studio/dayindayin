@@ -147,6 +147,13 @@ export function formatPrice(amount: string): string {
   return `${Math.round(parseFloat(amount))} kr`
 }
 
+export function formatPriceLabel(product: NormalizedProduct): string {
+  const min = parseFloat(product.priceRangeV2.minVariantPrice.amount)
+  const max = parseFloat(product.priceRangeV2.maxVariantPrice.amount)
+  const base = formatPrice(product.priceRangeV2.minVariantPrice.amount)
+  return min < max ? `From ${base}` : base
+}
+
 export function checkoutUrl(variantGid: string, quantity = 1): string {
   const numericId = variantGid.split('/').pop()!
   return `https://${process.env.SHOPIFY_STORE_DOMAIN}/cart/${numericId}:${quantity}`

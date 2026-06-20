@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
+import { getAllProducts, formatPriceLabel, categoryLabel } from '@/lib/shopify/products'
 import { blogPosts } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
@@ -119,13 +119,13 @@ export default async function HomePage() {
                     handle={p.handle}
                     title={p.title}
                     imageUrl={p.firstImage?.url ?? null}
-                    price={formatPrice(p.minPrice.amount)}
+                    price={formatPriceLabel(p)}
                   />
                 </div>
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{p.title}</span>
                   <span className={styles.cardType}>{categoryLabel(p)}</span>
-                  <span className={styles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
+                  <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
                 </div>
               </Link>
             ))}
