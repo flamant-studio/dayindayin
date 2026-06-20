@@ -71,6 +71,11 @@ export default async function Archive({ searchParams }: PageProps) {
             <Link href="/commissions">Commissions open.</Link>
           </p>
         )}
+        {filtered.some(w => w.sold) && (
+          <p className={styles.heroNote} style={{ color: 'var(--c-muted)', marginTop: 'var(--sp-2)' }}>
+            {filtered.filter(w => !w.sold).length} available · {filtered.filter(w => w.sold).length} sold
+          </p>
+        )}
       </section>
 
       <div className={styles.filters}>
@@ -88,9 +93,10 @@ export default async function Archive({ searchParams }: PageProps) {
 
       <div className={styles.grid}>
         {filtered.map((work) => (
-          <Link key={work.slug} href={`/works/${work.slug}`} className={styles.card}>
+          <Link key={work.slug} href={`/works/${work.slug}`} className={`${styles.card} ${work.sold ? styles.cardSold : ''}`}>
             <div className={styles.cardImage}>
               <Image src={work.image} alt={work.title} fill sizes="(max-width: 768px) 33vw, 20vw" style={{ objectFit: "cover" }} />
+              {work.sold && <span className={styles.soldBadge}>Sold</span>}
             </div>
             <p className={styles.title}>{work.title}</p>
             <p className={styles.meta}>{CATEGORY_LABELS[work.category] ?? work.category} · {work.year}</p>

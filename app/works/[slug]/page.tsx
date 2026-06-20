@@ -179,10 +179,12 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                   <span className={styles.metaKey}>Year</span>
                   <span className={styles.metaVal}>{work.year}</span>
                 </div>
-                <div className={styles.metaRow}>
-                  <span className={styles.metaKey}>Dimensions</span>
-                  <span className={styles.metaVal}>{work.dimensions ?? 'Available on enquiry'}</span>
-                </div>
+                {work.dimensions && (
+                  <div className={styles.metaRow}>
+                    <span className={styles.metaKey}>Dimensions</span>
+                    <span className={styles.metaVal}>{work.dimensions}</span>
+                  </div>
+                )}
                 <div className={styles.metaRow}>
                   <span className={styles.metaKey}>Edition</span>
                   <span className={styles.metaVal}>Unique original</span>

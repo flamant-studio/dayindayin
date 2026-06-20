@@ -49,6 +49,9 @@ export default function FineArt() {
 
   const [heroWork, ...rowWorks] = featuredWorks;
 
+  const availableCount = works.filter(w => !w.sold).length
+  const totalCount = works.length
+
   return (
     <div className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
@@ -61,6 +64,9 @@ export default function FineArt() {
         <p className={styles.heroSub}>
           Tufted textiles, embroidery, painting, and photography — made by hand in Copenhagen.
           Each piece exists once and is available on direct enquiry.
+        </p>
+        <p className={styles.heroCount}>
+          {availableCount} of {totalCount} works currently available
         </p>
       </section>
 

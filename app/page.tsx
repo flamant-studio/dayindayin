@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
 import { displayTitle } from '@/lib/display'
-import { blogPosts } from '@/lib/data'
+import { blogPosts, works } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
 import QuickAddButton from '@/components/QuickAddButton'
@@ -43,6 +43,8 @@ const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 
 const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
 
 export default async function HomePage() {
+  const availableWorks = works.filter(w => !w.sold).length
+
   // Parallel targeted fetches — faster than getAllProducts (500+ items)
   const [products, ...seriesResults] = await Promise.all([
     getProducts(8).then(all => all.filter(p => p.firstImage)).catch(() => []),
@@ -138,7 +140,7 @@ export default async function HomePage() {
             />
           </div>
           <div className={styles.collectText}>
-            <span className={styles.collectLabel}>Original Fine Art</span>
+            <span className={styles.collectLabel}>Original Fine Art · {availableWorks} available</span>
             <h2 className={styles.collectTitle}>One of a kind.</h2>
             <p className={styles.collectDesc}>
               Tufted textiles, embroidery, paintings — made by hand in Copenhagen. Each piece exists once. Prices on enquiry.
