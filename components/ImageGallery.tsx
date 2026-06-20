@@ -15,9 +15,10 @@ interface GalleryImage {
 interface Props {
   images: GalleryImage[]
   colorwaySiblings?: { href: string; url: string; alt: string }[]
+  objectFit?: 'cover' | 'contain'
 }
 
-export default function ImageGallery({ images, colorwaySiblings }: Props) {
+export default function ImageGallery({ images, colorwaySiblings, objectFit = 'cover' }: Props) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const { selectedImage } = useProduct()
 
@@ -51,7 +52,7 @@ export default function ImageGallery({ images, colorwaySiblings }: Props) {
     <div className={styles.images}>
       <div
         className={styles.mainImage}
-        style={{ aspectRatio: mainAspectRatio, cursor: mainImage ? 'zoom-in' : 'default' }}
+        style={{ aspectRatio: mainAspectRatio, cursor: mainImage ? 'zoom-in' : 'default', background: objectFit === 'contain' ? '#fff' : undefined }}
         onClick={() => mainImage && openAt(0)}
         role="button"
         tabIndex={0}
@@ -66,6 +67,7 @@ export default function ImageGallery({ images, colorwaySiblings }: Props) {
             priority
             sizes="(max-width: 768px) 100vw, 55vw"
             className={styles.mainImageEl}
+            style={{ objectFit }}
           />
         ) : (
           <div className={styles.imagePlaceholder} />

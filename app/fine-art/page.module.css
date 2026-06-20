@@ -191,7 +191,7 @@
 
 .cardImage {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 3/4;
   overflow: hidden;
   background: var(--c-surface);
   margin-bottom: var(--sp-3);

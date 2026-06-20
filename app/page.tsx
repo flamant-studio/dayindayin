@@ -127,20 +127,19 @@ export default async function HomePage() {
       {/* ── New In ───────────────────────────────────────────── */}
       <section className={styles.section}>
         <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>New In</h2>
+          <h2 className={styles.sectionTitle}>Latest Work</h2>
           <Link href="/shop" className={styles.viewAll}>All products →</Link>
         </div>
 
         {products.length > 0 ? (
           <div className={styles.productGrid}>
-            {products.map((p, i) => (
+            {products.map((p) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
                 <div className={`${styles.cardImg} ${isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
                   {p.firstImage
                     ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
                     : <div className={styles.cardPlaceholder} />
                   }
-                  {i < 4 && <span className={styles.newBadge}>New</span>}
                   <WishlistButton
                     handle={p.handle}
                     title={p.title}
@@ -220,7 +219,7 @@ export default async function HomePage() {
           <p className={styles.editorialNote}>
             Made by hand with a tufting gun on stretched cotton canvas. Bold candy-stripe geometry in cut and loop pile — the kind of colour that stops you in a room. Stine has been tufting since 2019; each piece takes days to finish and exists once.
           </p>
-          <Link href="/fine-art#tufting" className={styles.editorialLink}>
+          <Link href="/works/candy-I" className={styles.editorialLink}>
             See the originals →
           </Link>
         </div>

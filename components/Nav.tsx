@@ -85,12 +85,13 @@ export default function Nav() {
           </svg>
           <span>Shop</span>
         </Link>
-        <Link href="/about" className={`${styles.mobileTab} ${pathname === '/about' ? styles.mobileTabActive : ''}`}>
+        <Link href="/fine-art" className={`${styles.mobileTab} ${pathname === '/fine-art' || pathname.startsWith('/works') ? styles.mobileTabActive : ''}`}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="8" r="4"/>
-            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            <rect x="3" y="3" width="18" height="18" rx="1"/>
+            <path d="M3 9h18"/>
+            <path d="M9 21V9"/>
           </svg>
-          <span>Artist</span>
+          <span>Fine Art</span>
         </Link>
         <button className={`${styles.mobileTab} ${styles.mobileTabBtn}`} onClick={openCart} aria-label={`Cart${count > 0 ? ` (${count})` : ''}`}>
           <span className={styles.mobileTabCartWrap}>

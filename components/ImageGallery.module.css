@@ -11,7 +11,7 @@
 }
 
 .mainImageEl {
-  object-fit: cover;
+  /* objectFit set inline per product type */
 }
 
 .imageCounter {
@@ -76,12 +76,13 @@
 
 .colorwayThumb {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   background: var(--c-surface);
   flex-shrink: 0;
   transition: opacity var(--t-fast);
+  border: 2px solid transparent;
 }
 
 .colorwayThumb:hover {
@@ -89,6 +90,20 @@
 }
 
 @media (max-width: 768px) {
+  .images {
+    margin-left: calc(-1 * var(--sp-5));
+    margin-right: calc(-1 * var(--sp-5));
+  }
+  .mainImage {
+    border-radius: 0;
+  }
+  .colorways {
+    margin-left: var(--sp-5);
+    margin-right: var(--sp-5);
+  }
+  .thumbGrid {
+    padding: 0 var(--sp-5);
+  }
   .thumb {
     width: calc(33.33% - 0.33rem);
   }

@@ -137,7 +137,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
             <div className={styles.availability}>
               <span className={styles.availDot} />
-              <span className={styles.availLabel}>Original — available on enquiry</span>
+              <span className={styles.availLabel}>Original — price on enquiry</span>
             </div>
 
             <Link

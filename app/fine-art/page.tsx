@@ -59,7 +59,8 @@ export default function FineArt() {
         <span className={styles.heroLabel}>Original Works</span>
         <h1>Fine Art</h1>
         <p className={styles.heroSub}>
-          Made by hand in Copenhagen. Each piece exists once — available on enquiry.
+          Tufted textiles, embroidery, painting, and photography — made by hand in Copenhagen.
+          Each piece exists once and is available on direct enquiry.
         </p>
       </section>
 
@@ -135,12 +136,12 @@ export default function FineArt() {
                       className={styles.cardImg}
                     />
                     <div className={styles.cardOverlay}>
-                      <span className={styles.cardEnquire}>View work →</span>
+                      <span className={styles.cardEnquire}>Enquire →</span>
                     </div>
                   </div>
                   <div className={styles.cardMeta}>
                     <p className={styles.cardTitle}>{work.title}</p>
-                    <p className={styles.cardYear}>{work.year}</p>
+                    <p className={styles.cardYear}>{work.dimensions ? `${work.year} · ${work.dimensions}` : work.year}</p>
                   </div>
                 </Link>
               ))}

@@ -28,23 +28,38 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Product not found' }
   }
 
+  const cleanTitle = displayTitle(product.title)
   return {
-    title: product.title,
-    description: product.description || `${product.title} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
+    title: cleanTitle,
+    description: product.description || `${cleanTitle} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
     alternates: { canonical: `/shop/${handle}` },
     openGraph: {
-      title: `${product.title} — Day In Day In`,
-      description: product.description || `${product.title} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
+      title: `${cleanTitle} — Day In Day In`,
+      description: product.description || `${cleanTitle} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
       images: product.firstImage ? [{ url: product.firstImage.url }] : [],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: product.title,
-      description: product.description || `${product.title} by Stine Weirsøe Flamant.`,
+      title: cleanTitle,
+      description: product.description || `${cleanTitle} by Stine Weirsøe Flamant.`,
       images: product.firstImage ? [product.firstImage.url] : [],
     },
   }
+}
+
+const TYPE_SUFFIXES = [
+  'Fine Art Print', 'Art Print', 'Framed Print', 'Poster', 'Mug',
+  'Tote Bag', 'Tank Top', 'Greeting Card', 'Postcard', 'Water Bottle',
+  'Wood Print', 'Dad Cap', 'Crewneck', 'Apparel',
+]
+
+function displayTitle(title: string): string {
+  for (const suffix of TYPE_SUFFIXES) {
+    const idx = title.lastIndexOf(` — ${suffix}`)
+    if (idx !== -1) return title.slice(0, idx)
+  }
+  return title
 }
 
 type SpecItem = { label: string; value: string }
@@ -319,7 +334,7 @@ export default async function ProductPage({ params }: PageProps) {
           {catLabel}
         </Link>
         <span className={styles.breadcrumbSep}>/</span>
-        <span className={styles.breadcrumbCurrent}>{product.title}</span>
+        <span className={styles.breadcrumbCurrent}>{displayTitle(product.title)}</span>
       </nav>
 
       <div className={styles.layout}>
@@ -327,6 +342,7 @@ export default async function ProductPage({ params }: PageProps) {
         <ImageGallery
           images={galleryImages}
           colorwaySiblings={colorwaySiblings.length > 0 ? colorwaySiblings : undefined}
+          objectFit="contain"
         />
 
         {/* Info column */}
@@ -336,7 +352,7 @@ export default async function ProductPage({ params }: PageProps) {
             {/* 1. Type + title + edition */}
             <div className={styles.titleBlock}>
               <p className={styles.productType}>{catLabel}</p>
-              <h1 className={styles.title}>{product.title}</h1>
+              <h1 className={styles.title}>{displayTitle(product.title)}</h1>
               {(catLabel === 'Art Print' || catLabel === 'Framed Print' || catLabel === 'Poster') && (
                 <p className={styles.editionNote}>Open edition · Printed on demand</p>
               )}
@@ -422,7 +438,7 @@ export default async function ProductPage({ params }: PageProps) {
             />
           </div>
         </div>
-        <StickyATC title={product.title} imageUrl={mainImage?.url ?? null} />
+        <StickyATC title={displayTitle(product.title)} imageUrl={mainImage?.url ?? null} />
         </ProductProvider>
       </div>
 

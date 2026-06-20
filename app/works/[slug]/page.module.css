@@ -130,7 +130,7 @@
 
 .enquiryBtn {
   display: block;
-  padding: var(--sp-4) var(--sp-6);
+  padding: var(--sp-5) var(--sp-6);
   background: var(--c-accent);
   color: white;
   font-size: var(--text-sm);
@@ -139,6 +139,7 @@
   text-transform: uppercase;
   text-align: center;
   transition: background var(--t-fast);
+  border: none;
 }
 
 .enquiryBtn:hover { background: #c03a20; }
