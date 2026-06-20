@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllProducts, getAllProductsByTag, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
+import { getAllProducts, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
 import ShoppingNudge from '@/components/ShoppingNudge'
@@ -70,13 +70,10 @@ export default async function ShopPage({ searchParams }: PageProps) {
   const activeSort = sort ?? 'newest'
   const showAll = limit === 'all'
 
-  // Series filters use Shopify tag queries; type filters use title-based categoryLabel matching
+  // All filters use getAllProducts() — type filters use categoryLabel(), series use title regex
   const isTypeFilter = activeTag !== null && !SERIES_VALUES.includes(activeTag)
-  const raw = (activeTag && !isTypeFilter)
-    ? await getAllProductsByTag(activeTag).catch(() => [])
-    : await getAllProducts().catch(() => [])
+  const raw = await getAllProducts().catch(() => [])
 
-  // Map filter keys to categoryLabel() return values for title-based matching
   const TYPE_LABEL_MAP: Record<string, string> = {
     'art-print':     'Art Print',
     'framed':        'Framed Print',
@@ -90,11 +87,25 @@ export default async function ShopPage({ searchParams }: PageProps) {
     'wood-print':    'Wood Print',
   }
 
+  const SERIES_TITLE_PATTERNS: Record<string, RegExp> = {
+    'shero':        /\bshero\b/i,
+    'neko':         /\bneko\b/i,
+    'sea-monsters': /sea[\s-]monster/i,
+    'botanical':    /botanical/i,
+    'floral':       /floral/i,
+    'faces':        /\bfaces?\b/i,
+    'sommerby':     /sommerby/i,
+  }
+
   let products = raw.filter((p) => {
     if (!p.firstImage) return false
-    if (isTypeFilter && activeTag) {
-      const targetLabel = TYPE_LABEL_MAP[activeTag]
-      return targetLabel ? categoryLabel(p) === targetLabel : true
+    if (activeTag) {
+      if (isTypeFilter) {
+        const targetLabel = TYPE_LABEL_MAP[activeTag]
+        return targetLabel ? categoryLabel(p) === targetLabel : true
+      }
+      const pattern = SERIES_TITLE_PATTERNS[activeTag]
+      return pattern ? pattern.test(p.title) : true
     }
     return true
   })
