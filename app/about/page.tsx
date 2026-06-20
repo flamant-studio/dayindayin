@@ -142,13 +142,6 @@ export default function AboutPage() {
         <p className={styles.statementAttr}>Stine Weirsøe Flamant, 2022</p>
       </section>
 
-      {/* ── Studio Notes link ────────────────────────────────── */}
-      <div className={styles.studioNotes}>
-        <Link href="/art-journal" className={styles.studioNotesLink}>
-          Studio Notes — process, ideas, and what&apos;s been happening in the studio →
-        </Link>
-      </div>
-
       {/* ── Process ──────────────────────────────────────────── */}
       <section className={styles.processNote}>
         <h2 className={styles.processNoteTitle}>How the work gets made</h2>

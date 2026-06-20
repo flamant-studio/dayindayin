@@ -172,8 +172,8 @@
 
 .statement {
   max-width: 760px;
-  margin: 0 auto var(--sp-12);
-  padding: var(--sp-12) var(--sp-6);
+  margin: 0 auto var(--sp-6);
+  padding: var(--sp-8) var(--sp-6);
   border-top: 2px solid var(--c-accent);
   text-align: center;
 }
@@ -197,32 +197,13 @@
   font-weight: 600;
 }
 
-/* ── Studio notes link ───────────────────────────────────────── */
-
-.studioNotes {
-  text-align: center;
-  padding: var(--sp-8) 0 var(--sp-4);
-}
-
-.studioNotesLink {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--c-muted);
-  transition: color var(--t-fast);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.studioNotesLink:hover {
-  color: var(--c-text);
-}
 
 /* ── Browse by medium ───────────────────────────────────────── */
 
 .mediumLinks {
+  padding-top: var(--sp-10);
+  border-top: 1px solid var(--c-border);
   margin-bottom: var(--sp-10);
-  padding-bottom: var(--sp-10);
-  border-bottom: 1px solid var(--c-border);
 }
 
 .mediumLinksTitle {
@@ -273,7 +254,6 @@
 /* ── Studio note ─────────────────────────────────────────────── */
 
 .studio {
-  border-top: 1px solid var(--c-border);
   padding-top: var(--sp-8);
   display: flex;
   flex-direction: column;
