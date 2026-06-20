@@ -202,36 +202,26 @@ export default function ProductOptions({ variants, handle, productTitle, product
     return (
       <div className={styles.wrapper}>
         {sizeInfo && (
-          <>
-            <div className={styles.selectorGroup}>
-              <p className={styles.selectorLabel}>
-                {sizeInfo.frames && !(titleL.includes('mug') || typeL === 'mug') ? 'Size' : sizeInfo.frames ? 'Colour' : 'Size'}
+          <div className={styles.infoTextBlock}>
+            {!sizeInfo.frames || (titleL.includes('mug') || typeL === 'mug') ? (
+              <p className={styles.infoTextLine}>
+                <span className={styles.infoTextKey}>
+                  {titleL.includes('mug') || typeL === 'mug' ? 'Available in' : 'Available sizes'}
+                </span>{' '}
+                {sizeInfo.sizes.join(' · ')}
+                {sizeInfo.frames && <> · Side {sizeInfo.frames.join(' · Side ')}</>}
               </p>
-              <div className={styles.selectorRow}>
-                {sizeInfo.sizes.map(s => (
-                  <span key={s} className={styles.infoChip}>{s}</span>
-                ))}
-              </div>
-            </div>
-            {sizeInfo.frames && (
-              <div className={styles.selectorGroup}>
-                <p className={styles.selectorLabel}>
-                  {titleL.includes('mug') || typeL === 'mug' ? 'Side' : 'Frame'}
-                </p>
-                <div className={styles.selectorRow}>
-                  {sizeInfo.frames.map(f => (
-                    <span key={f} className={styles.infoChip}>
-                      {!(titleL.includes('mug') || typeL === 'mug') && FRAME_SWATCH[f] && (
-                        <span className={styles.frameSwatch} style={{ background: FRAME_SWATCH[f], borderColor: FRAME_SWATCH_BORDER[f] }} />
-                      )}
-                      {f}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            ) : (
+              <p className={styles.infoTextLine}>
+                <span className={styles.infoTextKey}>Sizes</span>{' '}
+                {sizeInfo.sizes.join(' · ')}
+                {'  ·  '}
+                <span className={styles.infoTextKey}>Frames</span>{' '}
+                {sizeInfo.frames.join(' · ')}
+              </p>
             )}
-            <p className={styles.sizeNote}>Size &amp; options confirmed at checkout</p>
-          </>
+            <p className={styles.sizeNote}>Choose at checkout</p>
+          </div>
         )}
         {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
         {v.availableForSale ? (
