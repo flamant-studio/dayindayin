@@ -555,6 +555,7 @@
   aspect-ratio: 3 / 4;
   background: var(--c-surface);
   overflow: hidden;
+  border: 1px solid var(--c-border);
 }
 
 .seriesCardPlaceholder {

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllProducts } from '@/lib/shopify/products'
+import { getProductsByTitleKeyword } from '@/lib/shopify/products'
 import CollectionSlideshow from '@/components/CollectionSlideshow'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -104,23 +104,39 @@ function FineArtCard({ title, description, href, accent, image, label }: { title
   )
 }
 
-export default async function CollectionsPage() {
-  const allProducts = await getAllProducts().catch(() => [])
+// Keyword used for title search per series
+const SERIES_KEYWORDS: Record<string, string> = {
+  shero: 'shero', neko: 'neko', 'sea-monsters': 'Sea Monsters',
+  botanical: 'Botanical', floral: 'Floral', faces: 'Face', sommerby: 'Sommerby',
+}
 
-  const seriesData = SERIES_COLLECTIONS.map(({ title, description, tag, accent }) => {
-    const pattern = SERIES_TITLE_PATTERNS[tag]
-    const filtered = pattern
-      ? allProducts.filter(p => p.firstImage && pattern.test(p.title))
-      : []
-    // Prefer flat art (non-mockup) for slideshow images
-    const flat = filtered.filter(p => !isMockup(p.title))
-    const rest = filtered.filter(p => isMockup(p.title))
-    const ordered = [...flat, ...rest]
+export const revalidate = 3600
+
+export default async function CollectionsPage() {
+  // Fetch up to 12 products per series in parallel — much faster than getAllProducts()
+  const seriesResults = await Promise.all(
+    SERIES_COLLECTIONS.map(({ tag }) =>
+      getProductsByTitleKeyword(SERIES_KEYWORDS[tag] ?? tag, 12).catch(() => [])
+    )
+  )
+
+  const LIGHT_TITLE_KEYWORDS = ['blanc', 'white', 'cream']
+  const isLight = (t: string) => { const tl = t.toLowerCase(); return LIGHT_TITLE_KEYWORDS.some(k => tl.includes(k)) }
+
+  const seriesData = SERIES_COLLECTIONS.map(({ title, description, tag, accent }, i) => {
+    const products = seriesResults[i].filter(p => p.firstImage)
+    // Score each product: mockup=+2, light/blanc variant=+1 (lower is better for slideshow lead)
+    const scored = products.map(p => ({
+      p,
+      score: (isMockup(p.title) ? 2 : 0) + (isLight(p.title) ? 1 : 0),
+    }))
+    scored.sort((a, b) => a.score - b.score)
+    const ordered = scored.map(s => s.p)
     const images = ordered.slice(0, 4).map(p => ({
       url: p.firstImage!.url,
       alt: p.firstImage!.altText ?? p.title,
     }))
-    return { title, description, tag, accent, images, count: filtered.length }
+    return { title, description, tag, accent, images, count: products.length }
   })
 
   return (

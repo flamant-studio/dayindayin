@@ -172,6 +172,8 @@ function getStudioNote(tags: string[]): { medium: string; note: string } | null 
   return null
 }
 
+export const revalidate = 300
+
 export default async function ProductPage({ params }: PageProps) {
   const { handle } = await params
   const product = await getProductByHandle(handle).catch(() => null)

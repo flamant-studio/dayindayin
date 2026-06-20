@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel } from '@/lib/shopify/products'
+import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel, seriesLabel } from '@/lib/shopify/products'
 import { blogPosts } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
@@ -22,6 +22,8 @@ const SERIES_CARDS = [
   { tag: 'floral',      label: 'Floral',        sub: 'Bold florals',         accent: '#B85C78' },
   { tag: 'faces',       label: 'Faces',         sub: 'Portraits and masks',  accent: '#7A6B8A' },
 ]
+
+export const revalidate = 60
 
 // Keywords to fetch one representative image per series (flat art preferred over mockups)
 const SERIES_KEYWORDS: Array<{ tag: string; keyword: string }> = [
@@ -45,13 +47,19 @@ export default async function HomePage() {
     ),
   ])
 
-  // Pick best image per series (flat art > mockup fallback)
+  // Pick best image per series: flat art preferred, dark variants over light/blanc
+  const LIGHT_TITLE_KEYWORDS = ['blanc', 'white', 'cream']
+  const isLight = (t: string) => { const tl = t.toLowerCase(); return LIGHT_TITLE_KEYWORDS.some(k => tl.includes(k)) }
   const seriesImageMap: Record<string, string> = {}
   SERIES_KEYWORDS.forEach(({ tag }, i) => {
-    const prods = seriesResults[i]
-    const flat = prods.find((p) => p.firstImage && !isMockup(p.title))
-    const any  = prods.find((p) => p.firstImage)
-    const best = flat ?? any
+    const prods = seriesResults[i].filter(p => p.firstImage)
+    // Score: mockup=+2, light/blanc variant=+1 (lower is better)
+    const scored = prods.map(p => ({
+      p,
+      score: (isMockup(p.title) ? 2 : 0) + (isLight(p.title) ? 1 : 0),
+    }))
+    scored.sort((a, b) => a.score - b.score)
+    const best = scored[0]?.p
     if (best?.firstImage) seriesImageMap[tag] = best.firstImage.url
   })
 
@@ -126,7 +134,9 @@ export default async function HomePage() {
                 </div>
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{p.title}</span>
-                  <span className={styles.cardType}>{categoryLabel(p)}</span>
+                  <span className={styles.cardType}>
+                    {seriesLabel(p) ? `${seriesLabel(p)} · ` : ''}{categoryLabel(p)}
+                  </span>
                   <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
                 </div>
               </Link>

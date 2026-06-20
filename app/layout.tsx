@@ -42,10 +42,19 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
     url: 'https://dayindayin.dk',
+    images: [
+      {
+        url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/lifestyle/ls-01.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Art made by hand — Day In Day In',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     site: '@dayindayin',
+    images: ['https://29kekabbrd49avje.public.blob.vercel-storage.com/lifestyle/ls-01.jpg'],
   },
 }
 
