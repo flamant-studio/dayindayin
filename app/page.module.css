@@ -176,7 +176,7 @@
 .cardImg {
   position: relative;
   aspect-ratio: 4/5;
-  background: #ffffff;
+  background: var(--c-surface);
   overflow: hidden;
 }
 
