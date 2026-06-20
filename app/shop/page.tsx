@@ -187,7 +187,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
               }
             </p>
           )}
-          <p className={styles.socialProof}>300+ prints shipped to EU &amp; UK</p>
+          <p className={styles.socialProof}>300+ products · Ships to EU, UK &amp; Norway</p>
           {activeTag && FILTER_LABELS[activeTag] && (
             <span className={styles.filterChip}>
               {FILTER_LABELS[activeTag]}

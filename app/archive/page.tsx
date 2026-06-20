@@ -79,6 +79,7 @@ export default async function Archive({ searchParams }: PageProps) {
             key={key}
             href={key === "all" ? "/archive" : `/archive?category=${key}`}
             className={`${styles.filterBtn} ${active === key ? styles.active : ""}`}
+            aria-current={active === key ? 'page' : undefined}
           >
             {label} {key !== "all" ? `(${works.filter((w) => w.category === key).length})` : `(${works.length})`}
           </Link>

@@ -28,6 +28,19 @@
   max-width: 560px;
 }
 
+.directEmail {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.15s;
+}
+
+.directEmail:hover { opacity: 0.75; }
+
 .cols {
   display: grid;
   grid-template-columns: 1fr 1fr;

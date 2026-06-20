@@ -121,7 +121,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
         <div className={styles.image}>
           <Image
             src={work.image}
-            alt={work.title}
+            alt={`${work.title} — ${label} by Stine Weirsøe Flamant, ${work.year}`}
             width={800}
             height={900}
             style={{ objectFit: "cover", width: "100%", height: "auto" }}

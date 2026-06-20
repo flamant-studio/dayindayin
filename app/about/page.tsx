@@ -40,10 +40,24 @@ const personJsonLd = {
   knowsAbout: ['Hand Tufting', 'Embroidery', 'Acrylic Painting', 'Photography', 'Textile Art'],
 }
 
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Day In Day In',
+  url: 'https://dayindayin.dk',
+  logo: 'https://dayindayin.dk/icon.png',
+  sameAs: ['https://www.instagram.com/dayindayin'],
+  description: 'Art prints and original works by Copenhagen artist Stine Weirsøe Flamant.',
+  address: { '@type': 'PostalAddress', addressLocality: 'Copenhagen', addressCountry: 'DK' },
+  foundingDate: '2024',
+  founder: { '@type': 'Person', name: 'Stine Weirsøe Flamant' },
+}
+
 export default function AboutPage() {
   return (
     <div className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className={styles.hero}>

@@ -41,13 +41,13 @@ export default function NewsletterSignup() {
     <section className={styles.section}>
       <div className={styles.inner}>
         <h2 className={styles.heading}>From the studio — direct.</h2>
-        <p className={styles.sub}>When something finishes, something ships, or something&apos;s worth writing about. Stine sends it herself. No algorithm, no schedule.</p>
+        <p className={styles.sub} id="newsletter-desc">When something finishes, something ships, or something&apos;s worth writing about. Stine sends it herself. No algorithm, no schedule.</p>
 
         {submitted ? (
           <p className={styles.success}>You&apos;re in. Stine will be in touch from the studio — when something finishes, not on a schedule.</p>
         ) : (
           <>
-            <form className={styles.form} onSubmit={handleSubmit} noValidate>
+            <form className={styles.form} onSubmit={handleSubmit} noValidate aria-label="Subscribe to studio newsletter">
               <input
                 type="email"
                 className={styles.input}
@@ -56,6 +56,7 @@ export default function NewsletterSignup() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 aria-label="Email address"
+                aria-describedby="newsletter-desc"
                 disabled={loading}
               />
               <button type="submit" className={styles.btn} disabled={loading}>

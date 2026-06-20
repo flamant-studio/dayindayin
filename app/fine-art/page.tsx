@@ -46,11 +46,25 @@ const worksItemListJsonLd = {
   })),
 }
 
+const artGalleryJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ArtGallery',
+  name: 'Day In Day In — Fine Art',
+  description: 'Original works by Stine Weirsøe Flamant — hand-tufted textiles, embroidery, paintings, and photography. Unique pieces available on enquiry.',
+  url: 'https://dayindayin.dk/fine-art',
+  image: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/neko-cat-orange.jpg',
+  address: { '@type': 'PostalAddress', addressLocality: 'Copenhagen', addressCountry: 'DK' },
+  founder: { '@type': 'Person', name: 'Stine Weirsøe Flamant', url: 'https://dayindayin.dk/about' },
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: 1 },
+  knowsAbout: ['Hand Tufting', 'Embroidery', 'Painting', 'Photography', 'Textile Art', 'Contemporary Art'],
+}
+
 export default function FineArt() {
   return (
     <div className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(worksItemListJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artGalleryJsonLd) }} />
       <section className={styles.hero}>
         <span className={styles.heroLabel}>Original Works</span>
         <h1>Fine Art</h1>

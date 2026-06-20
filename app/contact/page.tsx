@@ -21,8 +21,11 @@ export default function ContactPage() {
           <h1 className={styles.title}>Contact</h1>
           <p className={styles.sub}>
             Questions about an order, commissions, or something else — use the form below.
-            I read everything and respond within a few days.
+            Stine reads everything and responds within a few days.
           </p>
+          <a href="mailto:stine@dayindayin.dk" className={styles.directEmail}>
+            stine@dayindayin.dk
+          </a>
         </div>
 
         <div className={styles.cols}>

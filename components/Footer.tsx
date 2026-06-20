@@ -50,6 +50,8 @@ export default function Footer() {
             <Link href="/shop?filter=framed">Framed Prints</Link>
             <Link href="/shop?filter=poster">Posters</Link>
             <Link href="/shop?filter=mug">Mugs</Link>
+            <Link href="/shop?filter=tote">Tote Bags</Link>
+            <Link href="/shop?filter=apparel">Apparel</Link>
             <Link href="/shop?filter=postcard">Postcards</Link>
             <Link href="/saved">Saved</Link>
           </div>

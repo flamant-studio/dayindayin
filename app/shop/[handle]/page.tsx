@@ -407,7 +407,7 @@ export default async function ProductPage({ params }: PageProps) {
                 <p>Printed on demand by Gelato and shipped directly to you.</p>
                 <p>Production: 2–4 business days. Delivery: 2–5 days within EU. <strong>Estimated total: 5–10 days from order.</strong></p>
                 <p>Ships to EU, UK, and Norway. International shipping available at checkout.</p>
-                <p>No returns on print-on-demand unless the product arrives defective or damaged. Contact us within 14 days of delivery.</p>
+                <p>If anything arrives damaged or wrong, let us know within 14 days with a photo — we&apos;ll sort it.</p>
               </div>
             </details>
 

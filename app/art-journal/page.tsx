@@ -83,18 +83,23 @@ export default async function StudioNotes({ searchParams }: PageProps) {
         <Link
           href="/art-journal"
           className={`${styles.yearBtn} ${!activeYear ? styles.yearBtnActive : ''}`}
+          aria-current={!activeYear ? 'page' : undefined}
         >
           All
         </Link>
-        {years.map(y => (
+        {years.map(y => {
+          const yearCount = blogPosts.filter(p => p.date.startsWith(y)).length
+          return (
           <Link
             key={y}
             href={`/art-journal?year=${y}`}
             className={`${styles.yearBtn} ${activeYear === y ? styles.yearBtnActive : ''}`}
+            aria-current={activeYear === y ? 'page' : undefined}
           >
-            {y}
+            {y} <span style={{ opacity: 0.55, fontSize: '0.7em' }}>({yearCount})</span>
           </Link>
-        ))}
+          )
+        })}
       </nav>
 
       {filtered.length === 0 && (

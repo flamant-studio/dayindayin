@@ -58,6 +58,10 @@
   50% { opacity: 0.6; transform: scale(0.85); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .statusDot { animation: none; }
+}
+
 .heroSub {
   max-width: 540px;
   margin: 0 auto;
