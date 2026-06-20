@@ -11,9 +11,10 @@ import styles from './page.module.css'
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
 
 const LIFESTYLE = [
-  `${BLOB}/lifestyle/ls-01.jpg`,
-  `${BLOB}/lifestyle/ls-04.jpg`,
-  `${BLOB}/lifestyle/ls-05.jpg`,
+  { src: `${BLOB}/lifestyle/ls-02.jpg`, alt: 'Studio detail — hand-tufted textile in progress' },
+  { src: `${BLOB}/lifestyle/ls-04.jpg`, alt: 'Art print by Stine Weirsøe Flamant on a wall' },
+  { src: `${BLOB}/lifestyle/ls-05.jpg`, alt: 'Close-up of embroidery work by Stine Weirsøe Flamant' },
+  { src: `${BLOB}/lifestyle/ls-07.jpg`, alt: 'Art in the studio — Stine Weirsøe Flamant' },
 ]
 
 const SERIES_CARDS = [
@@ -319,13 +320,9 @@ export default async function HomePage() {
       {/* ── Lifestyle strip ──────────────────────────────────── */}
       <Link href="/shop" className={styles.lifestyleStripLink}>
         <section className={styles.lifestyleStrip}>
-          {([
-            'Art prints by Stine Weirsøe Flamant displayed on a wall',
-            'Close-up of hand-tufted textile by Stine Weirsøe Flamant',
-            'Studio detail — embroidery and textile work',
-          ] as const).map((alt, i) => (
+          {LIFESTYLE.map(({ src, alt }, i) => (
             <div key={i} className={styles.lifestyleImg}>
-              <Image src={LIFESTYLE[i]} alt={alt} fill sizes="33vw" style={{ objectFit: 'cover' }} />
+              <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
             </div>
           ))}
         </section>

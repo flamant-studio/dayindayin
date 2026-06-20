@@ -539,7 +539,7 @@
 
 .lifestyleStrip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   height: 420px;
   overflow: hidden;
 }
@@ -814,7 +814,7 @@
     align-items: flex-start;
     padding: var(--sp-8) var(--sp-5);
   }
-  .lifestyleStrip { height: 240px; }
+  .lifestyleStrip { height: 240px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 480px) {
