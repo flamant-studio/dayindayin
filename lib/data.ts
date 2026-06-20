@@ -7,6 +7,9 @@ export interface Work {
   year: string;
   description: string;
   image: string;
+  gallery?: string[];   // additional views uploaded to Vercel Blob
+  dimensions?: string;  // e.g. "37×27 cm"
+  materials?: string;   // more specific than CATEGORY_MEDIUM default
 }
 
 export interface BlogPost {
@@ -30,13 +33,13 @@ export const works: Work[] = [
   { slug: 'du-und',            title: 'Du und',            category: 'tufting',     year: '2021', description: 'Hand-tufted wool, text-based work. "Du und" — you and — in German. The sentence left deliberately incomplete.',  image: `${BLOB}/tufting/du-und.jpg` },
   { slug: 'hej',               title: 'Hej',               category: 'tufting',     year: '2021', description: 'Wool tufting on canvas. A single Danish greeting — Hej — held in pile.',  image: `${BLOB}/tufting/hej.jpg` },
   { slug: 'liebes-panopticon', title: 'Liebes Panopticon', category: 'tufting',     year: '2021', description: 'Hand-tufted wool on canvas. Title references Foucault\'s structure of surveillance — rendered in warm domestic wool.',  image: `${BLOB}/tufting/liebes-panopticon.jpg` },
-  { slug: 'floral-thing',    title: 'Floral Thing',          category: 'tufting', year: '2021', description: 'Wool tufting on canvas. An abstracted botanical form — organic and slightly strange.', image: `${BLOB}/tufting/floral-thing.jpg` },
-  { slug: 'round-earth',     title: 'Round Earth',           category: 'tufting', year: '2021', description: 'Hand-tufted wool, circular form on rectangular canvas. The earth as simple fact.', image: `${BLOB}/tufting/round-earth.jpg` },
+  { slug: 'floral-thing',    title: 'Floral Thing',          category: 'tufting', year: '2021', description: 'Wool tufting on canvas. An abstracted botanical form — organic and slightly strange.', image: `${BLOB}/tufting/floral-thing.jpg`, dimensions: '34×22 cm' },
+  { slug: 'round-earth',     title: 'Round Earth',           category: 'tufting', year: '2021', description: 'Hand-tufted wool, circular form on rectangular canvas. The earth as simple fact.', image: `${BLOB}/tufting/round-earth.jpg`, dimensions: '41×41 cm' },
   { slug: 'fleur-de-lys',    title: 'Fleur de Lys',          category: 'tufting', year: '2021', description: 'Wool tufting on canvas. The heraldic lily motif, translated into textile pile.', image: `${BLOB}/tufting/fleur-de-lys.jpg` },
-  { slug: 'jellyfish',       title: 'Jellyfish',             category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. Soft looping forms suggest a jellyfish mid-drift.', image: `${BLOB}/tufting/jellyfish.jpg` },
+  { slug: 'jellyfish',       title: 'Jellyfish',             category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. Soft looping forms suggest a jellyfish mid-drift.', image: `${BLOB}/tufting/jellyfish.jpg`, dimensions: '56×24 cm' },
   { slug: 'rainbow-II',      title: 'Rainbow II',            category: 'tufting', year: '2021', description: 'Wool tufting on canvas. Second in the rainbow series — denser palette, shifted arch.', image: `${BLOB}/tufting/rainbow-II.jpg` },
-  { slug: 'tufted-mask',     title: 'Tufted Mask',           category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. A mask form in textile — somewhere between ritual object and wall piece.', image: `${BLOB}/tufting/tufted-mask.jpg` },
-  { slug: 'sitspot-large',   title: 'Sitspot Large',         category: 'tufting', year: '2021', description: 'Wool tufting on canvas. Functional in origin, fine art in execution. The large version.', image: `${BLOB}/tufting/sitspot-large.jpg` },
+  { slug: 'tufted-mask',     title: 'Tufted Mask',           category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. A mask form in textile — somewhere between ritual object and wall piece.', image: `${BLOB}/tufting/tufted-mask.jpg`, dimensions: '39×21 cm' },
+  { slug: 'sitspot-large',   title: 'Sitspot Large',         category: 'tufting', year: '2021', description: 'Wool tufting on canvas. Functional in origin, fine art in execution. The large version.', image: `${BLOB}/tufting/sitspot-large.jpg`, dimensions: '74×44 cm' },
   { slug: 'universe-hole',   title: 'Universe with a Hole',  category: 'tufting', year: '2021', description: 'Hand-tufted wool on canvas. A circle with a void at its centre — absence as compositional element.', image: `${BLOB}/tufting/universe-hole.jpg` },
   { slug: 'green-flower',    title: 'Green Flower',          category: 'tufting', year: '2021', description: 'Wool tufting on canvas. A single botanical form in deep green — simple and precise.', image: `${BLOB}/tufting/green-flower.jpg` },
   { slug: 'pink-rug',        title: 'Pink Rug',              category: 'tufting', year: '2020', description: 'Hand-tufted wool, floor piece. Designed to be walked on — which makes it no less art.', image: `${BLOB}/tufting/pink-rug.jpg` },
@@ -49,7 +52,7 @@ export const works: Work[] = [
   { slug: 'theres-nothing-here', title: "There's Nothing Here", category: 'embroidery', year: '2020', description: 'Hand embroidery on fabric. A refusal, or a description. The text questions whether anything is present.', image: `${BLOB}/embroidery/theres-nothing-here.jpg` },
   { slug: 'mariann',             title: 'Mariann',             category: 'embroidery', year: '2020', description: 'Hand embroidery on fabric. A name stitched as portrait — presence through naming.', image: `${BLOB}/embroidery/mariann.jpg` },
   { slug: 'doodles',         title: 'Doodles',                  category: 'embroidery', year: '2021', description: 'Freehand embroidery on fabric. Lines and marks that follow their own logic.', image: `${BLOB}/embroidery/doodles.jpg` },
-  { slug: 'collage-bw',      title: 'Collage (Black & White)',  category: 'embroidery', year: '2021', description: 'Hand embroidery on fabric, monochrome. Collage thinking translated into thread.', image: `${BLOB}/embroidery/collage-bw.jpg` },
+  { slug: 'collage-bw',      title: 'Collage (Black & White)',  category: 'embroidery', year: '2021', description: 'Hand embroidery on fabric, monochrome. Collage thinking translated into thread.', image: `${BLOB}/embroidery/collage-bw.jpg`, dimensions: '100×70 cm' },
   { slug: 'apple-scraps',    title: 'Apple Scraps',             category: 'embroidery', year: '2020', description: 'Hand embroidery on fabric. Domestic remnants — the leftover, the overlooked.', image: `${BLOB}/embroidery/apple-scraps.jpg` },
   { slug: 'perfidt-perfekt', title: 'Perfidt Perfekt',          category: 'embroidery', year: '2021', description: 'Hand embroidery on canvas. "Perfectly perfidious" in Danish — a contradiction held in thread.', image: `${BLOB}/embroidery/perfidt-perfekt.jpg` },
   { slug: 'ingenting',       title: 'Ingenting',                category: 'embroidery', year: '2020', description: 'Hand embroidery on fabric. "Nothing" in Danish — the word for absence, made material.', image: `${BLOB}/embroidery/ingenting.jpg` },

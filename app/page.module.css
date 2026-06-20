@@ -159,7 +159,7 @@
 
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -339,7 +339,7 @@
 
 .collectionGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--sp-4);
 }
 
@@ -513,7 +513,7 @@
 
 .lifestyleStrip {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   height: 420px;
   overflow: hidden;
 }
@@ -545,7 +545,7 @@
 
 .seriesStrip {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: var(--sp-3);
 }
 
@@ -684,7 +684,7 @@
 
 .notesTeaserGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
@@ -742,9 +742,9 @@
 /* ── Responsive ────────────────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
-  .productGrid { grid-template-columns: repeat(3, 1fr); }
-  .collectionGrid { grid-template-columns: repeat(2, 1fr); }
-  .seriesStrip { grid-template-columns: repeat(4, 1fr); }
+  .productGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .collectionGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .seriesStrip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 @media (max-width: 768px) {
@@ -771,8 +771,8 @@
 
   .section { padding: var(--sp-8) var(--sp-5); }
   .seriesSection { padding: var(--sp-1) var(--sp-5) var(--sp-4); }
-  .seriesStrip { grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); }
-  .productGrid { grid-template-columns: repeat(2, 1fr); }
+  .seriesStrip { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-2); }
+  .productGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .collectionGrid { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
   .notesTeaserGrid { grid-template-columns: 1fr; }
 
@@ -793,5 +793,5 @@
 
 @media (max-width: 480px) {
   .collectionGrid { grid-template-columns: 1fr; }
-  .seriesStrip { grid-template-columns: repeat(3, 1fr); }
+  .seriesStrip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

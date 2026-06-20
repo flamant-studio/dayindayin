@@ -105,7 +105,7 @@
 /* Type cards */
 .types {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   margin: 3rem 0;
   padding: 3rem 0;
@@ -216,7 +216,7 @@
 
 .priceCards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin: 1.5rem 0;
 }
