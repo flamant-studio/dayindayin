@@ -65,7 +65,7 @@ export default function RecentlyViewed({ currentHandle, currentProduct }: Props)
                   alt={item.title}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'contain' }}
                 />
               ) : (
                 <div className={styles.imgPlaceholder} />
