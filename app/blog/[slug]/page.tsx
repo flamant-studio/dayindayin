@@ -50,9 +50,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     ? works.filter(w => w.category === imgCategory).slice(0, 3)
     : works.slice(0, 3)
 
-  // Detect series/filter from post content for shop CTA
+  // Detect series/filter from post content for shop CTA — pick most-mentioned keyword
   const allText = [post.title, post.excerpt, ...(post.body ?? [])].join(' ').toLowerCase()
   const shopCtaMap: Array<{ keyword: string; filter: string; label: string }> = [
+    { keyword: 'sommerby',      filter: 'sommerby',     label: 'Sommerby series' },
     { keyword: 'neko',          filter: 'neko',         label: 'NEKO series' },
     { keyword: 'shero',         filter: 'shero',        label: 'SHERO series' },
     { keyword: 'sea monster',   filter: 'sea-monsters', label: 'Sea Monsters' },
@@ -62,7 +63,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     { keyword: 'embroidery',    filter: 'art-print',    label: 'prints' },
     { keyword: 'shop of words', filter: 'art-print',    label: 'art prints' },
   ]
-  const shopCta = shopCtaMap.find(({ keyword }) => allText.includes(keyword)) ?? null
+  const shopCta = shopCtaMap
+    .map(item => ({ ...item, count: (allText.split(item.keyword).length - 1) }))
+    .filter(item => item.count > 0)
+    .sort((a, b) => b.count - a.count)[0] ?? null
   const seriesKeywords = shopCtaMap.filter(({ keyword }) => allText.includes(keyword)).map(({ keyword }) => keyword)
 
   const articleJsonLd = {

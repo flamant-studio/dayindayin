@@ -35,7 +35,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "What are the print sizes and prices?",
-    a: "Postcards (pack of 10) from 56 kr. Fine Art Prints from 149 kr. Posters from 149 kr. Framed Prints from 399 kr. Mugs from 149 kr. Tote bags from 224 kr. Tank tops from 194 kr. Wood Prints and Water Bottles from 229 kr. Dad Caps from 249 kr. All prices include Danish VAT.",
+    a: "Postcards (pack of 10) from 56 kr. Fine Art Prints from 149 kr. Posters from 149 kr. Framed Prints from 399 kr. Mugs from 89 kr. Tote bags from 224 kr. Tank tops from 194 kr. Wood Prints and Water Bottles from 229 kr. Dad Caps from 249 kr. All prices include Danish VAT.",
   },
   {
     q: "Can I commission an original work?",
@@ -110,7 +110,7 @@ export default function Practical() {
                   ["Posters — semi-glossy (A3/A2/A1)", "from 149 kr"],
                   ["Framed Prints (A4 → A1, 3 frame options)", "from 399 kr"],
                   ["Tote Bags", "from 224 kr"],
-                  ["Mugs (11 oz ceramic)", "from 149 kr"],
+                  ["Mugs (11 oz ceramic)", "from 89 kr"],
                   ["Tank Tops (XS–2XL unisex)", "from 194 kr"],
                   ["Postcards (pack of 10, A6)", "from 56 kr"],
                   ["Greeting Cards (pack of 10, folded A6)", "from 99 kr"],

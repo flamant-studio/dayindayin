@@ -89,7 +89,7 @@ export const blogPosts: BlogPost[] = [
     title: "Sommerby in June",
     date: "2026-06-18",
     excerpt: "Notes from the summer house — new botanical sketches, long light, the garden in its peak moment.",
-    image: `${BLOB_WORKS}/painting/colour-study-blue.jpg`,
+    image: `${BLOB_WORKS}/painting/blue-branch.jpg`,
     body: [
       "I've been at Sommerby for most of June. The garden is at the exact point where everything is slightly too much — too green, too full, the poppies already past their peak and the roses just starting. I've been drawing and painting from the garden every day. Not planned pieces. Studies. The kind of work where you're not sure what you're making until later.",
       "The botanical series that started in spring is becoming something else here. The earlier work was more formal — close-up, graphic, the plants as subjects. What I'm making now is more about atmosphere. The specific quality of Gørlev light at 8pm in June. The way shadows fall on old garden walls. Less illustration, more field notes.",
