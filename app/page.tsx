@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAllProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
-import { works, blogPosts } from '@/lib/data'
+import { blogPosts } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
 import styles from './page.module.css'
@@ -160,20 +160,20 @@ export default async function HomePage() {
       <section className={styles.editorial}>
         <div className={styles.editorialImage}>
           <Image
-            src={`${BLOB}/works/painting/universe-1.jpg`}
-            alt="Universe I — painting by Stine Weirsøe Flamant"
+            src={`${BLOB}/works/tufting/candy-I.jpg`}
+            alt="Candy I — tufted textile by Stine Weirsøe Flamant"
             fill
             sizes="(max-width: 768px) 100vw, 55vw"
             style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
         </div>
         <div className={styles.editorialBody}>
-          <span className={styles.editorialSeries}>Painting — from the studio</span>
-          <h2 className={styles.editorialTitle}>Universe I</h2>
+          <span className={styles.editorialSeries}>Tufting — from the studio</span>
+          <h2 className={styles.editorialTitle}>Candy I</h2>
           <p className={styles.editorialNote}>
-            Started on the floor of the studio. Acrylic and oil stick, built up over several sessions — layers added and scraped back until the colour felt right. The Universe series is Stine&apos;s oldest ongoing body of work: each canvas a different attempt to paint something without edges.
+            Made by hand with a tufting gun on stretched cotton canvas. Bold candy-stripe geometry in cut and loop pile — the kind of colour that stops you in a room. Stine has been tufting since 2019; each piece takes days to finish and exists once.
           </p>
-          <Link href="/fine-art#painting" className={styles.editorialLink}>
+          <Link href="/fine-art#tufting" className={styles.editorialLink}>
             See the originals →
           </Link>
         </div>
@@ -240,34 +240,6 @@ export default async function HomePage() {
         )
       })()}
 
-      {/* ── From the archive ─────────────────────────────────── */}
-      {(() => {
-        const featured = [works[0], works[19], works[30], works[43]].filter(Boolean)
-        return (
-          <section className={styles.archiveTeaser}>
-            <div className={styles.archiveTeaserHead}>
-              <div>
-                <span className={styles.archiveTeaserLabel}>Original Works</span>
-                <h2 className={styles.archiveTeaserTitle}>From the archive</h2>
-              </div>
-              <Link href="/fine-art" className={styles.archiveTeaserLink}>See all originals →</Link>
-            </div>
-            <div className={styles.archiveTeaserGrid}>
-              {featured.map((w) => (
-                <Link key={w.slug} href={`/works/${w.slug}`} className={styles.archiveTeaserCard}>
-                  <div className={styles.archiveTeaserImg}>
-                    <Image src={w.image} alt={w.title} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                  </div>
-                  <div className={styles.archiveTeaserMeta}>
-                    <span className={styles.archiveTeaserName}>{w.title}</span>
-                    <span className={styles.archiveTeaserYear}>{w.year}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )
-      })()}
 
       {/* ── Newsletter ───────────────────────────────────────── */}
       <NewsletterSignup />

@@ -33,13 +33,7 @@ export default function Nav() {
             <Link href="/commissions" onClick={closeAll} className={pathname === '/commissions' ? styles.linkActive : ''}>Commissions</Link>
           </li>
           <li>
-            <Link href="/about" onClick={closeAll} className={pathname === '/about' ? styles.linkActive : ''}>About</Link>
-          </li>
-          <li>
-            <Link href="/collections" onClick={closeAll} className={pathname.startsWith('/collections') ? styles.linkActive : ''}>Collections</Link>
-          </li>
-          <li>
-            <Link href="/practical" onClick={closeAll} className={pathname === '/practical' ? styles.linkActive : ''}>Info</Link>
+            <Link href="/about" onClick={closeAll} className={`${pathname === '/about' || pathname === '/practical' || pathname.startsWith('/collections') ? styles.linkActive : ''}`}>About</Link>
           </li>
         </ul>
 

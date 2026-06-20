@@ -26,9 +26,10 @@
 .links {
   display: flex;
   align-items: center;
-  gap: var(--sp-6);
+  gap: clamp(var(--sp-4), 3vw, var(--sp-8));
   margin: 0 auto;
   list-style: none;
+  flex-shrink: 1;
 }
 
 .links > li {
