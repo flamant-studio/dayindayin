@@ -45,7 +45,7 @@ const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCK
 export default async function HomePage() {
   // Parallel targeted fetches — faster than getAllProducts (500+ items)
   const [products, ...seriesResults] = await Promise.all([
-    getProducts(12).then(all => all.filter(p => p.firstImage)).catch(() => []),
+    getProducts(8).then(all => all.filter(p => p.firstImage)).catch(() => []),
     ...SERIES_KEYWORDS.map(({ keyword }) =>
       getProductsByTitleKeyword(keyword, 8).catch(() => [])
     ),
@@ -125,107 +125,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── New In ───────────────────────────────────────────── */}
-      <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>Latest Work</h2>
-          <Link href="/shop" className={styles.viewAll}>All products →</Link>
-        </div>
-
-        {products.length > 0 ? (
-          <div className={styles.productGrid}>
-            {products.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-                <div className={`${styles.cardImg} ${categoryLabel(p) === 'Framed Print' ? styles.cardImgMockup : isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
-                  {p.firstImage
-                    ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
-                    : <div className={styles.cardPlaceholder} />
-                  }
-                  <WishlistButton
-                    handle={p.handle}
-                    title={displayTitle(p.title)}
-                    imageUrl={p.firstImage?.url ?? null}
-                    price={formatPriceLabel(p)}
-                  />
-                  {p.variants.length === 1 && p.firstVariant?.title === 'Default Title' && p.firstVariant.availableForSale && (
-                    <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
-                  )}
-                </div>
-                <div className={styles.cardInfo}>
-                  <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
-                  <span className={styles.cardType}>
-                    {seriesLabel(p) ? `${seriesLabel(p)} · ` : ''}{categoryLabel(p)}
-                  </span>
-                  <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <div className={styles.comingSoon}>
-            <p>Products are being added. Check back shortly.</p>
-            <Link href="/shop" className={styles.heroCta}>Go to shop</Link>
-          </div>
-        )}
-      </section>
-
-      {/* ── Series strip ─────────────────────────────────────── */}
-      <section className={styles.seriesSection}>
-        <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>Browse by Series</h2>
-          <Link href="/collections" className={styles.viewAll}>All collections →</Link>
-        </div>
-        <div className={styles.seriesStrip}>
-          {SERIES_CARDS.map(({ tag, label, sub, accent }) => {
-            const imgUrl = seriesImageMap[tag]
-            return (
-              <Link key={tag} href={`/shop?filter=${tag}`} className={styles.seriesCard}>
-                <div className={styles.seriesCardImg}>
-                  {imgUrl ? (
-                    <Image
-                      src={imgUrl}
-                      alt={label}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 16vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  ) : (
-                    <div className={styles.seriesCardPlaceholder} style={{ background: accent + '22' }} />
-                  )}
-                </div>
-                <div className={styles.seriesCardInfo}>
-                  <span className={styles.seriesCardLabel} style={{ color: accent }}>{label}</span>
-                  <span className={styles.seriesCardSub}>{sub}</span>
-                </div>
-              </Link>
-            )
-          })}
-        </div>
-      </section>
-
-      {/* ── Editorial — featured work ─────────────────────────── */}
-      <section className={styles.editorial}>
-        <div className={styles.editorialImage}>
-          <Image
-            src={`${BLOB}/works/tufting/candy-I.jpg`}
-            alt="Candy I — tufted textile by Stine Weirsøe Flamant"
-            fill
-            sizes="(max-width: 768px) 100vw, 55vw"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
-        </div>
-        <div className={styles.editorialBody}>
-          <span className={styles.editorialSeries}>Tufting — from the studio</span>
-          <h2 className={styles.editorialTitle}>Candy I</h2>
-          <p className={styles.editorialNote}>
-            Made by hand with a tufting gun on stretched cotton canvas. Bold candy-stripe geometry in cut and loop pile — the kind of colour that stops you in a room. Stine has been tufting since 2019; each piece takes days to finish and exists once.
-          </p>
-          <Link href="/works/candy-I" className={styles.editorialLink}>
-            See the originals →
-          </Link>
-        </div>
-      </section>
-
       {/* ── Two ways to collect ──────────────────────────────── */}
       <section className={styles.collectSection}>
         <Link href="/fine-art" className={styles.collectBlock}>
@@ -266,6 +165,107 @@ export default async function HomePage() {
             <span className={styles.collectCtaSecondary}>Browse the shop</span>
           </div>
         </Link>
+      </section>
+
+      {/* ── Editorial — featured work ─────────────────────────── */}
+      <section className={styles.editorial}>
+        <div className={styles.editorialImage}>
+          <Image
+            src={`${BLOB}/works/tufting/candy-I.jpg`}
+            alt="Candy I — tufted textile by Stine Weirsøe Flamant"
+            fill
+            sizes="(max-width: 768px) 100vw, 55vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+        </div>
+        <div className={styles.editorialBody}>
+          <span className={styles.editorialSeries}>Tufting — from the studio</span>
+          <h2 className={styles.editorialTitle}>Candy I</h2>
+          <p className={styles.editorialNote}>
+            Made by hand with a tufting gun on stretched cotton canvas. Bold candy-stripe geometry in cut and loop pile — the kind of colour that stops you in a room. Stine has been tufting since 2019; each piece takes days to finish and exists once.
+          </p>
+          <Link href="/works/candy-I" className={styles.editorialLink}>
+            See the originals →
+          </Link>
+        </div>
+      </section>
+
+      {/* ── Series strip ─────────────────────────────────────── */}
+      <section className={styles.seriesSection}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.sectionTitle}>Browse by Series</h2>
+          <Link href="/collections" className={styles.viewAll}>All collections →</Link>
+        </div>
+        <div className={styles.seriesStrip}>
+          {SERIES_CARDS.map(({ tag, label, sub, accent }) => {
+            const imgUrl = seriesImageMap[tag]
+            return (
+              <Link key={tag} href={`/shop?filter=${tag}`} className={styles.seriesCard}>
+                <div className={styles.seriesCardImg}>
+                  {imgUrl ? (
+                    <Image
+                      src={imgUrl}
+                      alt={label}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 16vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div className={styles.seriesCardPlaceholder} style={{ background: accent + '22' }} />
+                  )}
+                </div>
+                <div className={styles.seriesCardInfo}>
+                  <span className={styles.seriesCardLabel} style={{ color: accent }}>{label}</span>
+                  <span className={styles.seriesCardSub}>{sub}</span>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* ── In the shop ──────────────────────────────────────── */}
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.sectionTitle}>In the shop</h2>
+          <Link href="/shop" className={styles.viewAll}>All products →</Link>
+        </div>
+
+        {products.length > 0 ? (
+          <div className={styles.productGrid}>
+            {products.map((p) => (
+              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
+                <div className={`${styles.cardImg} ${categoryLabel(p) === 'Framed Print' ? styles.cardImgMockup : isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
+                  {p.firstImage
+                    ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
+                    : <div className={styles.cardPlaceholder} />
+                  }
+                  <WishlistButton
+                    handle={p.handle}
+                    title={displayTitle(p.title)}
+                    imageUrl={p.firstImage?.url ?? null}
+                    price={formatPriceLabel(p)}
+                  />
+                  {p.variants.length === 1 && p.firstVariant?.title === 'Default Title' && p.firstVariant.availableForSale && (
+                    <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
+                  )}
+                </div>
+                <div className={styles.cardInfo}>
+                  <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
+                  <span className={styles.cardType}>
+                    {seriesLabel(p) ? `${seriesLabel(p)} · ` : ''}{categoryLabel(p)}
+                  </span>
+                  <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.comingSoon}>
+            <p>Products are being added. Check back shortly.</p>
+            <Link href="/shop" className={styles.heroCta}>Go to shop</Link>
+          </div>
+        )}
       </section>
 
       {/* ── Artist statement ─────────────────────────────────── */}
