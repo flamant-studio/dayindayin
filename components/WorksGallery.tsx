@@ -34,6 +34,7 @@ export default function WorksGallery({ images, title }: Props) {
               src={src}
               alt={`${title} — view ${i + 1}`}
               fill
+              priority={i < 3}
               sizes="(max-width: 768px) 100vw, 50vw"
               style={{ objectFit: 'cover' }}
             />

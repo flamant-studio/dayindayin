@@ -11,13 +11,13 @@
 **Where:** `components/ProductOptions.tsx` + data layer
 **What was done (2026-06-20):**
 - Fixed `parseFramed()` to handle actual Gelato title format (` - White frame` not `/ White frame`)
-- Added informational size/option chips for single-variant products (non-interactive, shows what's available)
-- Framed prints: SIZE A4/A3/A2/A1 + FRAME White/Wood/Black chips  
-- Art prints: SIZE A4/A3/A2 chips
-- Mugs: COLOUR White/Black + SIDE A/B chips
-- Tank tops: SIZE XS/S/M/L/XL/2XL chips
-- Note: "Size & options confirmed at checkout" shown below chips
-**Status:** ⚠️ PARTIAL FIX — UX improved, but real fix requires data migration: Shopify products need proper variant matrices added via Admin API. Requires Gelato pricing data for A3/A2/A1/A1 variants before migration can run safely.
+- Replaced misleading interactive chip UI with plain informational text: "Available sizes XS · S · M · L · XL · 2XL — Choose at checkout"
+- Framed prints: "Sizes A4 · A3 · A2 · A1  ·  Frames White · Wood · Black"
+- Art prints: "Available sizes A4 · A3 · A2"
+- Mugs: "Available in White · Black · Side A · Side B"
+- Tank tops: "Available sizes XS · S · M · L · XL · 2XL"
+- Sebastian confirmed: previous chip UI looked interactive but wasn't (ISS-01 screenshot). New text UI is clearly informational.
+**Status:** ⚠️ PARTIAL FIX — UX correct (plain text, not misleading buttons). Real fix requires data migration: Shopify products need proper variant matrices. Requires Gelato pricing data before migration can run safely.
 
 ### ISS-02: Product card info area should be white
 **What:** The text section below each product card image (title, type label, price) uses the same chalk/beige as the page background. Cards need a WHITE (#FFFFFF) background on the info section so they visually "pop" and feel like cards, not flat blocks.

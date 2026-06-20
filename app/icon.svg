@@ -1,12 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="5" fill="#2C3440"/>
-  <!-- Geometric D monogram for Day In Day In -->
-  <!-- Vertical stem -->
-  <rect x="7" y="7" width="3.5" height="18" rx="1" fill="#C4694F"/>
-  <!-- Top serif -->
-  <rect x="7" y="7" width="11" height="3" rx="1" fill="#C4694F"/>
-  <!-- Bottom serif -->
-  <rect x="7" y="22" width="11" height="3" rx="1" fill="#C4694F"/>
-  <!-- Curved right side of D -->
-  <path d="M 17.5 7 C 24 7 27 10.5 27 16 C 27 21.5 24 25 17.5 25" stroke="#C4694F" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect width="32" height="32" rx="4" fill="#2C3440"/>
+  <rect x="6" y="6" width="4" height="20" rx="1" fill="#C4694F"/>
+  <rect x="6" y="6" width="13" height="4" rx="1" fill="#C4694F"/>
+  <rect x="6" y="22" width="13" height="4" rx="1" fill="#C4694F"/>
+  <path d="M 17 6 C 25 7 27 11 27 16 C 27 21 25 25 17 26" stroke="#C4694F" stroke-width="4" fill="none" stroke-linecap="round"/>
 </svg>
