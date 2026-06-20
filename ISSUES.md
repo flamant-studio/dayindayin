@@ -43,12 +43,25 @@
 **What:** Works at /works/[slug] (e.g. /works/candy-I) use same visual weight as Gelato product PDPs. They need to be visuals-first, immersive, showing MULTIPLE photos of the same piece. Must search Dropbox for all photos of each artwork.
 **Where:** `app/works/[slug]/page.tsx` — needs distinct template
 **Priority:** High — these are Stine's originals, they drive commissions
-**Status:** Open
+**What was done (2026-06-20):**
+- Redesigned template: full-bleed hero (78vh) replaces 60/40 grid
+- Category label + title + year overlaid at hero bottom-left; breadcrumb at top-left
+- Info section: description/note/share left, sticky enquiry CTA + meta table right
+- Gallery section "Studio views" if `work.gallery` exists; first photo spans full width
+- Uploaded 5 Candy I studio photos from Dropbox → Vercel Blob → `lib/data.ts` gallery array
+- Template distinct from Gelato PDPs: no specs row, no add-to-cart, editorial tone
+**Status:** ✅ FIXED (2026-06-20)
 
 ### ISS-07: Homepage — information hierarchy and section separation
 **What:** The homepage has unclear visual hierarchy. Sections don't clearly signal what belongs together. Headline hierarchy is inconsistent. Spacing doesn't create clear section breaks. Principle: "most important info first" — needs audit and restructure.
 **Where:** `app/page.tsx` + `app/page.module.css`
-**Status:** Open
+**What was done (2026-06-20):**
+- Moved "One of a kind / Art for every wall" to position 2 (right after hero) — immediately answers "what is this?"
+- Moved Candy I editorial to position 3 — story/emotion before commerce
+- Series strip now position 4 with border-top + proper top padding (was only var(--sp-2))
+- "In the shop" product grid now position 5 — discovery after context (renamed from "Latest Work", trimmed to 8 products)
+- Artist strip, blog, newsletter, lifestyle strip remain in order at bottom
+**Status:** ✅ FIXED (2026-06-20)
 
 ### ISS-08: Homepage video hero
 **What:** A video (looping, muted, autoplay) was discussed for the hero section. Currently uses a static lifestyle photo. Need to source/create a short loop of Stine's studio/work process.
