@@ -8,6 +8,8 @@ import styles from './ImageGallery.module.css'
 interface GalleryImage {
   url: string
   alt: string
+  width?: number
+  height?: number
 }
 
 interface Props {
@@ -41,16 +43,20 @@ export default function ImageGallery({ images, colorwaySiblings }: Props) {
     setLightboxIndex((i) => (i === null ? 0 : (i + 1) % images.length))
   }
 
+  const mainAspectRatio = mainImage?.width && mainImage?.height
+    ? `${mainImage.width}/${mainImage.height}`
+    : '3/4'
+
   return (
     <div className={styles.images}>
       <div
         className={styles.mainImage}
+        style={{ aspectRatio: mainAspectRatio, cursor: mainImage ? 'zoom-in' : 'default' }}
         onClick={() => mainImage && openAt(0)}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => e.key === 'Enter' && mainImage && openAt(0)}
         aria-label="View full image"
-        style={{ cursor: mainImage ? 'zoom-in' : 'default' }}
       >
         {mainImage ? (
           <Image

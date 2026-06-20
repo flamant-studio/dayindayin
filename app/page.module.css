@@ -181,9 +181,12 @@
 .cardImg {
   position: relative;
   aspect-ratio: 4/5;
-  background: var(--c-surface);
+  background: #fff;
   overflow: hidden;
 }
+
+.cardImgArtwork .cardImgEl { object-fit: cover; }
+.cardImgMockup .cardImgEl { object-fit: contain; }
 
 .cardImgEl {
   object-fit: contain;
@@ -192,7 +195,7 @@
 .cardPlaceholder {
   position: absolute;
   inset: 0;
-  background: var(--c-surface);
+  background: #fff;
 }
 
 .newBadge {

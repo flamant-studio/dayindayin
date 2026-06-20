@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel, seriesLabel } from '@/lib/shopify/products'
+import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
 import { blogPosts } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
@@ -135,7 +135,7 @@ export default async function HomePage() {
           <div className={styles.productGrid}>
             {products.map((p, i) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-                <div className={styles.cardImg}>
+                <div className={`${styles.cardImg} ${isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
                   {p.firstImage
                     ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
                     : <div className={styles.cardPlaceholder} />

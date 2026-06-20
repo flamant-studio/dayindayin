@@ -6,7 +6,6 @@
 
 .mainImage {
   position: relative;
-  aspect-ratio: 3/4;
   background: var(--c-surface);
   overflow: hidden;
 }

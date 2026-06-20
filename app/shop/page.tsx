@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllProducts, formatPrice, formatPriceLabel, categoryLabel, seriesLabel } from '@/lib/shopify/products'
+import { getAllProducts, formatPrice, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
 import ShoppingNudge from '@/components/ShoppingNudge'
@@ -229,7 +229,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
           <div className={styles.grid}>
             {displayed.map((p, i) => (
               <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-                <div className={styles.cardImg}>
+                <div className={`${styles.cardImg} ${isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
                   <Image
                     src={p.firstImage!.url}
                     alt={p.firstImage!.altText ?? p.title}

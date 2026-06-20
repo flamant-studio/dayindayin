@@ -244,11 +244,12 @@ export default async function ProductPage({ params }: PageProps) {
         }))
     : []
 
-  // Build gallery images array
-  const galleryImages = [
-    mainImage ? { url: mainImage.url, alt: mainImage.altText ?? product.title } : null,
-    ...otherImages.map(img => ({ url: img.url, alt: img.altText ?? product.title })),
-  ].filter((img): img is { url: string; alt: string } => img !== null)
+  // Build gallery images array — include dimensions for natural aspect ratio rendering
+  const galleryImagesRaw = [
+    mainImage ? { url: mainImage.url, alt: mainImage.altText ?? product.title, width: mainImage.width, height: mainImage.height } : null,
+    ...otherImages.map(img => ({ url: img.url, alt: img.altText ?? product.title, width: img.width, height: img.height })),
+  ]
+  const galleryImages = galleryImagesRaw.filter(Boolean) as Array<{ url: string; alt: string; width?: number; height?: number }>
 
   // Task 8: breadcrumbs + JSON-LD
   const catLabel = categoryLabel(product)
@@ -332,17 +333,22 @@ export default async function ProductPage({ params }: PageProps) {
         <ProductProvider>
         <div className={styles.info}>
           <div className={styles.infoInner}>
-            <p className={styles.productType}>{catLabel}</p>
-            <h1 className={styles.title}>{product.title}</h1>
-            {(catLabel === 'Art Print' || catLabel === 'Framed Print' || catLabel === 'Poster') && (
-              <p className={styles.editionNote}>Open edition · Printed on demand</p>
-            )}
-            {catLabel === 'Photo Print' && (
-              <p className={styles.editionNote}>Limited edition · Archival inkjet</p>
-            )}
+            {/* 1. Type + title + edition */}
+            <div className={styles.titleBlock}>
+              <p className={styles.productType}>{catLabel}</p>
+              <h1 className={styles.title}>{product.title}</h1>
+              {(catLabel === 'Art Print' || catLabel === 'Framed Print' || catLabel === 'Poster') && (
+                <p className={styles.editionNote}>Open edition · Printed on demand</p>
+              )}
+              {catLabel === 'Photo Print' && (
+                <p className={styles.editionNote}>Limited edition · Archival inkjet</p>
+              )}
+            </div>
+
+            {/* 2. Price */}
             <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
 
-            {/* Product specs — show for single-variant products where there's no picker */}
+            {/* 3. Specs (single-variant) or variant picker (multi-variant) */}
             {product.variants.length <= 1 && (() => {
               const specs = getProductSpecs(catLabel, product.firstVariant?.title, product.title)
               return specs.length > 0 ? (
@@ -357,19 +363,7 @@ export default async function ProductPage({ params }: PageProps) {
               ) : null
             })()}
 
-            {/* Series / category tags */}
-            {product.tags.filter(t => ['tufting','embroidery','painting','photography','tote','greeting-card','postcard','mug','apparel','water-bottle','wood-print','shero','neko','sea-monsters','botanical','floral','faces','sommerby'].includes(t.toLowerCase())).length > 0 && (
-              <div className={styles.tagRow}>
-                {product.tags
-                  .filter(t => ['tufting','embroidery','painting','photography','tote','greeting-card','postcard','mug','apparel','water-bottle','wood-print','shero','neko','sea-monsters','botanical','floral','faces','sommerby'].includes(t.toLowerCase()))
-                  .map(tag => (
-                    <Link key={tag} href={`/shop?filter=${tag.toLowerCase()}`} className={styles.tagLink}>
-                      {tag}
-                    </Link>
-                  ))}
-              </div>
-            )}
-
+            {/* 4. Description */}
             {product.descriptionHtml && (
               <div
                 className={styles.description}
@@ -377,6 +371,7 @@ export default async function ProductPage({ params }: PageProps) {
               />
             )}
 
+            {/* 5. Variant picker + ATC (multi-variant) */}
             <ProductOptions
               variants={product.variants}
               handle={handle}
@@ -389,18 +384,19 @@ export default async function ProductPage({ params }: PageProps) {
               <SizeGuide variants={product.variants} />
             )}
 
-            <div className={styles.deliveryEstimate}>
-              <span className={styles.deliveryDot} />
-              <span>Estimated delivery: 5–10 business days to EU</span>
+            {/* 6. Trust signals — compact single block */}
+            <div className={styles.trustBlock}>
+              <div className={styles.deliveryEstimate}>
+                <span className={styles.deliveryDot} />
+                <span>Ships in 5–10 business days · EU, UK & Norway</span>
+              </div>
+              <p className={styles.gelatoLine}>
+                Printed &amp; shipped by{' '}
+                <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
+              </p>
             </div>
 
-            <div className={styles.gelatoBadge}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Printed &amp; shipped by <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
-            </div>
-
+            {/* 7. Shipping accordion */}
             <details className={styles.fulfillmentAccordion}>
               <summary className={styles.fulfillmentSummary}>Shipping &amp; Returns</summary>
               <div className={styles.fulfillmentNote}>
@@ -411,15 +407,14 @@ export default async function ProductPage({ params }: PageProps) {
               </div>
             </details>
 
-            {/* Artist context strip */}
+            {/* 8. Artist credit — minimal */}
             <div className={styles.artistStrip}>
-              <p className={styles.artistName}>Original work by Stine Weirsøe Flamant</p>
-              <p className={styles.artistBio}>
-                Copenhagen-based artist working in tufting, embroidery, digital illustration, and photography.
-              </p>
-              <Link href="/about" className={styles.artistLink}>About the artist &rarr;</Link>
+              <Link href="/about" className={styles.artistLink}>
+                Work by Stine Weirsøe Flamant &rarr;
+              </Link>
             </div>
 
+            {/* 9. Share — lowest priority */}
             <ShareButtons
               url={`https://dayindayin.dk/shop/${handle}`}
               title={product.title}

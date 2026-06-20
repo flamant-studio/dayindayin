@@ -353,6 +353,14 @@ const TAG_CATEGORY: Record<string, string> = {
   'wood-print':    'Wood Print',
 }
 
+const ARTWORK_LABELS = new Set([
+  'Art Print', 'Framed Print', 'Poster', 'Postcard', 'Greeting Card', 'Wood Print', 'Photo Print',
+])
+
+export function isArtworkProduct(product: NormalizedProduct): boolean {
+  return ARTWORK_LABELS.has(categoryLabel(product))
+}
+
 export function categoryLabel(product: NormalizedProduct): string {
   for (const tag of product.tags) {
     const label = TAG_CATEGORY[tag.toLowerCase()]
