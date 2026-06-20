@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 type SpecItem = { label: string; value: string }
 
-function getProductSpecs(catLabel: string, variantTitle: string | null | undefined): SpecItem[] {
+function getProductSpecs(catLabel: string, variantTitle: string | null | undefined, productTitle?: string): SpecItem[] {
   // Only meaningful for single-variant products — multi-variant has its own picker
   switch (catLabel) {
     case 'Art Print':
@@ -83,9 +83,19 @@ function getProductSpecs(catLabel: string, variantTitle: string | null | undefin
         { label: 'Print', value: 'One side' },
       ]
     case 'Apparel': {
-      const sizeStr = variantTitle?.includes('XS') ? 'XS–2XL available'
-        : variantTitle?.includes(' M ') || variantTitle?.toLowerCase().includes('- m -') ? 'Unisex M'
-        : variantTitle ?? 'Unisex'
+      const isCap = productTitle?.toLowerCase().includes('cap') ?? false
+      if (isCap) {
+        return [
+          { label: 'Style', value: 'Embroidered dad cap' },
+          { label: 'Size', value: 'One size' },
+          { label: 'Material', value: 'Organic cotton' },
+        ]
+      }
+      const isDefaultTitle = !variantTitle || variantTitle === 'Default Title'
+      const sizeStr = isDefaultTitle ? 'Unisex M'
+        : variantTitle.includes('XS') ? 'XS–2XL available'
+        : variantTitle.toLowerCase().includes('- m -') ? 'Unisex M'
+        : variantTitle
       return [
         { label: 'Size', value: sizeStr },
         { label: 'Style', value: 'Tank top' },
@@ -303,7 +313,7 @@ export default async function ProductPage({ params }: PageProps) {
 
             {/* Product specs — show for single-variant products where there's no picker */}
             {product.variants.length <= 1 && (() => {
-              const specs = getProductSpecs(catLabel, product.firstVariant?.title)
+              const specs = getProductSpecs(catLabel, product.firstVariant?.title, product.title)
               return specs.length > 0 ? (
                 <dl className={styles.specsRow}>
                   {specs.map(s => (
