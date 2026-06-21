@@ -63,8 +63,8 @@ function parseFramed(title: string): Parsed | null {
   // Strip orientation suffix: " - Vertical" / " - Horizontal" at end
   t = t.replace(/\s*-\s*(Vertical|Horizontal)$/i, '').trim()
 
-  // Find frame color — Gelato uses " - White frame", old format uses " / White frame"
-  const frameMatch = t.match(/\s*[-\/]\s*(White|Wood|Black)\s+frame$/i)
+  // Find frame color — accepts "Black frame", "Black" (new Shopify format), "- Black frame", "/ Black"
+  const frameMatch = t.match(/\s*[-\/]\s*(White|Wood|Black)(\s+frame)?$/i)
   if (!frameMatch) return null
   const frameColor = frameMatch[1]
   const beforeFrame = t.slice(0, frameMatch.index!).trim()
