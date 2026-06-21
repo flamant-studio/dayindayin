@@ -188,7 +188,6 @@ export default async function ShopPage({ searchParams }: PageProps) {
               }
             </p>
           )}
-          <p className={styles.socialProof}>{Math.floor(allWithImages.length / 100) * 100}+ products · Printed by Gelato · Ships to EU, UK &amp; Norway</p>
           {activeTag && FILTER_LABELS[activeTag] && (
             <span className={styles.filterChip}>
               {FILTER_LABELS[activeTag]}
