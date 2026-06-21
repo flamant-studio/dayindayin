@@ -201,28 +201,6 @@ export default function ProductOptions({ variants, handle, productTitle, product
 
     return (
       <div className={styles.wrapper}>
-        {sizeInfo && (
-          <div className={styles.infoTextBlock}>
-            {!sizeInfo.frames || (titleL.includes('mug') || typeL === 'mug') ? (
-              <p className={styles.infoTextLine}>
-                <span className={styles.infoTextKey}>
-                  {titleL.includes('mug') || typeL === 'mug' ? 'Available in' : 'Available sizes'}
-                </span>{' '}
-                {sizeInfo.sizes.join(' · ')}
-                {sizeInfo.frames && <> · Side {sizeInfo.frames.join(' · Side ')}</>}
-              </p>
-            ) : (
-              <p className={styles.infoTextLine}>
-                <span className={styles.infoTextKey}>Sizes</span>{' '}
-                {sizeInfo.sizes.join(' · ')}
-                {'  ·  '}
-                <span className={styles.infoTextKey}>Frames</span>{' '}
-                {sizeInfo.frames.join(' · ')}
-              </p>
-            )}
-            <p className={styles.sizeNote}>Choose at checkout</p>
-          </div>
-        )}
         {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
         {v.availableForSale ? (
           <AddToCartButton variantId={v.id} price={formatPrice(v.price)} available />

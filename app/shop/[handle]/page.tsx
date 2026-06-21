@@ -74,10 +74,13 @@ function getProductSpecs(
         { label: 'Finish', value: 'Silk coated' },
       ]
     case 'Framed Print':
+      if (multiSize) {
+        return [{ label: 'Glazing', value: 'Acrylic' }]
+      }
       return [
-        ...(!multiSize ? [{ label: 'Format', value: 'A4 (21×29.7 cm)' }] : []),
-        { label: 'Frame', value: 'Multiple options' },
-        { label: 'Glazing', value: 'Acrylic' },
+        { label: 'Frame', value: 'Acrylic glazed, 20 mm' },
+        { label: 'Sizes', value: 'A4 · A3 · A2 · A1' },
+        { label: 'Frames', value: 'White · Wood · Black' },
       ]
     case 'Mug':
       return [
