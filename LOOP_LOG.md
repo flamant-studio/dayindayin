@@ -49,6 +49,51 @@
 
 ---
 
+## Outstanding UX/design tasks — audited 2026-06-21 (Session 4)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| U1 | Sticky ATC colour mismatch | ✅ Done | Both AddToCartButton and StickyATC use `var(--c-accent)` — identical |
+| U2 | Double CTA on mobile | ✅ Fixed | StickyATC mobile CSS had `transform: translateY(0)` hardcoded — always visible. Removed. Now JS-controlled like desktop. Commit `223d469` |
+| U3 | Variants not clickable | ✅ Done | Confirmed in Playwright — size + frame pickers working, price updates |
+| U4 | Product card text colour | ✅ Done | Cards: white bg, dark text — looks correct |
+| U5 | Recently viewed carousel bg | ⚠️ Unverifiable | Requires localStorage history (prior product visit). Test on real device. |
+| U6 | Product image cropping PLP | ✅ Likely done | Framed prints use `cardImgMockup` (1/1 ratio, object-fit:contain) — should show full mockup. Verify elephant print on real device. |
+| U7 | Mobile breadcrumbs at top | ❌ Still outstanding | Breadcrumb is above the title block. Feedback wants it lower. Design decision — needs Sebastian direction. |
+| U8 | Mobile: "Back to Shop" | ✅ Done | Not present on PDP |
+| U9 | Fine art "Enquire" → "Discover" | ✅ Done | Button reads "Discover this work" on /works/ PDPs |
+| U10 | Fine art CTAs aggressive | ✅ Done | /works/ PDP CTA is black button, not red |
+| U11 | Fine art: cost indication | ✅ Done | "Originals are individually priced. See the FAQ for typical price ranges." present on /works/ PDPs |
+| U12 | /works/ slugs returning 404 | ✅ Fixed | Root cause: 5 slugs had uppercase Roman numerals (candy-I, rainbow-I/II, pink-rug-II, gud-har-meldt-afbud-II). Lowercased. Commit `223d469`. Template itself works. |
+| U12b | Unique Art PDPs (distinct template) | ❌ Still outstanding | The visuals-first template redesign for /works/ pages is a separate task. Currently shows: large image, text info, CTA, related works. Could be richer. |
+| U13 | Homepage video hero | ✅ Done | Video IS wired (hero-loop.mp4 in Vercel Blob). Playwright doesn't autoplay video — static first frame shown. On device it plays. |
+| U14 | Homepage information hierarchy | ⚠️ Deferred | Current order: Hero → Fine Art → Print Shop → Featured work. Seems logical. Needs Sebastian's call on what "most important info first" means. |
+| U15 | Mobile home spacing | ⚠️ Deferred | Sections stack cleanly in Playwright. Hard to judge without real device. |
+| U16 | Design system doc | ⚠️ Deferred | Low priority — blocks no feature work |
+| U17 | Vercel failed deploy | ✅ Resolved | Superseded by new commits. Latest push (`223d469`) deploying now. |
+
+---
+
+## Session 4 summary (2026-06-21)
+*Full Playwright audit of U1–U17 backlog. Most were already done. Fixed 2 real bugs.*
+
+Commits:
+- `223d469` — Fix double-CTA on mobile (StickyATC always-visible) + /works/ slug 404s (5 slugs with uppercase Roman numerals)
+
+Audit verdict: U1, U3, U4, U8, U9, U10, U11, U13 all done. U2, U12 fixed this session. U5, U6 need real-device check. U7 (breadcrumb position), U14, U15 need Sebastian's direction. U16 deferred.
+
+---
+
+## Session 3 summary (2026-06-21)
+*PDP redesign: element order, series badge, no edition note, accordions, studioNote removed, ProductProvider wraps image column for variant image swap. Mobile burger menu fixed (was hidden after tab bar removal). SizeGuide grid-animation leak fixed.*
+
+Commits:
+- `330e13d` — PDP redesign
+- `99a46c4` — Fix mobile burger visibility
+- `60b29b6` — Fix SizeGuide grid-animation leak
+
+---
+
 ## Session 2 summary (2026-06-21)
 
 Commits pushed to main (all auto-deployed via Vercel):
