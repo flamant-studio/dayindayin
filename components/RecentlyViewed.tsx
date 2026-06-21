@@ -9,6 +9,7 @@ interface RecentItem {
   title: string
   imageUrl: string | null
   price: string
+  category?: string
 }
 
 interface Props {
@@ -73,6 +74,7 @@ export default function RecentlyViewed({ currentHandle, currentProduct }: Props)
             </div>
             <div className={styles.info}>
               <span className={styles.name}>{item.title}</span>
+              {item.category && <span className={styles.category}>{item.category}</span>}
               <span className={styles.price}>{item.price}</span>
             </div>
           </Link>

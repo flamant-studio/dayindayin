@@ -35,7 +35,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "What are the print sizes and prices?",
-    a: "Postcards (pack of 10) from 56 kr. Fine Art Prints from 149 kr. Posters from 149 kr. Framed Prints from 399 kr. Mugs from 89 kr. Tote bags from 224 kr. Tank tops from 194 kr. Wood Prints and Water Bottles from 229 kr. Dad Caps from 249 kr. All prices include Danish VAT.",
+    a: "Postcards (pack of 10) from 56 kr. Fine Art Prints from 149 kr. Posters from 149 kr. Framed Prints from 399 kr. Mugs from 89 kr. Tote bags from 224 kr. Tank tops from 194 kr. Greeting Cards (pack of 10) from 104 kr. Water Bottles from 253 kr. Wood Prints from 430 kr. Dad Caps from 249 kr. All prices include Danish VAT.",
   },
   {
     q: "Can I commission an original work?",
@@ -113,9 +113,9 @@ export default function Practical() {
                   ["Mugs (11 oz ceramic)", "from 89 kr"],
                   ["Tank Tops (XS–2XL unisex)", "from 194 kr"],
                   ["Postcards (pack of 10, A6)", "from 56 kr"],
-                  ["Greeting Cards (pack of 10, folded A6)", "from 99 kr"],
-                  ["Wood Prints (200×200mm birch)", "from 229 kr"],
-                  ["Water Bottles (17 oz stainless)", "from 229 kr"],
+                  ["Greeting Cards (pack of 10, folded A6)", "from 104 kr"],
+                  ["Wood Prints (200×200mm birch)", "from 430 kr"],
+                  ["Water Bottles (17 oz stainless)", "from 253 kr"],
                   ["Dad Caps (embroidered, one size)", "from 249 kr"],
                 ].map(([label, price]) => (
                   <tr key={label} className={styles.priceRow}>
@@ -130,8 +130,8 @@ export default function Practical() {
               enquiry. <Link href="/fine-art">See the originals →</Link>
             </p>
             <p>
-              More product types available — dad caps, water bottles, wood prints, greeting cards.{' '}
-              <Link href="/shop">See all products in the shop →</Link>
+              Prices include Danish VAT.{' '}
+              <Link href="/shop">Browse all products →</Link>
             </p>
           </section>
 

@@ -573,6 +573,7 @@ export default async function ProductPage({ params }: PageProps) {
           title: displayTitle(product.title),
           imageUrl: mainImage?.url ?? null,
           price: formatPrice(product.minPrice.amount),
+          category: categoryLabel(product),
         }}
       />
     </div>
