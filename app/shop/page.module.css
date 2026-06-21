@@ -410,10 +410,21 @@
   }
   .headerLeft { flex-direction: column; gap: var(--sp-1); align-items: flex-start; }
   .title { font-size: var(--text-3xl); }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+  }
   .cardTitle {
-    white-space: nowrap;
+    font-size: 0.8rem;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: unset;
+  }
+  .cardInfo {
+    padding: var(--sp-2) var(--sp-3) var(--sp-3);
   }
 }
