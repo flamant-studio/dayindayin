@@ -47,12 +47,21 @@ export default async function HomePage() {
   const availableWorks = works.filter(w => !w.sold).length
 
   // Parallel targeted fetches — faster than getAllProducts (500+ items)
-  const [products, ...seriesResults] = await Promise.all([
-    getProducts(8).then(all => all.filter(p => p.firstImage)).catch(() => []),
+  const [rawProducts, ...seriesResults] = await Promise.all([
+    getProducts(48).then(all => all.filter(p => p.firstImage)).catch(() => []),
     ...SERIES_KEYWORDS.map(({ keyword }) =>
       getProductsByTitleKeyword(keyword, 8).catch(() => [])
     ),
   ])
+
+  // Prefer flat artwork (art prints, posters) over product mockups (mugs, totes, etc.)
+  const MOCKUP_TYPE_KEYWORDS = ['mug', 'tote', 'tank', 'cap', 'bottle', 'wood print', 'postcard', 'greeting card']
+  const isMockupProduct = (title: string) => { const t = title.toLowerCase(); return MOCKUP_TYPE_KEYWORDS.some(k => t.includes(k)) }
+  const artFirst = [
+    ...rawProducts.filter(p => !isMockupProduct(p.title)),
+    ...rawProducts.filter(p => isMockupProduct(p.title)),
+  ]
+  const products = artFirst.slice(0, 8)
 
   // Pick best image per series: flat art preferred, dark variants over light/blanc
   const LIGHT_TITLE_KEYWORDS = ['blanc', 'white', 'cream']

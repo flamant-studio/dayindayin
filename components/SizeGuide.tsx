@@ -13,7 +13,8 @@ interface Props {
 const ALL_ROWS = [
   { size: 'A4',      cm: '21 × 29.7',   inches: '8.3 × 11.7',   approx: 'magazine page' },
   { size: 'A3',      cm: '29.7 × 42',   inches: '11.7 × 16.5',  approx: 'large magazine' },
-  { size: 'A2',      cm: '42 × 59.4',   inches: '16.5 × 23.4',  approx: 'half a door' },
+  { size: 'A2',      cm: '42 × 59.4',   inches: '16.5 × 23.4',  approx: 'poster size' },
+  { size: 'A1',      cm: '59.4 × 84.1', inches: '23.4 × 33.1',  approx: 'statement piece' },
   { size: '30×30',   cm: '30 × 30',     inches: '11.8 × 11.8',  approx: 'vinyl record' },
   { size: '40×40',   cm: '40 × 40',     inches: '15.7 × 15.7',  approx: '—' },
   { size: '70×70',   cm: '70 × 70',     inches: '27.6 × 27.6',  approx: 'large canvas' },
@@ -24,6 +25,7 @@ function matchesVariant(row: (typeof ALL_ROWS)[0], titles: string[]): boolean {
   if (row.size === 'A4')    return combined.includes('a4')
   if (row.size === 'A3')    return combined.includes('a3')
   if (row.size === 'A2')    return combined.includes('a2')
+  if (row.size === 'A1')    return combined.includes('a1')
   if (row.size === '30×30') return combined.includes('30')
   if (row.size === '40×40') return combined.includes('40')
   if (row.size === '70×70') return combined.includes('70')
