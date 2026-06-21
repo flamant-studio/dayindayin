@@ -55,7 +55,6 @@
 @media (max-width: 768px) {
   .bar {
     bottom: 0;
-    transform: translateY(0);
   }
   .title { display: none; }
   .btn { width: 100%; }
