@@ -377,8 +377,10 @@ export default function ProductOptions({ variants, handle, productTitle, product
 
   // Flat list for all other variant types
   const CLOTHING_SIZES = new Set(['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', 'XXL', 'XXXL'])
+  const PAPER_SIZES = new Set(['A1', 'A2', 'A3', 'A4', 'A5'])
   const allAreSizes = variants.every(v => CLOTHING_SIZES.has(normalizeTitle(v.title)))
-  const variantGroupLabel = allAreSizes ? 'Size' : 'Options'
+  const allArePaperSizes = variants.every(v => PAPER_SIZES.has(normalizeTitle(v.title)))
+  const variantGroupLabel = allAreSizes ? 'Size' : allArePaperSizes ? 'Format' : 'Options'
 
   return (
     <div className={styles.wrapper}>
