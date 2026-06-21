@@ -270,6 +270,7 @@ export default async function ProductPage({ params }: PageProps) {
       if (pArtwork !== artworkName && !pArtwork.startsWith(artworkName + ' (')) continue
       const pType = categoryLabel(p)
       if (seen.has(pType)) continue
+      if (pType === categoryLabel(product)) continue
       seen.add(pType)
       formatSiblings.push({
         href: `/shop/${p.handle}`,
