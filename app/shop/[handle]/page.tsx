@@ -142,46 +142,6 @@ function getProductSpecs(
   }
 }
 
-function getStudioNote(tags: string[]): { medium: string; note: string } | null {
-  const t = tags.map(x => x.toLowerCase())
-  if (t.includes('tufting')) return {
-    medium: 'Tufted Work',
-    note: 'Made on a tufting frame, hand-cut and finished. Tufting is a slow process — each piece takes days. The pile height and density are chosen by hand, giving each work a texture that doesn\'t come through in photos.',
-  }
-  if (t.includes('embroidery')) return {
-    medium: 'Embroidery',
-    note: 'Worked by hand on canvas or linen. Embroidery is where Stine\'s work started — needle and thread before everything else. Most pieces take weeks, worked in short sessions between other things.',
-  }
-  if (t.includes('shero')) return {
-    medium: 'SHERO Series',
-    note: 'SHERO is Stine\'s long-running feminist pop-art series. Bold lettering, bright palettes, direct messages. The series started in 2018 and is still evolving — each piece a new variation on the same insistence.',
-  }
-  if (t.includes('neko')) return {
-    medium: 'NEKO Series',
-    note: 'NEKO (猫 — Japanese for cat) is Stine\'s most graphic series. Flat shapes, high-contrast palettes, icon-like simplicity. The paw motif appears in dozens of variations across print, textile, and digital.',
-  }
-  if (t.includes('sea-monsters')) return {
-    medium: 'Sea Monsters',
-    note: 'An ongoing bestiary of imaginary sea creatures. Part folklore, part biology textbook, part pattern design. Each monster is invented from scratch — drawn first in the studio, then refined into a repeating print.',
-  }
-  if (t.includes('photography')) return {
-    medium: 'Photography',
-    note: 'Shot on location — Denmark, Sri Lanka, across Europe. Stine\'s photography is about stillness: the moment just before or just after something happened. Printed in limited editions on fine art paper.',
-  }
-  if (t.includes('painting')) return {
-    medium: 'Painting',
-    note: 'Studio paintings in acrylic and oil stick, worked on canvas on the floor. Layers built up and scraped back over multiple sessions. Each painting is a unique original — the prints are faithful reproductions.',
-  }
-  if (t.includes('botanical') || t.includes('floral')) return {
-    medium: 'Botanical',
-    note: 'Plants collected, pressed, and redrawn. The botanical series is obsessively detailed — each leaf and stem traced from life. A quieter thread running through the studio alongside the louder, bolder work.',
-  }
-  if (t.includes('faces')) return {
-    medium: 'Faces',
-    note: 'Portrait studies — some recognisable, some invented. The Faces series is about looking directly at someone and letting them look back. Worked in mixed media on canvas and paper.',
-  }
-  return null
-}
 
 export const revalidate = 300
 
@@ -344,150 +304,146 @@ export default async function ProductPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <div className={styles.layout}>
-        {/* Image column */}
-        <ImageGallery
-          images={galleryImages}
-          colorwaySiblings={colorwaySiblings.length > 0 ? colorwaySiblings : undefined}
-          objectFit="contain"
-        />
+      <ProductProvider>
+        <div className={styles.layout}>
+          {/* Image column — inside ProductProvider so variant images can update it */}
+          <ImageGallery
+            images={galleryImages}
+            colorwaySiblings={colorwaySiblings.length > 0 ? colorwaySiblings : undefined}
+            objectFit="contain"
+          />
 
-        {/* Info column */}
-        <ProductProvider>
-        <div className={styles.info}>
-          <div className={styles.infoInner}>
-            {/* Breadcrumb — inside info column so on mobile it appears below the image */}
-            <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-              <Link href="/shop" className={styles.breadcrumbLink}>Shop</Link>
-              <span className={styles.breadcrumbSep}>/</span>
-              <Link
-                href={catFilter ? `/shop?filter=${catFilter}` : '/shop'}
-                className={styles.breadcrumbLink}
-              >
-                {catLabel}
-              </Link>
-              <span className={styles.breadcrumbSep}>/</span>
-              <span className={styles.breadcrumbCurrent}>{displayTitle(product.title)}</span>
-            </nav>
+          {/* Info column */}
+          <div className={styles.info}>
+            <div className={styles.infoInner}>
+              {/* Breadcrumb */}
+              <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+                <Link href="/shop" className={styles.breadcrumbLink}>Shop</Link>
+                <span className={styles.breadcrumbSep}>/</span>
+                <Link
+                  href={catFilter ? `/shop?filter=${catFilter}` : '/shop'}
+                  className={styles.breadcrumbLink}
+                >
+                  {catLabel}
+                </Link>
+                <span className={styles.breadcrumbSep}>/</span>
+                <span className={styles.breadcrumbCurrent}>{displayTitle(product.title)}</span>
+              </nav>
 
-            {/* 1. Type + title + edition */}
-            <div className={styles.titleBlock}>
-              <p className={styles.productType}>{catLabel}</p>
-              <h1 className={styles.title}>{displayTitle(product.title)}</h1>
-              {(catLabel === 'Art Print' || catLabel === 'Framed Print' || catLabel === 'Poster') && (
-                <p className={styles.editionNote}>Open edition · Printed on demand</p>
-              )}
-              {catLabel === 'Photo Print' && (
-                <p className={styles.editionNote}>Limited edition · Archival inkjet</p>
-              )}
-            </div>
-
-            {/* 1b. Format alternatives — same artwork, other product types */}
-            {formatSiblings.length > 0 && (
-              <div className={styles.formatRow}>
-                <span className={styles.formatRowLabel}>Also as:</span>
-                <span className={`${styles.formatChip} ${styles.formatChipActive}`}>{catLabel}</span>
-                {formatSiblings.map(s => (
-                  <a key={s.href} href={s.href} className={styles.formatChip}>
-                    {s.type}
-                  </a>
-                ))}
+              {/* 1. Title */}
+              <div className={styles.titleBlock}>
+                <div className={styles.titleMeta}>
+                  {productSeries && <span className={styles.seriesBadge}>{productSeries}</span>}
+                  <p className={styles.productType}>{catLabel}</p>
+                </div>
+                <h1 className={styles.title}>{displayTitle(product.title)}</h1>
               </div>
-            )}
 
-            {/* 2. Price */}
-            <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
+              {/* 2. Price */}
+              <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
 
-            {/* 3. Material/finish specs — always shown; size specs omitted for multi-variant (picker handles those) */}
-            {(() => {
-              const specs = getProductSpecs(catLabel, product.firstVariant?.title, product.title, product.variants)
-              return specs.length > 0 ? (
-                <dl className={styles.specsRow}>
-                  {specs.map(s => (
-                    <div key={s.label} className={styles.specItem}>
-                      <dt className={styles.specLabel}>{s.label}</dt>
-                      <dd className={styles.specValue}>{s.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              ) : null
-            })()}
-
-            {/* 4. Description */}
-            {product.descriptionHtml ? (
-              <div
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+              {/* 3. Variants + ATC */}
+              <ProductOptions
+                variants={product.variants}
+                handle={handle}
+                productTitle={product.title}
+                productType={product.productType}
               />
-            ) : (
-              <p className={styles.description}>{fallbackDescription(product)}</p>
-            )}
+              <div id="atc-sentinel" />
 
-            {/* 5. Variant picker + ATC (multi-variant) */}
-            <ProductOptions
-              variants={product.variants}
-              handle={handle}
-              productTitle={product.title}
-              productType={product.productType}
-            />
-            {/* Sentinel: StickyATC watches this to know when ATC scrolls out of view */}
-            <div id="atc-sentinel" />
+              {/* 4. Description */}
+              {product.descriptionHtml ? (
+                <div
+                  className={styles.description}
+                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                />
+              ) : (
+                <p className={styles.description}>{fallbackDescription(product)}</p>
+              )}
 
-            {product.variants.length > 1 && (
-              <SizeGuide variants={product.variants} productType={catLabel} />
-            )}
+              {/* 5. Secondary info — accordions */}
+              <div className={styles.accordionGroup}>
+                <details className={styles.accordion} open>
+                  <summary className={styles.accordionSummary}>Materials &amp; Production</summary>
+                  <div className={styles.accordionBody}>
+                    {(() => {
+                      const specs = getProductSpecs(catLabel, product.firstVariant?.title, product.title, product.variants)
+                      return specs.length > 0 ? (
+                        <dl className={styles.specsRow}>
+                          {specs.map(s => (
+                            <div key={s.label} className={styles.specItem}>
+                              <dt className={styles.specLabel}>{s.label}</dt>
+                              <dd className={styles.specValue}>{s.value}</dd>
+                            </div>
+                          ))}
+                        </dl>
+                      ) : null
+                    })()}
+                    {product.variants.length > 1 && (
+                      <SizeGuide variants={product.variants} productType={catLabel} />
+                    )}
+                    <div className={styles.trustBlock}>
+                      <div className={styles.deliveryEstimate}>
+                        <span className={styles.deliveryDot} />
+                        <span>Ships in 3–7 business days · EU, UK &amp; Norway</span>
+                      </div>
+                      <p className={styles.gelatoLine}>
+                        Printed &amp; shipped by{' '}
+                        <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
+                      </p>
+                    </div>
+                  </div>
+                </details>
 
-            {/* 6. Trust signals — compact single block */}
-            <div className={styles.trustBlock}>
-              <div className={styles.deliveryEstimate}>
-                <span className={styles.deliveryDot} />
-                <span>Ships in 3–7 business days · EU, UK & Norway</span>
+                <details className={styles.accordion}>
+                  <summary className={styles.accordionSummary}>Shipping &amp; Returns</summary>
+                  <div className={styles.accordionBody}>
+                    <p className={styles.accordionText}>Printed on demand by Gelato and shipped directly to you.</p>
+                    <p className={styles.accordionText}>Production: 1–3 business days. Delivery: 2–5 days within EU. <strong>Estimated total: 3–7 days from order.</strong></p>
+                    <p className={styles.accordionText}>Ships to EU, UK, and Norway. International shipping available at checkout.</p>
+                    <p className={styles.accordionText}>If anything arrives damaged or wrong, let us know within 14 days with a photo — we&apos;ll sort it.</p>
+                  </div>
+                </details>
+
+                {formatSiblings.length > 0 && (
+                  <details className={styles.accordion}>
+                    <summary className={styles.accordionSummary}>Also available as</summary>
+                    <div className={styles.accordionBody}>
+                      <div className={styles.formatRow}>
+                        <span className={`${styles.formatChip} ${styles.formatChipActive}`}>{catLabel}</span>
+                        {formatSiblings.map(s => (
+                          <a key={s.href} href={s.href} className={styles.formatChip}>
+                            {s.type}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </details>
+                )}
+
+                <details className={styles.accordion}>
+                  <summary className={styles.accordionSummary}>Share</summary>
+                  <div className={styles.accordionBody}>
+                    <ShareButtons
+                      url={`https://dayindayin.dk/shop/${handle}`}
+                      title={product.title}
+                      imageUrl={mainImage?.url ?? null}
+                    />
+                  </div>
+                </details>
               </div>
-              <p className={styles.gelatoLine}>
-                Printed &amp; shipped by{' '}
-                <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
-              </p>
-            </div>
 
-            {/* 7. Shipping accordion */}
-            <details className={styles.fulfillmentAccordion}>
-              <summary className={styles.fulfillmentSummary}>Shipping &amp; Returns</summary>
-              <div className={styles.fulfillmentNote}>
-                <p>Printed on demand by Gelato and shipped directly to you.</p>
-                <p>Production: 1–3 business days. Delivery: 2–5 days within EU. <strong>Estimated total: 3–7 days from order.</strong></p>
-                <p>Ships to EU, UK, and Norway. International shipping available at checkout.</p>
-                <p>If anything arrives damaged or wrong, let us know within 14 days with a photo — we&apos;ll sort it.</p>
+              {/* Artist credit */}
+              <div className={styles.artistStrip}>
+                <Link href="/about" className={styles.artistLink}>
+                  Work by Stine Weirsøe Flamant &rarr;
+                </Link>
               </div>
-            </details>
-
-            {/* 8. Artist credit — minimal */}
-            <div className={styles.artistStrip}>
-              <Link href="/about" className={styles.artistLink}>
-                Work by Stine Weirsøe Flamant &rarr;
-              </Link>
             </div>
-
-            {/* 9. Share — lowest priority */}
-            <ShareButtons
-              url={`https://dayindayin.dk/shop/${handle}`}
-              title={product.title}
-              imageUrl={mainImage?.url ?? null}
-            />
           </div>
         </div>
         <StickyATC title={displayTitle(product.title)} imageUrl={mainImage?.url ?? null} />
-        </ProductProvider>
-      </div>
-
-      {(() => {
-        const note = getStudioNote(product.tags)
-        return note ? (
-          <section className={styles.studioNote}>
-            <span className={styles.studioNoteMedium}>{note.medium}</span>
-            <p className={styles.studioNoteText}>{note.note}</p>
-          </section>
-        ) : null
-      })()}
+      </ProductProvider>
 
       {seriesProducts.length >= 2 && (
         <section className={styles.related}>

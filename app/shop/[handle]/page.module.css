@@ -685,3 +685,90 @@
   font-weight: 500;
   color: var(--c-text);
 }
+
+/* ── Title meta (series badge + type label on one line) ──── */
+
+.titleMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.seriesBadge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  background: var(--c-accent-light);
+  color: var(--c-accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Accordion group ─────────────────────────────────────── */
+
+.accordionGroup {
+  border-top: 1px solid var(--c-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion {
+  border-bottom: 1px solid var(--c-border);
+}
+
+.accordionSummary {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: var(--sp-4) 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--c-text);
+  user-select: none;
+}
+
+.accordionSummary::-webkit-details-marker { display: none; }
+
+.accordionSummary::after {
+  content: '+';
+  font-size: var(--text-xl);
+  font-weight: 300;
+  color: var(--c-muted);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.accordion[open] .accordionSummary::after {
+  content: '−';
+}
+
+.accordionBody {
+  padding-bottom: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.accordionBody .specsRow {
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.accordionBody .trustBlock {
+  border-top: 1px solid var(--c-border);
+  padding-top: var(--sp-3);
+  padding-bottom: 0;
+}
+
+.accordionText {
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  font-weight: 300;
+  line-height: 1.6;
+}
