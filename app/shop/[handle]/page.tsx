@@ -438,7 +438,7 @@ export default async function ProductPage({ params }: PageProps) {
             <div className={styles.trustBlock}>
               <div className={styles.deliveryEstimate}>
                 <span className={styles.deliveryDot} />
-                <span>Ships in 5–10 business days · EU, UK & Norway</span>
+                <span>Ships in 3–7 business days · EU, UK & Norway</span>
               </div>
               <p className={styles.gelatoLine}>
                 Printed &amp; shipped by{' '}
@@ -451,7 +451,7 @@ export default async function ProductPage({ params }: PageProps) {
               <summary className={styles.fulfillmentSummary}>Shipping &amp; Returns</summary>
               <div className={styles.fulfillmentNote}>
                 <p>Printed on demand by Gelato and shipped directly to you.</p>
-                <p>Production: 2–4 business days. Delivery: 2–5 days within EU. <strong>Estimated total: 5–10 days from order.</strong></p>
+                <p>Production: 1–3 business days. Delivery: 2–5 days within EU. <strong>Estimated total: 3–7 days from order.</strong></p>
                 <p>Ships to EU, UK, and Norway. International shipping available at checkout.</p>
                 <p>If anything arrives damaged or wrong, let us know within 14 days with a photo — we&apos;ll sort it.</p>
               </div>
