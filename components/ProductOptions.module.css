@@ -168,6 +168,14 @@
   margin-top: 0;
 }
 
+/* ── ATC wrap — hidden on mobile (StickyATC handles it) ── */
+
+.atcWrap {}
+
+@media (max-width: 768px) {
+  .atcWrap { display: none; }
+}
+
 /* ── Shared states ────────────────────────────────────────── */
 
 .variantSoldOut {

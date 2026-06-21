@@ -181,7 +181,7 @@ export default function FineArt() {
                       <span className={styles.soldBadge}>Sold</span>
                     )}
                     <div className={styles.cardOverlay}>
-                      <span className={styles.cardEnquire}>{work.sold ? 'See similar works →' : 'Enquire →'}</span>
+                      <span className={styles.cardEnquire}>{work.sold ? 'See similar works →' : 'Discover →'}</span>
                     </div>
                   </div>
                   <div className={styles.cardMeta}>

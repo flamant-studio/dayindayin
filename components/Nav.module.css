@@ -217,9 +217,9 @@
 /* ── Responsive ─────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .burger { display: flex; }
+  .burger { display: none; }
 
-  .overlay { display: block; }
+  .overlay { display: none; }
 
   .links {
     position: fixed;

@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { works } from '@/lib/data'
 import { getProductByHandle, getProductsByTag, getProductsByTitleKeyword, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
-import BackLink from '@/components/BackLink'
 import ProductOptions from '@/components/ProductOptions'
 import SizeGuide from '@/components/SizeGuide'
 import ImageGallery from '@/components/ImageGallery'
@@ -344,22 +343,6 @@ export default async function ProductPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <BackLink />
-
-      {/* Breadcrumb */}
-      <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-        <Link href="/shop" className={styles.breadcrumbLink}>Shop</Link>
-        <span className={styles.breadcrumbSep}>/</span>
-        <Link
-          href={catFilter ? `/shop?filter=${catFilter}` : '/shop'}
-          className={styles.breadcrumbLink}
-        >
-          {catLabel}
-        </Link>
-        <span className={styles.breadcrumbSep}>/</span>
-        <span className={styles.breadcrumbCurrent}>{displayTitle(product.title)}</span>
-      </nav>
-
       <div className={styles.layout}>
         {/* Image column */}
         <ImageGallery
@@ -372,6 +355,20 @@ export default async function ProductPage({ params }: PageProps) {
         <ProductProvider>
         <div className={styles.info}>
           <div className={styles.infoInner}>
+            {/* Breadcrumb — inside info column so on mobile it appears below the image */}
+            <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+              <Link href="/shop" className={styles.breadcrumbLink}>Shop</Link>
+              <span className={styles.breadcrumbSep}>/</span>
+              <Link
+                href={catFilter ? `/shop?filter=${catFilter}` : '/shop'}
+                className={styles.breadcrumbLink}
+              >
+                {catLabel}
+              </Link>
+              <span className={styles.breadcrumbSep}>/</span>
+              <span className={styles.breadcrumbCurrent}>{displayTitle(product.title)}</span>
+            </nav>
+
             {/* 1. Type + title + edition */}
             <div className={styles.titleBlock}>
               <p className={styles.productType}>{catLabel}</p>

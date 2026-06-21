@@ -88,11 +88,13 @@
   margin: var(--sp-1) 0 0;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .section {
     padding: var(--sp-8) var(--sp-5);
   }
+}
 
+@media (max-width: 480px) {
   .form {
     flex-direction: column;
     gap: var(--sp-2);

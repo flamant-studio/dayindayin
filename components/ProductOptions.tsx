@@ -202,14 +202,16 @@ export default function ProductOptions({ variants, handle, productTitle, product
     return (
       <div className={styles.wrapper}>
         {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
-        {v.availableForSale ? (
-          <AddToCartButton variantId={v.id} price={formatPrice(v.price)} available />
-        ) : (
-          <>
-            <AddToCartButton variantId={v.id} price={formatPrice(v.price)} available={false} />
-            {handle && <BackInStock handle={handle} title={productTitle ?? ''} />}
-          </>
-        )}
+        <div className={styles.atcWrap}>
+          {v.availableForSale ? (
+            <AddToCartButton variantId={v.id} price={formatPrice(v.price)} available />
+          ) : (
+            <>
+              <AddToCartButton variantId={v.id} price={formatPrice(v.price)} available={false} />
+              {handle && <BackInStock handle={handle} title={productTitle ?? ''} />}
+            </>
+          )}
+        </div>
       </div>
     )
   }
@@ -273,14 +275,16 @@ export default function ProductOptions({ variants, handle, productTitle, product
         </div>
 
         {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
-        {selected.availableForSale ? (
-          <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available />
-        ) : (
-          <>
-            <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available={false} />
-            {handle && <BackInStock handle={handle} title={productTitle ?? ''} variantTitle={selected.title} />}
-          </>
-        )}
+        <div className={styles.atcWrap}>
+          {selected.availableForSale ? (
+            <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available />
+          ) : (
+            <>
+              <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available={false} />
+              {handle && <BackInStock handle={handle} title={productTitle ?? ''} variantTitle={selected.title} />}
+            </>
+          )}
+        </div>
       </div>
     )
   }
@@ -355,16 +359,18 @@ export default function ProductOptions({ variants, handle, productTitle, product
           <p className={styles.lowStock}>Only {selected.inventoryQuantity} left in this size</p>
         )}
 
-        {selected.availableForSale ? (
-          <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available />
-        ) : (
-          <>
-            <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available={false} />
-            {allSoldOut && handle && (
-              <BackInStock handle={handle} title={productTitle ?? ''} variantTitle={selected.title} />
-            )}
-          </>
-        )}
+        <div className={styles.atcWrap}>
+          {selected.availableForSale ? (
+            <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available />
+          ) : (
+            <>
+              <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available={false} />
+              {allSoldOut && handle && (
+                <BackInStock handle={handle} title={productTitle ?? ''} variantTitle={selected.title} />
+              )}
+            </>
+          )}
+        </div>
       </div>
     )
   }
@@ -400,16 +406,18 @@ export default function ProductOptions({ variants, handle, productTitle, product
         <p className={styles.lowStock}>Only {selected.inventoryQuantity} left in this size</p>
       )}
 
-      {selected.availableForSale ? (
-        <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available />
-      ) : (
-        <>
-          <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available={false} />
-          {allSoldOut && handle && (
-            <BackInStock handle={handle} title={productTitle ?? ''} variantTitle={selected.title} />
-          )}
-        </>
-      )}
+      <div className={styles.atcWrap}>
+        {selected.availableForSale ? (
+          <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available />
+        ) : (
+          <>
+            <AddToCartButton variantId={selected.id} price={formatPrice(selected.price)} available={false} />
+            {allSoldOut && handle && (
+              <BackInStock handle={handle} title={productTitle ?? ''} variantTitle={selected.title} />
+            )}
+          </>
+        )}
+      </div>
     </div>
   )
 }

@@ -114,7 +114,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       <div className={styles.page}>
-        {/* ── Hero ──────────────────────────────────────────────── */}
+        {/* ── Hero — clean image, no text overlay ───────────────── */}
         <div className={styles.hero}>
           <Image
             src={work.image}
@@ -125,18 +125,13 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             priority
           />
           <div className={styles.heroOverlay} />
-          <nav className={styles.heroBreadcrumb} aria-label="Breadcrumb">
-            <Link href="/fine-art" className={styles.breadcrumbLink}>Fine Art</Link>
-            <span className={styles.breadcrumbSep}>/</span>
-            <Link href={`/archive?category=${work.category}`} className={styles.breadcrumbLink}>{label}</Link>
-            <span className={styles.breadcrumbSep}>/</span>
-            <span className={styles.breadcrumbCurrent}>{work.title}</span>
-          </nav>
-          <div className={styles.heroContent}>
-            <p className={styles.heroCategory}>{label}</p>
-            <h1 className={styles.heroTitle}>{work.title}</h1>
-            <p className={styles.heroYear}>{work.year}</p>
-          </div>
+        </div>
+
+        {/* ── Title below image ─────────────────────────────────── */}
+        <div className={styles.titleSection}>
+          <p className={styles.workCategory}>{label}</p>
+          <h1 className={styles.workTitle}>{work.title}</h1>
+          <p className={styles.workYear}>{work.year}</p>
         </div>
 
         {/* ── Info ──────────────────────────────────────────────── */}
@@ -164,11 +159,15 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
               />
             </div>
             <div className={styles.infoRight}>
+              <p className={styles.pricingNote}>
+                Originals are individually priced.{' '}
+                <Link href="/practical">See the FAQ</Link> for typical price ranges.
+              </p>
               <Link
                 href={`/contact?subject=${work.sold ? 'Similar+work+enquiry' : `Enquiry:+${encodeURIComponent(work.title)}`}`}
                 className={`${styles.enquiryBtn} ${work.sold ? styles.enquiryBtnSold : ''}`}
               >
-                {work.sold ? 'Enquire about similar work' : 'Enquire about this work'}
+                {work.sold ? 'Discover similar work' : 'Discover this work'}
               </Link>
               <div className={styles.meta}>
                 <div className={styles.metaRow}>
@@ -230,6 +229,15 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             </div>
           </section>
         )}
+
+        {/* ── Breadcrumbs at bottom ─────────────────────────────── */}
+        <nav className={styles.bottomBreadcrumb} aria-label="Breadcrumb">
+          <Link href="/fine-art" className={styles.breadcrumbLink}>Fine Art</Link>
+          <span className={styles.breadcrumbSep}>/</span>
+          <Link href={`/archive?category=${work.category}`} className={styles.breadcrumbLink}>{label}</Link>
+          <span className={styles.breadcrumbSep}>/</span>
+          <span className={styles.breadcrumbCurrent}>{work.title}</span>
+        </nav>
       </div>
     </>
   );
