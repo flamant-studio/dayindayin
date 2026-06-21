@@ -52,10 +52,9 @@
 .btn:disabled { opacity: 0.5; cursor: default; }
 .added { background: var(--c-accent-2) !important; }
 
-/* On mobile, account for bottom nav and always show */
 @media (max-width: 768px) {
   .bar {
-    bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+    bottom: 0;
     transform: translateY(0);
   }
   .title { display: none; }

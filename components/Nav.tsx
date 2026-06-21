@@ -67,45 +67,6 @@ export default function Nav() {
 
       {mobileOpen && <div className={styles.overlay} onClick={closeAll} />}
 
-      {/* ── Mobile bottom tab bar ─────────────────────────── */}
-      <nav className={styles.mobileTabBar} aria-label="Mobile navigation">
-        <Link href="/" className={`${styles.mobileTab} ${pathname === '/' ? styles.mobileTabActive : ''}`}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
-            <path d="M9 21V12h6v9"/>
-          </svg>
-          <span>Home</span>
-        </Link>
-        <Link href="/shop" className={`${styles.mobileTab} ${pathname.startsWith('/shop') ? styles.mobileTabActive : ''}`}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="7" height="7"/>
-            <rect x="14" y="3" width="7" height="7"/>
-            <rect x="3" y="14" width="7" height="7"/>
-            <rect x="14" y="14" width="7" height="7"/>
-          </svg>
-          <span>Shop</span>
-        </Link>
-        <Link href="/fine-art" className={`${styles.mobileTab} ${pathname === '/fine-art' || pathname.startsWith('/works') ? styles.mobileTabActive : ''}`}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="1"/>
-            <path d="M3 9h18"/>
-            <path d="M9 21V9"/>
-          </svg>
-          <span>Fine Art</span>
-        </Link>
-        <button className={`${styles.mobileTab} ${styles.mobileTabBtn}`} onClick={openCart} aria-label={`Cart${count > 0 ? ` (${count})` : ''}`}>
-          <span className={styles.mobileTabCartWrap}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 01-8 0"/>
-            </svg>
-            {count > 0 && <span className={styles.mobileTabCount}>{count}</span>}
-          </span>
-          <span>Cart</span>
-        </button>
-      </nav>
-
     </>
   )
 }

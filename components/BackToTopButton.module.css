@@ -30,10 +30,9 @@
   transform: translateY(0);
 }
 
-/* Sit above mobile bottom tab bar */
 @media (max-width: 768px) {
   .btn {
-    bottom: 5rem;
+    bottom: 1.5rem;
     right: 1rem;
   }
 }
