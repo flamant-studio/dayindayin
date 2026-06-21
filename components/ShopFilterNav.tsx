@@ -1,6 +1,4 @@
-'use client'
 import Link from 'next/link'
-import { useState } from 'react'
 import styles from './ShopFilterNav.module.css'
 
 const TYPE_NAV = [
@@ -45,34 +43,11 @@ interface Props {
 }
 
 export default function ShopFilterNav({ activeTag, typeCounts, seriesCounts, totalCount }: Props) {
-  const [open, setOpen] = useState(false)
   const isSeriesFilter = activeTag !== null && SERIES_VALUES.includes(activeTag)
-  const activeLabel = getActiveLabel(activeTag)
 
   return (
     <nav className={styles.subnav}>
-      {/* Mobile toggle */}
-      <div className={styles.mobileToggleRow}>
-        <button
-          className={styles.mobileToggle}
-          onClick={() => setOpen(!open)}
-          aria-expanded={open}
-          aria-controls="shop-filters"
-        >
-          <span>Filter{activeLabel ? `: ${activeLabel}` : ''}</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 200ms' }}>
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </button>
-        {activeTag && (
-          <Link href="/shop" className={styles.clearFilter} onClick={() => setOpen(false)}>
-            × Clear
-          </Link>
-        )}
-      </div>
-
-      {/* Filter rows — always visible on desktop, collapsible on mobile */}
-      <div id="shop-filters" className={`${styles.rows} ${open ? styles.rowsOpen : ''}`}>
+      <div id="shop-filters" className={styles.rows}>
         <div className={styles.subnavRow}>
           <span className={styles.subnavLabel}>Type</span>
           {TYPE_NAV.map((item) => {
@@ -83,7 +58,6 @@ export default function ShopFilterNav({ activeTag, typeCounts, seriesCounts, tot
               <Link
                 key={item.label}
                 href={href}
-                onClick={() => setOpen(false)}
                 className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
                 aria-current={isActive ? 'page' : undefined}
               >
@@ -103,7 +77,6 @@ export default function ShopFilterNav({ activeTag, typeCounts, seriesCounts, tot
               <Link
                 key={item.label}
                 href={href}
-                onClick={() => setOpen(false)}
                 className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
                 aria-current={isActive ? 'page' : undefined}
               >

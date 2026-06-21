@@ -103,23 +103,23 @@
 
 .clearFilter:hover { color: var(--c-accent); }
 
-/* Mobile */
+/* Mobile — filters always visible, no toggle */
 @media (max-width: 768px) {
-  .mobileToggleRow { display: flex; }
-  .mobileToggle { display: flex; flex: 1; }
+  .mobileToggleRow { display: none; }
 
-  .rows {
-    display: none;
-    border-top: 1px solid var(--c-border);
-  }
-
-  .rowsOpen { display: block; }
+  .rows { display: block; }
 
   .subnavRow {
-    padding: var(--sp-2) var(--sp-5);
-    flex-wrap: wrap;
-    overflow-x: visible;
+    padding: var(--sp-2) var(--sp-4);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .subnavRow:first-child { padding-top: var(--sp-3); }
+  .subnavRow:first-child {
+    padding-top: var(--sp-3);
+    padding-bottom: var(--sp-2);
+  }
+
+  .subnavRow:last-child { padding-bottom: var(--sp-3); }
 }
