@@ -64,3 +64,10 @@
 .approx {
   color: var(--c-muted);
 }
+
+.frameNote {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+  margin-top: var(--sp-3);
+  line-height: 1.5;
+}

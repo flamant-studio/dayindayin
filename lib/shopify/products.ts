@@ -379,3 +379,25 @@ export function categoryLabel(product: NormalizedProduct): string {
   if (t.includes('fine art print') || t.includes('art print')) return 'Art Print'
   return 'Art Print'
 }
+
+const FALLBACK_DESC: Partial<Record<string, string>> = {
+  'Art Print':     'Giclée art print on premium 200 gsm paper. Printed to order by Gelato and shipped within 3–7 business days.',
+  'Framed Print':  'Art print in your choice of frame (black, white, or wood). Available in A4, A3, A2, and A1. Printed to order by Gelato.',
+  'Poster':        'Semi-glossy poster print on 200 gsm coated paper. Available in A1, A2, and A3. Ships in 3–7 business days.',
+  'Mug':           'Ceramic mug with full-colour print. Dishwasher safe. Available in white and black, with two artwork arrangements.',
+  'Tote Bag':      'Natural canvas tote bag with bold full-colour print. Strong handles, generous size — made for everyday use.',
+  'Apparel':       'Tank top with all-over print. Unisex fit, available in sizes XS through 2XL.',
+  'Postcard':      'Pack of 10 art postcards, A6 size, printed on 350 gsm coated paper. Perfect for gifting or sending.',
+  'Greeting Card': 'Pack of 10 folded greeting cards, A6 size. Premium 350 gsm paper with glossy protection. Blank inside.',
+  'Water Bottle':  '17oz stainless steel water bottle with all-over print. White exterior, insulated double-wall construction.',
+  'Wood Print':    '200×200mm art print on natural birch plywood. A unique and tactile way to display Stine\'s work.',
+  'Photo Print':   'Fine art photo print on premium paper. Printed to order by Gelato.',
+  'Tufted Work':   'Original tufted textile work by Stine Weirsøe Flamant. One of a kind — enquire for availability.',
+  'Embroidery':    'Original embroidery by Stine Weirsøe Flamant. One of a kind — enquire for availability.',
+}
+
+export function fallbackDescription(product: NormalizedProduct): string {
+  const cat = categoryLabel(product)
+  const base = FALLBACK_DESC[cat] ?? 'Art by Stine Weirsøe Flamant. Printed to order and shipped across Europe.'
+  return base
+}

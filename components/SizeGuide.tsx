@@ -8,16 +8,17 @@ interface Variant {
 
 interface Props {
   variants: Variant[]
+  productType?: string
 }
 
 const ALL_ROWS = [
-  { size: 'A4',      cm: '21 × 29.7',   inches: '8.3 × 11.7',   approx: 'magazine page' },
-  { size: 'A3',      cm: '29.7 × 42',   inches: '11.7 × 16.5',  approx: 'large magazine' },
-  { size: 'A2',      cm: '42 × 59.4',   inches: '16.5 × 23.4',  approx: 'poster size' },
-  { size: 'A1',      cm: '59.4 × 84.1', inches: '23.4 × 33.1',  approx: 'statement piece' },
-  { size: '30×30',   cm: '30 × 30',     inches: '11.8 × 11.8',  approx: 'vinyl record' },
-  { size: '40×40',   cm: '40 × 40',     inches: '15.7 × 15.7',  approx: '—' },
-  { size: '70×70',   cm: '70 × 70',     inches: '27.6 × 27.6',  approx: 'large canvas' },
+  { size: 'A4',    cm: '21 × 29.7',   outerCm: '25.5 × 34.2', inches: '8.3 × 11.7',   approx: 'desk or bedside' },
+  { size: 'A3',    cm: '29.7 × 42',   outerCm: '34.2 × 46.5', inches: '11.7 × 16.5',  approx: 'compact wall piece' },
+  { size: 'A2',    cm: '42 × 59.4',   outerCm: '46.5 × 63.9', inches: '16.5 × 23.4',  approx: 'statement print' },
+  { size: 'A1',    cm: '59.4 × 84.1', outerCm: '63.9 × 88.6', inches: '23.4 × 33.1',  approx: 'large wall piece' },
+  { size: '30×30', cm: '30 × 30',     outerCm: '',             inches: '11.8 × 11.8',  approx: 'vinyl record size' },
+  { size: '40×40', cm: '40 × 40',     outerCm: '',             inches: '15.7 × 15.7',  approx: '—' },
+  { size: '70×70', cm: '70 × 70',     outerCm: '',             inches: '27.6 × 27.6',  approx: 'large canvas' },
 ]
 
 function matchesVariant(row: (typeof ALL_ROWS)[0], titles: string[]): boolean {
@@ -32,17 +33,15 @@ function matchesVariant(row: (typeof ALL_ROWS)[0], titles: string[]): boolean {
   return false
 }
 
-export default function SizeGuide({ variants }: Props) {
+export default function SizeGuide({ variants, productType }: Props) {
   const [open, setOpen] = useState(false)
 
   const titles = variants.map((v) => v.title)
   const matched = ALL_ROWS.filter((row) => matchesVariant(row, titles))
 
-  // Only show size guide for products with recognisable print sizes (A4/A3/etc.)
-  // Mugs, tank tops, totes have no matching rows — don't show a misleading guide.
   if (matched.length === 0) return null
 
-  const rows = matched
+  const isFramed = productType === 'Framed Print'
 
   return (
     <div className={styles.wrapper}>
@@ -59,22 +58,27 @@ export default function SizeGuide({ variants }: Props) {
           <thead>
             <tr>
               <th>Size</th>
-              <th>cm</th>
+              <th>{isFramed ? 'Print (cm)' : 'cm'}</th>
+              {isFramed && <th>Frame outer (cm)</th>}
               <th>inches</th>
               <th>approx.</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
+            {matched.map((row) => (
               <tr key={row.size}>
                 <td>{row.size}</td>
                 <td>{row.cm}</td>
+                {isFramed && <td>{row.outerCm || '—'}</td>}
                 <td>{row.inches}</td>
                 <td className={styles.approx}>{row.approx}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        {isFramed && (
+          <p className={styles.frameNote}>Frame outer dimensions are approximate. Frame molding: 20 mm wide, available in black, white, and natural wood.</p>
+        )}
       </div>
     </div>
   )

@@ -260,7 +260,7 @@ export default async function HomePage() {
                     imageUrl={p.firstImage?.url ?? null}
                     price={formatPriceLabel(p)}
                   />
-                  {p.variants.length === 1 && p.firstVariant?.title === 'Default Title' && p.firstVariant.availableForSale && (
+                  {p.variants.length === 1 && p.firstVariant?.availableForSale && (
                     <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
                   )}
                 </div>

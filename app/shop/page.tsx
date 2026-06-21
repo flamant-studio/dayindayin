@@ -249,7 +249,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
                     <span className={styles.cardBadge}>{seriesLabel(p)}</span>
                   )}
                   <div className={styles.cardHoverOverlay}>
-                    {p.variants.length === 1 && p.firstVariant?.title === 'Default Title' && p.firstVariant.availableForSale ? (
+                    {p.variants.length === 1 && p.firstVariant?.availableForSale ? (
                       <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
                     ) : (
                       <span className={styles.cardViewHint}>View product →</span>

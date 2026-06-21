@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { works } from '@/lib/data'
-import { getProductByHandle, getProductsByTag, getProductsByTitleKeyword, formatPrice, categoryLabel, seriesLabel } from '@/lib/shopify/products'
+import { getProductByHandle, getProductsByTag, getProductsByTitleKeyword, formatPrice, categoryLabel, seriesLabel, fallbackDescription } from '@/lib/shopify/products'
 import ProductOptions from '@/components/ProductOptions'
 import SizeGuide from '@/components/SizeGuide'
 import ImageGallery from '@/components/ImageGallery'
@@ -413,11 +413,13 @@ export default async function ProductPage({ params }: PageProps) {
             })()}
 
             {/* 4. Description */}
-            {product.descriptionHtml && (
+            {product.descriptionHtml ? (
               <div
                 className={styles.description}
                 dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
               />
+            ) : (
+              <p className={styles.description}>{fallbackDescription(product)}</p>
             )}
 
             {/* 5. Variant picker + ATC (multi-variant) */}
@@ -431,7 +433,7 @@ export default async function ProductPage({ params }: PageProps) {
             <div id="atc-sentinel" />
 
             {product.variants.length > 1 && (
-              <SizeGuide variants={product.variants} />
+              <SizeGuide variants={product.variants} productType={catLabel} />
             )}
 
             {/* 6. Trust signals — compact single block */}
