@@ -54,31 +54,33 @@ export default function SizeGuide({ variants, productType }: Props) {
       </button>
 
       <div className={`${styles.tableWrap} ${open ? styles.open : ''}`}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Size</th>
-              <th>{isFramed ? 'Print (cm)' : 'cm'}</th>
-              {isFramed && <th>Frame outer (cm)</th>}
-              <th>inches</th>
-              <th>approx.</th>
-            </tr>
-          </thead>
-          <tbody>
-            {matched.map((row) => (
-              <tr key={row.size}>
-                <td>{row.size}</td>
-                <td>{row.cm}</td>
-                {isFramed && <td>{row.outerCm || '—'}</td>}
-                <td>{row.inches}</td>
-                <td className={styles.approx}>{row.approx}</td>
+        <div className={styles.tableInner}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>{isFramed ? 'Print (cm)' : 'cm'}</th>
+                {isFramed && <th>Frame outer (cm)</th>}
+                <th>inches</th>
+                <th>approx.</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        {isFramed && (
-          <p className={styles.frameNote}>Frame outer dimensions are approximate. Frame molding: 20 mm wide, available in black, white, and natural wood.</p>
-        )}
+            </thead>
+            <tbody>
+              {matched.map((row) => (
+                <tr key={row.size}>
+                  <td>{row.size}</td>
+                  <td>{row.cm}</td>
+                  {isFramed && <td>{row.outerCm || '—'}</td>}
+                  <td>{row.inches}</td>
+                  <td className={styles.approx}>{row.approx}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {isFramed && (
+            <p className={styles.frameNote}>Frame outer dimensions are approximate. Frame molding: 20 mm wide, available in black, white, and natural wood.</p>
+          )}
+        </div>
       </div>
     </div>
   )

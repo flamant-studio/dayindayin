@@ -32,8 +32,12 @@
   grid-template-rows: 1fr;
 }
 
-.table {
+.tableInner {
+  overflow: hidden;
   min-height: 0;
+}
+
+.table {
   width: 100%;
   border-collapse: collapse;
   font-size: var(--text-xs);
