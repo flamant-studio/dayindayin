@@ -256,30 +256,36 @@ export default async function HomePage() {
         {products.length > 0 ? (
           <div className={styles.productGrid}>
             {products.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-                <div className={`${styles.cardImg} ${categoryLabel(p) === 'Framed Print' ? styles.cardImgMockup : isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
-                  {p.firstImage
-                    ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
-                    : <div className={styles.cardPlaceholder} />
-                  }
-                  <WishlistButton
-                    handle={p.handle}
-                    title={displayTitle(p.title)}
-                    imageUrl={p.firstImage?.url ?? null}
-                    price={formatPriceLabel(p)}
-                  />
-                  {p.variants.length === 1 && p.firstVariant?.availableForSale && (
+              <div key={p.id} className={styles.card}>
+                <Link href={`/shop/${p.handle}`} className={styles.cardInner}>
+                  <div className={`${styles.cardImg} ${categoryLabel(p) === 'Framed Print' ? styles.cardImgMockup : isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
+                    {p.firstImage
+                      ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
+                      : <div className={styles.cardPlaceholder} />
+                    }
+                    <WishlistButton
+                      handle={p.handle}
+                      title={displayTitle(p.title)}
+                      imageUrl={p.firstImage?.url ?? null}
+                      price={formatPriceLabel(p)}
+                    />
+                  </div>
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
+                    <span className={styles.cardType}>
+                      {seriesLabel(p) ? `${seriesLabel(p)} · ` : ''}{categoryLabel(p)}
+                    </span>
+                    <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
+                  </div>
+                </Link>
+                <div className={styles.cardCta}>
+                  {p.variants.length === 1 && p.firstVariant?.availableForSale ? (
                     <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
+                  ) : (
+                    <Link href={`/shop/${p.handle}`} className={styles.cardViewLink}>View product →</Link>
                   )}
                 </div>
-                <div className={styles.cardInfo}>
-                  <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
-                  <span className={styles.cardType}>
-                    {seriesLabel(p) ? `${seriesLabel(p)} · ` : ''}{categoryLabel(p)}
-                  </span>
-                  <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
-                </div>
-              </Link>
+              </div>
             ))}
           </div>
         ) : (

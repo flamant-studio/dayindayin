@@ -1,46 +1,28 @@
 .btn {
-  position: absolute;
-  bottom: 0.75rem;
-  left: 0.75rem;
-  right: 0.75rem;
-  padding: 0.55rem 0.75rem;
-  background: rgba(0, 0, 0, 0.72);
-  color: #fff;
+  display: block;
+  width: 100%;
+  padding: var(--sp-2) 0;
+  background: transparent;
+  color: var(--c-muted);
   font-family: inherit;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: none;
+  border-top: 1px solid var(--c-border);
   cursor: pointer;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.15s, transform 0.15s, background 0.15s;
-  pointer-events: auto;
+  transition: color var(--t-fast);
+  text-align: center;
 }
 
-/* Reveal on card hover — parent must have class 'card' that triggers hover */
 .btn:hover {
-  background: var(--c-accent, #C4694F);
+  color: var(--c-accent);
 }
 
 .btn:disabled {
   opacity: 0.5;
   cursor: default;
-}
-
-/* Always visible on touch screens (no hover capability) */
-@media (hover: none) {
-  .btn {
-    opacity: 1;
-    transform: translateY(0);
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0;
-  }
 }
 
 .srOnly {

@@ -334,7 +334,7 @@ export default async function ProductPage({ params }: PageProps) {
               <div className={styles.titleBlock}>
                 <div className={styles.titleMeta}>
                   {productSeries && <span className={styles.seriesBadge}>{productSeries}</span>}
-                  <p className={styles.productType}>{catLabel}</p>
+                  <p className={styles.productType}>{catLabel === 'Postcard' ? 'Postcard · Pack of 10' : catLabel === 'Greeting Card' ? 'Greeting Card · Pack of 10' : catLabel}</p>
                 </div>
                 <h1 className={styles.title}>{displayTitle(product.title)}</h1>
               </div>
