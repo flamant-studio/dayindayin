@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: "Fine Art — Original Works by Stine Weirsøe Flamant",
     description: "Unique original works — tufted textiles, embroidery, paintings, and photography. Each piece made by hand in Copenhagen and available on enquiry.",
-    images: [{ url: "https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/liebes-panopticon.jpg", width: 1200, height: 900 }],
+    images: [{ url: "https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/orange-sun.jpg", width: 1200, height: 900 }],
   },
   alternates: { canonical: "/fine-art" },
 };
@@ -40,10 +40,13 @@ const sections: { id: WorkCategory; label: string; tagline: string }[] = [
   { id: "photography", label: "Photography",   tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after." },
 ];
 
-const FEATURED_SLUGS = ['liebes-panopticon', 'fuck-alting', 'universe-3', 'taped-objects'];
+const FEATURED_SLUGS = ['orange-sun', 'fuck-alting', 'universe-3', 'taped-objects'];
+
+// Works hidden from the public archive (weak/placeholder shots)
+const HIDDEN_SLUGS = ['office-shot'];
 
 const RECENTLY_ADDED_SLUGS = [
-  'purple-fabric-in-garden', 'office-shot', 'yarn', 'smorrebrod',
+  'purple-fabric-in-garden', 'yarn', 'smorrebrod',
   'bedroom-wall-rug', 'red-on-wood', 'stripes-on-beige', 'pink-rug-II',
   'seb-livingroom', 'green-background', 'long-hair-dont-care', 'gud-har-meldt-afbud-II',
 ];
@@ -122,7 +125,7 @@ export default function FineArt() {
       {recentlyAdded.length > 0 && (
         <section className={styles.recentSection}>
           <div className={styles.recentHead}>
-            <span className={styles.recentLabel}>New to the archive</span>
+            <span className={styles.recentLabel}>Recent additions</span>
             <span className={styles.recentCount}>{recentlyAdded.length} works added</span>
           </div>
           <div className={styles.recentStrip}>
@@ -147,7 +150,7 @@ export default function FineArt() {
       {/* ── Category anchor nav ──────────────────────────────── */}
       <nav className={styles.catNav}>
         {sections.map((s) => {
-          const count = works.filter((w) => w.category === s.id).length;
+          const count = works.filter((w) => w.category === s.id && !HIDDEN_SLUGS.includes(w.slug)).length;
           return (
             <a key={s.id} href={`#${s.id}`} className={styles.catNavLink}>
               {s.label}
@@ -159,7 +162,7 @@ export default function FineArt() {
 
       {/* ── Sections ─────────────────────────────────────────── */}
       {sections.map((section) => {
-        const categoryWorks = works.filter((w) => w.category === section.id);
+        const categoryWorks = works.filter((w) => w.category === section.id && !HIDDEN_SLUGS.includes(w.slug));
         return (
           <section key={section.id} id={section.id} className={styles.section}>
             <div className={styles.sectionHeader}>
@@ -195,28 +198,11 @@ export default function FineArt() {
         );
       })}
 
-      {/* ── Enquiry CTA ────────────────────────────────────────── */}
-      <section className={styles.enquiryCta}>
-        <h2>Want something that exists only once?</h2>
-        <p>
-          These are unique originals — made by hand in Copenhagen, priced individually.
-          If a piece catches you, write to Stine directly. She responds to everything.
-        </p>
-        <div className={styles.enquiryBtns}>
-          <Link href="/contact?subject=Fine%20Art%20enquiry" className={styles.enquiryBtn}>
-            Send an enquiry
-          </Link>
-          <Link href="/commissions" className={styles.enquiryBtnSecondary}>
-            Commission a work →
-          </Link>
-        </div>
-      </section>
-
       {/* ── Print shop note ─────────────────────────────────── */}
       <div className={styles.shopNote}>
         Looking for prints? The{' '}
         <Link href="/shop">print shop</Link>
-        {' '}ships across Europe from 56 kr.
+        {' '}ships across Europe from 56{' '}kr.
       </div>
     </div>
   );

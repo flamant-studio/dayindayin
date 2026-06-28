@@ -102,13 +102,43 @@
   background: var(--c-border, #E0DDD8);
 }
 
+/* Behind the scenes — studio imagery */
+.bts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.btsItem {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.btsImg {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  background: var(--c-surface, #F0EDE8);
+}
+
+.btsCaption {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--c-muted);
+  margin-top: 0.6rem;
+}
+
 /* Type cards */
 .types {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
-  margin: 3rem 0;
-  padding: 3rem 0;
+  margin: 2.5rem 0;
+  padding: 2.5rem 0;
   border-top: 1px solid #E8E4DF;
   border-bottom: 1px solid #E8E4DF;
 }
@@ -146,7 +176,7 @@
 
 /* Steps */
 .how {
-  margin: 3rem 0;
+  margin: 2.5rem 0;
 }
 
 .how h2,
@@ -196,7 +226,7 @@
 
 /* Pricing section */
 .pricing {
-  margin: 3rem 0;
+  margin: 2.5rem 0;
 }
 
 .pricing h2 {
@@ -257,7 +287,7 @@
 
 /* Honest section */
 .honest {
-  margin: 3rem 0;
+  margin: 2.5rem 0;
   padding: 2.5rem;
   background: #F0EDE8;
 }
@@ -274,8 +304,8 @@
 /* Originals note */
 .originals {
   border-top: 1px solid #E8E4DF;
-  padding: 2rem 0;
-  margin: 1rem 0;
+  padding: 1.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .originalsText {
@@ -293,8 +323,8 @@
 
 /* CTA */
 .cta {
-  margin: 4rem 0 0;
-  padding-top: 4rem;
+  margin: 3rem 0 0;
+  padding-top: 3rem;
   border-top: 1px solid #E8E4DF;
   text-align: center;
 }
@@ -329,6 +359,7 @@
 /* Mobile */
 @media (max-width: 640px) {
   .types { grid-template-columns: 1fr; }
+  .bts { grid-template-columns: 1fr; }
   .steps li { grid-template-columns: 1.5rem 1fr; }
   .honest { padding: 1.5rem; }
 }
