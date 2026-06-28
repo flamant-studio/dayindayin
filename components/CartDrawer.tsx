@@ -131,7 +131,6 @@ export default function CartDrawer() {
                 <span>Subtotal</span>
                 <span>{formatPrice(cart.totalAmount.amount)}</span>
               </div>
-              <p className={styles.taxNote}>Taxes and shipping calculated at checkout</p>
               <a
                 href={cart.checkoutUrl}
                 className={`${styles.checkoutBtn} ${loading ? styles.checkoutBtnLoading : ''}`}

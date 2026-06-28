@@ -24,7 +24,6 @@ const SERIES_CARDS = [
   { tag: 'botanical',   label: 'Botanical',     sub: 'Leaves, roots, natural form', accent: '#5C7A48' },
   { tag: 'floral',      label: 'Floral',        sub: 'Colour at the edge of excess', accent: '#B85C78' },
   { tag: 'faces',       label: 'Faces',         sub: 'The ones that look back',   accent: '#7A6B8A' },
-  { tag: 'sommerby',    label: 'Sommerby',      sub: 'Denmark in long light',     accent: '#C4694F' },
 ]
 
 export const revalidate = 60
@@ -37,7 +36,6 @@ const SERIES_KEYWORDS: Array<{ tag: string; keyword: string }> = [
   { tag: 'botanical',    keyword: 'Botanical' },
   { tag: 'floral',       keyword: 'Floral' },
   { tag: 'faces',        keyword: 'Face' },
-  { tag: 'sommerby',     keyword: 'Sommerby' },
 ]
 
 const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
@@ -146,10 +144,6 @@ export default async function HomePage() {
             <Link href="/shop" className={styles.heroCta}>Browse the shop</Link>
             <Link href="/fine-art" className={styles.heroCtaSecondary}>See original works</Link>
           </div>
-          <div className={styles.heroTrustRow}>
-            <span className={styles.heroTrustDot} aria-hidden="true" />
-            <span className={styles.heroTrustText}>Shop open · Ships to EU, UK &amp; Norway · Printed by Gelato</span>
-          </div>
         </div>
       </section>
 
@@ -158,8 +152,8 @@ export default async function HomePage() {
         <Link href="/fine-art" className={styles.collectBlock}>
           <div className={styles.collectImgWrap}>
             <Image
-              src={`${BLOB}/works/tufting/liebes-panopticon.jpg`}
-              alt="Liebes Panopticon — Hand Tufted original by Stine Weirsøe Flamant"
+              src={`${BLOB}/lifestyle/ls-07.jpg`}
+              alt="Art in the studio — Stine Weirsøe Flamant"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className={styles.collectImg}
@@ -349,7 +343,6 @@ export default async function HomePage() {
             </div>
           ))}
         </section>
-        <p className={styles.lifestyleCaption}>See all products in the shop →</p>
       </Link>
     </>
   )

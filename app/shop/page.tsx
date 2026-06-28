@@ -4,7 +4,6 @@ import { getAllProducts, formatPrice, formatPriceLabel, categoryLabel, seriesLab
 import { displayTitle } from '@/lib/display'
 import ShopFilterNav from '@/components/ShopFilterNav'
 import WishlistButton from '@/components/WishlistButton'
-import ShoppingNudge from '@/components/ShoppingNudge'
 import FluidTracker from '@/components/FluidTracker'
 import QuickAddButton from '@/components/QuickAddButton'
 import styles from './page.module.css'
@@ -169,7 +168,6 @@ export default async function ShopPage({ searchParams }: PageProps) {
   return (
     <div className={styles.page}>
       <FluidTracker collectionHandle={activeTag ?? 'all'} />
-      <ShoppingNudge />
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <h1 className={styles.title}>Shop</h1>

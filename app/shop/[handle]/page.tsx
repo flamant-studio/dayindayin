@@ -433,12 +433,6 @@ export default async function ProductPage({ params }: PageProps) {
                 </details>
               </div>
 
-              {/* Artist credit */}
-              <div className={styles.artistStrip}>
-                <Link href="/about" className={styles.artistLink}>
-                  Work by Stine Weirsøe Flamant &rarr;
-                </Link>
-              </div>
             </div>
           </div>
         </div>
