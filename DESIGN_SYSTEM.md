@@ -1,321 +1,229 @@
 # Day In Day In — Design System
-*Living document. Update whenever a design decision is made and locked.*
-*Last updated: 2026-06-20*
+*The single source of truth. Values here match the real code (`app/globals.css`) as of 2026-06-29.*
+*Companion: `DESIGN_AUDIT.md` documents where the live site currently diverges from this. This file is where it's heading.*
+
+---
+
+## HOW TO READ THIS
+
+Three layers, simplest to most assembled — fix the lower layers and the upper ones improve for free:
+
+1. **Raw materials** — colour, type, spacing. The fixed vocabulary everything is made from.
+2. **Building blocks** — buttons, cards, headings, heroes. A *small, closed* set. If a screen needs something not in this set, that's a design decision to make here first — not a new one-off.
+3. **Pages** — blocks arranged into templates.
+
+**Status legend** (so it's honest about reality):
+- ✅ **Canonical & built** — exists once, use it as-is.
+- 🔧 **Canonical target, not yet consolidated** — this is the agreed shape, but the code still has multiple hand-built copies to merge into it. See `DESIGN_AUDIT.md`.
+
+**The golden rule:** one job → one block → one place in the code. Before building anything, check if the block already exists. We do not ship a sixth product card.
 
 ---
 
 ## BRAND PRINCIPLES
 
-- Art first. The work is the product. UI recedes; art leads.
-- Remove until it hurts, then stop.
-- Mobile-first. The phone is where discovery happens.
-- No ads, no algorithmic feeling, no dark patterns.
-- Warm confidence — not intimidating, not soft.
+- **Art first.** The work is the product. UI recedes; art leads.
+- **Remove until it hurts, then stop.**
+- **Mobile-first.** The phone is where discovery happens.
+- **No ads, no algorithmic feeling, no dark patterns.**
+- **Warm confidence** — not intimidating, not soft.
 
 ---
 
-## COLOR PALETTE
+## THE FIXED SPINE (global chrome — consistent everywhere, do not fork)
 
-### Core tokens (defined in `app/globals.css` as CSS custom properties)
+| Element | Component | Rule |
+|---|---|---|
+| Header / navigation | `Nav` | ✅ One. Sticky, height `--nav-h` (56px). Logo left, links centre, currency + cart right. Mobile = hamburger → side drawer. |
+| Footer | `Footer` | ✅ One. Identical on every route. |
+| Cart drawer | `CartDrawer` | ✅ One. Slide-out right. |
+| Cookie banner / analytics / scroll-to-top | — | ✅ Global, set once in the root layout. |
 
-| Token | Hex | Usage |
-|-------|-----|-------|
-| `--c-bg` | `#F8F7F4` | Page background — Chalk |
-| `--c-text` | `#2C3440` | Primary text — Slate |
-| `--c-accent` | `#C4694F` | CTAs, active states, links — Terracotta |
-| `--c-muted` | `#9A9590` | Secondary text, labels — Stone |
-| `--c-muted-strong` | `#6E6A65` | Small text (WCAG AA on Chalk) |
-| `--c-surface` | `#F0EDE8` | Cards, surfaces — Linen |
-| `--c-success` | `#5C8C6E` | Saved/wishlist states — Sage |
-
-### White rule
-**Product card info areas, image containers, Recently Viewed cards = `#FFFFFF` (pure white).**
-Cards must visually separate from the Chalk page background. Never use `--c-surface` or `--c-bg` as a card background.
-
-### Color usage rules
-- `--c-accent` (Terracotta) = primary CTA buttons ONLY. Sticky bars, add-to-cart, "Send enquiry" — all terracotta. Never navy, never dark.
-- `--c-text` (Slate) = all body copy and headings
-- `--c-muted` = category labels, secondary metadata
-- `--c-surface` = section backgrounds that need subtle differentiation (not cards)
-- Never introduce new colors without updating this doc
+> Note: there is **no** mobile bottom tab bar. (An earlier draft of this doc described one; it was never built. Mobile nav is the hamburger drawer.)
 
 ---
 
-## TYPOGRAPHY
+## LAYER 1 — RAW MATERIALS
 
-### Typefaces
-- **Display/Brand:** Playfair Display — serif. Used for: H1, H2 section titles, editorial headings, product names on PDPs, hero headlines.
-- **UI/Body:** Inter — clean sans. Used for: body copy, labels, navigation, buttons, metadata, prices.
+### Colour
 
-### Type scale (CSS custom properties in globals.css)
+The real palette (token → value → role). **Never type a hex value in a component — always use the token.**
 
-| Token | Size | Usage |
-|-------|------|-------|
-| `--text-xs` | 11px | Micro labels, badges |
-| `--text-sm` | 13px | Category labels, metadata |
-| `--text-base` | 15px | Body copy |
-| `--text-md` | 17px | Lead paragraphs |
-| `--text-lg` | 20px | Section intros |
-| `--text-xl` | 24px | H3, sub-headings |
-| `--text-2xl` | 32px | H2 section titles |
-| `--text-3xl` | 44px | H1 page titles |
-| `--text-hero` | 56–72px | Hero headlines (fluid) |
-
-### Heading hierarchy rules
-- H1: One per page. Playfair Display. Large. The page identity.
-- H2: Section titles. Playfair Display. Consistent size across the page.
-- H3: Sub-section or card titles. Inter semibold or Playfair Display italic.
-- **Never skip levels.** H1 → H2 → H3 only.
-- **Section titles must be visually heavier than product/card titles.**
-
----
-
-## SPACING SYSTEM
-
-Base unit: 4px. All spacing is multiples of 4.
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--sp-1` | 4px | Micro gaps |
-| `--sp-2` | 8px | Tight spacing within elements |
-| `--sp-3` | 12px | Default element padding |
-| `--sp-4` | 16px | Standard component spacing |
-| `--sp-6` | 24px | Card padding, section sub-spacing |
-| `--sp-8` | 32px | Medium section gaps |
-| `--sp-12` | 48px | Large section gaps |
-| `--sp-16` | 64px | Section-to-section spacing |
-| `--sp-24` | 96px | Major page section breaks |
-
-### Section separation rules
-- Sections that belong together: `--sp-8` to `--sp-12` between them
-- Distinct page sections: `--sp-16` to `--sp-24`
-- Never use padding alone to separate sections — use whitespace + heading hierarchy together
-- "Most important info first" — hero → product grid → series → editorial → newsletter. Never bury primary content.
-
----
-
-## PRODUCT CARD — SPEC
-
-```
-┌─────────────────────────┐  ← border-radius: 8px (--radius-md)
-│                         │  ← background: #FFFFFF
-│    [IMAGE AREA]         │  ← variable height by product type (see below)
-│    background: #FFFFFF  │
-│                         │
-├─────────────────────────┤
-│  Product Title          │  ← Inter semibold 14px, --c-text
-│  CATEGORY LABEL         │  ← Inter 11px uppercase, --c-muted
-│  149 kr                 │  ← Inter 14px, --c-text
-└─────────────────────────┘  ← background: #FFFFFF
-```
-
-**Card info section = always white (#FFFFFF). Never chalk, never linen.**
-
-### Image area aspect ratios by product type
-| Product type | Aspect ratio | objectFit | Notes |
+| Token | Value | Name | Use for |
 |---|---|---|---|
-| Art Print (portrait) | 3:4 | contain | White bg |
-| Art Print (landscape) | 4:3 | contain | White bg |
-| Poster (portrait) | 3:4 | contain | White bg |
-| Postcard (landscape) | 3:2 | contain | White bg |
-| Framed Print | 1:1 or 4:5 | contain | White bg — use taller ratio to show frame properly |
-| Mug | 1:1 | contain | White bg |
-| Tote Bag | 3:4 | contain | Natural bg matches product |
-| Apparel (tank top) | 3:4 | contain | White bg |
-| Greeting Card | 3:2 | contain | White bg |
-| Wood Print | 1:1 | contain | White bg |
-| Water Bottle | 1:2 | contain | White bg |
-| Dad Cap | 4:3 | contain | White bg |
+| `--c-bg` | `#F0EBE3` | Warm Chalk | Page background |
+| `--c-white` | `#FFFFFF` | White | Card interiors, product-image backgrounds |
+| `--c-text` | `#1A1714` | Ink | All body copy and headings |
+| `--c-muted` | `#7A746F` | Stone | Labels, metadata, secondary text |
+| `--c-surface` | `#E8E1D6` | Linen | Section backgrounds that need gentle separation (not cards) |
+| `--c-border` | `#E2D8CE` | — | Hairlines, dividers, input borders |
+| `--c-accent` | `#D94F2C` | Vermillion | **Primary CTA only.** Add-to-cart, send enquiry, send brief. |
+| `--c-accent-2` | `#2E5D4B` | Forest | Secondary accent, "in stock" / positive states |
+| `--c-accent-light` | `#FCE8E2` | Blush | Tint backgrounds behind accent content |
+| `--c-studio` | `#1D2218` | Studio Dark | Dark editorial panels (richer than black) |
+| `--c-parchment` | `#F5EDE4` | Parchment | Light warm paper sections |
+| `--c-ochre` | `#C4902A` | Ochre | Sparingly — drawn from the Neko artworks |
+
+**Rules.** Vermillion is for primary action only — never decorative, never navy. Cards are `--c-white`, never `--c-surface` or `--c-bg`. New colours don't get used until they're added to this table.
+
+### Typography
+
+Two families, fixed:
+- **`--font-display`** — Playfair Display (serif). Page titles, section headings, product/work names, editorial pull-quotes.
+- **`--font-body`** — Inter (sans). Everything else: body, labels, buttons, prices, nav.
+
+Type scale (token → rem → ≈px → role):
+
+| Token | rem | ≈px | Role |
+|---|---|---|---|
+| `--text-xs` | 0.6875 | 11 | Micro labels, badges |
+| `--text-sm` | 0.8125 | 13 | Category labels, metadata, prices |
+| `--text-base` | 1 | 16 | Body copy |
+| `--text-lg` | 1.125 | 18 | Lead paragraphs |
+| `--text-xl` | 1.25 | 20 | Card titles, sub-headings |
+| `--text-2xl` | 1.5 | 24 | H3 |
+| `--text-3xl` | 2 | 32 | H2 section titles |
+| `--text-4xl` | 2.75 | 44 | H1 page titles |
+| `--text-5xl` | 4 | 64 | Hero headlines |
+| `--text-6xl` | 6 | 96 | Oversized display (rare) |
+
+**Hierarchy rules.** One H1 per page. Section titles (H2) heavier than card titles. Never skip levels. Font sizes come from this scale — no hand-typed `rem`/`px`.
+
+### Spacing
+
+One scale. The base step is 4px; the scale is **non-linear by design** (note the gaps — there is no `sp-7`, `sp-9`, etc.).
+
+| Token | rem | ≈px | Use for |
+|---|---|---|---|
+| `--sp-1` | 0.25 | 4 | Micro gaps |
+| `--sp-2` | 0.5 | 8 | Tight within-element |
+| `--sp-3` | 0.75 | 12 | Default element padding |
+| `--sp-4` | 1 | 16 | Standard component spacing |
+| `--sp-5` | 1.5 | 24 | Card padding, sub-spacing |
+| `--sp-6` | 2 | 32 | Medium gaps |
+| `--sp-8` | 3 | 48 | Between related sections |
+| `--sp-10` | 4 | 64 | Section spacing |
+| `--sp-12` | 5 | 80 | Distinct section breaks |
+| `--sp-16` | 7 | 112 | Major page breaks |
+
+**The rule that matters most:** *all* margin and padding comes from this scale. No hand-typed spacing. (This is currently the system's weakest point — only ~35% of spacing is on-scale today. Bringing it to ~95% is the single biggest calm-the-site win.)
+
+### Layout, radius, motion
+
+| Token | Value | Use |
+|---|---|---|
+| `--max-w` | 1440px | Outer page max width |
+| `--nav-h` | 56px | Header height (sticky offsets reference this) |
+| `--r-sm` / `--r-md` | 4px / 8px | Corner radius (small / card) |
+| `--t-fast` / `--t-base` | 150ms / 250ms | Transitions, with `--ease` |
+
+**Page-width tokens — 🔧 target.** Pages currently improvise five different max-widths (520/700/780/1100/1200px). Replace with **three named widths** and use nothing else:
+- `--w-prose` ≈ 700px (legal, practical, single-column reading)
+- `--w-wide` ≈ 1100px (about, commissions, editorial)
+- `--w-full` ≈ 1280–1440px (shop grid, galleries)
 
 ---
 
-## BUTTONS
+## LAYER 2 — THE BUILDING BLOCKS (the closed set)
 
-### Primary CTA
-- Background: `--c-accent` (#C4694F Terracotta)
-- Text: #FFFFFF, Inter semibold, 13px uppercase, letter-spacing 0.06em
-- Padding: 14px 28px
-- Border-radius: 2px (near-square, intentional)
-- Hover: darken 8%
-- **Use for: Add to cart, Send enquiry, Browse the shop, Send a brief**
+### Buttons 🔧
+Three styles, no more. (Today there are 8+ ad-hoc button classes — consolidate to these.)
+- **Primary** — `--c-accent` fill, white text, Inter semibold, uppercase, small letter-spacing, near-square corners. For: add to cart, send enquiry, send brief, browse shop.
+- **Secondary** — transparent, 1.5px `--c-text` border, ink text. For: back, see originals, secondary actions.
+- **Text link** — `--c-accent`, underline on hover; arrow (→) form for "view all" / nav hints.
 
-### Secondary CTA
-- Background: transparent
-- Border: 1.5px solid `--c-text`
-- Text: `--c-text`, same spec as primary
-- **Use for: See originals, Back to home, secondary actions**
+### Cards — exactly four 🔧
+One component per job. (Today ~19 hand-built copies — see audit.) Each card = white interior, image area on top, title/meta below, consistent hover (subtle lift).
 
-### Sticky add-to-cart bar
-- Background: `--c-accent` (Terracotta) — NOT navy, NOT dark slate
-- Text: #FFFFFF
-- Product name: Inter regular 14px left-aligned
-- Price + button: right-aligned
+| Card | For | Image area | Notes |
+|---|---|---|---|
+| **Product card** | Shop items (Gelato) | per Gelato rules below | title · type · price · save · quick-add. The save (heart) and quick-add are **always present**, not optional. |
+| **Artwork card** | Original works | 3:4, art fills | title · year · optional SOLD badge · enquire-on-hover |
+| **Editorial card** | Journal / posts | 3:2 | date · title · excerpt |
+| **Series card** | Collections / series | 3:4 | label · count |
 
-### Text links
-- Color: `--c-accent`
-- No underline at rest, underline on hover
-- Arrow links (→): used for "view all", navigation hints
+**Consistency rules across all cards:** one hover behaviour (subtle shadow lift — not zoom on some, fade on others). One crop rule per card type (don't mix `cover` and `contain` for the same content across pages).
 
----
+### Section heading 🔧
+The "small label + H2 + optional subtitle + optional 'view all →'" pattern. **One block.** (Today rebuilt 10 times.) Every grid/section on the site opens with this.
 
-## ICONOGRAPHY
+### Heroes — two 🔧
+- **Image hero** — full-bleed image/video, gradient overlay, headline + sub + CTA bottom-left. (Home.)
+- **Text hero** — centred label + H1 + sub, no image; optional badge/stat row. (Fine-art, commissions, about, journal.)
 
-- Style: Geometric, minimal, 1.5px stroke weight
-- Size: 16px (inline), 20px (standalone), 24px (feature)
-- Color: inherits from context (`--c-text` or `--c-muted`)
-- Source: Custom SVG inline (no icon library dependency)
-- Icons in use: cart (bag), heart (wishlist), search, close (×), chevron (›), share, Pinterest, Instagram, truck (shipping)
+That's it. Five hand-built heroes collapse into these two.
 
----
+### Galleries — one 🔧
+Currently two separate components (`ImageGallery` for shop, `WorksGallery` for art). Merge into **one** configurable gallery: main image + thumbnails + lightbox, with a "flat grid" mode for artworks. Lightbox: full-screen, `contain`, keyboard ← → Esc, focus ring in `--c-accent`.
 
-## PAGE TEMPLATES
+### Breadcrumb — one 🔧
+One component, **always at the top** of detail pages (today it's top on shop, bottom on artwork — pick top). Format: Section / Subcategory / Current. `--text-sm`, `--c-muted`.
 
-### Template A — Shop / PLP
-- Hero text (H1 + count/meta) + filter bar
-- Product grid (4 col desktop, 2 col mobile)
-- No decorative imagery — product images do the work
-
-### Template B — PDP (Gelato products)
-- Image gallery (left) + info panel (right) on desktop, stacked on mobile
-- Variant selectors (size, colour, format) — always visible, always interactive
-- Specs table
-- Description
-- Format siblings strip ("Also as:")
-- Sticky add-to-cart bar
-- More from series
-- Recently viewed
-
-### Template C — Original Work PDP (/works/[slug])
-- VISUALS FIRST — large hero image, then image gallery showing ALL available photos
-- Title, medium, year, dimensions
-- Description (longer, richer than Gelato products)
-- "Price on enquiry" + enquire CTA
-- Artist note (if available)
-- More from same category
-- Link to print equivalents if they exist in the shop
-
-### Template D — Editorial / Landing
-- Full-bleed hero (image or video)
-- Section hierarchy: primary → secondary → supporting
-- No product grids — links out to shop
-
-### Template E — Art Journal / Blog
-- Featured post (large) + grid of remaining
-- Individual post: header → hero image → body → share → shop CTA → newsletter → archive
-
-### Template F — Utility (About, Commissions, FAQ, Contact, Legal)
-- Simple single-column with prose content
-- No product grids
-- Clear CTAs at the end
+### Already shared — leave alone ✅
+- **Carousel** (`CollectionSlideshow`) — the one carousel. Auto-rotate, opacity fade.
+- **Newsletter** (`NewsletterSignup`) — one block, surface background.
+- **Shopping nudge** (`ShoppingNudge`).
 
 ---
 
-## NAVIGATION
+## LAYER 3 — PAGE TEMPLATES
 
-### Desktop header
-- Logo left, primary nav center (Shop / Fine Art / Commissions / About), utility right (DKK / Cart)
-- Sticky on scroll, background: `--c-bg` at 96% opacity, backdrop-blur
-- Active state: underline in `--c-accent`
+Eight templates. Each is just the blocks above, arranged. Use the three width tokens; never a fourth.
 
-### Mobile bottom tab bar
-- 4 tabs: Home / Shop / Fine Art / Cart
-- Active: icon filled + label in `--c-accent`
-- Background: #FFFFFF with top border 1px `--c-surface`
+| Template | Pages | Width | Shape |
+|---|---|---|---|
+| **A — Shop / PLP** | /shop, /search, collections | full | Text hero + filters + product-card grid |
+| **B — Product detail** | /shop/[handle] | full | Gallery (left) + sticky info/variants/ATC (right) + cross-sells |
+| **C — Artwork detail** | /works/[slug] | wide | Image hero + info grid + gallery + related |
+| **D — Editorial/landing** | / (home) | full | Image hero + sections, links out to shop |
+| **E — Journal** | /art-journal, /blog/[slug] | wide/prose | Featured + editorial-card grid; post = header → image → body → share → newsletter |
+| **F — Utility/prose** | /about, /commissions, /contact, /practical | wide/prose | Text hero + sections + end CTA |
+| **G — Confirmation** | /order-confirmed | prose | Centred success + timeline |
+| **H — Legal** | /legal/* | prose | Bare prose, shared styles |
 
-### Breadcrumb
-- Present on: PDPs, Works, Blog posts, Legal pages
-- Format: Section / Subcategory / Current page
-- Size: `--text-sm`, `--c-muted`
-
----
-
-## SECTION TEMPLATES
-
-### Section with header + grid
-```
-[LABEL — small caps, --c-muted]
-[H2 Title — Playfair]
-[Optional subtitle — Inter, --c-muted]
-[Grid content]
-[View all → link]
-```
-Top margin from previous section: `--sp-24`
-
-### Editorial split (image + text)
-```
-[Image — 55% width] | [Text block — 45%]
-                       [Series label]
-                       [H2 Title]
-                       [Body paragraph]
-                       [CTA link]
-```
-
-### Trust bar
-- Single horizontal row, centered
-- Items separated by · dots
-- `--text-sm`, `--c-muted`
-
-### Newsletter section
-- Background: dark (--c-text) OR light linen
-- Short headline + subline + email input + submit
+> Decision still open: `/preview-a`, `/preview-b`, `/preview-c` are three orphaned alternate-design experiments (hidden from search, unlinked). **Pick one direction to fold in, or delete all three.** They are not part of this system until that's decided.
 
 ---
 
-## ANIMATIONS & TRANSITIONS
+## THE GELATO IMAGE SYSTEM (read before touching product cards)
 
-- Default transition: 200ms ease (`--t-fast`)
-- Page transitions: none (Next.js default, keep it clean)
-- Hover on cards: subtle shadow lift (box-shadow 0 4px 16px rgba(0,0,0,0.08))
-- Image zoom on hover: scale(1.02), overflow hidden, 300ms ease
-- Never: bounce, spin, slide-in from outside viewport
-- Loading states: skeleton screens (chalk background with animated shimmer)
+Product-card images are **Gelato mockups** synced through Shopify. This section is the contract.
 
----
+### The boundary — who controls what
+- Mockups arrive as **opaque JPEGs, no transparency.** The backdrop is baked-in pixels.
+- **In code you control only:** the card background colour, the crop (`cover` = fill+crop vs `contain` = fit+letterbox), and the card's aspect ratio.
+- **The scene/background inside the photo is Gelato's.** To change the white sweep behind a mug or the wood behind a print, you change the **Gelato template** — CSS cannot.
 
-## RESPONSIVE BREAKPOINTS
+### Two genres arrive — and they don't mix cleanly
+| Genre | Types | What you see | Backdrop |
+|---|---|---|---|
+| **A — Flat artwork** | Art print, postcard, greeting card, wood print | the art itself, edge-to-edge | pale paper / full-bleed / **wood grain** / white card. Greeting cards arrive at **half resolution** — expect softer. |
+| **B — Object on white** | Framed print, mug, tote, tank top, water bottle | the product photographed | pure white + soft drop shadow |
 
-| Name | Width | Grid columns |
-|------|-------|-------------|
-| Mobile | < 640px | 2 (products), 1 (content) |
-| Tablet | 640–1024px | 2–3 |
-| Desktop | > 1024px | 4 (products), 2–3 (editorial) |
+### Card rules per genre
+- **White card background is correct for Genre B** (seamless behind "object on white"). Keep it.
+- **Two known failures to fix Gelato-side:**
+  1. **White-on-white products** (tank top, water bottle) vanish into the white card. Needs a different mockup scene, or a faint card background/border behind these specific types.
+  2. **Wood prints & full-bleed postcards** bring a non-white surface that fights the white card. Decide a rule: either a thin inset/frame in the card, or accept the bleed.
+- **Crop:** flat artwork (Genre A) may `cover` to fill the card; object-on-white (Genre B) must `contain` so the product isn't clipped. Apply this by genre, consistently — not per page.
+- **Shape:** most mockups are square (2048²); totes/bottles are tall; postcards landscape or portrait. The product card's aspect ratio must tolerate letterboxing gracefully for the non-square ones.
 
-Max content width: 1280px, centered with `auto` margins.
-
----
-
-## WORK STATUS INDICATORS
-
-### Available work
-```
-● Original — price on enquiry
-```
-Sage green dot (#5C8C6E), sage label, 8px dot.
-
-### Sold work
-```
-● Sold — enquire about similar work
-```
-Muted dot and label. Enquiry button shifts to `--c-muted` background.
-
-On fine art grid: `SOLD` badge — dark semi-transparent slate at top-left. 10px / 700wt / 0.12em tracking. Does not block hover interaction.
+### The standing decision needed
+Paper goods are currently inconsistent: postcards show full-bleed art, greeting cards show a card with a margin, art prints show paper. **Pick one presentation rule for "flat art" products** so the grid reads as a set. This is a Gelato-template choice, logged here once made.
 
 ---
 
-## GALLERY LIGHTBOX
+## WHAT'S NON-CONFORMANT TODAY
 
-Component: `components/WorksGallery.tsx` + `ImageLightbox.tsx`
-
-- Grid: 2-col on desktop. First image spans full width (16/9 ratio). Remaining images 3/2.
-- Mobile: single column, all images 3/2.
-- Click-to-open: `cursor: zoom-in`. Expand icon appears top-right on hover.
-- Lightbox: full-screen overlay, `objectFit: contain`. Keyboard navigation (← → Esc). Dot indicator for multi-image. Arrows shown only when >1 image.
-- Focus state: `outline: 2px solid var(--c-accent)` with 2px offset.
+This file is the target. The live site diverges — fully catalogued in `DESIGN_AUDIT.md`. Headline gaps:
+- Spacing only ~35% on-scale (target ~95%).
+- ~19 product/artwork card builds → consolidate to 4.
+- Section heading rebuilt 10× → 1.
+- 5 heroes → 2; 2 galleries → 1; 2 breadcrumbs → 1; 8+ buttons → 3.
+- 5 ad-hoc page widths → 3 tokens.
 
 ---
 
-## OPEN DESIGN ISSUES (cross-reference ISSUES.md)
+## CHANGE RULE
 
-- ISS-01: Product variants — real fix requires Shopify data migration
-- ISS-09: Design system Canva visual — MD complete; visual board still needed
-*Issues 02–08 resolved.*
+Living document. **Update this file the moment a design decision is locked** — a new token, a consolidated block, a Gelato presentation rule. If a screen needs something not described here, the decision is made *here first*, then built. The doc leads; the code follows. (The previous version drifted out of sync and became misleading — that must not recur.)
