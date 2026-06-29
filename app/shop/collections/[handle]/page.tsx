@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getProductsByTag, formatPrice } from '@/lib/shopify/products'
+import { getProductsByTag } from '@/lib/shopify/products'
 import { COLLECTIONS } from '@/lib/catalog/collections'
+import ProductCard from '@/components/ProductCard'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 
@@ -60,25 +61,7 @@ export default async function CollectionPage({ params }: PageProps) {
       ) : (
         <div className={styles.grid}>
           {products.map((p) => (
-            <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-              <div className={styles.imageWrap}>
-                {p.firstImage ? (
-                  <Image
-                    src={p.firstImage.url}
-                    alt={p.firstImage.altText ?? p.title}
-                    fill
-                    sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className={styles.image}
-                  />
-                ) : (
-                  <div className={styles.imagePlaceholder} />
-                )}
-              </div>
-              <div className={styles.info}>
-                <span className={styles.productTitle}>{p.title}</span>
-                <span className={styles.price}>{formatPrice(p.minPrice.amount)}</span>
-              </div>
-            </Link>
+            <ProductCard key={p.id} product={p} sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" />
           ))}
         </div>
       )}

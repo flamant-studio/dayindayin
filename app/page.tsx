@@ -6,6 +6,7 @@ import { blogPosts, works } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import SectionHeading from '@/components/SectionHeading'
 import ProductCard from '@/components/ProductCard'
+import EditorialCard from '@/components/EditorialCard'
 import styles from './page.module.css'
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
@@ -277,18 +278,7 @@ export default async function HomePage() {
             <SectionHeading label="Studio Notes" title="From the studio" viewAll={{ href: '/art-journal', label: 'All notes' }} />
             <div className={styles.notesTeaserGrid}>
               {notes.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.notesTeaserCard}>
-                  <div className={styles.notesTeaserImg}>
-                    <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
-                  </div>
-                  <div className={styles.notesTeaserBody}>
-                    <span className={styles.notesTeaserDate}>
-                      {new Date(post.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}
-                    </span>
-                    <span className={styles.notesTeaserPostTitle}>{post.title}</span>
-                    <span className={styles.notesTeaserExcerpt}>{post.excerpt}</span>
-                  </div>
-                </Link>
+                <EditorialCard key={post.slug} post={post} />
               ))}
             </div>
           </section>
