@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { works, WorkCategory } from "@/lib/data";
+import SectionHeading from "@/components/SectionHeading";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -165,10 +166,7 @@ export default function FineArt() {
         const categoryWorks = works.filter((w) => w.category === section.id && !HIDDEN_SLUGS.includes(w.slug));
         return (
           <section key={section.id} id={section.id} className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2 className={styles.sectionTitle}>{section.label}</h2>
-              <p className={styles.sectionTagline}>{section.tagline}</p>
-            </div>
+            <SectionHeading title={section.label} subtitle={section.tagline} />
             <div className={styles.grid}>
               {categoryWorks.map((work) => (
                 <Link key={work.slug} href={`/works/${work.slug}`} className={styles.card}>

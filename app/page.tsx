@@ -6,6 +6,7 @@ import { blogPosts, works } from '@/lib/data'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import WishlistButton from '@/components/WishlistButton'
 import QuickAddButton from '@/components/QuickAddButton'
+import SectionHeading from '@/components/SectionHeading'
 import styles from './page.module.css'
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
@@ -214,10 +215,7 @@ export default async function HomePage() {
 
       {/* ── Series strip ─────────────────────────────────────── */}
       <section className={styles.seriesSection}>
-        <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>Browse by Series</h2>
-          <Link href="/collections" className={styles.viewAll}>All collections →</Link>
-        </div>
+        <SectionHeading title="Browse by Series" viewAll={{ href: '/collections', label: 'All collections' }} />
         <div className={styles.seriesStrip}>
           {SERIES_CARDS.map(({ tag, label, sub, accent }) => {
             const imgUrl = seriesImageMap[tag]
@@ -248,10 +246,7 @@ export default async function HomePage() {
 
       {/* ── In the shop ──────────────────────────────────────── */}
       <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>In the shop</h2>
-          <Link href="/shop" className={styles.viewAll}>All products →</Link>
-        </div>
+        <SectionHeading title="In the shop" viewAll={{ href: '/shop', label: 'All products' }} />
 
         {products.length > 0 ? (
           <div className={styles.productGrid}>
@@ -309,13 +304,7 @@ export default async function HomePage() {
         const notes = blogPosts.slice(0, 3)
         return (
           <section className={styles.notesTeaser}>
-            <div className={styles.notesTeaserHead}>
-              <div>
-                <span className={styles.notesTeaserLabel}>Studio Notes</span>
-                <h2 className={styles.notesTeaserTitle}>From the studio</h2>
-              </div>
-              <Link href="/art-journal" className={styles.notesTeaserViewAll}>All notes →</Link>
-            </div>
+            <SectionHeading label="Studio Notes" title="From the studio" viewAll={{ href: '/art-journal', label: 'All notes' }} />
             <div className={styles.notesTeaserGrid}>
               {notes.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.notesTeaserCard}>
