@@ -1,11 +1,8 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { getAllProducts, formatPrice, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
-import { displayTitle } from '@/lib/display'
+import { getAllProducts, categoryLabel } from '@/lib/shopify/products'
 import ShopFilterNav from '@/components/ShopFilterNav'
-import WishlistButton from '@/components/WishlistButton'
 import FluidTracker from '@/components/FluidTracker'
-import QuickAddButton from '@/components/QuickAddButton'
+import ProductCard from '@/components/ProductCard'
 import styles from './page.module.css'
 
 export const dynamic = 'force-dynamic'
@@ -226,41 +223,7 @@ export default async function ShopPage({ searchParams }: PageProps) {
         <>
           <div className={styles.grid}>
             {displayed.map((p, i) => (
-              <div key={p.id} className={styles.card}>
-                <Link href={`/shop/${p.handle}`} className={styles.cardInner}>
-                  <div className={`${styles.cardImg} ${categoryLabel(p) === 'Framed Print' ? styles.cardImgMockup : isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
-                    <Image
-                      src={p.firstImage!.url}
-                      alt={p.firstImage!.altText ?? p.title}
-                      fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw"
-                      className={styles.cardImgEl}
-                      priority={i < 4}
-                    />
-                    <WishlistButton
-                      handle={p.handle}
-                      title={displayTitle(p.title)}
-                      imageUrl={p.firstImage?.url ?? null}
-                      price={formatPrice(p.minPrice.amount)}
-                    />
-                    {seriesLabel(p) && (
-                      <span className={styles.cardBadge}>{seriesLabel(p)}</span>
-                    )}
-                  </div>
-                  <div className={styles.cardInfo}>
-                    <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
-                    <span className={styles.cardType}>{categoryLabel(p)}</span>
-                    <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
-                  </div>
-                </Link>
-                <div className={styles.cardCta}>
-                  {p.variants.length === 1 && p.firstVariant?.availableForSale ? (
-                    <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
-                  ) : (
-                    <Link href={`/shop/${p.handle}`} className={styles.cardViewLink}>View product →</Link>
-                  )}
-                </div>
-              </div>
+              <ProductCard key={p.id} product={p} priority={i < 4} />
             ))}
           </div>
           {hasMore && (
