@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { works } from "@/lib/data";
 import Button from "@/components/Button";
+import ArtworkCard from "@/components/ArtworkCard";
 import styles from "./page.module.css";
 import type { Metadata } from "next";
 
@@ -94,14 +95,12 @@ export default async function Archive({ searchParams }: PageProps) {
 
       <div className={styles.grid}>
         {filtered.map((work) => (
-          <Link key={work.slug} href={`/works/${work.slug}`} className={`${styles.card} ${work.sold ? styles.cardSold : ''}`}>
-            <div className={styles.cardImage}>
-              <Image src={work.image} alt={work.title} fill sizes="(max-width: 768px) 33vw, 20vw" style={{ objectFit: "cover" }} />
-              {work.sold && <span className={styles.soldBadge}>Sold</span>}
-            </div>
-            <p className={styles.title}>{work.title}</p>
-            <p className={styles.meta}>{CATEGORY_LABELS[work.category] ?? work.category} · {work.year}</p>
-          </Link>
+          <ArtworkCard
+            key={work.slug}
+            work={work}
+            sizes="(max-width: 768px) 33vw, 20vw"
+            metaLabel={`${CATEGORY_LABELS[work.category] ?? work.category} · ${work.year}`}
+          />
         ))}
       </div>
 

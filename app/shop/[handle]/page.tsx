@@ -11,6 +11,9 @@ import StickyATC from '@/components/StickyATC'
 import ShareButtons from '@/components/ShareButtons'
 import SelectedPrice from '@/components/SelectedPrice'
 import Breadcrumb from '@/components/Breadcrumb'
+import ArtworkCard from '@/components/ArtworkCard'
+import ProductCard from '@/components/ProductCard'
+import SectionHeading from '@/components/SectionHeading'
 import { ProductProvider } from '@/contexts/ProductContext'
 import FluidTracker from '@/components/FluidTracker'
 import { displayTitle } from '@/lib/display'
@@ -435,25 +438,14 @@ export default async function ProductPage({ params }: PageProps) {
 
       {seriesProducts.length >= 2 && (
         <section className={styles.related}>
-          <div className={styles.relatedHeader}>
-            <h2 className={styles.relatedTitle}>More from {productSeries}</h2>
-            <Link href={seriesFilterValue ? `/shop?filter=${seriesFilterValue}` : '/shop'} className={styles.relatedViewAll}>
-              View all &rarr;
-            </Link>
-          </div>
-          <p className={styles.relatedSub}>Same series — all sizes and price points</p>
+          <SectionHeading
+            title={`More from ${productSeries}`}
+            subtitle="Same series — all sizes and price points"
+            viewAll={{ href: seriesFilterValue ? `/shop?filter=${seriesFilterValue}` : '/shop', label: 'View all' }}
+          />
           <div className={styles.relatedGrid}>
             {seriesProducts.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>
-                <div className={styles.relatedImg}>
-                  <Image src={p.firstImage!.url} alt={p.firstImage!.altText ?? p.title}
-                    fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className={styles.relatedInfo}>
-                  <span className={styles.relatedName}>{displayTitle(p.title)}</span>
-                  <span className={styles.relatedPrice}>{formatPrice(p.minPrice.amount)}</span>
-                </div>
-              </Link>
+              <ProductCard key={p.id} product={p} sizes="(max-width: 768px) 50vw, 25vw" />
             ))}
           </div>
         </section>
@@ -461,19 +453,10 @@ export default async function ProductPage({ params }: PageProps) {
 
       {relatedFiltered.length >= 2 && (
         <section className={styles.related}>
-          <h2 className={styles.relatedTitle}>You might also like</h2>
+          <SectionHeading title="You might also like" />
           <div className={styles.relatedGrid}>
             {relatedFiltered.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>
-                <div className={styles.relatedImg}>
-                  <Image src={p.firstImage!.url} alt={p.firstImage!.altText ?? p.title}
-                    fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className={styles.relatedInfo}>
-                  <span className={styles.relatedName}>{displayTitle(p.title)}</span>
-                  <span className={styles.relatedPrice}>{formatPrice(p.minPrice.amount)}</span>
-                </div>
-              </Link>
+              <ProductCard key={p.id} product={p} sizes="(max-width: 768px) 50vw, 25vw" />
             ))}
           </div>
         </section>
@@ -488,25 +471,14 @@ export default async function ProductPage({ params }: PageProps) {
         const mediumLabel = mediumTag.charAt(0).toUpperCase() + mediumTag.slice(1)
         return (
           <section className={styles.originalsSection}>
-            <div className={styles.originalsSectionHead}>
-              <div>
-                <h2 className={styles.originalsSectionTitle}>Original {mediumLabel} works</h2>
-                <p className={styles.originalsSectionSub}>These are the unique originals this print is based on — available on enquiry.</p>
-              </div>
-              <Link href={`/archive?category=${mediumTag.toLowerCase()}`} className={styles.originalsViewAll}>See all originals →</Link>
-            </div>
+            <SectionHeading
+              title={`Original ${mediumLabel} works`}
+              subtitle="These are the unique originals this print is based on — available on enquiry."
+              viewAll={{ href: `/archive?category=${mediumTag.toLowerCase()}`, label: 'See all originals' }}
+            />
             <div className={styles.originalsGrid}>
               {originals.map(w => (
-                <Link key={w.slug} href={`/works/${w.slug}`} className={styles.originalCard}>
-                  <div className={styles.originalCardImg}>
-                    <Image src={w.image} alt={w.title} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                    <div className={styles.originalCardOverlay}>
-                      <span className={styles.originalCardEnquire}>Enquire →</span>
-                    </div>
-                  </div>
-                  <span className={styles.originalCardTitle}>{w.title}</span>
-                  <span className={styles.originalCardYear}>{w.year}</span>
-                </Link>
+                <ArtworkCard key={w.slug} work={w} sizes="(max-width: 768px) 50vw, 25vw" showDimensions={false} />
               ))}
             </div>
           </section>

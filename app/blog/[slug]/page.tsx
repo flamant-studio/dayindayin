@@ -4,6 +4,7 @@ import { blogPosts, getPost, getAdjacentPosts, works } from "@/lib/data";
 import { notFound } from "next/navigation";
 import ShareButtons from "@/components/ShareButtons";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import ArtworkCard from "@/components/ArtworkCard";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -154,13 +155,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           <h2 className={styles.relatedWorksTitle}>From the archive</h2>
           <div className={styles.relatedWorksGrid}>
             {relatedWorks.map(w => (
-              <Link key={w.slug} href={`/works/${w.slug}`} className={styles.relatedWorkCard}>
-                <div className={styles.relatedWorkImg}>
-                  <Image src={w.image} alt={w.title} fill sizes="(max-width: 768px) 33vw, 22vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <span className={styles.relatedWorkTitle}>{w.title}</span>
-                <span className={styles.relatedWorkYear}>{w.year}</span>
-              </Link>
+              <ArtworkCard key={w.slug} work={w} sizes="(max-width: 768px) 33vw, 22vw" showDimensions={false} />
             ))}
           </div>
           <Link href="/fine-art" className={styles.relatedWorksMore}>View all originals →</Link>

@@ -6,6 +6,7 @@ import ShareButtons from "@/components/ShareButtons";
 import WorksGallery from "@/components/WorksGallery";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
+import ArtworkCard from "@/components/ArtworkCard";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -226,13 +227,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             </div>
             <div className={styles.relatedGrid}>
               {related.map((r) => (
-                <Link key={r.slug} href={`/works/${r.slug}`} className={styles.relatedCard}>
-                  <div className={styles.relatedImg}>
-                    <Image src={r.image} alt={r.title} fill sizes="(max-width: 768px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
-                  </div>
-                  <span className={styles.relatedName}>{r.title}</span>
-                  <span className={styles.relatedYear}>{r.year}</span>
-                </Link>
+                <ArtworkCard key={r.slug} work={r} sizes="(max-width: 768px) 50vw, 22vw" showDimensions={false} />
               ))}
             </div>
           </section>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { works, WorkCategory } from "@/lib/data";
 import SectionHeading from "@/components/SectionHeading";
+import ArtworkCard from "@/components/ArtworkCard";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -169,27 +170,7 @@ export default function FineArt() {
             <SectionHeading title={section.label} subtitle={section.tagline} />
             <div className={styles.grid}>
               {categoryWorks.map((work) => (
-                <Link key={work.slug} href={`/works/${work.slug}`} className={styles.card}>
-                  <div className={styles.cardImage}>
-                    <Image
-                      src={work.image}
-                      alt={work.title}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 33vw"
-                      className={styles.cardImg}
-                    />
-                    {work.sold && (
-                      <span className={styles.soldBadge}>Sold</span>
-                    )}
-                    <div className={styles.cardOverlay}>
-                      <span className={styles.cardEnquire}>{work.sold ? 'See similar works →' : 'Discover →'}</span>
-                    </div>
-                  </div>
-                  <div className={styles.cardMeta}>
-                    <p className={styles.cardTitle}>{work.title}</p>
-                    <p className={styles.cardYear}>{work.dimensions ? `${work.year} · ${work.dimensions}` : work.year}</p>
-                  </div>
-                </Link>
+                <ArtworkCard key={work.slug} work={work} />
               ))}
             </div>
           </section>
