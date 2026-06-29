@@ -49,6 +49,11 @@
   --max-w: 1440px;
   --nav-h: 56px;
 
+  /* Content widths — the only three allowed page max-widths */
+  --w-prose: 700px;   /* single-column reading: legal, practical, confirmation */
+  --w-wide:  1100px;  /* editorial/utility: about, commissions, artwork detail */
+  --w-full:  1280px;  /* grids & galleries: shop, product detail */
+
   /* Radius */
   --r-sm: 4px;
   --r-md: 8px;

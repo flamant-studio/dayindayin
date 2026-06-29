@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import type { Metadata } from 'next'
+import Button from '@/components/Button'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -27,8 +27,8 @@ export default function OrderConfirmedPage() {
           If you have any questions about your order, use the contact form below.
         </p>
         <div className={styles.actions}>
-          <Link href="/shop" className={styles.primary}>Continue shopping</Link>
-          <Link href="/contact" className={styles.secondary}>Contact us</Link>
+          <Button href="/shop">Continue shopping</Button>
+          <Button href="/contact" variant="secondary">Contact us</Button>
         </div>
         <div className={styles.timeline}>
           <p className={styles.timelineLabel}>What happens next</p>

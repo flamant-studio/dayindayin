@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { works } from "@/lib/data";
+import Button from "@/components/Button";
 import styles from "./page.module.css";
 import type { Metadata } from "next";
 
@@ -109,8 +110,8 @@ export default async function Archive({ searchParams }: PageProps) {
           All originals are available on enquiry. If something catches you, reach out.
         </p>
         <div className={styles.archiveCtaLinks}>
-          <Link href="/contact?subject=Archive%20enquiry" className={styles.archiveCtaBtn}>Send an enquiry</Link>
-          <Link href="/commissions" className={styles.archiveCtaSecondary}>Commission a work →</Link>
+          <Button href="/contact?subject=Archive%20enquiry">Send an enquiry</Button>
+          <Button href="/commissions" variant="link" arrow>Commission a work</Button>
         </div>
       </section>
     </div>

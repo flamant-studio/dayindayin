@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { works } from '@/lib/data'
+import Button from '@/components/Button'
 import styles from './page.module.css'
 
 const BLOB_BASE = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
@@ -223,8 +224,8 @@ export default function AboutPage() {
           ships across Europe from 56 kr.
         </p>
         <div className={styles.studioLinks}>
-          <Link href="/fine-art" className={styles.shopCta}>Original works →</Link>
-          <Link href="/shop" className={styles.shopCtaSecondary}>Browse the shop →</Link>
+          <Button href="/fine-art" variant="link" arrow>Original works</Button>
+          <Button href="/shop" variant="link" arrow>Browse the shop</Button>
         </div>
       </section>
 

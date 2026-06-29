@@ -1,0 +1,27 @@
+/* The one breadcrumb. See DESIGN_SYSTEM.md › Breadcrumb. */
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  margin-bottom: var(--sp-5);
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.link {
+  color: var(--c-muted);
+  transition: color var(--t-fast);
+}
+.link:hover { color: var(--c-text); }
+
+.sep { color: var(--c-border); }
+
+.current { color: var(--c-text); }

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
+import Button from '@/components/Button'
 import styles from './page.module.css'
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
@@ -164,9 +165,7 @@ export default function CommissionsPage() {
 
       <section className={styles.cta}>
         <p className={styles.ctaText}>Got something in mind? Reach out.</p>
-        <Link href="/contact?subject=Commission%20enquiry" className={styles.ctaBtn}>
-          Send a brief →
-        </Link>
+        <Button href="/contact?subject=Commission%20enquiry">Send a brief</Button>
         <p className={styles.ctaSub}>
           Or email <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a> directly.
         </p>

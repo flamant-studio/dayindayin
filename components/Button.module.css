@@ -1,0 +1,57 @@
+/* The one button. See DESIGN_SYSTEM.md › Buttons. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: opacity var(--t-fast), background var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+}
+
+.full {
+  display: flex;
+  width: 100%;
+}
+
+/* Primary — vermillion CTA */
+.primary {
+  padding: var(--sp-4) var(--sp-6);
+  background: var(--c-accent);
+  color: var(--c-white);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--r-sm);
+}
+.primary:hover { opacity: 0.88; }
+
+/* Secondary — outlined */
+.secondary {
+  padding: var(--sp-4) var(--sp-6);
+  background: transparent;
+  color: var(--c-text);
+  border: 1.5px solid var(--c-text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--r-sm);
+}
+.secondary:hover { background: var(--c-text); color: var(--c-bg); }
+
+/* Link — inline text link */
+.link {
+  padding: 0;
+  background: transparent;
+  color: var(--c-accent);
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+.link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.btn:disabled { cursor: default; opacity: 0.7; }
+
+.arrow { display: inline-block; }

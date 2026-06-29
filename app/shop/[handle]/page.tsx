@@ -10,6 +10,7 @@ import RecentlyViewed from '@/components/RecentlyViewed'
 import StickyATC from '@/components/StickyATC'
 import ShareButtons from '@/components/ShareButtons'
 import SelectedPrice from '@/components/SelectedPrice'
+import Breadcrumb from '@/components/Breadcrumb'
 import { ProductProvider } from '@/contexts/ProductContext'
 import FluidTracker from '@/components/FluidTracker'
 import { displayTitle } from '@/lib/display'
@@ -317,18 +318,11 @@ export default async function ProductPage({ params }: PageProps) {
           <div className={styles.info}>
             <div className={styles.infoInner}>
               {/* Breadcrumb */}
-              <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-                <Link href="/shop" className={styles.breadcrumbLink}>Shop</Link>
-                <span className={styles.breadcrumbSep}>/</span>
-                <Link
-                  href={catFilter ? `/shop?filter=${catFilter}` : '/shop'}
-                  className={styles.breadcrumbLink}
-                >
-                  {catLabel}
-                </Link>
-                <span className={styles.breadcrumbSep}>/</span>
-                <span className={styles.breadcrumbCurrent}>{displayTitle(product.title)}</span>
-              </nav>
+              <Breadcrumb items={[
+                { label: 'Shop', href: '/shop' },
+                { label: catLabel, href: catFilter ? `/shop?filter=${catFilter}` : '/shop' },
+                { label: displayTitle(product.title) },
+              ]} />
 
               {/* 1. Title */}
               <div className={styles.titleBlock}>

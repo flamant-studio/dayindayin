@@ -4,6 +4,8 @@ import { works, getWork } from "@/lib/data";
 import { notFound } from "next/navigation";
 import ShareButtons from "@/components/ShareButtons";
 import WorksGallery from "@/components/WorksGallery";
+import Breadcrumb from "@/components/Breadcrumb";
+import Button from "@/components/Button";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -129,6 +131,11 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
         {/* ── Title below image ─────────────────────────────────── */}
         <div className={styles.titleSection}>
+          <Breadcrumb items={[
+            { label: 'Fine Art', href: '/fine-art' },
+            { label, href: `/archive?category=${work.category}` },
+            { label: work.title },
+          ]} />
           <p className={styles.workCategory}>{label}</p>
           <h1 className={styles.workTitle}>{work.title}</h1>
           <p className={styles.workYear}>{work.year}</p>
@@ -163,12 +170,13 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                 Originals are individually priced.{' '}
                 <Link href="/practical">See the FAQ</Link> for typical price ranges.
               </p>
-              <Link
+              <Button
                 href={`/contact?subject=${work.sold ? 'Similar+work+enquiry' : `Enquiry:+${encodeURIComponent(work.title)}`}`}
-                className={`${styles.enquiryBtn} ${work.sold ? styles.enquiryBtnSold : ''}`}
+                variant={work.sold ? 'secondary' : 'primary'}
+                full
               >
                 {work.sold ? 'Discover similar work' : 'Discover this work'}
-              </Link>
+              </Button>
               <div className={styles.meta}>
                 <div className={styles.metaRow}>
                   <span className={styles.metaKey}>Medium</span>
@@ -230,14 +238,6 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
           </section>
         )}
 
-        {/* ── Breadcrumbs at bottom ─────────────────────────────── */}
-        <nav className={styles.bottomBreadcrumb} aria-label="Breadcrumb">
-          <Link href="/fine-art" className={styles.breadcrumbLink}>Fine Art</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <Link href={`/archive?category=${work.category}`} className={styles.breadcrumbLink}>{label}</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <span className={styles.breadcrumbCurrent}>{work.title}</span>
-        </nav>
       </div>
     </>
   );
