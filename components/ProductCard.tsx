@@ -3,21 +3,19 @@ import Image from 'next/image'
 import {
   categoryLabel,
   seriesLabel,
-  isArtworkProduct,
   formatPrice,
   formatPriceLabel,
   type NormalizedProduct,
 } from '@/lib/shopify/products'
 import { displayTitle } from '@/lib/display'
 import WishlistButton from './WishlistButton'
-import QuickAddButton from './QuickAddButton'
 import styles from './ProductCard.module.css'
 
 /**
  * The one product card (Gelato shop items). White interior, image + title +
  * type + price, wishlist + quick-add. See DESIGN_SYSTEM.md › Cards.
- * NOTE: image crop/aspect (cover vs contain) is the Gelato-genre rule and is
- * intentionally preserved here unchanged pending the Gelato review.
+ * One 4:5 box for every format; images are fit whole (contain), never
+ * cropped — an art shop shouldn't cut the art. Decision locked 2026-06-29.
  */
 export default function ProductCard({
   product: p,
@@ -29,12 +27,11 @@ export default function ProductCard({
   sizes?: string
 }) {
   if (!p.firstImage) return null
-  const isMockup = categoryLabel(p) === 'Framed Print' || !isArtworkProduct(p)
 
   return (
     <div className={styles.card}>
       <Link href={`/shop/${p.handle}`} className={styles.cardInner}>
-        <div className={`${styles.cardImg} ${isMockup ? styles.cardImgMockup : styles.cardImgArtwork}`}>
+        <div className={styles.cardImg}>
           <Image
             src={p.firstImage.url}
             alt={p.firstImage.altText ?? p.title}
@@ -58,11 +55,7 @@ export default function ProductCard({
         </div>
       </Link>
       <div className={styles.cardCta}>
-        {p.variants.length === 1 && p.firstVariant?.availableForSale ? (
-          <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
-        ) : (
-          <Link href={`/shop/${p.handle}`} className={styles.cardViewLink}>View product →</Link>
-        )}
+        <Link href={`/shop/${p.handle}`} className={styles.cardViewLink}>View product →</Link>
       </div>
     </div>
   )

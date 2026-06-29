@@ -1,5 +1,5 @@
 /* The one product card. See DESIGN_SYSTEM.md › Cards.
-   Image crop/aspect = Gelato-genre rule, preserved pending Gelato review. */
+   One 4:5 box, contain (never crop) for every format. Locked 2026-06-29. */
 
 .card {
   background: var(--c-white);
@@ -17,16 +17,13 @@
   color: inherit;
 }
 
-/* Image area — Gelato genre crop (deferred). */
+/* Image area — one 4:5 box, every format fit whole (never cropped). */
 .cardImg {
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--c-white);
 }
-.cardImgArtwork .cardImgEl { object-fit: cover; }
-.cardImgMockup { aspect-ratio: 1 / 1; }
-.cardImgMockup .cardImgEl { object-fit: contain; }
 .cardImgEl { object-fit: contain; }
 
 .cardBadge {

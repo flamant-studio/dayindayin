@@ -137,7 +137,7 @@ One component per job. (Today ~19 hand-built copies — see audit.) Each card = 
 
 | Card | For | Image area | Notes |
 |---|---|---|---|
-| **Product card** | Shop items (Gelato) | per Gelato rules below | title · type · price · save · quick-add. The save (heart) and quick-add are **always present**, not optional. |
+| **Product card** | Shop items (Gelato) | **one 4:5 box, `contain`, never crop** (locked 2026-06-29) | title · type · price · save (heart). CTA is **always "View product →"** — never "Add to cart", regardless of whether the product page offers a choice. Every format uses the same box; non-portrait mockups get even gutters in the card background. |
 | **Artwork card** | Original works | 3:4, art fills | title · year · optional SOLD badge · enquire-on-hover |
 | **Editorial card** | Journal / posts | 3:2 | date · title · excerpt |
 | **Series card** | Collections / series | 3:4 | label · count |
@@ -191,25 +191,21 @@ Product-card images are **Gelato mockups** synced through Shopify. This section 
 
 ### The boundary — who controls what
 - Mockups arrive as **opaque JPEGs, no transparency.** The backdrop is baked-in pixels.
-- **In code you control only:** the card background colour, the crop (`cover` = fill+crop vs `contain` = fit+letterbox), and the card's aspect ratio.
-- **The scene/background inside the photo is Gelato's.** To change the white sweep behind a mug or the wood behind a print, you change the **Gelato template** — CSS cannot.
+- **In code you control only:** the card background colour and the card's box (now locked: one 4:5 box, `contain`, never crop).
+- **The scene/background inside the photo is Gelato's.** To change the grey behind a poster sheet or the white behind a mug, you change the **Gelato template** — CSS cannot.
 
-### Two genres arrive — and they don't mix cleanly
-| Genre | Types | What you see | Backdrop |
-|---|---|---|---|
-| **A — Flat artwork** | Art print, postcard, greeting card, wood print | the art itself, edge-to-edge | pale paper / full-bleed / **wood grain** / white card. Greeting cards arrive at **half resolution** — expect softer. |
-| **B — Object on white** | Framed print, mug, tote, tank top, water bottle | the product photographed | pure white + soft drop shadow |
+### The on-site card rule (locked 2026-06-29)
+One **4:5 box, `contain`, never crop**, white card background, for every format. This makes every card's framing and chrome identical regardless of product. The remaining visual variance lives **inside** the mockup image and is a Gelato problem (below). We do NOT crop the art to hide it.
 
-### Card rules per genre
-- **White card background is correct for Genre B** (seamless behind "object on white"). Keep it.
-- **Two known failures to fix Gelato-side:**
-  1. **White-on-white products** (tank top, water bottle) vanish into the white card. Needs a different mockup scene, or a faint card background/border behind these specific types.
-  2. **Wood prints & full-bleed postcards** bring a non-white surface that fights the white card. Decide a rule: either a thin inset/frame in the card, or accept the bleed.
-- **Crop:** flat artwork (Genre A) may `cover` to fill the card; object-on-white (Genre B) must `contain` so the product isn't clipped. Apply this by genre, consistently — not per page.
-- **Shape:** most mockups are square (2048²); totes/bottles are tall; postcards landscape or portrait. The product card's aspect ratio must tolerate letterboxing gracefully for the non-square ones.
+### Why the grid still won't read as a set until Gelato is fixed — two root causes
+1. **Two mockup-background families.** Art prints & posters render as a **sheet on light grey**; framed/mug/tote/tank/bottle render on **white**. Side by side, grey-sheet + white-product never cohere.
+2. **The artwork's own background leaks through.** Proven 2026-06-29 with two posters: *Neko — Pink* (line-art on **white**) reads as a small airy sheet; *Neko Paw — Pink* (full-bleed **teal**) reads as a solid colour block — **same template, same 2048² size, different art background.** Not an A4/A3 issue, not a site issue.
 
-### The standing decision needed
-Paper goods are currently inconsistent: postcards show full-bleed art, greeting cards show a card with a margin, art prints show paper. **Pick one presentation rule for "flat art" products** so the grid reads as a set. This is a Gelato-template choice, logged here once made.
+### The Gelato standardisation needed (Sebastian's templates)
+- **Standardise every mockup to ONE background** (recommend a warm white / `--c-parchment`). This is the single highest-leverage fix — it makes the grid cohere no matter the artwork.
+- **White-on-white products** (tank top, water bottle): the white garment/bottle on white vanishes. Needs either a faint mockup backdrop tint or a hairline in the card.
+- **Pick one "flat art" presentation:** postcards bleed full, greeting cards show a white margin, art prints show paper, posters show a grey sheet. One rule.
+- **Greeting cards** arrive at ~half resolution — softer than everything else; re-render larger if possible.
 
 ---
 
