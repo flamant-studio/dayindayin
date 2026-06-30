@@ -30,8 +30,9 @@
 - **SYS-05 started:** built an inventory script (off-scale margin/padding/gap vs `--sp-*` scale) — 121 violations across 33 of 56 stylesheets. Fixed the 4 highest-impact files: `commissions` (20/20), home `page.module.css` (7/7), `blog/[slug]` (7/8), `shop/[handle]` PDP (6/6) — 56 total. Method: nearest-token snap, ties round down, skip negative/sub-4px `*-top` values (those are baseline corrections, not spacing violations). Build + screenshot-verified per file, no regressions.
 - Installed Playwright's Chromium binary (`npx playwright install chromium`) — `scripts/screenshot.ts` existed but the browser wasn't downloaded, so it had never actually been run.
 
+**SYS-05 finished (`401f1e9`):** remaining 65 declarations across 24 files fixed (same method). Mid-sweep found the original inventory regex missed single-line CSS rules (`.grid { ...; gap: 1.25rem; }`) — re-scanned the whole project with a corrected regex before calling it done; confirmed zero unintentional off-scale spacing remains. 11 declarations intentionally left as literals (baseline/optical corrections, hairline grid-border technique, one dead-code file) — documented in ISSUES.md SYS-05.
+
 **Next:**
-- SYS-05 remaining: 65 declarations across 28 files (full list in ISSUES.md SYS-05) — `practical`, `shop/collections/[handle]`, `CartDrawer`, `about`, `fine-art`, `legal`, `archive`, `art-journal`, `not-found`, `shop`, `CookieBanner`, + 17 smaller files. Same method, per-file build+screenshot.
 - SYS-10 follow-up: the unconfirmed image-loading observation (67/104 images not completing on local `next start`, requested at `w=3840`) — check against the live URL before treating as real.
 - Open product question for Sebastian: `/fine-art` is still a ~74k px single-column scroll of 89 works — paginate, cap-per-category, or accept as a long archive?
 - Gelato (Sebastian's templates): standardise all mockup backgrounds to one warm white; fix white-on-white products (tank top, water bottle); pick one flat-art presentation rule.
