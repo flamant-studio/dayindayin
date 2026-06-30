@@ -267,7 +267,7 @@
 .gelatoLine {
   font-size: var(--text-xs);
   color: var(--c-muted);
-  padding-left: 14px;
+  padding-left: var(--sp-3);
 }
 
 .gelatoLine a {
@@ -305,7 +305,7 @@
 .formatChip {
   font-size: var(--text-xs);
   font-weight: 500;
-  padding: 0.25rem 0.625rem;
+  padding: var(--sp-1) var(--sp-2);
   border: 1px solid var(--c-border);
   color: var(--c-muted);
   transition: border-color var(--t-fast), color var(--t-fast);
@@ -587,7 +587,7 @@
   display: block;
   font-size: var(--text-xs);
   color: var(--c-muted);
-  margin-top: 2px;
+  margin-top: var(--sp-1);
 }
 
 @media (max-width: 768px) {
@@ -669,7 +669,7 @@
 .specItem {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
 }
 
 .specLabel {
@@ -700,7 +700,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.2rem 0.5rem;
+  padding: var(--sp-1) var(--sp-2);
   background: var(--c-accent-light);
   color: var(--c-accent);
   border-radius: 2px;

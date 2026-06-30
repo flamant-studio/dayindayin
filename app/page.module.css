@@ -75,7 +75,7 @@
 .heroCtas {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: var(--sp-4);
   flex-wrap: wrap;
 }
 
@@ -114,7 +114,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.25rem;
+  margin-top: var(--sp-4);
 }
 
 .heroTrustDot {
@@ -170,7 +170,7 @@
 .productGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  gap: var(--sp-2);
 }
 
 .card {
@@ -243,7 +243,7 @@
   text-transform: uppercase;
   background: var(--c-accent);
   color: #fff;
-  padding: 2px 6px;
+  padding: var(--sp-1);
   pointer-events: none;
   z-index: 1;
 }
@@ -252,7 +252,7 @@
   padding: var(--sp-3) var(--sp-3) var(--sp-4);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
 }
 
 .cardTitle {
@@ -404,7 +404,7 @@
 .collectionInfo {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
 }
 
 .collectionLabel {
@@ -624,7 +624,7 @@
 .seriesCardInfo {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
 }
 
 .seriesCardLabel {
