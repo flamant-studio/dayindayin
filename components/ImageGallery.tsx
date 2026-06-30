@@ -1,7 +1,7 @@
 'use client'
-import { useState } from 'react'
 import Image from 'next/image'
 import ImageLightbox from './ImageLightbox'
+import { useLightbox } from './useLightbox'
 import { useProduct } from '@/contexts/ProductContext'
 import styles from './ImageGallery.module.css'
 
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function ImageGallery({ images, colorwaySiblings, objectFit = 'cover' }: Props) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const { index: lightboxIndex, open: openAt, close: closeLightbox, prev, next } = useLightbox(images.length)
   const { selectedImage } = useProduct()
 
   const baseMain = images[0]
@@ -27,22 +27,6 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
     ? { url: selectedImage, alt: baseMain?.alt ?? '' }
     : baseMain
   const thumbImages = images.slice(1)
-
-  function openAt(index: number) {
-    setLightboxIndex(index)
-  }
-
-  function closeLightbox() {
-    setLightboxIndex(null)
-  }
-
-  function prev() {
-    setLightboxIndex((i) => (i === null ? 0 : (i - 1 + images.length) % images.length))
-  }
-
-  function next() {
-    setLightboxIndex((i) => (i === null ? 0 : (i + 1) % images.length))
-  }
 
   const mainAspectRatio = mainImage?.width && mainImage?.height
     ? `${mainImage.width}/${mainImage.height}`

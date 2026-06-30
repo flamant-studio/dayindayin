@@ -153,8 +153,8 @@ The "small label + H2 + optional subtitle + optional 'view all →'" pattern. **
 
 That's it. Five hand-built heroes collapse into these two.
 
-### Galleries — one 🔧
-Currently two separate components (`ImageGallery` for shop, `WorksGallery` for art). Merge into **one** configurable gallery: main image + thumbnails + lightbox, with a "flat grid" mode for artworks. Lightbox: full-screen, `contain`, keyboard ← → Esc, focus ring in `--c-accent`.
+### Galleries — two, by design ✅ (reviewed 2026-06-29)
+`ImageGallery` (shop PDP: hero + thumbnails, wired to product-variant switching + colorway siblings) and `WorksGallery` (works: editorial mosaic) are **kept separate on purpose** — they're different layouts with different data coupling, and merging them would mean a flag-heavy component (that's the mess, not the fix). The genuinely shared parts ARE extracted: **`ImageLightbox`** (the overlay) and **`useLightbox`** (the open/prev/next controller hook). Lightbox spec: full-screen, `contain`, keyboard ← → Esc, focus ring in `--c-accent`.
 
 ### Breadcrumb — one 🔧
 One component, **always at the top** of detail pages (today it's top on shop, bottom on artwork — pick top). Format: Section / Subcategory / Current. `--text-sm`, `--c-muted`.
