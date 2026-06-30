@@ -66,9 +66,12 @@
 **Status:** 🔴 OPEN · **Priority: P0** · Liebes Panopticon still on homepage "From the studio" (`home-desktop.png`); fine-art top not re-checked (page broken, see SYS-10).
 
 ### SYS-10: `/fine-art` page renders at ~115,000px tall — production bug
-**What:** Found during this verification pass (2026-06-30), not previously logged. `npx tsx scripts/screenshot.ts` against the live URL captured `/fine-art` at **114,962px** (desktop) / **39,007px** (mobile) full-page height — every other page is 1,700–11,000px. There's a large blank `--c-surface`-coloured void mid-page (confirmed by cropping the screenshot), consistent with an unconstrained image or a runaway grid/row count, not a rendering-tool artifact.
-**Where:** `app/fine-art/page.tsx` (89 `works` entries, three separate `.map()` calls — not investigated further, scope was a status check, not a fix).
-**Status:** 🔴 OPEN · **Priority: P0 — highest, this is a live bug not a polish item.** Proof: `screenshots/design-system-2026-06-30/fine-art-desktop.png` (114,962px), `fine-art-mobile.png` (39,007px).
+**What:** Found 2026-06-30 generating proof screenshots: `/fine-art` was **114,962px** (desktop) / **39,007px** (mobile) — every other page is 1,700–11,000px.
+**Root cause (git-bisected to `e76af4f`, 2026-06-28):** "single-column editorial" change set `.grid` to `repeat(1, minmax(0,1fr))` at all breakpoints with no width cap. Each `ArtworkCard` (aspect-ratio 3:4) rendered near the full 1200px page width → ~1467px tall × 89 works. The "blank void" seen mid-page in the original screenshot was just an unloaded lazy image that far down the page, not a second bug.
+**Fix (`947951f`):** capped `.grid` to `--w-prose` (700px, the existing design-system token for single-column reading) instead of full page width. Keeps the explicit "single-column, not 2-up" decision (this issue) intact.
+**Status:** 🟡 CLAIMED (2026-06-30) · Verified against the live URL: **73,688px** desktop (−36%), mobile unchanged (was already narrow). Proof: `screenshots/sys10-live-verify/fine-art-desktop.png`.
+**Open product question (not a bug, needs Sebastian):** even fixed, the page is still ~74k px — 89 unpaginated works in one column is long by design. Worth deciding: paginate, cap-per-category with "view all," or accept it as a long scroll archive.
+**Side observation, unconfirmed:** while verifying locally, 67 of ~104 images on the page hadn't finished loading after a full programmatic scroll-through + waits, requested at an unusually large `w=3840`. Could be a `next start` local-server transcoding bottleneck (not representative of the Vercel CDN), or a real `sizes` mismatch on `ArtworkCard` now that its container is 700px not 33vw. Not verified against the live URL — flagging, not claiming.
 
 ---
 
