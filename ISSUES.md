@@ -1,106 +1,128 @@
-# DayInDayIn — Open Issues & Design Backlog
-*Last updated: 2026-06-20 — Logged from Sebastian's direct feedback*
+# DayInDayIn — Issues Board
+*Curated + prioritized 2026-06-21 from Sebastian's testing session. The single source of truth for what's broken and what's next.*
+*Reconciled 2026-06-30: this file sat uncommitted for 9 days while the P0 component system (Button, Breadcrumb, SectionHeading, ProductCard, ArtworkCard, EditorialCard, SeriesCard, useLightbox) was built and shipped (commits `aad2575`…`68a4668`). Statuses below updated against fresh screenshots (`screenshots/design-system-2026-06-30/`) taken against the live URL. A new P0 bug (SYS-10) was found during this pass.*
+
+## How this file works (READ FIRST, every session)
+
+**Status model — only these five. The distinction is the whole point:**
+- 🔴 OPEN — not started
+- 🔵 IN PROGRESS — being worked now
+- 🟡 CLAIMED — Claude believes it's done. **This is NOT closed.** Requires a mobile + desktop screenshot against the live URL attached in the Proof column.
+- ✅ VERIFIED — **Only Sebastian sets this**, after looking. Claude may never write ✅.
+- ⏸ BLOCKED — needs data, asset, or a Sebastian decision (noted).
+
+**Rules:**
+1. Read this file before generating any task list. Every task must close or progress a numbered issue. No freelancing.
+2. Nothing reaches 🟡 without a screenshot link. No screenshot = not done.
+3. Claude never writes ✅. It moves things to 🟡 and stops.
+4. Work P0 before P1 before P2. A P1 polish on a page whose P0 system isn't built is wasted.
+5. One issue per commit where possible. Reference the ISS- id in the commit message.
+
+**Honesty note (2026-06-21):** prior "✅ FIXED" claims were Claude-set and several are still broken in Sebastian's testing. All such items reset to 🟡 CLAIMED or 🔴 OPEN below. Self-certification is over.
 
 ---
 
-## CRITICAL — Not yet addressed
+# P0 — SYSTEMIC FOUNDATION (build these first; ~25 of the 40 complaints collapse once these exist)
 
-### ISS-01: Product variant selectors missing on PDPs
-**What:** Size variants (A4/A3/A2) and frame options not showing as selectable on product detail pages. User cannot choose size/frame before adding to cart.
-**Root cause (2026-06-20):** ALL Shopify products have only 1 "Default Title" variant. Gelato synced products to Shopify with single variants only — the multi-size/frame matrix never appeared in Shopify. Gelato API confirms products have `productVariantOptions` (e.g. A4/A3/A2/A1 × frame colors) but only 1 variant was pushed. This is a data infrastructure issue, NOT a front-end bug. Additionally, the `parseFramed()` regex had a bug: it expected `/` separator but Gelato uses ` - ` in variant titles.
-**Where:** `components/ProductOptions.tsx` + data layer
-**What was done (2026-06-20):**
-- Fixed `parseFramed()` to handle actual Gelato title format (` - White frame` not `/ White frame`)
-- Replaced misleading interactive chip UI with plain informational text: "Available sizes XS · S · M · L · XL · 2XL — Choose at checkout"
-- Framed prints: "Sizes A4 · A3 · A2 · A1  ·  Frames White · Wood · Black"
-- Art prints: "Available sizes A4 · A3 · A2"
-- Mugs: "Available in White · Black · Side A · Side B"
-- Tank tops: "Available sizes XS · S · M · L · XL · 2XL"
-- Sebastian confirmed: previous chip UI looked interactive but wasn't (ISS-01 screenshot). New text UI is clearly informational.
-**Status:** ⚠️ PARTIAL FIX — UX correct (plain text, not misleading buttons). Real fix requires data migration: Shopify products need proper variant matrices. Requires Gelato pricing data before migration can run safely.
+### SYS-01: Mobile-first, not desktop-first
+**What:** Whole site feels built for desktop then squeezed to mobile. Sebastian's rule: the phone is where discovery happens — design there first, scale up.
+**Scope:** Every component below is built/reviewed at 390px first, then desktop.
+**Status:** 🔴 OPEN · **Priority: P0 (governs all others)**
 
-### ISS-02: Product card info area should be white
-**What:** The text section below each product card image (title, type label, price) uses the same chalk/beige as the page background. Cards need a WHITE (#FFFFFF) background on the info section so they visually "pop" and feel like cards, not flat blocks.
-**Where:** `app/page.module.css` (.cardInfo), `app/shop/page.module.css` (.cardInfo), all PLP components
-**Status:** ✅ FIXED (2026-06-20) — `.card { background: #fff }` with subtle shadow in both homepage and shop page CSS
+### SYS-02: Playwright actually installed + screenshot script
+**What:** There is NO Playwright in this repo (no config, no tests). "I tested it" has been unprovable. Install Playwright; add a script that screenshots any URL at 390px and 1280px and saves to a folder.
+**Why:** Until proof is mechanically possible, every 🟡 is just a claim.
+**Status:** 🟡 CLAIMED (2026-06-30) · `playwright.config.ts` + `scripts/screenshot.ts` exist, mobile (390) + desktop (1280) viewports, 7 pages. Browsers weren't installed (`npx playwright install chromium`) — fixed and run successfully this pass. Proof: `screenshots/design-system-2026-06-30/`.
 
-### ISS-03: Framed print cards cropped badly on PLP
-**What:** Framed print mockup images show only top+bottom frame bars in the card — the artwork is barely visible. The objectFit:contain approach puts the tall framed-print mockup into a square card area, resulting in huge black bars.
-**Where:** Product card image rendering. Needs a taller aspect ratio for framed print cards, OR crop to show artwork area only, OR objectFit:cover with centre focus
-**Status:** ✅ FIXED (2026-06-21) — `cardImgMockup` now forces `aspect-ratio: 1/1` overriding the default 4/5 container. Gelato mockup images are square; they now fill the card fully with no whitespace strips. Artwork clearly visible.
+### SYS-03: ONE Button component
+**What:** There are duplicate buttons (`AddToCartButton` + `QuickAddButton`, separate CSS). This is literally why "add-to-cart is all over the place." Consolidate to one `Button` + one `AddToCart` wired to design tokens. Delete duplicates.
+**Spec from Sebastian:** add-to-cart sits at the BOTTOM of each card; text-link or very-light-border style; NOT the heavy grey-red fill. Resolve the "is it add to cart or view product?" ambiguity — one clear label.
+**Status:** 🟡 CLAIMED (2026-06-30) · `components/Button.tsx` built; CTAs across home/shop now read one consistent style (proof: `home-desktop.png`, `shop-mobile.png`). Card CTA resolved to always "View product" (see SYS-04). Cleanup gap: `QuickAddButton.tsx` is dead code (zero references) but file not deleted.
 
-### ISS-04: Sticky add-to-cart bar — wrong colors
-**What:** The sticky "Add to cart — 418 kr" bar at the bottom of PDPs uses a dark navy/almost-black background. Should be terracotta (#C4694F) to match the main CTA button color, or at minimum chalk background with slate text.
-**Where:** `components/StickyATC.module.css` (.btn)
-**Status:** ✅ FIXED (2026-06-20) — `.btn { background: var(--c-accent) }` (terracotta)
+### SYS-04: ONE ProductCard component + strict padding
+**What:** "Product cards all over the place, no design SYSTEM, no strict padding." One ProductCard, fixed padding/spacing tokens, used everywhere. Fix once → fixed everywhere.
+**Status:** 🟡 CLAIMED (2026-06-30) · `components/ProductCard.tsx`, one 4:5 `contain` box, white background, CTA always "View product →". Proof: `shop-mobile.png`, `home-desktop.png` — uniform grid.
 
-### ISS-05: Recently viewed carousel — beige strips on card images
-**What:** Recently viewed product cards show beige strips above and below the product image (objectFit:contain with page background showing through). Image background should be white (#FFFFFF).
-**Where:** `components/RecentlyViewed.module.css` — .imgWrap background-color should be white
-**Status:** ✅ FIXED (2026-06-20) — `.imgWrap { background: #fff }` and `.imgPlaceholder { background: #f5f4f2 }`
+### SYS-05: Vertical rhythm / spacing system
+**What:** Whitespace complaints are everywhere and are all one problem — no enforced spacing scale. Symptoms: full-screen bullet sections, huge gaps between PDP sections, excess space below breadcrumbs, orphan "kr." on its own line, commissions section gaps.
+**Fix:** One spacing scale, applied to section padding + component gaps. Kill ad-hoc margins.
+**Status:** 🔴 OPEN · **Priority: P0** · Spacing tokens exist in `DESIGN_SYSTEM.md` (`--sp-*`) but the sweep applying them across ~49 stylesheets has not run yet — explicitly next in `LOG.md` 2026-06-30.
 
-### ISS-06: Unique Art PDPs need full redesign
-**What:** Works at /works/[slug] (e.g. /works/candy-I) use same visual weight as Gelato product PDPs. They need to be visuals-first, immersive, showing MULTIPLE photos of the same piece. Must search Dropbox for all photos of each artwork.
-**Where:** `app/works/[slug]/page.tsx` — needs distinct template
-**Priority:** High — these are Stine's originals, they drive commissions
-**What was done (2026-06-20):**
-- Redesigned template: full-bleed hero (78vh) replaces 60/40 grid
-- Category label + title + year overlaid at hero bottom-left; breadcrumb at top-left
-- Info section: description/note/share left, sticky enquiry CTA + meta table right
-- Gallery section "Studio views" if `work.gallery` exists; first photo spans full width
-- Uploaded 5 Candy I studio photos from Dropbox → Vercel Blob → `lib/data.ts` gallery array
-- Template distinct from Gelato PDPs: no specs row, no add-to-cart, editorial tone
-**Status:** ✅ FIXED (2026-06-20)
+### SYS-06: ONE footer
+**What:** "How many footers are there?" Multiple footer blocks make the page feel endless. Consolidate to ONE footer with all info.
+**Status:** 🟡 CLAIMED (2026-06-30) · One footer block confirmed on homepage (proof: `home-desktop.png`, bottom).
 
-### ISS-07: Homepage — information hierarchy and section separation
-**What:** The homepage has unclear visual hierarchy. Sections don't clearly signal what belongs together. Headline hierarchy is inconsistent. Spacing doesn't create clear section breaks. Principle: "most important info first" — needs audit and restructure.
-**Where:** `app/page.tsx` + `app/page.module.css`
-**What was done (2026-06-20):**
-- Moved "One of a kind / Art for every wall" to position 2 (right after hero) — immediately answers "what is this?"
-- Moved Candy I editorial to position 3 — story/emotion before commerce
-- Series strip now position 4 with border-top + proper top padding (was only var(--sp-2))
-- "In the shop" product grid now position 5 — discovery after context (renamed from "Latest Work", trimmed to 8 products)
-- Artist strip, blog, newsletter, lifestyle strip remain in order at bottom
-**Status:** ✅ FIXED (2026-06-20)
+### SYS-07: Section background system
+**What:** PDP shows "beige → white edge-to-edge → beige again" banding. Define when a section is chalk vs white vs surface, and apply consistently. No random bands.
+**Status:** 🟡 CLAIMED (2026-06-30) · Tokens defined in `DESIGN_SYSTEM.md` (`--c-bg`/`--c-white`/`--c-surface`/`--c-parchment`) with usage rules. Original PDP-specific banding complaint not re-verified — PDP screenshot looks clean (`pdp-desktop.png`) but worth a direct second look.
 
-### ISS-08: Homepage video hero
-**What:** A video (looping, muted, autoplay) was discussed for the hero section. Currently uses a static lifestyle photo. Need to source/create a short loop of Stine's studio/work process.
-**Where:** `app/page.tsx` hero section
-**Note:** Requires video asset — Sebastian to provide or source
-**What was done (2026-06-21):**
-- Found `Loop_detail_relate_swf22.MOV` in `_KUNST/Studio/Art projects/` — 2.9s H.264 tufting loop detail
-- Compressed 7.2MB → 603KB via ffmpeg (crf 28, 1280×960, no audio)
-- Uploaded to Vercel Blob at `video/hero-loop.mp4`
-- Replaced `<Image>` with `<video autoPlay muted loop playsInline poster={ls-01.jpg}>`
-- CSS: `.heroBgVideo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover }`
-**Status:** ✅ FIXED (2026-06-21)
+### SYS-08: Dual-template split (portfolio vs shop) made structural
+**What:** This is a portfolio AND a print shop — they need DIFFERENT PLP and PDP templates, and Claude keeps missing it because nothing in code forces the split. Create explicitly named: `ShopCard`/`FineArtCard`, `ShopPDP`/`FineArtPDP`. Document in DESIGN_SYSTEM.md.
+**Fine-art rules (lock in the component, not a brief):** single-column PLP (not 2-up), ALL photography at top of PDP, CTA = "Pricing & availability" (not "Discover this work").
+**Status:** 🔴 OPEN (partial) · **Priority: P0** · `ArtworkCard`/`EditorialCard`/`SeriesCard` exist as separate components from `ProductCard`, but the explicit fine-art PDP rules (single-column, photography-top, CTA rename) are unverified — blocked by SYS-10 below, the `/fine-art` page is currently broken and couldn't be inspected past the fold.
 
-### ISS-09: Design system — no reference document exists
-**What:** No design system MD file or Canva visual system exists. Needed: typography scale, color palette + usage rules, UX iconography, page templates, section templates, atoms/sub-elements, spacing rules, margin/padding system, reusable artefacts.
-**Where:** Create `DESIGN_SYSTEM.md` in project root + Canva visual
-**Status:** Open (DESIGN_SYSTEM.md created — see below)
+### SYS-09: Asset-reuse guard
+**What:** "Liebes Panopticon" image reused twice on home AND again on fine-art top. With a huge archive, no image should repeat across hero slots. Add a check / curated hero-image map.
+**Status:** 🔴 OPEN · **Priority: P0** · Liebes Panopticon still on homepage "From the studio" (`home-desktop.png`); fine-art top not re-checked (page broken, see SYS-10).
+
+### SYS-10: `/fine-art` page renders at ~115,000px tall — production bug
+**What:** Found during this verification pass (2026-06-30), not previously logged. `npx tsx scripts/screenshot.ts` against the live URL captured `/fine-art` at **114,962px** (desktop) / **39,007px** (mobile) full-page height — every other page is 1,700–11,000px. There's a large blank `--c-surface`-coloured void mid-page (confirmed by cropping the screenshot), consistent with an unconstrained image or a runaway grid/row count, not a rendering-tool artifact.
+**Where:** `app/fine-art/page.tsx` (89 `works` entries, three separate `.map()` calls — not investigated further, scope was a status check, not a fix).
+**Status:** 🔴 OPEN · **Priority: P0 — highest, this is a live bug not a polish item.** Proof: `screenshots/design-system-2026-06-30/fine-art-desktop.png` (114,962px), `fine-art-mobile.png` (39,007px).
 
 ---
 
-## DONE in Loops 4–5
+# P1 — PAGE ISSUES (after the relevant SYS- exists)
 
-- ✅ objectFit:contain for artwork images (SavedContent, RecentlyViewed, ImageGallery)
-- ✅ Format siblings cross-sell on PDPs
-- ✅ Specs row always visible on multi-variant products (material/finish, not size)
-- ✅ Footer product type links (Wood Prints, Water Bottles added)
-- ✅ Pricing accuracy (postcards 56 kr min, mugs corrected to 89 kr)
-- ✅ Series card subtitles updated to Stine's voice
-- ✅ About page 2026 milestone updated
-- ✅ Blog shopCta algorithm fixed (occurrence-count, Sommerby keyword added)
-- ✅ Blog post image updated (Sommerby → blue-branch.jpg)
+### Homepage
+- ISS-H1 🔴 Browse-by-series: remove Sommerby; place SHERO image correctly or swap for a better SHERO image.
+- ISS-H2 🔴 Remove "see all products in the shop" (bottom).
+- ISS-H3 🔴 Remove go-up arrow (`BackToTopButton`/`ScrollToTop` — also a duplicate-component cleanup).
+- ISS-H4 🔴 Hero body needs something better (copy — see COPY).
+
+### Gelato PDP
+- ISS-P1 🔴 **Bug:** sticky add-to-cart appears/disappears randomly. (Below-junior-level — fix the trigger logic.)
+- ISS-P2 🔴 **Bug:** image zoom is useless — zoomed images smaller than the originals; arrows eat the viewport. Rework or remove.
+- ISS-P3 🔴 **Bug:** breadcrumb rendering directly below the main image. Remove/relocate.
+- ISS-P4 🔴 "Also in this series" — move down the page.
+- ISS-P5 🔴 Remove "Work by Stine Weirsøe Flamant" block.
+- ISS-P6 🔴 "More from [series]" + Recently Viewed → use carousels; kill the big gap between the two sections.
+- ISS-P7 🔴 Postcard subtitle should read "(pack of 10)".
+
+### Cart
+- ISS-C1 🔴 Remove "taxes and shipping calculated at checkout" — taxes are included for EU. Just delete the line.
+- ISS-C2 🔴 Add payment-method logos and/or security reassurance messaging.
+
+### Fine-art page / PDP
+- ISS-F1 🔴 "New to the archive" — unclear meaning; reword or remove.
+- ISS-F2 🔴 Remove "office shot".
+- ISS-F3 🔴 "Looking for prints?" (bottom) — reduce whitespace below; fix orphan "kr." line (→ SYS-05).
+
+### Commissions
+- ISS-CM1 🔴 Add lifestyle / behind-the-scenes imagery.
+- ISS-CM2 🔴 Fix vertical whitespace between sections (→ SYS-05).
 
 ---
 
-## METHODOLOGY RULES (from Sebastian, 2026-06-20)
+# P2 — COPY CULL (one pass, one rule: say the true thing, cut the rest)
 
-1. Read this file at the start of every session before generating task lists
-2. Every autonomous task must close or progress a numbered issue above
-3. Don't audit pages that have no open issue — that's busywork
-4. Validate by reading code, not just Playwright screenshots
-5. Deploy → Playwright audit → close issue or create new one if found
-6. Build reference files (design system, issues log) before executing
+Sebastian's flagged filler, all to cut or rewrite hard:
+- Home "From the studio" — cut to the core.
+- Shop "You keep coming back…" — remove for now.
+- Shop — 3 bullet points at bottom take a full screen — cut down hard.
+- Fine-art "Want something that exists only once?" — cut.
+- Commissions — "reduce bullshit", watch for "horeunger" (typo/placeholder leak).
+- General: "seriously, seriously: reduce bullshit." Every section earns its words or dies.
+
+Status: 🔴 OPEN · one COPY pass after P0 layout settles.
+
+---
+
+# Carried over (verify or reopen)
+ISS-01 (variant selectors) ⏸ BLOCKED — real fix needs Shopify variant-matrix migration + Gelato pricing. Current state = informational text only.
+ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — previously self-marked ✅; **reset to 🟡 CLAIMED pending Sebastian verification** (several contradicted by 2026-06-21 testing). Re-verify against SYS- work; do not trust the old ✅.
+
+---
+
+## Quality verdict on file (2026-06-21, honest)
+Current site ≈ 60%. The gap is foundational (no enforced system, duplicate components, desktop-first), not polish. Once P0 (SYS-01…09) is real, most P1/P2 items collapse and quality jumps *and stays* jumped. This is fixable scaffolding, not a rebuild.
