@@ -1,7 +1,5 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import { getProductsByTitleKeyword } from '@/lib/shopify/products'
-import CollectionSlideshow from '@/components/CollectionSlideshow'
+import SeriesCard from '@/components/SeriesCard'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 
@@ -68,42 +66,6 @@ const FINE_ART_COLLECTIONS = [
 
 type SlideImage = { url: string; alt: string }
 
-function SeriesCard({ title, description, tag, accent, images, count }: {
-  title: string; description: string; tag: string; accent: string; images: SlideImage[]; count: number
-}) {
-  return (
-    <Link href={`/shop?filter=${tag}`} className={styles.card} style={{ borderLeft: `3px solid ${accent}` }}>
-      <CollectionSlideshow images={images} />
-      <div className={styles.cardBody}>
-        <div className={styles.cardText}>
-          <h2 className={styles.cardTitle}>{title}</h2>
-          {count > 0 && <p className={styles.cardCount}>{count} product{count !== 1 ? 's' : ''}</p>}
-          <p className={styles.cardDesc}>{description}</p>
-          <span className={styles.cardCta}>View products →</span>
-        </div>
-      </div>
-    </Link>
-  )
-}
-
-function FineArtCard({ title, description, href, accent, image, label }: { title: string; description: string; href: string; accent: string; image: string; label: string }) {
-  return (
-    <Link href={href} className={styles.card} style={{ borderLeft: `3px solid ${accent}` }}>
-      <div className={styles.fineArtImg}>
-        <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
-      </div>
-      <div className={styles.cardBody}>
-        <div className={styles.cardText}>
-          <h2 className={styles.cardTitle}>{title}</h2>
-          <p className={styles.cardCount}>{label}</p>
-          <p className={styles.cardDesc}>{description}</p>
-          <span className={styles.cardCta}>See originals →</span>
-        </div>
-      </div>
-    </Link>
-  )
-}
-
 // Keyword used for title search per series
 const SERIES_KEYWORDS: Record<string, string> = {
   shero: 'shero', neko: 'neko', 'sea-monsters': 'Sea Monsters',
@@ -166,7 +128,16 @@ export default async function CollectionsPage() {
       </div>
       <div className={styles.grid}>
         {seriesData.map((c) => (
-          <SeriesCard key={c.tag} {...c} />
+          <SeriesCard
+            key={c.tag}
+            href={`/shop?filter=${c.tag}`}
+            accent={c.accent}
+            title={c.title}
+            subLabel={c.count > 0 ? `${c.count} product${c.count !== 1 ? 's' : ''}` : undefined}
+            description={c.description}
+            cta="View products →"
+            slides={c.images}
+          />
         ))}
       </div>
 
@@ -177,9 +148,19 @@ export default async function CollectionsPage() {
         </p>
         <div className={styles.fineArtGrid}>
           {FINE_ART_COLLECTIONS.map((c) => (
-            <FineArtCard key={c.href} {...c} />
+            <SeriesCard
+              key={c.href}
+              href={c.href}
+              accent={c.accent}
+              title={c.title}
+              subLabel={c.label}
+              description={c.description}
+              cta="See originals →"
+              image={c.image}
+            />
           ))}
         </div>
+
       </div>
     </div>
     </>

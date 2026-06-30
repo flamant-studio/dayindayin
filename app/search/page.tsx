@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { getAllProducts, formatPrice, categoryLabel } from '@/lib/shopify/products'
-import { displayTitle } from '@/lib/display'
+import { getAllProducts } from '@/lib/shopify/products'
 import { works } from '@/lib/data'
+import ProductCard from '@/components/ProductCard'
+import ArtworkCard from '@/components/ArtworkCard'
 import styles from './page.module.css'
 import shopStyles from '../shop/page.module.css'
 
@@ -96,22 +96,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           {workResults.length > 0 && <p className={styles.suggestionsLabel} style={{ padding: 'var(--sp-4) var(--sp-6) 0' }}>Prints ({results.length})</p>}
           <div className={shopStyles.grid}>
             {results.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={shopStyles.card}>
-                <div className={shopStyles.cardImg}>
-                  <Image
-                    src={p.firstImage!.url}
-                    alt={p.firstImage!.altText ?? p.title}
-                    fill
-                    sizes="(max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw"
-                    className={shopStyles.cardImgEl}
-                  />
-                </div>
-                <div className={shopStyles.cardInfo}>
-                  <span className={shopStyles.cardTitle}>{displayTitle(p.title)}</span>
-                  <span className={shopStyles.cardType}>{categoryLabel(p)}</span>
-                  <span className={shopStyles.cardPrice}>{formatPrice(p.minPrice.amount)}</span>
-                </div>
-              </Link>
+              <ProductCard key={p.id} product={p} />
             ))}
           </div>
         </>
@@ -124,22 +109,11 @@ export default async function SearchPage({ searchParams }: PageProps) {
           </p>
           <div className={shopStyles.grid}>
             {workResults.map((w) => (
-              <Link key={w.slug} href={`/works/${w.slug}`} className={shopStyles.card}>
-                <div className={shopStyles.cardImg}>
-                  <Image
-                    src={w.image}
-                    alt={w.title}
-                    fill
-                    sizes="(max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw"
-                    className={shopStyles.cardImgEl}
-                  />
-                </div>
-                <div className={shopStyles.cardInfo}>
-                  <span className={shopStyles.cardTitle}>{w.title}</span>
-                  <span className={shopStyles.cardType}>{w.category.charAt(0).toUpperCase() + w.category.slice(1)} · {w.year}</span>
-                  <span className={shopStyles.cardPrice}>Original — enquire</span>
-                </div>
-              </Link>
+              <ArtworkCard
+                key={w.slug}
+                work={w}
+                metaLabel={`${w.category.charAt(0).toUpperCase() + w.category.slice(1)} · ${w.year}`}
+              />
             ))}
           </div>
         </>
