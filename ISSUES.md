@@ -46,7 +46,8 @@
 ### SYS-05: Vertical rhythm / spacing system
 **What:** Whitespace complaints are everywhere and are all one problem — no enforced spacing scale. Symptoms: full-screen bullet sections, huge gaps between PDP sections, excess space below breadcrumbs, orphan "kr." on its own line, commissions section gaps.
 **Fix:** One spacing scale, applied to section padding + component gaps. Kill ad-hoc margins.
-**Status:** 🔴 OPEN · **Priority: P0** · Spacing tokens exist in `DESIGN_SYSTEM.md` (`--sp-*`) but the sweep applying them across ~49 stylesheets has not run yet — explicitly next in `LOG.md` 2026-06-30.
+**Status:** 🟡 CLAIMED, partial (2026-06-30) · 56 off-scale `(margin|padding|gap)` declarations fixed across the 4 highest-impact files — `commissions` (20/20, `ef03cb1`), `app/page.module.css` home (7/7), `app/blog/[slug]` (7/8, one optical nudge left), `app/shop/[handle]` PDP (6/6) (all 3 in `0e44ddc`). Method: nearest `--sp-*` token, ties rounded down; negative/sub-4px values on `*-top` properties left alone as baseline corrections, not spacing violations. Verified per-file: build clean + screenshots against localhost, no layout regressions.
+**Remaining (not done, do not assume fixed):** 65 declarations across 28 files, ordered by count — `practical`(6), `shop/collections/[handle]`(5), `CartDrawer`(5), `about`(4), `fine-art`(4), `legal`(4), `archive`(3), `art-journal`(3), `not-found`(3), `shop`(3), `CookieBanner`(3), plus 17 files with 1-2 each (`shop/loading`, `works/[slug]`, `Footer`, `Nav`, `ProductCard`, `search`, `ArtworkCard`, `CurrencyToggle`, `ImageGallery`, `ShopFilterNav`, `StickyATC`, etc. — full list reproducible via the inventory script noted below). Same method applies; do per-file with a build + screenshot check, not a blind sweep.
 
 ### SYS-06: ONE footer
 **What:** "How many footers are there?" Multiple footer blocks make the page feel endless. Consolidate to ONE footer with all info.
