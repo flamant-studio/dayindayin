@@ -125,7 +125,7 @@
 .processNoteBody {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--sp-4);
 }
 
 .processNoteBody p {
@@ -327,7 +327,7 @@
 .milestoneList {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: var(--sp-4);
 }
 
 .milestone {

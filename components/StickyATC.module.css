@@ -36,7 +36,7 @@
 
 .btn {
   flex-shrink: 0;
-  padding: 0.625rem 1.5rem;
+  padding: var(--sp-2) var(--sp-5);
   background: var(--c-accent);
   color: var(--c-white);
   font-size: var(--text-sm);

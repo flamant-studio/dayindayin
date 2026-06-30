@@ -82,7 +82,7 @@
   color: var(--c-muted);
   opacity: 0.7;
   letter-spacing: 0;
-  margin-left: 3px;
+  margin-left: var(--sp-1);
   vertical-align: middle;
 }
 

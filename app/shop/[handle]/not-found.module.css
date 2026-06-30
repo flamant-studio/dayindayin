@@ -1,6 +1,6 @@
 .page {
   text-align: center;
-  padding: 8rem 2rem;
+  padding: var(--sp-16) 2rem;
   max-width: 480px;
   margin: 0 auto;
 }

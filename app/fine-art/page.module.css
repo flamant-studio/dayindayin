@@ -104,7 +104,7 @@
   background: linear-gradient(to top, rgba(26, 23, 20, 0.65) 0%, transparent 100%);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
   opacity: 0;
   transition: opacity var(--t-base);
 }
@@ -225,7 +225,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 3px 8px;
+  padding: var(--sp-1) var(--sp-2);
   pointer-events: none;
 }
 

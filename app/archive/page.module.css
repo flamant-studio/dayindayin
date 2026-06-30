@@ -41,7 +41,7 @@
 }
 
 .filterBtn {
-  padding: 0.4rem 1rem;
+  padding: var(--sp-2) 1rem;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -65,7 +65,7 @@
 
 /* ── Grid ────────────────────────────────────────────────── */
 
-.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; padding: 2rem 0 5rem; }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-4); padding: 2rem 0 5rem; }
 
 .card { display: block; transition: opacity var(--t-base); }
 .card:hover { opacity: 0.85; }
@@ -75,7 +75,7 @@
   aspect-ratio: 4/5;
   overflow: hidden;
   background: #ffffff;
-  margin-bottom: 0.6rem;
+  margin-bottom: var(--sp-2);
   transition: box-shadow var(--t-base);
 }
 .card:hover .cardImage { box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
@@ -94,7 +94,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 2px 7px;
+  padding: var(--sp-1) var(--sp-2);
   pointer-events: none;
 }
 

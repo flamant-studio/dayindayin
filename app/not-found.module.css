@@ -32,7 +32,7 @@
   font-size: var(--text-sm);
   color: var(--c-muted);
   line-height: 1.7;
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--sp-6);
 }
 
 .searchForm {
@@ -46,7 +46,7 @@
 
 .searchInput {
   flex: 1;
-  padding: 0.65rem 1rem;
+  padding: var(--sp-3) 1rem;
   font-size: 0.85rem;
   border: none;
   outline: none;
@@ -57,7 +57,7 @@
 .searchInput::placeholder { color: var(--c-muted); }
 
 .searchBtn {
-  padding: 0.65rem 1rem;
+  padding: var(--sp-3) 1rem;
   background: var(--c-accent);
   color: #fff;
   font-size: 1rem;

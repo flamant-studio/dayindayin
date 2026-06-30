@@ -212,7 +212,7 @@
   padding: var(--sp-3) var(--sp-4) var(--sp-4);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
 }
 
 .cardTitle {
@@ -244,7 +244,7 @@
   text-transform: uppercase;
   background: rgba(0,0,0,0.52);
   color: rgba(255,255,255,0.95);
-  padding: 2px 6px;
+  padding: var(--sp-1);
   pointer-events: none;
   backdrop-filter: blur(4px);
 }
@@ -259,7 +259,7 @@
   text-transform: uppercase;
   background: var(--c-text);
   color: var(--c-white);
-  padding: 3px 10px 3px 12px;
+  padding: var(--sp-1) var(--sp-2) var(--sp-1) var(--sp-3);
 }
 
 .filterChipClear {

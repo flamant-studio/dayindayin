@@ -23,7 +23,7 @@
   letter-spacing: 0.06em;
   background: rgba(0,0,0,0.48);
   color: rgba(255,255,255,0.92);
-  padding: 4px 9px;
+  padding: var(--sp-1) var(--sp-2);
   pointer-events: none;
   backdrop-filter: blur(4px);
 }
