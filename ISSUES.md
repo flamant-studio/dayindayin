@@ -81,6 +81,8 @@
 
 Sebastian sent 9 screenshots with direct feedback. Investigated each before touching code — root causes below. This queue takes priority over P1 below (his call, said "let's start with these").
 
+**Live-verified 2026-07-01, post-deploy** (initial CLAIMED status below was screenshotted against localhost only, not the live URL as this file's own rule requires — caught when asked directly "have you tested what you shipped in Playwright?"). Re-ran Playwright against `https://dayindayin-site.vercel.app` for all 8 shipped items: commissions status text present ✓, fine-art CTA is only "Discover →" site-wide ✓, shop nav shows "Masks 53"/"Tourism 15" ✓, `/shop` has exactly 1 "Gelato" mention (was 3) ✓, PDP accordion summaries + expanded body confirmed trimmed ✓, mobile filter toggle collapses/expands correctly ✓. Proof: `screenshots/live-verify-*.png`.
+
 ### FB-1: SHERO tote bag looks bigger than the other three on the shop grid
 **What:** In a 4-up grid of tote bags, "SHERO — Indigo" appears zoomed in relative to "Mask — Calling", "Mask — Blasé", "Elephant — Green".
 **Root cause (confirmed):** downloaded and measured all four source images. The three normal ones are 2048×2048 (square). The SHERO tote mockup is **1219×2048** — a different crop ratio entirely. `ProductCard`'s 4:5 `contain` box is working correctly and identically for all four; the SHERO *source photo* is simply framed differently, so `contain` fits it to a different edge and it reads as larger.
