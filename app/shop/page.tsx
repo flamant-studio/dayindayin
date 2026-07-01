@@ -18,17 +18,7 @@ export const metadata = {
   },
 }
 
-const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
-
-const SERIES_DESCRIPTIONS: Record<string, string> = {
-  shero: 'Feminist pop-art in bold textile and print. The SHERO series celebrates strength, resistance, and the power of naming.',
-  neko: 'Cats as symbols — of independence, curiosity, and quiet rebellion. The NEKO series began in 2022 and keeps growing.',
-  'sea-monsters': 'Imaginary creatures from somewhere beneath the surface. The Sea Monsters series plays with fear, beauty, and the unknown.',
-  botanical: 'Plants, growth, and the patient life of natural forms. Observed from the studio and from the edges of roads.',
-  floral: 'Bold, close-up florals that push colour and form to the edge of abstraction.',
-  faces: 'Portraits, masks, and the human face in all its complexity — from Sri Lanka to the Copenhagen streets.',
-  sommerby: 'A Danish summer in paint — long evenings, pale light, the particular peace of a place you return to every year. Stine has been painting Sommerby since 2021.',
-}
+const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'masks', 'tourism']
 
 const FILTER_LABELS: Record<string, string> = {
   'art-print':      'Art Prints',
@@ -46,8 +36,8 @@ const FILTER_LABELS: Record<string, string> = {
   'sea-monsters':   'Sea Monsters',
   'botanical':      'Botanical',
   'floral':         'Floral',
-  'faces':          'Faces',
-  'sommerby':       'Sommerby',
+  'masks':          'Masks',
+  'tourism':        'Tourism',
 }
 
 const SORT_OPTIONS = [
@@ -91,8 +81,8 @@ export default async function ShopPage({ searchParams }: PageProps) {
     'sea-monsters': /sea[\s-]monster/i,
     'botanical':    /botanical/i,
     'floral':       /floral/i,
-    'faces':        /\bfaces?\b/i,
-    'sommerby':     /sommerby/i,
+    'masks':        /\bmasks?\b|\bfaces?\b/i,
+    'tourism':      /\btourism\b/i,
   }
 
   let products = raw.filter((p) => {
@@ -158,10 +148,6 @@ export default async function ShopPage({ searchParams }: PageProps) {
     return `/shop?${params.toString()}`
   }
 
-  // Determine series active state: active when tag matches a series value,
-  // "All series" active when no tag OR tag doesn't match any series
-  const isSeriesFilter = activeTag !== null && SERIES_VALUES.includes(activeTag)
-
   return (
     <div className={styles.page}>
       <FluidTracker collectionHandle={activeTag ?? 'all'} />
@@ -208,12 +194,6 @@ export default async function ShopPage({ searchParams }: PageProps) {
 
       <ShopFilterNav activeTag={activeTag} typeCounts={typeCounts} seriesCounts={seriesCounts} totalCount={allWithImages.length} />
 
-      {isSeriesFilter && activeTag && SERIES_DESCRIPTIONS[activeTag] && (
-        <div className={styles.seriesBanner}>
-          <p className={styles.seriesBannerText}>{SERIES_DESCRIPTIONS[activeTag]}</p>
-        </div>
-      )}
-
       {products.length === 0 ? (
         <div className={styles.empty}>
           <p>{activeTag ? `Nothing in this filter yet — check back soon.` : 'No products yet — check back soon.'}</p>
@@ -235,14 +215,6 @@ export default async function ShopPage({ searchParams }: PageProps) {
           )}
         </>
       )}
-
-      <div className={styles.podStrip}>
-        <span>Printed by Gelato</span>
-        <span className={styles.podDot} aria-hidden="true">·</span>
-        <span>Ships in 3–7 days across Europe</span>
-        <span className={styles.podDot} aria-hidden="true">·</span>
-        <span>Original artwork, made to order</span>
-      </div>
     </div>
   )
 }

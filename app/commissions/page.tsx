@@ -51,8 +51,7 @@ export default function CommissionsPage() {
       <section className={styles.hero}>
         <span className={styles.heroLabel}>Original Work</span>
         <div className={styles.statusBadge}>
-          <span className={styles.statusDot} />
-          Currently accepting commissions for 2026
+          Not currently accepting new commissions
         </div>
         <h1>Commissions</h1>
         <p className={styles.heroSub}>

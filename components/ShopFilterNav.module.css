@@ -24,6 +24,15 @@
   text-align: left;
 }
 
+.mobileToggleIcon {
+  font-size: 10px;
+  transition: transform var(--t-fast);
+}
+
+.mobileToggleIconOpen {
+  transform: rotate(180deg);
+}
+
 /* Filter rows */
 .rows {}
 
@@ -86,11 +95,6 @@
   vertical-align: middle;
 }
 
-.mobileToggleRow {
-  display: none;
-  align-items: center;
-}
-
 .clearFilter {
   font-size: var(--text-xs);
   font-weight: 600;
@@ -103,11 +107,12 @@
 
 .clearFilter:hover { color: var(--c-accent); }
 
-/* Mobile — filters always visible, no toggle */
+/* Mobile — collapsed behind the toggle button by default */
 @media (max-width: 768px) {
-  .mobileToggleRow { display: none; }
+  .mobileToggle { display: flex; }
 
-  .rows { display: block; }
+  .rows { display: none; }
+  .rowsOpen { display: block; }
 
   .subnavRow {
     padding: var(--sp-2) var(--sp-4);

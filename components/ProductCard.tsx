@@ -12,6 +12,16 @@ import WishlistButton from './WishlistButton'
 import styles from './ProductCard.module.css'
 
 /**
+ * Fields ProductCard actually reads — lets callers (e.g. RecentlyViewed,
+ * whose data comes from localStorage rather than a fresh Shopify fetch)
+ * pass a lean object instead of a full NormalizedProduct.
+ */
+export type ProductCardData = Pick<
+  NormalizedProduct,
+  'handle' | 'title' | 'tags' | 'firstImage' | 'priceRangeV2' | 'minPrice'
+>
+
+/**
  * The one product card (Gelato shop items). White interior, image + title +
  * type + price, wishlist + quick-add. See DESIGN_SYSTEM.md › Cards.
  * One 4:5 box for every format; images are fit whole (contain), never
@@ -22,7 +32,7 @@ export default function ProductCard({
   priority = false,
   sizes = '(max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw',
 }: {
-  product: NormalizedProduct
+  product: ProductCardData
   priority?: boolean
   sizes?: string
 }) {

@@ -24,7 +24,8 @@ const SERIES_CARDS = [
   { tag: 'sea-monsters',label: 'Sea Monsters',  sub: 'Creatures from old charts', accent: '#4A7A9B' },
   { tag: 'botanical',   label: 'Botanical',     sub: 'Leaves, roots, natural form', accent: '#5C7A48' },
   { tag: 'floral',      label: 'Floral',        sub: 'Colour at the edge of excess', accent: '#B85C78' },
-  { tag: 'faces',       label: 'Faces',         sub: 'The ones that look back',   accent: '#7A6B8A' },
+  { tag: 'masks',       label: 'Masks',         sub: 'The ones that look back',   accent: '#7A6B8A' },
+  { tag: 'tourism',     label: 'Tourism',       sub: 'Postcards from elsewhere',  accent: '#9B6A3C' },
 ]
 
 export const revalidate = 60
@@ -36,7 +37,8 @@ const SERIES_KEYWORDS: Array<{ tag: string; keyword: string }> = [
   { tag: 'sea-monsters', keyword: 'Sea Monsters' },
   { tag: 'botanical',    keyword: 'Botanical' },
   { tag: 'floral',       keyword: 'Floral' },
-  { tag: 'faces',        keyword: 'Face' },
+  { tag: 'masks',        keyword: 'Mask' },
+  { tag: 'tourism',      keyword: 'Tourism' },
 ]
 
 const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']

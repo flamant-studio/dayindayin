@@ -395,9 +395,7 @@ export default async function ProductPage({ params }: PageProps) {
                 <details className={styles.accordion}>
                   <summary className={styles.accordionSummary}>Shipping &amp; Returns</summary>
                   <div className={styles.accordionBody}>
-                    <p className={styles.accordionText}>Printed on demand by Gelato and shipped directly to you.</p>
-                    <p className={styles.accordionText}>Production: 1–3 business days. Delivery: 2–5 days within EU. <strong>Estimated total: 3–7 days from order.</strong></p>
-                    <p className={styles.accordionText}>Ships to EU, UK, and Norway. International shipping available at checkout.</p>
+                    <p className={styles.accordionText}>International shipping outside EU, UK &amp; Norway is available at checkout.</p>
                     <p className={styles.accordionText}>If anything arrives damaged or wrong, let us know within 14 days with a photo — we&apos;ll sort it.</p>
                   </div>
                 </details>
@@ -489,10 +487,11 @@ export default async function ProductPage({ params }: PageProps) {
         currentHandle={handle}
         currentProduct={{
           handle,
-          title: displayTitle(product.title),
-          imageUrl: mainImage?.url ?? null,
-          price: formatPrice(product.minPrice.amount),
-          category: categoryLabel(product),
+          title: product.title,
+          tags: product.tags,
+          firstImage: product.firstImage,
+          priceRangeV2: product.priceRangeV2,
+          minPrice: product.minPrice,
         }}
       />
     </div>

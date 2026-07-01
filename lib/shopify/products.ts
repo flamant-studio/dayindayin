@@ -147,7 +147,7 @@ export function formatPrice(amount: string): string {
   return `${Math.round(parseFloat(amount))} kr`
 }
 
-export function formatPriceLabel(product: NormalizedProduct): string {
+export function formatPriceLabel(product: Pick<NormalizedProduct, 'priceRangeV2'>): string {
   const min = parseFloat(product.priceRangeV2.minVariantPrice.amount)
   const max = parseFloat(product.priceRangeV2.maxVariantPrice.amount)
   const base = formatPrice(product.priceRangeV2.minVariantPrice.amount)
@@ -315,7 +315,8 @@ export const SERIES_TAGS: Record<string, string> = {
   'sea-monsters': 'Sea Monsters',
   botanical:      'Botanical',
   floral:         'Floral',
-  faces:          'Faces',
+  masks:          'Masks',
+  tourism:        'Tourism',
 }
 
 const TITLE_SERIES: Array<[RegExp, string]> = [
@@ -324,10 +325,11 @@ const TITLE_SERIES: Array<[RegExp, string]> = [
   [/sea[\s-]monster/i, 'Sea Monsters'],
   [/botanical/i, 'Botanical'],
   [/floral/i, 'Floral'],
-  [/\bfaces?\b/i, 'Faces'],
+  [/\bmasks?\b|\bfaces?\b/i, 'Masks'],
+  [/\btourism\b/i, 'Tourism'],
 ]
 
-export function seriesLabel(product: NormalizedProduct): string | null {
+export function seriesLabel(product: Pick<NormalizedProduct, 'tags' | 'title'>): string | null {
   for (const tag of product.tags) {
     const label = SERIES_TAGS[tag.toLowerCase()]
     if (label) return label
@@ -361,7 +363,7 @@ export function isArtworkProduct(product: NormalizedProduct): boolean {
   return ARTWORK_LABELS.has(categoryLabel(product))
 }
 
-export function categoryLabel(product: NormalizedProduct): string {
+export function categoryLabel(product: Pick<NormalizedProduct, 'tags' | 'title'>): string {
   for (const tag of product.tags) {
     const label = TAG_CATEGORY[tag.toLowerCase()]
     if (label) return label

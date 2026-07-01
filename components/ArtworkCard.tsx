@@ -25,7 +25,7 @@ export default function ArtworkCard({
         <Image src={work.image} alt={work.title} fill sizes={sizes} className={styles.cardImg} />
         {work.sold && <span className={styles.soldBadge}>Sold</span>}
         <div className={styles.cardOverlay}>
-          <span className={styles.cardEnquire}>{work.sold ? 'See similar works →' : 'Discover →'}</span>
+          <span className={styles.cardEnquire}>Discover →</span>
         </div>
       </div>
       <div className={styles.cardMeta}>

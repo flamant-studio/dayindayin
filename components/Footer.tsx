@@ -90,8 +90,6 @@ export default function Footer() {
             Secure checkout via Shopify
           </span>
           <span className={styles.trustDot} aria-hidden="true" />
-          <span className={styles.trustItem}>Printed on demand by Gelato</span>
-          <span className={styles.trustDot} aria-hidden="true" />
           <span className={styles.trustItem}>Prints from 56 kr</span>
         </div>
       </div>
