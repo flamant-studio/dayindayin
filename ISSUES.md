@@ -77,6 +77,65 @@
 
 ---
 
+# FB — SEBASTIAN SCREENSHOT BATCH (2026-07-01) — ACTIVE, work these first
+
+Sebastian sent 9 screenshots with direct feedback. Investigated each before touching code — root causes below. This queue takes priority over P1 below (his call, said "let's start with these").
+
+### FB-1: SHERO tote bag looks bigger than the other three on the shop grid
+**What:** In a 4-up grid of tote bags, "SHERO — Indigo" appears zoomed in relative to "Mask — Calling", "Mask — Blasé", "Elephant — Green".
+**Root cause (confirmed):** downloaded and measured all four source images. The three normal ones are 2048×2048 (square). The SHERO tote mockup is **1219×2048** — a different crop ratio entirely. `ProductCard`'s 4:5 `contain` box is working correctly and identically for all four; the SHERO *source photo* is simply framed differently, so `contain` fits it to a different edge and it reads as larger.
+**Status:** ⏸ BLOCKED — this is a Gelato mockup export inconsistency, not a site bug. Same family as the existing Gelato mockup-standardization item (see DESIGN_SYSTEM.md § Gelato, and SYS-09/the Neko-poster finding from 2026-06-29). No site code can fix a source-image crop without violating "never crop the art." Needs the SHERO tote re-exported from Gelato at the same 2048×2048 square framing as the others.
+
+### FB-2a: PDP white background behind the product photo feels alien to the rest of the design
+**What:** Sebastian flagged this, explicitly unsure what to do about it.
+**Status:** ⏸ OPEN QUESTION, not actioned — this is the same known, already-documented constraint: Gelato bakes the mockup's background into the photo; CSS only controls the card's own background, not what Gelato photographed. DESIGN_SYSTEM.md already recommends the fix: standardise all Gelato mockup/print backgrounds to one warm tone (e.g. `--c-parchment`) instead of clinical white — a Gelato-template change, not a code change. My recommendation: don't touch site CSS for this; when the Gelato mockup-background standardisation happens (already queued), this resolves as a side effect. Flagging back to Sebastian rather than guessing at a partial code workaround.
+
+### FB-2b: PDP shipping trust line + "Shipping & Returns" accordion repeat the same info
+**What:** The always-visible line above the accordions ("Ships in 3–7 business days · EU, UK & Norway" / "Printed & shipped by Gelato") restates almost verbatim what the "Shipping & Returns" accordion says again below it.
+**Fix:** keep the always-visible line (real value — a trust signal near Add to Cart shouldn't require a click) but trim the accordion to only the information NOT already stated above: production/delivery breakdown redundant with the line above removed, keep the return/damage policy and international-shipping note.
+**Status:** 🔴 OPEN → actioning now.
+
+### FB-3: Recently Viewed carousel uses a bespoke card instead of the shared ProductCard
+**What:** `components/RecentlyViewed.tsx` hand-builds its own card markup instead of reusing `ProductCard` — this is exactly the "~19 cards → 4" problem the design system work was supposed to close, just missed on this component.
+**Fix:** swap `RecentlyViewed`'s custom card markup for `ProductCard`.
+**Status:** 🔴 OPEN → actioning now.
+
+### FB-4: One Fine Art card says "See similar works →" instead of the standard CTA
+**What:** `ArtworkCard.tsx` shows `"See similar works →"` when `work.sold === true`, `"Discover →"` otherwise. Several works are marked sold in `lib/data.ts` (Purple Sun, Tufted Mask, Pink Rug, ...) — Sebastian wants one consistent CTA regardless of sold status (the SOLD badge already communicates that).
+**Fix:** remove the conditional, one CTA text for every ArtworkCard.
+**Status:** 🔴 OPEN → actioning now.
+
+### FB-5: Commissions page says "Currently accepting commissions for 2026" — factually wrong
+**What:** Stine is NOT currently accepting commissions. The status badge is hardcoded copy, not driven by real data.
+**Fix:** update the badge/copy to reflect closed status.
+**Status:** 🔴 OPEN → actioning now.
+
+### FB-6: Shop sort & filter nav takes too much vertical space on mobile
+**What:** Both the Type row and Series row render open/always-visible on mobile, pushing the product grid below the fold.
+**Finding:** `ShopFilterNav.module.css` already has unused CSS scaffolding for a `.mobileToggle` button and collapsed state (`display: none` today, never wired up) — someone started this and didn't finish.
+**Fix:** wire up the toggle — collapsed by default on mobile behind a "Filter & Sort" button, expands to reveal both rows.
+**Status:** 🔴 OPEN → actioning now.
+
+### FB-7: Series taxonomy is wrong — "Faces" should be "Masks" + include masks; drop "Sommerby"; add "Tourism"
+**What:** Checked live product titles against the series-matching regex (duplicated in 4 places: `lib/shopify/products.ts`, `app/shop/page.tsx`, `components/ShopFilterNav.tsx`, `app/page.tsx`).
+- "Faces" currently matches only `/\bfaces?\b/i` → 8 products (Solar Face, Moon Face). It does NOT match any of the ~44 "Mask —" / "Sri Lanka Masks" products at all — those get no series badge or filter today.
+- "Sommerby" matches 4 products, all variants of one single painting (mug/poster/postcard/framed print of the same piece) — not a multi-work series, per Sebastian correct to drop as its own filter chip.
+- "Tourism" has 15 real products (Tourism I–IV across several formats) with no series filter at all today.
+**Fix:** rename "Faces" → "Masks" and broaden its pattern to include mask titles; remove "Sommerby" from all four series lists; add "Tourism".
+**Status:** 🔴 OPEN → actioning now. (Overlaps with the older **ISS-H1** "remove Sommerby" — resolving both together.)
+
+### FB-8: Remove the series description snippets under shop filters
+**What:** e.g. under "Faces": "Portraits, masks, and the human face in all its complexity — from Sri Lanka to the Copenhagen streets." Sebastian: revisit all copy later, but this is unneeded now.
+**Fix:** remove the `SERIES_DESCRIPTIONS` banner render from the shop page. (Ties to the existing **P2 COPY CULL** section below — same instruction, acted on now for this specific instance.)
+**Status:** 🔴 OPEN → actioning now.
+
+### FB-9: Footer area repeats "Gelato"/shipping messaging up to 4 times
+**What:** On `/shop`, in one screen: page-level `.podStrip` ("Printed by Gelato · Ships in 3–7 days across Europe · Original artwork, made to order") directly above the global Footer's own trust row ("...Printed on demand by Gelato · Prints from 56 kr") directly above the Footer's bottom bar ("...Printed by Gelato" again). Three "Gelato" mentions + a "Ships"/"Prints" repeat, back to back.
+**Fix:** remove the page-level `.podStrip` from `/shop` (the Footer already carries this messaging on every page); trim Footer's own bottom-bar "Printed by Gelato" since the trust row above it already says "Printed on demand by Gelato."
+**Status:** 🔴 OPEN → actioning now.
+
+---
+
 # P1 — PAGE ISSUES (after the relevant SYS- exists)
 
 ### Homepage
