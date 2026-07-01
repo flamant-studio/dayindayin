@@ -93,28 +93,28 @@ Sebastian sent 9 screenshots with direct feedback. Investigated each before touc
 ### FB-2b: PDP shipping trust line + "Shipping & Returns" accordion repeat the same info
 **What:** The always-visible line above the accordions ("Ships in 3–7 business days · EU, UK & Norway" / "Printed & shipped by Gelato") restates almost verbatim what the "Shipping & Returns" accordion says again below it.
 **Fix:** keep the always-visible line (real value — a trust signal near Add to Cart shouldn't require a click) but trim the accordion to only the information NOT already stated above: production/delivery breakdown redundant with the line above removed, keep the return/damage policy and international-shipping note.
-**Status:** 🔴 OPEN → actioning now.
+**Status:** 🟡 CLAIMED (`3dfc285`) · Verified via DOM inspection (accordion summaries + body text) — screenshot couldn't show this reliably (fixed StickyATC/cookie-banner overlay sits at this scroll position in a stitched full-page capture).
 
 ### FB-3: Recently Viewed carousel uses a bespoke card instead of the shared ProductCard
 **What:** `components/RecentlyViewed.tsx` hand-builds its own card markup instead of reusing `ProductCard` — this is exactly the "~19 cards → 4" problem the design system work was supposed to close, just missed on this component.
-**Fix:** swap `RecentlyViewed`'s custom card markup for `ProductCard`.
-**Status:** 🔴 OPEN → actioning now.
+**Fix:** swap `RecentlyViewed`'s custom card markup for `ProductCard`. Narrowed `ProductCard`'s prop type to `ProductCardData` (a `Pick<>` of the fields it actually reads) so the localStorage-cached data satisfies it without a full Shopify refetch.
+**Status:** 🟡 CLAIMED (`3dfc285`) · Proof: `screenshots/fb-pdp-recentlyviewed.png` — renders identical white ProductCard styling ("Elephant — Green / TOTE BAG / 224 kr / VIEW PRODUCT →").
 
 ### FB-4: One Fine Art card says "See similar works →" instead of the standard CTA
 **What:** `ArtworkCard.tsx` shows `"See similar works →"` when `work.sold === true`, `"Discover →"` otherwise. Several works are marked sold in `lib/data.ts` (Purple Sun, Tufted Mask, Pink Rug, ...) — Sebastian wants one consistent CTA regardless of sold status (the SOLD badge already communicates that).
 **Fix:** remove the conditional, one CTA text for every ArtworkCard.
-**Status:** 🔴 OPEN → actioning now.
+**Status:** 🟡 CLAIMED (`3dfc285`) · Verified: scanned all rendered CTA text on `/fine-art` — only "Discover →" appears now, no "See similar works" anywhere.
 
 ### FB-5: Commissions page says "Currently accepting commissions for 2026" — factually wrong
 **What:** Stine is NOT currently accepting commissions. The status badge is hardcoded copy, not driven by real data.
-**Fix:** update the badge/copy to reflect closed status.
-**Status:** 🔴 OPEN → actioning now.
+**Fix:** update the badge/copy to reflect closed status; dropped the green pulsing-dot styling (read as "live"/active, wrong for closed).
+**Status:** 🟡 CLAIMED (`3dfc285`) · Proof: `screenshots/fb-commissions-desktop.png` — badge now reads "Not currently accepting new commissions," neutral grey.
 
 ### FB-6: Shop sort & filter nav takes too much vertical space on mobile
 **What:** Both the Type row and Series row render open/always-visible on mobile, pushing the product grid below the fold.
 **Finding:** `ShopFilterNav.module.css` already has unused CSS scaffolding for a `.mobileToggle` button and collapsed state (`display: none` today, never wired up) — someone started this and didn't finish.
 **Fix:** wire up the toggle — collapsed by default on mobile behind a "Filter & Sort" button, expands to reveal both rows.
-**Status:** 🔴 OPEN → actioning now.
+**Status:** 🟡 CLAIMED (`3dfc285`) · Proof: `screenshots/fb-shop-mobile-collapsed.png` (product grid starts right after one compact row) and `fb-shop-mobile-expanded.png` (tap reveals Type + Series rows, chevron flips).
 
 ### FB-7: Series taxonomy is wrong — "Faces" should be "Masks" + include masks; drop "Sommerby"; add "Tourism"
 **What:** Checked live product titles against the series-matching regex (duplicated in 4 places: `lib/shopify/products.ts`, `app/shop/page.tsx`, `components/ShopFilterNav.tsx`, `app/page.tsx`).
@@ -122,17 +122,17 @@ Sebastian sent 9 screenshots with direct feedback. Investigated each before touc
 - "Sommerby" matches 4 products, all variants of one single painting (mug/poster/postcard/framed print of the same piece) — not a multi-work series, per Sebastian correct to drop as its own filter chip.
 - "Tourism" has 15 real products (Tourism I–IV across several formats) with no series filter at all today.
 **Fix:** rename "Faces" → "Masks" and broaden its pattern to include mask titles; remove "Sommerby" from all four series lists; add "Tourism".
-**Status:** 🔴 OPEN → actioning now. (Overlaps with the older **ISS-H1** "remove Sommerby" — resolving both together.)
+**Status:** 🟡 CLAIMED (`3dfc285`) · Proof: `screenshots/fb-shop-masks-desktop.png` shows "MASKS 53" (up from 8) and "TOURISM 15" as live filter chips, no Sommerby chip; `fb-home-desktop.png` shows the homepage "Browse by Series" strip updated to match. Also resolves **ISS-H1**.
 
 ### FB-8: Remove the series description snippets under shop filters
 **What:** e.g. under "Faces": "Portraits, masks, and the human face in all its complexity — from Sri Lanka to the Copenhagen streets." Sebastian: revisit all copy later, but this is unneeded now.
 **Fix:** remove the `SERIES_DESCRIPTIONS` banner render from the shop page. (Ties to the existing **P2 COPY CULL** section below — same instruction, acted on now for this specific instance.)
-**Status:** 🔴 OPEN → actioning now.
+**Status:** 🟡 CLAIMED (`3dfc285`) · Also deleted the now-dead `SERIES_DESCRIPTIONS` const and `isSeriesFilter` var it was the only user of. Proof: `screenshots/fb-shop-masks-desktop.png` — no banner text between the filter row and the grid.
 
 ### FB-9: Footer area repeats "Gelato"/shipping messaging up to 4 times
 **What:** On `/shop`, in one screen: page-level `.podStrip` ("Printed by Gelato · Ships in 3–7 days across Europe · Original artwork, made to order") directly above the global Footer's own trust row ("...Printed on demand by Gelato · Prints from 56 kr") directly above the Footer's bottom bar ("...Printed by Gelato" again). Three "Gelato" mentions + a "Ships"/"Prints" repeat, back to back.
 **Fix:** remove the page-level `.podStrip` from `/shop` (the Footer already carries this messaging on every page); trim Footer's own bottom-bar "Printed by Gelato" since the trust row above it already says "Printed on demand by Gelato."
-**Status:** 🔴 OPEN → actioning now.
+**Status:** 🟡 CLAIMED (`3dfc285`) · Kept the bottom bar's "Printed by Gelato" (not the trust row's) since it's the one with the actual `<a href="gelato.com">` link — removing that risked dropping a real attribution backlink. Down to one Gelato mention. Proof: `screenshots/fb-shop-masks-desktop.png` bottom, `fb-commissions-desktop.png` footer.
 
 ---
 

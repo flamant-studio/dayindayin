@@ -2,6 +2,30 @@
 
 ---
 
+## 2026-07-01
+
+**Done:** Sebastian sent 9 screenshots of direct feedback (FB-1..FB-9 in ISSUES.md). Investigated each before touching code, then actioned:
+- FB-5: commissions status badge was factually wrong ("accepting" when she isn't) — fixed copy + dropped the green "live" pulse styling.
+- FB-4: Fine Art CTA was inconsistent ("See similar works" vs "Discover") depending on sold status — one CTA now.
+- FB-9: footer area said "Gelato" 3x back to back — removed the redundant page-level strip on /shop, trimmed Footer's own duplicate (kept the one with the actual gelato.com link).
+- FB-2b: PDP shipping trust line + accordion said the same thing twice — trimmed the accordion to only the non-redundant parts.
+- FB-8: removed the series description banner text under shop filters (+ its now-dead code).
+- FB-7: series taxonomy was wrong — checked live product titles first. "Faces" excluded all ~44 mask products entirely (only matched 8 "Face" titles); "Sommerby" was 4 variants of one painting, not a series; "Tourism" had 15 products with no filter. Fixed across all 4 places this list was duplicated (products.ts, shop/page.tsx, ShopFilterNav.tsx, homepage).
+- FB-6: shop mobile filter nav ate too much vertical space — wired up a "Filter & Sort" toggle that existed as unused, unfinished CSS scaffolding.
+- FB-3: Recently Viewed used a bespoke card instead of the shared ProductCard — swapped it in, narrowed ProductCard's prop type to just the fields it reads so lean localStorage data satisfies it.
+- FB-1 (SHERO tote looks bigger) and FB-2a (PDP white background) investigated and confirmed as Gelato mockup-side issues, not site bugs — logged, not coded around.
+
+**Decisions:**
+- Won't rename the tag/URL key for the masks filter's underlying Shopify tag (`faces`) purely for display purposes elsewhere — only the site-facing label and the shop's own regex/label maps needed to change.
+- Kept the Footer's linked "Printed by Gelato" over the unlinked trust-row version when deduping — assume the link is a real attribution requirement, not just decoration.
+
+**Next:**
+- FB-1: needs the SHERO tote mockup re-exported from Gelato at 2048×2048 (matches the other three) — Sebastian's side.
+- FB-2a: open product question — standardise Gelato mockup backgrounds (already queued from 2026-06-29 design system work) rather than a site-code workaround.
+- Everything else from before (P0/P1/P2 in ISSUES.md) still stands behind this batch.
+
+---
+
 ## 2026-06-30
 
 **Done:**
