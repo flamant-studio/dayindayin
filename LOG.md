@@ -2,6 +2,24 @@
 
 ---
 
+## 2026-07-03
+
+**Done:** Resolved FB-2a (PDP white background "feels alien") with a real site-side fix, after Sebastian pushed back on the Gelato production-pipeline discussion started 2026-07-01 (see GELATO_STRATEGY.md) and asked to actually test the site-design half of it.
+- First attempt: recolor the letterbox gap around product photos from white to `--c-parchment`. **Wrong** — Gelato mockups already have a baked-in white background, so this created a visible parchment/white seam instead of removing the clash. Caught because Sebastian looked at it on real product types (a tote bag), not just the one framed print I'd checked. Reverted.
+- Second attempt: rapid-fire CSS-injected comparisons (thin border, fat muted border, fat ink border, shadow-only) against a real running server, no source changes, across PLP + PDP + two product genres. Only a solid ink-coloured border read as intentional framing — doesn't depend on tonal matching with the photo, which is what broke attempt 1.
+- Sebastian picked plain white + border over the more radical "whole page goes white" variant (correctly identified as a bigger brand decision, not this fix).
+- Shipped (`acee87a`): 2px solid `var(--c-text)`. PDP main image border only (background already correct). PLP border wraps image+title+price, explicitly stops before the "View product" CTA row.
+- Mid-fix caught a real process error: after reverting attempt 1's source with `git checkout`, I never rebuilt — the dev server kept serving the stale `.next` build with the discarded experiment baked in for several verification rounds. Rebuilt before final sign-off.
+- Live-verified against production this time, not just localhost (learned that lesson on 2026-07-01 too).
+
+**Decisions:**
+- White-background-everywhere (the "v2" variant from testing) was explicitly NOT chosen — it would have dropped the site's warm chalk/parchment identity site-wide, which is a bigger call than fixing product-photo presentation.
+- Border, not background-color matching, is the durable fix for "Gelato photo vs. site palette" mismatches going forward — it's robust to whatever the photo's own background is.
+
+**Next:** back to the open GELATO_STRATEGY.md questions (automation vs. curation target, whether any of the current broken batch is live/orderable, what the paid Gelato tier unlocks).
+
+---
+
 ## 2026-07-01
 
 **Done:** Sebastian sent 9 screenshots of direct feedback (FB-1..FB-9 in ISSUES.md). Investigated each before touching code, then actioned:
