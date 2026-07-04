@@ -2,6 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--sp-6) var(--sp-6) var(--sp-16);
+  background: var(--c-white);
 }
 
 .back {

@@ -2,6 +2,7 @@
   max-width: var(--max-w);
   margin: 0 auto;
   padding-bottom: var(--sp-16);
+  background: var(--c-white);
 }
 
 /* ── Header ─────────────────────────────────────────────── */
