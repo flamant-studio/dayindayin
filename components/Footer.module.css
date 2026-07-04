@@ -61,7 +61,7 @@
 
 .trust {
   border-top: 1px solid var(--c-border);
-  background: var(--c-bg);
+  background: #F0EBE3; /* frozen at the old chalk value - footer stays beige-brown while --c-bg goes white, per Sebastian 2026-07-04 */
 }
 
 .trustInner {

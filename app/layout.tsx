@@ -74,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-        <meta name="theme-color" content="#F0EBE3" />
+        <meta name="theme-color" content="#FFFFFF" />
         <meta name="color-scheme" content="light" />
         <meta name="robots" content="max-image-preview:large" />
         <link rel="preconnect" href="https://29kekabbrd49avje.public.blob.vercel-storage.com" />

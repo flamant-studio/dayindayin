@@ -4,7 +4,7 @@
   color-scheme: light;
 
   /* Colours */
-  --c-bg:          #F0EBE3;
+  --c-bg:          #FFFFFF;   /* was #F0EBE3 chalk - rolled back to white 2026-07-04, palette rework in progress */
   --c-white:       #FFFFFF;
   --c-text:        #1A1714;
   --c-muted:       #7A746F;
