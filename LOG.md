@@ -2,6 +2,22 @@
 
 ---
 
+## 2026-07-04
+
+**Done:** Two corrections to the 2026-07-03 background fix, both caught by Sebastian from real screenshots/direct questions, not by me:
+1. First ship (`acee87a`) only whitened the product-photo box, not the actual page canvas, and took "don't border the cta" too literally (border stopped before it instead of wrapping it). Fixed in `f449cf4`: `/shop` + PDP `.page` background → real white; PLP border moved to wrap the whole `.card` including CTA.
+2. Sebastian then asked directly, item by item, whether nav/canvas/cards were ALL white. Checked precisely with `getComputedStyle` — they weren't (nav + body still chalk). He confirmed: yes, roll every instance of chalk to white, site-wide, as step one of a full palette rework. **This reverses the 2026-07-03 decision note below** ("white-everywhere was explicitly NOT chosen") — that was the right call for a scoped bug fix, but he's since decided he wants the bigger change after all.
+   - Shipped (`64e8803`): changed the `--c-bg` token itself (`#F0EBE3` → `#FFFFFF`) rather than hunting down every usage — it's the variable body/Nav/ShopFilterNav/CartDrawer/most sections already reference, so it cascaded automatically. Checked all 9 usages across the codebase first to make sure none were doing something unexpected (one was: Footer's `.trust` band needed to stay chalk per "leave the footer in current beige-brown" — froze it to the literal old hex).
+   - Verified across 11 page types + live production this time, before and not after claiming done.
+
+**Decisions:**
+- Full palette rework is now explicitly in scope, Sebastian's words: "I want to rework the entire color palette." Chalk→white is step one. Footer's beige-brown (`--c-surface`) is next, deliberately deferred.
+- Process lesson, stated plainly to Sebastian: when I flag an ambiguity to myself mid-task ("could mean X or the bigger Y") and pick the safer reading without asking, that's exactly the case where I should ask instead. Happened twice in two days on this same background-color question.
+
+**Next:** the rest of the palette rework (footer, and whatever else "entire colour palette" ends up meaning) is still undefined — don't assume white is the final answer everywhere. Back to open GELATO_STRATEGY.md questions when this is settled.
+
+---
+
 ## 2026-07-03
 
 **Done:** Resolved FB-2a (PDP white background "feels alien") with a real site-side fix, after Sebastian pushed back on the Gelato production-pipeline discussion started 2026-07-01 (see GELATO_STRATEGY.md) and asked to actually test the site-design half of it.
