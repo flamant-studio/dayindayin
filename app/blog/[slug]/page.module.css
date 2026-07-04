@@ -142,7 +142,7 @@
   position: relative;
   aspect-ratio: 1;
   overflow: hidden;
-  background: #F5F5F0;
+  background: #FFFFFF;
   margin-bottom: 0.5rem;
   transition: opacity 0.2s;
 }

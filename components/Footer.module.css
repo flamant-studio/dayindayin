@@ -1,6 +1,6 @@
 .footer {
   border-top: 1px solid var(--c-border);
-  background: var(--c-surface);
+  background: #E8E1D6; /* frozen at the old --c-surface value - footer stays beige-brown, per Sebastian 2026-07-04 */
 }
 
 .inner {

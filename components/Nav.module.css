@@ -126,7 +126,7 @@
 
 .dropdown li a:hover {
   opacity: 1;
-  background: var(--c-surface);
+  background: rgba(26, 23, 20, 0.06); /* neutral hover tint, not tied to --c-surface (now white, same as the dropdown itself - would be invisible) */
 }
 
 .dropHighlight {

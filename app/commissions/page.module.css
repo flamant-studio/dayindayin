@@ -269,7 +269,8 @@
 .honest {
   margin: var(--sp-6) 0;
   padding: var(--sp-6);
-  background: #F0EDE8;
+  background: #FFFFFF;
+  border: 1px solid var(--c-border);
 }
 
 .honest p {

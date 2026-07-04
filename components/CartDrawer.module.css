@@ -196,7 +196,7 @@
 
 .qtyBtn:hover:not(:disabled) {
   border-color: var(--c-text);
-  background: var(--c-surface);
+  background: rgba(26, 23, 20, 0.06); /* neutral hover tint - --c-surface is now white, same as the button's own transparent-over-white background */
 }
 
 .qtyBtn:disabled {
