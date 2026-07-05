@@ -35,8 +35,8 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: rgba(0, 0, 0, 0.52);
-  color: rgba(255, 255, 255, 0.95);
+  background: #DFC62A;
+  color: #2B2306;
   padding: var(--sp-1);
   pointer-events: none;
   backdrop-filter: blur(4px);

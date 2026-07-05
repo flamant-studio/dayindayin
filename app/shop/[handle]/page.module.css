@@ -702,8 +702,8 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: var(--sp-1) var(--sp-2);
-  background: var(--c-accent-light);
-  color: var(--c-accent);
+  background: #DFC62A;
+  color: #2B2306;
   border-radius: 2px;
   flex-shrink: 0;
 }

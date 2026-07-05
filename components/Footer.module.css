@@ -1,6 +1,6 @@
 .footer {
   border-top: 1px solid var(--c-border);
-  background: #E8E1D6; /* frozen at the old --c-surface value - footer stays beige-brown, per Sebastian 2026-07-04 */
+  background: #B7E6DC; /* pale mint - chosen 2026-07-05 over solid sage (felt too heavy against the white site) */
 }
 
 .inner {
@@ -26,7 +26,7 @@
 
 .tagline {
   font-size: var(--text-sm);
-  color: var(--c-muted);
+  color: #4A5B57; /* --c-muted (#7A746F) doesn't have enough contrast on the mint bg - checked, 3.37:1 */
   line-height: 1.7;
 }
 
@@ -47,7 +47,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--c-muted);
+  color: #3E5250; /* dark sage - a legible, deepened version of #799596 (2.35:1 was too low on the mint bg) */
   margin-bottom: var(--sp-1);
 }
 
@@ -61,7 +61,7 @@
 
 .trust {
   border-top: 1px solid var(--c-border);
-  background: #F0EBE3; /* frozen at the old chalk value - footer stays beige-brown while --c-bg goes white, per Sebastian 2026-07-04 */
+  background: #A3D9CB; /* a step deeper than the mint footer, for a subtle two-tone band */
 }
 
 .trustInner {
@@ -81,7 +81,7 @@
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: var(--c-muted);
+  color: #3A4C4A;
 }
 
 .trustDot {
@@ -102,7 +102,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: var(--text-xs);
-  color: var(--c-muted);
+  color: #4A5B57;
 }
 
 .social {
@@ -116,7 +116,7 @@
   gap: var(--sp-1);
   font-size: var(--text-xs);
   font-weight: 500;
-  color: var(--c-muted);
+  color: #4A5B57;
   transition: color var(--t-fast);
 }
 
@@ -130,21 +130,21 @@
 
 .sitemapLink {
   font-size: var(--text-xs);
-  color: var(--c-muted);
+  color: #4A5B57;
   transition: color var(--t-fast);
 }
 
 .sitemapLink:hover { color: var(--c-text); }
 
 .gelato a {
-  color: var(--c-muted);
+  color: #4A5B57;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .emailLink {
   font-size: var(--text-xs) !important;
-  color: var(--c-accent) !important;
+  color: #6B4470 !important; /* deepened mauve - var(--c-accent) alone is only 3.44:1 on the mint bg */
   font-style: italic;
 }
 
