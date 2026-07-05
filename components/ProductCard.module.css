@@ -7,7 +7,7 @@
   flex-direction: column;
   transition: transform var(--t-base) var(--ease);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 2px solid var(--c-text);
+  border: 1px solid var(--c-text);
 }
 .card:hover { transform: translateY(-3px); }
 
