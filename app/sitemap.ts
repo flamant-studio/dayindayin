@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getAllProductHandles } from '@/lib/shopify/products'
-import { works, blogPosts } from '@/lib/data'
+import { works } from '@/lib/data'
 
 const BASE = 'https://dayindayin.dk'
 
@@ -19,8 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/shop`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: `${BASE}/collections`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/fine-art`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/archive`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
-    { url: `${BASE}/art-journal`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE}/fine-art?view=grid`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
+    // Studio Notes / blog disabled 2026-07-11 (app/_art-journal, app/_blog) — no live copy yet
     { url: `${BASE}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${BASE}/practical`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${BASE}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
@@ -61,13 +61,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  // Blog post pages (Studio Notes) — use actual post date for lastModified
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((p) => ({
-    url: `${BASE}/blog/${p.slug}`,
-    lastModified: new Date(p.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.5,
-  }))
+  // Blog post pages (Studio Notes) — disabled 2026-07-11, route no longer live. Left commented
+  // out (not deleted) so this snaps back on when the route returns:
+  // const blogPages: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+  //   url: `${BASE}/blog/${p.slug}`,
+  //   lastModified: new Date(p.date),
+  //   changeFrequency: 'monthly' as const,
+  //   priority: 0.5,
+  // }))
 
-  return [...staticPages, ...filterPages, ...productPages, ...workPages, ...blogPages]
+  return [...staticPages, ...filterPages, ...productPages, ...workPages]
 }

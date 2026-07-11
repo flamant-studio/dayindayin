@@ -19,13 +19,14 @@ const TYPE_NAV = [
 
 const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'masks', 'tourism']
 
+// Floral and Botanical dropped from the tab bar 2026-07-11 — only 3 products
+// each, too sparse for a dedicated tab. Still reachable via /shop?filter=floral
+// or /shop?filter=botanical (e.g. from the homepage series tiles) and via "All series".
 const SERIES_NAV = [
   { label: 'All series', value: null },
   { label: 'SHERO', value: 'shero' },
   { label: 'NEKO', value: 'neko' },
   { label: 'Sea Monsters', value: 'sea-monsters' },
-  { label: 'Botanical', value: 'botanical' },
-  { label: 'Floral', value: 'floral' },
   { label: 'Masks', value: 'masks' },
   { label: 'Tourism', value: 'tourism' },
 ]

@@ -472,7 +472,7 @@ export default async function ProductPage({ params }: PageProps) {
             <SectionHeading
               title={`Original ${mediumLabel} works`}
               subtitle="These are the unique originals this print is based on — available on enquiry."
-              viewAll={{ href: `/archive?category=${mediumTag.toLowerCase()}`, label: 'See all originals' }}
+              viewAll={{ href: `/fine-art?view=grid&category=${mediumTag.toLowerCase()}`, label: 'See all originals' }}
             />
             <div className={styles.originalsGrid}>
               {originals.map(w => (

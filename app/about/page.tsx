@@ -199,10 +199,10 @@ export default function AboutPage() {
         <h2 className={styles.mediumLinksTitle}>Browse the archive by medium</h2>
         <div className={styles.mediumLinksGrid}>
           {([
-            { href: '/archive?category=tufting',     label: 'Hand Tufting',  count: works.filter(w => w.category === 'tufting').length },
-            { href: '/archive?category=embroidery',  label: 'Embroidery',    count: works.filter(w => w.category === 'embroidery').length },
-            { href: '/archive?category=painting',    label: 'Painting',      count: works.filter(w => w.category === 'painting').length },
-            { href: '/archive?category=photography', label: 'Photography',   count: works.filter(w => w.category === 'photography').length },
+            { href: '/fine-art?view=grid&category=tufting',     label: 'Hand Tufting',  count: works.filter(w => w.category === 'tufting').length },
+            { href: '/fine-art?view=grid&category=embroidery',  label: 'Embroidery',    count: works.filter(w => w.category === 'embroidery').length },
+            { href: '/fine-art?view=grid&category=painting',    label: 'Painting',      count: works.filter(w => w.category === 'painting').length },
+            { href: '/fine-art?view=grid&category=photography', label: 'Photography',   count: works.filter(w => w.category === 'photography').length },
           ] as const).map(({ href, label, count }) => (
             <Link key={href} href={href} className={styles.mediumLink}>
               <span className={styles.mediumLinkLabel}>{label}</span>

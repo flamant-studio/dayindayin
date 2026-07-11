@@ -1,7 +1,6 @@
 'use client'
+import { useState } from 'react'
 import Image from 'next/image'
-import ImageLightbox from './ImageLightbox'
-import { useLightbox } from './useLightbox'
 import { useProduct } from '@/contexts/ProductContext'
 import styles from './ImageGallery.module.css'
 
@@ -19,14 +18,17 @@ interface Props {
 }
 
 export default function ImageGallery({ images, colorwaySiblings, objectFit = 'cover' }: Props) {
-  const { index: lightboxIndex, open: openAt, close: closeLightbox, prev, next } = useLightbox(images.length)
+  const [activeIndex, setActiveIndex] = useState(0)
   const { selectedImage } = useProduct()
 
-  const baseMain = images[0]
+  // A variant swap (via ProductContext) always wins over manual arrow/thumb browsing.
+  const baseActive = images[activeIndex] ?? images[0]
   const mainImage = selectedImage
-    ? { url: selectedImage, alt: baseMain?.alt ?? '' }
-    : baseMain
-  const thumbImages = images.slice(1)
+    ? { url: selectedImage, alt: baseActive?.alt ?? '' }
+    : baseActive
+
+  const goPrev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length)
+  const goNext = () => setActiveIndex((i) => (i + 1) % images.length)
 
   const mainAspectRatio = mainImage?.width && mainImage?.height
     ? `${mainImage.width}/${mainImage.height}`
@@ -36,12 +38,7 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
     <div className={styles.images}>
       <div
         className={styles.mainImage}
-        style={{ aspectRatio: mainAspectRatio, cursor: mainImage ? 'zoom-in' : 'default', background: objectFit === 'contain' ? '#fff' : undefined }}
-        onClick={() => mainImage && openAt(0)}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === 'Enter' && mainImage && openAt(0)}
-        aria-label="View full image"
+        style={{ aspectRatio: mainAspectRatio, background: objectFit === 'contain' ? '#fff' : undefined }}
       >
         {mainImage ? (
           <Image
@@ -57,21 +54,26 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
           <div className={styles.imagePlaceholder} />
         )}
         {images.length > 1 && (
-          <span className={styles.imageCounter}>{images.length} photos</span>
+          <>
+            <button type="button" className={`${styles.mainArrow} ${styles.mainArrowLeft}`} onClick={goPrev} aria-label="Previous image">‹</button>
+            <button type="button" className={`${styles.mainArrow} ${styles.mainArrowRight}`} onClick={goNext} aria-label="Next image">›</button>
+            <span className={styles.imageCounter}>{activeIndex + 1} / {images.length}</span>
+          </>
         )}
       </div>
 
-      {thumbImages.length > 0 && (
+      {images.length > 1 && (
         <div className={styles.thumbGrid}>
-          {thumbImages.map((img, i) => (
+          {images.map((img, i) => (
             <div
               key={i}
-              className={styles.thumb}
-              onClick={() => openAt(i + 1)}
+              className={`${styles.thumb} ${i === activeIndex ? styles.thumbActive : ''}`}
+              onClick={() => setActiveIndex(i)}
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && openAt(i + 1)}
-              aria-label={`View image ${i + 2}`}
+              onKeyDown={(e) => e.key === 'Enter' && setActiveIndex(i)}
+              aria-label={`View image ${i + 1}`}
+              aria-current={i === activeIndex ? 'true' : undefined}
             >
               <Image
                 src={img.url}
@@ -96,17 +98,6 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
             ))}
           </div>
         </div>
-      )}
-
-      {lightboxIndex !== null && (
-        <ImageLightbox
-          images={images}
-          initialIndex={lightboxIndex}
-          currentIndex={lightboxIndex}
-          onClose={closeLightbox}
-          onPrev={prev}
-          onNext={next}
-        />
       )}
     </div>
   )

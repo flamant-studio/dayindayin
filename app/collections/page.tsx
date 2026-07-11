@@ -1,4 +1,6 @@
 import { getProductsByTitleKeyword } from '@/lib/shopify/products'
+import { SERIES, SERIES_KEYWORDS } from '@/lib/series'
+import SeriesTile from '@/components/SeriesTile'
 import SeriesCard from '@/components/SeriesCard'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
@@ -22,26 +24,6 @@ export const metadata: Metadata = {
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works'
 
-const SERIES_COLLECTIONS = [
-  { title: 'SHERO', description: 'Feminist icons and powerful women, rendered in tufting and embroidery. The series that started it all.', tag: 'shero', accent: '#D94F2C' },
-  { title: 'NEKO', description: 'Cats as subjects and symbols. Sleeping, watching, disappearing. Japanese-inflected, always graphic.', tag: 'neko', accent: '#2E5D4B' },
-  { title: 'Sea Monsters', description: 'Creatures from old maritime charts and personal mythology. Colourful, strange, made by hand.', tag: 'sea-monsters', accent: '#4A7A9B' },
-  { title: 'Botanical', description: 'Plants, growth, and natural form. Quiet works that hold their ground on any wall.', tag: 'botanical', accent: '#5C7A48' },
-  { title: 'Floral', description: 'Not decorative — confrontational. Flowers as territory and excess.', tag: 'floral', accent: '#B85C78' },
-  { title: 'Faces', description: 'Portraits and fragments. Faces that look back. Photography and digital illustration.', tag: 'faces', accent: '#7A6B8A' },
-  { title: 'Sommerby', description: 'Danish summer — light, colour, and the particular stillness of somewhere you return to every year.', tag: 'sommerby', accent: '#C4694F' },
-]
-
-const SERIES_TITLE_PATTERNS: Record<string, RegExp> = {
-  'shero':        /\bshero\b/i,
-  'neko':         /\bneko\b/i,
-  'sea-monsters': /sea[\s-]monster/i,
-  'botanical':    /botanical/i,
-  'floral':       /floral/i,
-  'faces':        /\bfaces?\b/i,
-  'sommerby':     /sommerby/i,
-}
-
 const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
 const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
 
@@ -64,53 +46,40 @@ const FINE_ART_COLLECTIONS = [
   },
 ]
 
-type SlideImage = { url: string; alt: string }
-
-// Keyword used for title search per series
-const SERIES_KEYWORDS: Record<string, string> = {
-  shero: 'shero', neko: 'neko', 'sea-monsters': 'Sea Monsters',
-  botanical: 'Botanical', floral: 'Floral', faces: 'Face', sommerby: 'Sommerby',
-}
-
 export const revalidate = 3600
 
 export default async function CollectionsPage() {
   // Fetch up to 12 products per series in parallel — much faster than getAllProducts()
   const seriesResults = await Promise.all(
-    SERIES_COLLECTIONS.map(({ tag }) =>
-      getProductsByTitleKeyword(SERIES_KEYWORDS[tag] ?? tag, 12).catch(() => [])
-    )
+    SERIES.map(({ tag }) => getProductsByTitleKeyword(SERIES_KEYWORDS[tag], 12).catch(() => []))
   )
 
   const LIGHT_TITLE_KEYWORDS = ['blanc', 'white', 'cream']
   const isLight = (t: string) => { const tl = t.toLowerCase(); return LIGHT_TITLE_KEYWORDS.some(k => tl.includes(k)) }
 
-  const seriesData = SERIES_COLLECTIONS.map(({ title, description, tag, accent }, i) => {
+  const seriesData = SERIES.map(({ tag, label, sub, accent }, i) => {
     const products = seriesResults[i].filter(p => p.firstImage)
-    // Score each product: mockup=+2, light/blanc variant=+1 (lower is better for slideshow lead)
+    // Score: mockup=+2, light/blanc variant=+1 (lower is better) — same scoring as the
+    // homepage strip so a given series shows the same lead image on both pages.
     const scored = products.map(p => ({
       p,
       score: (isMockup(p.title) ? 2 : 0) + (isLight(p.title) ? 1 : 0),
     }))
     scored.sort((a, b) => a.score - b.score)
-    const ordered = scored.map(s => s.p)
-    const images = ordered.slice(0, 4).map(p => ({
-      url: p.firstImage!.url,
-      alt: p.firstImage!.altText ?? p.title,
-    }))
-    return { title, description, tag, accent, images, count: products.length }
+    const imgUrl = scored[0]?.p.firstImage?.url
+    return { tag, label, sub, accent, imgUrl, count: products.length }
   })
 
   const collectionsJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Collections — Day In Day In',
-    description: 'Curated series by Stine Weirsøe Flamant — SHERO, NEKO, Sea Monsters, Botanical, Floral, Faces, and Sommerby.',
+    description: 'Curated series by Stine Weirsøe Flamant — SHERO, NEKO, Sea Monsters, Botanical, Floral, Masks, and Tourism.',
     url: 'https://dayindayin.dk/collections',
-    hasPart: SERIES_COLLECTIONS.map(({ title, description, tag }) => ({
+    hasPart: SERIES.map(({ tag, label, sub }) => ({
       '@type': 'CreativeWork',
-      name: title,
-      description,
+      name: label,
+      description: sub,
       url: `https://dayindayin.dk/shop?filter=${tag}`,
     })),
   }
@@ -128,15 +97,14 @@ export default async function CollectionsPage() {
       </div>
       <div className={styles.grid}>
         {seriesData.map((c) => (
-          <SeriesCard
+          <SeriesTile
             key={c.tag}
             href={`/shop?filter=${c.tag}`}
+            label={c.label}
+            sub={c.count > 0 ? `${c.sub} · ${c.count} product${c.count !== 1 ? 's' : ''}` : c.sub}
             accent={c.accent}
-            title={c.title}
-            subLabel={c.count > 0 ? `${c.count} product${c.count !== 1 ? 's' : ''}` : undefined}
-            description={c.description}
-            cta="View products →"
-            slides={c.images}
+            imgUrl={c.imgUrl}
+            sizes="(max-width: 768px) 50vw, 25vw"
           />
         ))}
       </div>
@@ -164,5 +132,5 @@ export default async function CollectionsPage() {
       </div>
     </div>
     </>
-  )
+  );
 }

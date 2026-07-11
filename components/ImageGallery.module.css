@@ -29,6 +29,38 @@
   backdrop-filter: blur(4px);
 }
 
+.mainArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  padding: var(--sp-2) var(--sp-3);
+  opacity: 0;
+  transition: opacity var(--t-fast), background var(--t-fast);
+}
+
+.mainImage:hover .mainArrow,
+.mainImage:focus-within .mainArrow {
+  opacity: 1;
+}
+
+.mainArrow:hover {
+  background: var(--c-white);
+}
+
+.mainArrowLeft { left: var(--sp-3); }
+.mainArrowRight { right: var(--sp-3); }
+
+@media (max-width: 768px) {
+  .mainArrow { opacity: 1; }
+}
+
 .imagePlaceholder {
   position: absolute;
   inset: 0;
@@ -47,7 +79,12 @@
   aspect-ratio: 1;
   overflow: hidden;
   background: var(--c-surface);
-  cursor: zoom-in;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.thumbActive {
+  border-color: var(--c-text);
 }
 
 .thumbImage {

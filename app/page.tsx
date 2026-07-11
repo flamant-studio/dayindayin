@@ -2,44 +2,27 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
 import { displayTitle } from '@/lib/display'
-import { blogPosts, works } from '@/lib/data'
-import NewsletterSignup from '@/components/NewsletterSignup'
+import { works } from '@/lib/data'
+import { SERIES, SERIES_KEYWORDS } from '@/lib/series'
 import SectionHeading from '@/components/SectionHeading'
 import ProductCard from '@/components/ProductCard'
-import EditorialCard from '@/components/EditorialCard'
+import SeriesTile from '@/components/SeriesTile'
 import styles from './page.module.css'
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
 
+// ls-01/02/04/05/07 are used elsewhere on the homepage and on /commissions — kept out of this
+// strip on purpose (see Task 5, 2026-07-11). ls-03/06/08/09 are the only lifestyle shots not
+// already featured anywhere on the live site; the 4th slot pulls a studio detail from Jellyfish's
+// own gallery (never surfaced outside that work's own PDP) rather than repeat a lifestyle photo.
 const LIFESTYLE = [
-  { src: `${BLOB}/lifestyle/ls-02.jpg`, alt: 'Studio detail — hand-tufted textile in progress' },
-  { src: `${BLOB}/lifestyle/ls-04.jpg`, alt: 'Art print by Stine Weirsøe Flamant on a wall' },
-  { src: `${BLOB}/lifestyle/ls-05.jpg`, alt: 'Close-up of embroidery work by Stine Weirsøe Flamant' },
-  { src: `${BLOB}/lifestyle/ls-07.jpg`, alt: 'Art in the studio — Stine Weirsøe Flamant' },
-]
-
-const SERIES_CARDS = [
-  { tag: 'shero',       label: 'SHERO',        sub: 'Power, resistance, naming',  accent: '#D94F2C' },
-  { tag: 'neko',        label: 'NEKO',          sub: 'Watching without watching back', accent: '#2E5D4B' },
-  { tag: 'sea-monsters',label: 'Sea Monsters',  sub: 'Creatures from old charts', accent: '#4A7A9B' },
-  { tag: 'botanical',   label: 'Botanical',     sub: 'Leaves, roots, natural form', accent: '#5C7A48' },
-  { tag: 'floral',      label: 'Floral',        sub: 'Colour at the edge of excess', accent: '#B85C78' },
-  { tag: 'masks',       label: 'Masks',         sub: 'The ones that look back',   accent: '#7A6B8A' },
-  { tag: 'tourism',     label: 'Tourism',       sub: 'Postcards from elsewhere',  accent: '#9B6A3C' },
+  { src: `${BLOB}/lifestyle/ls-03.jpg`, alt: 'Moodboard and colour references in the studio — Stine Weirsøe Flamant' },
+  { src: `${BLOB}/lifestyle/ls-08.jpg`, alt: 'Tufted rug piece and embroidery supplies on the studio deck' },
+  { src: `${BLOB}/lifestyle/ls-09.jpg`, alt: 'Coffee and magazines on the studio table' },
+  { src: `${BLOB}/works/tufting/jellyfish/gallery/3.jpg`, alt: 'Detail of hand-tufted wool texture — Stine Weirsøe Flamant' },
 ]
 
 export const revalidate = 60
-
-// Keywords to fetch one representative image per series (flat art preferred over mockups)
-const SERIES_KEYWORDS: Array<{ tag: string; keyword: string }> = [
-  { tag: 'shero',        keyword: 'shero' },
-  { tag: 'neko',         keyword: 'neko' },
-  { tag: 'sea-monsters', keyword: 'Sea Monsters' },
-  { tag: 'botanical',    keyword: 'Botanical' },
-  { tag: 'floral',       keyword: 'Floral' },
-  { tag: 'masks',        keyword: 'Mask' },
-  { tag: 'tourism',      keyword: 'Tourism' },
-]
 
 const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
 const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
@@ -50,8 +33,8 @@ export default async function HomePage() {
   // Parallel targeted fetches — faster than getAllProducts (500+ items)
   const [rawProducts, ...seriesResults] = await Promise.all([
     getProducts(48).then(all => all.filter(p => p.firstImage)).catch(() => []),
-    ...SERIES_KEYWORDS.map(({ keyword }) =>
-      getProductsByTitleKeyword(keyword, 8).catch(() => [])
+    ...SERIES.map(({ tag }) =>
+      getProductsByTitleKeyword(SERIES_KEYWORDS[tag], 8).catch(() => [])
     ),
   ])
 
@@ -82,7 +65,7 @@ export default async function HomePage() {
   const LIGHT_TITLE_KEYWORDS = ['blanc', 'white', 'cream']
   const isLight = (t: string) => { const tl = t.toLowerCase(); return LIGHT_TITLE_KEYWORDS.some(k => tl.includes(k)) }
   const seriesImageMap: Record<string, string> = {}
-  SERIES_KEYWORDS.forEach(({ tag }, i) => {
+  SERIES.forEach(({ tag }, i) => {
     const prods = seriesResults[i].filter(p => p.firstImage)
     // Score: mockup=+2, light/blanc variant=+1 (lower is better)
     const scored = prods.map(p => ({
@@ -219,30 +202,16 @@ export default async function HomePage() {
       <section className={styles.seriesSection}>
         <SectionHeading title="Browse by Series" viewAll={{ href: '/collections', label: 'All collections' }} />
         <div className={styles.seriesStrip}>
-          {SERIES_CARDS.map(({ tag, label, sub, accent }) => {
-            const imgUrl = seriesImageMap[tag]
-            return (
-              <Link key={tag} href={`/shop?filter=${tag}`} className={styles.seriesCard}>
-                <div className={styles.seriesCardImg}>
-                  {imgUrl ? (
-                    <Image
-                      src={imgUrl}
-                      alt={label}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 16vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  ) : (
-                    <div className={styles.seriesCardPlaceholder} style={{ background: accent + '22' }} />
-                  )}
-                </div>
-                <div className={styles.seriesCardInfo}>
-                  <span className={styles.seriesCardLabel} style={{ color: accent }}>{label}</span>
-                  <span className={styles.seriesCardSub}>{sub}</span>
-                </div>
-              </Link>
-            )
-          })}
+          {SERIES.map(({ tag, label, sub, accent }) => (
+            <SeriesTile
+              key={tag}
+              href={`/shop?filter=${tag}`}
+              label={label}
+              sub={sub}
+              accent={accent}
+              imgUrl={seriesImageMap[tag]}
+            />
+          ))}
         </div>
       </section>
 
@@ -272,24 +241,11 @@ export default async function HomePage() {
         <Link href="/about" className={styles.artistLink}>About the artist →</Link>
       </section>
 
-      {/* ── Studio Notes teaser ──────────────────────────────── */}
-      {(() => {
-        const notes = blogPosts.slice(0, 3)
-        return (
-          <section className={styles.notesTeaser}>
-            <SectionHeading label="Studio Notes" title="From the studio" viewAll={{ href: '/art-journal', label: 'All notes' }} />
-            <div className={styles.notesTeaserGrid}>
-              {notes.map((post) => (
-                <EditorialCard key={post.slug} post={post} />
-              ))}
-            </div>
-          </section>
-        )
-      })()}
+      {/* ── Studio Notes teaser — disabled 2026-07-11, no live copy yet.
+          See app/_art-journal and app/_blog (renamed to unpublish, not deleted). ── */}
 
-
-      {/* ── Newsletter ───────────────────────────────────────── */}
-      <NewsletterSignup />
+      {/* ── Newsletter — disabled 2026-07-11, moved to a minimal footer signup
+          (see components/Footer.tsx). Full-section variant kept in NewsletterSignup.tsx. ── */}
 
       {/* ── Lifestyle strip ──────────────────────────────────── */}
       <Link href="/shop" className={styles.lifestyleStripLink}>

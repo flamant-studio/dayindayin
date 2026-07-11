@@ -33,9 +33,7 @@ export default function NotFound() {
         <div className={styles.also}>
           <Link href="/fine-art" className={styles.alsoLink}>Fine Art</Link>
           <span className={styles.alsoDot}>·</span>
-          <Link href="/archive" className={styles.alsoLink}>All Works</Link>
-          <span className={styles.alsoDot}>·</span>
-          <Link href="/art-journal" className={styles.alsoLink}>Studio Notes</Link>
+          <Link href="/fine-art?view=grid" className={styles.alsoLink}>All Works</Link>
         </div>
       </div>
     </div>

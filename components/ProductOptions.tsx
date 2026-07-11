@@ -126,6 +126,15 @@ export default function ProductOptions({ variants, handle, productTitle, product
   const mugVariants = isMug ? variants.map(v => ({ ...v, mug: parseMug(v.title)! })) : null
   const mugFirstAvailable = mugVariants?.find(v => v.availableForSale) ?? mugVariants?.[0]
 
+  // Shopify's Storefront API falls back to the product's first image for any variant
+  // that has no dedicated photo of its own — it does NOT return null like the Admin API
+  // does. So "no real photo for this option" shows up as a URL shared by 2+ variants,
+  // not as a missing image. Detect that instead of trusting featuredImage on its own.
+  function hasSharedImage(group: { featuredImage?: { url: string } | null }[] | null, current: { featuredImage?: { url: string } | null }): boolean {
+    if (!group || !current.featuredImage?.url) return false
+    return group.filter(v => v.featuredImage?.url === current.featuredImage?.url).length > 1
+  }
+
   const [selected, setSelected]       = useState<Variant>(firstAvailable)
   const [selectedSize, setSelectedSize]   = useState<string>(firstAvailableParsed?.parsed.sizeKey ?? sizes[0] ?? '')
   const [selectedFrame, setSelectedFrame] = useState<string>(firstAvailableParsed?.parsed.frameColor ?? frames[0] ?? '')
@@ -274,6 +283,10 @@ export default function ProductOptions({ variants, handle, productTitle, product
           </div>
         </div>
 
+        {hasSharedImage(mugVariants, selected) && (
+          <p className={styles.sizeNote}>Photo shown is a reference — your selected color/design will match at print.</p>
+        )}
+
         {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
         <div className={styles.atcWrap}>
           {selected.availableForSale ? (
@@ -354,6 +367,10 @@ export default function ProductOptions({ variants, handle, productTitle, product
             })}
           </div>
         </div>
+
+        {hasSharedImage(parsedVariants, selected) && (
+          <p className={styles.sizeNote}>Photo shown is a reference — your selected size/frame will match at print.</p>
+        )}
 
         {isLowStock && (
           <p className={styles.lowStock}>Only {selected.inventoryQuantity} left in this size</p>

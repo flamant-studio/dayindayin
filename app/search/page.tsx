@@ -86,7 +86,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           <p className={styles.noResultsHint}>Try a series name (SHERO, NEKO, Botanical) or product type (mug, poster, tote).</p>
           <div className={styles.noResultsLinks}>
             <Link href="/shop" className={styles.noResultsCta}>Browse all products</Link>
-            <Link href="/archive" className={styles.noResultsAlt}>View original works →</Link>
+            <Link href="/fine-art?view=grid" className={styles.noResultsAlt}>View original works →</Link>
           </div>
         </div>
       )}
