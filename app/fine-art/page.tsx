@@ -13,7 +13,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   photography: "Photography",
 };
 
-const GRID_FILTERS = [
+const CATEGORY_FILTERS = [
   { key: "all", label: "All" },
   { key: "tufting", label: "Tufting" },
   { key: "embroidery", label: "Embroidery" },
@@ -25,27 +25,16 @@ interface PageProps {
   searchParams: Promise<{ view?: string; category?: string }>;
 }
 
-export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const { view, category } = await searchParams;
-  if (view === 'grid') {
-    const label = category ? CATEGORY_LABELS[category] : null;
-    return {
-      title: label ? `${label} — All Works` : "All Works",
-      description: "Complete archive of original works by Stine Weirsøe Flamant — tufting, embroidery, painting, photography.",
-      alternates: { canonical: '/fine-art?view=grid' },
-    };
-  }
-  return {
-    title: "Fine Art — Original Works",
-    description: "Original works by Stine Weirsøe Flamant — hand-tufted textiles, embroidery, paintings, and photography. Unique pieces available on enquiry.",
-    openGraph: {
-      title: "Fine Art — Original Works by Stine Weirsøe Flamant",
-      description: "Unique original works — tufted textiles, embroidery, paintings, and photography. Each piece made by hand in Copenhagen and available on enquiry.",
-      images: [{ url: "https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/orange-sun.jpg", width: 1200, height: 900 }],
-    },
-    alternates: { canonical: "/fine-art" },
-  };
-}
+export const metadata: Metadata = {
+  title: "Fine Art — Original Works",
+  description: "Original works by Stine Weirsøe Flamant — hand-tufted textiles, embroidery, paintings, and photography. Unique pieces available on enquiry.",
+  openGraph: {
+    title: "Fine Art — Original Works by Stine Weirsøe Flamant",
+    description: "Unique original works — tufted textiles, embroidery, paintings, and photography. Each piece made by hand in Copenhagen and available on enquiry.",
+    images: [{ url: "https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/orange-sun.jpg", width: 1200, height: 900 }],
+  },
+  alternates: { canonical: "/fine-art" },
+};
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -84,26 +73,65 @@ const RECENTLY_ADDED_SLUGS = [
   'seb-livingroom', 'green-background', 'long-hair-dont-care', 'gud-har-meldt-afbud-II',
 ];
 
-function ViewToggle({ view, category }: { view: 'carousel' | 'grid'; category?: string }) {
-  const gridHref = category ? `/fine-art?view=grid&category=${category}` : '/fine-art?view=grid';
+function ViewToggle({ view, category }: { view: 'list' | 'grid'; category: string }) {
+  const qs = category !== 'all' ? `&category=${category}` : ''
   return (
     <div className={styles.viewToggle}>
-      <Link href="/fine-art" className={`${styles.viewToggleBtn} ${view === 'carousel' ? styles.viewToggleBtnActive : ''}`} aria-current={view === 'carousel' ? 'page' : undefined}>
-        Carousel
+      <Link href={category !== 'all' ? `/fine-art?category=${category}` : '/fine-art'} className={`${styles.viewToggleBtn} ${view === 'list' ? styles.viewToggleBtnActive : ''}`} aria-current={view === 'list' ? 'page' : undefined}>
+        List
       </Link>
-      <Link href={gridHref} className={`${styles.viewToggleBtn} ${view === 'grid' ? styles.viewToggleBtnActive : ''}`} aria-current={view === 'grid' ? 'page' : undefined}>
+      <Link href={`/fine-art?view=grid${qs}`} className={`${styles.viewToggleBtn} ${view === 'grid' ? styles.viewToggleBtnActive : ''}`} aria-current={view === 'grid' ? 'page' : undefined}>
         Grid
       </Link>
     </div>
   );
 }
 
+// Same control, same URL semantics (`?category=`), in both views — was grid-only before,
+// which read as "why does only one view let me filter."
+function CategoryFilter({ view, active }: { view: 'list' | 'grid'; active: string }) {
+  const base = view === 'grid' ? '/fine-art?view=grid' : '/fine-art'
+  const sep = view === 'grid' ? '&' : '?'
+  return (
+    <div className={styles.gridFilters}>
+      {CATEGORY_FILTERS.map(({ key, label }) => (
+        <Link
+          key={key}
+          href={key === "all" ? base : `${base}${sep}category=${key}`}
+          className={`${styles.gridFilterBtn} ${active === key ? styles.gridFilterBtnActive : ""}`}
+          aria-current={active === key ? 'page' : undefined}
+        >
+          {label} {key !== "all" ? `(${works.filter((w) => w.category === key).length})` : `(${works.length})`}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default async function FineArt({ searchParams }: PageProps) {
-  const { view: viewParam, category } = await searchParams;
-  const view = viewParam === 'grid' ? 'grid' : 'carousel';
+  const { view: viewParam, category: categoryParam } = await searchParams;
+  const view = viewParam === 'grid' ? 'grid' : 'list';
+  const active = categoryParam && CATEGORY_LABELS[categoryParam] ? categoryParam : "all";
+
+  const availableCount = works.filter(w => !w.sold).length
+  const totalCount = works.length
+
+  // Hero is identical regardless of view/filter — only what's below it changes.
+  const hero = (
+    <section className={styles.hero}>
+      <span className={styles.heroLabel}>Original Works</span>
+      <h1>Fine Art</h1>
+      <p className={styles.heroSub}>
+        Tufted textiles, embroidery, painting, and photography — made by hand in Copenhagen.
+        Each piece exists once and is available on direct enquiry.
+      </p>
+      <p className={styles.heroCount}>
+        {availableCount} of {totalCount} works currently available
+      </p>
+    </section>
+  );
 
   if (view === 'grid') {
-    const active = category && CATEGORY_LABELS[category] ? category : "all";
     const base = active === "all" ? works : works.filter((w) => w.category === active);
     const filtered = [...base].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 
@@ -126,28 +154,13 @@ export default async function FineArt({ searchParams }: PageProps) {
       <>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
         <div className={styles.page}>
-          <section className={styles.hero}>
-            <span className={styles.heroLabel}>Original Works</span>
-            <h1>All Works</h1>
-            <p className={styles.heroSub}>
-              {filtered.length} {active === "all" ? "original" : CATEGORY_LABELS[active]?.toLowerCase()} work{filtered.length !== 1 ? "s" : ""} — the complete catalog, newest first.
-            </p>
-          </section>
+          {hero}
+          <ViewToggle view="grid" category={active} />
+          <CategoryFilter view="grid" active={active} />
 
-          <ViewToggle view="grid" category={active !== 'all' ? active : undefined} />
-
-          <div className={styles.gridFilters}>
-            {GRID_FILTERS.map(({ key, label }) => (
-              <Link
-                key={key}
-                href={key === "all" ? "/fine-art?view=grid" : `/fine-art?view=grid&category=${key}`}
-                className={`${styles.gridFilterBtn} ${active === key ? styles.gridFilterBtnActive : ""}`}
-                aria-current={active === key ? 'page' : undefined}
-              >
-                {label} {key !== "all" ? `(${works.filter((w) => w.category === key).length})` : `(${works.length})`}
-              </Link>
-            ))}
-          </div>
+          <p className={styles.gridResultCount}>
+            {filtered.length} {active === "all" ? "original" : CATEGORY_LABELS[active]?.toLowerCase()} work{filtered.length !== 1 ? "s" : ""} — newest first
+          </p>
 
           <div className={styles.denseGrid}>
             {filtered.map((work) => (
@@ -180,31 +193,19 @@ export default async function FineArt({ searchParams }: PageProps) {
     .map(slug => works.find(w => w.slug === slug))
     .filter(Boolean) as typeof works;
 
-  const availableCount = works.filter(w => !w.sold).length
-  const totalCount = works.length
+  // Filtered down to the active category — "all" shows every section, same as before.
+  const visibleSections = active === "all" ? sections : sections.filter(s => s.id === active);
 
   return (
     <div className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artGalleryJsonLd) }} />
 
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className={styles.hero}>
-        <span className={styles.heroLabel}>Original Works</span>
-        <h1>Fine Art</h1>
-        <p className={styles.heroSub}>
-          Tufted textiles, embroidery, painting, and photography — made by hand in Copenhagen.
-          Each piece exists once and is available on direct enquiry.
-        </p>
-        <p className={styles.heroCount}>
-          {availableCount} of {totalCount} works currently available
-        </p>
-      </section>
+      {hero}
+      <ViewToggle view="list" category={active} />
+      <CategoryFilter view="list" active={active} />
 
-      <ViewToggle view="carousel" />
-
-      {/* ── Featured: one large + three secondary ────────────── */}
-      {heroWork && (
+      {active === "all" && heroWork && (
         <div className={styles.featured}>
           <Link href={`/works/${heroWork.slug}`} className={styles.featuredHero}>
             <Image
@@ -241,8 +242,7 @@ export default async function FineArt({ searchParams }: PageProps) {
         </div>
       )}
 
-      {/* ── New additions strip ──────────────────────────────── */}
-      {recentlyAdded.length > 0 && (
+      {active === "all" && recentlyAdded.length > 0 && (
         <section className={styles.recentSection}>
           <div className={styles.recentHead}>
             <span className={styles.recentLabel}>Recent additions</span>
@@ -267,21 +267,8 @@ export default async function FineArt({ searchParams }: PageProps) {
         </section>
       )}
 
-      {/* ── Category anchor nav ──────────────────────────────── */}
-      <nav className={styles.catNav}>
-        {sections.map((s) => {
-          const count = works.filter((w) => w.category === s.id && !HIDDEN_SLUGS.includes(w.slug)).length;
-          return (
-            <a key={s.id} href={`#${s.id}`} className={styles.catNavLink}>
-              {s.label}
-              <span className={styles.catNavCount}>{count}</span>
-            </a>
-          );
-        })}
-      </nav>
-
       {/* ── Sections ─────────────────────────────────────────── */}
-      {sections.map((section) => {
+      {visibleSections.map((section) => {
         const categoryWorks = works.filter((w) => w.category === section.id && !HIDDEN_SLUGS.includes(w.slug));
         return (
           <section key={section.id} id={section.id} className={styles.section}>
