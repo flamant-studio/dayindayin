@@ -784,7 +784,16 @@
   .section { padding: var(--sp-8) var(--sp-5); }
   .seriesSection { padding: var(--sp-8) var(--sp-5) var(--sp-4); }
   .seriesStrip { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-2); }
-  .productGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Match /shop's mobile grid exactly (page.module.css .grid) — was inheriting the
+     section's 24px side padding on top of its own gap, doubling up on margin and
+     making cards read as too tall/cramped relative to the shop grid. */
+  .productGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+    margin-left: calc(-1 * var(--sp-5));
+    margin-right: calc(-1 * var(--sp-5));
+  }
   .collectionGrid { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
   .notesTeaserGrid { grid-template-columns: 1fr; }
 
