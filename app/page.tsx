@@ -179,7 +179,7 @@ export default async function HomePage() {
       <section className={styles.editorial}>
         <div className={styles.editorialImage}>
           <Image
-            src={`${BLOB}/works/tufting/liebes-panopticon.jpg`}
+            src={`${BLOB}/works/tufting/liebes-panopticon.jpg?v=2`}
             alt="Liebes Panopticon — hand tufted wool by Stine Weirsøe Flamant"
             fill
             sizes="(max-width: 768px) 100vw, 55vw"
