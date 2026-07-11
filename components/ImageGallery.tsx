@@ -20,6 +20,8 @@ interface Props {
 export default function ImageGallery({ images, colorwaySiblings, objectFit = 'cover' }: Props) {
   const [activeIndex, setActiveIndex] = useState(0)
   const { selectedImage } = useProduct()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const mounted = useRef(false)
 
   // A fresh variant selection should jump the gallery to that photo — but once the visitor
   // is manually browsing with the arrows/thumbs, that has to win, or the arrows go dead the
@@ -32,7 +34,13 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
       setFollowVariant(true)
       const idx = images.findIndex((img) => img.url === selectedImage)
       if (idx >= 0) setActiveIndex(idx)
+      // Picking a variant (e.g. color) is easy to do while scrolled down past the image —
+      // bring the photo back into view so the change is actually visible, not just the counter.
+      if (mounted.current) {
+        containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
     }
+    mounted.current = true
   }, [selectedImage, images])
 
   const baseActive = images[activeIndex] ?? images[0]
@@ -43,15 +51,16 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
   const goPrev = () => { setFollowVariant(false); setActiveIndex((i) => (i - 1 + images.length) % images.length) }
   const goNext = () => { setFollowVariant(false); setActiveIndex((i) => (i + 1) % images.length) }
 
-  const mainAspectRatio = mainImage?.width && mainImage?.height
-    ? `${mainImage.width}/${mainImage.height}`
-    : '3/4'
+  // Fixed frame, not per-image — matches the site-wide locked card rule (one box, `contain`,
+  // never crop; see DESIGN_SYSTEM.md § Cards). Sizing the box to each image's own dimensions
+  // made the whole page reflow every time the active image changed.
+  const thumbImages = images.slice(1)
 
   return (
-    <div className={styles.images}>
+    <div className={styles.images} ref={containerRef}>
       <div
         className={styles.mainImage}
-        style={{ aspectRatio: mainAspectRatio, background: objectFit === 'contain' ? '#fff' : undefined }}
+        style={{ background: objectFit === 'contain' ? '#fff' : undefined }}
       >
         {mainImage ? (
           <Image
@@ -75,28 +84,31 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
         )}
       </div>
 
-      {images.length > 1 && (
+      {thumbImages.length > 0 && (
         <div className={styles.thumbGrid}>
-          {images.map((img, i) => (
-            <div
-              key={i}
-              className={`${styles.thumb} ${i === activeIndex ? styles.thumbActive : ''}`}
-              onClick={() => { setFollowVariant(false); setActiveIndex(i) }}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && (setFollowVariant(false), setActiveIndex(i))}
-              aria-label={`View image ${i + 1}`}
-              aria-current={i === activeIndex ? 'true' : undefined}
-            >
-              <Image
-                src={img.url}
-                alt={img.alt}
-                fill
-                sizes="20vw"
-                className={styles.thumbImage}
-              />
-            </div>
-          ))}
+          {thumbImages.map((img, i) => {
+            const realIndex = i + 1
+            return (
+              <div
+                key={realIndex}
+                className={`${styles.thumb} ${realIndex === activeIndex ? styles.thumbActive : ''}`}
+                onClick={() => { setFollowVariant(false); setActiveIndex(realIndex) }}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && (setFollowVariant(false), setActiveIndex(realIndex))}
+                aria-label={`View image ${realIndex + 1}`}
+                aria-current={realIndex === activeIndex ? 'true' : undefined}
+              >
+                <Image
+                  src={img.url}
+                  alt={img.alt}
+                  fill
+                  sizes="20vw"
+                  className={styles.thumbImage}
+                />
+              </div>
+            )
+          })}
         </div>
       )}
 

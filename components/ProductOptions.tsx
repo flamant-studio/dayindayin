@@ -399,11 +399,24 @@ export default function ProductOptions({ variants, handle, productTitle, product
   const allArePaperSizes = variants.every(v => PAPER_SIZES.has(normalizeTitle(v.title)))
   const variantGroupLabel = allAreSizes ? 'Size' : allArePaperSizes ? 'Format' : 'Options'
 
+  // Gelato's sync has left some products with 2 Shopify variants for the same size (old vs
+  // new naming — "A3" and "A3 (29.7 x 42 cm)" both normalize to "A3"). Show one button per
+  // normalized label, not one per underlying variant — prefer an in-stock one if there's a
+  // choice, otherwise the first.
+  const dedupedVariants = Array.from(
+    variants.reduce((byLabel, v) => {
+      const label = normalizeTitle(v.title)
+      const existing = byLabel.get(label)
+      if (!existing || (!existing.availableForSale && v.availableForSale)) byLabel.set(label, v)
+      return byLabel
+    }, new Map<string, Variant>()).values()
+  )
+
   return (
     <div className={styles.wrapper}>
       <p className={styles.variantLabel}>{variantGroupLabel}</p>
       <div className={styles.variantList}>
-        {variants.map((v) => (
+        {dedupedVariants.map((v) => (
           <button
             key={v.id}
             className={[

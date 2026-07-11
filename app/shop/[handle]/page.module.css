@@ -422,8 +422,10 @@
 
 .related {
   border-top: 1px solid var(--c-border);
-  margin-top: var(--sp-12);
-  padding-top: var(--sp-8);
+  /* matches RecentlyViewed.module.css — was margin-top --sp-12 + padding-top --sp-8 (128px),
+     excessive when a product has few cross-sell sections and this is the first one to render. */
+  margin-top: var(--sp-8);
+  padding-top: var(--sp-5);
 }
 
 .relatedHeader {
@@ -501,8 +503,8 @@
 
 .originalsSection {
   border-top: 1px solid var(--c-border);
-  margin-top: var(--sp-12);
-  padding-top: var(--sp-8);
+  margin-top: var(--sp-8);
+  padding-top: var(--sp-5);
 }
 
 .originalsSectionHead {

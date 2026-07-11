@@ -6,6 +6,9 @@
 
 .mainImage {
   position: relative;
+  aspect-ratio: 4 / 5; /* fixed frame — matches the locked card rule, DESIGN_SYSTEM.md § Cards.
+    Was set per-image from the active photo's own width/height, which resized the whole page
+    on every arrow click when images had different proportions. */
   background: var(--c-surface);
   overflow: hidden;
   border: 1px solid var(--c-text);

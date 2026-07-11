@@ -13,11 +13,20 @@ interface Props {
 const STORAGE_KEY = 'did_recently_viewed'
 const MAX_ITEMS = 8
 
+// Guards against a heading rendering with blank cards under it — a cached entry from an
+// older version of this cache, or a partial write, can satisfy `others.length >= 2` without
+// having the fields ProductCard actually needs to render.
+function isValidItem(item: unknown): item is RecentItem {
+  const i = item as Partial<RecentItem> | null
+  return !!i && typeof i.handle === 'string' && typeof i.title === 'string' && !!i.minPrice?.amount
+}
+
 function readStorage(): RecentItem[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return []
-    return JSON.parse(raw) as RecentItem[]
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed.filter(isValidItem) : []
   } catch {
     return []
   }

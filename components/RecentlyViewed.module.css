@@ -1,7 +1,10 @@
 .section {
   border-top: 1px solid var(--c-border);
-  margin-top: var(--sp-12);
-  padding-top: var(--sp-8);
+  /* was margin-top: --sp-12 (80px) + padding-top: --sp-8 (48px) — 128px of dead space with
+     only a lone divider line in it when this is the only trailing section (no series/related
+     matches above it). Trimmed to a still-clear but much less empty-feeling gap. */
+  margin-top: var(--sp-8);
+  padding-top: var(--sp-5);
 }
 
 .title {
