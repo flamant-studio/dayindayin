@@ -26,4 +26,10 @@
     grid-template-columns: repeat(2, 1fr);
     overflow-x: auto;
   }
+  /* Keep the whitespace break, drop the grey rule — matches .related and
+     .originalsSection on the shop PDP (app/shop/[handle]/page.module.css), which get the
+     same mobile override for the same reason. */
+  .section {
+    border-top: none;
+  }
 }

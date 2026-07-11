@@ -10,7 +10,6 @@ import RecentlyViewed from '@/components/RecentlyViewed'
 import StickyATC from '@/components/StickyATC'
 import ShareButtons from '@/components/ShareButtons'
 import SelectedPrice from '@/components/SelectedPrice'
-import Breadcrumb from '@/components/Breadcrumb'
 import ArtworkCard from '@/components/ArtworkCard'
 import ProductCard from '@/components/ProductCard'
 import SectionHeading from '@/components/SectionHeading'
@@ -206,18 +205,11 @@ export default async function ProductPage({ params }: PageProps) {
 
   const productSeries = seriesLabel(product)
 
-  // Colorway siblings — products with same title prefix (before last " — ")
+  // Title prefix (before last " — ") — used below to find format siblings (same artwork,
+  // different product type). The "Also in this series" colorway-sibling thumbnails that used
+  // to be derived from this were removed 2026-07-11 per Sebastian's request.
   const titleParts = product.title.split(' — ')
   const titlePrefix = titleParts.length > 1 ? titleParts.slice(0, -1).join(' — ') : null
-  const colorwaySiblings = titlePrefix
-    ? seriesProducts
-        .filter(p => p.title.startsWith(titlePrefix) && p.firstImage)
-        .map(p => ({
-          href: `/shop/${p.handle}`,
-          url: p.firstImage!.url,
-          alt: p.title,
-        }))
-    : []
 
   // Format siblings — same artwork (by displayTitle match), different product type
   // Only add fetch if we have a meaningful artwork name
@@ -313,20 +305,12 @@ export default async function ProductPage({ params }: PageProps) {
           {/* Image column — inside ProductProvider so variant images can update it */}
           <ImageGallery
             images={galleryImages}
-            colorwaySiblings={colorwaySiblings.length > 0 ? colorwaySiblings : undefined}
             objectFit="contain"
           />
 
           {/* Info column */}
           <div className={styles.info}>
             <div className={styles.infoInner}>
-              {/* Breadcrumb */}
-              <Breadcrumb items={[
-                { label: 'Shop', href: '/shop' },
-                { label: catLabel, href: catFilter ? `/shop?filter=${catFilter}` : '/shop' },
-                { label: displayTitle(product.title) },
-              ]} />
-
               {/* 1. Title */}
               <div className={styles.titleBlock}>
                 <div className={styles.titleMeta}>
@@ -358,6 +342,21 @@ export default async function ProductPage({ params }: PageProps) {
                 <p className={styles.description}>{fallbackDescription(product)}</p>
               )}
 
+              {/* Trust line — deliberately always visible, not tucked inside a collapsed
+                  accordion (see ISSUES.md FB-2b). Was nested inside the "Materials &
+                  Production" accordion body, which just happens to default open — reads as
+                  "why is shipping info under Materials?" once you actually read the labels. */}
+              <div className={styles.trustBlock}>
+                <div className={styles.deliveryEstimate}>
+                  <span className={styles.deliveryDot} />
+                  <span>Ships in 3–7 business days · EU, UK &amp; Norway</span>
+                </div>
+                <p className={styles.gelatoLine}>
+                  Printed &amp; shipped by{' '}
+                  <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
+                </p>
+              </div>
+
               {/* 5. Secondary info — accordions */}
               <div className={styles.accordionGroup}>
                 <details className={styles.accordion} open>
@@ -379,16 +378,6 @@ export default async function ProductPage({ params }: PageProps) {
                     {product.variants.length > 1 && (
                       <SizeGuide variants={product.variants} productType={catLabel} />
                     )}
-                    <div className={styles.trustBlock}>
-                      <div className={styles.deliveryEstimate}>
-                        <span className={styles.deliveryDot} />
-                        <span>Ships in 3–7 business days · EU, UK &amp; Norway</span>
-                      </div>
-                      <p className={styles.gelatoLine}>
-                        Printed &amp; shipped by{' '}
-                        <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
-                      </p>
-                    </div>
                   </div>
                 </details>
 

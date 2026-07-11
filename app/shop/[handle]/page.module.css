@@ -634,6 +634,8 @@
   .studioNote { padding: var(--sp-8) var(--sp-5); }
   .studioNoteText { font-size: clamp(1.1rem, 4vw, 1.4rem); }
   .tagRow { flex-wrap: wrap; }
+  /* Keep the whitespace break above each cross-sell section, drop the grey rule. */
+  .related, .originalsSection { border-top: none; }
 }
 
 /* ── Print ───────────────────────────────────────────────── */

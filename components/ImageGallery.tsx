@@ -13,11 +13,10 @@ interface GalleryImage {
 
 interface Props {
   images: GalleryImage[]
-  colorwaySiblings?: { href: string; url: string; alt: string }[]
   objectFit?: 'cover' | 'contain'
 }
 
-export default function ImageGallery({ images, colorwaySiblings, objectFit = 'cover' }: Props) {
+export default function ImageGallery({ images, objectFit = 'cover' }: Props) {
   const [activeIndex, setActiveIndex] = useState(0)
   const { selectedImage } = useProduct()
   const containerRef = useRef<HTMLDivElement>(null)
@@ -109,19 +108,6 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
               </div>
             )
           })}
-        </div>
-      )}
-
-      {colorwaySiblings && colorwaySiblings.length > 0 && (
-        <div className={styles.colorways}>
-          <p className={styles.colorwayLabel}>Also in this series:</p>
-          <div className={styles.colorwayRow}>
-            {colorwaySiblings.map((s) => (
-              <a key={s.href} href={s.href} className={styles.colorwayThumb} title={s.alt}>
-                <Image src={s.url} alt={s.alt} fill sizes="48px" style={{ objectFit: 'cover' }} />
-              </a>
-            ))}
-          </div>
         </div>
       )}
     </div>
