@@ -2,6 +2,28 @@
 
 ---
 
+## 2026-07-06
+
+**Done:**
+- Reduced the PLP card / PDP image border from 2px to 1px (`72c87e4`) — lighter, still clearly defined.
+- Full accent-color palette rework, replacing vermillion. Sebastian rejected an initial 3-option exploration (indigo/teal/periwinkle, all pulled from Stine's actual artwork colors) as "too corporate," then gave 5 exact hex values to build from instead: `#87CDC6` mint, `#B7E6DC` pale mint, `#95619B` mauve, `#799596` sage, `#DFC62A` gold highlight.
+- Checked WCAG contrast for all five before assigning roles (not eyeballed) — only mauve clears 4.5:1 with white text, so it became `--c-accent` (was `#D94F2C`). Gold (dark text) went on series badges — unified PLP's dark-overlay badge and PDP's separate blush-pink badge into one consistent treatment. Sage/mints held in reserve — no clear use case yet.
+- Footer went through two live rounds: solid sage (Sebastian: "too heavy," correctly — it was the one big solid color block against an otherwise all-white, accent-as-punctuation site) → pale mint (approved, shipped in `aedef8d`, required rebuilding footer text-color contrast from scratch since `--c-muted` and sage both failed contrast against mint) → **reverted entirely back to plain white** (`1f78f8d`) per explicit follow-up: "no mint or dark green at all." Footer is now back to 100% standard site tokens (`--c-white`, `--c-muted`, `--c-accent` only on the email link).
+- `--c-accent-2` (forest green, success/confirmation states — "Added ✓", free-shipping progress) deliberately left untouched throughout; different semantic purpose, not part of this color exploration.
+- Repeated an environment mistake twice this session: `rm -f *.mjs` in the project root deleted the real `eslint.config.mjs` (not just my scratch scripts) both times — caught and restored via `git checkout` both times, but worth being more careful with glob deletes going forward.
+- Live-verified every change against production (`getComputedStyle`, not just localhost/screenshots) before calling anything done, per the standing lesson from 2026-07-04.
+
+**Decisions:**
+- Accent color is now `#95619B` mauve, sourced from a hex Sebastian gave directly (not derived from artwork this time — the "inspired by her art" first attempt was rejected).
+- Footer stays plain white for now — the "add a mint/sage wash" idea is closed, not deferred. Don't reintroduce it without being asked again.
+- Mint (`#87CDC6`) and pale mint (`#B7E6DC`) are still unused anywhere on the site. Sage (`#799596`) also unused now that the footer reverted. Gold (`#DFC62A`) is the only "reserve" color actually in production, on series badges.
+
+**Next:**
+- No open design ask right now — palette question is closed pending further direction.
+- Still open from earlier sessions: GELATO_STRATEGY.md questions (automation vs. curation target for the ~300-product catalog, whether any of the broken batch is live/orderable, what a paid Gelato tier unlocks).
+
+---
+
 ## 2026-07-04
 
 **Done:** Two corrections to the 2026-07-03 background fix, both caught by Sebastian from real screenshots/direct questions, not by me:

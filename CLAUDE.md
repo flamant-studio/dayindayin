@@ -1,5 +1,11 @@
 # DayInDayIn — Claude Code Handover
-*Last updated: 2026-06-12*
+*Last updated: 2026-07-06*
+
+**For current, week-to-week state, read these first — this file's "Current State" table below is the original launch handover and is now historical in places:**
+- `ISSUES.md` — the live issues board (P0/P1/P2 + the FB screenshot-feedback batch), single source of truth for what's broken/next
+- `LOG.md` — session-by-session log, most recent first
+- `DESIGN_SYSTEM.md` / `DESIGN_AUDIT.md` — the component system + design tokens (this replaced the "vermillion accent, ad-hoc cards" description below)
+- `GELATO_STRATEGY.md` — open, unresolved decision on the product-catalog pipeline (automation vs. curation) and the product-photo background approach
 
 ---
 
@@ -72,14 +78,14 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 
 ---
 
-## Current State (2026-06-12)
+## Current State (2026-06-12 launch snapshot; rows below marked 2026-07 are corrections)
 
 | Layer | Status |
 |---|---|
 | Next.js site | ✅ Live on Vercel |
 | Shop pages | ✅ Homepage, /shop, /shop/[handle], /shop/collections/[handle] |
 | Cart system | ✅ **WORKING** — add/remove/qty controls, Shopify checkout |
-| Design system | ✅ Playfair Display + Inter, vermillion accent |
+| Design system | 🔄 **(2026-07)** Full component system built: `Button`, `Breadcrumb`, `SectionHeading`, `ProductCard`, `ArtworkCard`, `EditorialCard`, `SeriesCard`, shared `useLightbox`. Site canvas rolled from warm chalk to white (`--c-bg`/`--c-surface` both `#FFFFFF` now); cards/PDP images delimited with a 1px `--c-text` border instead of tonal background matching. Accent color changed from vermillion to mauve `#95619B` (`--c-accent`) — no reds on CTAs per Sebastian. See `DESIGN_SYSTEM.md`. |
 | Nav | ✅ Desktop header + mobile bottom tab bar (Home/Shop/Artist/Cart) |
 | Shopify tokens | ✅ SHOPIFY_STOREFRONT_TOKEN + SHOPIFY_ADMIN_TOKEN in .env.local |
 | Gelato — vertical poster template | ✅ `6005fae3` — A4/A3/A2 portrait |
@@ -87,12 +93,11 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Gelato — mug template | ✅ `0e9a0a04` — 4 variants (White/Black × Design A/B) |
 | Gelato — tote template | ✅ `a28d9355` — 1 variant |
 | Gelato — tank top template | ✅ `2edd0df8` — 6 size variants (XS–2XL) |
-| Gelato store | ✅ 304 products: 76 posters + 76 mugs + 76 totes + 76 tank tops |
-| Online Store publish | ✅ 113/304 published (2026-06-12 night run pass 1). 191 syncing from Gelato. |
-| **Live in shop** | ✅ **76 poster products showing** (have images). Mugs/totes/tanks appear when Gelato generates mockups. |
+| Gelato store / catalog | ⚠️ **(2026-07)** ~298–308 products live via CSV-import automation, but Sebastian's own review found ~0% of that batch is actually print-ready (broken variant selectors, orientation mismatches, missing multi-image templates). **Open, unresolved decision in `GELATO_STRATEGY.md`:** curate to ~150 correct products by hand vs. keep patching the automated batch. Don't assume the product count reflects sellable products. |
+| Online Store publish | ✅ Publishing itself is done (no longer "syncing") — the open question is catalog *correctness*, not publish status. See row above. |
 | Product variant UX | ✅ Posters: A4/A3/A2 selector. Mugs: Color × Design 2D picker. Tanks: Size selector. Totes: single variant. |
 | Category labels | ✅ Mug/Tote Bag/Apparel/Framed Print/Art Print/Tufted Work/Embroidery/Photo Print |
-| Series filters | ✅ SHERO/NEKO/Sea Monsters/Botanical/Floral/Faces — all working |
+| Series filters | 🔄 **(2026-07)** SHERO/NEKO/Sea Monsters/Botanical/Floral/**Masks**/**Tourism**. "Faces" was renamed to "Masks" and broadened (it excluded all ~44 mask products, matching only 8 "Face"-titled ones); "Sommerby" removed (4 variants of one painting, not a series); "Tourism" added (15 products had no filter before). |
 | Product pages | ✅ Breadcrumb, size guide (null for mugs/tanks/totes), gallery, lightbox, cross-sells, JSON-LD |
 | SEO | ✅ sitemap.xml (paginated, all 304+ products), robots.txt, OG image |
 | Search | ✅ /search?q= — full-text, 250 products |
@@ -107,9 +112,6 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | CONTACT_EMAIL_TO | 🔲 Pending — Stine's actual email in Vercel env vars |
 | Newsletter API | 🔲 Signup shows "Thank you" but doesn't subscribe — needs Mailchimp/Klaviyo |
 | Water bottles / dad caps | 🔲 CSVs ready in `DayInDayIn Images/`, not yet created in Gelato |
-| Publish pass 2 | ⏳ Run `npx tsx scripts/publish-gelato-to-shopify.ts` tomorrow to publish remaining 191 products |
-| Mockup image generation | ⏳ Gelato generating mockups for all 228 new products (async, hours–days) |
-| 76th product | ⏳ 1 product pending Gelato→Shopify sync — run `npx tsx scripts/publish-gelato-to-shopify.ts` to catch it |
 
 **Gelato store ID:** `51ee1b39-75e6-4c19-af02-cfd7cb771a4a`
 
