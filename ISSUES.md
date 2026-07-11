@@ -145,6 +145,78 @@ Sebastian sent 9 screenshots with direct feedback. Investigated each before touc
 
 ---
 
+# UX — 16-TASK BACKLOG (2026-07-11) — shipped, see `dayindayin-tasks.md` for full source doc
+
+Sebastian sent 18 screenshots via Google Doc (task 3 deleted, task 10 folded into 9 → 16 tasks). Worked autonomously end to end, deployed (`a9be0e5`), live-verified every item against `https://dayindayin-site.vercel.app` with Playwright. Proof: `screenshots/ux-batch-2026-07-11/`.
+
+### UX-1: Home hero — Liebes Panopticon shows the back of the piece
+**What:** Editorial hero image is the raw canvas back (signature, burlap, pencil marks), not the finished front.
+**Status:** ⏸ BLOCKED — audited every image in `works/tufting/liebes-panopticon/` (main + 5 gallery) and the Shopify catalog (no print product exists for this piece either). None show the actual front of the work — the gallery folder contains photos of a *different, unrelated* piece entirely. No valid asset exists anywhere in the library to swap in. Needs real photography or a corrected asset upload from Stine, not a code fix.
+
+### UX-2 / UX-14: Browse-by-Series tiles inconsistent crops, duplicated across pages
+**What:** Home's inline "Browse by Series" strip and `/collections`' `SeriesCard` grid were two separate bespoke implementations, and individual tile images mixed full-bleed art with white-matted product mockups.
+**Fix:** extracted a shared `SeriesTile` component (uniform 1:1 crop, edge-to-edge, no matting) used on both pages. Centralized series metadata into `lib/series.ts` — this also fixed a real, separate staleness bug found along the way: `/collections` still listed "Faces"/"Sommerby" (renamed to Masks / removed weeks ago per LOG.md 2026-07-06) while home already had the correct Masks/Tourism list.
+**Status:** 🟡 CLAIMED · Proof: `screenshots/ux-batch-2026-07-11/home-desktop.png`.
+
+### UX-4: Newsletter — full section moved to a minimal footer signup
+**Status:** 🟡 CLAIMED · Full-section homepage block removed; `NewsletterSignup` got a `variant="minimal"` (single input + button, no copy) now living in the footer brand column. Proof: `home-desktop.png` (footer, bottom left).
+
+### UX-5: Studio collage strip reused images from elsewhere on the homepage
+**What:** `ls-04`/`ls-07` in the strip were the *same* photos as the "Two ways to collect" section directly above; `ls-02`/`ls-05` also duplicate `/commissions`.
+**Fix:** probed the blob store — only `ls-01` through `ls-09` exist (9 total lifestyle photos). Swapped the strip to the 3 genuinely unused ones (`ls-03`, `ls-06`, `ls-08` — dropped `ls-06` for `ls-08`, near-duplicate shots of the same scene) plus one work-gallery detail shot (Jellyfish gallery/3, never surfaced outside that work's own PDP) for the 4th slot, since the lifestyle library alone isn't deep enough for 4 fresh images.
+**Status:** 🟡 CLAIMED · Proof: `home-desktop.png` (bottom strip, above footer).
+
+### UX-6: Studio Notes / blog — no live copy yet
+**Fix:** removed the homepage teaser section; disabled the routes by renaming `app/art-journal` → `app/_art-journal` and `app/blog` → `app/_blog` (Next.js private-folder convention — routes 404, code fully intact, trivially reversible when Stine has real posts). Removed the nav links (Footer, 404 page). Removed from sitemap.
+**Status:** 🟡 CLAIMED · Verified `/art-journal` and `/blog/*` 404 on production, zero "Studio Notes" references left in Footer/nav.
+
+### UX-7: Footer — two info lines merged into one
+**Status:** 🟡 CLAIMED · `Ships to EU, UK & Norway · Secure checkout via Shopify · Prints from 56 kr` + `© 2026 ... · Sitemap · Printed by Gelato` collapsed into one line (dropped "Prints from 56 kr" per the brief's own suggested format — already said in the hero). Proof: `home-desktop.png`, footer.
+
+### UX-8: Shop "Newest" sort looked broken
+**What:** Investigated — sort is fully wired (`?sort=price-asc`/`price-desc` genuinely reorder, verified against live prices). "Newest" is the default; clicking it while already active correctly does nothing, same as any toggle control at rest.
+**Status:** No fix needed — not a bug.
+
+### UX-9: Shop — Floral and Botanical dropped from series tabs
+**What:** 3 products each, too sparse for a dedicated tab.
+**Fix:** removed from `ShopFilterNav`'s visible tab list only — `/shop?filter=floral` and `?filter=botanical` still work (e.g. from the homepage series tiles), products still show under "All series."
+**Status:** 🟡 CLAIMED · Verified live: tab bar shows All/SHERO/NEKO/Sea Monsters/Masks/Tourism, no Floral/Botanical tab.
+
+### UX-11: PDP variant selector (color/design) looked broken
+**What:** Root cause was NOT what it looked like. Shopify's **Storefront API** (what the live site actually queries) silently returns the product's fallback photo for every variant that has no dedicated image of its own — it does not return `null` the way the Admin API does. So clicking Black/Side B kept showing the exact same photo, with no visible feedback that the click even registered.
+**Fix:** (1) `ProductContext.setSelected` no longer skips the image update when a variant has no distinct photo — was silently keeping the *previous* selection's image, which is actively misleading, not just uninformative. (2) `ProductOptions` now detects when 2+ variants in a group share the identical image URL and shows an honest "Photo shown is a reference" note instead of a selector that looks dead.
+**Audit finding (bigger than this one product):** queried the Admin API across the whole catalog — **127/127 multi-variant products** (all mugs, all framed prints) have at least one variant missing its own Gelato mockup photo. This is systemic, not isolated — same root cause already flagged in `GELATO_STRATEGY.md`. No further per-product fix is possible without real mockup photography; that decision is still open and unchanged by this session.
+**Status:** 🟡 CLAIMED · Verified live on `/shop/botanical-blanc`: clicking Black shows the reference note immediately (in fact it shows on load too, since all 4 of this product's variants share one photo).
+
+### UX-12: PDP cross-sell carousels ("Similar pieces" + "Recently viewed")
+**What:** Investigated — both already exist and work on the shop PDP (`More from {series}`, `You might also like`, `Original {medium} works`, plus `RecentlyViewed` via localStorage).
+**Status:** No fix needed — pre-existing, verified working.
+
+### UX-13: PDP zoom lightbox replaced with inline arrow carousel
+**Fix:** `ImageGallery` no longer opens a modal lightbox on click. Left/right arrows overlay the main image directly (hover-to-reveal on desktop, always visible on mobile), with a "N / total" counter; thumbnails jump to that index inline, no modal. `ImageLightbox`/`useLightbox` untouched — still used by `WorksGallery` (Fine Art PDP "Studio views"), a separate, legitimate use.
+**Status:** 🟡 CLAIMED · Verified live: 2 arrow buttons + "1 / 3" counter present on `/shop/botanical-blanc`.
+
+### UX-15: Fine Art works using a back/WIP photo as the hero
+**What:** Same root pattern as UX-1, audited across all 26 tufting works (contact sheet + individual review).
+**Fix:** **Jellyfish** — swapped to its own gallery/1.jpg (confirmed clean front shot). **Floral Thing** — swapped to gallery/2.jpg (main image was an unreadable macro crop; gallery/1–2 are the actual whole piece, gallery/3–5 are unrelated/mismatched photos, left untouched). **Du Und** — swapped to gallery/3.jpg, a partial improvement (best available finished-stitch shot) — flagging that no photo of the *complete* finished piece exists anywhere in this work's asset folder; only WIP shots and macro crops.
+**Bigger finding:** **Liebes Panopticon** and **Bedroom Rug** — both have their entire gallery folders populated with photos of a different, unrelated piece, not just a bad angle. This isn't a "pick a better existing photo" fix; it's missing/misfiled assets. Flagged, not touched (see UX-1).
+**Status:** 🟡 CLAIMED (Jellyfish, Floral Thing) / partial (Du Und) / ⏸ BLOCKED (Liebes Panopticon, Bedroom Rug — see UX-1). Proof: `screenshots/ux-batch-2026-07-11/jellyfish-fixed.png`.
+
+### UX-16: Fine Art PDP CTA copy
+**Fix:** "Discover this work" → "Enquire about price" (matches the site's existing "price on enquiry" language elsewhere on the same page). Sold-work CTA ("Discover similar work" → "Enquire about similar work") for consistency; shop/print PDPs' "Add to cart" untouched.
+**Status:** 🟡 CLAIMED.
+
+### UX-17: Fine Art PDP — added "Recently viewed" carousel
+**What:** Only had one "More {medium}" carousel (already existed, satisfies half the ask).
+**Fix:** new `RecentlyViewedWorks` component (mirrors the shop PDP's `RecentlyViewed` pattern, separate localStorage key, `ArtworkCard`-based).
+**Status:** 🟡 CLAIMED.
+
+### UX-18: All Works page removed, Grid/Carousel toggle added to Fine Art
+**Fix:** `/archive`'s dense grid (filters + full catalog) merged into `/fine-art?view=grid` behind a new toggle; old page deleted, `/archive` 301-redirects to `/fine-art?view=grid` (category param passes through automatically — Next.js forwards unmatched query params). Updated every internal link (Footer, 404 page, breadcrumbs, sitemap, related-works links) to the new URL directly rather than relying on the redirect hop.
+**Status:** 🟡 CLAIMED · Proof: `screenshots/ux-batch-2026-07-11/fine-art-grid-toggle.png` — toggle, filter tabs, and dense grid all rendering live with correct counts (All 72, Tufting 26, Embroidery 13, Painting 14, Photography 19).
+
+---
+
 # P1 — PAGE ISSUES (after the relevant SYS- exists)
 
 ### Homepage

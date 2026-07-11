@@ -2,6 +2,27 @@
 
 ---
 
+## 2026-07-11
+
+**Done:** Worked a 16-task UX backlog end to end (Sebastian's Google Doc, generated from 18 screenshots), shipped and deployed (`a9be0e5`). Full breakdown per task in ISSUES.md § "UX — 16-task backlog". Highlights:
+- Home: dropped the full newsletter section (→ minimal footer signup) and the Studio Notes teaser; replaced 2 reused lifestyle photos that duplicated the "Two ways to collect" section directly above them.
+- Extracted a shared `SeriesTile` component (uniform square crop) used by both home and `/collections` — closes a real duplication bug and, as a side effect, fixed `/collections` still listing "Faces"/"Sommerby" (renamed/removed weeks ago).
+- Found the actual root cause of "PDP variant selector does nothing": Shopify's Storefront API silently falls back to the product's default photo for any variant without its own image, instead of returning null like the Admin API does — so the click registered but the (identical) photo never visibly changed. Fixed the frontend to detect and disclose this ("photo shown is a reference") rather than just quietly not updating. Audited the catalog: 127/127 multi-variant products have this gap — systemic, ties to the open GELATO_STRATEGY.md decision, not fixable per-product.
+- Replaced the PDP zoom lightbox with an inline arrow carousel.
+- Removed `/archive` in favor of a Grid/Carousel toggle on `/fine-art` (redirect in place, category param passes through automatically).
+- Fixed 2 Fine Art works (Jellyfish, Floral Thing) using a back/WIP photo as their hero; found — but couldn't fix — 2 more (Liebes Panopticon, Bedroom Rug) whose entire photo gallery folders contain a different, unrelated piece. No valid front photo exists anywhere in the library for either.
+- Disabled Studio Notes / blog by renaming the route folders to `_art-journal`/`_blog` (Next.js private-folder convention) rather than deleting — fully reversible, zero live copy yet.
+- Hit the same stale-Turbopack-cache issue as 2026-07-04 (this time on an *incremental* build, not just after a revert) — a debug marker I added to ProductOptions wasn't rendering, and `rm -rf .next` + full rebuild fixed it immediately. Worth remembering: incremental builds in this session have twice now served stale output silently (no error, just wrong content) — when local behavior doesn't match the code, wipe `.next` before assuming the code is wrong.
+
+**Decisions:**
+- Liebes Panopticon and Bedroom Rug hero images are left as-is — swapping to another wrong photo would be worse than the current wrong photo. Needs real photography or a corrected asset re-upload from Stine before any code fix is possible.
+- Shop "Newest" sort and the shop PDP's "Similar pieces"/"Recently viewed" carousels were both already working before this session — verified, not touched.
+
+**Next:**
+- Sebastian's call: Liebes Panopticon + Bedroom Rug photography, and — unchanged from 2026-07-01 — the GELATO_STRATEGY.md curate-vs-automate decision, now with harder evidence (127/127 multi-variant products affected).
+
+---
+
 ## 2026-07-06
 
 **Done:**
