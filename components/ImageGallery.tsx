@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { useProduct } from '@/contexts/ProductContext'
 import styles from './ImageGallery.module.css'
@@ -21,14 +21,27 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
   const [activeIndex, setActiveIndex] = useState(0)
   const { selectedImage } = useProduct()
 
-  // A variant swap (via ProductContext) always wins over manual arrow/thumb browsing.
+  // A fresh variant selection should jump the gallery to that photo — but once the visitor
+  // is manually browsing with the arrows/thumbs, that has to win, or the arrows go dead the
+  // moment any variant has published an image (which is almost immediately, on mount).
+  const [followVariant, setFollowVariant] = useState(true)
+  const prevSelectedImage = useRef(selectedImage)
+  useEffect(() => {
+    if (selectedImage !== prevSelectedImage.current) {
+      prevSelectedImage.current = selectedImage
+      setFollowVariant(true)
+      const idx = images.findIndex((img) => img.url === selectedImage)
+      if (idx >= 0) setActiveIndex(idx)
+    }
+  }, [selectedImage, images])
+
   const baseActive = images[activeIndex] ?? images[0]
-  const mainImage = selectedImage
+  const mainImage = followVariant && selectedImage
     ? { url: selectedImage, alt: baseActive?.alt ?? '' }
     : baseActive
 
-  const goPrev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length)
-  const goNext = () => setActiveIndex((i) => (i + 1) % images.length)
+  const goPrev = () => { setFollowVariant(false); setActiveIndex((i) => (i - 1 + images.length) % images.length) }
+  const goNext = () => { setFollowVariant(false); setActiveIndex((i) => (i + 1) % images.length) }
 
   const mainAspectRatio = mainImage?.width && mainImage?.height
     ? `${mainImage.width}/${mainImage.height}`
@@ -68,10 +81,10 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
             <div
               key={i}
               className={`${styles.thumb} ${i === activeIndex ? styles.thumbActive : ''}`}
-              onClick={() => setActiveIndex(i)}
+              onClick={() => { setFollowVariant(false); setActiveIndex(i) }}
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && setActiveIndex(i)}
+              onKeyDown={(e) => e.key === 'Enter' && (setFollowVariant(false), setActiveIndex(i))}
               aria-label={`View image ${i + 1}`}
               aria-current={i === activeIndex ? 'true' : undefined}
             >
