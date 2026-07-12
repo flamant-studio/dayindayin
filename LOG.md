@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-07-12
+
+**Done:** Sebastian mobile-reviewed everything shipped in the 2026-07-11 session and found real problems — this entry is that review-and-fix cycle.
+- PDP arrow carousel was completely non-functional (`dd094cf`): counter incremented, image never changed. Root cause was a variant-selected image permanently overriding arrow navigation. Fixed and click-verified (before/after image URL comparison), not just checked for button presence.
+- Liebes Panopticon: the "no valid photo exists" conclusion from 2026-07-11 was wrong — I'd only checked Vercel Blob, not the Dropbox `_KUNST/COLLECTION CURRENT` asset library, which has a full "web ready" folder (`089de74`). Turns out it's a multi-panel composite piece, which is why the old images looked unrelated. Re-uploaded the real set, then hit a second bug: overwriting a Blob file at the same URL doesn't bust Next's image-optimizer cache — had to cache-bust with `?v=2` on every reference (`20af724`, `66e0645`).
+- Mobile review of the actual shipped pages surfaced 4 real regressions from the 2026-07-11 work (`68b06f1`): the fixed-image-box change caused a layout jump when cycling images of different proportions; a flat-variant-list dedup gap (pre-existing, newly visible) showed duplicate Shopify variant buttons; showing the hero image as a thumbnail duplicated an existing near-identical-mockup problem; three cross-sell sections had 128px of stacked margin+padding reading as dead space with a floating divider.
+- Applied the same mobile grid spacing fix from `/shop` to the homepage product grid, which had been missed (`7cb9b67`).
+- Further PDP mobile pass (`4d4b507`): thumbnails now scroll on one line instead of wrapping; dropped the stray top/bottom border on the full-bleed mobile image; moved the shipping/Gelato trust line out of the "Materials & Production" accordion (it was only in there because that accordion defaults open, not because it belongs there) to its own always-visible block; removed Breadcrumb and "Also in this series" entirely, all viewports; removed the grey divider above all PDP cross-sell sections on mobile.
+- Fine Art page restructure (`08b8066`): hero is now byte-identical between List and Grid view (was swapping to "All Works" on toggle); one shared category filter used in both views (was grid-only); "Carousel" renamed to "List" (it was never a carousel); filter is single-line on mobile.
+
+**Decisions:**
+- Verification discipline changed after the regressions above: test the worst-case product in the catalog (most variants, most images, sparsest cross-sell data), not the cleanest one; screenshot before and after the actual interaction and look at the whole page, not just confirm the target element exists; before changing a component more than one page depends on, check every distinct usage pattern first.
+- Hit the same stale-Turbopack-build failure mode three separate times tonight — a port conflict or incremental build can silently keep serving old code with no error surfaced. Standing rule now: `rm -rf .next` + rebuild + confirm exactly one process is listening on the port, before trusting any local test result that looks wrong.
+- Confirmed via Shopify Admin API audit that missing per-variant Gelato mockup photos are systemic — 127/127 multi-variant products affected, not isolated. Ties to the still-open GELATO_STRATEGY.md automate-vs-curate decision.
+
+**Next:**
+- Sebastian's call: Liebes Panopticon's 6 available photos are individual components of a multi-panel piece, not one "whole assembled front" shot — flag if a specific different hero is wanted.
+- Bedroom Rug and Du Und (from the 2026-07-11 UX backlog) still have no valid finished-work photo — same asset-library gap as Liebes Panopticon, worth a second look now that Dropbox is the known-correct source, not Blob.
+- GELATO_STRATEGY.md curate-vs-automate decision is still open, now with harder evidence (127/127 products).
+- ISSUES.md's "UX — 16-task backlog" section (written 2026-07-11) is stale against tonight's fixes — several items marked 🟡 CLAIMED were subsequently found broken and re-fixed. Worth a pass to reconcile before it misleads a future session.
+
+---
+
 ## 2026-07-11
 
 **Done:** Worked a 16-task UX backlog end to end (Sebastian's Google Doc, generated from 18 screenshots), shipped and deployed (`a9be0e5`). Full breakdown per task in ISSUES.md § "UX — 16-task backlog". Highlights:

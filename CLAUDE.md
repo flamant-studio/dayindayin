@@ -97,8 +97,9 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Online Store publish | ✅ Publishing itself is done (no longer "syncing") — the open question is catalog *correctness*, not publish status. See row above. |
 | Product variant UX | ✅ Posters: A4/A3/A2 selector. Mugs: Color × Design 2D picker. Tanks: Size selector. Totes: single variant. |
 | Category labels | ✅ Mug/Tote Bag/Apparel/Framed Print/Art Print/Tufted Work/Embroidery/Photo Print |
-| Series filters | 🔄 **(2026-07)** SHERO/NEKO/Sea Monsters/Botanical/Floral/**Masks**/**Tourism**. "Faces" was renamed to "Masks" and broadened (it excluded all ~44 mask products, matching only 8 "Face"-titled ones); "Sommerby" removed (4 variants of one painting, not a series); "Tourism" added (15 products had no filter before). |
-| Product pages | ✅ Breadcrumb, size guide (null for mugs/tanks/totes), gallery, lightbox, cross-sells, JSON-LD |
+| Series filters | 🔄 **(2026-07)** SHERO/NEKO/Sea Monsters/Botanical/Floral/**Masks**/**Tourism**. "Faces" was renamed to "Masks" and broadened (it excluded all ~44 mask products, matching only 8 "Face"-titled ones); "Sommerby" removed (4 variants of one painting, not a series); "Tourism" added (15 products had no filter before). Floral/Botanical dropped from the /shop tab bar 2026-07-11 (too sparse, 3 products each) — still reachable via `?filter=`, still shown as tabs on /fine-art and /collections. |
+| Fine Art page | 🔄 **(2026-07-12)** `/archive` removed — its dense grid merged into `/fine-art?view=grid` behind a List/Grid toggle (redirect in place). Hero is identical between views; one shared category filter used by both. |
+| Product pages | ✅ Size guide (null for mugs/tanks/totes), gallery (arrow carousel, not a lightbox), cross-sells, JSON-LD. No breadcrumb or "Also in this series" — removed 2026-07-12 per Sebastian, deliberately, not an oversight. |
 | SEO | ✅ sitemap.xml (paginated, all 304+ products), robots.txt, OG image |
 | Search | ✅ /search?q= — full-text, 250 products |
 | Cookie banner | ✅ localStorage-based |
