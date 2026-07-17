@@ -90,7 +90,7 @@ export default async function HomePage() {
             loop
             playsInline
             className={styles.heroBgVideo}
-            poster={`${BLOB}/lifestyle/ls-01.jpg`}
+            poster={`${BLOB}/lifestyle/cat-doll-poster.jpg`}
           >
             <source src="https://29kekabbrd49avje.public.blob.vercel-storage.com/video/hero-loop.mp4" type="video/mp4" />
           </video>
