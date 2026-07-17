@@ -88,10 +88,10 @@ export default async function ShopPage({ searchParams }: PageProps) {
     if (activeTag) {
       if (isTypeFilter) {
         const targetLabel = TYPE_LABEL_MAP[activeTag]
-        return targetLabel ? categoryLabel(p) === targetLabel : true
+        return targetLabel ? categoryLabel(p) === targetLabel : false
       }
       const pattern = SERIES_TITLE_PATTERNS[activeTag]
-      return pattern ? pattern.test(p.title) : true
+      return pattern ? pattern.test(p.title) : false
     }
     return true
   })
