@@ -17,11 +17,13 @@ const TYPE_NAV = [
   { label: 'Wood Prints', value: 'wood-print' },
 ]
 
-const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'masks', 'tourism']
+const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'floral', 'masks', 'tourism']
 
-// Floral and Botanical dropped from the tab bar 2026-07-11 — only 3 products
-// each, too sparse for a dedicated tab. Still reachable via /shop?filter=floral
-// or /shop?filter=botanical (e.g. from the homepage series tiles) and via "All series".
+// Floral dropped from the tab bar 2026-07-11 — only 3 products, too sparse for
+// a dedicated tab. Still reachable via /shop?filter=floral (e.g. from the
+// homepage series tiles) and via "All series". Botanical removed entirely
+// 2026-07-17 (not just dropped from the tab bar) — no more botanical category
+// anywhere on the site, per Sebastian.
 const SERIES_NAV = [
   { label: 'All series', value: null },
   { label: 'SHERO', value: 'shero' },

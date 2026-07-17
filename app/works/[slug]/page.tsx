@@ -55,7 +55,6 @@ const SERIES_SHOP_FILTERS: Array<{ pattern: RegExp; filter: string; label: strin
   { pattern: /\bshero\b/i,       filter: 'shero',        label: 'SHERO series' },
   { pattern: /\bneko\b/i,        filter: 'neko',         label: 'NEKO series' },
   { pattern: /sea[\s-]monster/i, filter: 'sea-monsters', label: 'Sea Monsters' },
-  { pattern: /botanical/i,       filter: 'botanical',    label: 'Botanical' },
   { pattern: /floral/i,          filter: 'floral',       label: 'Floral' },
   { pattern: /\bfaces?\b/i,      filter: 'faces',        label: 'Faces' },
   { pattern: /sommerby/i,        filter: 'sommerby',     label: 'Sommerby' },

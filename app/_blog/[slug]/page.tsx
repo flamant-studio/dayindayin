@@ -58,7 +58,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     { keyword: 'neko',          filter: 'neko',         label: 'NEKO series' },
     { keyword: 'shero',         filter: 'shero',        label: 'SHERO series' },
     { keyword: 'sea monster',   filter: 'sea-monsters', label: 'Sea Monsters' },
-    { keyword: 'botanical',     filter: 'botanical',    label: 'Botanical' },
     { keyword: 'floral',        filter: 'floral',       label: 'Floral' },
     { keyword: 'tufting',       filter: 'art-print',    label: 'prints' },
     { keyword: 'embroidery',    filter: 'art-print',    label: 'prints' },

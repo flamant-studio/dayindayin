@@ -18,7 +18,7 @@ export const metadata = {
   },
 }
 
-const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'masks', 'tourism']
+const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'floral', 'masks', 'tourism']
 
 const FILTER_LABELS: Record<string, string> = {
   'art-print':      'Art Prints',
@@ -34,7 +34,6 @@ const FILTER_LABELS: Record<string, string> = {
   'shero':          'SHERO',
   'neko':           'NEKO',
   'sea-monsters':   'Sea Monsters',
-  'botanical':      'Botanical',
   'floral':         'Floral',
   'masks':          'Masks',
   'tourism':        'Tourism',
@@ -79,7 +78,6 @@ export default async function ShopPage({ searchParams }: PageProps) {
     'shero':        /\bshero\b/i,
     'neko':         /\bneko\b/i,
     'sea-monsters': /sea[\s-]monster/i,
-    'botanical':    /botanical/i,
     'floral':       /floral/i,
     'masks':        /\bmasks?\b|\bfaces?\b/i,
     'tourism':      /\btourism\b/i,

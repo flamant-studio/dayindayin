@@ -18,7 +18,6 @@ export const HANDLE_CATEGORY_MAP: { keywords: string[]; category: string }[] = [
   { keywords: ['neko'],          category: 'neko' },
   { keywords: ['shero'],         category: 'shero' },
   { keywords: ['sea-monster'],   category: 'sea-monsters' },
-  { keywords: ['botanical'],     category: 'botanical' },
   { keywords: ['floral'],        category: 'floral' },
   { keywords: ['faces', 'face'], category: 'faces' },
   { keywords: ['sommerby'],      category: 'sommerby' },

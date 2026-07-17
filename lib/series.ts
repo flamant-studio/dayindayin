@@ -22,7 +22,6 @@ export const SERIES: SeriesMeta[] = [
   { tag: 'shero',        label: 'SHERO',       sub: 'Power, resistance, naming',      accent: '#D94F2C', image: `${SERIES_BLOB}/shero.png` },
   { tag: 'neko',         label: 'NEKO',        sub: 'Watching without watching back', accent: '#2E5D4B', image: `${SERIES_BLOB}/neko.jpg` },
   { tag: 'sea-monsters', label: 'Sea Monsters', sub: 'Creatures from old charts',      accent: '#4A7A9B', image: `${SERIES_BLOB}/sea-monsters.jpg` },
-  { tag: 'botanical',    label: 'Botanical',   sub: 'Leaves, roots, natural form',     accent: '#5C7A48', image: `${SERIES_BLOB}/botanical.jpg` },
   { tag: 'floral',       label: 'Floral',      sub: 'Colour at the edge of excess',    accent: '#B85C78', image: `${SERIES_BLOB}/floral.jpg` },
   { tag: 'masks',        label: 'Masks',       sub: 'The ones that look back',         accent: '#7A6B8A', image: `${SERIES_BLOB}/masks.jpg` },
   { tag: 'tourism',      label: 'Tourism',     sub: 'Postcards from elsewhere',        accent: '#9B6A3C', image: `${SERIES_BLOB}/tourism.jpg` },
@@ -31,5 +30,5 @@ export const SERIES: SeriesMeta[] = [
 // Keyword used to fetch a representative product image per series (title search)
 export const SERIES_KEYWORDS: Record<string, string> = {
   shero: 'shero', neko: 'neko', 'sea-monsters': 'Sea Monsters',
-  botanical: 'Botanical', floral: 'Floral', masks: 'Mask', tourism: 'Tourism',
+  floral: 'Floral', masks: 'Mask', tourism: 'Tourism',
 }

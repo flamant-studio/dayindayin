@@ -7,7 +7,7 @@ const BASE = 'https://dayindayin.dk'
 const FILTER_TAGS = [
   'art-print', 'framed', 'poster', 'mug', 'apparel', 'tote',
   'greeting-card', 'postcard', 'water-bottle', 'wood-print',
-  'shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby',
+  'shero', 'neko', 'sea-monsters', 'floral', 'faces', 'sommerby',
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

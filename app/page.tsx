@@ -209,21 +209,13 @@ export default async function HomePage() {
         )}
       </section>
 
-      {/* ── Artist statement ─────────────────────────────────── */}
-      <section className={styles.artistStrip}>
-        <p className={styles.artistText}>
-          Stine Weirsøe Flamant makes art with her hands in Copenhagen — tufted textiles, embroidered canvas, paintings, and photography. Everything in this shop is her work. Nothing is licensed in.
-        </p>
-        <Link href="/about" className={styles.artistLink}>About the artist →</Link>
-      </section>
-
       {/* ── Studio Notes teaser — disabled 2026-07-11, no live copy yet.
           See app/_art-journal and app/_blog (renamed to unpublish, not deleted). ── */}
 
       {/* ── Newsletter — disabled 2026-07-11, moved to a minimal footer signup
           (see components/Footer.tsx). Full-section variant kept in NewsletterSignup.tsx. ── */}
 
-      {/* ── Lifestyle strip ──────────────────────────────────── */}
+      {/* ── Lifestyle strip — moved above the artist statement 2026-07-17 per Sebastian ── */}
       <Link href="/shop" className={styles.lifestyleStripLink}>
         <section className={styles.lifestyleStrip}>
           {LIFESTYLE.map(({ src, alt }, i) => (
@@ -233,6 +225,14 @@ export default async function HomePage() {
           ))}
         </section>
       </Link>
+
+      {/* ── Artist statement ─────────────────────────────────── */}
+      <section className={styles.artistStrip}>
+        <p className={styles.artistText}>
+          Stine Weirsøe Flamant makes art with her hands in Copenhagen — tufted textiles, embroidered canvas, paintings, and photography. Everything in this shop is her work. Nothing is licensed in.
+        </p>
+        <Link href="/about" className={styles.artistLink}>About the artist →</Link>
+      </section>
     </>
   )
 }

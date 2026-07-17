@@ -73,7 +73,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
         <div className={styles.suggestions}>
           <p className={styles.suggestionsLabel}>Try searching for</p>
           <div className={styles.suggestionsList}>
-            {['SHERO', 'NEKO', 'Sea Monsters', 'Botanical', 'Floral', 'Faces', 'Sommerby', 'mug', 'poster', 'tote', 'postcard', 'framed'].map((term) => (
+            {['SHERO', 'NEKO', 'Sea Monsters', 'Floral', 'Faces', 'Sommerby', 'mug', 'poster', 'tote', 'postcard', 'framed'].map((term) => (
               <a key={term} href={`/search?q=${encodeURIComponent(term)}`} className={styles.suggestionChip}>{term}</a>
             ))}
           </div>
@@ -83,7 +83,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
       {query && results.length === 0 && workResults.length === 0 && (
         <div className={styles.noResults}>
           <p className={styles.noResultsText}>Nothing matched &ldquo;{query}&rdquo;.</p>
-          <p className={styles.noResultsHint}>Try a series name (SHERO, NEKO, Botanical) or product type (mug, poster, tote).</p>
+          <p className={styles.noResultsHint}>Try a series name (SHERO, NEKO, Floral) or product type (mug, poster, tote).</p>
           <div className={styles.noResultsLinks}>
             <Link href="/shop" className={styles.noResultsCta}>Browse all products</Link>
             <Link href="/fine-art?view=grid" className={styles.noResultsAlt}>View original works →</Link>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { works, WorkCategory } from "@/lib/data";
 import SectionHeading from "@/components/SectionHeading";
 import ArtworkCard from "@/components/ArtworkCard";
+import SeriesTile from "@/components/SeriesTile";
 import styles from "./page.module.css";
 import type { Metadata } from "next";
 
@@ -67,10 +68,11 @@ const FEATURED_SLUGS = ['orange-sun', 'fuck-alting', 'universe-3', 'taped-object
 // Works hidden from the public archive (weak/placeholder shots)
 const HIDDEN_SLUGS = ['office-shot'];
 
+// Capped at 6 (2026-07-17, per Sebastian) — dropped Purple Fabric in Garden,
+// Seb Livingroom, Long Hair Don't Care. Uses the same tile component as the
+// homepage "Browse by Series" strip (SeriesTile), not a bespoke card.
 const RECENTLY_ADDED_SLUGS = [
-  'purple-fabric-in-garden', 'yarn', 'smorrebrod',
-  'bedroom-wall-rug', 'red-on-wood', 'stripes-on-beige', 'pink-rug-II',
-  'seb-livingroom', 'green-background', 'long-hair-dont-care', 'gud-har-meldt-afbud-II',
+  'yarn', 'smorrebrod', 'bedroom-wall-rug', 'red-on-wood', 'stripes-on-beige', 'green-background',
 ];
 
 function ViewToggle({ view, category }: { view: 'list' | 'grid'; category: string }) {
@@ -248,20 +250,17 @@ export default async function FineArt({ searchParams }: PageProps) {
             <span className={styles.recentLabel}>Recent additions</span>
             <span className={styles.recentCount}>{recentlyAdded.length} works added</span>
           </div>
-          <div className={styles.recentStrip}>
+          <div className={styles.recentGrid}>
             {recentlyAdded.map((work) => (
-              <Link key={work.slug} href={`/works/${work.slug}`} className={styles.recentCard}>
-                <div className={styles.recentImg}>
-                  <Image
-                    src={work.image}
-                    alt={work.title}
-                    fill
-                    sizes="(max-width: 768px) 40vw, 180px"
-                    className={styles.recentImgEl}
-                  />
-                </div>
-                <span className={styles.recentTitle}>{work.title}</span>
-              </Link>
+              <SeriesTile
+                key={work.slug}
+                href={`/works/${work.slug}`}
+                label={work.title}
+                sub={work.year}
+                accent="#1A1714"
+                imgUrl={work.image}
+                sizes="(max-width: 768px) 33vw, 16vw"
+              />
             ))}
           </div>
         </section>

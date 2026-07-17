@@ -7,17 +7,17 @@ import styles from './page.module.css'
 
 export const metadata: Metadata = {
   title: 'Collections',
-  description: 'Curated sets by theme — SHERO, NEKO, botanical, and more works by Stine Weirsøe Flamant.',
+  description: 'Curated sets by theme — SHERO, NEKO, floral, and more works by Stine Weirsøe Flamant.',
   alternates: { canonical: '/collections' },
   openGraph: {
     title: 'Collections — Day In Day In',
-    description: 'Browse by series — SHERO feminist pop-art, NEKO cat works, Sea Monsters, Botanical, Floral, and more. Prints and originals by Stine Weirsøe Flamant.',
+    description: 'Browse by series — SHERO feminist pop-art, NEKO cat works, Sea Monsters, Floral, and more. Prints and originals by Stine Weirsøe Flamant.',
     images: [{ url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/neko-cat-orange.jpg', width: 1200, height: 900 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Collections — Day In Day In',
-    description: 'Browse by series — SHERO, NEKO, Sea Monsters, Botanical and more.',
+    description: 'Browse by series — SHERO, NEKO, Sea Monsters, Floral and more.',
     images: ['https://29kekabbrd49avje.public.blob.vercel-storage.com/works/tufting/neko-cat-orange.jpg'],
   },
 }
@@ -61,7 +61,7 @@ export default async function CollectionsPage() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Collections — Day In Day In',
-    description: 'Curated series by Stine Weirsøe Flamant — SHERO, NEKO, Sea Monsters, Botanical, Floral, Masks, and Tourism.',
+    description: 'Curated series by Stine Weirsøe Flamant — SHERO, NEKO, Sea Monsters, Floral, Masks, and Tourism.',
     url: 'https://dayindayin.dk/collections',
     hasPart: SERIES.map(({ tag, label, sub }) => ({
       '@type': 'CreativeWork',

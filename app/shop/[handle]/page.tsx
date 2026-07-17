@@ -165,20 +165,19 @@ export default async function ProductPage({ params }: PageProps) {
     [/\bshero\b/i, 'shero'],
     [/\bneko\b/i, 'neko'],
     [/sea[\s-]monster/i, 'sea monster'],
-    [/botanical/i, 'botanical'],
     [/floral/i, 'floral'],
     [/\bfaces?\b/i, 'faces'],
   ]
   // Map detectedSeriesKeyword → shop filter param (sea monster ≠ sea-monsters)
   const KEYWORD_TO_FILTER: Record<string, string> = {
     'shero': 'shero', 'neko': 'neko', 'sea monster': 'sea-monsters',
-    'botanical': 'botanical', 'floral': 'floral', 'faces': 'faces',
+    'floral': 'floral', 'faces': 'faces',
   }
   let detectedSeriesKeyword: string | null = null
   for (const [pattern, kw] of SERIES_KEYWORDS) {
     if (pattern.test(product.title)) { detectedSeriesKeyword = kw; break }
   }
-  const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces']
+  const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'floral', 'faces']
   const productSeriesTag = product.tags.find(t => SERIES_TAGS_LIST.includes(t.toLowerCase()))
   // Resolve the shop filter value used for "View all" links
   const seriesFilterValue = productSeriesTag ?? (detectedSeriesKeyword ? KEYWORD_TO_FILTER[detectedSeriesKeyword] : null) ?? null
