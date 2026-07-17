@@ -2,6 +2,24 @@
 
 ---
 
+## 2026-07-17
+
+**Done:** ISSUES.md reconciliation pass (`72f0771`) — this was flagged as a to-do at the end of the 2026-07-12 session and never done. Re-checked every open P1/P2 item against the live URL (code reads + Playwright interaction/screenshots against `dayindayin-site.vercel.app`, not localhost) before touching status:
+- 16 of 18 P1 page issues and all 5 P2 copy-cull items turned out to already be resolved by the July 11 UX batch and July 12 mobile-fix cycle — the tickets were just never closed. Details and proof for each are inline in ISSUES.md.
+- SYS-08 (dual-template split) and SYS-09 (asset-reuse guard) were both blocked/open pending SYS-10's fix — SYS-10 shipped 2026-06-30 but SYS-08/09 were never re-checked since. Both verified live now: fine-art PDP is photography-first + single-column with the correct CTA; Liebes Panopticon no longer appears in the fine-art hero rotation, only on the homepage.
+- ISS-P1 (sticky add-to-cart "randomly" appearing/disappearing) — live-tested on the worst-case product (12-variant framed print): 4 variant clicks + 8 image-arrow clicks, bar stayed stable throughout. Likely was already fixed as a side effect of the 2026-07-12 `ImageGallery` fixed-frame change (removed the reflow that would have tripped the sticky bar's IntersectionObserver).
+- One real fix shipped: `BackToTopButton.tsx` (+ its CSS module) had zero imports anywhere in the codebase — confirmed dead, deleted. `ScrollToTop.tsx` (a different, invisible component that resets scroll position on route change) is the one still in use.
+- Confirmed clean build (`rm -rf .next && npm run build`) before pushing, per the standing rule from 2026-07-11/12 about stale builds masking real state.
+
+**Decisions:** none — this was a documentation/verification pass, not new product decisions.
+
+**Next:**
+- Two things genuinely still need Sebastian's call, unchanged from prior sessions: the GELATO_STRATEGY.md curate-vs-automate decision, and whether any of the ~300-product broken batch is currently live/orderable (real customer risk, asked twice in GELATO_STRATEGY.md, never answered).
+- ISS-02 through ISS-08 in the "Carried over" section were reset 2026-06-21 and never re-verified since — out of scope for this pass, flagged in ISSUES.md if you want them picked up.
+- Untracked cleanup sitting in the working tree, not touched this session: 11 old Gelato investigation scripts from 2026-06-21 (framed-print/dad-cap checks, never committed) and 3 SHERO PNGs from 2026-07-05. Harmless, just clutter — your call whether to commit or delete.
+
+---
+
 ## 2026-07-12
 
 **Done:** Sebastian mobile-reviewed everything shipped in the 2026-07-11 session and found real problems — this entry is that review-and-fix cycle.
