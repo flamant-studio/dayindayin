@@ -24,9 +24,6 @@ export const metadata: Metadata = {
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works'
 
-const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
-const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
-
 const FINE_ART_COLLECTIONS = [
   {
     title: 'Hand Tufting',
@@ -49,25 +46,15 @@ const FINE_ART_COLLECTIONS = [
 export const revalidate = 3600
 
 export default async function CollectionsPage() {
-  // Fetch up to 12 products per series in parallel — much faster than getAllProducts()
+  // Fetch up to 12 products per series in parallel, for the live product count only —
+  // tile images are static, hand-picked artwork (see lib/series.ts), not product photos.
   const seriesResults = await Promise.all(
     SERIES.map(({ tag }) => getProductsByTitleKeyword(SERIES_KEYWORDS[tag], 12).catch(() => []))
   )
 
-  const LIGHT_TITLE_KEYWORDS = ['blanc', 'white', 'cream']
-  const isLight = (t: string) => { const tl = t.toLowerCase(); return LIGHT_TITLE_KEYWORDS.some(k => tl.includes(k)) }
-
-  const seriesData = SERIES.map(({ tag, label, sub, accent }, i) => {
-    const products = seriesResults[i].filter(p => p.firstImage)
-    // Score: mockup=+2, light/blanc variant=+1 (lower is better) — same scoring as the
-    // homepage strip so a given series shows the same lead image on both pages.
-    const scored = products.map(p => ({
-      p,
-      score: (isMockup(p.title) ? 2 : 0) + (isLight(p.title) ? 1 : 0),
-    }))
-    scored.sort((a, b) => a.score - b.score)
-    const imgUrl = scored[0]?.p.firstImage?.url
-    return { tag, label, sub, accent, imgUrl, count: products.length }
+  const seriesData = SERIES.map(({ tag, label, sub, accent, image }, i) => {
+    const count = seriesResults[i].filter(p => p.firstImage).length
+    return { tag, label, sub, accent, imgUrl: image, count }
   })
 
   const collectionsJsonLd = {

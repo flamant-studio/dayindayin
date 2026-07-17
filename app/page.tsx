@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
+import { getProducts, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
 import { displayTitle } from '@/lib/display'
 import { works } from '@/lib/data'
-import { SERIES, SERIES_KEYWORDS } from '@/lib/series'
+import { SERIES } from '@/lib/series'
 import SectionHeading from '@/components/SectionHeading'
 import ProductCard from '@/components/ProductCard'
 import SeriesTile from '@/components/SeriesTile'
@@ -24,19 +24,11 @@ const LIFESTYLE = [
 
 export const revalidate = 60
 
-const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
-const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
-
 export default async function HomePage() {
   const availableWorks = works.filter(w => !w.sold).length
 
-  // Parallel targeted fetches — faster than getAllProducts (500+ items)
-  const [rawProducts, ...seriesResults] = await Promise.all([
-    getProducts(48).then(all => all.filter(p => p.firstImage)).catch(() => []),
-    ...SERIES.map(({ tag }) =>
-      getProductsByTitleKeyword(SERIES_KEYWORDS[tag], 8).catch(() => [])
-    ),
-  ])
+  // Targeted fetch — faster than getAllProducts (500+ items)
+  const rawProducts = await getProducts(48).then(all => all.filter(p => p.firstImage)).catch(() => [])
 
   // Prefer flat artwork over product mockups, then diversify by category (max 2 per type)
   const MOCKUP_TYPE_KEYWORDS = ['mug', 'tote', 'tank', 'cap', 'bottle', 'wood print', 'postcard', 'greeting card']
@@ -60,22 +52,6 @@ export default async function HomePage() {
     for (const p of artFirst) { if (!used.has(p.id)) { diverse.push(p); if (diverse.length >= 8) break } }
   }
   const products = diverse
-
-  // Pick best image per series: flat art preferred, dark variants over light/blanc
-  const LIGHT_TITLE_KEYWORDS = ['blanc', 'white', 'cream']
-  const isLight = (t: string) => { const tl = t.toLowerCase(); return LIGHT_TITLE_KEYWORDS.some(k => tl.includes(k)) }
-  const seriesImageMap: Record<string, string> = {}
-  SERIES.forEach(({ tag }, i) => {
-    const prods = seriesResults[i].filter(p => p.firstImage)
-    // Score: mockup=+2, light/blanc variant=+1 (lower is better)
-    const scored = prods.map(p => ({
-      p,
-      score: (isMockup(p.title) ? 2 : 0) + (isLight(p.title) ? 1 : 0),
-    }))
-    scored.sort((a, b) => a.score - b.score)
-    const best = scored[0]?.p
-    if (best?.firstImage) seriesImageMap[tag] = best.firstImage.url
-  })
 
   const orgJsonLd = {
     '@context': 'https://schema.org',
@@ -202,14 +178,14 @@ export default async function HomePage() {
       <section className={styles.seriesSection}>
         <SectionHeading title="Browse by Series" viewAll={{ href: '/collections', label: 'All collections' }} />
         <div className={styles.seriesStrip}>
-          {SERIES.map(({ tag, label, sub, accent }) => (
+          {SERIES.map(({ tag, label, sub, accent, image }) => (
             <SeriesTile
               key={tag}
               href={`/shop?filter=${tag}`}
               label={label}
               sub={sub}
               accent={accent}
-              imgUrl={seriesImageMap[tag]}
+              imgUrl={image}
             />
           ))}
         </div>
