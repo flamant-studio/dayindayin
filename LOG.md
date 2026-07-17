@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-07-17 (continued)
+
+**Done:** Fresh mobile-first QA sweep to close out ISS-02–08, the last unverified item on ISSUES.md's "Carried over" list (reset 2026-06-21, original numbered list never preserved). Tested at 390px against the live URL: home, shop grid, PDP (12-variant framed print — worst case), cart drawer, wishlist (added an item, verified it persists and shows on `/saved`), fine-art PLP, about, commissions, search. Checked each for horizontal overflow, console errors, and real interaction (not just screenshot-eyeballing).
+
+**Nothing broken found.** One near-miss caught before it became a false "fix": the inline PDP Add-to-cart button measures 0×0 on mobile. Checked `ProductOptions.module.css` before touching anything — it's `display: none` under 768px by explicit design, comment says so directly ("hidden on mobile, StickyATC handles it"). Would have been a wasted, possibly harmful "fix" if I'd gone straight from the measurement to a code change.
+
+**Decisions:** none.
+
+**Next:** genuinely nothing outstanding on the issues board right now beyond the items already deferred (GELATO_STRATEGY, Bedroom Rug/Wall Rug catalog duplication). Untracked script/image clutter in the working tree still unaddressed, still low priority.
+
+---
+
 ## 2026-07-17
 
 **Done:** ISSUES.md reconciliation pass (`72f0771`) — this was flagged as a to-do at the end of the 2026-07-12 session and never done. Re-checked every open P1/P2 item against the live URL (code reads + Playwright interaction/screenshots against `dayindayin-site.vercel.app`, not localhost) before touching status:
