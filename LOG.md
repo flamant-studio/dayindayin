@@ -11,12 +11,19 @@
 - One real fix shipped: `BackToTopButton.tsx` (+ its CSS module) had zero imports anywhere in the codebase — confirmed dead, deleted. `ScrollToTop.tsx` (a different, invisible component that resets scroll position on route change) is the one still in use.
 - Confirmed clean build (`rm -rf .next && npm run build`) before pushing, per the standing rule from 2026-07-11/12 about stale builds masking real state.
 
-**Decisions:** none — this was a documentation/verification pass, not new product decisions.
+**Bedroom Rug / Bedroom Wall Rug fix (`7ba7660`):** Sebastian pointed at two Dropbox folders that turned out to be red herrings (DID-T-042 and DID-T-027 are both already correctly used, for Pink Rug II and Pink Rug respectively) before landing on the right one. `bedroom-rug.jpg` wasn't just showing an unrelated piece — it was a watermarked promo shot titled "Solen og månens land," a title that doesn't exist anywhere in the site's own catalog. Traced the real asset to `DID-T-044_tæppe-på-væggen-i-soveværelset` ("the rug on the wall in the bedroom") — and it turns out **Bedroom Rug and Bedroom Wall Rug are the same physical piece**, catalogued twice under different slugs/years. Sebastian's call: don't untangle that now, just ship something correct for both. Replaced both with clean, unwatermarked photos from the same folder — different lead image + ordering per slug so they aren't pixel-identical — and cache-busted with `?v=2` (same lesson as the Liebes Panopticon fix: overwriting a Blob URL doesn't bust Next's image-optimizer cache). Live-verified via curl (server-rendered HTML) + Playwright screenshot.
+
+**Du Und:** re-confirmed no fix is possible — opened every image in `DID-T-039_du-und` (20 files, not just "web ready"), all are either the concept sketch or mid-tufting WIP shots (pencil lines, exposed canvas, tools in frame). Left as-is rather than swap in something worse.
+
+**Decisions:**
+- GELATO_STRATEGY.md curate-vs-automate decision: deferred, Sebastian will come back to it.
+- The ~300-product broken batch being partly live/orderable: confirmed no real risk right now since the site lives on a temp Vercel URL, not the real domain.
+- Bedroom Rug / Bedroom Wall Rug catalog duplication: acknowledged, intentionally left unresolved — not worth the time right now.
 
 **Next:**
-- Two things genuinely still need Sebastian's call, unchanged from prior sessions: the GELATO_STRATEGY.md curate-vs-automate decision, and whether any of the ~300-product broken batch is currently live/orderable (real customer risk, asked twice in GELATO_STRATEGY.md, never answered).
-- ISS-02 through ISS-08 in the "Carried over" section were reset 2026-06-21 and never re-verified since — out of scope for this pass, flagged in ISSUES.md if you want them picked up.
-- Untracked cleanup sitting in the working tree, not touched this session: 11 old Gelato investigation scripts from 2026-06-21 (framed-print/dad-cap checks, never committed) and 3 SHERO PNGs from 2026-07-05. Harmless, just clutter — your call whether to commit or delete.
+- ISS-02 through ISS-08 in ISSUES.md's "Carried over" section were reset 2026-06-21 and never re-verified since — the one remaining unverified item on the board.
+- Untracked cleanup sitting in the working tree, not touched: 11 old Gelato investigation scripts from 2026-06-21 (framed-print/dad-cap checks, never committed) and 3 SHERO PNGs from 2026-07-05. Harmless, just clutter.
+- Launch-blocking items still open per CLAUDE.md's Current State table: dayindayin.dk DNS, Shopify Payments KYC, legal pages, CONTACT_EMAIL_TO, newsletter API, water bottles/dad caps not yet in Gelato. Not urgent given no real domain traffic yet.
 
 ---
 

@@ -54,7 +54,7 @@ My actual recommendation is **A** — keep white, fix it on the site side, and d
 ---
 
 ## Open questions for Sebastian (not decided)
-1. Curate to ~150 and do the matching/layout work by hand (my recommendation), or is there an appetite to try a narrower, rule-gated automation for a subset (e.g. single-image simple templates only) first?
-2. Is any of the current ~300-product batch live/orderable right now, given ~0% is confirmed print-ready?
+1. Curate to ~150 and do the matching/layout work by hand (my recommendation), or is there an appetite to try a narrower, rule-gated automation for a subset (e.g. single-image simple templates only) first? **Deferred 2026-07-17 — Sebastian: "we'll get back to this."**
+2. ~~Is any of the current ~300-product batch live/orderable right now, given ~0% is confirmed print-ready?~~ **Answered 2026-07-17:** yes, some are orderable right now, but no real risk since the site still lives on a temp Vercel URL, not the real domain.
 3. What does the paid Gelato tier actually unlock — background control only, or also template/variant/multi-image capability? Worth finding out before deciding to pay.
 4. Green-light for a site-side "matting" treatment on product images (independent of the Gelato decision)?
