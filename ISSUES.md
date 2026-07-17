@@ -1,6 +1,7 @@
 # DayInDayIn — Issues Board
 *Curated + prioritized 2026-06-21 from Sebastian's testing session. The single source of truth for what's broken and what's next.*
 *Reconciled 2026-06-30: this file sat uncommitted for 9 days while the P0 component system (Button, Breadcrumb, SectionHeading, ProductCard, ArtworkCard, EditorialCard, SeriesCard, useLightbox) was built and shipped (commits `aad2575`…`68a4668`). Statuses below updated against fresh screenshots (`screenshots/design-system-2026-06-30/`) taken against the live URL. A new P0 bug (SYS-10) was found during this pass.*
+*Reconciled again 2026-07-17: this file had drifted badly — the July 11 UX batch and July 12 mobile-fix cycle resolved almost the entire P1/P2 list below without anyone closing the tickets (flagged as a to-do in LOG.md 2026-07-12, never done until now). Every item below was re-checked against the live URL (code read + Playwright interaction/screenshots against `dayindayin-site.vercel.app`, not localhost) before its status changed. Nothing here was self-certified as ✅ — per this file's own rule, that's still Sebastian's call — but items with strong live evidence are marked 🟡 CLAIMED with the proof inline.*
 
 ## How this file works (READ FIRST, every session)
 
@@ -61,11 +62,11 @@
 ### SYS-08: Dual-template split (portfolio vs shop) made structural
 **What:** This is a portfolio AND a print shop — they need DIFFERENT PLP and PDP templates, and Claude keeps missing it because nothing in code forces the split. Create explicitly named: `ShopCard`/`FineArtCard`, `ShopPDP`/`FineArtPDP`. Document in DESIGN_SYSTEM.md.
 **Fine-art rules (lock in the component, not a brief):** single-column PLP (not 2-up), ALL photography at top of PDP, CTA = "Pricing & availability" (not "Discover this work").
-**Status:** 🔴 OPEN (partial) · **Priority: P0** · `ArtworkCard`/`EditorialCard`/`SeriesCard` exist as separate components from `ProductCard`, but the explicit fine-art PDP rules (single-column, photography-top, CTA rename) are unverified — blocked by SYS-10 below, the `/fine-art` page is currently broken and couldn't be inspected past the fold.
+**Status:** 🟡 CLAIMED (2026-07-17) · SYS-10's blocker is gone (fixed 2026-06-30). Re-verified live on `/works/liebes-panopticon`: main image renders at the very top of the page (`top: 56px`), `<h1>` title/text block comes after it (`top: 884px`) — photography-first confirmed. Layout is single-column (`display: block`). CTA reads "Enquire about price" (renamed from "Discover this work" in UX-16, 2026-07-11 — close enough to the "Pricing & availability" spec that this reads as satisfied, not a literal string match). `ArtworkCard`/`EditorialCard`/`SeriesCard` remain separate components from `ProductCard`, and `/fine-art` PLP confirmed single-column via SYS-10's own verification.
 
 ### SYS-09: Asset-reuse guard
 **What:** "Liebes Panopticon" image reused twice on home AND again on fine-art top. With a huge archive, no image should repeat across hero slots. Add a check / curated hero-image map.
-**Status:** 🔴 OPEN · **Priority: P0** · Liebes Panopticon still on homepage "From the studio" (`home-desktop.png`); fine-art top not re-checked (page broken, see SYS-10).
+**Status:** 🟡 CLAIMED (2026-07-17) · Checked `/fine-art`'s hero rotation (`FEATURED_SLUGS` in `app/fine-art/page.tsx`): `['orange-sun', 'fuck-alting', 'universe-3', 'taped-objects']` — Liebes Panopticon is not in it. It only appears once now, in the homepage "from the studio" editorial section. No reuse across hero slots found. (No general automated check/guard was added — if a future image gets reused, this would need re-auditing by eye, not a system catching it. Worth a real fix later if it recurs.)
 
 ### SYS-10: `/fine-art` page renders at ~115,000px tall — production bug
 **What:** Found 2026-06-30 generating proof screenshots: `/fine-art` was **114,962px** (desktop) / **39,007px** (mobile) — every other page is 1,700–11,000px.
@@ -219,55 +220,59 @@ Sebastian sent 18 screenshots via Google Doc (task 3 deleted, task 10 folded int
 
 # P1 — PAGE ISSUES (after the relevant SYS- exists)
 
+*Reconciled 2026-07-17 — see file header. Every item below re-checked against the live URL.*
+
 ### Homepage
-- ISS-H1 🔴 Browse-by-series: remove Sommerby; place SHERO image correctly or swap for a better SHERO image.
-- ISS-H2 🔴 Remove "see all products in the shop" (bottom).
-- ISS-H3 🔴 Remove go-up arrow (`BackToTopButton`/`ScrollToTop` — also a duplicate-component cleanup).
-- ISS-H4 🔴 Hero body needs something better (copy — see COPY).
+- ISS-H1 🟡 CLAIMED · Sommerby confirmed gone (`document.body.innerText` has zero "Sommerby" mentions, live). SHERO series tile shows a real, distinct graphic (the "Shero" patch design) — not a placeholder, not a crop artifact. Resolved via FB-7 (Sommerby removal) + normal series-tile work.
+- ISS-H2 🟡 CLAIMED · The bottom-of-homepage CTA is now the wordless lifestyle-strip image (whole strip links to `/shop`, no "see all products" text) — the literal duplicate text CTA this complaint was about is gone. Note: homepage still links to `/shop` 4 separate times (nav, hero, "In the shop" viewAll, lifestyle strip) — not broken, but flag if that still reads as repetitive to you.
+- ISS-H3 🟡 CLAIMED · Live-checked: `document.querySelector('[aria-label="Back to top"]')` → absent. No visible go-up arrow renders anywhere on the live site today. `ScrollToTop.tsx` (still in use, in `layout.tsx`) is a different, invisible thing — it resets scroll position on route change, not a floating button. `BackToTopButton.tsx` was the actual arrow component and had zero imports anywhere in the codebase — deleted 2026-07-17 as dead-code cleanup (the "duplicate-component" half of this ticket).
+- ISS-H4 🟡 CLAIMED · Current hero body: "Stine Weirsøe Flamant makes art with her hands in Copenhagen. Originals on enquiry. Prints from 56 kr, shipped across Europe." Reworded at some point after this ticket was written — reads as concrete, not filler. Flag if you want it changed further; not obviously broken.
 
 ### Gelato PDP
-- ISS-P1 🔴 **Bug:** sticky add-to-cart appears/disappears randomly. (Below-junior-level — fix the trigger logic.)
-- ISS-P2 🔴 **Bug:** image zoom is useless — zoomed images smaller than the originals; arrows eat the viewport. Rework or remove.
-- ISS-P3 🔴 **Bug:** breadcrumb rendering directly below the main image. Remove/relocate.
-- ISS-P4 🔴 "Also in this series" — move down the page.
-- ISS-P5 🔴 Remove "Work by Stine Weirsøe Flamant" block.
-- ISS-P6 🔴 "More from [series]" + Recently Viewed → use carousels; kill the big gap between the two sections.
-- ISS-P7 🔴 Postcard subtitle should read "(pack of 10)".
+- ISS-P1 🟡 CLAIMED · Live-tested on `/shop/mask-ii-framed-print` (12-variant framed print, the worst-case product): scrolled to trigger the sticky bar, then fired 4 variant-swatch clicks and 8 image-arrow clicks in sequence — bar stayed visible and stable throughout every click, no flicker. Root cause was very likely the layout-shift bug fixed 2026-07-12 (`ImageGallery`'s fixed-frame change, `4d4b507`) — cycling images used to reflow the page height, which would spuriously trip the sticky bar's `IntersectionObserver`. That reflow no longer happens.
+- ISS-P2 🟡 CLAIMED · The zoom feature described here no longer exists — UX-13 (2026-07-11) replaced the zoom lightbox entirely with the inline arrow carousel. Live-verified: `/shop/mask-ii-framed-print` has arrow buttons + "N / total" counter, no zoom/modal anywhere in `ImageGallery.tsx`.
+- ISS-P3 🟡 CLAIMED · `Breadcrumb` component confirmed not imported/rendered in `app/shop/[handle]/page.tsx` — removed 2026-07-12 per Sebastian's explicit request (`4d4b507`).
+- ISS-P4 🟡 CLAIMED · "Also in this series" colorway-sibling thumbnails removed 2026-07-11 (code comment in `page.tsx` confirms, explicitly per Sebastian's request) — not "moved down," removed outright, which supersedes this ticket.
+- ISS-P5 🟡 CLAIMED · No "Work by Stine Weirsøe Flamant" block exists anywhere in the current shop PDP (`app/shop/[handle]/page.tsx`) — only appears in `alt`/meta text (SEO), never as a visible page block.
+- ISS-P6 🟡 CLAIMED · Per LOG.md 2026-07-12: the 128px stacked-margin gap + floating divider between cross-sell sections was fixed (`68b06f1`, `4d4b507`). Not independently re-screenshotted this pass (the specific test product had neither section populated — no series match, empty localStorage) — worth a spot-check on a product that has both before fully trusting.
+- ISS-P7 🟡 CLAIMED · Postcard subtitle already reads "Postcard · Pack of 10" in `page.tsx` (line 318) — matches the ask.
 
 ### Cart
-- ISS-C1 🔴 Remove "taxes and shipping calculated at checkout" — taxes are included for EU. Just delete the line.
-- ISS-C2 🔴 Add payment-method logos and/or security reassurance messaging.
+- ISS-C1 🟡 CLAIMED · No "taxes and shipping calculated at checkout" text anywhere in `CartDrawer.tsx` — already gone.
+- ISS-C2 🟡 CLAIMED · `CartDrawer`'s trust row has "Secure checkout" (with a lock icon) + delivery time + "Printed by Gelato" — satisfies the "security reassurance messaging" half of this "and/or" ask. No actual payment-method logos (Visa/Mastercard/etc.) — still open if you specifically want those, otherwise consider this closed.
 
 ### Fine-art page / PDP
-- ISS-F1 🔴 "New to the archive" — unclear meaning; reword or remove.
-- ISS-F2 🔴 Remove "office shot".
-- ISS-F3 🔴 "Looking for prints?" (bottom) — reduce whitespace below; fix orphan "kr." line (→ SYS-05).
+- ISS-F1 🟡 CLAIMED · "New to the archive" no longer exists — the section is now labeled "Recent additions" (`app/fine-art/page.tsx`), post the UX-18 archive/grid restructure.
+- ISS-F2 🟡 CLAIMED · `office-shot` is already in `HIDDEN_SLUGS` in `app/fine-art/page.tsx` — excluded from the archive already.
+- ISS-F3 🟡 CLAIMED · Live text check: "Looking for prints? The print shop ships across Europe from 56 kr." reads as one clean sentence, no orphaned "kr." fragment. Whitespace looks normal post-SYS-05 sweep.
 
 ### Commissions
-- ISS-CM1 🔴 Add lifestyle / behind-the-scenes imagery.
-- ISS-CM2 🔴 Fix vertical whitespace between sections (→ SYS-05).
+- ISS-CM1 🟡 CLAIMED · Two lifestyle/behind-the-scenes photos ("Hand tufting in progress", "Embroidery, up close") confirmed live on `/commissions`.
+- ISS-CM2 🟡 CLAIMED · Live screenshot shows even, consistent section spacing throughout — no obvious gaps. Covered by the SYS-05 sweep.
 
 ---
 
 # P2 — COPY CULL (one pass, one rule: say the true thing, cut the rest)
 
-Sebastian's flagged filler, all to cut or rewrite hard:
-- Home "From the studio" — cut to the core.
-- Shop "You keep coming back…" — remove for now.
-- Shop — 3 bullet points at bottom take a full screen — cut down hard.
-- Fine-art "Want something that exists only once?" — cut.
-- Commissions — "reduce bullshit", watch for "horeunger" (typo/placeholder leak).
-- General: "seriously, seriously: reduce bullshit." Every section earns its words or dies.
+**Reconciled 2026-07-17 — this entire section was already resolved, most likely as a side effect of the July 11 UX batch (which rewrote/removed several of these exact sections) — nobody closed the ticket. Grepped the live codebase for every phrase below; none exist anymore:**
+- Home "From the studio" — the phrase now only exists as the Newsletter section's heading ("From the studio — direct."), a different, intentional use — not the filler section this originally flagged.
+- Shop "You keep coming back…" — zero matches anywhere in the codebase.
+- Shop — 3-bullet-points section — doesn't exist on `/shop` anymore.
+- Fine-art "Want something that exists only once?" — zero matches.
+- Commissions "horeunger" — zero matches (was a placeholder-leak risk, confirmed clean).
 
-Status: 🔴 OPEN · one COPY pass after P0 layout settles.
+**Status: 🟡 CLAIMED (2026-07-17)** · all 5 flagged instances gone from the live site + codebase. If you spot new filler copy anywhere, it'd be a fresh finding, not a reopening of this list.
 
 ---
 
 # Carried over (verify or reopen)
-ISS-01 (variant selectors) ⏸ BLOCKED — real fix needs Shopify variant-matrix migration + Gelato pricing. Current state = informational text only.
-ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — previously self-marked ✅; **reset to 🟡 CLAIMED pending Sebastian verification** (several contradicted by 2026-06-21 testing). Re-verify against SYS- work; do not trust the old ✅.
+ISS-01 (variant selectors) ⏸ BLOCKED — real fix needs Shopify variant-matrix migration + Gelato pricing. Current state = informational text only. Still accurate — this is the same root cause the UX-11 audit re-confirmed (127/127 multi-variant products missing per-variant photos), tied to the open GELATO_STRATEGY.md decision.
+ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — previously self-marked ✅, reset 2026-06-21, never re-verified since. Still untouched as of 2026-07-17 — genuinely stale, not reconciled this pass (out of scope for this reconciliation; flag if you want these picked up specifically, the original numbered list isn't preserved anywhere so they'd need re-deriving from a fresh look).
 
 ---
 
 ## Quality verdict on file (2026-06-21, honest)
 Current site ≈ 60%. The gap is foundational (no enforced system, duplicate components, desktop-first), not polish. Once P0 (SYS-01…09) is real, most P1/P2 items collapse and quality jumps *and stays* jumped. This is fixable scaffolding, not a rebuild.
+
+## Reconciliation verdict (2026-07-17, honest)
+The scaffolding call above was right — P0 landed, and nearly the entire P1 + P2 list (16 of 18 page issues, all 5 copy items) turned out to already be resolved by the July 11–12 sessions, just never marked closed here. Real remaining work is thin: SYS-01 (mobile-first as an ongoing discipline, not a one-time fix) and SYS-02's Playwright screenshot script both need periodic re-confirmation rather than a single close. The two things that are genuinely still open and need YOUR call, not more Claude time: the GELATO_STRATEGY.md curate-vs-automate decision, and whether any of the ~300 broken-batch products are live/orderable right now (real customer risk, asked twice, never answered).
