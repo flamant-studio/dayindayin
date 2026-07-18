@@ -12,6 +12,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   embroidery: "Embroidery",
   painting: "Painting",
   photography: "Photography",
+  mixed: "Mixed Media",
 };
 
 const CATEGORY_FILTERS = [
@@ -20,6 +21,7 @@ const CATEGORY_FILTERS = [
   { key: "embroidery", label: "Embroidery" },
   { key: "painting", label: "Painting" },
   { key: "photography", label: "Photography" },
+  { key: "mixed", label: "Mixed Media" },
 ];
 
 interface PageProps {
@@ -61,6 +63,7 @@ const sections: { id: WorkCategory; label: string; tagline: string }[] = [
   { id: "embroidery",  label: "Embroidery",    tagline: "Needle and thread on canvas and linen. Where the work started and where it keeps returning." },
   { id: "painting",    label: "Paintings",     tagline: "Acrylic and oil stick on canvas, worked on the studio floor. Layers built up and scraped back over multiple sessions." },
   { id: "photography", label: "Photography",   tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after." },
+  { id: "mixed",       label: "Mixed Media",   tagline: "Where the mediums stop staying in their lanes — sewn, painted, woven, and assembled objects that don't fit the other categories." },
 ];
 
 const FEATURED_SLUGS = ['orange-sun', 'fuck-alting', 'universe-3', 'taped-objects'];

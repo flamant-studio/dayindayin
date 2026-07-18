@@ -42,6 +42,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   embroidery: "Embroidery",
   painting: "Painting",
   photography: "Photography",
+  mixed: "Mixed Media",
 }
 
 const CATEGORY_MEDIUM: Record<string, string> = {
@@ -49,6 +50,7 @@ const CATEGORY_MEDIUM: Record<string, string> = {
   embroidery: "Hand embroidery on fabric",
   painting: "Acrylic and oil stick on canvas",
   photography: "Archival inkjet print",
+  mixed: "Mixed media",
 }
 
 const SERIES_SHOP_FILTERS: Array<{ pattern: RegExp; filter: string; label: string }> = [
