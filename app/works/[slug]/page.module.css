@@ -294,7 +294,7 @@
 .recentlyViewedWrap {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 var(--sp-6);
+  padding: 0 var(--sp-6) var(--sp-8);
 }
 
 .relatedHead {
