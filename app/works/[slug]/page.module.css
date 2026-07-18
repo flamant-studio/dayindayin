@@ -287,6 +287,16 @@
   border-top: 1px solid var(--c-border);
 }
 
+/* RecentlyViewedWorks shares its CSS module with the shop PDP's RecentlyViewed, whose own
+   .page sets a max-width. This page's .page doesn't (every other section here constrains
+   itself individually) — without this wrapper the cards render full viewport width, way
+   oversized. See LOG.md 2026-07-18. */
+.recentlyViewedWrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
 .relatedHead {
   display: flex;
   align-items: baseline;

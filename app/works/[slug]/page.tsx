@@ -233,7 +233,9 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
           </section>
         )}
 
-        <RecentlyViewedWorks currentWork={work} />
+        <div className={styles.recentlyViewedWrap}>
+          <RecentlyViewedWorks currentWork={work} />
+        </div>
 
       </div>
     </>
