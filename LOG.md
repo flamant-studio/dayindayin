@@ -2,6 +2,21 @@
 
 ---
 
+## 2026-07-18 — closing out the Dropbox sweep backlog
+
+**Done:**
+- Fixed oversized "Recently Viewed" cards on the fine-art PDP (`1b6bfdd`) — that page's `.page` wrapper had no max-width, unlike every other section which sets its own. Wrapped in a matching container rather than touching the CSS module shared with the shop PDP. Added ~48px bottom spacing per Sebastian's follow-up (`a879f96`).
+- Added a `'mixed'` WorkCategory (fine-art filters/sections, works/[slug] labels, About page medium links) and populated it with 5 confirmed Mixed Media pieces: Cat Doll, Pink Bag, Polaroids on Fabrics, Tufting on Embroidered Background, Laundry Bags.
+- Added Blue Background (Day In Day In) — DID-P-019, the About-page brand-mark collage — as its own fine-art catalog entry (it only had a UI use before, not a catalog entry).
+- Added 7 more Candy pieces (II–VII + Candy Cane) — confirmed the site's existing Candy I is sourced from a separate piece not among these 7.
+- Added 2 more Rainbow colorways (III, IV) — pixel-checked all 4 candidate Dropbox folders first; 2 matched the live Rainbow I/II exactly and weren't re-added.
+- Added 4 standalone pieces: Small Round Tricolor, Square Flower Thing, Green Square (all tufting), and Fireworks (embroidery — misfiled in the Tufting Dropbox folder, corrected on-site).
+- Compiled `GELATO_HISTORY_SUMMARY.md` — full timeline, root-cause findings, open decisions, recurring failure patterns, and reassessment angles from the entire project history, for Sebastian to bring to a Cowork strategy session.
+
+**Still open from the sweep:** green-background (no fixable photo exists), collage-bw (not a real piece as cataloged), the Rabbit series (needs a Gelato CSV import, Sebastian's call), and the Stranger Things piece (not adding, trademark risk).
+
+---
+
 ## 2026-07-17 (late session — content fixes + full Dropbox sweep)
 
 **Done:**
