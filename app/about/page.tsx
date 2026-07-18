@@ -67,6 +67,19 @@ export default function AboutPage() {
         <p className={styles.heroSub}>Contemporary artist · Copenhagen</p>
       </section>
 
+      {/* ── Brand mark ───────────────────────────────────────── */}
+      <section className={styles.brandMark}>
+        <div className={styles.brandMarkImg}>
+          <Image
+            src={`${BLOB_BASE}/about/brand-mark.jpg`}
+            alt="The Day In Day In name, hand-lettered over a studio-blue backdrop with a decayed leaf, a dandelion seed head, and a torn fabric swatch — the original collage the site is named after"
+            fill
+            sizes="(max-width: 768px) 90vw, 480px"
+            className={styles.brandMarkImgEl}
+          />
+        </div>
+      </section>
+
       {/* ── Portrait + bio ────────────────────────────────────── */}
       <section className={styles.profile}>
         <div className={styles.portraitWrap}>
