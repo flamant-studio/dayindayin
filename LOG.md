@@ -2,6 +2,32 @@
 
 ---
 
+## 2026-07-17 (late session — content fixes + full Dropbox sweep)
+
+**Done:**
+- Removed "Botanical" as a category everywhere (series list, filters, sitemap, search, Fluid signal-extraction) per Sebastian. Found and fixed a real regression this exposed: an unrecognized `?filter=` value was falling through to show all 214 products instead of none (`99218d2`).
+- Homepage: swapped order of the lifestyle image strip and the grey artist-statement band.
+- /fine-art "Recent Additions": switched to the same `SeriesTile` component as the homepage series strip, capped at 6, dropped 3 named works per Sebastian.
+- Image fixes (main + all thumbnails corrected, old ones were wrong/mirrored/back-of-piece shots): Rainbow I, Ingenting, Universe II. Tufted Mask (main only, different angle of the same real piece).
+- Home hero video poster was `ls-01.jpg` — a totally unrelated lifestyle photo. Replaced with a real photo of the cat-doll piece the video actually shows.
+- About page: added the original "Day In Day In" brand-mark collage (DID-P-019) as its own section.
+- Ran a full sweep of `_KUNST/COLLECTION CURRENT/` against `lib/data.ts` (102 folders, background agent, ~2 tool calls + 1 resume). Findings: 31 pieces missing from the site entirely, 3 real content mismatches, 64 checked out fine.
+- Added 6 of the missing pieces: H.C. Andersen, Her Er En Sandhed, Fantasy, Det Er Bare Tanker, Red to Blue, plus 2 new Sitspot colorways (II, III) once verified as genuinely distinct physical pieces (not duplicate photos).
+- Fixed sitspot-large's dimension label ("74×44 cm") — that number belonged to a different Sitspot piece entirely; removed rather than guessed a replacement.
+
+**Deliberately not done, flagged instead:**
+- `DID-E-004_stranger-things` — an embroidered reproduction of Netflix's trademarked show logo. Real trademark/copyright exposure for a commercial print site; not published.
+- `green-background` mismatch — every photo in its Dropbox folder is the same styled paper-collage flat-lay; no clean canvas shot matching the site's "green as the full subject" description exists anywhere in the folder. Left as-is rather than guess-swap to another wrong photo.
+- `collage-bw` — turns out not to be a real 100×70cm piece. It's a cropped detail from a studio pinboard photo of ~15 unrelated embroidery test swatches (same board that "Perfidt Perfekt" — already correctly catalogued separately — also sits on). Removing or rewriting a catalog entry is a bigger call than a photo swap; left for Sebastian.
+- 25 of the 31 missing-from-site pieces are still un-added: the Candy family (7 pieces), Rainbow family (2+ colorways), remaining standalone Tufting/Painting pieces, and the entire Mixed-media category (5 finished pieces — cat-doll, painted tote, photo-on-fabric, tufted+embroidery piece, woven bags), which needs a schema change first (`WorkCategory` has no `'mixed'` option).
+- The "rabbit" graphic mark system Sebastian found in `Shop of Words/` (bold pop-art head, line-art version, 3+ colorways, dot pattern) — this is product-catalog scope like SHERO/NEKO, not a `lib/data.ts` edit. Needs a Gelato CSV import (Sebastian's manual step per the established hard rules), not attempted.
+
+**Also flagged, unrelated to content:** a shell command's dotenv output repeatedly included a suspicious line dressed up as a CLI tip — `"⌁ auth for agents [www.vestauth.com]"` — appeared identically 3 separate times across different script runs tonight. Not a real dotenv feature as far as I know. Did not visit the URL or act on it; worth Sebastian checking the project's dotenv dependency directly.
+
+**Next:** Sebastian's calls — green-background/collage-bw fixes, whether to add the remaining 25 missing pieces (and whether Mixed media is worth a schema change), whether to build the Rabbit series CSVs for Gelato import.
+
+---
+
 ## 2026-07-17 (continued)
 
 **Done:** Fresh mobile-first QA sweep to close out ISS-02–08, the last unverified item on ISSUES.md's "Carried over" list (reset 2026-06-21, original numbered list never preserved). Tested at 390px against the live URL: home, shop grid, PDP (12-variant framed print — worst case), cart drawer, wishlist (added an item, verified it persists and shows on `/saved`), fine-art PLP, about, commissions, search. Checked each for horizontal overflow, console errors, and real interaction (not just screenshot-eyeballing).
