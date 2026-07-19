@@ -216,6 +216,11 @@ Sebastian sent 18 screenshots via Google Doc (task 3 deleted, task 10 folded int
 **Fix:** `/archive`'s dense grid (filters + full catalog) merged into `/fine-art?view=grid` behind a new toggle; old page deleted, `/archive` 301-redirects to `/fine-art?view=grid` (category param passes through automatically — Next.js forwards unmatched query params). Updated every internal link (Footer, 404 page, breadcrumbs, sitemap, related-works links) to the new URL directly rather than relying on the redirect hop.
 **Status:** 🟡 CLAIMED · Proof: `screenshots/ux-batch-2026-07-11/fine-art-grid-toggle.png` — toggle, filter tabs, and dense grid all rendering live with correct counts (All 72, Tufting 26, Embroidery 13, Painting 14, Photography 19).
 
+### UX-19: PDP image carousel vs. variant selection — no unified logic (flagged by Sebastian 2026-07-19)
+**What:** Distinct from UX-11 (which fixed the "same photo on every variant" symptom) and UX-13 (which replaced the lightbox). The open question is architectural: when a shopper clicks a different thumbnail in the image carousel, it's unclear whether they're looking at (a) a different variant, or (b) an alternate photo/angle of the same variant. Conversely, clicking a variant selector (size/color) doesn't clearly update — or clearly not update — the carousel in response. There's no single, legible rule a shopper (or a future contributor) can point to for "clicking X does Y to the image state."
+**Not started.** This needs an actual interaction-model decision (does the carousel scope to the whole product or re-scope per variant? is there a visual distinction between "more photos of this" vs "this is a different option"?) before any code changes — a foundational UX call, not a bug fix. Flagging here so it doesn't get lost; revisit when there's room for a proper pass.
+**Status:** 🔴 OPEN
+
 ---
 
 # P1 — PAGE ISSUES (after the relevant SYS- exists)

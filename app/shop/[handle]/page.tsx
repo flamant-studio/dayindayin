@@ -94,7 +94,7 @@ function getProductSpecs(
       return [
         { label: 'Size', value: '38×42 cm' },
         { label: 'Material', value: 'Natural cotton' },
-        { label: 'Print', value: 'One side' },
+        { label: 'Print', value: 'Both sides' },
       ]
     case 'Apparel': {
       const isCap = productTitle?.toLowerCase().includes('cap') ?? false
