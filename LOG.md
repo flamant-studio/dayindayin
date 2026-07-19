@@ -270,6 +270,9 @@
 
 ---
 
+## 2026-06-20 — Activity burst (Owl)
+Git merge from remote (origin/main) on 2026-06-20 22:35 CEST. Files introduced: 5 BYOB shop-of-words artwork PNGs (DayInDayIn Images/shop-of-words/), gelato_shopofwords_byob_export.csv, upload scripts: upload-works-gallery.ts, upload-works-batch-2.ts, upload-new-works-2026.ts, list-tank-tops.ts, debug-variants.ts. Indicates BYOB "Shop of Words" product line prepared for Gelato + Shopify upload. No human log entry since 2026-05-18 — auto-summary by Owl.
+
 ---
 
 ## 2026-06-24 — Activity burst (Owl)
@@ -278,7 +281,12 @@
 ---
 
 ## 2026-06-26 — Activity burst (Owl)
-2 commits at 21:41–21:44 CEST: (1) "Add transparent background versions of all mask images" — 6 transparent-background mask PNGs added to DayInDayIn Images/masks/; (2) "Log full UX task list + session 5 image track in LOOP_LOG" — LOOP_LOG updated with session 5 UX task list and image track. This is the second work session since the June 24 Owl burst entry (which captured Session 4 and the 34+ files from June 17–21). No human log entry for June 26 — auto-summary by Owl.
+2 commits at 21:41–21:44 CEST: (1) "Add transparent background versions of all mask images" — 6 transparent-background mask PNGs added to DayInDayIn Images/masks/ (Sri Lanka, Solar Face, Moon Face, Mask I, Mask II, Mask III, Dream); (2) "Log full UX task list + session 5 image track in LOOP_LOG" — LOOP_LOG updated with session 5 UX task list and image track. Second work session since the June 24 Owl burst entry (which captured Session 4 and the 34+ files from June 17–21). No human log entry for June 26 — auto-summary by Owl.
+
+---
+
+## 2026-06-28 — Activity burst (Owl)
+5 new elephant image files added at 15:38–15:46 CEST: DayInDayIn Images/elephants/4-elephants.png (composite) + 4 transparent-background variant PNGs (Yellow, Red, Lilac, Green). Follows the June 26 mask-image session. No human log entry for June 28 daytime activity — auto-summary by Owl.
 
 ## 2026-06-28 (evening) — Activity burst (Owl)
 3 commits at 21:50–23:27 CEST: UX Batch 1 ("remove go-up arrow, trust ticker, Sommerby, duplicate image, nudge, artist strip, tax note"), Batch 2 ("card CTA redesign, podBanner collapse, postcard subtitle"), Batch 3 ("fine-art + commissions UX fixes, unblock build"). Top files: app/page.tsx, app/page.module.css, app/shop/[handle]/page.tsx, app/commissions/page.tsx, app/commissions/page.module.css, app/fine-art/page.tsx, app/fine-art/page.module.css, tsconfig.json, tsconfig.tsbuildinfo. Build unblocked: tsconfig.json updated to exclude playwright.config.ts/tests so Vercel type-check no longer fails on missing @playwright/test dep. No human log entry for June 28 evening work — auto-summary by Owl.
