@@ -4,7 +4,6 @@ import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/ScrollToTop'
-import BackToTopButton from '@/components/BackToTopButton'
 import { CartProvider } from '@/components/CartProvider'
 import CartDrawer from '@/components/CartDrawer'
 import CookieBanner from '@/components/CookieBanner'
@@ -75,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-        <meta name="theme-color" content="#F0EBE3" />
+        <meta name="theme-color" content="#FFFFFF" />
         <meta name="color-scheme" content="light" />
         <meta name="robots" content="max-image-preview:large" />
         <link rel="preconnect" href="https://29kekabbrd49avje.public.blob.vercel-storage.com" />
@@ -93,7 +92,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CartDrawer />
           <main id="main-content">{children}</main>
           <Footer />
-          <BackToTopButton />
           <CookieBanner />
           <Analytics />
         </CartProvider>

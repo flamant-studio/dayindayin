@@ -1,0 +1,45 @@
+/* The one series tile — uniform square icon crop. Shared by home + /collections. */
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  transition: opacity var(--t-fast);
+}
+
+.tile:hover { opacity: 0.8; }
+
+.tileImg {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--c-surface);
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+}
+
+.tileImgEl {
+  object-fit: cover;
+}
+
+.tilePlaceholder {
+  position: absolute;
+  inset: 0;
+}
+
+.tileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.tileLabel {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.tileSub {
+  font-size: var(--text-xs);
+  color: var(--c-muted);
+  font-weight: 400;
+}

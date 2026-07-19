@@ -10,6 +10,9 @@ import RecentlyViewed from '@/components/RecentlyViewed'
 import StickyATC from '@/components/StickyATC'
 import ShareButtons from '@/components/ShareButtons'
 import SelectedPrice from '@/components/SelectedPrice'
+import ArtworkCard from '@/components/ArtworkCard'
+import ProductCard from '@/components/ProductCard'
+import SectionHeading from '@/components/SectionHeading'
 import { ProductProvider } from '@/contexts/ProductContext'
 import FluidTracker from '@/components/FluidTracker'
 import { displayTitle } from '@/lib/display'
@@ -162,20 +165,19 @@ export default async function ProductPage({ params }: PageProps) {
     [/\bshero\b/i, 'shero'],
     [/\bneko\b/i, 'neko'],
     [/sea[\s-]monster/i, 'sea monster'],
-    [/botanical/i, 'botanical'],
     [/floral/i, 'floral'],
     [/\bfaces?\b/i, 'faces'],
   ]
   // Map detectedSeriesKeyword → shop filter param (sea monster ≠ sea-monsters)
   const KEYWORD_TO_FILTER: Record<string, string> = {
     'shero': 'shero', 'neko': 'neko', 'sea monster': 'sea-monsters',
-    'botanical': 'botanical', 'floral': 'floral', 'faces': 'faces',
+    'floral': 'floral', 'faces': 'faces',
   }
   let detectedSeriesKeyword: string | null = null
   for (const [pattern, kw] of SERIES_KEYWORDS) {
     if (pattern.test(product.title)) { detectedSeriesKeyword = kw; break }
   }
-  const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces']
+  const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'floral', 'faces']
   const productSeriesTag = product.tags.find(t => SERIES_TAGS_LIST.includes(t.toLowerCase()))
   // Resolve the shop filter value used for "View all" links
   const seriesFilterValue = productSeriesTag ?? (detectedSeriesKeyword ? KEYWORD_TO_FILTER[detectedSeriesKeyword] : null) ?? null
@@ -202,18 +204,11 @@ export default async function ProductPage({ params }: PageProps) {
 
   const productSeries = seriesLabel(product)
 
-  // Colorway siblings — products with same title prefix (before last " — ")
+  // Title prefix (before last " — ") — used below to find format siblings (same artwork,
+  // different product type). The "Also in this series" colorway-sibling thumbnails that used
+  // to be derived from this were removed 2026-07-11 per Sebastian's request.
   const titleParts = product.title.split(' — ')
   const titlePrefix = titleParts.length > 1 ? titleParts.slice(0, -1).join(' — ') : null
-  const colorwaySiblings = titlePrefix
-    ? seriesProducts
-        .filter(p => p.title.startsWith(titlePrefix) && p.firstImage)
-        .map(p => ({
-          href: `/shop/${p.handle}`,
-          url: p.firstImage!.url,
-          alt: p.title,
-        }))
-    : []
 
   // Format siblings — same artwork (by displayTitle match), different product type
   // Only add fetch if we have a meaningful artwork name
@@ -309,32 +304,17 @@ export default async function ProductPage({ params }: PageProps) {
           {/* Image column — inside ProductProvider so variant images can update it */}
           <ImageGallery
             images={galleryImages}
-            colorwaySiblings={colorwaySiblings.length > 0 ? colorwaySiblings : undefined}
             objectFit="contain"
           />
 
           {/* Info column */}
           <div className={styles.info}>
             <div className={styles.infoInner}>
-              {/* Breadcrumb */}
-              <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-                <Link href="/shop" className={styles.breadcrumbLink}>Shop</Link>
-                <span className={styles.breadcrumbSep}>/</span>
-                <Link
-                  href={catFilter ? `/shop?filter=${catFilter}` : '/shop'}
-                  className={styles.breadcrumbLink}
-                >
-                  {catLabel}
-                </Link>
-                <span className={styles.breadcrumbSep}>/</span>
-                <span className={styles.breadcrumbCurrent}>{displayTitle(product.title)}</span>
-              </nav>
-
               {/* 1. Title */}
               <div className={styles.titleBlock}>
                 <div className={styles.titleMeta}>
                   {productSeries && <span className={styles.seriesBadge}>{productSeries}</span>}
-                  <p className={styles.productType}>{catLabel}</p>
+                  <p className={styles.productType}>{catLabel === 'Postcard' ? 'Postcard · Pack of 10' : catLabel === 'Greeting Card' ? 'Greeting Card · Pack of 10' : catLabel}</p>
                 </div>
                 <h1 className={styles.title}>{displayTitle(product.title)}</h1>
               </div>
@@ -361,6 +341,21 @@ export default async function ProductPage({ params }: PageProps) {
                 <p className={styles.description}>{fallbackDescription(product)}</p>
               )}
 
+              {/* Trust line — deliberately always visible, not tucked inside a collapsed
+                  accordion (see ISSUES.md FB-2b). Was nested inside the "Materials &
+                  Production" accordion body, which just happens to default open — reads as
+                  "why is shipping info under Materials?" once you actually read the labels. */}
+              <div className={styles.trustBlock}>
+                <div className={styles.deliveryEstimate}>
+                  <span className={styles.deliveryDot} />
+                  <span>Ships in 3–7 business days · EU, UK &amp; Norway</span>
+                </div>
+                <p className={styles.gelatoLine}>
+                  Printed &amp; shipped by{' '}
+                  <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
+                </p>
+              </div>
+
               {/* 5. Secondary info — accordions */}
               <div className={styles.accordionGroup}>
                 <details className={styles.accordion} open>
@@ -382,25 +377,13 @@ export default async function ProductPage({ params }: PageProps) {
                     {product.variants.length > 1 && (
                       <SizeGuide variants={product.variants} productType={catLabel} />
                     )}
-                    <div className={styles.trustBlock}>
-                      <div className={styles.deliveryEstimate}>
-                        <span className={styles.deliveryDot} />
-                        <span>Ships in 3–7 business days · EU, UK &amp; Norway</span>
-                      </div>
-                      <p className={styles.gelatoLine}>
-                        Printed &amp; shipped by{' '}
-                        <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
-                      </p>
-                    </div>
                   </div>
                 </details>
 
                 <details className={styles.accordion}>
                   <summary className={styles.accordionSummary}>Shipping &amp; Returns</summary>
                   <div className={styles.accordionBody}>
-                    <p className={styles.accordionText}>Printed on demand by Gelato and shipped directly to you.</p>
-                    <p className={styles.accordionText}>Production: 1–3 business days. Delivery: 2–5 days within EU. <strong>Estimated total: 3–7 days from order.</strong></p>
-                    <p className={styles.accordionText}>Ships to EU, UK, and Norway. International shipping available at checkout.</p>
+                    <p className={styles.accordionText}>International shipping outside EU, UK &amp; Norway is available at checkout.</p>
                     <p className={styles.accordionText}>If anything arrives damaged or wrong, let us know within 14 days with a photo — we&apos;ll sort it.</p>
                   </div>
                 </details>
@@ -433,12 +416,6 @@ export default async function ProductPage({ params }: PageProps) {
                 </details>
               </div>
 
-              {/* Artist credit */}
-              <div className={styles.artistStrip}>
-                <Link href="/about" className={styles.artistLink}>
-                  Work by Stine Weirsøe Flamant &rarr;
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -447,25 +424,14 @@ export default async function ProductPage({ params }: PageProps) {
 
       {seriesProducts.length >= 2 && (
         <section className={styles.related}>
-          <div className={styles.relatedHeader}>
-            <h2 className={styles.relatedTitle}>More from {productSeries}</h2>
-            <Link href={seriesFilterValue ? `/shop?filter=${seriesFilterValue}` : '/shop'} className={styles.relatedViewAll}>
-              View all &rarr;
-            </Link>
-          </div>
-          <p className={styles.relatedSub}>Same series — all sizes and price points</p>
+          <SectionHeading
+            title={`More from ${productSeries}`}
+            subtitle="Same series — all sizes and price points"
+            viewAll={{ href: seriesFilterValue ? `/shop?filter=${seriesFilterValue}` : '/shop', label: 'View all' }}
+          />
           <div className={styles.relatedGrid}>
             {seriesProducts.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>
-                <div className={styles.relatedImg}>
-                  <Image src={p.firstImage!.url} alt={p.firstImage!.altText ?? p.title}
-                    fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className={styles.relatedInfo}>
-                  <span className={styles.relatedName}>{displayTitle(p.title)}</span>
-                  <span className={styles.relatedPrice}>{formatPrice(p.minPrice.amount)}</span>
-                </div>
-              </Link>
+              <ProductCard key={p.id} product={p} sizes="(max-width: 768px) 50vw, 25vw" />
             ))}
           </div>
         </section>
@@ -473,19 +439,10 @@ export default async function ProductPage({ params }: PageProps) {
 
       {relatedFiltered.length >= 2 && (
         <section className={styles.related}>
-          <h2 className={styles.relatedTitle}>You might also like</h2>
+          <SectionHeading title="You might also like" />
           <div className={styles.relatedGrid}>
             {relatedFiltered.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.relatedCard}>
-                <div className={styles.relatedImg}>
-                  <Image src={p.firstImage!.url} alt={p.firstImage!.altText ?? p.title}
-                    fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className={styles.relatedInfo}>
-                  <span className={styles.relatedName}>{displayTitle(p.title)}</span>
-                  <span className={styles.relatedPrice}>{formatPrice(p.minPrice.amount)}</span>
-                </div>
-              </Link>
+              <ProductCard key={p.id} product={p} sizes="(max-width: 768px) 50vw, 25vw" />
             ))}
           </div>
         </section>
@@ -500,25 +457,14 @@ export default async function ProductPage({ params }: PageProps) {
         const mediumLabel = mediumTag.charAt(0).toUpperCase() + mediumTag.slice(1)
         return (
           <section className={styles.originalsSection}>
-            <div className={styles.originalsSectionHead}>
-              <div>
-                <h2 className={styles.originalsSectionTitle}>Original {mediumLabel} works</h2>
-                <p className={styles.originalsSectionSub}>These are the unique originals this print is based on — available on enquiry.</p>
-              </div>
-              <Link href={`/archive?category=${mediumTag.toLowerCase()}`} className={styles.originalsViewAll}>See all originals →</Link>
-            </div>
+            <SectionHeading
+              title={`Original ${mediumLabel} works`}
+              subtitle="These are the unique originals this print is based on — available on enquiry."
+              viewAll={{ href: `/fine-art?view=grid&category=${mediumTag.toLowerCase()}`, label: 'See all originals' }}
+            />
             <div className={styles.originalsGrid}>
               {originals.map(w => (
-                <Link key={w.slug} href={`/works/${w.slug}`} className={styles.originalCard}>
-                  <div className={styles.originalCardImg}>
-                    <Image src={w.image} alt={w.title} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
-                    <div className={styles.originalCardOverlay}>
-                      <span className={styles.originalCardEnquire}>Enquire →</span>
-                    </div>
-                  </div>
-                  <span className={styles.originalCardTitle}>{w.title}</span>
-                  <span className={styles.originalCardYear}>{w.year}</span>
-                </Link>
+                <ArtworkCard key={w.slug} work={w} sizes="(max-width: 768px) 50vw, 25vw" showDimensions={false} />
               ))}
             </div>
           </section>
@@ -529,10 +475,11 @@ export default async function ProductPage({ params }: PageProps) {
         currentHandle={handle}
         currentProduct={{
           handle,
-          title: displayTitle(product.title),
-          imageUrl: mainImage?.url ?? null,
-          price: formatPrice(product.minPrice.amount),
-          category: categoryLabel(product),
+          title: product.title,
+          tags: product.tags,
+          firstImage: product.firstImage,
+          priceRangeV2: product.priceRangeV2,
+          minPrice: product.minPrice,
         }}
       />
     </div>

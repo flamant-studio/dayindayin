@@ -4,6 +4,10 @@ import { works, getWork } from "@/lib/data";
 import { notFound } from "next/navigation";
 import ShareButtons from "@/components/ShareButtons";
 import WorksGallery from "@/components/WorksGallery";
+import Breadcrumb from "@/components/Breadcrumb";
+import Button from "@/components/Button";
+import ArtworkCard from "@/components/ArtworkCard";
+import RecentlyViewedWorks from "@/components/RecentlyViewedWorks";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -38,6 +42,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   embroidery: "Embroidery",
   painting: "Painting",
   photography: "Photography",
+  mixed: "Mixed Media",
 }
 
 const CATEGORY_MEDIUM: Record<string, string> = {
@@ -45,13 +50,13 @@ const CATEGORY_MEDIUM: Record<string, string> = {
   embroidery: "Hand embroidery on fabric",
   painting: "Acrylic and oil stick on canvas",
   photography: "Archival inkjet print",
+  mixed: "Mixed media",
 }
 
 const SERIES_SHOP_FILTERS: Array<{ pattern: RegExp; filter: string; label: string }> = [
   { pattern: /\bshero\b/i,       filter: 'shero',        label: 'SHERO series' },
   { pattern: /\bneko\b/i,        filter: 'neko',         label: 'NEKO series' },
   { pattern: /sea[\s-]monster/i, filter: 'sea-monsters', label: 'Sea Monsters' },
-  { pattern: /botanical/i,       filter: 'botanical',    label: 'Botanical' },
   { pattern: /floral/i,          filter: 'floral',       label: 'Floral' },
   { pattern: /\bfaces?\b/i,      filter: 'faces',        label: 'Faces' },
   { pattern: /sommerby/i,        filter: 'sommerby',     label: 'Sommerby' },
@@ -103,7 +108,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dayindayin.dk' },
       { '@type': 'ListItem', position: 2, name: 'Fine Art', item: 'https://dayindayin.dk/fine-art' },
-      { '@type': 'ListItem', position: 3, name: label, item: `https://dayindayin.dk/archive?category=${work.category}` },
+      { '@type': 'ListItem', position: 3, name: label, item: `https://dayindayin.dk/fine-art?view=grid&category=${work.category}` },
       { '@type': 'ListItem', position: 4, name: work.title, item: `https://dayindayin.dk/works/${work.slug}` },
     ],
   }
@@ -129,6 +134,11 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
         {/* ── Title below image ─────────────────────────────────── */}
         <div className={styles.titleSection}>
+          <Breadcrumb items={[
+            { label: 'Fine Art', href: '/fine-art' },
+            { label, href: `/fine-art?view=grid&category=${work.category}` },
+            { label: work.title },
+          ]} />
           <p className={styles.workCategory}>{label}</p>
           <h1 className={styles.workTitle}>{work.title}</h1>
           <p className={styles.workYear}>{work.year}</p>
@@ -149,7 +159,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                 Prints of Stine&apos;s work are available in the{' '}
                 <Link href={shopHref}>{shopLabel}</Link> from 56 kr.
               </p>
-              <Link href={`/archive?category=${work.category}`} className={styles.moreLink}>
+              <Link href={`/fine-art?view=grid&category=${work.category}`} className={styles.moreLink}>
                 See more {label.toLowerCase()} works →
               </Link>
               <ShareButtons
@@ -163,12 +173,13 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                 Originals are individually priced.{' '}
                 <Link href="/practical">See the FAQ</Link> for typical price ranges.
               </p>
-              <Link
+              <Button
                 href={`/contact?subject=${work.sold ? 'Similar+work+enquiry' : `Enquiry:+${encodeURIComponent(work.title)}`}`}
-                className={`${styles.enquiryBtn} ${work.sold ? styles.enquiryBtnSold : ''}`}
+                variant={work.sold ? 'secondary' : 'primary'}
+                full
               >
-                {work.sold ? 'Discover similar work' : 'Discover this work'}
-              </Link>
+                {work.sold ? 'Enquire about similar work' : 'Enquire about price'}
+              </Button>
               <div className={styles.meta}>
                 <div className={styles.metaRow}>
                   <span className={styles.metaKey}>Medium</span>
@@ -212,32 +223,22 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
           <section className={styles.related}>
             <div className={styles.relatedHead}>
               <h2 className={styles.relatedTitle}>More {label.toLowerCase()}</h2>
-              <Link href={`/archive?category=${work.category}`} className={styles.relatedViewAll}>
+              <Link href={`/fine-art?view=grid&category=${work.category}`} className={styles.relatedViewAll}>
                 See all {label.toLowerCase()} works →
               </Link>
             </div>
             <div className={styles.relatedGrid}>
               {related.map((r) => (
-                <Link key={r.slug} href={`/works/${r.slug}`} className={styles.relatedCard}>
-                  <div className={styles.relatedImg}>
-                    <Image src={r.image} alt={r.title} fill sizes="(max-width: 768px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
-                  </div>
-                  <span className={styles.relatedName}>{r.title}</span>
-                  <span className={styles.relatedYear}>{r.year}</span>
-                </Link>
+                <ArtworkCard key={r.slug} work={r} sizes="(max-width: 768px) 50vw, 22vw" showDimensions={false} />
               ))}
             </div>
           </section>
         )}
 
-        {/* ── Breadcrumbs at bottom ─────────────────────────────── */}
-        <nav className={styles.bottomBreadcrumb} aria-label="Breadcrumb">
-          <Link href="/fine-art" className={styles.breadcrumbLink}>Fine Art</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <Link href={`/archive?category=${work.category}`} className={styles.breadcrumbLink}>{label}</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <span className={styles.breadcrumbCurrent}>{work.title}</span>
-        </nav>
+        <div className={styles.recentlyViewedWrap}>
+          <RecentlyViewedWorks currentWork={work} />
+        </div>
+
       </div>
     </>
   );

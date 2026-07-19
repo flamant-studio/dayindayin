@@ -1,58 +1,34 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProducts, getProductsByTitleKeyword, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
+import { getProducts, formatPriceLabel, categoryLabel, seriesLabel, isArtworkProduct } from '@/lib/shopify/products'
 import { displayTitle } from '@/lib/display'
-import { blogPosts, works } from '@/lib/data'
-import NewsletterSignup from '@/components/NewsletterSignup'
-import WishlistButton from '@/components/WishlistButton'
-import QuickAddButton from '@/components/QuickAddButton'
+import { works } from '@/lib/data'
+import { SERIES } from '@/lib/series'
+import SectionHeading from '@/components/SectionHeading'
+import ProductCard from '@/components/ProductCard'
+import SeriesTile from '@/components/SeriesTile'
 import styles from './page.module.css'
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
 
+// ls-01/02/04/05/07 are used elsewhere on the homepage and on /commissions — kept out of this
+// strip on purpose (see Task 5, 2026-07-11). ls-03/06/08/09 are the only lifestyle shots not
+// already featured anywhere on the live site; the 4th slot pulls a studio detail from Jellyfish's
+// own gallery (never surfaced outside that work's own PDP) rather than repeat a lifestyle photo.
 const LIFESTYLE = [
-  { src: `${BLOB}/lifestyle/ls-02.jpg`, alt: 'Studio detail — hand-tufted textile in progress' },
-  { src: `${BLOB}/lifestyle/ls-04.jpg`, alt: 'Art print by Stine Weirsøe Flamant on a wall' },
-  { src: `${BLOB}/lifestyle/ls-05.jpg`, alt: 'Close-up of embroidery work by Stine Weirsøe Flamant' },
-  { src: `${BLOB}/lifestyle/ls-07.jpg`, alt: 'Art in the studio — Stine Weirsøe Flamant' },
-]
-
-const SERIES_CARDS = [
-  { tag: 'shero',       label: 'SHERO',        sub: 'Power, resistance, naming',  accent: '#D94F2C' },
-  { tag: 'neko',        label: 'NEKO',          sub: 'Watching without watching back', accent: '#2E5D4B' },
-  { tag: 'sea-monsters',label: 'Sea Monsters',  sub: 'Creatures from old charts', accent: '#4A7A9B' },
-  { tag: 'botanical',   label: 'Botanical',     sub: 'Leaves, roots, natural form', accent: '#5C7A48' },
-  { tag: 'floral',      label: 'Floral',        sub: 'Colour at the edge of excess', accent: '#B85C78' },
-  { tag: 'faces',       label: 'Faces',         sub: 'The ones that look back',   accent: '#7A6B8A' },
-  { tag: 'sommerby',    label: 'Sommerby',      sub: 'Denmark in long light',     accent: '#C4694F' },
+  { src: `${BLOB}/lifestyle/ls-03.jpg`, alt: 'Moodboard and colour references in the studio — Stine Weirsøe Flamant' },
+  { src: `${BLOB}/lifestyle/ls-08.jpg`, alt: 'Tufted rug piece and embroidery supplies on the studio deck' },
+  { src: `${BLOB}/lifestyle/ls-09.jpg`, alt: 'Coffee and magazines on the studio table' },
+  { src: `${BLOB}/works/tufting/jellyfish/gallery/3.jpg`, alt: 'Detail of hand-tufted wool texture — Stine Weirsøe Flamant' },
 ]
 
 export const revalidate = 60
 
-// Keywords to fetch one representative image per series (flat art preferred over mockups)
-const SERIES_KEYWORDS: Array<{ tag: string; keyword: string }> = [
-  { tag: 'shero',        keyword: 'shero' },
-  { tag: 'neko',         keyword: 'neko' },
-  { tag: 'sea-monsters', keyword: 'Sea Monsters' },
-  { tag: 'botanical',    keyword: 'Botanical' },
-  { tag: 'floral',       keyword: 'Floral' },
-  { tag: 'faces',        keyword: 'Face' },
-  { tag: 'sommerby',     keyword: 'Sommerby' },
-]
-
-const MOCKUP_KEYWORDS = ['mug', 'tote bag', 'tank top', ' cap', 'water bottle', 'wood print']
-const isMockup = (title: string) => { const t = title.toLowerCase(); return MOCKUP_KEYWORDS.some(k => t.includes(k)) }
-
 export default async function HomePage() {
   const availableWorks = works.filter(w => !w.sold).length
 
-  // Parallel targeted fetches — faster than getAllProducts (500+ items)
-  const [rawProducts, ...seriesResults] = await Promise.all([
-    getProducts(48).then(all => all.filter(p => p.firstImage)).catch(() => []),
-    ...SERIES_KEYWORDS.map(({ keyword }) =>
-      getProductsByTitleKeyword(keyword, 8).catch(() => [])
-    ),
-  ])
+  // Targeted fetch — faster than getAllProducts (500+ items)
+  const rawProducts = await getProducts(48).then(all => all.filter(p => p.firstImage)).catch(() => [])
 
   // Prefer flat artwork over product mockups, then diversify by category (max 2 per type)
   const MOCKUP_TYPE_KEYWORDS = ['mug', 'tote', 'tank', 'cap', 'bottle', 'wood print', 'postcard', 'greeting card']
@@ -76,22 +52,6 @@ export default async function HomePage() {
     for (const p of artFirst) { if (!used.has(p.id)) { diverse.push(p); if (diverse.length >= 8) break } }
   }
   const products = diverse
-
-  // Pick best image per series: flat art preferred, dark variants over light/blanc
-  const LIGHT_TITLE_KEYWORDS = ['blanc', 'white', 'cream']
-  const isLight = (t: string) => { const tl = t.toLowerCase(); return LIGHT_TITLE_KEYWORDS.some(k => tl.includes(k)) }
-  const seriesImageMap: Record<string, string> = {}
-  SERIES_KEYWORDS.forEach(({ tag }, i) => {
-    const prods = seriesResults[i].filter(p => p.firstImage)
-    // Score: mockup=+2, light/blanc variant=+1 (lower is better)
-    const scored = prods.map(p => ({
-      p,
-      score: (isMockup(p.title) ? 2 : 0) + (isLight(p.title) ? 1 : 0),
-    }))
-    scored.sort((a, b) => a.score - b.score)
-    const best = scored[0]?.p
-    if (best?.firstImage) seriesImageMap[tag] = best.firstImage.url
-  })
 
   const orgJsonLd = {
     '@context': 'https://schema.org',
@@ -130,7 +90,7 @@ export default async function HomePage() {
             loop
             playsInline
             className={styles.heroBgVideo}
-            poster={`${BLOB}/lifestyle/ls-01.jpg`}
+            poster={`${BLOB}/lifestyle/cat-doll-poster.jpg`}
           >
             <source src="https://29kekabbrd49avje.public.blob.vercel-storage.com/video/hero-loop.mp4" type="video/mp4" />
           </video>
@@ -146,10 +106,6 @@ export default async function HomePage() {
             <Link href="/shop" className={styles.heroCta}>Browse the shop</Link>
             <Link href="/fine-art" className={styles.heroCtaSecondary}>See original works</Link>
           </div>
-          <div className={styles.heroTrustRow}>
-            <span className={styles.heroTrustDot} aria-hidden="true" />
-            <span className={styles.heroTrustText}>Shop open · Ships to EU, UK &amp; Norway · Printed by Gelato</span>
-          </div>
         </div>
       </section>
 
@@ -158,8 +114,8 @@ export default async function HomePage() {
         <Link href="/fine-art" className={styles.collectBlock}>
           <div className={styles.collectImgWrap}>
             <Image
-              src={`${BLOB}/works/tufting/liebes-panopticon.jpg`}
-              alt="Liebes Panopticon — Hand Tufted original by Stine Weirsøe Flamant"
+              src={`${BLOB}/lifestyle/ls-07.jpg`}
+              alt="Art in the studio — Stine Weirsøe Flamant"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className={styles.collectImg}
@@ -199,7 +155,7 @@ export default async function HomePage() {
       <section className={styles.editorial}>
         <div className={styles.editorialImage}>
           <Image
-            src={`${BLOB}/works/tufting/liebes-panopticon.jpg`}
+            src={`${BLOB}/works/tufting/liebes-panopticon.jpg?v=2`}
             alt="Liebes Panopticon — hand tufted wool by Stine Weirsøe Flamant"
             fill
             sizes="(max-width: 768px) 100vw, 55vw"
@@ -220,72 +176,29 @@ export default async function HomePage() {
 
       {/* ── Series strip ─────────────────────────────────────── */}
       <section className={styles.seriesSection}>
-        <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>Browse by Series</h2>
-          <Link href="/collections" className={styles.viewAll}>All collections →</Link>
-        </div>
+        <SectionHeading title="Browse by Series" viewAll={{ href: '/collections', label: 'All collections' }} />
         <div className={styles.seriesStrip}>
-          {SERIES_CARDS.map(({ tag, label, sub, accent }) => {
-            const imgUrl = seriesImageMap[tag]
-            return (
-              <Link key={tag} href={`/shop?filter=${tag}`} className={styles.seriesCard}>
-                <div className={styles.seriesCardImg}>
-                  {imgUrl ? (
-                    <Image
-                      src={imgUrl}
-                      alt={label}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 16vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  ) : (
-                    <div className={styles.seriesCardPlaceholder} style={{ background: accent + '22' }} />
-                  )}
-                </div>
-                <div className={styles.seriesCardInfo}>
-                  <span className={styles.seriesCardLabel} style={{ color: accent }}>{label}</span>
-                  <span className={styles.seriesCardSub}>{sub}</span>
-                </div>
-              </Link>
-            )
-          })}
+          {SERIES.map(({ tag, label, sub, accent, image }) => (
+            <SeriesTile
+              key={tag}
+              href={`/shop?filter=${tag}`}
+              label={label}
+              sub={sub}
+              accent={accent}
+              imgUrl={image}
+            />
+          ))}
         </div>
       </section>
 
       {/* ── In the shop ──────────────────────────────────────── */}
       <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>In the shop</h2>
-          <Link href="/shop" className={styles.viewAll}>All products →</Link>
-        </div>
+        <SectionHeading title="In the shop" viewAll={{ href: '/shop', label: 'All products' }} />
 
         {products.length > 0 ? (
           <div className={styles.productGrid}>
             {products.map((p) => (
-              <Link key={p.id} href={`/shop/${p.handle}`} className={styles.card}>
-                <div className={`${styles.cardImg} ${categoryLabel(p) === 'Framed Print' ? styles.cardImgMockup : isArtworkProduct(p) ? styles.cardImgArtwork : styles.cardImgMockup}`}>
-                  {p.firstImage
-                    ? <Image src={p.firstImage.url} alt={p.firstImage.altText ?? p.title} fill sizes="(max-width: 768px) 50vw, 25vw" className={styles.cardImgEl} />
-                    : <div className={styles.cardPlaceholder} />
-                  }
-                  <WishlistButton
-                    handle={p.handle}
-                    title={displayTitle(p.title)}
-                    imageUrl={p.firstImage?.url ?? null}
-                    price={formatPriceLabel(p)}
-                  />
-                  {p.variants.length === 1 && p.firstVariant?.availableForSale && (
-                    <QuickAddButton merchandiseId={p.firstVariant.id} title={p.title} />
-                  )}
-                </div>
-                <div className={styles.cardInfo}>
-                  <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
-                  <span className={styles.cardType}>
-                    {seriesLabel(p) ? `${seriesLabel(p)} · ` : ''}{categoryLabel(p)}
-                  </span>
-                  <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
-                </div>
-              </Link>
+              <ProductCard key={p.id} product={p} sizes="(max-width: 768px) 50vw, 25vw" />
             ))}
           </div>
         ) : (
@@ -296,51 +209,13 @@ export default async function HomePage() {
         )}
       </section>
 
-      {/* ── Artist statement ─────────────────────────────────── */}
-      <section className={styles.artistStrip}>
-        <p className={styles.artistText}>
-          Stine Weirsøe Flamant makes art with her hands in Copenhagen — tufted textiles, embroidered canvas, paintings, and photography. Everything in this shop is her work. Nothing is licensed in.
-        </p>
-        <Link href="/about" className={styles.artistLink}>About the artist →</Link>
-      </section>
+      {/* ── Studio Notes teaser — disabled 2026-07-11, no live copy yet.
+          See app/_art-journal and app/_blog (renamed to unpublish, not deleted). ── */}
 
-      {/* ── Studio Notes teaser ──────────────────────────────── */}
-      {(() => {
-        const notes = blogPosts.slice(0, 3)
-        return (
-          <section className={styles.notesTeaser}>
-            <div className={styles.notesTeaserHead}>
-              <div>
-                <span className={styles.notesTeaserLabel}>Studio Notes</span>
-                <h2 className={styles.notesTeaserTitle}>From the studio</h2>
-              </div>
-              <Link href="/art-journal" className={styles.notesTeaserViewAll}>All notes →</Link>
-            </div>
-            <div className={styles.notesTeaserGrid}>
-              {notes.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.notesTeaserCard}>
-                  <div className={styles.notesTeaserImg}>
-                    <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
-                  </div>
-                  <div className={styles.notesTeaserBody}>
-                    <span className={styles.notesTeaserDate}>
-                      {new Date(post.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}
-                    </span>
-                    <span className={styles.notesTeaserPostTitle}>{post.title}</span>
-                    <span className={styles.notesTeaserExcerpt}>{post.excerpt}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )
-      })()}
+      {/* ── Newsletter — disabled 2026-07-11, moved to a minimal footer signup
+          (see components/Footer.tsx). Full-section variant kept in NewsletterSignup.tsx. ── */}
 
-
-      {/* ── Newsletter ───────────────────────────────────────── */}
-      <NewsletterSignup />
-
-      {/* ── Lifestyle strip ──────────────────────────────────── */}
+      {/* ── Lifestyle strip — moved above the artist statement 2026-07-17 per Sebastian ── */}
       <Link href="/shop" className={styles.lifestyleStripLink}>
         <section className={styles.lifestyleStrip}>
           {LIFESTYLE.map(({ src, alt }, i) => (
@@ -349,8 +224,15 @@ export default async function HomePage() {
             </div>
           ))}
         </section>
-        <p className={styles.lifestyleCaption}>See all products in the shop →</p>
       </Link>
+
+      {/* ── Artist statement ─────────────────────────────────── */}
+      <section className={styles.artistStrip}>
+        <p className={styles.artistText}>
+          Stine Weirsøe Flamant makes art with her hands in Copenhagen — tufted textiles, embroidered canvas, paintings, and photography. Everything in this shop is her work. Nothing is licensed in.
+        </p>
+        <Link href="/about" className={styles.artistLink}>About the artist →</Link>
+      </section>
     </>
   )
 }

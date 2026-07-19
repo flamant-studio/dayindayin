@@ -1,16 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+import ProductCard, { type ProductCardData } from './ProductCard'
 import styles from './RecentlyViewed.module.css'
 
-interface RecentItem {
-  handle: string
-  title: string
-  imageUrl: string | null
-  price: string
-  category?: string
-}
+type RecentItem = ProductCardData
 
 interface Props {
   currentHandle: string
@@ -20,11 +13,20 @@ interface Props {
 const STORAGE_KEY = 'did_recently_viewed'
 const MAX_ITEMS = 8
 
+// Guards against a heading rendering with blank cards under it — a cached entry from an
+// older version of this cache, or a partial write, can satisfy `others.length >= 2` without
+// having the fields ProductCard actually needs to render.
+function isValidItem(item: unknown): item is RecentItem {
+  const i = item as Partial<RecentItem> | null
+  return !!i && typeof i.handle === 'string' && typeof i.title === 'string' && !!i.minPrice?.amount
+}
+
 function readStorage(): RecentItem[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return []
-    return JSON.parse(raw) as RecentItem[]
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed.filter(isValidItem) : []
   } catch {
     return []
   }
@@ -58,26 +60,7 @@ export default function RecentlyViewed({ currentHandle, currentProduct }: Props)
       <h2 className={styles.title}>Recently viewed</h2>
       <div className={styles.grid}>
         {others.map((item) => (
-          <Link key={item.handle} href={`/shop/${item.handle}`} className={styles.card}>
-            <div className={styles.imgWrap}>
-              {item.imageUrl ? (
-                <Image
-                  src={item.imageUrl}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  style={{ objectFit: 'contain' }}
-                />
-              ) : (
-                <div className={styles.imgPlaceholder} />
-              )}
-            </div>
-            <div className={styles.info}>
-              <span className={styles.name}>{item.title}</span>
-              {item.category && <span className={styles.category}>{item.category}</span>}
-              <span className={styles.price}>{item.price}</span>
-            </div>
-          </Link>
+          <ProductCard key={item.handle} product={item} sizes="(max-width: 768px) 50vw, 25vw" />
         ))}
       </div>
     </section>

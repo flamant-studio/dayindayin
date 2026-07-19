@@ -126,7 +126,7 @@
 
 .dropdown li a:hover {
   opacity: 1;
-  background: var(--c-surface);
+  background: rgba(26, 23, 20, 0.06); /* neutral hover tint, not tied to --c-surface (now white, same as the dropdown itself - would be invisible) */
 }
 
 .dropHighlight {
@@ -177,7 +177,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 3px;
+  padding: 0 var(--sp-1);
 }
 
 /* ── Burger ─────────────────────────────────────────────── */
@@ -185,7 +185,7 @@
 .burger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: var(--sp-1);
   background: none;
   border: none;
   cursor: pointer;

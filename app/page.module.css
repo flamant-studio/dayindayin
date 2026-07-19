@@ -75,7 +75,7 @@
 .heroCtas {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: var(--sp-4);
   flex-wrap: wrap;
 }
 
@@ -114,7 +114,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.25rem;
+  margin-top: var(--sp-4);
 }
 
 .heroTrustDot {
@@ -170,12 +170,13 @@
 .productGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  gap: var(--sp-2);
 }
 
 .card {
   background: #fff;
-  display: block;
+  display: flex;
+  flex-direction: column;
   transition: transform var(--t-base) var(--ease);
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
@@ -184,10 +185,32 @@
   transform: translateY(-3px);
 }
 
-.card:hover [data-quick-add] {
-  opacity: 1;
-  transform: translateY(0);
+.cardInner {
+  display: block;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
 }
+
+.cardCta {
+  padding: 0 var(--sp-3) var(--sp-3);
+}
+
+.cardViewLink {
+  display: block;
+  width: 100%;
+  padding: var(--sp-2) 0;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  border-top: 1px solid var(--c-border);
+  transition: color var(--t-fast);
+}
+
+.cardViewLink:hover { color: var(--c-text); }
 
 .cardImg {
   position: relative;
@@ -220,7 +243,7 @@
   text-transform: uppercase;
   background: var(--c-accent);
   color: #fff;
-  padding: 2px 6px;
+  padding: var(--sp-1);
   pointer-events: none;
   z-index: 1;
 }
@@ -229,7 +252,7 @@
   padding: var(--sp-3) var(--sp-3) var(--sp-4);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
 }
 
 .cardTitle {
@@ -381,7 +404,7 @@
 .collectionInfo {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
 }
 
 .collectionLabel {
@@ -576,48 +599,8 @@
   gap: var(--sp-3);
 }
 
-.seriesCard {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-  transition: opacity var(--t-fast);
-}
-
-.seriesCard:hover { opacity: 0.8; }
-
-.seriesCardImg {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  background: var(--c-surface);
-  overflow: hidden;
-  border: 1px solid var(--c-border);
-}
-
-.seriesCardPlaceholder {
-  position: absolute;
-  inset: 0;
-}
-
-.seriesCardInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.seriesCardLabel {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: var(--c-text);
-}
-
-.seriesCardSub {
-  font-size: var(--text-xs);
-  color: var(--c-muted);
-  font-weight: 400;
-}
-
-
+/* Individual tile styling now lives in components/SeriesTile.module.css —
+   shared with /collections (Task 2/14, 2026-07-11). */
 
 /* ── Studio Notes teaser ───────────────────────────────────────────── */
 
@@ -726,7 +709,7 @@
   margin-bottom: 1rem;
 }
 
-.notesTeaserBody { display: flex; flex-direction: column; gap: 0.35rem; }
+.notesTeaserBody { display: flex; flex-direction: column; gap: var(--sp-1); }
 
 .notesTeaserDate {
   font-size: var(--text-xs);
@@ -801,7 +784,16 @@
   .section { padding: var(--sp-8) var(--sp-5); }
   .seriesSection { padding: var(--sp-8) var(--sp-5) var(--sp-4); }
   .seriesStrip { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-2); }
-  .productGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Match /shop's mobile grid exactly (page.module.css .grid) — was inheriting the
+     section's 24px side padding on top of its own gap, doubling up on margin and
+     making cards read as too tall/cramped relative to the shop grid. */
+  .productGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+    margin-left: calc(-1 * var(--sp-5));
+    margin-right: calc(-1 * var(--sp-5));
+  }
   .collectionGrid { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
   .notesTeaserGrid { grid-template-columns: 1fr; }
 

@@ -1,3 +1,5 @@
+'use client'
+import { useState } from 'react'
 import Link from 'next/link'
 import styles from './ShopFilterNav.module.css'
 
@@ -15,17 +17,20 @@ const TYPE_NAV = [
   { label: 'Wood Prints', value: 'wood-print' },
 ]
 
-const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'botanical', 'floral', 'faces', 'sommerby']
+const SERIES_VALUES = ['shero', 'neko', 'sea-monsters', 'floral', 'masks', 'tourism']
 
+// Floral dropped from the tab bar 2026-07-11 — only 3 products, too sparse for
+// a dedicated tab. Still reachable via /shop?filter=floral (e.g. from the
+// homepage series tiles) and via "All series". Botanical removed entirely
+// 2026-07-17 (not just dropped from the tab bar) — no more botanical category
+// anywhere on the site, per Sebastian.
 const SERIES_NAV = [
   { label: 'All series', value: null },
   { label: 'SHERO', value: 'shero' },
   { label: 'NEKO', value: 'neko' },
   { label: 'Sea Monsters', value: 'sea-monsters' },
-  { label: 'Botanical', value: 'botanical' },
-  { label: 'Floral', value: 'floral' },
-  { label: 'Faces', value: 'faces' },
-  { label: 'Sommerby', value: 'sommerby' },
+  { label: 'Masks', value: 'masks' },
+  { label: 'Tourism', value: 'tourism' },
 ]
 
 const ALL_NAV = [...TYPE_NAV.filter(n => n.value), ...SERIES_NAV.filter(n => n.value)]
@@ -44,10 +49,22 @@ interface Props {
 
 export default function ShopFilterNav({ activeTag, typeCounts, seriesCounts, totalCount }: Props) {
   const isSeriesFilter = activeTag !== null && SERIES_VALUES.includes(activeTag)
+  const [open, setOpen] = useState(false)
+  const activeLabel = getActiveLabel(activeTag)
 
   return (
     <nav className={styles.subnav}>
-      <div id="shop-filters" className={styles.rows}>
+      <button
+        type="button"
+        className={styles.mobileToggle}
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls="shop-filters"
+      >
+        <span>Filter &amp; Sort{activeLabel ? ` — ${activeLabel}` : ''}</span>
+        <span className={`${styles.mobileToggleIcon} ${open ? styles.mobileToggleIconOpen : ''}`} aria-hidden="true">▾</span>
+      </button>
+      <div id="shop-filters" className={`${styles.rows} ${open ? styles.rowsOpen : ''}`}>
         <div className={styles.subnavRow}>
           <span className={styles.subnavLabel}>Type</span>
           {TYPE_NAV.map((item) => {

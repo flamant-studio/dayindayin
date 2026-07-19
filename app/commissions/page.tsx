@@ -1,6 +1,10 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
+import Button from '@/components/Button'
 import styles from './page.module.css'
+
+const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
 
 export const metadata: Metadata = {
   title: 'Commissions',
@@ -47,8 +51,7 @@ export default function CommissionsPage() {
       <section className={styles.hero}>
         <span className={styles.heroLabel}>Original Work</span>
         <div className={styles.statusBadge}>
-          <span className={styles.statusDot} />
-          Currently accepting commissions for 2026
+          Not currently accepting new commissions
         </div>
         <h1>Commissions</h1>
         <p className={styles.heroSub}>
@@ -62,6 +65,31 @@ export default function CommissionsPage() {
           <span className={styles.statDot} aria-hidden="true" />
           <span className={styles.stat}><strong>50% deposit</strong> to start</span>
         </div>
+      </section>
+
+      <section className={styles.bts} aria-label="Inside the studio">
+        <figure className={styles.btsItem}>
+          <Image
+            src={`${BLOB}/lifestyle/ls-02.jpg`}
+            alt="Studio detail — a hand-tufted textile in progress"
+            width={800}
+            height={1000}
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className={styles.btsImg}
+          />
+          <figcaption className={styles.btsCaption}>Hand tufting in progress</figcaption>
+        </figure>
+        <figure className={styles.btsItem}>
+          <Image
+            src={`${BLOB}/lifestyle/ls-05.jpg`}
+            alt="Close-up of embroidery work by Stine Weirsøe Flamant"
+            width={800}
+            height={1000}
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className={styles.btsImg}
+          />
+          <figcaption className={styles.btsCaption}>Embroidery, up close</figcaption>
+        </figure>
       </section>
 
       <section className={styles.types}>
@@ -119,10 +147,10 @@ export default function CommissionsPage() {
       <section className={styles.honest}>
         <h2>Honest about constraints</h2>
         <p>
-          Stine doesn&apos;t do copies or near-copies of existing work. She doesn&apos;t reproduce photographs realistically — that&apos;s not her medium. She does do subjects from her practice: people, plants, animals, text, abstraction.
+          No copies or photorealistic reproduction — not her medium. She works with subjects from her own practice: people, plants, animals, text, abstraction.
         </p>
         <p>
-          If your timeline is tight, ask — sometimes the workload allows it, sometimes it doesn&apos;t. If she can&apos;t take it on right now, she&apos;ll tell you.
+          Tight timeline? Ask. Sometimes the workload allows it, sometimes not — either way she&apos;ll tell you straight.
         </p>
       </section>
 
@@ -136,9 +164,7 @@ export default function CommissionsPage() {
 
       <section className={styles.cta}>
         <p className={styles.ctaText}>Got something in mind? Reach out.</p>
-        <Link href="/contact?subject=Commission%20enquiry" className={styles.ctaBtn}>
-          Send a brief →
-        </Link>
+        <Button href="/contact?subject=Commission%20enquiry">Send a brief</Button>
         <p className={styles.ctaSub}>
           Or email <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a> directly.
         </p>

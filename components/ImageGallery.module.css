@@ -6,8 +6,12 @@
 
 .mainImage {
   position: relative;
+  aspect-ratio: 4 / 5; /* fixed frame — matches the locked card rule, DESIGN_SYSTEM.md § Cards.
+    Was set per-image from the active photo's own width/height, which resized the whole page
+    on every arrow click when images had different proportions. */
   background: var(--c-surface);
   overflow: hidden;
+  border: 1px solid var(--c-text);
 }
 
 .mainImageEl {
@@ -23,9 +27,41 @@
   letter-spacing: 0.06em;
   background: rgba(0,0,0,0.48);
   color: rgba(255,255,255,0.92);
-  padding: 4px 9px;
+  padding: var(--sp-1) var(--sp-2);
   pointer-events: none;
   backdrop-filter: blur(4px);
+}
+
+.mainArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  padding: var(--sp-2) var(--sp-3);
+  opacity: 0;
+  transition: opacity var(--t-fast), background var(--t-fast);
+}
+
+.mainImage:hover .mainArrow,
+.mainImage:focus-within .mainArrow {
+  opacity: 1;
+}
+
+.mainArrow:hover {
+  background: var(--c-white);
+}
+
+.mainArrowLeft { left: var(--sp-3); }
+.mainArrowRight { right: var(--sp-3); }
+
+@media (max-width: 768px) {
+  .mainArrow { opacity: 1; }
 }
 
 .imagePlaceholder {
@@ -46,47 +82,16 @@
   aspect-ratio: 1;
   overflow: hidden;
   background: var(--c-surface);
-  cursor: zoom-in;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.thumbActive {
+  border-color: var(--c-text);
 }
 
 .thumbImage {
   object-fit: cover;
-}
-
-.colorways {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-  padding-top: var(--sp-2);
-}
-
-.colorwayLabel {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c-muted);
-}
-
-.colorwayRow {
-  display: flex;
-  gap: var(--sp-2);
-  flex-wrap: wrap;
-}
-
-.colorwayThumb {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  overflow: hidden;
-  background: var(--c-surface);
-  flex-shrink: 0;
-  transition: opacity var(--t-fast);
-  border: 2px solid transparent;
-}
-
-.colorwayThumb:hover {
-  opacity: 0.8;
 }
 
 @media (max-width: 768px) {
@@ -96,15 +101,21 @@
   }
   .mainImage {
     border-radius: 0;
+    /* Full-bleed on mobile — the left/right edges of this border sit off past the
+       viewport edge already (invisible), leaving just a stray horizontal line at the
+       top and bottom. Drop the border entirely here rather than have half of it. */
+    border: none;
   }
-  .colorways {
-    margin-left: var(--sp-5);
-    margin-right: var(--sp-5);
-  }
+  /* Was a wrapping grid (25%/33% width tiles) — with more than 3 images that wraps to a
+     second row. Horizontal scroll guarantees one line regardless of image count. */
   .thumbGrid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
     padding: 0 var(--sp-5);
+    -webkit-overflow-scrolling: touch;
   }
   .thumb {
-    width: calc(33.33% - 0.33rem);
+    width: 72px;
+    flex-shrink: 0;
   }
 }

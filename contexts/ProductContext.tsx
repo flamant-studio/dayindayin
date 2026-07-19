@@ -28,7 +28,9 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
       setSelected: (id, price, imageUrl) => {
         setSelectedVariantId(id)
         setSelectedPrice(price)
-        if (imageUrl !== undefined) setSelectedImage(imageUrl ?? null)
+        // Always update, even to null — a variant without its own photo must fall back
+        // to the base product image, not silently keep whatever was shown before it.
+        setSelectedImage(imageUrl ?? null)
       },
     }}>
       {children}

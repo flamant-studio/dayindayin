@@ -1,7 +1,7 @@
 'use client'
-import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import ImageLightbox from './ImageLightbox'
+import { useLightbox } from './useLightbox'
 import styles from './WorksGallery.module.css'
 
 interface Props {
@@ -10,15 +10,9 @@ interface Props {
 }
 
 export default function WorksGallery({ images, title }: Props) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const { index: lightboxIndex, open, close, prev, next } = useLightbox(images.length)
 
   const lightboxImages = images.map((url, i) => ({ url, alt: `${title} — view ${i + 1}` }))
-
-  const handleClose = useCallback(() => setLightboxIndex(null), [])
-  const handlePrev = useCallback(() =>
-    setLightboxIndex(i => (i !== null ? (i - 1 + images.length) % images.length : null)), [images.length])
-  const handleNext = useCallback(() =>
-    setLightboxIndex(i => (i !== null ? (i + 1) % images.length : null)), [images.length])
 
   return (
     <>
@@ -27,7 +21,7 @@ export default function WorksGallery({ images, title }: Props) {
           <button
             key={i}
             className={`${styles.galleryItem} ${i === 0 ? styles.galleryItemFirst : ''}`}
-            onClick={() => setLightboxIndex(i)}
+            onClick={() => open(i)}
             aria-label={`View ${title} — image ${i + 1} of ${images.length} fullscreen`}
           >
             <Image
@@ -55,9 +49,9 @@ export default function WorksGallery({ images, title }: Props) {
           images={lightboxImages}
           initialIndex={lightboxIndex}
           currentIndex={lightboxIndex}
-          onClose={handleClose}
-          onPrev={handlePrev}
-          onNext={handleNext}
+          onClose={close}
+          onPrev={prev}
+          onNext={next}
         />
       )}
     </>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "@/lib/data";
+import EditorialCard from "@/components/EditorialCard";
 import styles from "./page.module.css";
 import type { Metadata } from "next";
 
@@ -134,25 +135,9 @@ export default async function StudioNotes({ searchParams }: PageProps) {
       {/* ── Rest of notes ─────────────────────────────────────────── */}
       {rest.length > 0 && (
         <div className={styles.grid}>
-          {rest.map((post) => {
-            const wc = post.body ? post.body.join(' ').split(/\s+/).length : post.excerpt.split(/\s+/).length
-            const mins = Math.max(1, Math.round(wc / 200))
-            return (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.card}>
-                <div className={styles.cardImage}>
-                  <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
-                </div>
-                <div className={styles.cardBody}>
-                  <p className={styles.date}>
-                    {new Date(post.date).toLocaleDateString("en-GB", { year: "numeric", month: "long" })}
-                    {' · '}{mins} min read
-                  </p>
-                  <h2>{post.title}</h2>
-                  <p className={styles.excerpt}>{post.excerpt}</p>
-                </div>
-              </Link>
-            )
-          })}
+          {rest.map((post) => (
+            <EditorialCard key={post.slug} post={post} showReadTime />
+          ))}
         </div>
       )}
     </div>

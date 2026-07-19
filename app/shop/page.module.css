@@ -2,6 +2,7 @@
   max-width: var(--max-w);
   margin: 0 auto;
   padding-bottom: var(--sp-16);
+  background: var(--c-white);
 }
 
 /* ── Header ─────────────────────────────────────────────── */
@@ -149,7 +150,8 @@
 
 .card {
   background: #fff;
-  display: block;
+  display: flex;
+  flex-direction: column;
   transition: transform var(--t-base) var(--ease);
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
@@ -157,6 +159,33 @@
 .card:hover {
   transform: translateY(-3px);
 }
+
+.cardInner {
+  display: block;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardCta {
+  padding: 0 var(--sp-3) var(--sp-3);
+}
+
+.cardViewLink {
+  display: block;
+  width: 100%;
+  padding: var(--sp-2) 0;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  border-top: 1px solid var(--c-border);
+  transition: color var(--t-fast);
+}
+
+.cardViewLink:hover { color: var(--c-text); }
 
 .cardImg {
   position: relative;
@@ -179,47 +208,12 @@
   background: #fff;
 }
 
-.cardHoverOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-  display: flex;
-  align-items: flex-end;
-  padding: var(--sp-3);
-  transition: background var(--t-base);
-  pointer-events: none;
-}
-
-.card:hover .cardHoverOverlay {
-  background: rgba(0,0,0,0.18);
-}
-
-.cardViewHint {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #fff;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity var(--t-base), transform var(--t-base);
-}
-
-.card:hover .cardViewHint {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card:hover [data-quick-add] {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .cardInfo {
   padding: var(--sp-3) var(--sp-4) var(--sp-4);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--sp-1);
 }
 
 .cardTitle {
@@ -251,7 +245,7 @@
   text-transform: uppercase;
   background: rgba(0,0,0,0.52);
   color: rgba(255,255,255,0.95);
-  padding: 2px 6px;
+  padding: var(--sp-1);
   pointer-events: none;
   backdrop-filter: blur(4px);
 }
@@ -266,7 +260,7 @@
   text-transform: uppercase;
   background: var(--c-text);
   color: var(--c-white);
-  padding: 3px 10px 3px 12px;
+  padding: var(--sp-1) var(--sp-2) var(--sp-1) var(--sp-3);
 }
 
 .filterChipClear {
@@ -321,50 +315,6 @@
 
 .loadMoreLink:hover {
   opacity: 0.8;
-}
-
-/* ── POD banner ─────────────────────────────────────────── */
-
-.podBanner {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  border-top: 1px solid var(--c-border);
-  margin-top: var(--sp-12);
-}
-
-.podItem {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-  padding: var(--sp-8) var(--sp-6);
-  border-right: 1px solid var(--c-border);
-}
-
-.podItem:last-child { border-right: none; }
-
-.podIcon {
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.podLabel {
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--c-text);
-}
-
-.podText {
-  font-size: var(--text-xs);
-  font-weight: 300;
-  color: var(--c-muted);
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .podBanner { grid-template-columns: 1fr; }
-  .podItem { border-right: none; border-bottom: 1px solid var(--c-border); }
-  .podItem:last-child { border-bottom: none; }
 }
 
 /* ── Empty ──────────────────────────────────────────────── */

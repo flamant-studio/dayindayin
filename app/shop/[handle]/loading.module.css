@@ -42,7 +42,7 @@
 .info {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--sp-4);
   padding-top: 0.5rem;
 }
 
@@ -78,6 +78,6 @@
 }
 
 @media (max-width: 768px) {
-  .page { padding: 0 1.25rem 4rem; }
+  .page { padding: 0 var(--sp-4) 4rem; }
   .layout { grid-template-columns: 1fr; gap: 2rem; }
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { works } from '@/lib/data'
+import Button from '@/components/Button'
 import styles from './page.module.css'
 
 const BLOB_BASE = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
@@ -64,6 +65,19 @@ export default function AboutPage() {
         <p className={styles.heroLabel}>The Artist</p>
         <h1 className={styles.heroTitle}>Stine Weirsøe Flamant</h1>
         <p className={styles.heroSub}>Contemporary artist · Copenhagen</p>
+      </section>
+
+      {/* ── Brand mark ───────────────────────────────────────── */}
+      <section className={styles.brandMark}>
+        <div className={styles.brandMarkImg}>
+          <Image
+            src={`${BLOB_BASE}/about/brand-mark.jpg`}
+            alt="The Day In Day In name, hand-lettered over a studio-blue backdrop with a decayed leaf, a dandelion seed head, and a torn fabric swatch — the original collage the site is named after"
+            fill
+            sizes="(max-width: 768px) 90vw, 480px"
+            className={styles.brandMarkImgEl}
+          />
+        </div>
       </section>
 
       {/* ── Portrait + bio ────────────────────────────────────── */}
@@ -198,10 +212,11 @@ export default function AboutPage() {
         <h2 className={styles.mediumLinksTitle}>Browse the archive by medium</h2>
         <div className={styles.mediumLinksGrid}>
           {([
-            { href: '/archive?category=tufting',     label: 'Hand Tufting',  count: works.filter(w => w.category === 'tufting').length },
-            { href: '/archive?category=embroidery',  label: 'Embroidery',    count: works.filter(w => w.category === 'embroidery').length },
-            { href: '/archive?category=painting',    label: 'Painting',      count: works.filter(w => w.category === 'painting').length },
-            { href: '/archive?category=photography', label: 'Photography',   count: works.filter(w => w.category === 'photography').length },
+            { href: '/fine-art?view=grid&category=tufting',     label: 'Hand Tufting',  count: works.filter(w => w.category === 'tufting').length },
+            { href: '/fine-art?view=grid&category=embroidery',  label: 'Embroidery',    count: works.filter(w => w.category === 'embroidery').length },
+            { href: '/fine-art?view=grid&category=painting',    label: 'Painting',      count: works.filter(w => w.category === 'painting').length },
+            { href: '/fine-art?view=grid&category=photography', label: 'Photography',   count: works.filter(w => w.category === 'photography').length },
+            { href: '/fine-art?view=grid&category=mixed',        label: 'Mixed Media',   count: works.filter(w => w.category === 'mixed').length },
           ] as const).map(({ href, label, count }) => (
             <Link key={href} href={href} className={styles.mediumLink}>
               <span className={styles.mediumLinkLabel}>{label}</span>
@@ -223,8 +238,8 @@ export default function AboutPage() {
           ships across Europe from 56 kr.
         </p>
         <div className={styles.studioLinks}>
-          <Link href="/fine-art" className={styles.shopCta}>Original works →</Link>
-          <Link href="/shop" className={styles.shopCtaSecondary}>Browse the shop →</Link>
+          <Button href="/fine-art" variant="link" arrow>Original works</Button>
+          <Button href="/shop" variant="link" arrow>Browse the shop</Button>
         </div>
       </section>
 

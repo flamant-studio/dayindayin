@@ -4,13 +4,13 @@
   color-scheme: light;
 
   /* Colours */
-  --c-bg:          #F0EBE3;
+  --c-bg:          #FFFFFF;   /* was #F0EBE3 chalk - rolled back to white 2026-07-04, palette rework in progress */
   --c-white:       #FFFFFF;
   --c-text:        #1A1714;
   --c-muted:       #7A746F;
-  --c-surface:     #E8E1D6;
+  --c-surface:     #FFFFFF;   /* was #E8E1D6 - rolled back to white 2026-07-04, see --c-bg note */
   --c-border:      #E2D8CE;
-  --c-accent:      #D94F2C;   /* vermillion — primary CTA */
+  --c-accent:      #95619B;   /* mauve — primary CTA. Was #D94F2C vermillion, replaced 2026-07-05 (palette rework, no reds on CTA per Sebastian). Pulled from Mask II / Purple Sun / Universe I. */
   --c-accent-2:    #2E5D4B;   /* forest green — secondary */
   --c-accent-light:#FCE8E2;
   --c-studio:      #1D2218;   /* deep studio dark — richer than pure black */
@@ -48,6 +48,11 @@
   /* Layout */
   --max-w: 1440px;
   --nav-h: 56px;
+
+  /* Content widths — the only three allowed page max-widths */
+  --w-prose: 700px;   /* single-column reading: legal, practical, confirmation */
+  --w-wide:  1100px;  /* editorial/utility: about, commissions, artwork detail */
+  --w-full:  1280px;  /* grids & galleries: shop, product detail */
 
   /* Radius */
   --r-sm: 4px;

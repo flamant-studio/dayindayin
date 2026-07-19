@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# screenshots (local proof artifacts)
+/screenshots
+
 # placeholder images stay local — real assets served from storage later
 # public/images/*.jpg uncommit if you want placeholders in repo
 assets/Procreate-batch/

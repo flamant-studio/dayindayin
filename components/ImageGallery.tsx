@@ -1,7 +1,6 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import ImageLightbox from './ImageLightbox'
 import { useProduct } from '@/contexts/ProductContext'
 import styles from './ImageGallery.module.css'
 
@@ -14,50 +13,53 @@ interface GalleryImage {
 
 interface Props {
   images: GalleryImage[]
-  colorwaySiblings?: { href: string; url: string; alt: string }[]
   objectFit?: 'cover' | 'contain'
 }
 
-export default function ImageGallery({ images, colorwaySiblings, objectFit = 'cover' }: Props) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+export default function ImageGallery({ images, objectFit = 'cover' }: Props) {
+  const [activeIndex, setActiveIndex] = useState(0)
   const { selectedImage } = useProduct()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const mounted = useRef(false)
 
-  const baseMain = images[0]
-  const mainImage = selectedImage
-    ? { url: selectedImage, alt: baseMain?.alt ?? '' }
-    : baseMain
+  // A fresh variant selection should jump the gallery to that photo — but once the visitor
+  // is manually browsing with the arrows/thumbs, that has to win, or the arrows go dead the
+  // moment any variant has published an image (which is almost immediately, on mount).
+  const [followVariant, setFollowVariant] = useState(true)
+  const prevSelectedImage = useRef(selectedImage)
+  useEffect(() => {
+    if (selectedImage !== prevSelectedImage.current) {
+      prevSelectedImage.current = selectedImage
+      setFollowVariant(true)
+      const idx = images.findIndex((img) => img.url === selectedImage)
+      if (idx >= 0) setActiveIndex(idx)
+      // Picking a variant (e.g. color) is easy to do while scrolled down past the image —
+      // bring the photo back into view so the change is actually visible, not just the counter.
+      if (mounted.current) {
+        containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+    mounted.current = true
+  }, [selectedImage, images])
+
+  const baseActive = images[activeIndex] ?? images[0]
+  const mainImage = followVariant && selectedImage
+    ? { url: selectedImage, alt: baseActive?.alt ?? '' }
+    : baseActive
+
+  const goPrev = () => { setFollowVariant(false); setActiveIndex((i) => (i - 1 + images.length) % images.length) }
+  const goNext = () => { setFollowVariant(false); setActiveIndex((i) => (i + 1) % images.length) }
+
+  // Fixed frame, not per-image — matches the site-wide locked card rule (one box, `contain`,
+  // never crop; see DESIGN_SYSTEM.md § Cards). Sizing the box to each image's own dimensions
+  // made the whole page reflow every time the active image changed.
   const thumbImages = images.slice(1)
 
-  function openAt(index: number) {
-    setLightboxIndex(index)
-  }
-
-  function closeLightbox() {
-    setLightboxIndex(null)
-  }
-
-  function prev() {
-    setLightboxIndex((i) => (i === null ? 0 : (i - 1 + images.length) % images.length))
-  }
-
-  function next() {
-    setLightboxIndex((i) => (i === null ? 0 : (i + 1) % images.length))
-  }
-
-  const mainAspectRatio = mainImage?.width && mainImage?.height
-    ? `${mainImage.width}/${mainImage.height}`
-    : '3/4'
-
   return (
-    <div className={styles.images}>
+    <div className={styles.images} ref={containerRef}>
       <div
         className={styles.mainImage}
-        style={{ aspectRatio: mainAspectRatio, cursor: mainImage ? 'zoom-in' : 'default', background: objectFit === 'contain' ? '#fff' : undefined }}
-        onClick={() => mainImage && openAt(0)}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === 'Enter' && mainImage && openAt(0)}
-        aria-label="View full image"
+        style={{ background: objectFit === 'contain' ? '#fff' : undefined }}
       >
         {mainImage ? (
           <Image
@@ -73,56 +75,40 @@ export default function ImageGallery({ images, colorwaySiblings, objectFit = 'co
           <div className={styles.imagePlaceholder} />
         )}
         {images.length > 1 && (
-          <span className={styles.imageCounter}>{images.length} photos</span>
+          <>
+            <button type="button" className={`${styles.mainArrow} ${styles.mainArrowLeft}`} onClick={goPrev} aria-label="Previous image">‹</button>
+            <button type="button" className={`${styles.mainArrow} ${styles.mainArrowRight}`} onClick={goNext} aria-label="Next image">›</button>
+            <span className={styles.imageCounter}>{activeIndex + 1} / {images.length}</span>
+          </>
         )}
       </div>
 
       {thumbImages.length > 0 && (
         <div className={styles.thumbGrid}>
-          {thumbImages.map((img, i) => (
-            <div
-              key={i}
-              className={styles.thumb}
-              onClick={() => openAt(i + 1)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && openAt(i + 1)}
-              aria-label={`View image ${i + 2}`}
-            >
-              <Image
-                src={img.url}
-                alt={img.alt}
-                fill
-                sizes="20vw"
-                className={styles.thumbImage}
-              />
-            </div>
-          ))}
+          {thumbImages.map((img, i) => {
+            const realIndex = i + 1
+            return (
+              <div
+                key={realIndex}
+                className={`${styles.thumb} ${realIndex === activeIndex ? styles.thumbActive : ''}`}
+                onClick={() => { setFollowVariant(false); setActiveIndex(realIndex) }}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && (setFollowVariant(false), setActiveIndex(realIndex))}
+                aria-label={`View image ${realIndex + 1}`}
+                aria-current={realIndex === activeIndex ? 'true' : undefined}
+              >
+                <Image
+                  src={img.url}
+                  alt={img.alt}
+                  fill
+                  sizes="20vw"
+                  className={styles.thumbImage}
+                />
+              </div>
+            )
+          })}
         </div>
-      )}
-
-      {colorwaySiblings && colorwaySiblings.length > 0 && (
-        <div className={styles.colorways}>
-          <p className={styles.colorwayLabel}>Also in this series:</p>
-          <div className={styles.colorwayRow}>
-            {colorwaySiblings.map((s) => (
-              <a key={s.href} href={s.href} className={styles.colorwayThumb} title={s.alt}>
-                <Image src={s.url} alt={s.alt} fill sizes="48px" style={{ objectFit: 'cover' }} />
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {lightboxIndex !== null && (
-        <ImageLightbox
-          images={images}
-          initialIndex={lightboxIndex}
-          currentIndex={lightboxIndex}
-          onClose={closeLightbox}
-          onPrev={prev}
-          onNext={next}
-        />
       )}
     </div>
   )
