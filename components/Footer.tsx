@@ -48,6 +48,7 @@ export default function Footer() {
             <span className={styles.colTitle}>Shop</span>
             <Link href="/shop">All products</Link>
             <Link href="/collections">Collections</Link>
+            <Link href="/motifs">Shop by Motif</Link>
             <Link href="/shop?filter=art-print">Art Prints</Link>
             <Link href="/shop?filter=framed">Framed Prints</Link>
             <Link href="/shop?filter=poster">Posters</Link>

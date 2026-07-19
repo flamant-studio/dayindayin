@@ -1,0 +1,134 @@
+.page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--sp-6) var(--sp-5) var(--sp-12);
+}
+
+.header {
+  margin-bottom: var(--sp-6);
+  padding-bottom: var(--sp-6);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.headerLabel {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 8vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: var(--sp-4);
+  text-wrap: balance;
+}
+
+.sub {
+  font-size: var(--text-base);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--c-muted);
+  max-width: 540px;
+}
+
+/* Jump grid — mobile-first: 2 up, scaling to 4 on desktop */
+.jumpGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-12);
+}
+
+/* Motif sections */
+.motifSection {
+  padding-top: var(--sp-8);
+  margin-top: var(--sp-8);
+  border-top: 1px solid var(--c-border);
+  scroll-margin-top: var(--sp-8);
+}
+
+.motifSection:first-of-type {
+  margin-top: 0;
+}
+
+.motifHead {
+  border-left: 3px solid var(--c-accent);
+  padding-left: var(--sp-4);
+  margin-bottom: var(--sp-5);
+  max-width: 640px;
+}
+
+.motifTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--sp-2);
+}
+
+.motifSub {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--c-muted);
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-4);
+}
+
+.emptyNote {
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  font-style: italic;
+}
+
+/* Fine-art-only motif card (Bird Man, Vaginals) */
+.fineArtCard {
+  display: block;
+  max-width: 420px;
+}
+
+.fineArtImg {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  margin-bottom: var(--sp-3);
+}
+
+.fineArtCta {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  transition: color var(--t-fast);
+}
+
+.fineArtCard:hover .fineArtCta {
+  color: var(--c-accent);
+}
+
+/* Desktop */
+@media (min-width: 640px) {
+  .page { padding: var(--sp-10) var(--sp-6) var(--sp-16); }
+  .jumpGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-5); }
+  .productGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-5); }
+  .motifSection { padding-top: var(--sp-10); margin-top: var(--sp-10); }
+}
+
+@media (min-width: 1024px) {
+  .jumpGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .productGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

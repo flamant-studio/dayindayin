@@ -26,6 +26,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.shopify.com",
       },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        pathname: "/flamant-studio/dayindayin/**",
+      },
     ],
   },
 };
