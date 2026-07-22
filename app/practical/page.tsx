@@ -126,8 +126,18 @@ export default function Practical() {
               </tbody>
             </table>
             <p>
+              Art is expensive. It takes real time, real material, and often weeks of work
+              before production even begins. Every original Stine sells is one of a kind,
+              so each is priced on its own — not against a list.
+            </p>
+            <p>
               For original fine art — tufted works, embroidery, paintings — pricing is by
               enquiry. <Link href="/fine-art">See the originals →</Link>
+            </p>
+            <p>
+              The print shop, through Gelato and Shopify, puts the same work into formats at
+              every price point — a water bottle, a set of postcards, a framed print. Every
+              sale funds real studio time: wool, canvas, paint, thread.
             </p>
             <p>
               Prices include Danish VAT.{' '}

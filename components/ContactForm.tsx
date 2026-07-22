@@ -95,7 +95,7 @@ export default function ContactForm() {
       </label>
 
       {status === 'error' && (
-        <p className={styles.error}>Something went wrong — please try again.</p>
+        <p className={styles.error}>Message didn&apos;t send. Try again, or email stine@dayindayin.dk directly.</p>
       )}
 
       <button type="submit" className={styles.submitBtn} disabled={status === 'submitting'}>

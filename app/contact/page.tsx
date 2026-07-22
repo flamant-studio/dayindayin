@@ -4,11 +4,11 @@ import styles from './page.module.css'
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with Stine Weirsøe Flamant. Questions about prints, commissions, or wholesale.',
+  description: 'Get in touch about Stine Weirsøe Flamant\'s work. Questions about prints, commissions, or wholesale — answered by Sebastian first.',
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact — Day In Day In',
-    description: 'Get in touch with Stine Weirsøe Flamant. Questions about prints, commissions, or wholesale.',
+    description: 'Get in touch about Stine Weirsøe Flamant\'s work. Questions about prints, commissions, or wholesale — answered by Sebastian first.',
     type: 'website',
   },
 }
@@ -20,8 +20,9 @@ export default function ContactPage() {
         <div className={styles.header}>
           <h1 className={styles.title}>Contact</h1>
           <p className={styles.sub}>
-            Questions about an order, commissions, or something else — use the form below.
-            Stine reads everything and responds within a few days.
+            This site is run by Sebastian, Stine&apos;s husband. Send a question below —
+            about an order, a commission, anything else — and I read it and answer,
+            usually within a couple of days. Stine gets pulled in directly when it&apos;s about her work.
           </p>
           <a href="mailto:stine@dayindayin.dk" className={styles.directEmail}>
             stine@dayindayin.dk
@@ -37,8 +38,8 @@ export default function ContactPage() {
             <div className={styles.infoBlock}>
               <h2 className={styles.infoHeading}>Commissions</h2>
               <p className={styles.infoText}>
-                Stine takes commissions selectively. Embroidery, tufting, painting.
-                Be specific — tell her the size, the context, and your budget.
+                Stine takes commissions selectively — embroidery, tufting, painting.
+                Send the size, the context, and your budget, and I&apos;ll pass it to her.
                 Lead time is typically 4–10 weeks.
               </p>
             </div>
@@ -59,7 +60,7 @@ export default function ContactPage() {
             <div className={styles.infoBlock}>
               <h2 className={styles.infoHeading}>Response time</h2>
               <p className={styles.infoText}>
-                Stine reads and responds herself — typically within 2–3 days. For urgent
+                I read and answer everything myself — typically within 2–3 days. For urgent
                 order issues, include your order number.
               </p>
             </div>

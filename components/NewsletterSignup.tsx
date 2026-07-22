@@ -30,12 +30,12 @@ export default function NewsletterSignup({ variant = 'full' }: Props) {
       })
       if (!res.ok) {
         const j = await res.json().catch(() => ({}))
-        setError(j.error ?? 'Something went wrong. Please try again.')
+        setError(j.error ?? 'Could not subscribe that address. Try again.')
       } else {
         setSubmitted(true)
       }
     } catch {
-      setError('Something went wrong. Please try again.')
+      setError('Could not reach the server. Try again.')
     } finally {
       setLoading(false)
     }

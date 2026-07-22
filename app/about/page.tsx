@@ -185,6 +185,92 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── Her story ────────────────────────────────────────── */}
+      <section className={styles.processNote}>
+        <h2 className={styles.processNoteTitle}>Her story</h2>
+        <div className={styles.processNoteBody}>
+          <p>
+            Stine&apos;s journey as an artist began in Sweden, where she lived deep in the
+            forest for the first year of her life. Born with no name — a true child of the
+            early 1970s, from Danish parents who were both crafters, who had turned their
+            backs on civilisation and chosen a free life.
+          </p>
+          <p>
+            From those early days, Stine moved with her parents and siblings around Denmark.
+            She has moved more than forty times throughout her life. A nomadic childhood that
+            took her through most of Denmark, mainly the countryside. She climbed trees,
+            fiercely explored nature, and butted heads with rural conformism at school. She
+            evolved through adolescence as a challenger — with a keen sense for both the
+            beauty of life and the ugliness of humans at their lowest.
+          </p>
+          <p>
+            Through early adulthood, Stine established herself as a teacher and a mother. She
+            was then struck by a series of herniated discs and chronic back pain that
+            handicapped her severely. Despite this, she built lutterlagkage.dk — an online
+            store selling children&apos;s clothes of her own design, produced by herself. She
+            continued exploring the graphical realm, but it was only in her early forties
+            that she took the real leap from craft work to art. That backdrop of craft and
+            process understanding is visible throughout her entire body of work.
+          </p>
+          <p>
+            Her early art centred on embroidery and painting, with themes of family, society
+            and normativity.
+          </p>
+          <p>
+            She moved on to tufted works, cementing a love affair with the tactility of
+            fabric. Her tufted works revolve around mankind in the universe, nature in
+            interpreted form, and sometimes slogans: POW, and the later-to-become iconic
+            SHERO. These pieces are sensed and felt as much as they are seen.
+          </p>
+          <p>
+            The Liebes Panopticon — a set of four distinct works — is the centrepiece of this
+            period. A bold, time-consuming multi-part project emanating rays of colourful
+            love from its centres.
+          </p>
+          <p>
+            In this same period, Stine explored the gendered human in society, the criteria
+            for social acceptance, and the freedom to stand out. This process gave birth to
+            the iconic Neko Paw — a symbol of a fighting being. Through travels to Sri Lanka,
+            she was inspired to create the Protective Masks series: a satirical knife to the
+            woes of modern life, through items such as the Mask against Unsolicited Phone
+            Calls or the Mask against Conformism.
+          </p>
+          <p>
+            In recent years Stine has struggled with illness but has continued producing art.
+            Her latest work is about the connectivity that binds everything together — the
+            universe, the flora, the soil of the earth, the people and animals that share this
+            planet. She has worked on ephemeral installations, mythological handcrafted
+            artefacts, and digital works: florals, gardens, nature.
+          </p>
+          <p>
+            Her current processes take her back to previous themes of nature, in bright and
+            colourful palettes.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Selected motifs ──────────────────────────────────── */}
+      <section className={styles.processNote}>
+        <h2 className={styles.processNoteTitle}>Selected motifs</h2>
+        <div className={styles.processNoteBody}>
+          <p>
+            <strong>Neko Paw.</strong> A clenched paw, human and cat at once — a symbol of
+            power and identity without gender or species. The original is black and white;
+            later versions add colour.
+          </p>
+          <p>
+            <strong>SHERO.</strong> A patch-style badge reading SHERO — feminist pop-art,
+            first embroidered, now printed across formats.
+          </p>
+          <p>
+            <strong>Masks.</strong> Inspired by mask traditions Stine encountered in Sri
+            Lanka, reworked as a satirical set: a mask against unsolicited phone calls, one
+            against conformism, one against indifference. Modern anxieties given a
+            traditional form.
+          </p>
+        </div>
+      </section>
+
       {/* ── Milestones ───────────────────────────────────────── */}
       <section className={styles.milestones}>
         <h2 className={styles.milestonesTitle}>Selected work &amp; milestones</h2>
@@ -247,7 +333,8 @@ export default function AboutPage() {
       <section className={styles.contactBlock}>
         <h2 className={styles.contactBlockTitle}>Get in touch</h2>
         <p className={styles.contactBlockSub}>
-          For commissions, press, or general enquiries — Stine responds directly.
+          For commissions, press, or general enquiries — Sebastian answers first and
+          brings Stine in directly when it&apos;s about her work.
         </p>
         <div className={styles.contactBlockLinks}>
           <a href="mailto:stine@dayindayin.dk" className={styles.contactEmail}>

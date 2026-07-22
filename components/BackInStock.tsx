@@ -52,7 +52,7 @@ export default function BackInStock({ handle, title, variantTitle }: Props) {
           {status === 'submitting' ? 'Sending…' : 'Notify me'}
         </button>
       </form>
-      {status === 'error' && <p className={styles.error}>Something went wrong. Try again.</p>}
+      {status === 'error' && <p className={styles.error}>Couldn&apos;t save that email. Try again.</p>}
     </div>
   )
 }

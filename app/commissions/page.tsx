@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/commissions' },
   openGraph: {
     title: 'Commissions — Day In Day In',
-    description: 'Commission an original work from Stine Weirsøe Flamant. Embroidery, hand tufting, or painting. 4–10 week lead times. You speak directly with Stine.',
+    description: 'Commission an original work from Stine Weirsøe Flamant. Embroidery, hand tufting, or painting. 4–10 week lead times.',
     images: [{ url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/works/embroidery/elsk.jpg', width: 800, height: 800 }],
     type: 'website',
   },
@@ -108,7 +108,7 @@ export default function CommissionsPage() {
         <h2>How it works</h2>
         <ol className={styles.steps}>
           {[
-            { label: 'Send a brief.', desc: 'Be specific: size, context, what it\'s for, your budget. Stine reads everything and responds honestly — she\'ll say yes, no, or let\'s talk.' },
+            { label: 'Send a brief.', desc: 'Be specific: size, context, what it\'s for, your budget. I read every brief and pass it to Stine — expect a yes, a no, or follow-up questions.' },
             { label: 'Short conversation.', desc: 'If the project feels right, you\'ll exchange a few messages to align on scope. No lengthy back-and-forth.' },
             { label: '50% deposit to start.', desc: 'Work begins when the deposit is in. You\'ll see progress photos at key milestones.' },
             { label: 'Delivery & final payment.', desc: 'Balance due on completion. Shipping across Europe included; outside Europe at cost.' },
