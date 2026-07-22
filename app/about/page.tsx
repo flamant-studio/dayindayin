@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: 'About Stine Weirsøe Flamant',
     description: 'Contemporary artist based in Copenhagen. Embroidery, hand tufting, painting, and photography — made by hand.',
-    images: [{ url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/about/stine-portrait.jpg', width: 800, height: 1000 }],
+    images: [{ url: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/about/stine-portrait.jpg?v=2', width: 800, height: 1000 }],
   },
   alternates: { canonical: '/about' },
 }
@@ -25,7 +25,7 @@ const personJsonLd = {
   jobTitle: 'Artist',
   description: 'Contemporary artist based in Copenhagen. Working in hand tufting, embroidery, painting, and photography.',
   sameAs: ['https://www.instagram.com/dayindayin', 'https://dayindayin.dk'],
-  image: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/about/stine-portrait.jpg',
+  image: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/about/stine-portrait.jpg?v=2',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Copenhagen',
@@ -84,7 +84,7 @@ export default function AboutPage() {
       <section className={styles.profile}>
         <div className={styles.portraitWrap}>
           <Image
-            src={`${BLOB_BASE}/about/stine-portrait.jpg`}
+            src={`${BLOB_BASE}/about/stine-portrait.jpg?v=2`}
             alt="Stine Weirsøe Flamant"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
