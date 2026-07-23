@@ -21,8 +21,8 @@ export default function ContactPage() {
           <h1 className={styles.title}>Contact</h1>
           <p className={styles.sub}>
             This site is run by Sebastian, Stine&apos;s husband. Send a question below —
-            about an order, a commission, anything else — and I read it and answer,
-            usually within a couple of days. Stine gets pulled in directly when it&apos;s about her work.
+            about an order, a commission, anything else — I read anything incoming and
+            answer. Stine gets pulled in directly when it&apos;s about her work.
           </p>
           <a href="mailto:stine@dayindayin.dk" className={styles.directEmail}>
             stine@dayindayin.dk
@@ -60,8 +60,7 @@ export default function ContactPage() {
             <div className={styles.infoBlock}>
               <h2 className={styles.infoHeading}>Response time</h2>
               <p className={styles.infoText}>
-                I read and answer everything myself — typically within 2–3 days. For urgent
-                order issues, include your order number.
+                I read anything incoming. For urgent order issues, include your order number.
               </p>
             </div>
           </div>

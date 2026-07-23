@@ -11,15 +11,14 @@ import styles from './page.module.css'
 
 const BLOB = 'https://29kekabbrd49avje.public.blob.vercel-storage.com'
 
-// ls-01/02/04/05/07 are used elsewhere on the homepage and on /commissions — kept out of this
-// strip on purpose (see Task 5, 2026-07-11). ls-03/06/08/09 are the only lifestyle shots not
-// already featured anywhere on the live site; the 4th slot pulls a studio detail from Jellyfish's
-// own gallery (never surfaced outside that work's own PDP) rather than repeat a lifestyle photo.
+// Refreshed 2026-07-23 with Sebastian's picks from the WEBSITE ASSETS Dropbox
+// folders — yarn cones, a tufted piece photographed outdoors, a windowsill
+// still life, and a tufted swatch — replacing the previous ls-03/08/09 set.
 const LIFESTYLE = [
-  { src: `${BLOB}/lifestyle/ls-03.jpg`, alt: 'Moodboard and colour references in the studio — Stine Weirsøe Flamant' },
-  { src: `${BLOB}/lifestyle/ls-08.jpg`, alt: 'Tufted rug piece and embroidery supplies on the studio deck' },
-  { src: `${BLOB}/lifestyle/ls-09.jpg`, alt: 'Coffee and magazines on the studio table' },
-  { src: `${BLOB}/works/tufting/jellyfish/gallery/3.jpg`, alt: 'Detail of hand-tufted wool texture — Stine Weirsøe Flamant' },
+  { src: `${BLOB}/lifestyle/ls-10.jpg`, alt: 'Cones of wool yarn in red, pink, and purple — studio detail' },
+  { src: `${BLOB}/lifestyle/ls-11.jpg`, alt: 'A tufted rainbow piece photographed outdoors in a tree' },
+  { src: `${BLOB}/lifestyle/ls-12.jpg`, alt: 'Yarn and a wool comb on a sunlit windowsill' },
+  { src: `${BLOB}/lifestyle/ls-13.jpg`, alt: 'A tufted colour swatch with pompoms on yellow' },
 ]
 
 export const revalidate = 60
@@ -114,8 +113,8 @@ export default async function HomePage() {
         <Link href="/fine-art" className={styles.collectBlock}>
           <div className={styles.collectImgWrap}>
             <Image
-              src={`${BLOB}/lifestyle/ls-07.jpg`}
-              alt="Art in the studio — Stine Weirsøe Flamant"
+              src={`${BLOB}/works/tufting/universe-hole.jpg`}
+              alt="Universe with a Hole — hand-tufted wool piece by Stine Weirsøe Flamant"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className={styles.collectImg}
@@ -133,8 +132,8 @@ export default async function HomePage() {
         <Link href="/shop" className={`${styles.collectBlock} ${styles.collectBlockAlt}`}>
           <div className={styles.collectImgWrap}>
             <Image
-              src={`${BLOB}/lifestyle/ls-04.jpg`}
-              alt="Art print by Stine Weirsøe Flamant displayed on a wall"
+              src={`${BLOB}/works/photography/taped-objects/gallery/4.jpg`}
+              alt="Taped Objects — detail of taped fabric and paper swatches, photography by Stine Weirsøe Flamant"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className={styles.collectImg}

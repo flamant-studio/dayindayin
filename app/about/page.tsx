@@ -129,8 +129,8 @@ export default function AboutPage() {
       <section className={styles.process}>
         <div className={styles.processImg}>
           <Image
-            src={`${BLOB_BASE}/about/stine-embroidery.jpg`}
-            alt="Stine at work — embroidery"
+            src={`${BLOB_BASE}/about/stine-embroidery.jpg?v=2`}
+            alt="Detail of French-knot embroidery in blues and greens"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className={styles.processImgEl}
@@ -138,8 +138,8 @@ export default function AboutPage() {
         </div>
         <div className={styles.processImg}>
           <Image
-            src={`${BLOB_BASE}/about/stine-embroidery-2.jpg`}
-            alt="Stine at work — embroidery detail"
+            src={`${BLOB_BASE}/about/stine-embroidery-2.jpg?v=2`}
+            alt="Detail of cut-pile tufting texture in warm tan and coral"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className={styles.processImgEl}
@@ -185,9 +185,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Her story ────────────────────────────────────────── */}
+      {/* ── Story ────────────────────────────────────────────── */}
       <section className={styles.processNote}>
-        <h2 className={styles.processNoteTitle}>Her story</h2>
+        <h2 className={styles.processNoteTitle}>Story</h2>
         <div className={styles.processNoteBody}>
           <p>
             Stine&apos;s journey as an artist began in Sweden, where she lived deep in the
