@@ -2,6 +2,54 @@
 
 ---
 
+## 2026-07-23 — Shopify duplicate-variant bug found & fixed storewide, inventory tracking simplified, homepage/About image refresh
+
+**Done:**
+- Diagnosed a real Shopify data-integrity bug Sebastian spotted (Solar Face — Framed Print showing 8 size values instead of 4, 6 frame values instead of 3): every Framed Print/Fine Art Print/Poster/Art Print product had a second, redundant set of variants — no Gelato image, generic round-number pricing that didn't even vary by material — sitting alongside the real, correctly-synced set. Confirmed via git-history-style check that this predates this session's Chrome variant work (Elephants — 4x4 already had it before today) — a pre-existing Gelato↔Shopify option-sync artifact, not something introduced this week.
+- Deleted 379 ghost variants storewide (275 Framed Print + 104 Fine Art Print/Poster/Art Print) via `scripts/delete-ghost-variants.ts` / `scripts/delete-ghost-all-categories.ts` — safety-checked per product (refuses if a product would lose all its real/imaged variants), verified independently after each batch (0 ghosts remain, real variant counts unchanged).
+- Bulk-set inventory tracking off across all 1,151 active variants (`scripts/bulk-untrack-inventory.ts`) per Sebastian's call — replaces the confusing mixed "0 in stock" / "Inventory not tracked" display; confirmed via API this was already functionally harmless (every tracked variant had "continue selling" on) before the change.
+- Diagnosed the Gelato→Shopify image-sync question: Gelato renders an updated mockup (`status: "created"`) but a manually-edited existing product needs an explicit Publish click in Gelato's own dashboard to push it to Shopify — automatic only on first creation.
+- Homepage: "One of a kind" → Universe with a Hole, "Art for every wall" → Taped Objects detail (both already-existing site assets, no upload needed); lifestyle strip refreshed with 4 new picks from Sebastian's Dropbox shares (yarn cones, tufted rainbow piece outdoors, windowsill still life, tufted swatch).
+- About page: 2 process photos replaced with more colorful picks (French-knot + cut-pile macro); "Her story" → "Story"; Contact page "Response time" corrected to match what Sebastian actually said ("I read anything incoming") instead of an unverified "within 2–3 days" claim written earlier this session.
+- Fixed Stine's About-page portrait — `about/stine-portrait.jpg` had been a scan of painted paper (not a photo of her) since launch; replaced with her reflection in a studio window, cropped to the 3:4 portrait slot.
+
+**Decisions:**
+- Confirmed (via `git log -S` / commit authorship) that the About-page "Selected work & milestones" timeline and the entire `/practical` FAQ page were written by prior autonomous Claude Code sessions ("Loop 1–4" batches), not sourced from Sebastian or Stine, not verified against real Gelato terms. Told Sebastian directly this content's truthfulness is unverified rather than implying it was settled.
+- Overwriting a Vercel Blob asset at the same key doesn't bust Next.js's image-optimizer cache — needs `?v=N` on every reference (same lesson as earlier Liebes Panopticon fix, now hit again on the portrait).
+
+**Next:**
+- About-page milestones: Sebastian to decide — fix with real dates, or cut the section.
+- `/practical` truthfulness audit — go claim-by-claim against real Gelato terms rather than assumptions.
+- Homepage/About image work is done; no other pending image placements.
+
+---
+
+## 2026-07-22 — Shop by Motif page shipped, site-copy truthfulness pass
+
+**Done:**
+- Built `/motifs` — 20 confirmed motifs (Printed Tufting Works deliberately excluded, revisit later) mapped to live Shopify products by title pattern (`lib/motifs.ts`), reusing the site's own component system (`SeriesTile`, `ProductCard`) rather than copying mikofu.com/motifs' layout. Bird Man and Vaginals correctly route to the fine-art page (no print product exists for either).
+- Fixed 5 places where site copy falsely implied Stine personally reads/answers contact and commission messages — Sebastian confirmed she doesn't; corrected to Sebastian being the actual first responder, gatekeeping for Stine.
+- Rewrote the About-page "Selected motifs" text and the `/practical` pricing-rationale paragraph — both had cliché, content-free phrasing ("iconic manifesto of power," "copied from nothing and nowhere") the TOV guide itself argues against; replaced with concrete, specific description.
+- Learned the hard way that a sandboxed Artifact preview isn't scrollable/selectable by another agent's (Claude-in-Chrome's) browser tools — don't use Artifacts to hand data to another agent; plain text in chat instead.
+
+**Decisions:**
+- `next.config.ts` image `remotePatterns` now allows `raw.githubusercontent.com` (scoped to `flamant-studio/dayindayin` only) — needed for the motif page's hero images, which reuse existing public-repo artwork rather than re-uploading to Blob.
+
+**Next:** (superseded by 2026-07-23 above — see that entry)
+
+---
+
+## 2026-07-19 — Rabbit series canary (Tote + Water Bottle), format-coverage audit
+
+**Done:**
+- Verified 2 of 6 candidate Rabbit artwork files were genuinely clean transparent PNGs (pixel-level check, not just filenames); pushed to the public `dayindayin` artwork repo, built and published canary CSVs for Tote Bag and Water Bottle — both confirmed live on Shopify and the site.
+- Full audit of all 78 Fine Art Print/Poster/Framed Print/Art Print products against live Gelato variants: 64 had only the CSV-import default size (and, for Framed Print, only the default frame color) live despite the template supporting more — root cause behind the long-standing "broken variant selectors" issue. Full checklist written to `FORMAT_COVERAGE_CHECKLIST.md` for a Claude-in-Chrome fix pass (later completed and cleaned up — see 2026-07-23 above).
+- Fixed tote bag product-spec copy ("Print: One side" → "Both sides" — the template actually prints front and back).
+
+**Next:** (superseded by later entries above)
+
+---
+
 ## 2026-07-18 — closing out the Dropbox sweep backlog
 
 **Done:**

@@ -1,5 +1,5 @@
 # DayInDayIn — Claude Code Handover
-*Last updated: 2026-07-06*
+*Last updated: 2026-07-23*
 
 **For current, week-to-week state, read these first — this file's "Current State" table below is the original launch handover and is now historical in places:**
 - `ISSUES.md` — the live issues board (P0/P1/P2 + the FB screenshot-feedback batch), single source of truth for what's broken/next
@@ -93,13 +93,14 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Gelato — mug template | ✅ `0e9a0a04` — 4 variants (White/Black × Design A/B) |
 | Gelato — tote template | ✅ `a28d9355` — 1 variant |
 | Gelato — tank top template | ✅ `2edd0df8` — 6 size variants (XS–2XL) |
-| Gelato store / catalog | ⚠️ **(2026-07)** ~298–308 products live via CSV-import automation, but Sebastian's own review found ~0% of that batch is actually print-ready (broken variant selectors, orientation mismatches, missing multi-image templates). **Open, unresolved decision in `GELATO_STRATEGY.md`:** curate to ~150 correct products by hand vs. keep patching the automated batch. Don't assume the product count reflects sellable products. |
+| Gelato store / catalog | 🔄 **(2026-07-23)** Root cause of "broken variant selectors" found and fixed for Fine Art Print/Poster/Framed Print/Art Print: most products only had the CSV-import default size (and, for Framed Print, only the default frame colour) live even though the template supports more. Full size/colour grid now added and verified across all 78 products in these categories. Separately found and fixed a real Shopify data bug affecting the same products: a redundant, no-image, generically-priced "ghost" variant set sitting alongside every real one (379 deleted storewide, pre-existing, not caused by this fix). Mugs, tanks, totes, apparel, postcards, etc. not yet re-audited this way. **`GELATO_STRATEGY.md`'s curate-vs-automate decision is still open** — this fix closes one specific root cause, not the whole catalog-correctness question. |
 | Online Store publish | ✅ Publishing itself is done (no longer "syncing") — the open question is catalog *correctness*, not publish status. See row above. |
 | Product variant UX | ✅ Posters: A4/A3/A2 selector. Mugs: Color × Design 2D picker. Tanks: Size selector. Totes: single variant. |
 | Category labels | ✅ Mug/Tote Bag/Apparel/Framed Print/Art Print/Tufted Work/Embroidery/Photo Print |
 | Series filters | 🔄 **(2026-07)** SHERO/NEKO/Sea Monsters/Botanical/Floral/**Masks**/**Tourism**. "Faces" was renamed to "Masks" and broadened (it excluded all ~44 mask products, matching only 8 "Face"-titled ones); "Sommerby" removed (4 variants of one painting, not a series); "Tourism" added (15 products had no filter before). Floral/Botanical dropped from the /shop tab bar 2026-07-11 (too sparse, 3 products each) — still reachable via `?filter=`, still shown as tabs on /fine-art and /collections. |
 | Fine Art page | 🔄 **(2026-07-12)** `/archive` removed — its dense grid merged into `/fine-art?view=grid` behind a List/Grid toggle (redirect in place). Hero is identical between views; one shared category filter used by both. |
 | Product pages | ✅ Size guide (null for mugs/tanks/totes), gallery (arrow carousel, not a lightbox), cross-sells, JSON-LD. No breadcrumb or "Also in this series" — removed 2026-07-12 per Sebastian, deliberately, not an oversight. |
+| Shop by Motif (`/motifs`) | ✅ **(2026-07-22)** 20 motifs mapped to live Shopify products by title pattern (`lib/motifs.ts`). Printed Tufting Works deliberately excluded (would need new Gelato products, out of scope). Bird Man/Vaginals route to the fine-art page (no print product exists). |
 | SEO | ✅ sitemap.xml (paginated, all 304+ products), robots.txt, OG image |
 | Search | ✅ /search?q= — full-text, 250 products |
 | Cookie banner | ✅ localStorage-based |
@@ -110,9 +111,9 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Domain dayindayin.dk | 🔲 Not yet pointed to Vercel (Simply.com DNS) |
 | Shopify Payments KYC | 🔲 Pending — eliminates 2% fee |
 | Legal pages | 🔲 Pending — privacy policy, copyright, fulfillment T&C |
-| CONTACT_EMAIL_TO | 🔲 Pending — Stine's actual email in Vercel env vars |
+| CONTACT_EMAIL_TO | 🔲 Pending — env var still unset in Vercel. Site copy fixed 2026-07-22 (Contact/Commissions/About pages no longer falsely imply Stine personally reads messages — Sebastian confirmed he's the actual first responder), but the underlying mailbox/env var question is unresolved. |
 | Newsletter API | 🔲 Signup shows "Thank you" but doesn't subscribe — needs Mailchimp/Klaviyo |
-| Water bottles / dad caps | 🔲 CSVs ready in `DayInDayIn Images/`, not yet created in Gelato |
+| Water bottles / dad caps | 🔄 **(2026-07-19)** Rabbit series canary done — Rabbit Tote + Rabbit Line Art Water Bottle both live and verified. General water bottle/dad cap rollout for the rest of the catalog still not done. |
 
 **Gelato store ID:** `51ee1b39-75e6-4c19-af02-cfd7cb771a4a`
 
