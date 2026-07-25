@@ -86,7 +86,7 @@ export default async function MotifsPage() {
 
         {motifResults.map(({ motif, products }) => (
           <section key={motif.slug} id={motif.slug} className={styles.motifSection}>
-            <div className={styles.motifHead} style={{ borderColor: motif.accent }}>
+            <div className={styles.motifHead}>
               <h2 className={styles.motifTitle}>{motif.name}</h2>
               {motif.fineArtOnly ? (
                 <p className={styles.motifSub}>Original work — not yet available as a print.</p>

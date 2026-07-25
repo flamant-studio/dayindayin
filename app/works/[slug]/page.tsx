@@ -4,7 +4,6 @@ import { works, getWork } from "@/lib/data";
 import { notFound } from "next/navigation";
 import ShareButtons from "@/components/ShareButtons";
 import WorksGallery from "@/components/WorksGallery";
-import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import ArtworkCard from "@/components/ArtworkCard";
 import RecentlyViewedWorks from "@/components/RecentlyViewedWorks";
@@ -134,11 +133,6 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
         {/* ── Title below image ─────────────────────────────────── */}
         <div className={styles.titleSection}>
-          <Breadcrumb items={[
-            { label: 'Fine Art', href: '/fine-art' },
-            { label, href: `/fine-art?view=grid&category=${work.category}` },
-            { label: work.title },
-          ]} />
           <p className={styles.workCategory}>{label}</p>
           <h1 className={styles.workTitle}>{work.title}</h1>
           <p className={styles.workYear}>{work.year}</p>

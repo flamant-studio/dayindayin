@@ -59,8 +59,6 @@
 }
 
 .motifHead {
-  border-left: 3px solid var(--c-accent);
-  padding-left: var(--sp-4);
   margin-bottom: var(--sp-5);
   max-width: 640px;
 }

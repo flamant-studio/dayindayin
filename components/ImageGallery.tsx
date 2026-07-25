@@ -53,7 +53,11 @@ export default function ImageGallery({ images, objectFit = 'cover' }: Props) {
   // Fixed frame, not per-image — matches the site-wide locked card rule (one box, `contain`,
   // never crop; see DESIGN_SYSTEM.md § Cards). Sizing the box to each image's own dimensions
   // made the whole page reflow every time the active image changed.
-  const thumbImages = images.slice(1)
+  // Capped at 4 (PDP-8) — Framed Print has one image per size/frame variant (up to 11), which
+  // otherwise floods the thumbnail strip with what the selector buttons already handle. The
+  // main arrows still cycle through every image; only the visible thumbnail strip is capped.
+  const MAX_THUMBS = 4
+  const thumbImages = images.slice(1, 1 + MAX_THUMBS)
 
   return (
     <div className={styles.images} ref={containerRef}>

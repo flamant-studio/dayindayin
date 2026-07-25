@@ -423,7 +423,6 @@ export default async function ProductPage({ params }: PageProps) {
         <section className={styles.related}>
           <SectionHeading
             title={`More from ${productSeries}`}
-            subtitle="Same series — all sizes and price points"
             viewAll={{ href: seriesFilterValue ? `/shop?filter=${seriesFilterValue}` : '/shop', label: 'View all' }}
           />
           <div className={styles.relatedGrid}>

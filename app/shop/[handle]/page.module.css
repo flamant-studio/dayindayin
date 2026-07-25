@@ -58,7 +58,11 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 55fr 45fr;
+  /* minmax(0, ...) not just fr — a bare `fr` track's implicit min is `auto` (its content's
+     min-content size), so a wide-intrinsic-content item can blow the track past the
+     container. This was the actual cause of the PDP-12 horizontal overflow / nav
+     misalignment bug, on every PDP, not just Framed Print. */
+  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
   gap: var(--sp-10);
   margin-top: var(--sp-6);
   align-items: start;
@@ -637,7 +641,7 @@
 
 @media (max-width: 768px) {
   .page { padding: 0 var(--sp-5) var(--sp-12); }
-  .layout { grid-template-columns: 1fr; gap: var(--sp-4); }
+  .layout { grid-template-columns: minmax(0, 1fr); gap: var(--sp-4); }
   .infoInner { position: static; }
   .title { font-size: clamp(1.5rem, 5vw, 2rem); }
   .price { font-size: clamp(1.5rem, 5vw, 2rem); } /* matches .title on mobile too */
