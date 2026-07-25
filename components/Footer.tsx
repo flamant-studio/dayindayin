@@ -74,7 +74,7 @@ export default function Footer() {
             <Link href="/practical">Shipping &amp; FAQ</Link>
             <Link href="/commissions">Commissions</Link>
             <Link href="/contact">Contact</Link>
-            <a href="mailto:stine@dayindayin.dk" className={styles.emailLink}>stine@dayindayin.dk</a>
+            <a href="mailto:hello@dayindayin.dk" className={styles.emailLink}>hello@dayindayin.dk</a>
             <Link href="/legal/privacy">Privacy</Link>
             <Link href="/legal/copyright">Copyright</Link>
           </div>

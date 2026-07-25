@@ -177,7 +177,9 @@ export default async function HomePage() {
       <section className={styles.seriesSection}>
         <SectionHeading title="Browse by Series" viewAll={{ href: '/collections', label: 'All collections' }} />
         <div className={styles.seriesStrip}>
-          {SERIES.map(({ tag, label, sub, accent, image }) => (
+          {/* Floral hidden here only — Sebastian, 2026-07-25. Still shown on /collections
+              (shared SERIES array, lib/series.ts), which wasn't part of this ask. */}
+          {SERIES.filter(s => s.tag !== 'floral').map(({ tag, label, sub, accent, image }) => (
             <SeriesTile
               key={tag}
               href={`/shop?filter=${tag}`}

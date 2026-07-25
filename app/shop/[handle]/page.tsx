@@ -356,8 +356,7 @@ export default async function ProductPage({ params }: PageProps) {
                   </span>
                 </div>
                 <p className={styles.shippingNote}>
-                  Ships internationally too, available at checkout. Arrives damaged or wrong?
-                  Let us know within 14 days with a photo — we&apos;ll sort it.
+                  Arrives damaged or wrong? Let us know within 14 days with a photo — we&apos;ll sort it.
                 </p>
               </div>
 

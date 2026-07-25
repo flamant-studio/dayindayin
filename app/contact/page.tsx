@@ -24,8 +24,8 @@ export default function ContactPage() {
             about an order, a commission, anything else — I read anything incoming and
             answer. Stine gets pulled in directly when it&apos;s about her work.
           </p>
-          <a href="mailto:stine@dayindayin.dk" className={styles.directEmail}>
-            stine@dayindayin.dk
+          <a href="mailto:hello@dayindayin.dk" className={styles.directEmail}>
+            hello@dayindayin.dk
           </a>
         </div>
 

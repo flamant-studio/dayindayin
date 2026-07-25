@@ -337,8 +337,8 @@ export default function AboutPage() {
           brings Stine in directly when it&apos;s about her work.
         </p>
         <div className={styles.contactBlockLinks}>
-          <a href="mailto:stine@dayindayin.dk" className={styles.contactEmail}>
-            stine@dayindayin.dk
+          <a href="mailto:hello@dayindayin.dk" className={styles.contactEmail}>
+            hello@dayindayin.dk
           </a>
           <a href="https://www.instagram.com/dayindayin" target="_blank" rel="noopener noreferrer" className={styles.contactSocial}>
             Instagram →

@@ -259,10 +259,6 @@ export default function ProductOptions({ variants: variantsProp, handle, product
           </div>
         </div>
 
-        {hasSharedImage(mugVariants, selected) && (
-          <p className={styles.sizeNote}>Photo shown is a reference — your selected color will match at print.</p>
-        )}
-
         {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
         <div className={styles.atcWrap}>
           {selected.availableForSale ? (
