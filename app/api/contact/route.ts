@@ -43,7 +43,8 @@ export async function POST(request: NextRequest) {
     });
   } catch (e) {
     console.error("[contact] send failed:", e);
-    return Response.json({ error: "Failed to send email" }, { status: 500 });
+    // TEMP DEBUG — remove before final commit
+    return Response.json({ error: "Failed to send email", debug: String(e instanceof Error ? e.message : e) }, { status: 500 });
   }
 
   return Response.json({ ok: true });
