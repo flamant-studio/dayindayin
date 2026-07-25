@@ -51,7 +51,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "What print quality can I expect?",
-    a: "Gelato uses professional-grade printing: 200gsm archival paper for art prints and posters, and genuine museum-quality 250gsm paper for framed prints. Mugs and apparel use dye-sublimation for sharp, lasting colour. If you're unhappy with the print quality for any reason, contact us within 14 days.",
+    a: "Gelato uses professional-grade printing: 200gsm archival paper for art prints and posters, and genuine museum-quality 250gsm paper for framed prints. Mugs use dye-sublimation for sharp, lasting colour. If you're unhappy with the print quality for any reason, contact us within 14 days.",
   },
   {
     q: "Do you offer wholesale or B2B pricing?",
