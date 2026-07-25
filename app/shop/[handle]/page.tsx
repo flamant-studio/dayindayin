@@ -355,9 +355,6 @@ export default async function ProductPage({ params }: PageProps) {
                     <a href="https://gelato.com" target="_blank" rel="noopener noreferrer" className={styles.gelatoLink}>Gelato</a>
                   </span>
                 </div>
-                <p className={styles.shippingNote}>
-                  Arrives damaged or wrong? Let us know within 14 days with a photo — we&apos;ll sort it.
-                </p>
               </div>
 
               {/* 5. Secondary info — accordions */}

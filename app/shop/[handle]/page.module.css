@@ -288,13 +288,6 @@
 
 .gelatoLink:hover { color: var(--c-muted); }
 
-.shippingNote {
-  font-size: var(--text-xs);
-  color: var(--c-muted);
-  line-height: 1.5;
-  padding-left: calc(6px + var(--sp-2));
-}
-
 /* ── Title block ──────────────────────────────────────────── */
 
 .titleBlock {
