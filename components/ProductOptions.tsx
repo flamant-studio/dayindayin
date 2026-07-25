@@ -100,8 +100,12 @@ function isFramedLayout(variants: Variant[]): boolean {
   return variants.length >= 4 && variants.every(v => parseFramed(v.title) !== null)
 }
 
-export default function ProductOptions({ variants, handle, productTitle, productType }: Props) {
+export default function ProductOptions({ variants: variantsProp, handle, productTitle, productType }: Props) {
   const { setSelected: publishSelected } = useProduct()
+
+  // A5 art prints are discontinued (Sebastian, 2026-07-25) — filtered here rather than
+  // in Shopify so it's reversible with a one-line revert, no variant deletion needed.
+  const variants = variantsProp.filter(v => normalizeTitle(v.title) !== 'A5')
 
   const isMug = isMugLayout(variants)
   const isFramed = !isMug && isFramedLayout(variants)
@@ -166,13 +170,9 @@ export default function ProductOptions({ variants, handle, productTitle, product
 
   function pickMugColor(color: string) {
     setSelectedMugColor(color)
+    // No design selector shown anymore — stick with whichever design variant was already
+    // resolved as first-available for the previous color (see mugFirstAvailable above).
     const matched = mugVariants?.find(v => v.mug.color === color && v.mug.design === selectedMugDesign)
-    if (matched && matched.availableForSale) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price), matched.featuredImage?.url) }
-  }
-
-  function pickMugDesign(design: string) {
-    setSelectedMugDesign(design)
-    const matched = mugVariants?.find(v => v.mug.color === selectedMugColor && v.mug.design === design)
     if (matched && matched.availableForSale) { setSelected(matched); publishSelected(matched.id, formatPrice(matched.price), matched.featuredImage?.url) }
   }
 
@@ -225,10 +225,12 @@ export default function ProductOptions({ variants, handle, productTitle, product
     )
   }
 
-  // 2D picker for mugs (color × design side)
+  // Color picker for mugs. Design Option 1/2 ("Side A/B" in the old UI) was a print-area
+  // choice (full wrap vs a small patch), not a mug side — Sebastian is removing the extra
+  // option Gelato-side (2026-07-25). Frontend no longer shows a design selector at all;
+  // whichever design variant is first-available per color (see mugFirstAvailable) is used.
   if (isMug && mugVariants) {
     const mugColors = ['White', 'Black']
-    const mugDesigns = ['A', 'B']
     return (
       <div className={styles.wrapper}>
         <div className={styles.selectorGroup}>
@@ -257,34 +259,8 @@ export default function ProductOptions({ variants, handle, productTitle, product
           </div>
         </div>
 
-        <div className={styles.selectorGroup}>
-          <p className={styles.selectorLabel}>
-            Design <span className={styles.selectorValue}>{selectedMugDesign === 'A' ? 'Side A' : 'Side B'}</span>
-          </p>
-          <div className={styles.selectorRow}>
-            {mugDesigns.map(design => {
-              const hasAvailable = mugVariants.some(v => v.mug.color === selectedMugColor && v.mug.design === design && v.availableForSale)
-              return (
-                <button
-                  key={design}
-                  className={[
-                    styles.selectorBtn,
-                    selectedMugDesign === design ? styles.selectorSelected : '',
-                    !hasAvailable ? styles.variantSoldOut : '',
-                  ].filter(Boolean).join(' ')}
-                  onClick={() => hasAvailable && pickMugDesign(design)}
-                  disabled={!hasAvailable}
-                  aria-pressed={selectedMugDesign === design}
-                >
-                  {design === 'A' ? 'Side A' : 'Side B'}
-                </button>
-              )
-            })}
-          </div>
-        </div>
-
         {hasSharedImage(mugVariants, selected) && (
-          <p className={styles.sizeNote}>Photo shown is a reference — your selected color/design will match at print.</p>
+          <p className={styles.sizeNote}>Photo shown is a reference — your selected color will match at print.</p>
         )}
 
         {isLowStock && <p className={styles.lowStock}>Only {selected.inventoryQuantity} left</p>}
