@@ -78,7 +78,6 @@ export default function ImageGallery({ images, objectFit = 'cover' }: Props) {
           <>
             <button type="button" className={`${styles.mainArrow} ${styles.mainArrowLeft}`} onClick={goPrev} aria-label="Previous image">‹</button>
             <button type="button" className={`${styles.mainArrow} ${styles.mainArrowRight}`} onClick={goNext} aria-label="Next image">›</button>
-            <span className={styles.imageCounter}>{activeIndex + 1} / {images.length}</span>
           </>
         )}
       </div>

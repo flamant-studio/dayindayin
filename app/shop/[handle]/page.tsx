@@ -353,11 +353,15 @@ export default async function ProductPage({ params }: PageProps) {
                     <a href="https://gelato.com" target="_blank" rel="noopener noreferrer" className={styles.gelatoLink}>Gelato</a>
                   </span>
                 </div>
+                <p className={styles.shippingNote}>
+                  Ships internationally too, available at checkout. Arrives damaged or wrong?
+                  Let us know within 14 days with a photo — we&apos;ll sort it.
+                </p>
               </div>
 
               {/* 5. Secondary info — accordions */}
               <div className={styles.accordionGroup}>
-                <details className={styles.accordion} open>
+                <details className={styles.accordion}>
                   <summary className={styles.accordionSummary}>Materials &amp; Production</summary>
                   <div className={styles.accordionBody}>
                     {(() => {
@@ -376,14 +380,6 @@ export default async function ProductPage({ params }: PageProps) {
                     {product.variants.length > 1 && (
                       <SizeGuide variants={product.variants} productType={catLabel} />
                     )}
-                  </div>
-                </details>
-
-                <details className={styles.accordion}>
-                  <summary className={styles.accordionSummary}>Shipping &amp; Returns</summary>
-                  <div className={styles.accordionBody}>
-                    <p className={styles.accordionText}>International shipping outside EU, UK &amp; Norway is available at checkout.</p>
-                    <p className={styles.accordionText}>If anything arrives damaged or wrong, let us know within 14 days with a photo — we&apos;ll sort it.</p>
                   </div>
                 </details>
 
