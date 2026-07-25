@@ -1,9 +1,16 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { NextRequest } from "next/server";
 
-// Lazy init — avoids build-time throw when RESEND_API_KEY is not set
-function getResend(): Resend {
-  return new Resend(process.env.RESEND_API_KEY ?? "re_placeholder_key");
+// Sends via Simply.com SMTP using the real hello@dayindayin.dk mailbox.
+// Not Resend: Resend's free tier is already committed to mikofu.com's domain,
+// and dayindayin.dk can't be added as a second domain without a paid plan.
+function getTransport() {
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT ?? 587),
+    secure: false,
+    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASSWORD },
+  });
 }
 
 export async function POST(request: NextRequest) {
@@ -20,22 +27,21 @@ export async function POST(request: NextRequest) {
   }
 
   const to = process.env.CONTACT_EMAIL_TO;
-  if (!to) {
+  if (!to || !process.env.SMTP_HOST) {
     return Response.json({ error: "Contact email not configured" }, { status: 500 });
   }
 
   const subjectLine = subject ? `${subject} — from ${name}` : `New message from ${name}`;
 
-  const resend = getResend();
-  const { error } = await resend.emails.send({
-    from: "DayInDayIn <noreply@dayindayin.dk>",
-    to,
-    replyTo: email,
-    subject: subjectLine,
-    text: `From: ${name} <${email}>\nSubject: ${subject || 'Not specified'}\n\n${message}`,
-  });
-
-  if (error) {
+  try {
+    await getTransport().sendMail({
+      from: `DayInDayIn <${process.env.SMTP_USER}>`,
+      to,
+      replyTo: email,
+      subject: subjectLine,
+      text: `From: ${name} <${email}>\nSubject: ${subject || 'Not specified'}\n\n${message}`,
+    });
+  } catch {
     return Response.json({ error: "Failed to send email" }, { status: 500 });
   }
 
