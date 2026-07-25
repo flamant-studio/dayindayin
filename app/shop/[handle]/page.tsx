@@ -323,13 +323,15 @@ export default async function ProductPage({ params }: PageProps) {
               <SelectedPrice initialPrice={formatPrice(product.minPrice.amount)} className={styles.price} />
 
               {/* 3. Variants + ATC */}
-              <ProductOptions
-                variants={product.variants}
-                handle={handle}
-                productTitle={product.title}
-                productType={product.productType}
-              />
-              <div id="atc-sentinel" />
+              <div className={styles.variantsBlock}>
+                <ProductOptions
+                  variants={product.variants}
+                  handle={handle}
+                  productTitle={product.title}
+                  productType={product.productType}
+                />
+                <div id="atc-sentinel" />
+              </div>
 
               {/* 4. Description */}
               {product.descriptionHtml ? (

@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
+  gap: var(--sp-3); /* 12px, between variant selector groups */
 }
 
 /* ── Flat variant list (default) ──────────────────────────── */
@@ -170,7 +170,9 @@
 
 /* ── ATC wrap — hidden on mobile (StickyATC handles it) ── */
 
-.atcWrap {}
+.atcWrap {
+  margin-top: var(--sp-1); /* + the sp-3 wrapper gap = 16px, last variant → CTA (desktop only — mobile CTA is StickyATC) */
+}
 
 @media (max-width: 768px) {
   .atcWrap { display: none; }
