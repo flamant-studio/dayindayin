@@ -348,12 +348,11 @@ export default async function ProductPage({ params }: PageProps) {
               <div className={styles.trustBlock}>
                 <div className={styles.deliveryEstimate}>
                   <span className={styles.deliveryDot} />
-                  <span>Ships in 3–7 business days · EU, UK &amp; Norway</span>
+                  <span>
+                    Ships in 3–7 business days · EU, UK &amp; Norway · Printed by{' '}
+                    <a href="https://gelato.com" target="_blank" rel="noopener noreferrer" className={styles.gelatoLink}>Gelato</a>
+                  </span>
                 </div>
-                <p className={styles.gelatoLine}>
-                  Printed &amp; shipped by{' '}
-                  <a href="https://gelato.com" target="_blank" rel="noopener noreferrer">Gelato</a>
-                </p>
               </div>
 
               {/* 5. Secondary info — accordions */}
