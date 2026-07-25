@@ -1,14 +1,11 @@
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 import { NextRequest } from 'next/server'
 
-// Simply.com SMTP — see app/api/contact/route.ts for why this isn't Resend.
-function getTransport() {
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT ?? 587),
-    secure: false,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASSWORD },
-  })
+// See app/api/contact/route.ts for why this is Resend's sandbox domain,
+// not Simply.com SMTP (doesn't work from Vercel) or dayindayin.dk (Resend's
+// free tier is already committed to mikofu.com's domain).
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY ?? 're_placeholder_key')
 }
 
 export async function POST(request: NextRequest) {
@@ -26,18 +23,19 @@ export async function POST(request: NextRequest) {
     return Response.json({ ok: true })
   }
 
+  const resend = getResend()
   const productLine = variantTitle && variantTitle !== 'Default Title'
     ? `${title} — ${variantTitle}`
     : title
 
-  try {
-    await getTransport().sendMail({
-      from: `DayInDayIn <${process.env.SMTP_USER}>`,
-      to,
-      subject: `Back-in-stock request: ${productLine}`,
-      text: `Someone wants to be notified when "${productLine}" is back in stock.\n\nEmail: ${email}\nProduct: https://dayindayin.dk/shop/${handle}`,
-    })
-  } catch {
+  const { error } = await resend.emails.send({
+    from: 'DayInDayIn <onboarding@resend.dev>',
+    to,
+    subject: `Back-in-stock request: ${productLine}`,
+    text: `Someone wants to be notified when "${productLine}" is back in stock.\n\nEmail: ${email}\nProduct: https://dayindayin.dk/shop/${handle}`,
+  })
+
+  if (error) {
     return Response.json({ error: 'Failed to send' }, { status: 500 })
   }
 
