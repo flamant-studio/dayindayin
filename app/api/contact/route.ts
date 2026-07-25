@@ -41,7 +41,8 @@ export async function POST(request: NextRequest) {
       subject: subjectLine,
       text: `From: ${name} <${email}>\nSubject: ${subject || 'Not specified'}\n\n${message}`,
     });
-  } catch {
+  } catch (e) {
+    console.error("[contact] send failed:", e);
     return Response.json({ error: "Failed to send email" }, { status: 500 });
   }
 
