@@ -271,7 +271,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Milestones ───────────────────────────────────────── */}
+      {/* ── Milestones ───────────────────────────────────────────
+          Hidden per Sebastian, 2026-07-27 — timeline had unverified/wrong
+          claims (e.g. the 2026 entry touted a "Sommerby" series that was
+          already removed sitewide as not a real series). Revisit with
+          real, confirmed dates before bringing this back.
+
       <section className={styles.milestones}>
         <h2 className={styles.milestonesTitle}>Selected work &amp; milestones</h2>
         <ul className={styles.milestoneList}>
@@ -292,6 +297,8 @@ export default function AboutPage() {
           ))}
         </ul>
       </section>
+
+      */}
 
       {/* ── Browse by medium ─────────────────────────────────── */}
       <section className={styles.mediumLinks}>
