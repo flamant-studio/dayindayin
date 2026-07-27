@@ -160,49 +160,53 @@ export default async function ProductPage({ params }: PageProps) {
   const otherImages = product.images.slice(1).filter(img => img.url)
   const firstVariant = product.firstVariant
 
-  // Series cross-sell — detect series from title (products don't carry series tags in Shopify)
-  const SERIES_KEYWORDS: Array<[RegExp, string]> = [
-    [/\bshero\b/i, 'shero'],
-    [/\bneko\b/i, 'neko'],
-    [/sea[\s-]monster/i, 'sea monster'],
-    [/floral/i, 'floral'],
-    [/\bfaces?\b/i, 'faces'],
-  ]
-  // Map detectedSeriesKeyword → shop filter param (sea monster ≠ sea-monsters)
-  const KEYWORD_TO_FILTER: Record<string, string> = {
-    'shero': 'shero', 'neko': 'neko', 'sea monster': 'sea-monsters',
-    'floral': 'floral', 'faces': 'faces',
+  // Series cross-sell. seriesLabel() (lib/shopify/products.ts) is the canonical series
+  // detector — used for the visible series badge too. This used to keep its own separate
+  // copy of the series list here for fetching cross-sell candidates, which fell out of sync
+  // when Masks/Tourism were added to seriesLabel() and never added here — "More from Masks"
+  // and "More from Tourism" silently never populated for ~59 products. Deriving the search
+  // keyword from productSeries instead of re-detecting it removes that duplication.
+  const productSeries = seriesLabel(product)
+  const SERIES_SEARCH_KEYWORD: Record<string, string> = {
+    'SHERO': 'shero', 'NEKO': 'neko', 'Sea Monsters': 'sea monster',
+    'Floral': 'floral', 'Masks': 'mask', 'Tourism': 'tourism',
   }
-  let detectedSeriesKeyword: string | null = null
-  for (const [pattern, kw] of SERIES_KEYWORDS) {
-    if (pattern.test(product.title)) { detectedSeriesKeyword = kw; break }
+  // Map series label → shop filter param (sea monster ≠ sea-monsters)
+  const SERIES_TO_FILTER: Record<string, string> = {
+    'SHERO': 'shero', 'NEKO': 'neko', 'Sea Monsters': 'sea-monsters',
+    'Floral': 'floral', 'Masks': 'masks', 'Tourism': 'tourism',
   }
-  const SERIES_TAGS_LIST = ['shero', 'neko', 'sea-monsters', 'floral', 'faces']
-  const productSeriesTag = product.tags.find(t => SERIES_TAGS_LIST.includes(t.toLowerCase()))
-  // Resolve the shop filter value used for "View all" links
-  const seriesFilterValue = productSeriesTag ?? (detectedSeriesKeyword ? KEYWORD_TO_FILTER[detectedSeriesKeyword] : null) ?? null
+  const seriesFilterValue = productSeries ? SERIES_TO_FILTER[productSeries] ?? null : null
 
-  const seriesProducts = (detectedSeriesKeyword ?? productSeriesTag)
-    ? (await (detectedSeriesKeyword
-        ? getProductsByTitleKeyword(detectedSeriesKeyword, 20)
-        : getProductsByTag(productSeriesTag!, 20)
-      ).catch(() => []))
-        .filter(p => p.handle !== handle && p.firstImage && p.firstImage.url)
+  const seriesProducts = (productSeries && SERIES_SEARCH_KEYWORD[productSeries])
+    ? (await getProductsByTitleKeyword(SERIES_SEARCH_KEYWORD[productSeries], 20).catch(() => []))
+        .filter(p => p.handle !== handle && p.firstImage && p.firstImage.url && seriesLabel(p) === productSeries)
         .sort((a, b) => parseFloat(a.minPrice.amount) - parseFloat(b.minPrice.amount))
         .slice(0, 6)
     : []
   const seriesHandles = new Set(seriesProducts.map(p => p.handle))
 
-  // Category related — same medium, different designs, excluding series dupes
+  // Category related — same medium, different designs, excluding series dupes.
+  // categoryLabel() is the same canonical function used for the breadcrumb/type label —
+  // has a title-text fallback, so it correctly identifies Framed Print/Art Print/Poster
+  // even when (like most of them) the product carries no Shopify tag at all. The old
+  // tag-only CATEGORY_TAGS list never included those three types, so "Similar products"
+  // silently never populated for ~80 products (any Framed Print, Art Print, or Poster).
+  const catLabelForRelated = categoryLabel(product)
   const CATEGORY_TAGS = ['tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card', 'postcard', 'mug', 'apparel', 'water-bottle', 'wood-print']
   const categoryTag = product.tags.find(t => CATEGORY_TAGS.includes(t.toLowerCase()))
+  const CATEGORY_SEARCH_KEYWORD: Record<string, string> = {
+    'Framed Print': 'framed print', 'Art Print': 'art print', 'Poster': 'poster',
+  }
   const relatedFiltered = categoryTag
     ? (await getProductsByTag(categoryTag, 10).catch(() => []))
         .filter(p => p.handle !== handle && p.firstImage && p.firstImage.url && !seriesHandles.has(p.handle))
         .slice(0, 4)
-    : []
-
-  const productSeries = seriesLabel(product)
+    : CATEGORY_SEARCH_KEYWORD[catLabelForRelated]
+      ? (await getProductsByTitleKeyword(CATEGORY_SEARCH_KEYWORD[catLabelForRelated], 10).catch(() => []))
+          .filter(p => p.handle !== handle && p.firstImage && p.firstImage.url && !seriesHandles.has(p.handle) && categoryLabel(p) === catLabelForRelated)
+          .slice(0, 4)
+      : []
 
   // Title prefix (before last " — ") — used below to find format siblings (same artwork,
   // different product type). The "Also in this series" colorway-sibling thumbnails that used
