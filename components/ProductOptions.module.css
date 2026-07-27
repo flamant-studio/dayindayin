@@ -49,6 +49,16 @@
   color: var(--c-white);
 }
 
+/* 5+ options (e.g. XS-2XL): fixed 4-up, wraps as a clean second row instead of
+   auto-width buttons wrapping unevenly (5 fit + 1 stranded alone). */
+.variantListCompact { flex-wrap: wrap; }
+.variantBtnCompact {
+  flex: 0 0 calc((100% - 3 * var(--sp-2)) / 4);
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .variantSelected {
   border-color: var(--c-text);
   background: var(--c-text);

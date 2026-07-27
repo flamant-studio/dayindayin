@@ -31,7 +31,10 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .grid > a { flex: 0 0 150px; width: 150px; }
+  /* ProductCard's actual root is a <div>, not an <a> — this selector never matched
+     anything, so cards never got constrained to 150px (see page.module.css for the
+     same fix on .relatedGrid/.originalsGrid). */
+  .grid > * { flex: 0 0 150px; width: 150px; }
   /* Keep the whitespace break, drop the grey rule — matches .related and
      .originalsSection on the shop PDP (app/shop/[handle]/page.module.css), which get the
      same mobile override for the same reason. */

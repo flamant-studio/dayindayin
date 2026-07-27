@@ -376,16 +376,21 @@ export default function ProductOptions({ variants: variantsProp, handle, product
     }, new Map<string, Variant>()).values()
   )
 
+  // 5+ options (e.g. XS-2XL) wrapped unevenly with auto-width buttons — a fixed 4-up grid
+  // wraps as a clean second row instead. 2-4 options keep sharing the row equally.
+  const isCompactWrap = dedupedVariants.length >= 5
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.selectorGroup}>
         <p className={styles.variantLabel}>{variantGroupLabel}</p>
-        <div className={styles.variantList}>
+        <div className={[styles.variantList, isCompactWrap ? styles.variantListCompact : ''].filter(Boolean).join(' ')}>
           {dedupedVariants.map((v) => (
             <button
               key={v.id}
               className={[
                 styles.variantBtn,
+                isCompactWrap ? styles.variantBtnCompact : '',
                 selected.id === v.id ? styles.variantSelected : '',
                 !v.availableForSale ? styles.variantSoldOut : '',
               ].filter(Boolean).join(' ')}

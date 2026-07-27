@@ -570,7 +570,10 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .relatedGrid > a, .originalsGrid > a { flex: 0 0 150px; width: 150px; }
+  /* ProductCard/ArtworkCard's actual root is a <div>, not an <a> — this selector never
+     matched anything, so cards never actually got constrained to 150px. They just shrank
+     to fit 2-per-row instead of scrolling at a fixed width, which read as "squeezed". */
+  .relatedGrid > *, .originalsGrid > * { flex: 0 0 150px; width: 150px; }
   .studioNote { padding: var(--sp-8) var(--sp-5); }
   .studioNoteText { font-size: clamp(1.1rem, 4vw, 1.4rem); }
   .tagRow { flex-wrap: wrap; }

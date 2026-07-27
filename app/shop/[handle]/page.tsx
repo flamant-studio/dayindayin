@@ -195,8 +195,16 @@ export default async function ProductPage({ params }: PageProps) {
   const catLabelForRelated = categoryLabel(product)
   const CATEGORY_TAGS = ['tufting', 'embroidery', 'painting', 'photography', 'tote', 'greeting-card', 'postcard', 'mug', 'apparel', 'water-bottle', 'wood-print']
   const categoryTag = product.tags.find(t => CATEGORY_TAGS.includes(t.toLowerCase()))
+  // Covers every categoryLabel() output this page can show (Shop/Framed templates only —
+  // Tufted Work/Embroidery/Photo Print are Fine Art, handled by works/[slug]/page.tsx).
+  // Needed as a fallback for ANY category, not just Framed/Art Print/Poster — plenty of
+  // products in every category (e.g. rabbit-tote-bag, shero-iii-tote-bag) carry zero
+  // Shopify tags at all, so the tag-only lookup silently found nothing for them too.
   const CATEGORY_SEARCH_KEYWORD: Record<string, string> = {
     'Framed Print': 'framed print', 'Art Print': 'art print', 'Poster': 'poster',
+    'Tote Bag': 'tote bag', 'Mug': 'mug', 'Apparel': 'tank top',
+    'Postcard': 'postcard', 'Greeting Card': 'greeting card',
+    'Water Bottle': 'water bottle', 'Wood Print': 'wood print',
   }
   const relatedFiltered = categoryTag
     ? (await getProductsByTag(categoryTag, 10).catch(() => []))
