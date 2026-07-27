@@ -122,7 +122,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #5C8C6E;
+  background: #2E7D4F; /* PDP System v2 — was #5C8C6E, unified with Shop PDP's status dot */
   flex-shrink: 0;
 }
 

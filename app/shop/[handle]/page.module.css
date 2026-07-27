@@ -170,84 +170,6 @@
 .description li { padding-left: var(--sp-4); position: relative; }
 .description li::before { content: '—'; position: absolute; left: 0; color: var(--c-muted); }
 
-/* ── Variants ────────────────────────────────────────────── */
-
-.variantLabel {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: var(--sp-2);
-  color: var(--c-muted);
-}
-
-.variantList {
-  display: flex;
-  gap: var(--sp-2);
-  flex-wrap: wrap;
-}
-
-.variantBtn {
-  padding: var(--sp-2) var(--sp-4);
-  border: 1px solid var(--c-border);
-  font-family: inherit;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  cursor: pointer;
-  transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-  color: var(--c-text);
-}
-
-.variantBtn:hover {
-  border-color: var(--c-text);
-  background: var(--c-text);
-  color: var(--c-white);
-}
-
-.variantSoldOut {
-  opacity: 0.4;
-  cursor: default;
-  pointer-events: none;
-}
-
-.soldOutBadge {
-  font-size: var(--text-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* ── Buy button ──────────────────────────────────────────── */
-
-.buyBtn {
-  display: block;
-  padding: var(--sp-4) var(--sp-6);
-  background: var(--c-accent);
-  color: var(--c-white);
-  font-family: inherit;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: center;
-  transition: background var(--t-fast);
-}
-
-.buyBtn:hover { background: #c03a20; }
-
-.soldOut {
-  padding: var(--sp-4) var(--sp-6);
-  border: 1px solid var(--c-border);
-  color: var(--c-muted);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: center;
-}
-
 /* ── Trust block (delivery + Gelato) ─────────────────────── */
 
 .trustBlock {
@@ -274,7 +196,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #6FCF97;
+  background: #2E7D4F; /* PDP System v2 — was #6FCF97, unified with Fine Art's status dot */
   flex-shrink: 0;
   margin-top: 5px;
 }
@@ -602,7 +524,7 @@
 }
 
 @media (max-width: 768px) {
-  .originalsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* .originalsGrid's own scroll-row treatment lives with .relatedGrid's, further down */
   .originalsSectionHead { flex-direction: column; align-items: flex-start; }
 }
 
@@ -639,7 +561,16 @@
   .title { font-size: clamp(1.5rem, 5vw, 2rem); }
   .price { font-size: clamp(1.5rem, 5vw, 2rem); } /* matches .title on mobile too */
   .thumb { width: calc(33.33% - 0.33rem); }
-  .relatedGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* PDP System v2: horizontal-scroll row of fixed-width cards, not a 2-column
+     grid — the next card peeking in at the edge is the "there's more" cue. */
+  .relatedGrid, .originalsGrid {
+    display: flex;
+    grid-template-columns: unset;
+    gap: var(--sp-3);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .relatedGrid > a, .originalsGrid > a { flex: 0 0 150px; width: 150px; }
   .studioNote { padding: var(--sp-8) var(--sp-5); }
   .studioNoteText { font-size: clamp(1.1rem, 4vw, 1.4rem); }
   .tagRow { flex-wrap: wrap; }

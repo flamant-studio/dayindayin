@@ -45,7 +45,7 @@ function normalizeTitle(title: string): string {
   return t
 }
 
-interface Parsed { sizeKey: string; sizeDisplay: string; frameColor: string }
+interface Parsed { sizeKey: string; frameColor: string }
 interface MugParsed { color: string; design: string }
 
 function parseMug(title: string): MugParsed | null {
@@ -72,13 +72,13 @@ function parseFramed(title: string): Parsed | null {
   // Extract size from beforeFrame
   // A-notation: "A3 (29.7 x 42  cm)" or just "A3"
   const aSizeMatch = beforeFrame.match(/^(A[1-4])\b/)
-  if (aSizeMatch) return { sizeKey: aSizeMatch[1], sizeDisplay: aSizeMatch[1], frameColor }
+  if (aSizeMatch) return { sizeKey: aSizeMatch[1], frameColor }
 
   // Metric dimensions → map to A size
-  if (/21[×x]29\.?7/i.test(beforeFrame)) return { sizeKey: 'A4', sizeDisplay: 'A4', frameColor }
-  if (/29\.?7[×x]42/i.test(beforeFrame))  return { sizeKey: 'A3', sizeDisplay: 'A3', frameColor }
-  if (/42[×x]59\.?4/i.test(beforeFrame))  return { sizeKey: 'A2', sizeDisplay: 'A2', frameColor }
-  if (/59\.?4[×x]84/i.test(beforeFrame))  return { sizeKey: 'A1', sizeDisplay: 'A1', frameColor }
+  if (/21[×x]29\.?7/i.test(beforeFrame)) return { sizeKey: 'A4', frameColor }
+  if (/29\.?7[×x]42/i.test(beforeFrame))  return { sizeKey: 'A3', frameColor }
+  if (/42[×x]59\.?4/i.test(beforeFrame))  return { sizeKey: 'A2', frameColor }
+  if (/59\.?4[×x]84/i.test(beforeFrame))  return { sizeKey: 'A1', frameColor }
 
   return null
 }
@@ -234,9 +234,7 @@ export default function ProductOptions({ variants: variantsProp, handle, product
     return (
       <div className={styles.wrapper}>
         <div className={styles.selectorGroup}>
-          <p className={styles.selectorLabel}>
-            Color <span className={styles.selectorValue}>{selectedMugColor}</span>
-          </p>
+          <p className={styles.selectorLabel}>Color</p>
           <div className={styles.selectorRow}>
             {mugColors.map(color => {
               const hasAvailable = mugVariants.some(v => v.mug.color === color && v.availableForSale)
@@ -276,14 +274,10 @@ export default function ProductOptions({ variants: variantsProp, handle, product
 
   // 2D picker for framed prints (size × frame color)
   if (isFramed && parsedVariants) {
-    const selectedSizeDisplay = parsedVariants.find(v => v.parsed.sizeKey === selectedSize)?.parsed.sizeDisplay ?? selectedSize
-
     return (
       <div className={styles.wrapper}>
         <div className={styles.selectorGroup}>
-          <p className={styles.selectorLabel}>
-            Size <span className={styles.selectorValue}>{selectedSizeDisplay}</span>
-          </p>
+          <p className={styles.selectorLabel}>Size</p>
           <div className={styles.selectorRow}>
             {sizes.map(size => {
               const hasAvailable = parsedVariants.some(v => v.parsed.sizeKey === size && v.availableForSale)
@@ -307,9 +301,7 @@ export default function ProductOptions({ variants: variantsProp, handle, product
         </div>
 
         <div className={styles.selectorGroup}>
-          <p className={styles.selectorLabel}>
-            Frame <span className={styles.selectorValue}>{selectedFrame}</span>
-          </p>
+          <p className={styles.selectorLabel}>Frame</p>
           <div className={styles.selectorRow}>
             {frames.map(frame => {
               const hasAvailable = parsedVariants.some(v => v.parsed.frameColor === frame && v.availableForSale)
@@ -386,24 +378,26 @@ export default function ProductOptions({ variants: variantsProp, handle, product
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.variantLabel}>{variantGroupLabel}</p>
-      <div className={styles.variantList}>
-        {dedupedVariants.map((v) => (
-          <button
-            key={v.id}
-            className={[
-              styles.variantBtn,
-              selected.id === v.id ? styles.variantSelected : '',
-              !v.availableForSale ? styles.variantSoldOut : '',
-            ].filter(Boolean).join(' ')}
-            onClick={() => selectVariant(v)}
-            disabled={!v.availableForSale}
-            aria-pressed={selected.id === v.id}
-          >
-            {normalizeTitle(v.title)}
-            {!v.availableForSale && <span className={styles.soldOutBadge}>Sold out</span>}
-          </button>
-        ))}
+      <div className={styles.selectorGroup}>
+        <p className={styles.variantLabel}>{variantGroupLabel}</p>
+        <div className={styles.variantList}>
+          {dedupedVariants.map((v) => (
+            <button
+              key={v.id}
+              className={[
+                styles.variantBtn,
+                selected.id === v.id ? styles.variantSelected : '',
+                !v.availableForSale ? styles.variantSoldOut : '',
+              ].filter(Boolean).join(' ')}
+              onClick={() => selectVariant(v)}
+              disabled={!v.availableForSale}
+              aria-pressed={selected.id === v.id}
+            >
+              {normalizeTitle(v.title)}
+              {!v.availableForSale && <span className={styles.soldOutBadge}>Sold out</span>}
+            </button>
+          ))}
+        </div>
       </div>
 
       {isLowStock && (

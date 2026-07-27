@@ -431,7 +431,7 @@ export default async function ProductPage({ params }: PageProps) {
 
       {relatedFiltered.length >= 2 && (
         <section className={styles.related}>
-          <SectionHeading title="You might also like" />
+          <SectionHeading title="Similar products" />
           <div className={styles.relatedGrid}>
             {relatedFiltered.map((p) => (
               <ProductCard key={p.id} product={p} sizes="(max-width: 768px) 50vw, 25vw" />

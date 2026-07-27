@@ -91,6 +91,10 @@
        viewport edge already (invisible), leaving just a stray horizontal line at the
        top and bottom. Drop the border entirely here rather than have half of it. */
     border: none;
+    /* PDP System v2: was 4/5 (487px tall at 390px wide) — left nothing for title,
+       price, variants, or CTA above Safari's real ~750px fold. Mobile only; desktop
+       isn't fold-constrained the same way and keeps the 4/5 card ratio. */
+    aspect-ratio: 390 / 378;
   }
   /* Was a wrapping grid (25%/33% width tiles) — with more than 3 images that wraps to a
      second row. Horizontal scroll guarantees one line regardless of image count. */

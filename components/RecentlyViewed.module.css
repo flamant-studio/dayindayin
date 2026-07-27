@@ -22,10 +22,16 @@
 }
 
 @media (max-width: 768px) {
+  /* PDP System v2: horizontal-scroll row of fixed-width cards, not a 2-column
+     grid — matches .relatedGrid/.originalsGrid on the shop PDP. */
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    grid-template-columns: unset;
+    gap: var(--sp-3);
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
+  .grid > a { flex: 0 0 150px; width: 150px; }
   /* Keep the whitespace break, drop the grey rule — matches .related and
      .originalsSection on the shop PDP (app/shop/[handle]/page.module.css), which get the
      same mobile override for the same reason. */
