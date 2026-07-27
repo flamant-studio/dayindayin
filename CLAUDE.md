@@ -1,5 +1,5 @@
 # DayInDayIn — Claude Code Handover
-*Last updated: 2026-07-23*
+*Last updated: 2026-07-26*
 
 **For current, week-to-week state, read these first — this file's "Current State" table below is the original launch handover and is now historical in places:**
 - `ISSUES.md` — the live issues board (P0/P1/P2 + the FB screenshot-feedback batch), single source of truth for what's broken/next
@@ -97,9 +97,9 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Online Store publish | ✅ Publishing itself is done (no longer "syncing") — the open question is catalog *correctness*, not publish status. See row above. |
 | Product variant UX | ✅ Posters: A4/A3/A2 selector. Mugs: Color × Design 2D picker. Tanks: Size selector. Totes: single variant. |
 | Category labels | ✅ Mug/Tote Bag/Apparel/Framed Print/Art Print/Tufted Work/Embroidery/Photo Print |
-| Series filters | 🔄 **(2026-07)** SHERO/NEKO/Sea Monsters/Botanical/Floral/**Masks**/**Tourism**. "Faces" was renamed to "Masks" and broadened (it excluded all ~44 mask products, matching only 8 "Face"-titled ones); "Sommerby" removed (4 variants of one painting, not a series); "Tourism" added (15 products had no filter before). Floral/Botanical dropped from the /shop tab bar 2026-07-11 (too sparse, 3 products each) — still reachable via `?filter=`, still shown as tabs on /fine-art and /collections. |
+| Series filters | 🔄 **(2026-07)** SHERO/NEKO/Sea Monsters/Botanical/Floral/**Masks**/**Tourism**. "Faces" was renamed to "Masks" and broadened (it excluded all ~44 mask products, matching only 8 "Face"-titled ones); "Sommerby" removed (4 variants of one painting, not a series); "Tourism" added (15 products had no filter before). Floral/Botanical dropped from the /shop tab bar 2026-07-11 (too sparse, 3 products each) — still reachable via `?filter=`, still shown as tabs on /fine-art and /collections. **(2026-07-26)** Floral also hidden from the homepage "Browse by Series" strip specifically (Sebastian) — `lib/series.ts`'s shared array untouched, so /collections still shows it. |
 | Fine Art page | 🔄 **(2026-07-12)** `/archive` removed — its dense grid merged into `/fine-art?view=grid` behind a List/Grid toggle (redirect in place). Hero is identical between views; one shared category filter used by both. |
-| Product pages | ✅ Size guide (null for mugs/tanks/totes), gallery (arrow carousel, not a lightbox), cross-sells, JSON-LD. No breadcrumb or "Also in this series" — removed 2026-07-12 per Sebastian, deliberately, not an oversight. |
+| Product pages | ✅ Size guide (null for mugs/tanks/totes), gallery (arrow carousel, not a lightbox, thumbnails capped at 4), cross-sells, JSON-LD. No breadcrumb or "Also in this series" — removed 2026-07-12 per Sebastian, deliberately, not an oversight. **(2026-07-26)** Full PDP-1–16 pass done — shared shipping/materials/spacing/typography fixed across all three PDP templates; a genuine sitewide `minmax(0,...)` grid-overflow bug found and fixed (was causing nav misalignment); Fine Art art prints capped at A4/A3/A2/A1 (no A5); mug PDP's design (Side A/B) selector removed, color-only now. See LOG.md 2026-07-25/26 for the full list. |
 | Shop by Motif (`/motifs`) | ✅ **(2026-07-22)** 20 motifs mapped to live Shopify products by title pattern (`lib/motifs.ts`). Printed Tufting Works deliberately excluded (would need new Gelato products, out of scope). Bird Man/Vaginals route to the fine-art page (no print product exists). |
 | SEO | ✅ sitemap.xml (paginated, all 304+ products), robots.txt, OG image |
 | Search | ✅ /search?q= — full-text, 250 products |
@@ -111,7 +111,7 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Domain dayindayin.dk | 🔲 Not yet pointed to Vercel (Simply.com DNS) |
 | Shopify Payments KYC | 🔲 Pending — eliminates 2% fee |
 | Legal pages | 🔲 Pending — privacy policy, copyright, fulfillment T&C |
-| CONTACT_EMAIL_TO | 🔲 Pending — env var still unset in Vercel. Site copy fixed 2026-07-22 (Contact/Commissions/About pages no longer falsely imply Stine personally reads messages — Sebastian confirmed he's the actual first responder), but the underlying mailbox/env var question is unresolved. |
+| CONTACT_EMAIL_TO | 🔄 **(2026-07-25)** Set — routes through Resend's sandbox domain (`onboarding@resend.dev`) to Sebastian's personal Gmail, not hello@dayindayin.dk. Why: Simply.com SMTP doesn't work from Vercel's serverless runtime (confirmed via live test, `getaddrinfo EBUSY`), and Resend's free tier's one verified domain is already committed to mikofu.com. Public-facing display email across Footer/About/Contact changed stine@ → hello@dayindayin.dk same session (commissions/practical/legal pages still show stine@, not touched). Revisit once dayindayin.dk can get its own verified Resend domain. |
 | Newsletter API | 🔲 Signup shows "Thank you" but doesn't subscribe — needs Mailchimp/Klaviyo |
 | Water bottles / dad caps | 🔄 **(2026-07-19)** Rabbit series canary done — Rabbit Tote + Rabbit Line Art Water Bottle both live and verified. General water bottle/dad cap rollout for the rest of the catalog still not done. |
 

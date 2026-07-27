@@ -2,6 +2,34 @@
 
 ---
 
+## 2026-07-25/26 — PDP-1 through PDP-16 fixed, A5 art print size dropped, /practical truthfulness audit, contact email swapped
+
+**Done:**
+- Worked through the 2026-07-24 handover's Section 7b (PDP-1 through PDP-16) in full, following its priority order. Two earlier handover pastes turned out to be stale duplicates of the same 2026-07-18 document — caught via git history/file-date comparison before acting, not assumed.
+- MINOR 3 (email routing): landed on Resend's sandbox domain (`onboarding@resend.dev`) after Simply.com SMTP proved fundamentally incompatible with Vercel's serverless runtime (`getaddrinfo EBUSY`, consistent across retries, works fine locally) and Resend's free-tier one-verified-domain limit was already committed to mikofu.com. Trade-off: owner-notification emails (contact form, back-in-stock) land in Sebastian's personal Gmail, not hello@dayindayin.dk, until that's resolved.
+- PDP-1–6 (shared across every PDP): shipping block to one line; removed the duplicate "Shipping & Returns" accordion (merged its unique return-policy content into a note, later removed entirely per Sebastian — see below); "Materials & Production" closed by default; image counter badge removed; **first pass at spacing/typography used made-up values since the real spec wasn't available yet — redone once the actual 2026-07-24 handover text was provided**, matching the literal 8/12/16/24px rhythm and fixing a real bug found along the way (price was smaller than title, against the doc's own rule).
+- PDP-8: Framed Print thumbnails capped at 4 (was up to 11, one per size×frame variant).
+- **PDP-12, the real find of this batch:** genuine sitewide horizontal overflow + nav misalignment on every PDP. Root cause: `.layout`'s CSS Grid used bare `fr` tracks (`55fr 45fr` / `1fr`) — a bare `fr` track's implicit minimum is `auto` (its content's intrinsic width), so a wide-intrinsic child blows the track past the container. Fixed with `minmax(0, ...)` on both breakpoints. Checked Fine Art's own grids for the same bug class — clean, left alone.
+- PDP-9, 10, 15: verified already correct in code, no change needed (variants already render before description, SizeGuide's toggle already matches surrounding text size, Fine Art's gallery already sits between metadata and carousels).
+- PDP-11, 14, 16: removed the redundant "More from X" carousel subtitle, the visible Fine Art breadcrumb (JSON-LD structured breadcrumb kept, that's SEO not UI), and the accent-colour sidebar line on Shop-by-Motif section headings.
+- PDP-13: found 19 Fine Art Print products where A5 was priced *higher* than A4 (153.58 vs 148.96 kr, identical across all 19 — one systemic import bug). Sebastian's call: drop A5 entirely (A4/A3/A2/A1 only, A3 as the hero size; if A3 isn't achievable a product shouldn't be sold at all — asset-quality audit still open). Filtered A5 out of `ProductOptions` display rather than touching Shopify data — reversible, no variant deletion. A2/A1 aren't available for this template (Art Print — Horizontal caps at A3) — flagged back to Sebastian, that's a Gelato template question, not a repo fix.
+- PDP-7: the mug "Side A/Side B" selector was never actually broken — confirmed via Gelato's own template API that "Design Option 1/2" is a print-*area* choice (204×100mm full wrap vs. 57×34mm small patch), not a mug side, and it correctly selects the right variant for checkout/fulfillment even without a matching photo. Per Sebastian, removed the design selector from the frontend entirely (he's removing the extra option Gelato-side); color selector unchanged.
+- `/practical` truthfulness audit (task from 2026-07-23's Next list): checked every checkable claim against real Shopify prices and Gelato's own template specs, not just re-reading the copy. Fixed: paper-quality claims (was "250g/300g... museum-quality for art prints and posters," real spec is 200gsm for both, "museum-quality" 250gsm is Framed-Print-specific only); removed "canvas" as an available product — no canvas product exists anywhere in the catalog. Framed Print's "from 399 kr" vs. the real 417.77 kr minimum (uniform across every framed print) flagged to Sebastian — left as-is per his call, no Shopify pricing change made. Apparel's "dye-sublimation" claim removed per "if you're not sure, don't write it" — no definitive source, and dye-sub doesn't normally bond to the ring-spun cotton the tank tops are made of.
+- Follow-up requests from Sebastian: dropped "Floral" from the homepage series strip only (shared `lib/series.ts` array left alone — `/collections` still shows it); swapped the public contact email from stine@ to hello@dayindayin.dk in Footer, About, and Contact (including `ContactForm`'s error-fallback text) — commissions/practical/legal pages weren't touched, out of scope; removed the mug's "Photo shown is a reference" disclaimer and the entire "Ships internationally too... Arrives damaged or wrong..." shipping note from PDP copy, in two follow-up passes.
+- Confirmed for Sebastian, with live DOM proof, that the Materials & Production accordion genuinely renders closed (`open: false`) — a `<details>` element always ships its body content in the HTML source regardless of visual state, which is why it can look "open" reading raw HTML.
+
+**Decisions:**
+- When investigating Shopify data, search by the *raw* variant title pattern, not the frontend's display-normalized label — the A5 bug was invisible to an "A5" text search because the raw title is `"15x20 cm / 6x8″"`, only becoming "A5" after `normalizeTitle()`. Real methodology gap, not a dead end; caught and fixed mid-session.
+- Bare `fr` CSS Grid tracks need `minmax(0, ...)`, not just `1fr`/`Nfr` — this is now the second time this exact bug class has been found in this codebase (see PDP-12 above); worth a quick grep-and-check sweep of the other bare-`fr` grids found sitewide (homepage, about, commissions, collections, footer) next time there's room, though none were confirmed broken this session — only the two PDP-adjacent grids were actually verified.
+
+**Next:**
+- About-page milestones timeline — still Sebastian's call (fix with real dates, citing the Sommerby line as a proven-wrong example, or cut the section).
+- PDP-7's underlying fix (removing the duplicate Gelato mug variant) is Sebastian's own manual Gelato-side task — confirm once done whether it synced to Shopify.
+- A3-print-quality audit per artwork (Sebastian's stated bar: no A3 viability → don't sell the product) — not started, needs actual image-resolution checking, out of scope for this session.
+- `ISSUES.md` hasn't been reconciled since 2026-07-17 — still only 4 genuinely open items as of this session's check (SYS-01, FB-1, UX-1, UX-19), the latter two blocked on real photography/Gelato re-exports, not code.
+
+---
+
 ## 2026-07-23 — Shopify duplicate-variant bug found & fixed storewide, inventory tracking simplified, homepage/About image refresh
 
 **Done:**
