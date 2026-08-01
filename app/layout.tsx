@@ -8,6 +8,7 @@ import { CartProvider } from '@/components/CartProvider'
 import CartDrawer from '@/components/CartDrawer'
 import CookieBanner from '@/components/CookieBanner'
 import Analytics from '@/components/Analytics'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -94,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <CookieBanner />
           <Analytics />
+          <GoogleAnalytics />
         </CartProvider>
       </body>
     </html>
