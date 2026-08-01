@@ -414,8 +414,6 @@ export default async function ProductPage({ params }: PageProps) {
                   <div className={styles.accordionBody}>
                     <ShareButtons
                       url={`https://dayindayin.dk/shop/${handle}`}
-                      title={product.title}
-                      imageUrl={mainImage?.url ?? null}
                     />
                   </div>
                 </details>

@@ -129,8 +129,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <div className={styles.shareRow}>
           <ShareButtons
             url={`https://dayindayin.dk/blog/${post.slug}`}
-            title={post.title}
-            imageUrl={post.image}
           />
         </div>
       </article>

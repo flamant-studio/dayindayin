@@ -58,7 +58,7 @@ export default async function HomePage() {
     name: 'Day In Day In',
     url: 'https://dayindayin.dk',
     logo: 'https://dayindayin.dk/icon.png',
-    sameAs: ['https://www.instagram.com/dayindayin'],
+    sameAs: ['https://www.instagram.com/dayindayin_art'],
     description: 'Art prints and original works by Copenhagen artist Stine Weirsøe Flamant. Print-on-demand by Gelato, shipped across Europe.',
     foundingLocation: { '@type': 'Place', name: 'Copenhagen, Denmark' },
     founder: { '@type': 'Person', name: 'Stine Weirsøe Flamant' },

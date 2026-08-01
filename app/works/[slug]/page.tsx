@@ -158,8 +158,6 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
               </Link>
               <ShareButtons
                 url={`https://dayindayin.dk/works/${work.slug}`}
-                title={`${work.title} — ${label} by Stine Weirsøe Flamant`}
-                imageUrl={work.image}
               />
             </div>
             <div className={styles.infoRight}>

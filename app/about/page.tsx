@@ -24,7 +24,7 @@ const personJsonLd = {
   url: 'https://dayindayin.dk/about',
   jobTitle: 'Artist',
   description: 'Contemporary artist based in Copenhagen. Working in hand tufting, embroidery, painting, and photography.',
-  sameAs: ['https://www.instagram.com/dayindayin', 'https://dayindayin.dk'],
+  sameAs: ['https://www.instagram.com/dayindayin_art', 'https://dayindayin.dk'],
   image: 'https://29kekabbrd49avje.public.blob.vercel-storage.com/about/stine-portrait.jpg?v=2',
   address: {
     '@type': 'PostalAddress',
@@ -47,7 +47,7 @@ const orgJsonLd = {
   name: 'Day In Day In',
   url: 'https://dayindayin.dk',
   logo: 'https://dayindayin.dk/icon.png',
-  sameAs: ['https://www.instagram.com/dayindayin'],
+  sameAs: ['https://www.instagram.com/dayindayin_art'],
   description: 'Art prints and original works by Copenhagen artist Stine Weirsøe Flamant.',
   address: { '@type': 'PostalAddress', addressLocality: 'Copenhagen', addressCountry: 'DK' },
   foundingDate: '2024',
@@ -115,12 +115,12 @@ export default function AboutPage() {
             Slowly and gently, my artistic voice sounds more and more familiar to me.
           </p>
           <a
-            href="https://www.instagram.com/dayindayin"
+            href="https://www.instagram.com/dayindayin_art"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.instagramLink}
           >
-            @dayindayin on Instagram →
+            @dayindayin_art on Instagram →
           </a>
         </div>
       </section>
@@ -347,7 +347,7 @@ export default function AboutPage() {
           <a href="mailto:hello@dayindayin.dk" className={styles.contactEmail}>
             hello@dayindayin.dk
           </a>
-          <a href="https://www.instagram.com/dayindayin" target="_blank" rel="noopener noreferrer" className={styles.contactSocial}>
+          <a href="https://www.instagram.com/dayindayin_art" target="_blank" rel="noopener noreferrer" className={styles.contactSocial}>
             Instagram →
           </a>
           <Link href="/commissions" className={styles.contactSocial}>Commissions →</Link>
