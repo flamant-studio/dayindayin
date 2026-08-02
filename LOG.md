@@ -12,9 +12,9 @@ Updated `app/api/contact/route.ts` to send `from: hello@dayindayin.dk`, swapped 
 
 **Live-verified, not just claimed:** real POST to `https://dayindayin-site.vercel.app/api/contact` (`subject: "Commission enquiry"`, same code path both checklist items share) returned `200 {"ok":true}`; Resend's own send log for that request shows the real `from`/`to` as `hello@dayindayin.dk`.
 
-**Real finding, not yet resolved:** `hello@dayindayin.dk` turned out to be a Simply.com-hosted mailbox, not Google Workspace as Sebastian believed — domain's MX still points to `mx.simply.com`; Google Workspace verification records exist in DNS but MX was never switched over. Didn't log into the mailbox (would need a password), but Simply.com's own "mail received" stats show a spike today matching the test volume, which corroborates delivery. Flagged to Sebastian directly — worth him confirming where he actually expects to read these emails, since it may not be where he thinks.
+**Real finding:** `hello@dayindayin.dk` turned out to be a Simply.com-hosted mailbox, not Google Workspace as Sebastian believed — domain's MX still points to `mx.simply.com`; Google Workspace verification records exist in DNS but MX was never switched over. Flagged to Sebastian directly rather than assuming.
 
-**Next:** Sebastian to confirm which mailbox (Simply.com webmail vs. actual Google Workspace, if that's ever properly wired up) he wants to be the real answer long-term. Full detail: `ISSUES.md` LB-1.
+**Resolved same session:** Sebastian confirmed Simply.com hosting the mailboxes is fine, he just wants the mail to also reach Gmail — set up native Simply.com forwarding ("Videresendelser," a domain-level rule, no mailbox password needed) for all three addresses he has there — `hello@`, `sebastian@`, `stine@dayindayin.dk` — to `sebastianhflamant@gmail.com`. Confirmed with him before creating the rule, per the standing "mail forwarding rules need explicit permission" guardrail. Live-tested by submitting a real enquiry through the contact form and confirming the forwarded copy landed directly in Sebastian's Gmail inbox (not spam) within under a minute. Full detail + proof: `ISSUES.md` LB-1.
 
 ---
 
