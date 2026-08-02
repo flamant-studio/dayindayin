@@ -303,6 +303,20 @@ ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — the original nu
 
 ---
 
+### LB-2: Shopify Payments is not active — store cannot take any real payment right now
+**Task:** pre-launch checklist item 10 ("Shopify — confirm payment methods are live"). Checked live in Shopify Admin (`admin.shopify.com/store/dayindayin/settings/payments`), not inferred from old notes.
+**What was checked, all four sub-items:**
+- ✗ Shopify Payments active, not test mode — **not active at all.** The Payments settings page shows a **"Complete setup"** button next to "Shopify Payments" (not "Manage", which is what an active account shows). This is the identity/KYC step flagged as pending back on 2026-06-12 (CLAUDE.md, "Pending Sebastian decisions") — still not done 51 days later.
+- ✗ At least one card payment method enabled — **none.** The "Available payment methods" row (Shop Pay, Visa, Mastercard, Amex, Apple Pay, Bancontact, +3 more) is a marketing preview of what activates once setup completes, not a live list — confirmed by the "Complete setup" CTA sitting directly above it.
+- ✗ Apple Pay / Google Pay enabled — same root cause, inactive. Google Pay isn't even in the preview icon row (only Apple Pay is shown) — worth Sebastian knowing that distinction, not just "both pending."
+- ✓/N/A No test-mode banner visible — true, but not for a reassuring reason: there's no banner because there's no live processor to be "in test mode" *of*. Absence of the banner here is not evidence of correctness.
+- **Additionally checked, not in the original four bullets:** PayPal is added as a provider but also shows "Setup incomplete" ("Complete your PayPal account setup to start receiving payouts"). Manual payment methods: none configured (checked `/settings/payments/manual-payment-methods` directly — empty, just the "Add a manual payment method" prompt).
+**Bottom line:** as of 2026-08-02, this store has **zero working payment methods** — Shopify Payments incomplete, PayPal incomplete, no manual fallback. A real customer reaching checkout right now cannot pay by any means.
+**Not fixed this pass:** Shopify Payments activation requires business/personal identity verification (KYC) — legal name, address, bank account, tax ID. That's data only Sebastian/Stine can supply, and entering financial/identity credentials on someone's behalf is outside what this agent does. I opened the "Complete setup" flow only far enough to confirm it's a real KYC form, entered nothing, and did not proceed.
+**Status:** 🔴 OPEN — hard launch blocker, needs Sebastian: complete Shopify Payments identity verification (or explicitly accept launching with no working payment method, which isn't really launching).
+
+---
+
 ## Quality verdict on file (2026-06-21, honest)
 Current site ≈ 60%. The gap is foundational (no enforced system, duplicate components, desktop-first), not polish. Once P0 (SYS-01…09) is real, most P1/P2 items collapse and quality jumps *and stays* jumped. This is fixable scaffolding, not a rebuild.
 

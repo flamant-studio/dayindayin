@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-08-02 — Pre-launch task 10: Shopify payment methods checked live — none active (LB-2)
+
+**Done:** Checked Shopify Admin → Settings → Payments directly (browser, logged in as Sebastian) rather than trusting the 2026-06-12 note that KYC was "pending." Found Shopify Payments still shows "Complete setup," not "Manage" — the identity verification step hasn't been done. Checked PayPal (also "Setup incomplete") and manual payment methods (none configured) as well, since the checklist's real question — can this store take a payment at all — needed the full picture, not just the Shopify Payments toggle.
+
+**Result:** Store currently has zero working payment methods. Not "in test mode" — genuinely not set up. Full detail + what was and wasn't checked: `ISSUES.md` LB-2.
+
+**Decision:** Did not attempt Shopify Payments activation — it needs Sebastian/Stine's business identity, bank account, and tax ID, which is data I don't have and won't enter on their behalf. Opened the "Complete setup" button only to confirm it's a real KYC flow, entered nothing.
+
+**Next:** Sebastian to complete Shopify Payments verification. This blocks real launch — no payment method currently works end to end.
+
+---
+
 ## 2026-08-02 — Pre-launch task 9: public contact email audit — 6 pages fixed
 
 **Done:** Ran a repo-wide grep (`stine@dayindayin.dk` / `hello@dayindayin.dk`, all extensions, not just the four locations named in the task) instead of trusting the 2026-07-25 note that Footer/About/Contact were already fixed. Confirmed those three (plus `ContactForm`'s error-fallback text) were correct. Found stine@dayindayin.dk still live on six public pages that the 2026-07-25 session had explicitly left out of scope: `/commissions` (the commission enquiry CTA's fallback mailto link — directly named in this task), `/practical` (3 instances), `/legal`, `/legal/privacy` (2), `/legal/copyright` (2). Swapped all 9 to hello@dayindayin.dk, ran `npx next build` clean, committed and pushed.
