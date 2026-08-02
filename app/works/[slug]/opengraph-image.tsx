@@ -1,17 +1,17 @@
 import { ImageResponse } from 'next/og'
-import { getProductByHandle } from '@/lib/shopify/products'
+import { getWork } from '@/lib/data'
 
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-interface Props { params: Promise<{ handle: string }> }
+interface Props { params: Promise<{ slug: string }> }
 
-export default async function ProductOGImage({ params }: Props) {
-  const { handle } = await params
-  const product = await getProductByHandle(handle).catch(() => null)
+export default async function WorkOGImage({ params }: Props) {
+  const { slug } = await params
+  const work = getWork(slug)
 
-  const title = product?.title ?? 'Day In Day In'
-  const imageUrl = product?.firstImage?.url ?? null
+  const title = work?.title ?? 'Day In Day In'
+  const imageUrl = work?.image ?? null
 
   return new ImageResponse(
     (
@@ -23,7 +23,7 @@ export default async function ProductOGImage({ params }: Props) {
           background: '#FFFFFF',
         }}
       >
-        {/* Product image left half */}
+        {/* Artwork image left half */}
         {imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -59,7 +59,7 @@ export default async function ProductOGImage({ params }: Props) {
             {title}
           </div>
           <div style={{ fontFamily: 'sans-serif', fontSize: 22, color: '#888480', fontWeight: 300 }}>
-            Art by Stine Weirsøe Flamant
+            Original work by Stine Weirsøe Flamant
           </div>
           <div
             style={{

@@ -2,6 +2,20 @@
 
 ---
 
+## 2026-08-02 — Pre-launch task 14: OG image spot check found 2 real bugs, fixed both
+
+**Done:** Spot-checked `/works/purple-sun` and `/shop/botanical-blanc` through opengraph.xyz per the task. Titles/descriptions were correct on both, but og:image had real defects on both: Fine Art PDP served the raw 12.1MB source photo directly (flagged invalid by opengraph.xyz — over both its 10MB check and Facebook's real 8MB limit; sampled 4 more works, several also close to/over that line, so this is archive-wide, not a one-off). Shop PDP served the raw 2048×2048 square product photo (flagged wrong aspect ratio) even though a correctly-sized 1200×630 branded OG image generator already existed in the codebase for shop products — it was just dead code, shadowed by an explicit raw-image override in `generateMetadata`.
+
+**Fixed:** built the same generator pattern for Fine Art (`app/works/[slug]/opengraph-image.tsx`, new file), wired both PDPs to use their generators instead of the raw images, added the `og:site_name` tag that was silently missing on both (Next doesn't deep-merge `openGraph` between layout and page), and updated two stale pre-rebrand colors in the shop generator to the current mauve/white palette since this was its first real activation.
+
+**Caught before shipping:** the file-convention image URL resolves against `metadataBase` (hardcoded to `dayindayin.dk` site-wide), but that domain isn't pointed at Vercel yet — confirmed it currently resolves to Simply.com's parked server, not the live app. Letting Next auto-resolve normally would've made both PDPs' og:image unreachable until DNS points, which is worse than what shipped before (real if imperfect images). This is already the state the homepage's og:image is silently in right now, live. Worked around it by hardcoding the two new image URLs to the `.vercel.app` domain explicitly — works today, keeps working after DNS points too.
+
+**Not touched:** the homepage's existing broken og:image, and the ~30 other files with hardcoded `dayindayin.dk` URLs (all JSON-LD/sitemap/robots) — that's a deliberate, consistent, sitewide pattern for the final domain, out of scope for a spot-check. Flagged in ISSUES.md rather than silently left implicit.
+
+**Verified:** `next build` clean, `next start` locally confirms correct 1200×630 og:image/twitter:image + og:site_name on both PDPs. Pushed; will re-check against the live URL once Vercel deploys. Full detail: ISSUES.md, "Pre-launch task 14" entry.
+
+---
+
 ## 2026-08-02 — Pre-launch task 10: Shopify payment methods checked live — none active (LB-2)
 
 **Done:** Checked Shopify Admin → Settings → Payments directly (browser, logged in as Sebastian) rather than trusting the 2026-06-12 note that KYC was "pending." Found Shopify Payments still shows "Complete setup," not "Manage" — the identity verification step hasn't been done. Checked PayPal (also "Setup incomplete") and manual payment methods (none configured) as well, since the checklist's real question — can this store take a payment at all — needed the full picture, not just the Shopify Payments toggle.

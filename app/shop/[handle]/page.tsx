@@ -32,21 +32,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const cleanTitle = displayTitle(product.title)
+  // Hardcoded to the .vercel.app URL (not resolved via metadataBase/dayindayin.dk) so this
+  // image is fetchable by social crawlers today — dayindayin.dk DNS isn't pointed at Vercel yet.
+  // Safe to leave as-is even after DNS points: Vercel keeps serving this URL alongside the custom domain.
+  const ogImageUrl = `https://dayindayin-site.vercel.app/shop/${handle}/opengraph-image`
   return {
     title: cleanTitle,
     description: product.description || `${cleanTitle} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
     alternates: { canonical: `/shop/${handle}` },
     openGraph: {
+      siteName: 'Day In Day In',
       title: `${cleanTitle} — Day In Day In`,
       description: product.description || `${cleanTitle} by Stine Weirsøe Flamant. Art print, fulfilled by Gelato.`,
-      images: product.firstImage ? [{ url: product.firstImage.url }] : [],
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: cleanTitle }],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: cleanTitle,
       description: product.description || `${cleanTitle} by Stine Weirsøe Flamant.`,
-      images: product.firstImage ? [product.firstImage.url] : [],
+      images: [ogImageUrl],
     },
   }
 }

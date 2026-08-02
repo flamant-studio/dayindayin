@@ -17,21 +17,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const work = getWork(slug);
   if (!work) return { title: "Work" };
+  // Hardcoded to the .vercel.app URL (not resolved via metadataBase/dayindayin.dk) so this
+  // image is fetchable by social crawlers today — dayindayin.dk DNS isn't pointed at Vercel yet.
+  // Safe to leave as-is even after DNS points: Vercel keeps serving this URL alongside the custom domain.
+  const ogImageUrl = `https://dayindayin-site.vercel.app/works/${work.slug}/opengraph-image`
   return {
     title: `${work.title} — Original Work`,
     description: `${work.description} Original work by Stine Weirsøe Flamant, ${work.year}.`,
     alternates: { canonical: `/works/${work.slug}` },
     openGraph: {
+      siteName: 'Day In Day In',
       title: `${work.title} — Stine Weirsøe Flamant`,
       description: work.description,
-      images: [{ url: work.image, width: 800, height: 800, alt: work.title }],
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: work.title }],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: `${work.title} — Stine Weirsøe Flamant`,
       description: work.description,
-      images: [work.image],
+      images: [ogImageUrl],
     },
   };
 }
