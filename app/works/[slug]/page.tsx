@@ -13,6 +13,12 @@ export function generateStaticParams() {
   return works.map((w) => ({ slug: w.slug }));
 }
 
+// No revalidate meant a slug removed from `works` (e.g. bedroom-rug, merged into
+// bedroom-wall-rug) kept serving its old statically-cached page indefinitely, ahead of
+// the next.config.ts redirect — this route's cache never expired to notice the slug was
+// gone. Matches app/shop/[handle]/page.tsx's existing revalidate pattern.
+export const revalidate = 300
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const work = getWork(slug);
