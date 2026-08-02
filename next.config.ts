@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
         destination: "/fine-art?view=grid",
         permanent: true,
       },
+      // bedroom-rug and bedroom-wall-rug were two listings for the same physical piece
+      // (confirmed by Sebastian 2026-08-02) — merged into one, this one retired.
+      {
+        source: "/works/bedroom-rug",
+        destination: "/works/bedroom-wall-rug",
+        permanent: true,
+      },
     ];
   },
   images: {
