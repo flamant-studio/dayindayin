@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-08-02 — Fine art PDP image audit (pre-launch task 2): all 98 works checked, 14 fixed
+
+**Done:** Full audit of every fine-art work's PDP gallery — is the first "Studio views" photo (`gallery[0]`) a genuine full shot of the piece, distinct from the hero image at the top (which is allowed to be a close-up/detail crop by design)? Parallelized across 8 research agents since it required actually downloading and viewing images, not judging by filename — each work got at least one image opened and inspected, non-compliant ones got their whole gallery + Dropbox archive checked for a usable alternative. Full report: separate artifact (not committed to the repo), summarized in `ISSUES.md` "Pre-launch task 2."
+
+**Result:** 79 of 98 already fine. 19 needed action:
+- 7 fixed by reordering — a genuine full shot already existed in the work's own gallery or hero image, just wasn't first (`birds`, `bedroom-wall-rug`, `gud-har-meldt-afbud`, `elsk`, `mariann`, `blue-branch`, `universe-collection`).
+- 6 fixed with a new image sourced from Stine's Dropbox archive, confirmed by viewing each candidate before using it (`candy-v`, `fleur-de-lys`, `red-on-wood`, `person-walking`, `taped-objects`, `purple-fabric-in-garden`) — 2 of these (`taped-objects`, `purple-fabric-in-garden`) required converting the original RAW `.nef` capture via `sips` since no processed version existed anywhere. Uploaded to the same Vercel Blob store via `@vercel/blob`'s `put()`, verified each URL returns 200 before wiring into `lib/data.ts`.
+- 6 have **no full shot anywhere** — checked exhaustively (live site + entire Dropbox archive for each) and confirmed nothing usable exists: `du-und` and `cat-doll` (every photo on file is a sketch/close-up of the piece mid-process), `ingenting` (the one wide frame that exists has the embroidered text mirrored/backwards — the same defect that got the old hero image rejected before), `colour-study-blue` (only one image was ever taken, an extreme crop), `linen-and-yellow-flower` (none of the 5 images on file match the actual described scene at all), `polaroids-on-fabrics` (the fabric backdrop runs off-frame in every shot found). Left untouched — genuinely needs a decision (reshoot vs. accept), not a code fix.
+
+**Also found and fixed a real bug this surfaced:** Sebastian confirmed `bedroom-rug` and `bedroom-wall-rug` (flagged by the audit as sharing byte-identical photos) are the same physical piece, not a data mix-up — merged into one `Work` entry (kept `bedroom-wall-rug`, the more complete/final narrative), added a permanent redirect from the old URL. That redirect didn't fire on the first deploy — root cause: `app/works/[slug]/page.tsx` had no `revalidate` window, so a slug removed from `works` kept serving its old statically-cached page indefinitely instead of falling through to the redirect. Fixed by adding `export const revalidate = 300`, matching the existing pattern on the shop PDP. Confirmed live afterward.
+
+**Also surfaced, not fixed (flagged for Sebastian, not code bugs):**
+- `rainbow-i`: hero + all 4 gallery slots point at the exact same file, repeated.
+- `hej`: gallery images 2+ show a visibly different colorway than gallery[0]/hero — likely a folder mix-up.
+- Copy-vs-photo mismatches: `candy-v`'s description says "ring/doughnut," the confirmed photo shows a hook/cane shape; `birds`' description says "three bird silhouettes," the actual canvas is an abstract multi-bird/feather composition.
+- A few "OK" verdicts were close calls on abstract/tightly-composed subjects (`on-the-light-table`, `colourful-shadows`, `apple-scraps`, `green-flower`) — technically pass but worth a human glance.
+
+**Decision:** Didn't touch the copy mismatches or the borderline "OK" calls — outside the strict scope of "is gallery[0] a full shot," flagged rather than silently fixed or silently ignored.
+
+**Next:** Sebastian to decide on the 6 works with no full shot anywhere (reshoot vs. accept as-is), and separately on the copy-vs-photo mismatches (`candy-v`, `birds`) if he wants the description text corrected to match the confirmed photos.
+
+---
+
 ## 2026-08-02 — LB-1 fixed: contact/commission form now actually routes to hello@dayindayin.dk
 
 **Done:** Sebastian asked for real fix options after the earlier "verify routing" pass found it broken (see the 2026-08-02 entry below this one). Checked live whether Resend's "committed to mikofu.com" constraint still held — it didn't: Mikofu is fully archived (Shopify/Supabase/Vercel all torn down, no live send activity), so with Sebastian's explicit approval, freed Resend's one free-tier domain slot by deleting mikofu.com's verification and verifying dayindayin.dk instead. Found the DNS records Resend needed already existed at Simply.com (an earlier abandoned 2026-07-23 attempt at the same thing, never cleaned up) — no DNS work required, verification was immediate.
