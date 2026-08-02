@@ -11,7 +11,12 @@ export default async function WorkOGImage({ params }: Props) {
   const work = getWork(slug)
 
   const title = work?.title ?? 'Day In Day In'
-  const imageUrl = work?.image ?? null
+  // Fine Art source photos run 6-12MB (archival scans) — next/og's renderer chokes on
+  // buffers that large ("Buffer size limit exceeded"). Route through Vercel's image
+  // optimizer to get a resized copy small enough to embed.
+  const imageUrl = work?.image
+    ? `https://dayindayin-site.vercel.app/_next/image?url=${encodeURIComponent(work.image)}&w=828&q=75`
+    : null
 
   return new ImageResponse(
     (

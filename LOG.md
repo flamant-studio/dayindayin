@@ -12,7 +12,9 @@
 
 **Not touched:** the homepage's existing broken og:image, and the ~30 other files with hardcoded `dayindayin.dk` URLs (all JSON-LD/sitemap/robots) — that's a deliberate, consistent, sitewide pattern for the final domain, out of scope for a spot-check. Flagged in ISSUES.md rather than silently left implicit.
 
-**Verified:** `next build` clean, `next start` locally confirms correct 1200×630 og:image/twitter:image + og:site_name on both PDPs. Pushed; will re-check against the live URL once Vercel deploys. Full detail: ISSUES.md, "Pre-launch task 14" entry.
+**Verified, then caught a second bug from that same verification:** `next build` clean, `next start` locally confirmed correct 1200×630 og:image/twitter:image + og:site_name on both PDPs — but that only checked the `<head>` tags, not whether the image URL actually loaded. After pushing and confirming live, curled the actual image bytes and found `/works/purple-sun/opengraph-image` 500ing in production. Root cause: the composed image still embedded the raw 12.1MB source photo inside `next/og`'s renderer, which has its own buffer limit independent of any OG-platform size limit — composing a smaller frame around a still-huge embedded image doesn't fix the size problem, it just moves where it breaks. Fixed by routing the embedded image through Vercel's `/_next/image` optimizer first (resized to a 828px-wide copy) instead of the raw Blob URL. Re-tested locally against 4 works spanning the size range (379KB–9.7MB originals) — all now return 200, valid PNGs. Pushed the follow-up fix.
+
+**Lesson:** checking meta tags is not the same as checking the image loads — the first "verified" claim above was real but incomplete. Full detail: ISSUES.md, "Pre-launch task 14" entry.
 
 ---
 
