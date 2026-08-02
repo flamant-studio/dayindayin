@@ -18,8 +18,8 @@ const FAQ_ITEMS = [
     a: "Production takes 1–3 business days. Shipping adds 2–5 business days across EU/UK/Norway. Total: approximately 3–7 business days from order to door.",
   },
   {
-    q: "Where do you ship?",
-    a: "We ship to all EU member states, the United Kingdom, and Norway. Within the EU there are no customs fees. UK and Norway orders may be subject to import duties — these are the buyer's responsibility.",
+    q: "Where do you ship, and how much does it cost?",
+    a: "We ship to all EU member states, the United Kingdom, and Norway for a flat 59 kr — free above 449 kr. Within the EU there are no customs fees. UK and Norway orders may be subject to import duties — these are the buyer's responsibility. Orders outside these regions are calculated at checkout.",
   },
   {
     q: "Can I return or exchange a print?",
@@ -164,6 +164,10 @@ export default function Practical() {
             <p>
               We ship to EU member states, the United Kingdom, and Norway. Within the EU: no customs
               fees. UK and Norway: may be subject to import duties — the buyer&apos;s responsibility.
+            </p>
+            <p>
+              <strong>Shipping cost:</strong> 59 kr flat rate to Denmark, the EU, the UK, and Norway.
+              Free above 449 kr. Orders outside these regions are calculated at checkout.
             </p>
           </section>
 

@@ -372,6 +372,10 @@ export default async function ProductPage({ params }: PageProps) {
                     <a href="https://gelato.com" target="_blank" rel="noopener noreferrer" className={styles.gelatoLink}>Gelato</a>
                   </span>
                 </div>
+                <div className={styles.deliveryEstimate}>
+                  <span className={styles.deliveryDot} />
+                  <span>59 kr flat shipping · Free from 449 kr (DK, EU, UK &amp; Norway)</span>
+                </div>
               </div>
 
               {/* 5. Secondary info — accordions */}
