@@ -6,12 +6,10 @@ import { NextRequest } from "next/server";
 // fine from a normal machine). Raw SMTP is broadly unreliable on serverless
 // platforms, which is exactly why HTTPS-based services like Resend exist.
 //
-// Resend's free tier only allows one verified domain, already committed to
-// mikofu.com — dayindayin.dk can't be added without a paid plan. Sending
-// from Resend's shared sandbox domain works without any domain verification,
-// but only delivers to the email address the Resend account is registered
-// under. That means these two "notify the owner" emails land in Sebastian's
-// personal inbox, not hello@dayindayin.dk — nothing customer-facing changes.
+// 2026-08-02: dayindayin.dk verified as the Resend sending domain (freed up
+// the free tier's one-domain slot by dropping mikofu.com's — Mikofu has no
+// live send activity, dayindayin is the priority project). Sending from
+// hello@dayindayin.dk now.
 function getResend(): Resend {
   return new Resend(process.env.RESEND_API_KEY ?? "re_placeholder_key");
 }
@@ -38,7 +36,7 @@ export async function POST(request: NextRequest) {
 
   const resend = getResend();
   const { error } = await resend.emails.send({
-    from: "DayInDayIn <onboarding@resend.dev>",
+    from: "DayInDayIn <hello@dayindayin.dk>",
     to,
     replyTo: email,
     subject: subjectLine,
