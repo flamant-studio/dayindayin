@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-08-02 — Pre-launch task 5: contact/commission form routing verified (still broken)
+
+**Done:** Ran the pre-launch checklist's contact-form verification task properly, not just re-reading the 2026-07-25 note. POSTed a real test enquiry to the live production API (`https://dayindayin-site.vercel.app/api/contact`, `subject: "Commission enquiry"` — confirmed via code read that `/commissions` has no separate form and routes through the same `ContactForm`/API path), pulled production env vars (`vercel env pull`) to confirm `CONTACT_EMAIL_TO` live rather than trusting `.env.local`, and checked Gmail directly for the arriving message.
+
+**Result:** Confirmed still exactly the state CLAUDE.md already documented on 2026-07-25 — nothing has changed, no regression, but the checklist item does not pass as written. Contact form and commission enquiry both land in Sebastian's personal Gmail (`sebastianhflamant+github@gmail.com`) via Resend's sandbox domain (`onboarding@resend.dev`), not hello@dayindayin.dk. No auto-reply email exists at all (only an on-page "Thank you"). Full detail + proof: `ISSUES.md` LB-1.
+
+**Decision:** Did not attempt to fix by upgrading Resend to a paid plan — that's an unexpected third-party cost, one of the three explicit escalate-first cases, not a "decide and act" one. Logged as ⏸ BLOCKED, needs Sebastian's call.
+
+**Next:** Sebastian to decide — pay for Resend domain verification for dayindayin.dk, or accept personal-Gmail routing as good enough for launch.
+
+---
+
 ## 2026-07-25/26 — PDP-1 through PDP-16 fixed, A5 art print size dropped, /practical truthfulness audit, contact email swapped
 
 **Done:**

@@ -276,6 +276,23 @@ ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — the original nu
 
 ---
 
+# Launch Blockers
+
+### LB-1: Contact + commission form does NOT route to hello@dayindayin.dk
+**Task:** pre-launch checklist item 5 ("Contact and commission form — verify routing"). Verified 2026-08-02 with a real test submission against the live API (`https://dayindayin-site.vercel.app/api/contact`), not just a code read.
+**What was tested:** POSTed a real enquiry with `subject: "Commission enquiry"` (this is exactly how the commissions page routes — `/commissions` has no separate form, it links to `/contact?subject=Commission%20enquiry`, and `ContactForm.tsx` pre-fills from that param — both checklist bullets share one code path, `app/api/contact/route.ts`).
+**Result — confirmed still broken as documented in CLAUDE.md's CONTACT_EMAIL_TO row (2026-07-25):**
+- ✗ Contact form does NOT arrive at hello@dayindayin.dk — production `CONTACT_EMAIL_TO` is `sebastianhflamant+github@gmail.com` (confirmed via `vercel env pull`, not just reading `.env.local`).
+- ✗ Commission enquiry does NOT arrive at hello@dayindayin.dk — same code path, same result.
+- Proof: test email landed in Sebastian's Gmail inbox at 2026-08-02 19:28 UTC, subject "Commission enquiry — from Claude Verification Test", from `onboarding@resend.dev`, to `sebastianhflamant+github@gmail.com` (Gmail thread `19fc3f369f89a55a`).
+- Auto-reply bullet: there isn't one. The code sends exactly one email (to the owner); the submitter only ever sees an on-page "Thank you" message, no confirmation email. So "sends from hello@/no-reply@dayindayin.dk" is trivially true (none exists) but this is worth Sebastian knowing explicitly rather than silently checked off.
+- Separately noticed, not tested: `/commissions` still has a `mailto:stine@dayindayin.dk` fallback link (LOG.md 2026-07-25 says commissions/practical/legal pages were deliberately left at stine@, out of scope for that session's stine@→hello@ swap). Whether stine@dayindayin.dk or hello@dayindayin.dk exist as real, working mailboxes at all is a Simply.com hosting question outside this codebase — not verified here.
+**Root cause (unchanged since 2026-07-25):** Simply.com SMTP doesn't work from Vercel's serverless runtime; Resend's free tier allows one verified sending domain, already committed to mikofu.com, so dayindayin.dk can't be verified without a paid Resend plan.
+**Not fixed this pass:** the real fix (verify dayindayin.dk on Resend) needs a paid plan — an unexpected third-party cost, which is an explicit escalate-first case, not a "decide and act" one. Flagging for Sebastian's call rather than upgrading the account.
+**Status:** ⏸ BLOCKED — needs Sebastian: either approve a Resend plan upgrade to verify dayindayin.dk, or decide the personal-Gmail routing is acceptable for launch (it does work, it's just not the address the checklist names).
+
+---
+
 ## Quality verdict on file (2026-06-21, honest)
 Current site ≈ 60%. The gap is foundational (no enforced system, duplicate components, desktop-first), not polish. Once P0 (SYS-01…09) is real, most P1/P2 items collapse and quality jumps *and stays* jumped. This is fixable scaffolding, not a rebuild.
 
