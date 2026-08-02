@@ -2,6 +2,39 @@
 
 ---
 
+## 2026-08-02 — Gelato↔Shopify sync deep-dive, full shipping redesign, GA4, Instagram/Pinterest, 404/sitemap checks
+
+**Gelato↔Shopify sync investigation (the day's main thread):**
+- Confirmed the precise linking mechanism, empirically, for the first time: Gelato product `externalId` = Shopify product numeric ID; Gelato variant `externalId` = Shopify variant numeric ID; Gelato's own variant UUID gets written into the Shopify variant's **SKU** field. `connectionStatus: connected` requires all three; `created`/unconnected means Gelato's write never completed — confirmed this tracks Gelato's own write success, not a live comparison against Shopify's current SKU (tested: manually setting a Shopify SKU to match Gelato's variant id, by hand, did NOT flip the connection — only a genuine Gelato republish does).
+- Found and fixed the actual repeatable recipe for stuck products (root-caused via a live before/after test): delete the phantom/extra Shopify variants that don't match Gelato's real variant count, fix the surviving variant's SKU, **and** remove the Shopify product's option structure entirely (collapse to true "Default Title") — republish alone on a still-multi-optioned product does not connect, confirmed by testing one product without the options-collapse step first (failed) then with it (worked).
+- Applied this to all 12 tank tops (SKU-fill only, no deletion needed — Gelato's 6 real variants already matched Shopify's structure) and 12 mugs (delete-3-phantom-variants + SKU + options-collapse). Found and left alone 2 mugs (Neko Paw — Red, Solar Face Mask) where Gelato has *more* real color variants than Shopify ever created — a "create new variant" problem needing Sebastian's call on image/price, not a relink.
+- Found and resolved 2 genuine duplicate-product situations (Mug — Neko — Pink, Mug — Neko Paw — Lilac): each had two Gelato products from the original bulk-creation bug, one broken-but-live-on-site, one connected-but-unpublished. Published the working "-1" duplicates; the broken originals are still live and not yet retired (Sebastian's decision, not made this session).
+- **Still open, unresolved:** after Sebastian republished the 24 fixed products in Gelato, 7 got stuck in a new `publishing_queued` state — one (Mask — Blasé — Tank Top) fully connected underneath despite the stuck status; the rest showed zero progress after 15+ minutes and multiple rechecks (timestamps moving, outcome not). Recommended escalating to Gelato support with the full evidence trail; Sebastian asked to wait longer instead — not yet escalated, not yet resolved.
+- Researched (not assumed) whether Shopify shipping-profile assignment affects Gelato fulfillment routing at all: confirmed via Gelato's own API field structure (fulfillment keys off `productUid`/template, no shipping-profile field exists anywhere in Gelato's data) plus 3 independent secondary sources — safe to reassign, decoupled from production.
+
+**Shipping — full redesign, not just a check (originally "pre-launch task 11," expanded well past a verification):**
+- Full detail, numbers, and reasoning: `ISSUES.md`, "Pre-launch task 11."
+- Bottom line: replaced 47 Gelato-category profiles + the General profile with one flat 59 DKK rate / free ≥449 DKK for Denmark+EU+UK+Norway, Rest-of-World left on the prior 299 DKK rate. Rolled out to the entire catalog (647 variants, 203 products), verified via spot-check since Shopify's own count metric silently stalls at 500.
+- Added the flat rate + threshold to the PDP trust block and the `/practical` FAQ (was nowhere but Shopify's own checkout before this); fixed the cart drawer's free-shipping progress bar, which had been showing a hardcoded, never-actually-wired 500 kr the entire time — correct number is now 449.
+
+**Also this session:**
+- Added Google Analytics 4 (`components/GoogleAnalytics.tsx`, measurement ID `G-EP1XYB9M8J`) — Sebastian wanted "some kind of analytics firing," didn't want to learn PostHog (already wired but never activated, left in place, still dormant). New GA4 property created under the existing `www.flamant.dk` account, tracking the live `.vercel.app` URL — confirmed no DNS dependency. Verified live via the deployed page source.
+- Instagram handle changed sitewide to `dayindayin_art` (footer, About page link + visible text, homepage/About JSON-LD `sameAs`). Pinterest removed entirely — footer icon, and the "Save to Pinterest" share button (cleaned up the `title`/`imageUrl` ShareButtons props that existed only to build the Pinterest URL, and all 3 call sites).
+- Confirmed (pre-launch checklist item unlabeled in this conversation) the site-wide 404 page works correctly live — real 404 status, branded content, `noindex` — not a Vercel error page.
+- Sitemap/robots.txt checked (pre-launch task 13, full detail in ISSUES.md) — both technically correct, but every URL inside points at `dayindayin.dk`, which doesn't resolve to the live site yet (confirmed: resolves to Simply.com, not Vercel). Sebastian declined the fix — no value until DNS points regardless, correctly deferred rather than patched.
+
+**Decisions:**
+- Retracted an early, wrong lead: a first web search suggested Gelato+/Gold paid plans discount shipping cost 30–50%. A closer independent source showed that's wrong — paid plans discount *product* cost, not shipping. Corrected before it became a plan input.
+- The 59/449 numbers came from real data (weighted Gelato per-category cost, empirically-tested cross-profile stacking behavior, real market comparables) plus Sebastian's own risk tolerance, not a guess — see ISSUES.md task 11 for the full chain.
+
+**Next:**
+- Gelato support ticket for the `publishing_queued` stall — offered repeatedly, not yet sent; Sebastian's call on timing.
+- 2 mugs (Neko Paw — Red, Solar Face Mask) still need Sebastian's decision on creating the missing real color variants.
+- 2 broken-but-live duplicate product originals (neko-pink, neko-paw-lilac clean handles) still need to be unpublished/deleted once Sebastian decides — the working "-1" replacements are already live.
+- LB-1 (contact form routing) and LB-2 (Shopify Payments not active) remain open per ISSUES.md, untouched this session — both are Sebastian-decision-blocked, not code work.
+
+---
+
 ## 2026-08-02 — Pre-launch task 14: OG image spot check found 2 real bugs, fixed both
 
 **Done:** Spot-checked `/works/purple-sun` and `/shop/botanical-blanc` through opengraph.xyz per the task. Titles/descriptions were correct on both, but og:image had real defects on both: Fine Art PDP served the raw 12.1MB source photo directly (flagged invalid by opengraph.xyz — over both its 10MB check and Facebook's real 8MB limit; sampled 4 more works, several also close to/over that line, so this is archive-wide, not a one-off). Shop PDP served the raw 2048×2048 square product photo (flagged wrong aspect ratio) even though a correctly-sized 1200×630 branded OG image generator already existed in the codebase for shop products — it was just dead code, shadowed by an explicit raw-image override in `generateMetadata`.

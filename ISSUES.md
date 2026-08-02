@@ -334,6 +334,35 @@ ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — the original nu
 
 ---
 
+### Pre-launch task 11: Shopify shipping rates — checked, found a real gap, then a full redesign shipped 2026-08-02
+**Task:** pre-launch checklist item 11 ("Shopify — confirm shipping rates are set: zones cover EU/UK/Norway, rates non-zero, free-shipping threshold correct").
+**What was checked:** all 49 Shopify delivery profiles via the Admin GraphQL API (Gelato auto-generates one per product category, e.g. "Gelato: Mugs", "Gelato: Small Framed Posters", plus the store's own default "General profile").
+**Found:** zones and non-zero rates existed everywhere, so the checklist would nominally pass — but 52 products (6 Mugs, 4 Postcards, 1 Dad Cap, 2 Tank Tops, 4 "Print Material", 35 with no product type at all — covering Water Bottles, Caps, Posters, Framed Prints, Fine Art Prints, a Greeting Card, Tote Bags) were silently stuck on the generic "General profile" instead of their real Gelato category profile, charging a flat 299 DKK to EU/International regardless of real cost (vs. ~40–90 DKK on a correctly-assigned product). Root cause: the same broken Gelato↔Shopify sync investigated the same day (see LOG.md) — several of the 52 are the exact same products confirmed stuck/unconnected in that investigation, strongly suggesting shipping-profile assignment breaks via the same mechanism as the variant-connection bug, not a separate fault.
+**Also found and corrected en route:** the free-shipping threshold that did exist (590 DKK) was Denmark-only, lived only on the General profile's ~213-variant bucket, and did not apply to EU/International or to any Gelato-category-profile product at all.
+**Decision, after research + calculation with Sebastian:** rather than patch the 52 broken assignments individually, replaced the entire shipping model — one flat rate + one free-shipping threshold across the whole catalog, covering the actual primary market (Denmark, all EU member states, UK, Norway), leaving Rest-of-World on the existing real-cost rate.
+**Numbers, and how they were reached (not guessed):**
+- Verified empirically (not assumed) that Shopify charges shipping per delivery-profile-group, not per unit — tested 1× vs 4× the same product in a real cart (rate unchanged) and a 2-item cross-profile cart (rates *summed*, confirmed the real risk behind mixing categories under the old per-category system).
+- Real Gelato cost data pulled per category (DK/EU/UK/NO), weighted by actual catalog mix, gave a real average shipping cost of ~60–65 DKK — landed the flat rate at **59 DKK**.
+- Checked real market comparables (Poster Store: 349 DKK Nordic/DKK precedent; Exclusive European Art: €59/€99 EU precedent) plus Sebastian's own worst-case-cost concern (Large Framed Poster to Norway, ~186 DKK real cost) and his "should take 2 items, hero print + cheap add-on" intent — landed the free-shipping threshold at **449 DKK**.
+- Checked Gelato's own plan-tier marketing claim of a shipping discount — didn't hold up under a closer independent source; retracted rather than left uncorrected.
+**Shipped:** created a "Flat Rate Shipping (DK / EU / UK / Norway)" delivery profile (59 DKK flat, free ≥449 DKK, scoped to DK+26 EU states+GB+NO) plus a Rest-of-World zone (299 DKK, matching the prior International rate, left unchanged) on the same profile. Tested end-to-end on one product first (variant reassignment confirmed to have zero effect on Gelato's own fulfillment record — checked via the Gelato API before/after, timestamp unchanged), then rolled out to the entire catalog: all 647 variants across 203 products, verified via a 26-point spot check spanning the full range (Shopify's own `productVariantsCountV2` metric stalls at 500 and is unreliable past that point — confirmed via direct per-variant queries, not trusted at face value). All 47 Gelato-category profiles and the General profile are now empty.
+**Also fixed as a direct follow-up (Sebastian: "how is this communicated on site"):** shipping cost was communicated in exactly one place pre-checkout — the cart drawer's free-shipping progress bar — and it was hardcoded to 500 kr, unrelated to any real config the whole time. Fixed to 449, dropped the stale "EU" qualifier (now DK/EU/UK/Norway). Added the 59 kr flat / 449 kr free-shipping numbers to the PDP trust block and to the `/practical` FAQ (both the prose and the FAQ_ITEMS entry that feeds the FAQPage JSON-LD).
+**Not fixed / still open:** the underlying Gelato variant-connection bug that caused the 52-product shipping-profile misassignment in the first place is separately tracked (see LOG.md) — this task fixed the shipping-cost *symptom* for the whole catalog by bypassing per-category profiles entirely, not the sync root cause.
+**Status:** ✅ done — shipped and verified live across the entire catalog.
+
+---
+
+### Pre-launch task 13: Sitemap and robots.txt — verified, one real gap found, left as-is per Sebastian
+**Task:** pre-launch checklist item 13 ("`/sitemap.xml` exists and lists all real pages; `/robots.txt` exists and doesn't accidentally block search engines").
+**Checked live** (`dayindayin-site.vercel.app/sitemap.xml`, `/robots.txt`), not just read the code.
+**robots.txt:** ✓ correct. `Allow: /` broadly, `Disallow:` only on genuine non-content routes (`/api/`, `/saved`, `/order-confirmed`, `/search`, three preview routes). Nothing blocking real content.
+**sitemap.xml:** ✓ valid XML, 316 URLs (all static pages, shop filter tabs, every live Shopify product, fine-art works pages).
+**Real gap found:** both files hardcode `https://dayindayin.dk` as the base URL for every link they contain, not the actual live URL. Checked whether this matters today: `dayindayin.dk` resolves to `93.191.156.166` (Simply.com, not Vercel) — HTTPS TLS handshake fails, plain HTTP returns 455. So if crawled today, the sitemap is 316 links to a domain that doesn't currently serve the site at all.
+**Sebastian's call:** explicitly declined the fix ("sitemap and robots.txt have no value anyway as long as the site isn't truly live on its final url destination") — left unchanged. Not a bug left unfixed by oversight; a deliberate deferral tied to the still-open DNS-pointing item.
+**Status:** ✅ done (verified, gap found and correctly triaged as low-priority pending DNS).
+
+---
+
 ## Quality verdict on file (2026-06-21, honest)
 Current site ≈ 60%. The gap is foundational (no enforced system, duplicate components, desktop-first), not polish. Once P0 (SYS-01…09) is real, most P1/P2 items collapse and quality jumps *and stays* jumped. This is fixable scaffolding, not a rebuild.
 
