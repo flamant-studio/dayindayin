@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useCart } from './CartProvider'
 import styles from './CartDrawer.module.css'
 
-const FREE_SHIPPING_THRESHOLD = 500
+const FREE_SHIPPING_THRESHOLD = 449
 
 function formatPrice(amount: string) {
   return `${parseFloat(amount).toFixed(0)} kr`
@@ -121,7 +121,7 @@ export default function CartDrawer() {
                     </div>
                     <p className={styles.freeShippingText}>
                       {remaining > 0
-                        ? <>Spend <strong>{Math.ceil(remaining)} kr</strong> more for free EU shipping</>
+                        ? <>Spend <strong>{Math.ceil(remaining)} kr</strong> more for free shipping</>
                         : <>You qualify for free shipping ✓</>}
                     </p>
                   </div>
