@@ -16,6 +16,8 @@ Updated `app/api/contact/route.ts` to send `from: hello@dayindayin.dk`, swapped 
 
 **Resolved same session:** Sebastian confirmed Simply.com hosting the mailboxes is fine, he just wants the mail to also reach Gmail — set up native Simply.com forwarding ("Videresendelser," a domain-level rule, no mailbox password needed) for all three addresses he has there — `hello@`, `sebastian@`, `stine@dayindayin.dk` — to `sebastianhflamant@gmail.com`. Confirmed with him before creating the rule, per the standing "mail forwarding rules need explicit permission" guardrail. Live-tested by submitting a real enquiry through the contact form and confirming the forwarded copy landed directly in Sebastian's Gmail inbox (not spam) within under a minute. Full detail + proof: `ISSUES.md` LB-1.
 
+**Next:** LB-1 is closed out. LB-2 (Shopify Payments not active — store can't take real payment) is the one remaining launch blocker in `ISSUES.md`.
+
 ---
 
 ## 2026-08-02 — Gelato↔Shopify sync deep-dive, full shipping redesign, GA4, Instagram/Pinterest, 404/sitemap checks
