@@ -1,5 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { getProductByHandle } from '@/lib/shopify/products'
+import { readFile } from 'fs/promises'
+import path from 'path'
 
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
@@ -9,6 +11,9 @@ interface Props { params: Promise<{ handle: string }> }
 export default async function ProductOGImage({ params }: Props) {
   const { handle } = await params
   const product = await getProductByHandle(handle).catch(() => null)
+  const fontData = await readFile(
+    path.join(process.cwd(), 'lib/fonts/PlayfairDisplay-Black.ttf')
+  )
 
   const title = product?.title ?? 'Day In Day In'
   const imageUrl = product?.firstImage?.url ?? null
@@ -48,7 +53,7 @@ export default async function ProductOGImage({ params }: Props) {
         >
           <div
             style={{
-              fontFamily: 'Georgia, serif',
+              fontFamily: 'Playfair Display',
               fontSize: title.length > 30 ? 40 : 52,
               fontWeight: 900,
               color: '#1A1714',
@@ -79,6 +84,9 @@ export default async function ProductOGImage({ params }: Props) {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [{ name: 'Playfair Display', data: fontData, weight: 900, style: 'normal' }],
+    }
   )
 }

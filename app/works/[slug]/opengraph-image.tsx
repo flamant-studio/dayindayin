@@ -1,5 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { getWork } from '@/lib/data'
+import { readFile } from 'fs/promises'
+import path from 'path'
 
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
@@ -9,6 +11,9 @@ interface Props { params: Promise<{ slug: string }> }
 export default async function WorkOGImage({ params }: Props) {
   const { slug } = await params
   const work = getWork(slug)
+  const fontData = await readFile(
+    path.join(process.cwd(), 'lib/fonts/PlayfairDisplay-Black.ttf')
+  )
 
   const title = work?.title ?? 'Day In Day In'
   // Fine Art source photos run 6-12MB (archival scans) — next/og's renderer chokes on
@@ -53,7 +58,7 @@ export default async function WorkOGImage({ params }: Props) {
         >
           <div
             style={{
-              fontFamily: 'Georgia, serif',
+              fontFamily: 'Playfair Display',
               fontSize: title.length > 30 ? 40 : 52,
               fontWeight: 900,
               color: '#1A1714',
@@ -84,6 +89,9 @@ export default async function WorkOGImage({ params }: Props) {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [{ name: 'Playfair Display', data: fontData, weight: 900, style: 'normal' }],
+    }
   )
 }
