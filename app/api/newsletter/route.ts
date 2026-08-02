@@ -62,7 +62,13 @@ export async function POST(request: NextRequest) {
           }
         `,
         variables: {
-          input: { email, acceptsMarketing: true },
+          input: {
+            email,
+            emailMarketingConsent: {
+              marketingState: 'SUBSCRIBED',
+              marketingOptInLevel: 'SINGLE_OPT_IN',
+            },
+          },
         },
       }),
       cache: 'no-store',
@@ -71,7 +77,10 @@ export async function POST(request: NextRequest) {
 
   const json = await res.json()
 
-  if (!res.ok) {
+  // GraphQL execution errors (bad query/schema mismatch) return HTTP 200 with
+  // no `data` and a top-level `errors` array — a plain res.ok check misses
+  // these entirely, which is exactly how this route silently failed before.
+  if (!res.ok || json.errors) {
     console.error('Newsletter signup: Shopify request failed', res.status, JSON.stringify(json))
     return Response.json({ error: 'Could not subscribe that address. Try again.' }, { status: 502 })
   }
