@@ -2,6 +2,22 @@
 
 ---
 
+## 2026-08-02 — LB-1 fixed: contact/commission form now actually routes to hello@dayindayin.dk
+
+**Done:** Sebastian asked for real fix options after the earlier "verify routing" pass found it broken (see the 2026-08-02 entry below this one). Checked live whether Resend's "committed to mikofu.com" constraint still held — it didn't: Mikofu is fully archived (Shopify/Supabase/Vercel all torn down, no live send activity), so with Sebastian's explicit approval, freed Resend's one free-tier domain slot by deleting mikofu.com's verification and verifying dayindayin.dk instead. Found the DNS records Resend needed already existed at Simply.com (an earlier abandoned 2026-07-23 attempt at the same thing, never cleaned up) — no DNS work required, verification was immediate.
+
+Updated `app/api/contact/route.ts` to send `from: hello@dayindayin.dk`, swapped production `CONTACT_EMAIL_TO` to the same address (both required Sebastian's explicit confirmation — Claude Code's own permission classifier blocks `vercel env rm`/`vercel env add` on production as sensitive actions, asked and got a clear yes each time, once per variable).
+
+**Hit and fixed a second bug along the way:** the Resend API key Vercel was using was silently scoped to the *old*, now-deleted dayindayin.dk domain object from 3 months ago — sends failed with a generic error that never even reached Resend's own logs, which took a while to diagnose. Created a fresh unrestricted API key, asked Sebastian to confirm before creating/swapping credentials (he asked specifically that no key values ever appear in chat or logs — routed the new key from Resend's copy button straight into `vercel env add` via the OS clipboard/`pbpaste`, never typed or displayed). First attempt at this actually copied the wrong thing (a 298-character garbage value, most likely a stray click) — caught it by sanity-checking length/prefix before committing it anywhere, redid it cleanly (36 chars, `re_` prefix) before touching production. Also learned mid-fix that Vercel env var changes don't apply to an already-built deployment — needed one `vercel --prod` redeploy after the key was fixed for it to actually take effect.
+
+**Live-verified, not just claimed:** real POST to `https://dayindayin-site.vercel.app/api/contact` (`subject: "Commission enquiry"`, same code path both checklist items share) returned `200 {"ok":true}`; Resend's own send log for that request shows the real `from`/`to` as `hello@dayindayin.dk`.
+
+**Real finding, not yet resolved:** `hello@dayindayin.dk` turned out to be a Simply.com-hosted mailbox, not Google Workspace as Sebastian believed — domain's MX still points to `mx.simply.com`; Google Workspace verification records exist in DNS but MX was never switched over. Didn't log into the mailbox (would need a password), but Simply.com's own "mail received" stats show a spike today matching the test volume, which corroborates delivery. Flagged to Sebastian directly — worth him confirming where he actually expects to read these emails, since it may not be where he thinks.
+
+**Next:** Sebastian to confirm which mailbox (Simply.com webmail vs. actual Google Workspace, if that's ever properly wired up) he wants to be the real answer long-term. Full detail: `ISSUES.md` LB-1.
+
+---
+
 ## 2026-08-02 — Gelato↔Shopify sync deep-dive, full shipping redesign, GA4, Instagram/Pinterest, 404/sitemap checks
 
 **Gelato↔Shopify sync investigation (the day's main thread):**
