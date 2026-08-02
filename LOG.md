@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-08-02 — Pre-launch task 9: public contact email audit — 6 pages fixed
+
+**Done:** Ran a repo-wide grep (`stine@dayindayin.dk` / `hello@dayindayin.dk`, all extensions, not just the four locations named in the task) instead of trusting the 2026-07-25 note that Footer/About/Contact were already fixed. Confirmed those three (plus `ContactForm`'s error-fallback text) were correct. Found stine@dayindayin.dk still live on six public pages that the 2026-07-25 session had explicitly left out of scope: `/commissions` (the commission enquiry CTA's fallback mailto link — directly named in this task), `/practical` (3 instances), `/legal`, `/legal/privacy` (2), `/legal/copyright` (2). Swapped all 9 to hello@dayindayin.dk, ran `npx next build` clean, committed and pushed.
+
+**Decision:** Did not touch `CONTACT_EMAIL_TO` / the backend routing question (that's LB-1 in ISSUES.md, blocked on a paid Resend plan) — this task was scoped to which address is *displayed* publicly, not where submissions land. Also left ISSUES.md's own historical mention of stine@ (inside the LB-1 writeup) alone — that's documentation of past state, not a live page.
+
+**Result:** Zero remaining `stine@dayindayin.dk` anywhere in `app/` or `components/`. Full detail: `ISSUES.md`, "Pre-launch task 9" entry.
+
+---
+
 ## 2026-08-02 — Pre-launch task 5: contact/commission form routing verified (still broken)
 
 **Done:** Ran the pre-launch checklist's contact-form verification task properly, not just re-reading the 2026-07-25 note. POSTed a real test enquiry to the live production API (`https://dayindayin-site.vercel.app/api/contact`, `subject: "Commission enquiry"` — confirmed via code read that `/commissions` has no separate form and routes through the same `ContactForm`/API path), pulled production env vars (`vercel env pull`) to confirm `CONTACT_EMAIL_TO` live rather than trusting `.env.local`, and checked Gmail directly for the arriving message.

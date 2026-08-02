@@ -166,7 +166,7 @@ export default function CommissionsPage() {
         <p className={styles.ctaText}>Got something in mind? Reach out.</p>
         <Button href="/contact?subject=Commission%20enquiry">Send a brief</Button>
         <p className={styles.ctaSub}>
-          Or email <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a> directly.
+          Or email <a href="mailto:hello@dayindayin.dk">hello@dayindayin.dk</a> directly.
         </p>
       </section>
 

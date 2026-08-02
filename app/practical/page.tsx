@@ -43,7 +43,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Can I use the artwork commercially?",
-    a: "Purchasing a print gives you a physical product for personal use. It does not transfer reproduction rights. For editorial, interior, or product design licensing, email stine@dayindayin.dk with what you have in mind.",
+    a: "Purchasing a print gives you a physical product for personal use. It does not transfer reproduction rights. For editorial, interior, or product design licensing, email hello@dayindayin.dk with what you have in mind.",
   },
   {
     q: "What is Gelato, and why are prints made this way?",
@@ -55,7 +55,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Do you offer wholesale or B2B pricing?",
-    a: "We work selectively with retailers, galleries, and interior designers. Email stine@dayindayin.dk with your shop name, location, and what you have in mind. Minimum order quantities and wholesale pricing are discussed on request.",
+    a: "We work selectively with retailers, galleries, and interior designers. Email hello@dayindayin.dk with your shop name, location, and what you have in mind. Minimum order quantities and wholesale pricing are discussed on request.",
   },
 ];
 
@@ -183,7 +183,7 @@ export default function Practical() {
               us within 14 days with your order number and a photo of the issue — we will replace it
               at no cost.
             </p>
-            <p>Email: <a href="mailto:stine@dayindayin.dk">stine@dayindayin.dk</a></p>
+            <p>Email: <a href="mailto:hello@dayindayin.dk">hello@dayindayin.dk</a></p>
           </section>
 
           <section id="commissions">

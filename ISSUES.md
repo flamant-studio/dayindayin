@@ -293,6 +293,16 @@ ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — the original nu
 
 ---
 
+### Pre-launch task 9: Public contact email audit — fixed 2026-08-02
+**Task:** verify hello@dayindayin.dk is used consistently everywhere a public email address appears (footer, About, Contact, commission enquiry CTA); stine@dayindayin.dk should not appear publicly anywhere.
+**Audit method:** `grep -rn "stine@dayindayin.dk\|hello@dayindayin.dk"` across the whole repo (all extensions, excluding `node_modules`/`.git`), not just the four named locations.
+**Found:** Footer, About, Contact, and `ContactForm`'s error-fallback text already used hello@dayindayin.dk (fixed 2026-07-25, per LOG.md). Six other public pages still showed stine@dayindayin.dk — left out of scope by that earlier session: `/commissions` (the commission enquiry CTA fallback link — explicitly named in this task), `/practical` (3 instances — licensing FAQ, wholesale FAQ, returns/shipping contact), `/legal`, `/legal/privacy` (2 instances), `/legal/copyright` (2 instances).
+**Fixed:** swapped all 9 instances stine@→hello@dayindayin.dk (display text + `mailto:` links) in `app/commissions/page.tsx`, `app/practical/page.tsx`, `app/legal/page.tsx`, `app/legal/privacy/page.tsx`, `app/legal/copyright/page.tsx`. `npx next build` passed clean afterward, no regressions.
+**Note — did not touch:** `CONTACT_EMAIL_TO` backend routing (that's LB-1 above, blocked on a paid Resend plan) — this task was display-only, which email address is shown to the public, not where form submissions actually land. Also left `ISSUES.md`'s own historical LB-1 text referencing stine@ untouched — that's documentation of past state, not a live public page.
+**Status:** ✅ done — pushed, live. Zero remaining `stine@dayindayin.dk` in any app/component file (verified by repo-wide grep post-fix).
+
+---
+
 ## Quality verdict on file (2026-06-21, honest)
 Current site ≈ 60%. The gap is foundational (no enforced system, duplicate components, desktop-first), not polish. Once P0 (SYS-01…09) is real, most P1/P2 items collapse and quality jumps *and stays* jumped. This is fixable scaffolding, not a rebuild.
 
