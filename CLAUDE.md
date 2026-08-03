@@ -1,5 +1,5 @@
 # DayInDayIn — Claude Code Handover
-*Last updated: 2026-08-02*
+*Last updated: 2026-08-03*
 
 **For current, week-to-week state, read these first — this file's "Current State" table below is the original launch handover and is now historical in places:**
 - `ISSUES.md` — the live issues board (P0/P1/P2 + the FB screenshot-feedback batch), single source of truth for what's broken/next
@@ -112,6 +112,7 @@ The art is the product source for the Fluid e-commerce system. DayInDayIn is bot
 | Shopify Payments KYC | 🔲 Pending — eliminates 2% fee |
 | Legal pages | 🔲 Pending — privacy policy, copyright, fulfillment T&C |
 | CONTACT_EMAIL_TO | ✅ **(2026-08-02)** Fixed — routes to hello@dayindayin.dk, live-verified end to end. dayindayin.dk is now the verified Resend sending domain (freed the free tier's one-domain slot by dropping mikofu.com's verification — Mikofu has no live send activity; Sebastian approved). `hello@dayindayin.dk`/`sebastian@`/`stine@dayindayin.dk` are Simply.com-hosted mailboxes (not Google Workspace, despite the domain having Workspace verification DNS records — MX was never switched to Google), all now forwarding to Sebastian's Gmail via Simply.com's native forwarding. Public-facing display email across Footer/About/Contact/commissions/practical/legal all use hello@dayindayin.dk (stine@ fully retired, see ISSUES.md "Pre-launch task 9"). Full detail: `ISSUES.md` LB-1. |
+| Shopify order confirmation email | ✅ **(2026-08-03)** Reply-to/sender set to hello@dayindayin.dk (verified), SPF/DKIM domain authentication CNAMEs added at Simply.com (propagating, auto-completes), From name set to "Day In Day In", logo + mauve accent branding added (was Shopify defaults, no logo existed), copy rewritten to remove Shopify boilerplate and match the site's Gelato-fulfillment language. Tested via a real draft order marked paid (works around the Shopify Payments gap below). Full detail: `ISSUES.md` "Pre-launch task 4." |
 | Shipping rates | ✅ **(2026-08-02)** Full redesign — one flat 59 DKK rate, free ≥449 DKK, for Denmark/EU/UK/Norway; Rest-of-World unchanged at 299 DKK. Replaces 47 Gelato-auto-generated per-category profiles + the old General-profile fallback (which had silently misrouted 52 products to a flat, non-cost-based 299 DKK rate — same root cause as the Gelato sync bug above). Rolled out to entire catalog (647 variants/203 products), verified via spot-check. Numbers + reasoning: `ISSUES.md` "Pre-launch task 11." Now shown on PDP + `/practical` FAQ + cart drawer (previously nowhere but Shopify's own checkout). |
 | Analytics | 🔄 **(2026-08-02)** Google Analytics 4 added (`components/GoogleAnalytics.tsx`, `G-EP1XYB9M8J`), confirmed firing live. PostHog (`components/Analytics.tsx`) still wired but dormant — no `NEXT_PUBLIC_POSTHOG_KEY` set, untouched, low priority per Sebastian ("some kind of analytics firing" was the bar). |
 | Newsletter API | 🔲 Signup shows "Thank you" but doesn't subscribe — needs Mailchimp/Klaviyo |
