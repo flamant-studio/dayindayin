@@ -2,6 +2,23 @@
 
 ---
 
+## 2026-08-03 — Pre-launch task 4: order confirmation email reviewed, edited, tested end-to-end
+
+**Done:** Full pass on Shopify's order confirmation notification (Settings → Notifications → Order confirmation + Customize email templates).
+
+- **Reply-to/sender email:** was Sebastian's personal Gmail — Shopify flags Gmail as a public domain it can't send custom from (falls back to a generic `store+...@shopifyemail.com`). Set to hello@dayindayin.dk instead. Confirmed real inbox (Simply.com-hosted, not Google Workspace as believed) — found the verification email Shopify sent there, retrieved via Gmail (it forwards there), clicked the link. Now shows Verified.
+- **Email domain authentication (SPF/DKIM):** was "Needs setup." Added all 6 CNAME records Shopify specified directly in Simply.com's DNS zone for dayindayin.dk. Confirmed propagated (`dig` resolved them immediately — Simply.com is the authoritative nameserver). Shopify's own check now shows "Propagating," will flip to "Authenticated" automatically within 48h — nothing further needed.
+- **From name:** was the raw "dayindayin" handle. Changed Store Name (Settings → General) to "Day In Day In" — updates every place that name surfaces, including this email's header.
+- **Logo + branding:** no logo existed anywhere (site's own "logo" is styled text, not an image file) — generated one matching the site's actual wordmark (Playfair Display Black, `#1A1714`, via `next/og`'s ImageResponse, same technique as the OG-image work) and uploaded it. Accent color was Shopify's random default blue (`#1990C6`) — changed to the site's actual mauve (`#95619B`).
+- **Copy:** template was 100% unedited Shopify default boilerplate (subject, title, and body messages never touched). Drafted new copy in the site's voice, iterated twice on direct feedback (first draft falsely implied prints ship "from Stine's studio" — corrected to match the site's own published Gelato-fulfillment language exactly; second pass fixed a confusing self-referential line in the payment-pending message). Final: subject "Your order is confirmed"; title "Thank you for your order."; the three "ready to be shipped" body variants (split-cart shipping, split-cart fallback, single-method fallback — the only paths this store's checkout ever actually uses) replaced with Gelato-accurate copy. Left the unused pickup/local-delivery variants as Shopify default — this store ships everything via Gelato, so there was nothing site-published to verify replacement copy against.
+- **Tested for real, not just previewed:** Shopify's own "send test email" always uses canned sample data (hit the pickup variant, not what real orders trigger). Created a real draft order (postcard, 56.45 DKK, real address), marked it paid — bypasses the Shopify Payments gap (LB-2) entirely since draft orders don't need a live payment gateway — and got the actual production send. Confirmed via Gmail: real order #1001's email showed the exact new Gelato copy, sent from hello@dayindayin.dk. Cancelled + refunded + restocked the test order immediately after to leave no trace in sales data.
+
+**Not done / needs Sebastian:** nothing — every checklist item is closed. Domain authentication finishes propagating on its own.
+
+**Incidental fix, found along the way:** `next/og` (used for the OG-image work, pre-launch task 14) silently drops unavailable fonts with no error — confirmed the shipped shop/works OG images were rendering in a generic sans instead of the intended serif. Fixed separately, logged under task 14 in this file.
+
+---
+
 ## 2026-08-02 — Fine art PDP image audit (pre-launch task 2): all 98 works checked, 14 fixed
 
 **Done:** Full audit of every fine-art work's PDP gallery — is the first "Studio views" photo (`gallery[0]`) a genuine full shot of the piece, distinct from the hero image at the top (which is allowed to be a close-up/detail crop by design)? Parallelized across 8 research agents since it required actually downloading and viewing images, not judging by filename — each work got at least one image opened and inspected, non-compliant ones got their whole gallery + Dropbox archive checked for a usable alternative. Full report: separate artifact (not committed to the repo), summarized in `ISSUES.md` "Pre-launch task 2."

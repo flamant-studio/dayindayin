@@ -385,6 +385,21 @@ ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — the original nu
 
 ---
 
+### Pre-launch task 4: Order confirmation email — reviewed, edited, and tested end-to-end 2026-08-03
+**Task:** pre-launch checklist item 4 — reply-to = hello@dayindayin.dk, from name = "Day In Day In" not the Shopify default, body copy reviewed and Shopify boilerplate removed, logo/branding in the header, tested by placing an order and reviewing what arrives.
+**Reply-to / sender email:** was Sebastian's personal Gmail. Shopify explicitly blocks custom sending from public domains like Gmail (falls back to `store+...@shopifyemail.com`). Set to hello@dayindayin.dk. Confirmed it's a real, receiving mailbox — Simply.com-hosted (not Google Workspace, as Sebastian had believed — same discrepancy LB-1 flagged), found the verification email in Gmail (it forwards there) and clicked the confirm link. Now shows Verified.
+**Email domain authentication (SPF/DKIM):** was "Needs setup." Added the 6 CNAME records Shopify specified directly into Simply.com's DNS zone for dayindayin.dk. `dig` confirmed they resolve immediately (Simply.com is the authoritative nameserver, no propagation wait needed there). Shopify's own status now shows "Propagating" → auto-flips to "Authenticated" within 48h, no further action needed.
+**From name:** was the raw "dayindayin" store handle. Changed Store Name (Settings → General → Store contact details) to "Day In Day In" — this is the field that actually drives the email header display name, confirmed via the live preview updating immediately.
+**Logo / branding:** no logo existed anywhere in the codebase — the site's own "logo" is styled text (Playfair Display, no image asset). Generated one matching it exactly (same font/weight/color, via `next/og`'s `ImageResponse`, same technique already used for the OG-image work) and uploaded it to Shopify's email branding page. Accent color was Shopify's random default blue (`#1990C6`) — changed to the site's real mauve (`#95619B`).
+**Copy — the template was 100% unedited Shopify default boilerplate** (3,832 lines total; almost all of it is HTML/CSS scaffolding and EU tax-PDF-attachment logic, not prose — Shopify concentrates all customizable copy in a few `capture` blocks by design). Drafted new copy, iterated twice on direct correction:
+- First draft claimed prints ship "from Stine's studio" — false, every checkout product is Gelato print-on-demand, nothing ships from the studio. Corrected to match the exact fulfillment language already published on `/practical`.
+- Second pass: a payment-pending line said "You'll get this confirmation once it clears" — didn't make sense, since that message isn't the confirmation (it's sent before the order is confirmed). Fixed to "You'll get an email as soon as your order is confirmed."
+Final copy: subject "Your order is confirmed"; title "Thank you for your order."; the three "ready to be shipped" body variants (split-cart shipping case, split-cart fallback, and the single-method fallback — the only paths this store's checkout can actually reach) rewritten with the Gelato-accurate line. Left the pickup/local-delivery variants as Shopify default — this store ships everything via Gelato, there's no local fulfillment option live to write accurate copy against.
+**Tested for real:** Shopify's "send test email" always uses fixed sample data (hit the pickup variant, not a real scenario). Created a real draft order (a 56.45 DKK postcard, real address) and marked it paid — sidesteps the Shopify Payments gap (LB-2) entirely since draft orders don't need a live gateway — to get an actual production send. Order #1001's real confirmation email, checked in Gmail, showed the new Gelato copy exactly as written, sent from hello@dayindayin.dk. Cancelled + refunded + restocked the order immediately after — no trace left in sales data.
+**Status:** ✅ done — every sub-item closed and live-verified, not just claimed.
+
+---
+
 ## Quality verdict on file (2026-06-21, honest)
 Current site ≈ 60%. The gap is foundational (no enforced system, duplicate components, desktop-first), not polish. Once P0 (SYS-01…09) is real, most P1/P2 items collapse and quality jumps *and stays* jumped. This is fixable scaffolding, not a rebuild.
 
