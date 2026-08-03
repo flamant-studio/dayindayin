@@ -325,6 +325,18 @@ ISS-02 / ISS-03 / ISS-04 / ISS-05 / ISS-06 / ISS-07 / ISS-08 — the original nu
 
 ---
 
+### LB-3: Newsletter signup silently failed — every submission was lost, fixed 2026-08-03
+**Task:** pre-launch checklist item 6 ("Newsletter signup — verify it works"). Checked what the footer signup was actually wired to, not assumed from CLAUDE.md's existing note.
+**What was wrong (three separate real bugs, found and fixed in sequence, each verified live before moving to the next):**
+1. `app/api/newsletter/route.ts` read a static `SHOPIFY_ADMIN_TOKEN` env var that was never actually set in production — every other admin script in this repo mints a token fresh per run via the `client_credentials` grant, but this route never did. Worse: the code never checked whether the Shopify request even succeeded (`res.ok`), so when the token was missing/undefined and Shopify rejected the request, the route still returned `{ok:true}` to the browser. Confirmed live: a test signup showed "Subscribed ✓" but never created a Shopify customer.
+2. After fixing the token minting, the mutation itself was broken: `CustomerInput.acceptsMarketing` no longer exists in Shopify's current (2025-01) Admin API schema — it returns a GraphQL error, but as **HTTP 200**, which a plain `res.ok` check doesn't catch either. Verified the current field via live schema introspection (not guessed) — replaced with `emailMarketingConsent: { marketingState: SUBSCRIBED, marketingOptInLevel: SINGLE_OPT_IN }`.
+3. Even with correct code, production's `SHOPIFY_STORE_DOMAIN` env var had a stray trailing newline baked into the value (breaking the OAuth URL), and separately `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET` in production were stale/different from the working values already sitting in `.env.local` — Shopify rejected the OAuth call with `application_cannot_be_found`. Fixed by re-syncing all three from the known-working local values, confirmed byte-for-byte identical before redeploying (not just "looked right").
+**Live-verified end to end, real proof:** submitted a real test email through the production API; API returned `{ok:true}`; a follow-up check against Shopify's Admin API (fresh script, own token) confirmed the customer actually exists with `emailMarketingConsent.marketingState: SUBSCRIBED`.
+**Security note, on the record:** while diagnosing bug 3, a debug command accidentally printed the real `SHOPIFY_CLIENT_ID` and `SHOPIFY_CLIENT_SECRET` in this session's output. Flagged to Sebastian immediately. His call: not ephemeral (client secret, doesn't expire on its own) but rotation deferred until the build phase is complete, batched with any other credentials touched this way — not rotated in this pass. **Sebastian's explicit decision, log it, don't reopen.**
+**Status:** 🟡 CLAIMED — signup genuinely works now, verified against Shopify directly, not just the API's own claim of success.
+
+---
+
 ### Pre-launch task 14: Open Graph / social sharing spot check — 2 bugs found and fixed 2026-08-02
 **Task:** spot check a Fine Art PDP and a Shop PDP for og:image (real, correct product), og:title/description (correct), tested via opengraph.xyz.
 **Spot-checked:** `/works/purple-sun` (Fine Art) and `/shop/botanical-blanc` (Shop), both against the live URL, both run through opengraph.xyz's meta-tag inspector.
