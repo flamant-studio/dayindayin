@@ -160,16 +160,20 @@ async function tagAndSubscribeExistingCustomer(token: string, email: string): Pr
     method: 'POST',
     headers: { 'X-Shopify-Access-Token': token, 'Content-Type': 'application/json' },
     body: JSON.stringify({
+      // customerUpdate rejects emailMarketingConsent outright on existing
+      // customers ("please use the customerEmailMarketingConsentUpdate
+      // Mutation instead") — confirmed live, it's a separate dedicated
+      // mutation, unlike customerCreate where it's just an input field.
       query: `
-        mutation customerUpdate($input: CustomerInput!) {
-          customerUpdate(input: $input) {
+        mutation customerEmailMarketingConsentUpdate($input: CustomerEmailMarketingConsentUpdateInput!) {
+          customerEmailMarketingConsentUpdate(input: $input) {
             userErrors { field message }
           }
         }
       `,
       variables: {
         input: {
-          id: customerId,
+          customerId,
           emailMarketingConsent: { marketingState: 'SUBSCRIBED', marketingOptInLevel: 'SINGLE_OPT_IN' },
         },
       },
@@ -177,8 +181,8 @@ async function tagAndSubscribeExistingCustomer(token: string, email: string): Pr
     cache: 'no-store',
   })
   const consentJson = await consentRes.json()
-  if (!consentRes.ok || consentJson.errors || consentJson.data?.customerUpdate?.userErrors?.length) {
-    console.error('Newsletter signup: customerUpdate consent failed', JSON.stringify(consentJson))
+  if (!consentRes.ok || consentJson.errors || consentJson.data?.customerEmailMarketingConsentUpdate?.userErrors?.length) {
+    console.error('Newsletter signup: customerEmailMarketingConsentUpdate failed', JSON.stringify(consentJson))
     return false
   }
 
