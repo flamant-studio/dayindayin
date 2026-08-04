@@ -2,6 +2,20 @@
 
 ---
 
+## 2026-08-03 — Newsletter follow-up: tagging + existing-customer opt-in, two more real bugs
+
+**Done:** Sebastian asked directly whether newsletter signups were tagged and whether they could opt out — neither was true/complete. Added a `newsletter-signup` tag on new signups. For emails belonging to existing customers (past buyers), `customerCreate` can't touch them, so added a fallback path.
+
+Caught two real bugs before shipping, both via live testing rather than assuming correctness:
+1. First draft of the existing-customer lookup used raw email interpolated into a Shopify search-query string (`customers(query: "email:...")`) — a public endpoint taking arbitrary input straight into a query DSL. Switched to `customerByIdentifier`, a typed lookup, before it ever went live.
+2. Live test of the existing-customer path returned a real 502. Root cause: Shopify rejects `emailMarketingConsent` on `customerUpdate` for existing customers outright, pointing at a separate dedicated mutation (`customerEmailMarketingConsentUpdate`) instead — confirmed via the actual Shopify error message, not guessed. Fixed and re-verified.
+
+**Live-verified both paths against Shopify directly:** a brand-new signup and a re-signup by an already-existing customer both now show `tags: ["newsletter-signup"]` and `emailMarketingConsent.marketingState: SUBSCRIBED`. Opt-out: the consent field is real and correct, but nothing is actually sending campaigns yet, so there's no live unsubscribe link today — that activates automatically once a real send tool (Shopify Email or a connected ESP) is wired up.
+
+**Next:** nothing outstanding on LB-3. LB-2 (Shopify Payments) remains the one open launch blocker. Full detail: `ISSUES.md` LB-3.
+
+---
+
 ## 2026-08-03 — Pre-launch task 6: newsletter signup fixed, three real bugs deep
 
 **Done:** Checked what the footer newsletter signup was actually wired to, per the task. Found it saves signups as Shopify customers with marketing consent (not a separate Mailchimp/Klaviyo tool — that was the original 2026-05 design). Live-tested and found it completely broken: `{ok:true}` came back every time, but no Shopify customer was ever created — a total silent failure, exactly what CLAUDE.md's stale note had warned about.
