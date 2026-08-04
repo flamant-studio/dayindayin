@@ -64,6 +64,7 @@ export async function POST(request: NextRequest) {
         variables: {
           input: {
             email,
+            tags: ['newsletter-signup'],
             emailMarketingConsent: {
               marketingState: 'SUBSCRIBED',
               marketingOptInLevel: 'SINGLE_OPT_IN',
@@ -87,7 +88,9 @@ export async function POST(request: NextRequest) {
 
   const errors = json.data?.customerCreate?.userErrors ?? []
 
-  // "Email has already been taken" is not a failure — they're already subscribed
+  // "Email has already been taken" means an existing customer (e.g. a past
+  // buyer) — customerCreate can't touch them, so tag + opt them in directly
+  // via a separate call rather than silently doing nothing.
   const alreadyExists = errors.some((e: { message: string }) =>
     e.message.toLowerCase().includes('already been taken')
   )
@@ -96,5 +99,88 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: errors[0].message }, { status: 422 })
   }
 
+  if (alreadyExists) {
+    const ok = await tagAndSubscribeExistingCustomer(token, email)
+    if (!ok) {
+      return Response.json({ error: 'Could not subscribe that address. Try again.' }, { status: 502 })
+    }
+  }
+
   return Response.json({ ok: true })
+}
+
+async function tagAndSubscribeExistingCustomer(token: string, email: string): Promise<boolean> {
+  const findRes = await fetch(`https://${DOMAIN}/admin/api/2025-01/graphql.json`, {
+    method: 'POST',
+    headers: { 'X-Shopify-Access-Token': token, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      // customerByIdentifier takes a plain scalar, not a search-query string
+      // — email is public-endpoint user input, avoid interpolating it into
+      // Shopify's search DSL (customers(query: "email:...")) entirely.
+      query: `
+        query($identifier: CustomerIdentifierInput!) {
+          customerByIdentifier(identifier: $identifier) { id }
+        }
+      `,
+      variables: { identifier: { emailAddress: email } },
+    }),
+    cache: 'no-store',
+  })
+  const findJson = await findRes.json()
+  const customerId = findJson.data?.customerByIdentifier?.id
+  if (!findRes.ok || findJson.errors || !customerId) {
+    console.error('Newsletter signup: could not look up existing customer', JSON.stringify(findJson))
+    return false
+  }
+
+  // tagsAdd is additive — unlike CustomerInput.tags on customerUpdate, it
+  // won't wipe out any tags the customer already has.
+  const tagRes = await fetch(`https://${DOMAIN}/admin/api/2025-01/graphql.json`, {
+    method: 'POST',
+    headers: { 'X-Shopify-Access-Token': token, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+        mutation tagsAdd($id: ID!, $tags: [String!]!) {
+          tagsAdd(id: $id, tags: $tags) {
+            userErrors { field message }
+          }
+        }
+      `,
+      variables: { id: customerId, tags: ['newsletter-signup'] },
+    }),
+    cache: 'no-store',
+  })
+  const tagJson = await tagRes.json()
+  if (!tagRes.ok || tagJson.errors || tagJson.data?.tagsAdd?.userErrors?.length) {
+    console.error('Newsletter signup: tagsAdd failed', JSON.stringify(tagJson))
+    return false
+  }
+
+  const consentRes = await fetch(`https://${DOMAIN}/admin/api/2025-01/graphql.json`, {
+    method: 'POST',
+    headers: { 'X-Shopify-Access-Token': token, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+        mutation customerUpdate($input: CustomerInput!) {
+          customerUpdate(input: $input) {
+            userErrors { field message }
+          }
+        }
+      `,
+      variables: {
+        input: {
+          id: customerId,
+          emailMarketingConsent: { marketingState: 'SUBSCRIBED', marketingOptInLevel: 'SINGLE_OPT_IN' },
+        },
+      },
+    }),
+    cache: 'no-store',
+  })
+  const consentJson = await consentRes.json()
+  if (!consentRes.ok || consentJson.errors || consentJson.data?.customerUpdate?.userErrors?.length) {
+    console.error('Newsletter signup: customerUpdate consent failed', JSON.stringify(consentJson))
+    return false
+  }
+
+  return true
 }
