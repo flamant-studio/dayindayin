@@ -47,3 +47,11 @@ next-env.d.ts
 # public/images/*.jpg uncommit if you want placeholders in repo
 assets/Procreate-batch/
 .claude/
+
+# one-off diagnostic scripts hardcoded to specific incident IDs — not reusable
+scripts/check-canary-state.ts
+scripts/check-gelato-product-detail.ts
+scripts/check-variant-connection-status.ts
+scripts/compare-stuck-variants.ts
+scripts/gelato-err-detail.ts
+scripts/test-canary-fix.ts
