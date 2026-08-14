@@ -2,6 +2,20 @@
 
 ---
 
+## 2026-08-14 — Resolved dayindayin/dayindayin-site duplicate-repo flag, repo cleanup
+
+**Context:** the portfolio auditor had flagged "dayindayin and dayindayin-site are duplicate repos — pick one" for several runs. Cowork investigated: both were clones of the same GitHub repo (`flamant-studio/dayindayin.git`). `dayindayin/` was a stale checkout, 55 commits behind `dayindayin-site`'s `main`, zero unique commits or files. Sebastian approved deleting it plus a cleanup pass on this repo.
+
+**Done, in order:**
+1. Re-verified the ancestry/clean-status proof from the handover, then deleted `~/Documents/FLAMANT/dayindayin/` (1.7GB freed). Recoverable via `git clone` if ever needed.
+2. Reviewed the 22 uncommitted files sitting in this repo (diagnostic scripts + assets from the framed-print variant fix, dad-cap audit, and Gelato `publishing_error` investigation). Committed 13 generic/reusable scripts + 3 SHERO clean-background PNGs + the Cowork handover doc (`8784856`). Gitignored 6 scripts hardcoded to now-resolved incident-specific product IDs (one-off canary/stuck-variant checks, not reusable).
+3. Pruned three stale `.claude/worktrees/agent-*` directories — all parked on old commit `056cf7c` with zero commits main lacked, and every file in their working-tree diffs already existed in an equivalent-or-newer form on `main`. Removed the worktrees and deleted the three orphaned `worktree-agent-*` branches.
+4. Updated `~/Documents/FLAMANT/CLAUDE.md` — removed the `dayindayin/` folder-tree line and its "sister repo" note.
+
+**Not touched:** `dev` branch on origin (320 commits behind `main`, nothing unique) — left for a later pass per the handover. `.env.local` — not read, moved, or copied.
+
+---
+
 ## 2026-08-03 — Newsletter follow-up: tagging + existing-customer opt-in, two more real bugs
 
 **Done:** Sebastian asked directly whether newsletter signups were tagged and whether they could opt out — neither was true/complete. Added a `newsletter-signup` tag on new signups. For emails belonging to existing customers (past buyers), `customerCreate` can't touch them, so added a fallback path.
