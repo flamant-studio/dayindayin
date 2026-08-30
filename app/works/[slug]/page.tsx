@@ -53,6 +53,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   painting: "Painting",
   photography: "Photography",
   mixed: "Mixed Media",
+  handhooking: "Handhooking",
 }
 
 const CATEGORY_MEDIUM: Record<string, string> = {
@@ -61,6 +62,7 @@ const CATEGORY_MEDIUM: Record<string, string> = {
   painting: "Acrylic and oil stick on canvas",
   photography: "Archival inkjet print",
   mixed: "Mixed media",
+  handhooking: "Mixed fibres",
 }
 
 const SERIES_SHOP_FILTERS: Array<{ pattern: RegExp; filter: string; label: string }> = [
@@ -87,6 +89,8 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
   const related = works
     .filter((w) => w.category === work.category && w.slug !== work.slug)
     .slice(0, 3)
+
+  const companion = work.companionSlug ? getWork(work.companionSlug) : undefined
 
   const gallery = work.gallery ?? []
 
@@ -156,10 +160,15 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
               <div className={styles.availability}>
                 <span className={`${styles.availDot} ${work.sold ? styles.availDotSold : ''}`} />
                 <span className={`${styles.availLabel} ${work.sold ? styles.availLabelSold : ''}`}>
-                  {work.sold ? 'Sold — enquire about similar work' : 'Original — price on enquiry'}
+                  {work.availabilityNote ?? (work.sold ? 'Sold — enquire about similar work' : 'Original — price on enquiry')}
                 </span>
               </div>
               <p className={styles.description}>{work.description}</p>
+              {companion && (
+                <p className={styles.note}>
+                  Companion piece: <Link href={`/works/${companion.slug}`}>{companion.title}</Link>
+                </p>
+              )}
               <p className={styles.note}>
                 Prints of Stine&apos;s work are available in the{' '}
                 <Link href={shopHref}>{shopLabel}</Link> from 56 kr.

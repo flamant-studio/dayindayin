@@ -13,6 +13,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   painting: "Painting",
   photography: "Photography",
   mixed: "Mixed Media",
+  handhooking: "Handhooking",
 };
 
 const CATEGORY_FILTERS = [
@@ -22,6 +23,7 @@ const CATEGORY_FILTERS = [
   { key: "painting", label: "Painting" },
   { key: "photography", label: "Photography" },
   { key: "mixed", label: "Mixed Media" },
+  { key: "handhooking", label: "Handhooking" },
 ];
 
 interface PageProps {
@@ -64,6 +66,7 @@ const sections: { id: WorkCategory; label: string; tagline: string }[] = [
   { id: "painting",    label: "Paintings",     tagline: "Acrylic and oil stick on canvas, worked on the studio floor. Layers built up and scraped back over multiple sessions." },
   { id: "photography", label: "Photography",   tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after." },
   { id: "mixed",       label: "Mixed Media",   tagline: "Where the mediums stop staying in their lanes — sewn, painted, woven, and assembled objects that don't fit the other categories." },
+  { id: "handhooking", label: "Handhooking",   tagline: "A separate technique from tufting — worked in mixed fibres." },
 ];
 
 const FEATURED_SLUGS = ['orange-sun', 'fuck-alting', 'universe-3', 'taped-objects'];
@@ -75,7 +78,7 @@ const HIDDEN_SLUGS = ['office-shot'];
 // Seb Livingroom, Long Hair Don't Care. Uses the same tile component as the
 // homepage "Browse by Series" strip (SeriesTile), not a bespoke card.
 const RECENTLY_ADDED_SLUGS = [
-  'yarn', 'smorrebrod', 'bedroom-wall-rug', 'red-on-wood', 'stripes-on-beige', 'green-background',
+  'yarn', 'smorrebrod', 'you-and-i-and-the-universe', 'wallflower', 'stripes-on-beige', 'green-background',
 ];
 
 function ViewToggle({ view, category }: { view: 'list' | 'grid'; category: string }) {

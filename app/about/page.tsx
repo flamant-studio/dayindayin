@@ -310,6 +310,7 @@ export default function AboutPage() {
             { href: '/fine-art?view=grid&category=painting',    label: 'Painting',      count: works.filter(w => w.category === 'painting').length },
             { href: '/fine-art?view=grid&category=photography', label: 'Photography',   count: works.filter(w => w.category === 'photography').length },
             { href: '/fine-art?view=grid&category=mixed',        label: 'Mixed Media',   count: works.filter(w => w.category === 'mixed').length },
+            { href: '/fine-art?view=grid&category=handhooking',  label: 'Handhooking',   count: works.filter(w => w.category === 'handhooking').length },
           ] as const).map(({ href, label, count }) => (
             <Link key={href} href={href} className={styles.mediumLink}>
               <span className={styles.mediumLinkLabel}>{label}</span>
