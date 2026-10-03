@@ -1,0 +1,1409 @@
+[
+ {
+  "id": "be4611e3-5ed5-417d-9f71-f4e2e18aaaba",
+  "title": "Mug — SHERO — Teal",
+  "status": "active",
+  "externalId": "10621186605403",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3bc8af17-c5bb-4b79-9d99-a31be4440afd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0a4e4bad86a58f93f5dcb05ced89295c528e938f7ab84ee2931ef8763926b929"
+ },
+ {
+  "id": "c6a76e5f-21bf-4e66-8065-23869e975e24",
+  "title": "Mug — SHERO — Purple",
+  "status": "active",
+  "externalId": "10621155246427",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3805ed06-20a5-4c6c-afc5-28e2066061c7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dc06f67ec17477263115051e2a119af06129bffdead8d5493bff9262c229ab8e"
+ },
+ {
+  "id": "a92d8a31-eb50-4478-8e78-443eed50993a",
+  "title": "Rabbit Line Art — Water Bottle",
+  "status": "active",
+  "externalId": "10606350270811",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/eface268-6336-463f-a6de-34d8481352d6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=538123d075f5e636cde641c0723963502351b6943ae901119b33f764b51d3507"
+ },
+ {
+  "id": "de69114b-ba8d-4eab-9c6e-92698836d5d1",
+  "title": "Rabbit Line Art — Water Bottle",
+  "status": "created",
+  "externalId": null,
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/369f67aa-dfd8-416a-986a-faa4350f560c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0ed0b97de24db1c82e8942d2b51c796e1efbcbb7dabdbe52393e3bb3734d2505"
+ },
+ {
+  "id": "d800a2ab-a8e6-4ae8-8e30-30d3746d619f",
+  "title": "Rabbit — Tote Bag",
+  "status": "active",
+  "externalId": "10606307279195",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b5c2a535-5902-49ca-8b37-da1a08c0efb7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=06d7a7bb1c13ac13c86e7c685e7b31d00df41b347290b81c61ad2d0566447590"
+ },
+ {
+  "id": "7b37ccc8-6c46-4e54-8f37-cd8e83758886",
+  "title": "Mask — Blasé — Tote Bag",
+  "status": "active",
+  "externalId": "10542331232603",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/06e15641-76fd-4cab-8069-8c534cc52f29/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2ca6395c39d3a70b4ee35380a0a748eae3e1a4a606379d7865ed737c1273f2da"
+ },
+ {
+  "id": "bb21be4a-c7c2-49f9-9dde-c089b8f27892",
+  "title": "SHERO — Indigo — Tote Bag",
+  "status": "active",
+  "externalId": "10542295417179",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c2178cc6-4bed-425b-a346-41ad811d87ed/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8812479a4258c900edb0a659fa9d1cadbce4b38ff7272b352465b3021ee539ee"
+ },
+ {
+  "id": "3da6e74e-5843-4763-a40c-eba28890c839",
+  "title": "Elephant — Yellow — Tote Bag",
+  "status": "active",
+  "externalId": "10542176895323",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a29ce7d7-02c3-486c-b3d7-dcc2a4f88f97/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=473ec973ae086ad04b6b8bca5fe41ba7ea84c8c9eb1843f53a66d3b92ec156d7"
+ },
+ {
+  "id": "0f3d7e7f-cf43-44ea-8924-ca67de665760",
+  "title": "SHERO — Purple — Tote Bag",
+  "status": "active",
+  "externalId": "10542025507163",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/912b86d9-cc45-46c7-aae8-02e2d29548b7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c0625544ae52766824a6e4e2858eb8e06a289e3b8a0a76410d64ceabe24b2cf3"
+ },
+ {
+  "id": "c4bb0d52-0e11-4a50-ab05-152f4edfdc62",
+  "title": "Neko Paw — Yellow & Blue — Tote Bag",
+  "status": "active",
+  "externalId": "10542271660379",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/42825fe6-e61a-4e0b-bcec-41c46d3e6d36/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6986e4ab29513619f565abaf16b63f7ecad0840673c39b4e14a2fb84e18c5298"
+ },
+ {
+  "id": "879c65e5-45bb-486c-8ef2-caffedecd50b",
+  "title": "Neko Paw — Yellow II — Tote Bag",
+  "status": "active",
+  "externalId": "10542260781403",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b2457a4-e8a6-4458-958b-b30636b6ee68/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b10895773fc96089aaab65aec00634b51e470d4fbe59079094ff70127f04dac9"
+ },
+ {
+  "id": "29fc1834-c909-40fb-b1ff-d0223c470667",
+  "title": "Neko Paw — Lilac — Tote Bag",
+  "status": "active",
+  "externalId": "10542180565339",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/11521168-23af-404f-86ca-cb6fc574b946/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=25ce79c278250ed49c32ce0d3c57a85b49c338fc7c1f2e79d9b7c249fc6562fa"
+ },
+ {
+  "id": "deef15bb-98a8-463f-85c0-81836d65e479",
+  "title": "Mask — Conformist — Tote Bag",
+  "status": "active",
+  "externalId": "10542101070171",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/255fd812-f059-42a6-abcc-e97b8e64b9a9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0743070fd00830d1a059406f5324e08b8b4f50a134ef58b4ce274fa3a1553823"
+ },
+ {
+  "id": "ee404b11-cb31-45b1-b5bb-2be265bccb30",
+  "title": "Neko Paw — Yellow Neon — Tote Bag",
+  "status": "active",
+  "externalId": "10542176797019",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2ec342cc-2234-4d33-948b-f47c40f4d1c3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=eccd037fc0f5ac4e46eaa17697756d207d6350eb09989a35d4e7288f0207ddbb"
+ },
+ {
+  "id": "ceddd318-5358-49b1-a06c-b4e5faaa6fca",
+  "title": "Neko Paw — Yellow — Tote Bag",
+  "status": "active",
+  "externalId": "10541951451483",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9d2f4f38-eb2a-41db-b86b-45b1513671e6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=33810e7685fc5164a1b569201b262c610ba3eefd6570328f5c5d7e00dfa7d64c"
+ },
+ {
+  "id": "2c3ac9cc-fa08-4009-bc56-3ada68f2d459",
+  "title": "Elephant — Red — Tote Bag",
+  "status": "active",
+  "externalId": "10542249705819",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f1df227b-3b15-4a08-a29d-152ec0c26396/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=72ac6df6e06edd4aba3fc65e8b13360849076617e4aab350f26902203c0b3985"
+ },
+ {
+  "id": "bb4d70f8-2ff2-4b3a-9785-259f5175eadb",
+  "title": "Elephant — Lilac — Tote Bag",
+  "status": "active",
+  "externalId": "10541503775067",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ad8a1e1e-4938-468e-9b98-15c662293307/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3a1d4e544360417becb877214d6877b87ce414fb04d512affc426723b9bf3597"
+ },
+ {
+  "id": "9ca69b57-cf38-4043-b5ee-85ec2a4439d0",
+  "title": "SHERO — III — Tote Bag",
+  "status": "active",
+  "externalId": "10542291911003",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e5833285-4b50-4916-a264-e1f125374aaa/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9ba36a008935af84dc83c49d207dff95590f7658437861cb7afa6248b6077e25"
+ },
+ {
+  "id": "5f39b97d-2d1f-4fb6-be09-f7be0a92f2a6",
+  "title": "Neko Paw — Blue — Tote Bag",
+  "status": "active",
+  "externalId": "10541887488347",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3d80933c-d6de-4f2d-bd11-4a8d4ec5aa51/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f19476e79580f033d62f9dbf3d374ba63448e34b2ef5e0a91f292582734dfdd9"
+ },
+ {
+  "id": "6e69d52b-eaba-46b4-8cfa-480cb07e5470",
+  "title": "Mask — Calling — Tote Bag",
+  "status": "active",
+  "externalId": "10542332248411",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9ec8262a-2330-4582-aa8d-6e75a2386aa6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8018e3e366b64c33cda31bc7b6f499dda9795242c9a95caf6290867a3d99c048"
+ },
+ {
+  "id": "1cba6893-2ec1-4544-b507-16c288dd5dd7",
+  "title": "Elephant — Green — Tote Bag",
+  "status": "active",
+  "externalId": "10542330544475",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b6fdd195-ce19-4163-a06b-2c9fa60304a3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3df8b97fe6971683d792a7b11016bda034be8e50377a1850a10935f453d17898"
+ },
+ {
+  "id": "7aee9d50-80a7-40ca-a0c4-3fa0f34caa95",
+  "title": "Neko Paw — Red — Tote Bag",
+  "status": "active",
+  "externalId": "10542003323227",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/db224be5-da50-4e8e-a971-b76c3d98f138/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d0d2e2f87bc6c530785cb93b15112b9765cf2bcf4818b51c7c09e9d627a3a81c"
+ },
+ {
+  "id": "8c49147f-83ed-4488-b70b-a4ee2cfec6a9",
+  "title": "Floral Thing — Framed Print",
+  "status": "active",
+  "externalId": "10541196509531",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/bb8b0187-8644-4070-aa25-5616b4a39947/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1cecdbf639d7221cd1812bd95eb4abbd4275a267732c40e5d277bdd80263ecf4"
+ },
+ {
+  "id": "50cb23f1-a9ca-476a-bc32-004c0cadaf54",
+  "title": "Elephant — Lilac — Framed Print",
+  "status": "active",
+  "externalId": "10541911605595",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/320076f4-dd80-4afc-90a1-cedf3b3a04d8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=90627d19cebbb498d9e322e8ff9794c84ed581698fdb4d2c3a6941031093d169"
+ },
+ {
+  "id": "db6ad89d-08a4-4ef4-be13-313e847b3272",
+  "title": "Elephant — Green — Framed Print",
+  "status": "active",
+  "externalId": "10542290764123",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5a92849c-2273-4b12-898d-d6a0b2192bba/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=962f9bb87dbf8e1c49ff1cc2c22e1f8bcf5cd3102d3249ba83f6cdba887db4f1"
+ },
+ {
+  "id": "aaaabb78-192b-4e14-a5c0-83ad6fb0b9b4",
+  "title": "Purple Sun — Framed Print",
+  "status": "active",
+  "externalId": "10542233420123",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9d686181-22b0-4489-b76a-ed1ed3b4e3e7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2066627a65aa2ea2f44e54ef133648d1b9d89b3a6f342f771d50a5a134d25166"
+ },
+ {
+  "id": "b5789a72-64c0-47aa-87d6-84f2481907b0",
+  "title": "Elsk — Framed Print",
+  "status": "active",
+  "externalId": "10542333362523",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/aebd262e-5281-45bd-9a14-3d8e8b444267/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a7e714361eb72fb46772813718186b16012a25afdd1f0cf7480a31e5449433e9"
+ },
+ {
+  "id": "f7bb9c47-8d27-473a-b6f2-9ef579aff3fe",
+  "title": "Flowers on Linen — Framed Print",
+  "status": "active",
+  "externalId": "10542331461979",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c45a3a3b-b31c-43da-98d7-4a477e778ecb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6e82961b606e55bf1b5f7c75a660fd0b8fea771a9484c8508d406e453bb36b6f"
+ },
+ {
+  "id": "e4928b7d-6db9-4b1a-89dc-f200b77f321f",
+  "title": "Rainbow II — Framed Print",
+  "status": "active",
+  "externalId": "10542329594203",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/483e22cf-b848-4e1b-87b9-8baf723402e2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d4a88c7c78729964167b4969cdacf8499b0bd1a1281d6c8ec6b77e7394a1c9c7"
+ },
+ {
+  "id": "c68a5f09-9277-4ca1-b6ab-25b98fc6e233",
+  "title": "Elephant — Yellow — Framed Print",
+  "status": "active",
+  "externalId": "10541917536603",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/bd94a7c7-07fe-4714-b236-c0e36cbb6c06/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4ccfba55ed6855b489aeec074f1a72cf0e812d4395b5bd3d9c61cf3c67c712a8"
+ },
+ {
+  "id": "57054b10-d8f7-4952-819c-20539a73e712",
+  "title": "Elephants — 4x4 — Framed Print",
+  "status": "active",
+  "externalId": "10542326022491",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/bc0fbd72-2369-42b2-a0bb-90fedc86b43e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=80f932b3f36c661ad1aa1725bae2303e75693edf0c4452f7a5b2fbf42d55790c"
+ },
+ {
+  "id": "57b9f915-69e2-4521-b111-91894b987987",
+  "title": "Taped Objects — Framed Print",
+  "status": "active",
+  "externalId": "10541201523035",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/affd0ac0-d291-4e4b-921b-32b0dbccfd5e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=02c49021215a3617c789c534518f3d3205215fddec8b1c9c2f4f6c5cd12a9c5f"
+ },
+ {
+  "id": "70684049-7cc3-44a4-9988-f41325fae98e",
+  "title": "Two Cats — Framed Print",
+  "status": "active",
+  "externalId": "10541791215963",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1673c296-28ca-421f-b992-7e9ed4b9156a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7ba1a4f1136554ebf7e9436937357996e485b595381b58a3cd6b97508a2b5e19"
+ },
+ {
+  "id": "772ba750-b647-406e-9bea-a54c5640542a",
+  "title": "Mask — Conformist — Tank Top",
+  "status": "active",
+  "externalId": "10541909508443",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/05aab012-c623-4325-a0b0-900153e000e6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cacaaf4b0db76d2d220b710616613031ca28c17bc430c59e0deca6957c36ee83"
+ },
+ {
+  "id": "d3f294a4-3434-45d7-8964-7455e6408dae",
+  "title": "Neko Paw — Red — Tank Top",
+  "status": "active",
+  "externalId": "10542255931739",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/13ff5294-2be7-436a-8633-8636b754949e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=600fc06b3a750cf47972bad687d4a9240ffb01fefa7bb45b887850bdb97a1d30"
+ },
+ {
+  "id": "258a3255-aebe-4754-a308-b08a8a0d6f67",
+  "title": "SHERO — III — Tank Top",
+  "status": "active",
+  "externalId": "10541708411227",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/02d228a3-116f-4959-a187-fcf57c0fb395/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8624da49b0bdd851629d4626bf295c4d9d90c042f813667a7ad4f795c0887ac9"
+ },
+ {
+  "id": "8ad7db7f-191c-4413-8585-12c00ae65f0f",
+  "title": "Neko Paw — Yellow II — Tank Top",
+  "status": "active",
+  "externalId": "10542178828635",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/73219061-db11-41b7-ae60-59fb6eb072c4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=52ee77ee5c1ddc9d6e197c22130b1a9e9c83aa568a907b53301a3e62932b3613"
+ },
+ {
+  "id": "f5a731c8-77f8-4351-8563-116d91c88ef1",
+  "title": "Elephant — Red — Tank Top",
+  "status": "active",
+  "externalId": "10542226473307",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a71d10ef-bd60-4440-9705-88f2c24dc387/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c8a9f0c4d8cb80456d2885e5b0b07896f6c411dd5fb185fb77b71f4e59539b4b"
+ },
+ {
+  "id": "e86efb4c-9718-43a6-8103-0e64719a85ad",
+  "title": "Neko Paw — Lilac — Tank Top",
+  "status": "active",
+  "externalId": "10541390561627",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4e38553d-4e20-4c6d-ab53-46e00f2d1633/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4ea868cf177a2220db9314de122a624762e4203fe5e5df2470e35eaa7f5790ba"
+ },
+ {
+  "id": "a93ec473-1156-4fda-ae93-b8087f4ec8f0",
+  "title": "SHERO — Indigo — Tank Top",
+  "status": "active",
+  "externalId": "10541297008987",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f6403fc3-e7a5-4099-a9fa-3735ccfe617f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9a91f9a15b7ac477cdaaa3885dd7bed7a5861afc647b5ad1546858288838a2dc"
+ },
+ {
+  "id": "994082ae-86e9-43f1-a8ad-c2c5725924b7",
+  "title": "Neko — Pink — Tank Top",
+  "status": "active",
+  "externalId": "10541118161243",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/bf3242a0-61bd-41ad-a98f-e1f9ab03dcbd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a403c2fe45360c9aee60a3f1b348f621430d91dc24e85538e233685e5cfa5006"
+ },
+ {
+  "id": "033a2aa0-a7b6-4266-9580-18cb2226f598",
+  "title": "Tank Top – Neko Paw — Black & White",
+  "status": "active",
+  "externalId": "10542331429211",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e80534fc-63b8-47e9-9008-029c077a5b40/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e0f39fe990805beabe47184e30965987f701921f2c86a3450ffc3c0b4bf823ba"
+ },
+ {
+  "id": "844e085e-2458-481a-a73e-fad125839ec9",
+  "title": "Neko Paw — Blue — Tank Top",
+  "status": "active",
+  "externalId": "10542259962203",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fd2727b5-27e7-4db5-b45f-5192613e2d2e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=15efee16ba83d9543d853f992b66f88b3ddd3b0de978955b603c876d2c8c42e1"
+ },
+ {
+  "id": "ed060630-a833-48fe-afb1-016aec6ee04a",
+  "title": "SHERO — Purple — Tank Top",
+  "status": "active",
+  "externalId": "10541064847707",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c6851e95-8885-485a-89b3-6cc18020e00a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ce8f328a8e281cdb4ddced804091c1dd0c2c7a9ffb17ec44af3420503fc45adb"
+ },
+ {
+  "id": "a9b27adc-fa49-412c-831b-16c03e179d2b",
+  "title": "Elephant — Yellow — Tank Top",
+  "status": "active",
+  "externalId": "10542319370587",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/60223a46-b3b4-4ade-b2c5-138f8dbc4361/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4cb506468d7ed71b07598b79edbec57096fa849a2f3426ef23d023b57243cbce"
+ },
+ {
+  "id": "e6714090-7230-41a6-88f2-ed989c85413d",
+  "title": "Mask — Blasé — Tank Top",
+  "status": "active",
+  "externalId": "10541776011611",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f0c0e494-68a5-4134-8af2-1fcb4b9137c8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bad72d41ef0c6c3026ab1bb55d2ffb7d3dd607f97dcd79ed4040495860a705ef"
+ },
+ {
+  "id": "4c43c1dd-5fae-4902-bb45-c07e0fa65d69",
+  "title": "Elephant — Green — Tank Top",
+  "status": "active",
+  "externalId": "10542249574747",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e45ef534-9d94-4f8f-a741-f45cb9b80579/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7b6c55085f0d9b3bc0af3b9e3313c4d29659d219462aba9bb09b4a2cfac9edbf"
+ },
+ {
+  "id": "c68bcce1-d99b-4b4f-9328-79846ca6025b",
+  "title": "Mask — II — Framed Print",
+  "status": "active",
+  "externalId": "10542334935387",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a2d1cd71-6472-4451-a9b2-7d462a88451e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5234b9430ec6ac844a2846cb9860eef355cb39dcc13bf8590033a52a41afb103"
+ },
+ {
+  "id": "d7f25401-832c-461a-a506-586480e1d81a",
+  "title": "Neko Paw — Yellow & Blue — Framed Print",
+  "status": "active",
+  "externalId": "10541297271131",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/71f35350-5221-4b5a-b709-9574dc53dd21/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d35b7bfd84d6f2ac424467601278704a7bd1042b18de747e7cad6efc256d05a3"
+ },
+ {
+  "id": "c0a21fc3-9551-4b03-9d5a-300d840b004b",
+  "title": "Mask — I — Framed Print",
+  "status": "active",
+  "externalId": "10541726302555",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8fd72881-6432-4b5e-9aa6-9e2669b240dc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=17129777051e36910a72faa2133967705f8945963c74fc64801c6de26675440b"
+ },
+ {
+  "id": "20d8520b-cfd3-43de-a4e0-2165316cdccd",
+  "title": "Sommerby — Framed Print",
+  "status": "active",
+  "externalId": "10541791019355",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d5632a1b-92dd-4fd2-b1a8-d30e385bdbcb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195149Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9b7e3ed43fe56729d248984fb4ea51bf686ed8cf7a0f35103307167ecd26dcb5"
+ },
+ {
+  "id": "ca357377-590b-49ab-90fc-b7c80a4c0c06",
+  "title": "Mask — Calling — Framed Print",
+  "status": "active",
+  "externalId": "10540997968219",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1176d1a9-6b77-4888-878f-f1cf9e0fd787/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=99e923517d51de27c1290ee9f2cc8783fbe7d81e54635b306484ef15fe2b504c"
+ },
+ {
+  "id": "b6060db4-2a7f-4b8d-93c1-2e543af11003",
+  "title": "Neko Paw — Yellow Neon — Framed Print",
+  "status": "active",
+  "externalId": "10541342228827",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a8a66f2e-8772-4e7f-bfbe-a190fb884b2c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=93b8b615e4d8cef747f7cff3a9208f9c7c7c93155adc9ad6c285a338bb8d0f85"
+ },
+ {
+  "id": "51bb5f2f-caca-4043-8db2-f4c45fd69cb1",
+  "title": "Neko Human II — Framed Print",
+  "status": "active",
+  "externalId": "10541701300571",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0041ce53-216f-4a81-a76f-17aa2523a8e1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=19225e719034ed3d39a38560c0a6b77409d51352db143741c0e8a5f99346c345"
+ },
+ {
+  "id": "0fce5c9e-6ebd-4ba4-a6b3-135c3c5834f6",
+  "title": "Neko Paw — Pink — Framed Print",
+  "status": "active",
+  "externalId": "10541159350619",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2b4beca3-31ac-40b4-a6d6-55a2cbd5a06d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1c47988c72597c7c713119208fc481944ac44726adfb12708fb303b0a5fd4c4"
+ },
+ {
+  "id": "61169ab9-55e2-4e71-9d6a-0c3867e6de4f",
+  "title": "Mask — Blasé — Framed Print",
+  "status": "active",
+  "externalId": "10541161087323",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/61d72b94-0b06-48c7-87cb-f769e15ccbed/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f81d95646e4585a4bd8d6ee08b5b59332892c56a5ad8a35cb85a84345e69a541"
+ },
+ {
+  "id": "5cc14be4-a551-4385-beac-20b13309bc9c",
+  "title": "Solar Face — Framed Print",
+  "status": "active",
+  "externalId": "10541078184283",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d9dad550-8c33-4e3b-9096-e71386f37b42/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1a5d132f68769b58cb6cd36724c4435ab700fe7983b2ab0526a2429367ed3a40"
+ },
+ {
+  "id": "cc7951ce-a534-4e15-a935-800d0a0e7bc6",
+  "title": "Moon Face — Framed Print",
+  "status": "active",
+  "externalId": "10540994691419",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/901909af-b8ff-4d3a-8987-70c980d22e19/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dca116292c30ae519afedb726c746a490990d42ebcbee195f1d4372aabf91247"
+ },
+ {
+  "id": "41324100-5823-4095-901d-e175651d3df7",
+  "title": "Mask — III — Framed Print",
+  "status": "active",
+  "externalId": "10540993806683",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a2fc7e73-566c-4c40-a146-768db1542136/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f4529c429cd4eb4d32795866e862529620d367637316341f209efd60a5d2b22e"
+ },
+ {
+  "id": "4272d2aa-3c62-431f-9bf0-0e4d71263038",
+  "title": "Candy I — Fine Art Print",
+  "status": "active",
+  "externalId": "10540976767323",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3ff4dfb3-1319-4be0-8daa-ea1c0d02d20c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fba795b72d3183d3491e51f89969c471ca5b7365f786e4d2cf8a3de44304e246"
+ },
+ {
+  "id": "606e142c-c753-42d5-8b36-22b29a300ae4",
+  "title": "Tourism — IV — Fine Art Print",
+  "status": "active",
+  "externalId": "10540973326683",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ecfb2d3d-d22c-4662-a97a-48aa9414c5a7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ec5df3b52d5d83d0c663840ce66e92af878d8a5e732ef4339b12d7d06a711114"
+ },
+ {
+  "id": "cfed304d-8ff2-4faa-9528-bd16d5e13a93",
+  "title": "Sri Lanka Masks — Fine Art Print",
+  "status": "active",
+  "externalId": "10541413925211",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b6d92c4-d9f8-404c-aa70-b633502e8b6c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ae85f8175e6dd994aad51e01916267051020c8cad35cc26f792d48840cb39c79"
+ },
+ {
+  "id": "7e2a04c7-26c1-4bc7-8e65-f974f02497e8",
+  "title": "SHERO — III — Fine Art Print",
+  "status": "active",
+  "externalId": "10541378699611",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/47d66819-eecd-4152-ab2a-d22d34607421/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1e714a6cfd20b6db3a39ef73eae4e95d715a2cc81f1df860efaf286d4f72e008"
+ },
+ {
+  "id": "4e7a2868-5c75-4b25-a219-9cd3d7ecbf92",
+  "title": "No Ordinary Stone — Fine Art Print",
+  "status": "active",
+  "externalId": "10541359366491",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8553e878-ac1a-46fd-96b4-08ac7c9e65a7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bdaf0393e05633525f54c8489a0980128761cd8ddcff4fd3d9be1d897309673e"
+ },
+ {
+  "id": "4cf6abe4-d0ef-4c65-955e-e76185eda270",
+  "title": "Round Earth — Fine Art Print",
+  "status": "active",
+  "externalId": "10541365461339",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/043f2ba5-9dc1-4db7-9d9f-06e7d07c2e65/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=af3d46fa0181bae6fdffdb1aa3b95b4168d50d9b653add88bdeb9aa7f4c3f5d5"
+ },
+ {
+  "id": "28311926-6c35-45e7-9d96-5e83d8383093",
+  "title": "SHERO — Indigo — Fine Art Print",
+  "status": "active",
+  "externalId": "10541288325467",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0929bd1e-86d5-4642-bd23-a2af6dcf49ce/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1bef0130fc97e94c7fd7e5501fc9bdc513c583edeba50932d877cd9a68d6211"
+ },
+ {
+  "id": "099d0f3a-3e13-4762-ae44-064dccbd2570",
+  "title": "Vase on Stool — Fine Art Print",
+  "status": "active",
+  "externalId": "10541347275099",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9681d438-aeaa-4fe8-ae9a-a1707c571ee9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ed207df0f43e6bb82f9d60803f4cd51995f91ab9302dc7467a0a596965733465"
+ },
+ {
+  "id": "de374598-efc7-4fbb-9730-20d01f0b844e",
+  "title": "Tourism — I — Fine Art Print",
+  "status": "active",
+  "externalId": "10541173997915",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ebf79477-1fb1-48d0-8cd2-3aaf09016e72/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=96c952e4fe21b1124a0dfc2ad86a382252ef1dd9564c9da38ecb8f54307bbfe3"
+ },
+ {
+  "id": "e430c923-7401-4f72-981a-5754730baec1",
+  "title": "Tourism — III — Fine Art Print",
+  "status": "active",
+  "externalId": "10541166133595",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c5550498-b67e-45bf-9df1-fe113cf8ff6e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fae1f8ce32496ad81e5c42fae562ce4f0560b4f4db297ec169ae4a1a9d84e955"
+ },
+ {
+  "id": "0ac2b9ae-e7a7-4014-b2a5-87f1e5be6636",
+  "title": "Elsk — Fine Art Print",
+  "status": "active",
+  "externalId": "10541119045979",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f58773d1-9cae-4154-aa6c-f7be91e2ed9a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=508277dfb8193ff69d19de0444027529404909bee7c773de1c8cb890a3044d0b"
+ },
+ {
+  "id": "38ecf101-ae26-491a-b8eb-1a0fbe578a4c",
+  "title": "Purple Flower — Fine Art Print",
+  "status": "active",
+  "externalId": "10541141754203",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/07cea6f9-6702-4078-9223-59f32fe40bcb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b3ed50bcf2762b345d30f19437dc88eaebdea65a243041e064fc971ed4147976"
+ },
+ {
+  "id": "a944b721-5e3c-42a0-ad3b-9d53cbadb9f0",
+  "title": "Floral Thing — Fine Art Print",
+  "status": "active",
+  "externalId": "10541152108891",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6594e8a6-09bd-4092-bc33-7532661fb809/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=804081bea9831c20a531ab1e5ba019ab0ffef88e1247a489c2224153f0e805a1"
+ },
+ {
+  "id": "2b5a597e-62b9-4b95-b25d-656353e9420d",
+  "title": "Flowers on Linen — Fine Art Print",
+  "status": "active",
+  "externalId": "10542304493915",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/812491d2-29d6-405b-bc0e-440fc27ede41/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=adb6de30942abe799d35a45f3d8da2e86d1d5b62cb5cbbd71345b8b64b41b0cb"
+ },
+ {
+  "id": "61076ae2-1fe6-4129-85e0-31eb088afab2",
+  "title": "SHERO — Purple — Fine Art Print",
+  "status": "active",
+  "externalId": "10541145424219",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b5bd957d-c8d2-44f7-a916-9a6f411811cf/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a3d553b7d0580bd27bbaada5b31b09aa5aaf743fc76f08cb05eea7886dea82f3"
+ },
+ {
+  "id": "e0a56ad0-829e-46cc-89b4-28d354f380ce",
+  "title": "Mask Study — Fine Art Print",
+  "status": "active",
+  "externalId": "10541079429467",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/70f482ef-0abd-4934-89b4-0ee0f8f498e5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=006cb06ab4124a0d73a0ca725f37d977a3e38c9778e0a0f2c7954ee2b3819842"
+ },
+ {
+  "id": "6358ac9f-c145-4532-845b-134f62f68608",
+  "title": "Two Cats — Fine Art Print",
+  "status": "active",
+  "externalId": "10542320025947",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3a9912f9-5664-487f-8ce1-1c74bb05f515/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4f4281d4655f91fd63553d3eff1bb6af84b7f371f1c26be22cfecc6abe5126dd"
+ },
+ {
+  "id": "504f3acd-d1f1-4995-8cb1-00bb34bc6d0a",
+  "title": "Sea Monsters — Blue — Fine Art Print",
+  "status": "active",
+  "externalId": "10542259503451",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/cf8989a3-cc59-468d-b223-1de4970480fe/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1ac195514c283ccc4c137f7f3a4c4073c3d6855c4382a54ec4316b26411fac71"
+ },
+ {
+  "id": "1ed2495b-fe80-49d6-bd4f-4c56540be3f8",
+  "title": "Purple Sun — Fine Art Print",
+  "status": "active",
+  "externalId": "10542290436443",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8e9f8505-ff04-4598-af49-8ae941ff9786/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=80498c239a7f5305ed05457b745eab51fe38f49b1f64aabd04ac6dc5839a5a39"
+ },
+ {
+  "id": "be1902c1-09b2-4dfa-beed-4a6a8ee9c8a7",
+  "title": "Mask — I — Poster",
+  "status": "active",
+  "externalId": "10541115769179",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/69d3286b-138f-4884-9fa0-45dcb10ad15d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=300d01f1eb078d3276bbffe769e1ae3d9789fadb26edb534b1e07904e83ad69d"
+ },
+ {
+  "id": "f37f3311-7bee-4021-a51c-99e16793a2c3",
+  "title": "Mask — II — Poster",
+  "status": "active",
+  "externalId": "10541066191195",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0253c584-b093-4f99-a3b8-3340f1ada6a0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6e3aebbeed1712956760d181ce5a1c1ac8ecc53dca70ab427c3bbe6d88613be0"
+ },
+ {
+  "id": "60e60da1-8560-479e-bbd6-136de8135d98",
+  "title": "Neko Paw — Yellow — Poster",
+  "status": "active",
+  "externalId": "10540995248475",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0625a764-173e-42ee-aabf-8590e7d634de/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=539938c872263f4fe2d45b0c25693f7c9715ec61edd1caac5477e699c9bd48c7"
+ },
+ {
+  "id": "9cd7a065-4cd4-49ef-99e1-6d73ffc89b6c",
+  "title": "Mask — Dream — Poster",
+  "status": "active",
+  "externalId": "10540963201371",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f1117a82-e381-4d5f-a362-377ca497c736/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4d3c662092b54e86832fa5738fcad3936905a56de25559657adb13d8c56d2eac"
+ },
+ {
+  "id": "8ffe36b1-82a0-486a-9b79-77a532df9d16",
+  "title": "Neko Paw — Pink — Poster",
+  "status": "active",
+  "externalId": "10542295810395",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/95bcec33-c313-4177-a9ed-d215ecb92e24/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=237d137be6c544d2563e0b98d796d4ade2a6450d5ee0041c7ca00ae3f3d0b055"
+ },
+ {
+  "id": "72cc457a-2e57-4e89-8f5c-8f1111e8b891",
+  "title": "Sommerby — Poster",
+  "status": "active",
+  "externalId": "10541910786395",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/04e2a4e0-b87d-4058-9368-78a817c73548/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=5ff4c4d6fc5ad49cd6f54f6dcc3629b30a7b48bb1c6467d2d6841990f6687bf4"
+ },
+ {
+  "id": "19e92200-ca0f-4a35-9f1a-f5231c057018",
+  "title": "Neko — Pink — Poster",
+  "status": "active",
+  "externalId": "10542317994331",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b53c9bc-76c6-4ff1-a12d-131bf4f6100f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bc72abceb562f6f50d09d5d5e093cf8f88ddd048776a5f2fb6194abe723dd16e"
+ },
+ {
+  "id": "6a1a84ab-29d2-4f56-9be0-b04ae82ab2e8",
+  "title": "Solar Face — Poster",
+  "status": "active",
+  "externalId": "10540994429275",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/73cd5bd3-ab50-4220-92a8-04a7460b6a74/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fdba147dd1f8870075372967a8abedf637e3ffa2817f34a1a174277fa15f92ab"
+ },
+ {
+  "id": "61d1b77d-3bba-4427-9d5f-8b07f8606ef6",
+  "title": "Neko Human II — Poster",
+  "status": "active",
+  "externalId": "10541873201499",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c582605f-18b6-4e4e-bb60-b8d3d1cd5550/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=210cb2b9d69109d004a263f69a70629dc2ec22376583ff77edd89f84e9571a97"
+ },
+ {
+  "id": "d96100e4-be1d-4cbf-8e98-d0405e2fb59f",
+  "title": "Neko Paw — Yellow & Blue — Poster",
+  "status": "active",
+  "externalId": "10542232764763",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2b9d6f16-181f-4db0-948d-108d950530e8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fccdf8b39ac5cc1e5f66adf4dd07b3d9e1d4024ead28ffcf89dd743fc707be5f"
+ },
+ {
+  "id": "55944d20-49c8-4f0b-8657-e5fde5218754",
+  "title": "Moon Face — Poster",
+  "status": "active",
+  "externalId": "10540956057947",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c5a15833-8489-44c3-92a8-a7c6e914804b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0fc48d0618da6f4ee36a72e6464bc709158a283baaad1df749c83388eabb1219"
+ },
+ {
+  "id": "2929ea78-c804-4dcc-99f6-ab98117d5ae9",
+  "title": "Neko Paw — Lilac — Poster",
+  "status": "active",
+  "externalId": "10542275952987",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b32e27c9-31e0-4e93-ae25-feb6c310b523/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=de546846cec076cbe71b9acd1462e7735eb1f196e03509a7685b34b094bb9538"
+ },
+ {
+  "id": "b379ec3c-2995-445a-acfa-dee433424284",
+  "title": "Neko Paw — Yellow Neon — Poster",
+  "status": "active",
+  "externalId": "10541837549915",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4e286f72-52ea-44cd-be7b-3c575ecd101e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f3c78fdfc1154eb8e98e00c81781e74a646ee36d608acb77d79001d4364deed4"
+ },
+ {
+  "id": "15927172-6166-430c-8e13-14073e6247b0",
+  "title": "Mask — III — Poster",
+  "status": "active",
+  "externalId": "10542270808411",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/40b9df67-df16-4273-a403-8d345b51e786/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7353c5b623855228eb72fcdcb8c7f9847799db142bc86e96b2ca133e369a71ab"
+ },
+ {
+  "id": "b49e40a7-ce66-4e1f-b290-340ac611005a",
+  "title": "Neko Paw — Yellow II — Poster",
+  "status": "active",
+  "externalId": "10540986827099",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3fe07947-3627-4d88-83c7-293b88e77f82/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c4fc30efa891cfc613384b4655fc8ca9db3d4f63383807c905d522d623aa75e3"
+ },
+ {
+  "id": "4acca059-a191-428b-ae67-1dc148f3c9eb",
+  "title": "Sea Monsters — Steel — Poster",
+  "status": "active",
+  "externalId": "10542228504923",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b7b645d6-f745-40f9-9cce-7981a23dba0a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2f92d28ec685196a326978505ca068d41f371e6fbae3ab500ac1cbffdd35d2ed"
+ },
+ {
+  "id": "7b99e3d2-1241-476f-ad00-1435895fa3cc",
+  "title": "Neko Paw — Red — Poster",
+  "status": "active",
+  "externalId": "10540962971995",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/45646309-94b3-4dd0-af0f-ab031c548ff5/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4b37983813ceebb6f0ad05b536e901d6271e8247b2c0eefe6ee3be6a361c9ade"
+ },
+ {
+  "id": "f6e22b69-9fe9-4e11-9bc0-ce21f7955c89",
+  "title": "Mask — Blasé — Poster",
+  "status": "active",
+  "externalId": "10540962709851",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/333a4b12-98d7-4072-9869-164995e04866/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b9be66f0d851ced3fbb5f1507626546d9b3ceecfff79ca3ab6724e0b5cf7ecb1"
+ },
+ {
+  "id": "16b82b18-d04e-47ed-be5a-07fc312f98a3",
+  "title": "Mask — Calling — Poster",
+  "status": "active",
+  "externalId": "10540978209115",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5ad4af83-4439-41f8-a4a3-d492b71579bd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=682f584e6ec7024f22d91c752088e9bb29f1eec03ba46f15c13c8b0247b78784"
+ },
+ {
+  "id": "d589bd41-d1a0-4ff9-af4e-cd8080bcf879",
+  "title": "Tourism — II — Poster",
+  "status": "active",
+  "externalId": "10540962480475",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a5f3635b-3b76-4d44-831a-2c7b109feb94/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e6ea078a2f29ef8cc9bd7bae66fe44fc7f2c018fd20faaf1b02751c8b38501b1"
+ },
+ {
+  "id": "b6b6b51b-35e5-4a42-b252-9abff107761d",
+  "title": "SHERO — Purple — Greeting Card",
+  "status": "active",
+  "externalId": "10541410812251",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a53228d9-ab89-49db-953f-6760cf95042f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9874e0fb4c88d3ab36f402cd4bb24823aa549949f3fa383773398791ce9fc3ea"
+ },
+ {
+  "id": "f621fd7e-3f7e-4f6e-b179-c1deef086a1d",
+  "title": "SHERO — Indigo — Greeting Card",
+  "status": "active",
+  "externalId": "10542181482843",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5b2d880c-ae99-4fa4-9d97-ff759b46196f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1c2d5195e275331c36705f02835656347cb2fe905711255f7a6fda816fef078e"
+ },
+ {
+  "id": "9c919f28-c3d6-4032-b952-ca3401bbc383",
+  "title": "Elsk — Greeting Card",
+  "status": "active",
+  "externalId": "10541725221211",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30ecd690-3621-4ddc-985a-98b169e3fb68/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6fd02c6ea15a55576cf5d029dccbb7754bd828ec63a1f24c30ea5bfb69bb1239"
+ },
+ {
+  "id": "8539ad93-2919-4318-86ef-efa190957f1b",
+  "title": "SHERO — III — Greeting Card",
+  "status": "active",
+  "externalId": "10542020788571",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/465ca9f0-805a-40ca-865c-609e4a824289/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=683b44ce49ac8a08ed350fa70a5b00231908c07313c8919accd9d057bc04a044"
+ },
+ {
+  "id": "16a2eaac-5917-4003-a9dc-c68dd12f386a",
+  "title": "Elephant — Yellow — Greeting Card",
+  "status": "active",
+  "externalId": "10542034452827",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/89fb45f9-18a5-445f-b096-ca437ba27d1b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b6df9d901c9fced84011fa127c9337328ae515351ba5e083bedd46fd674e22d6"
+ },
+ {
+  "id": "c0bfae01-dbca-48b7-a516-d2df5751fb55",
+  "title": "Elephant — Lilac — Greeting Card",
+  "status": "active",
+  "externalId": "10541909311835",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/367275df-c111-4be0-aeb9-fa2f23d7d24b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=70d6bf94c9cbb47a4d31b8e7d27cdedc8e7e12eb9ab3741e311a4fc203276853"
+ },
+ {
+  "id": "12243289-4788-40c6-9707-1b7a2cbc01ad",
+  "title": "Elephant — Green — Greeting Card",
+  "status": "active",
+  "externalId": "10541776666971",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/aee3cb0c-839c-46f9-a424-ee853d8dce91/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8628214cded1cbe77473a7bb3629edaf636529f263fa8ed0195417084533033a"
+ },
+ {
+  "id": "7d438506-48f0-463d-9c68-0d9fe356bf68",
+  "title": "Elephant — Red — Greeting Card",
+  "status": "active",
+  "externalId": "10542061650267",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7347a663-af33-4267-82ad-058e853ccd47/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8e8fae6de6af44b6cd11143528b7b5829f2456b7850ef5015779283b8a5851e6"
+ },
+ {
+  "id": "b5a2f677-58dc-473b-b44c-aea50a050123",
+  "title": "Flowers on Linen — Greeting Card",
+  "status": "active",
+  "externalId": "10541650674011",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/809e587e-8e62-40ec-925d-10362d4a4325/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9f163d41947a0ee1ba487da7b7d5bec05300834398133387d889e0cd16a1680c"
+ },
+ {
+  "id": "2830125a-4e32-4d47-bcc6-560dc8469eb7",
+  "title": "Neko Human II — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10540910051675",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1e2cd067-1ed5-480a-a75d-aad4d02f8d09/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4e5d16d21390a978e4acedeaaddaf6516adb8e612a2a820debb4ff1c1eee635c"
+ },
+ {
+  "id": "8e82435f-4b72-472d-924c-c71537d33fde",
+  "title": "Solar Face — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542087962971",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c15f8afe-a074-42f3-9f23-91d99d71ec0f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9c5997f583ccd40c84a7794450d9f57afc7fc5edaaf49aac4605b0f560ba5d38"
+ },
+ {
+  "id": "87571f7c-d355-4caa-ac96-5ce18b384111",
+  "title": "Neko Paw — Yellow Neon — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542069121371",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b7e7800d-50de-4026-9cbb-645c07debc1b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2818d8fbad5a05920e436e6ae6472bbeebe97d1b0d030a43bff163f0dc516326"
+ },
+ {
+  "id": "18391f9e-cf24-4106-a0ef-619864e46fe2",
+  "title": "Mask — Blasé — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542042972507",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/21cccbc5-d8e5-4ebf-8faf-fb2de23685be/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=93469b1a0199723c4bba9572d9e2c3f82acb37b2a32a0802a294dcb1b1d6ec65"
+ },
+ {
+  "id": "9c13159b-f81b-4723-acc8-fe7a0a5efe33",
+  "title": "Mask — Calling — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10540964348251",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/41739be2-aa8d-4bf6-8f18-1a31558e218a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=afddb0d86136087e8d62cb8989f68daded9ccd74f85ed86cb92f9c5d8ec2b33f"
+ },
+ {
+  "id": "62b1fc5c-c5e3-4a0f-b4df-b967b6105d38",
+  "title": "Mask — I — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542154678619",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/22e4d099-c440-4f26-a83d-bb0d4131c83a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=54bfc276990c7dff590cffa970a53e13f915878951956d8d3c4dbdf75f049909"
+ },
+ {
+  "id": "14217d12-d8ca-47f1-b62e-e4ee4819629d",
+  "title": "Monsters — Pattern — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10541776339291",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/79de6665-8f41-4584-87bf-b2ca0107c83a/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=afa8923cb6893997ccdb43538dfcad9635129f610d7492e26274f331e11132bb"
+ },
+ {
+  "id": "186b4636-ca63-41c3-8cb7-bd0dc750fe6f",
+  "title": "Sea Monsters — Steel — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542068433243",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b257134f-4f7d-44cc-af82-9acaf4f139f9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f5005c8542810e3275042d6b809599cc03baac720d4563573f7f6a8778b8e388"
+ },
+ {
+  "id": "feae6328-936e-446a-a05c-a016488d97dc",
+  "title": "Neko Paw — Pink — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542161559899",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1355b096-c1a7-4e3b-8e27-7b48479c71c2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=386c0a17a94f516764297246df6714ae872fd019f87921893a4f5135c5a4baa7"
+ },
+ {
+  "id": "bda6aaa1-c834-44cc-bf75-27e620d7460d",
+  "title": "Moon Face — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542186365275",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e82b9d4e-eff3-45d6-a1bf-2026d5930a6d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9faa2ef87cf68e30bc04fa0aea69b880ea95fd592eab66912b58754aa247e911"
+ },
+ {
+  "id": "c2cfd6bd-67ee-4d4e-a5a5-6f7359247e0f",
+  "title": "Mask — II — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542153662811",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0ece9a30-63e6-4902-adb0-aff47c2aa76c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=289530f7205e7a0ee28a32801baf2b73ac571260bb01dd69271af009272cb1e0"
+ },
+ {
+  "id": "ce8bc993-73a9-43b9-b907-36bb71b1ea06",
+  "title": "Mask — III — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542072791387",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b8c080a7-19ba-425d-9e84-d6566ba994bc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ec8b793a78b1b5f76247e326fdf70d6fa1fd2e981c4aafe15e21bf44ae63294a"
+ },
+ {
+  "id": "3f139b70-4479-409e-b034-8834f04ff8e5",
+  "title": "Neko Paw — Yellow & Blue — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10541658112347",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c2156338-eb96-4202-b2ca-3e7105e49119/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=00d6b5c890f29d85ecb2d95bba2dfcba4a9a13d237f08062e366b0a6c9b27cde"
+ },
+ {
+  "id": "17b4f67e-0c5c-483b-ac47-986d9db973a4",
+  "title": "Sommerby — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10542152352091",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3df91041-9023-4b18-aecc-56dbaf610e31/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a1a9a0592d88cc33daae26e86dc8fa1e2c302b74cb7b713b453e9ba78e8f0cec"
+ },
+ {
+  "id": "60753877-f743-48d4-9843-3c6af8b8aa4c",
+  "title": "Sea Monsters — Blue — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10541725417819",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f5a4d915-67e8-4ef4-95ee-1bd9692bd6c8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=faca008df3e83a2962771d396a9a00481867020addc8fc6592940b3c9038f675"
+ },
+ {
+  "id": "76f64939-52f4-4fd5-8b48-3ba30983ade5",
+  "title": "Sea Monsters — Cream — Postcard (Portrait)",
+  "status": "active",
+  "externalId": "10541411107163",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7d78017d-91f8-4758-b678-cb68dd4e62fc/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=bad4f7cf4fbf9a36e382a085b0b9be6f30aece3ddefb65be8d9340b076126245"
+ },
+ {
+  "id": "c4093acc-761d-4ef5-a17f-45700e8083cf",
+  "title": "Monsters — Pattern — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541707952475",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8dcb9d68-1b69-4ed2-a1e5-d23e8d9cff12/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=173d5fa21a83791eeb47fdc888848ce6b20943160223566706b65bd4273f5709"
+ },
+ {
+  "id": "612300a0-410f-4d54-9659-9aa06a068fd3",
+  "title": "Sea Monsters — Cream — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10542049788251",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5a1ae950-ed3a-43df-8334-1168d44039d7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e3b297572f22aa0abdc00f33029e7ea878c0e2bd42f00c380e2e84d47ae3aa2d"
+ },
+ {
+  "id": "df023aaa-f705-4c42-a293-e99c8c1fef68",
+  "title": "Taped Objects — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541620330843",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d376e3be-f4a9-4136-a94c-257359dff897/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8b73dd57038620bcb37a0ad96156f456ac0369401a4ef1d914664586b5cc2e0d"
+ },
+ {
+  "id": "c85f1795-72d1-4b2a-943a-a1687d2e192c",
+  "title": "Elsk — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541644808539",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e48c30b8-ae78-4926-8e2a-10f7a87939f9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=73c3d53a821b086df2780524e6ca159389af74f7d7663807dd34a2b2f4d26ba8"
+ },
+ {
+  "id": "f4880ee5-7adf-4fa9-9dd7-dbd2a40f72fe",
+  "title": "Orange Sun — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541509738843",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e9f49d9b-6f27-4f69-bfbf-6259d1bed5d1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e54c2014a7595b87aec30d5bb7082b215629c5332fe0633c9007346982ca3d69"
+ },
+ {
+  "id": "04de63c4-ecfa-4df2-8912-86c7e6d8ad58",
+  "title": "Tourism — I — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541516882267",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/90291a81-4cb4-4ea1-a287-96139a944ade/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0f97f2bace6e90ac57f81417efcd2acf26667042c3c6c8812329d44df4cf89ce"
+ },
+ {
+  "id": "5a5e3c74-90c8-453e-bba8-2b263e5cde93",
+  "title": "Two Cats — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541410058587",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/efe566af-9c23-44a3-9cad-528ee2c309f7/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8a2aa6849e89b5c05c70e5778090836140abf3053384f3c674374c39f063aa7a"
+ },
+ {
+  "id": "15b7f0bc-12ae-4e8f-bb53-22d190ca3aad",
+  "title": "Mask — Conformist — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541398065499",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/bda9c536-b1e9-4988-80a1-b67a1ab0e3eb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=d937518bb71b55d6cd6721aa22535d7e6a4be6fbac023ac18bde12ada545c4fb"
+ },
+ {
+  "id": "3ec21102-c5c0-4c55-b4b2-fc429553631f",
+  "title": "SHERO — Indigo — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541401932123",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/cbde710b-b93d-4606-859e-b33bfaa8606c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=718b62e190c442c528a26f5da57156e3ed91d0a9d4fdf4115d8d4fb8bbbd160b"
+ },
+ {
+  "id": "51335bd6-c16a-42bd-a0a6-35fa8c59a6b4",
+  "title": "Tourism — III — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541378994523",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1818a1b2-68ee-4ff9-8c86-2159bafd6d56/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7f3d7df56e48eae3bb5a9b67271e7f82f04bca1b03c98742d036add43d53bfac"
+ },
+ {
+  "id": "fd34c1d5-2460-49f5-a850-feb56c039a0c",
+  "title": "Sleeping Cat — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541384499547",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e87a9558-30fc-44e8-a802-aba9950cdfc8/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7b07151ca442f9afb982057470920055ae008a45a9af9cbbf01d8176b7298c11"
+ },
+ {
+  "id": "38bf0bba-3e73-4db2-b397-18350ccd37bd",
+  "title": "SHERO — III — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541340000603",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/35662eb2-9f6b-4422-928f-9087214fe2d6/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=587e590e03d68c2bb0efbe4598a918b41524e7de9b07008e48d581c8fc4ae3ae"
+ },
+ {
+  "id": "3daf860a-e444-4b60-86cd-95fb6df545d5",
+  "title": "Purple Sun — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541192020315",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4fee6163-aedb-4ee7-8ebe-450bc2114b13/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b7849f49a38dafaa7edb9b6361f8fd7eed498a13020b48ba815ccbcf06c70878"
+ },
+ {
+  "id": "fddbd05e-fefb-4252-88b1-1ade62c0fca8",
+  "title": "Flowers on Linen — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541061505371",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/11dd9741-0d0f-497b-8220-2480916974f1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ac096ae691854bc46bddeb39cb0d04422cd03e85ffa6bf63d464ad87f43cd05b"
+ },
+ {
+  "id": "b6a4a0db-42da-491c-bf06-c828c8efb38b",
+  "title": "Geometric Garden — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541918290267",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1226a76c-cce8-4e99-b24c-caeecba79d6d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=08cc0b6a9d420d602950c9c1750b8592e06a64a256662bbfb8fc761c44b3ac17"
+ },
+ {
+  "id": "7b827536-af61-451e-8d7d-9daa78294f2c",
+  "title": "Sea Monsters — Steel — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10542290600283",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c4fb498f-1706-4d69-bf3c-49c2a0b2f4c9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f91abba9f2cd0662727b943cf2dde854019654630330af7e725d918b241fea77"
+ },
+ {
+  "id": "9e9262ed-d5c4-4028-8391-c9b1b5b11909",
+  "title": "Elephant — Red — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10542290731355",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c6327f9b-200f-4171-90f8-7fd9fbbe15bb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a54cfbcfd9f2e34f3c745dfdcd0646d98250a2d2e6f0f3b34e7af680c95bfb1a"
+ },
+ {
+  "id": "99d59974-120f-459f-aa69-55d0a9b72dc5",
+  "title": "Rainbow II — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10540956582235",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1265b847-78f7-4868-8c0a-2b0db5405e7d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=0ec28862ebf9bb572e6ba8fddbb0e745decc8103ff0b6dd9090fef42a53e5c1b"
+ },
+ {
+  "id": "95359590-4366-40c2-ba1b-6045f67dd4b0",
+  "title": "Kaninskoven — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10542322418011",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/40059c98-6fdb-4a6a-ab14-2753de3e9baa/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e3f9fe868ea3276c626c89a5c0dc63bb00858baa7c39ab13e5bb74476ceff564"
+ },
+ {
+  "id": "ae417afa-91db-4820-9ede-2f5e44df08ea",
+  "title": "Sea Monsters — Blue — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541791150427",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/86bfbd13-310e-43ba-ab87-a46995663a9f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=7ec0a1f8270b8a6f5ad511e641e139b452364eb11cc710630145a6b00d23f626"
+ },
+ {
+  "id": "075c596c-89a0-4949-994e-853254ef2355",
+  "title": "Elephant — Green — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541043188059",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1a753ccf-db22-48bf-b962-762c4b0b251f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=37540a01f5f9d2af81cd3bf2d7d9e5bb3c11f5336ceb71a8ae1c240f876c171c"
+ },
+ {
+  "id": "b977f949-5044-49ff-b1c2-99aaeb25a561",
+  "title": "Elephant — Lilac — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541030343003",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/583f65ef-1af4-4e21-ab7b-0bf64fec1421/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=33e1b68a801651bdfb182ea1fc29c3df3aaf0480e30e43f0374dbab90b015899"
+ },
+ {
+  "id": "3c8caae3-584e-418a-9322-8c437d124a18",
+  "title": "Tourism — IV — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10541726761307",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/39287608-3726-4c70-82be-c21517d93fe9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4703f28f7b66f10e36fbcb5d80850509c41f0939661aab23fa9b0619ed538dc9"
+ },
+ {
+  "id": "67738813-678b-4e3f-8aba-fbf3c0a16597",
+  "title": "Elephant — Yellow — Postcard (Landscape)",
+  "status": "active",
+  "externalId": "10542175486299",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3c3b0557-e365-403b-bb6b-d8d9e9db2987/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e59f1e677097444e00d9255a070aa45ad93776b644628be1b4091061fe86fd69"
+ },
+ {
+  "id": "729ffaef-e1b9-4dc0-8a06-a63e22a16dd4",
+  "title": "Neko Paw — Black & White — Wood Print",
+  "status": "active",
+  "externalId": "10542065811803",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/90052e32-b563-48ad-930b-8f5d3dffc1e4/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4a5cf9e0dde10c1f41f6bc224f0e75082d973d3e55cee5dfb6a380354bc65fcf"
+ },
+ {
+  "id": "05d33f74-f033-4193-a04b-89dc10101b38",
+  "title": "Elephant — Lilac — Wood Print",
+  "status": "active",
+  "externalId": "10541651034459",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9a474e3f-5e6f-4716-9b19-4883b1e4f5b3/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b27d735f32eb8b417e788cb64b26709d5967c43e309e52f784d5c98b666da2cb"
+ },
+ {
+  "id": "49799a27-36e3-4035-b6a3-54f5d0878350",
+  "title": "Elephant — Green — Wood Print",
+  "status": "active",
+  "externalId": "10541502202203",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2823c55c-1da1-4007-a908-becbab612f50/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b1cfc8653a05e927ad08cc45b85ba0630d0839ac0b59b5a6c99a141f80bf727f"
+ },
+ {
+  "id": "04375f51-39ee-4b03-bbbf-86208fb97af0",
+  "title": "Elephant — Red — Wood Print",
+  "status": "active",
+  "externalId": "10541722796379",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d07ba71d-199e-4d6e-bd1c-9b795d3f6830/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=19e08f20df70202b56b58661070750493cce1413acfc7bb743f8edb9148cf5a7"
+ },
+ {
+  "id": "a24d344b-2435-4740-af9a-b16cdc15f650",
+  "title": "Elephant — Yellow — Wood Print",
+  "status": "active",
+  "externalId": "10540877676891",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e882eba7-8452-4247-bba1-32348ac4129f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8d1873b67a17beb92a41e9b8c43e5c5a9cff811ab8f2523433fc377600c7bbf0"
+ },
+ {
+  "id": "cf6cbcc1-0c17-4454-8dd3-a4d68a8f059b",
+  "title": "Neko Paw — Blue — Water Bottle",
+  "status": "active",
+  "externalId": "10538993123675",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b2a93b9-b991-4eba-8f26-fb3373458288/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=049957e0a959d634195be756e305857b890f8e3baa9dd48bcdf52175224cf818"
+ },
+ {
+  "id": "b78ed750-80af-4adc-a1d9-c20c1eef139d",
+  "title": "Neko Paw — Yellow II — Water Bottle",
+  "status": "active",
+  "externalId": "10539109810523",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c2c5f568-4a2e-452d-a1f0-90646d1ec308/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=760a63aab55ce6703b350d7077d1a4546c5c92e4312c4d56b8a226f4f78caecb"
+ },
+ {
+  "id": "2a6616fa-b598-46fb-80cf-2bcd2fb48e07",
+  "title": "SHERO — III — Water Bottle",
+  "status": "active",
+  "externalId": "10539112071515",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3a533956-0601-4837-9ffd-1b756ea3aac1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb55d289cc922621b3e24c35d3b3335e084f0a6bcfc51bcdf044d47b3d682dfe"
+ },
+ {
+  "id": "c3311e72-9fdb-4aad-a239-263bd5e55a4f",
+  "title": "Elephant — Lilac — Water Bottle",
+  "status": "active",
+  "externalId": "10539073569115",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/d3404049-028e-4374-91c3-26e312170324/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ab358f2bd8bd3d1b668e735cef89b5bc6b283f5aaa7643f4ac3315967aa6f726"
+ },
+ {
+  "id": "b93613e3-2100-4733-b3aa-07cf7de34008",
+  "title": "SHERO — Purple — Water Bottle",
+  "status": "active",
+  "externalId": "10539106763099",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0eb85b42-5c37-444d-b8d3-81a78eabe8aa/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=2abf8cd20796ccd1ca56553503dfeacdb39715b7e206c9967904dcdfaa14116e"
+ },
+ {
+  "id": "86fa5f9f-23cf-43f0-84ee-f2db199ffbf5",
+  "title": "Neko Paw — Red — Water Bottle",
+  "status": "active",
+  "externalId": "10539108368731",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9aa706a0-c408-4f96-86fd-807eb2ab2afe/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=fdc0a2d075943b224f47dd89d57f665e1854b42031423a7de8816c6169730bc7"
+ },
+ {
+  "id": "5eae690b-11ed-4dd6-897a-d579723302ee",
+  "title": "Neko Paw — Lilac — Water Bottle",
+  "status": "active",
+  "externalId": "10539234197851",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6e8bfeae-40a1-4708-b228-91d8d085a8f0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cc76b1d66c5cd86523f21bf20a061350ed55a99a32a24568b05d091e3e60ff5f"
+ },
+ {
+  "id": "3120bfc1-673f-43d2-9efb-dcdbd51ec055",
+  "title": "Neko Paw — Yellow — Water Bottle",
+  "status": "active",
+  "externalId": "10539102634331",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4925111d-5311-40f4-ac16-991e31a72fb0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=dd7d87915483de0e40f60adb1d94fa7ab2fd9eefc8b130c6e3eaa9915a03bf5d"
+ },
+ {
+  "id": "e0ddf438-3ff1-4fb3-9808-12652676448f",
+  "title": "Neko Paw — Black & White — Water Bottle",
+  "status": "active",
+  "externalId": "10539104502107",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0976efca-8b4d-48cf-b8c2-f0cd048d9196/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=25b261847ad07b4819101b0bb06c099280cbc83a41053a11419a66267f025673"
+ },
+ {
+  "id": "0cbf09be-07a6-4577-bd84-c9f8a61058d0",
+  "title": "Elephant — Green — Water Bottle",
+  "status": "active",
+  "externalId": "10539106664795",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3fa7d94d-932d-44dd-ad76-570049984c92/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ce359150879bc1c03121e3ccdd59f0cc9165fe519ab86f4333a72f43c9da51a5"
+ },
+ {
+  "id": "15bd7b2e-085e-4031-bf3c-fb648903ae80",
+  "title": "Neko — Pink — Water Bottle",
+  "status": "active",
+  "externalId": "10539097227611",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/e65c2bff-3aff-4937-916a-f7b7f103159d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=c5b9928e6e649f96845ec18b1c587dfe3e7a87f0de077333fcc5f28250797e79"
+ },
+ {
+  "id": "552a25cb-b66e-49a6-8b28-9862d7c2d851",
+  "title": "Mask — Blasé — Water Bottle",
+  "status": "active",
+  "externalId": "10539097096539",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/218ed0fe-1886-4f55-90d7-696e27b0d057/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1e02ad4e29aaa05b6eda271aef4a04c688121d32868fd7e4647dbe691792c95d"
+ },
+ {
+  "id": "a85f3f6d-fa33-4b05-87b1-e6e5744cbc4b",
+  "title": "SHERO — Indigo — Water Bottle",
+  "status": "active",
+  "externalId": "10539041194331",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b6fdfd50-1ea2-4623-aae3-44a80e88bc5b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=25b839ee522bd82a1396fc37a93b583a7cdd00f6b1e259e30f43e29211df453b"
+ },
+ {
+  "id": "677eac40-82bb-4ac9-8bb8-6d4b689bd6b9",
+  "title": "Mask — III — Water Bottle",
+  "status": "active",
+  "externalId": "10538993975643",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4a2dab7b-7fce-475f-b9f0-389374e59a61/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=cb1552708dd730a66e86d2c16db008484c84da773f411ff47895f00ec6d6a37a"
+ },
+ {
+  "id": "7a6e197f-c1a6-4147-9349-4341d0f40a9b",
+  "title": "Floating Poppies — Art Print",
+  "status": "active",
+  "externalId": "10537071116635",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7df8f7c7-a89f-47b5-8fca-4c6faa08507b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=be9621909288147bce76db27addc481d77cd1a6a027accf13adaabfc563f973c"
+ },
+ {
+  "id": "58d87aeb-581e-40d8-b657-bb7c579aa082",
+  "title": "Night Poppies — Art Print",
+  "status": "active",
+  "externalId": "10537072918875",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/27548148-6bbe-4d6a-96ed-b3c5093bef4f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=e912f0d521d6e04bf29a501effa5e3067adbf5e998fd95e47a8be58d140ba934"
+ },
+ {
+  "id": "58e36297-e627-4e77-b195-bdc6f88f5869",
+  "title": "Geometric Garden — Art Print",
+  "status": "active",
+  "externalId": "10537071444315",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/db4cfda3-6df0-4094-bec0-f563c7e4996c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a75daddb31adc5a7d8d0f3a70ab40aaae97c4a6e675dbe3ffee0d711fdcc5f75"
+ },
+ {
+  "id": "ab9ad0c4-f95b-4fd1-8a6f-45e718b17b5d",
+  "title": "Neko Paw — Blue — Art Print",
+  "status": "active",
+  "externalId": "10537071051099",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/30766706-11f6-42d1-a5b8-f87ea9c1bc37/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=259fa2088451ed3fa554641d23f6dd17db93a8a67c994c48abc249173528db91"
+ },
+ {
+  "id": "3af8e6f5-eee2-4796-8108-b55dc221054d",
+  "title": "Sea Monsters — Gold — Art Print",
+  "status": "active",
+  "externalId": "10537071378779",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/65534cb9-b55a-47f4-83b2-0497dec077c1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=a565cd45f77146f66584b7cfd14a20cf519dcaf352d73d680f20a7cda1db5e56"
+ },
+ {
+  "id": "acaebcc1-a798-41c2-a95d-d8f192e7c375",
+  "title": "Kaninskoven — Art Print",
+  "status": "active",
+  "externalId": "10537071411547",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f64777cd-4a08-4d00-8dbc-4bbe20f8fc73/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=810779407a0dd98dd1b9de6ebf8b5646aaf8d7e016554da6522188d3535b4bfa"
+ },
+ {
+  "id": "23ef28d0-2909-4f74-9d70-7f8dbc80f41e",
+  "title": "Neko Paw — Black & White — Art Print",
+  "status": "active",
+  "externalId": "10537071149403",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/6b72a391-650f-4f4f-a739-8b31ba37e252/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=275b6ca3e3d8dc48a4d15add7e995c85aaf5ad326fe3790d797ca5ef42636d4d"
+ },
+ {
+  "id": "294a8177-4ec8-4bcf-9d62-17f3a323d866",
+  "title": "Sleeping Cat — Art Print",
+  "status": "active",
+  "externalId": "10537071018331",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/93869e7b-e45c-4922-9e51-688b4ee75f9d/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3efe476830e5c98f8916fbbfe02767758b4ef9dc4829359fb7121a895a3d89ed"
+ },
+ {
+  "id": "27ebd628-71bc-4753-8604-f685e2d70cd7",
+  "title": "Poppy Field — Art Print",
+  "status": "active",
+  "externalId": "10537071313243",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c9f77847-8ef7-4c6c-9b5a-22f79008ba07/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b0b8eba71a08f3d73e1bd13674847719fe69433b44fb183cdde02aa6cfbf0f31"
+ },
+ {
+  "id": "19b71623-35ff-4e35-8e0e-3b3f638fb358",
+  "title": "Sea Monsters — Cream — Art Print",
+  "status": "active",
+  "externalId": "10537074229595",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/f4bbc231-a9bc-4680-8960-3d19910ba734/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=642814c9b46d1d359a1adfbd193786b533e6044bc62b3050943251e24d661742"
+ },
+ {
+  "id": "81184163-6247-4d87-88ba-d8fa19098cf6",
+  "title": "Monsters — Pattern — Art Print",
+  "status": "active",
+  "externalId": "10537071346011",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/dd3c25d2-faa1-4a10-8dbe-129a355e984f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=f35120ee705ce3392733c6e5d0279a395df3f24850ece25760016dedac9cc5c6"
+ },
+ {
+  "id": "20dfe2d5-15c1-4a3a-90ab-495b7500fdd1",
+  "title": "Neko Paw Cap — Blue",
+  "status": "active",
+  "externalId": "10531240935771",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/3e04d3e5-c911-47b2-a919-73df066b7578/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=57fd93c9934f601c35ab5f9f42d4ba6689c296dcf581d3fe8fd41655cfa062ab"
+ },
+ {
+  "id": "15b13b32-3b11-4e1a-ac00-27a9ad9803ff",
+  "title": "Neko Paw Cap — Yellow",
+  "status": "active",
+  "externalId": "10531267084635",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0265cf4c-b7a6-4720-af50-af820af91784/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=382b6b22f0916763b5b469bfb2e70ce37705850fb7efb667637986a4422a8eea"
+ },
+ {
+  "id": "791269b6-8964-42e4-8a9c-ad543faac52c",
+  "title": "Neko Paw Cap — Lilac",
+  "status": "active",
+  "externalId": "10531259908443",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/2b320230-79d1-482e-98ad-3e87c1273a51/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=aac096c3591f20fd390889cafe1fb9f5f7798b65791118de1fc63de35e01685b"
+ },
+ {
+  "id": "545ab6e6-28da-4332-86eb-792bf43c567b",
+  "title": "SHERO Cap — Purple",
+  "status": "active",
+  "externalId": "10531227861339",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/5f487c13-b48b-4931-8cea-fa17dddb8f02/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4a48858caf7c33f82461ca19e9eb96a56b5a27de36c3e22499af4f853245fcee"
+ },
+ {
+  "id": "f8ba0163-3068-45c7-8198-0ff8997d8dbe",
+  "title": "Neko Paw Cap — Pink",
+  "status": "active",
+  "externalId": "10531260465499",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b6d4e9eb-1c62-468b-a638-ff4d2d991a65/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=313ba13799a1340d752a7dea1794506efedb4adfaf84e74ec7c56fa33b269eca"
+ },
+ {
+  "id": "7469fc46-b729-4396-bbd9-d5ebd24b01c9",
+  "title": "Mug — Neko — Pink",
+  "status": "active",
+  "externalId": "10530974040411",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/194f64f3-1005-496a-b76c-cf858106ae92/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=4e44e51b22dacc7f85844d57c9e40e453649b7ff654d143722e1491b48565000"
+ },
+ {
+  "id": "35ff6537-3ded-4739-adc0-8c8b8ef277b0",
+  "title": "Mug — SHERO — Indigo",
+  "status": "active",
+  "externalId": "10530964865371",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/b035993b-1ffb-4615-9a10-8f03f05e08f9/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=53f7183f2f3e122ff3aee4a5e6b2c7fa6d0f5cc7fa6f332d0d62f2e41b70ee8c"
+ },
+ {
+  "id": "4eb95265-314e-4e46-8208-546023081770",
+  "title": "Mug — Neko Paw — Lilac",
+  "status": "active",
+  "externalId": "10530973614427",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1bf8f213-f581-4b96-ac2c-4bd7d26caa50/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=b4dd3dc143068bd9e7ccc2a1ab0e505392b2297bbbdda7b2f02b5c5f0fbce837"
+ },
+ {
+  "id": "b42b50b1-3c45-4f35-9a67-e2234feda7a3",
+  "title": "Mug — Elephant — Lilac",
+  "status": "active",
+  "externalId": "10530866954587",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/c434d324-a13f-4237-9b0d-11b05d8edb37/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=ba041a0c35a7f29db1c8119b91389524dd93f8d45ae6a8b369354fdad0007b44"
+ },
+ {
+  "id": "d52a2e35-de39-41ef-b77c-549561d083a2",
+  "title": "Mug — Botanical",
+  "status": "active",
+  "externalId": "10530837496155",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/0b87e447-c1f9-4abd-8a42-a61b31bc739e/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9bc97396567243e31068caac7f0d49b346a79444c9b4a3d7c0e81e1ee854cc68"
+ },
+ {
+  "id": "642c93a1-d873-43cf-b5d3-1ad33c81ce5a",
+  "title": "Mug — Neko Paw — Red",
+  "status": "active",
+  "externalId": "10530949857627",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1ff6306e-3097-40de-ab62-1ed1c1fd582c/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=62d55d376ffe37a7e82759ce47260f05fb305c8ba7701e056720adbb5fbffc90"
+ },
+ {
+  "id": "daca918a-b00d-42f3-bc7c-6062dba62379",
+  "title": "Mug — Neko Paw — Lilac",
+  "status": "active",
+  "externalId": "10613750989147",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/9fb6eeb5-5b27-455f-a3a4-2f190543cb03/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6a684ef61ab9e1a02b4b620419898019860218552f04d9c1257469623f74dbcf"
+ },
+ {
+  "id": "602326ef-43be-45b9-a080-2d12b913a30e",
+  "title": "Mug — Neko — Pink",
+  "status": "active",
+  "externalId": "10613750202715",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fc5bfab4-64c0-4be9-9d07-deb5ec1dbec1/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=80f8e74ce989e8012aea346477e93b46acc11b3327144aa646ac50a1479c5b1e"
+ },
+ {
+  "id": "3027c1c5-3a23-4d4f-b87b-d3abd9447e58",
+  "title": "Mug — Solar Face Mask",
+  "status": "active",
+  "externalId": "10530922430811",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/862fe82c-079c-4771-be29-91a118cb51cf/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=61f3e57403e2d004f3093c0c38c8e5ad1e634b2846ffb7075067bcd686fba52e"
+ },
+ {
+  "id": "029f377c-14d6-4212-badf-40e409eae430",
+  "title": "Mug — Neko Paw — Yellow II",
+  "status": "active",
+  "externalId": "10530837004635",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/1b85df63-b326-4e2b-9698-3adb8520e153/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=13e5d5b86ab813f5eb91b5f0ddcc18484e77c7b18ab72768a6caef2bc137f5fb"
+ },
+ {
+  "id": "bd3e191f-db5e-46a2-83e8-daf7bac37c00",
+  "title": "Mug — Mask — Blasé",
+  "status": "active",
+  "externalId": "10530914926939",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/7e8b77c7-e248-4173-a584-9d84f92ce4dd/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=54c28102c0df02a8864687c4b63eaf32d90fc84b0592f38721e6411b16bb4250"
+ },
+ {
+  "id": "e3aa4cd5-4dc8-47b1-a44a-b743812b1ade",
+  "title": "Mug — Neko Paw — Blue",
+  "status": "active",
+  "externalId": "10530959851867",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a484c434-0539-47e2-bce1-fe887855d45b/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=588eb4d24ab6db99c36951106369595722d63d4e4d3fbf875b6ddd081510f924"
+ },
+ {
+  "id": "69b2b615-5463-4400-8a6f-bd1afac8c903",
+  "title": "Mug — Floating Poppies",
+  "status": "active",
+  "externalId": "10530964603227",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/8921282c-9284-406a-bfc6-6e5318f6f19f/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=9b1f364afdade874c824332b0512fc4eec4860caec0c699aee9e804f0a358938"
+ },
+ {
+  "id": "9ddd4309-c70e-4cf2-90e6-6ca3653ca685",
+  "title": "Mug — Poppy Field",
+  "status": "active",
+  "externalId": "10530922266971",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/55b43186-823d-45d3-9a34-b471cf5a23fb/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=8f08e6bf191bb9fd843529a9233c55aa677555e99fd26981a9c8fa9208716cc3"
+ },
+ {
+  "id": "61f06914-1da5-49cb-b4b9-7c08f321f6c6",
+  "title": "Mug — Elephant — Red",
+  "status": "active",
+  "externalId": "10530906800475",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/abae491c-008f-4b0f-a906-7fcabcd92724/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6ca0acb0584bbda0fccbba0dab067ad120da4e69a92a7ff93323fadb95a47cf1"
+ },
+ {
+  "id": "cbea27ca-9295-46d2-b512-783f6448ebd6",
+  "title": "Mug — Neko Paw — Black & White",
+  "status": "active",
+  "externalId": "10530872066395",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/fb08d97e-7830-49fd-a87c-5e8d8c2882b0/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=280076e7c38a2cc74e26188dc1ee3f02e3ba03a63c8ef651d6ed8cdb2542c11d"
+ },
+ {
+  "id": "e690d8b8-8aba-4d4a-94f6-b5f5c81a6eaa",
+  "title": "Mug — Elephant — Yellow",
+  "status": "active",
+  "externalId": "10530963980635",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/4bc632d9-8fc8-4ce1-a69b-f2b322764044/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=6bd1abaa4e88d3ecfb66a8180725410e793dc3a6771e074c424142e1bf60eb15"
+ },
+ {
+  "id": "c57b2d97-5d29-42f7-92b2-c818fcab9ebe",
+  "title": "Mug — Elephant — Green",
+  "status": "active",
+  "externalId": "10530916499803",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/a5fd6afc-7b10-4a13-a7c7-32daa69733d2/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1912a4e8d9f0cde5257eb419de589d3e10ac1dc5a78e410def23ba957932718e"
+ },
+ {
+  "id": "c170fc71-68f8-408a-9c3e-20d4266dfcff",
+  "title": "Mug — Neko Paw — Yellow",
+  "status": "active",
+  "externalId": "10530920431963",
+  "previewUrl": "https://gelato-api-live.s3.eu-west-1.amazonaws.com/ecommerce/store_product_image/ed2c79b2-48d7-4661-afb4-0d978fb85420/preview?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3QM3COBP5QN4IUGA%2F20261003%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261003T195151Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=1117698bcbeac38b6e89e58a13dfc35270ec461dc4f40b22764227e6c5488bbf"
+ }
+]

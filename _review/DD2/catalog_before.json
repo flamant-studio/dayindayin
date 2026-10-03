@@ -1,0 +1,3862 @@
+[
+ {
+  "id": "gid://shopify/Product/10530837004635",
+  "handle": "neko-paw-yellow-ii",
+  "title": "Mug — Neko Paw — Yellow II",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1b85df63-b326-4e2b-9698-3adb8520e153.jpg?v=1785438754"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530837496155",
+  "handle": "botanical-blanc",
+  "title": "Mug — Botanical",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "botanical",
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0b87e447-c1f9-4abd-8a42-a61b31bc739e.jpg?v=1785533808"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530866954587",
+  "handle": "elephant-lilac",
+  "title": "Mug — Elephant — Lilac",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "elephant",
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/7bcc02db-64fb-417d-8b8e-584982143181.jpg?v=1781299747"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530872066395",
+  "handle": "neko-paw-black-white",
+  "title": "Mug — Neko Paw — Black & White",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/fb08d97e-7830-49fd-a87c-5e8d8c2882b0.jpg?v=1785527691"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530906800475",
+  "handle": "elephant-red",
+  "title": "Mug — Elephant — Red",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "elephant",
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/68a4d78c-6587-41fe-bb7d-80649f12773b.jpg?v=1781304797"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530914926939",
+  "handle": "mask-blase",
+  "title": "Mug — Mask — Blasé",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "masks",
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/7e8b77c7-e248-4173-a584-9d84f92ce4dd.jpg?v=1785532991"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530916499803",
+  "handle": "elephant-green",
+  "title": "Mug — Elephant — Green",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/deb0f0f2-626f-4ede-b686-651e5a62df20.jpg?v=1781305808"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530920431963",
+  "handle": "neko-paw-yellow",
+  "title": "Mug — Neko Paw — Yellow",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/ed2c79b2-48d7-4661-afb4-0d978fb85420.jpg?v=1785532179"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530922266971",
+  "handle": "poppy-field",
+  "title": "Mug — Poppy Field",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "floral",
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/55b43186-823d-45d3-9a34-b471cf5a23fb.jpg?v=1785532306"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530922430811",
+  "handle": "solar-face",
+  "title": "Mug — Solar Face Mask",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "masks",
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/949cc610-120b-4679-b2c2-db8c54a74d27.jpg?v=1781307419"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530949857627",
+  "handle": "neko-paw-red",
+  "title": "Mug — Neko Paw — Red",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1ff6306e-3097-40de-ab62-1ed1c1fd582c.jpg?v=1785015003"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530959851867",
+  "handle": "neko-paw-blue",
+  "title": "Mug — Neko Paw — Blue",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a484c434-0539-47e2-bce1-fe887855d45b.jpg?v=1785439435"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530963980635",
+  "handle": "mug-elephant-yellow",
+  "title": "Mug — Elephant — Yellow",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "elephant",
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/4bc632d9-8fc8-4ce1-a69b-f2b322764044.jpg?v=1785440702"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530964603227",
+  "handle": "floating-poppies",
+  "title": "Mug — Floating Poppies",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "floral",
+   "mug"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/8921282c-9284-406a-bfc6-6e5318f6f19f.jpg?v=1785533902"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530964865371",
+  "handle": "shero-indigo",
+  "title": "Mug — SHERO — Indigo",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "shero"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b035993b-1ffb-4615-9a10-8f03f05e08f9.jpg?v=1785608249"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530973614427",
+  "handle": "neko-paw-lilac",
+  "title": "Mug — Neko Paw — Lilac",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1bf8f213-f581-4b96-ac2c-4bd7d26caa50.jpg?v=1785533148"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10530974040411",
+  "handle": "neko-pink",
+  "title": "Mug — Neko — Pink",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1b0a8bf6-29ec-4b6b-9f0c-0f47465dae5b.jpg?v=1781311884"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10531227861339",
+  "handle": "shero-cap-purple",
+  "title": "SHERO Cap — Purple",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [
+   "apparel",
+   "shero"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5f487c13-b48b-4931-8cea-fa17dddb8f02.jpg?v=1783749622"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10531240935771",
+  "handle": "neko-paw-cap-blue",
+  "title": "Neko Paw Cap — Blue",
+  "productType": "Dad Cap",
+  "status": "ACTIVE",
+  "tags": [
+   "apparel",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/d0bc565e-9f74-458e-8cf3-ee68b1db86cb.jpg?v=1781361838"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10531259908443",
+  "handle": "neko-paw-cap-lilac",
+  "title": "Neko Paw Cap — Lilac",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [
+   "apparel",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2b320230-79d1-482e-98ad-3e87c1273a51.jpg?v=1784322478"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10531260465499",
+  "handle": "neko-paw-cap-pink",
+  "title": "Neko Paw Cap — Pink",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [
+   "apparel",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 2
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b6d4e9eb-1c62-468b-a638-ff4d2d991a65.jpg?v=1784322935"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10531267084635",
+  "handle": "neko-paw-cap-yellow",
+  "title": "Neko Paw Cap — Yellow",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [
+   "apparel",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0265cf4c-b7a6-4720-af50-af820af91784.jpg?v=1782573969"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071018331",
+  "handle": "sleeping-cat-art-print",
+  "title": "Sleeping Cat — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/93869e7b-e45c-4922-9e51-688b4ee75f9d.jpg?v=1784757274"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071051099",
+  "handle": "neko-paw-blue-art-print",
+  "title": "Neko Paw — Blue — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/30766706-11f6-42d1-a5b8-f87ea9c1bc37.jpg?v=1784757361"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071116635",
+  "handle": "floating-poppies-art-print",
+  "title": "Floating Poppies — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/7df8f7c7-a89f-47b5-8fca-4c6faa08507b.jpg?v=1784756291"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071149403",
+  "handle": "neko-paw-black-white-art-print",
+  "title": "Neko Paw — Black & White — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/6b72a391-650f-4f4f-a739-8b31ba37e252.jpg?v=1784757419"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071313243",
+  "handle": "poppy-field-art-print",
+  "title": "Poppy Field — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 2
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c9f77847-8ef7-4c6c-9b5a-22f79008ba07.jpg?v=1784471453"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071346011",
+  "handle": "monsters-pattern-art-print",
+  "title": "Monsters — Pattern — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/dd3c25d2-faa1-4a10-8dbe-129a355e984f.jpg?v=1784757104"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071378779",
+  "handle": "sea-monsters-gold-art-print",
+  "title": "Sea Monsters — Gold — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/65534cb9-b55a-47f4-83b2-0497dec077c1.jpg?v=1784757343"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071411547",
+  "handle": "kaninskoven-art-print",
+  "title": "Kaninskoven — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f64777cd-4a08-4d00-8dbc-4bbe20f8fc73.jpg?v=1784756093"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537071444315",
+  "handle": "geometric-garden-art-print",
+  "title": "Geometric Garden — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/db4cfda3-6df0-4094-bec0-f563c7e4996c.jpg?v=1784757179"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537072918875",
+  "handle": "night-poppies-art-print",
+  "title": "Night Poppies — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/27548148-6bbe-4d6a-96ed-b3c5093bef4f.jpg?v=1784756365"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10537074229595",
+  "handle": "sea-monsters-cream-art-print",
+  "title": "Sea Monsters — Cream — Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f4bbc231-a9bc-4680-8960-3d19910ba734.jpg?v=1784757385"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10538993123675",
+  "handle": "neko-paw-blue-water-bottle",
+  "title": "Neko Paw — Blue — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0b2a93b9-b991-4eba-8f26-fb3373458288.jpg?v=1784468908"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10538993975643",
+  "handle": "mask-iii-water-bottle",
+  "title": "Mask — III — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/4a2dab7b-7fce-475f-b9f0-389374e59a61.jpg?v=1784323994"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539041194331",
+  "handle": "shero-indigo-water-bottle",
+  "title": "SHERO — Indigo — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b6fdfd50-1ea2-4623-aae3-44a80e88bc5b.jpg?v=1784468346"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539073569115",
+  "handle": "elephant-lilac-water-bottle",
+  "title": "Elephant — Lilac — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/d3404049-028e-4374-91c3-26e312170324.jpg?v=1784467372"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539097096539",
+  "handle": "mask-blase-water-bottle",
+  "title": "Mask — Blasé — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/218ed0fe-1886-4f55-90d7-696e27b0d057.jpg?v=1784467240"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539097227611",
+  "handle": "neko-pink-water-bottle",
+  "title": "Neko — Pink — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/e65c2bff-3aff-4937-916a-f7b7f103159d.jpg?v=1784467300"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539102634331",
+  "handle": "neko-paw-yellow-water-bottle",
+  "title": "Neko Paw — Yellow — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/4925111d-5311-40f4-ac16-991e31a72fb0.jpg?v=1784467416"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539104502107",
+  "handle": "neko-paw-black-white-water-bottle",
+  "title": "Neko Paw — Black & White — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0976efca-8b4d-48cf-b8c2-f0cd048d9196.jpg?v=1784467331"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539106664795",
+  "handle": "elephant-green-water-bottle",
+  "title": "Elephant — Green — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3fa7d94d-932d-44dd-ad76-570049984c92.jpg?v=1784466620"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539106763099",
+  "handle": "shero-purple-water-bottle",
+  "title": "SHERO — Purple — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0eb85b42-5c37-444d-b8d3-81a78eabe8aa.jpg?v=1784466236"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539108368731",
+  "handle": "neko-paw-red-water-bottle",
+  "title": "Neko Paw — Red — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9aa706a0-c408-4f96-86fd-807eb2ab2afe.jpg?v=1784466094"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539109810523",
+  "handle": "neko-paw-yellow-ii-water-bottle",
+  "title": "Neko Paw — Yellow II — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c2c5f568-4a2e-452d-a1f0-90646d1ec308.jpg?v=1784465809"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539112071515",
+  "handle": "shero-iii-water-bottle",
+  "title": "SHERO — III — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3a533956-0601-4837-9ffd-1b756ea3aac1.jpg?v=1784465967"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10539234197851",
+  "handle": "neko-paw-lilac-water-bottle",
+  "title": "Neko Paw — Lilac — Water Bottle",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/6e8bfeae-40a1-4708-b228-91d8d085a8f0.jpg?v=1782416016"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540877676891",
+  "handle": "elephant-yellow-wood-print",
+  "title": "Elephant — Yellow — Wood Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/e882eba7-8452-4247-bba1-32348ac4129f.jpg?v=1784993566"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540910051675",
+  "handle": "neko-human-ii-postcard-portrait",
+  "title": "Neko Human II — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1e2cd067-1ed5-480a-a75d-aad4d02f8d09.jpg?v=1781899523"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540956057947",
+  "handle": "moon-face-poster",
+  "title": "Moon Face — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c5a15833-8489-44c3-92a8-a7c6e914804b.jpg?v=1784755188"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540956582235",
+  "handle": "rainbow-ii-postcard-landscape",
+  "title": "Rainbow II — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1265b847-78f7-4868-8c0a-2b0db5405e7d.jpg?v=1781901498"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540962480475",
+  "handle": "tourism-ii-poster",
+  "title": "Tourism — II — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a5f3635b-3b76-4d44-831a-2c7b109feb94.jpg?v=1784757015"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540962709851",
+  "handle": "mask-blase-poster",
+  "title": "Mask — Blasé — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/333a4b12-98d7-4072-9869-164995e04866.jpg?v=1784468835"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540962971995",
+  "handle": "neko-paw-red-poster",
+  "title": "Neko Paw — Red — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/45646309-94b3-4dd0-af0f-ab031c548ff5.jpg?v=1784756171"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540963201371",
+  "handle": "mask-dream-poster",
+  "title": "Mask — Dream — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f1117a82-e381-4d5f-a362-377ca497c736.jpg?v=1784756040"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540964348251",
+  "handle": "mask-calling-postcard-portrait",
+  "title": "Mask — Calling — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/41739be2-aa8d-4bf6-8f18-1a31558e218a.jpg?v=1781901854"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540973326683",
+  "handle": "tourism-iv-fine-art-print",
+  "title": "Tourism — IV — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/ecfb2d3d-d22c-4662-a97a-48aa9414c5a7.jpg?v=1784751893"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540976767323",
+  "handle": "candy-i-fine-art-print",
+  "title": "Candy I — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3ff4dfb3-1319-4be0-8daa-ea1c0d02d20c.jpg?v=1784748662"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540978209115",
+  "handle": "mask-calling-poster",
+  "title": "Mask — Calling — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5ad4af83-4439-41f8-a4a3-d492b71579bd.jpg?v=1784470007"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540986827099",
+  "handle": "neko-paw-yellow-ii-poster",
+  "title": "Neko Paw — Yellow II — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3fe07947-3627-4d88-83c7-293b88e77f82.jpg?v=1784755170"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540993806683",
+  "handle": "mask-iii-framed-print",
+  "title": "Mask — III — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a2fc7e73-566c-4c40-a146-768db1542136.jpg?v=1784749470"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540994429275",
+  "handle": "solar-face-poster",
+  "title": "Solar Face — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/73cd5bd3-ab50-4220-92a8-04a7460b6a74.jpg?v=1784755437"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540994691419",
+  "handle": "moon-face-framed-print",
+  "title": "Moon Face — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/901909af-b8ff-4d3a-8987-70c980d22e19.jpg?v=1784749286"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540995248475",
+  "handle": "neko-paw-yellow-poster",
+  "title": "Neko Paw — Yellow — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0625a764-173e-42ee-aabf-8590e7d634de.jpg?v=1784754567"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10540997968219",
+  "handle": "mask-calling-framed-print",
+  "title": "Mask — Calling — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1176d1a9-6b77-4888-878f-f1cf9e0fd787.jpg?v=1784498423"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541030343003",
+  "handle": "elephant-lilac-postcard-landscape",
+  "title": "Elephant — Lilac — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/583f65ef-1af4-4e21-ab7b-0bf64fec1421.jpg?v=1781904585"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541043188059",
+  "handle": "elephant-green-postcard-landscape",
+  "title": "Elephant — Green — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1a753ccf-db22-48bf-b962-762c4b0b251f.jpg?v=1781905186"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541061505371",
+  "handle": "flowers-on-linen-postcard-landscape",
+  "title": "Flowers on Linen — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "floral",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/11dd9741-0d0f-497b-8220-2480916974f1.jpg?v=1781905872"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541064847707",
+  "handle": "shero-purple-tank-top",
+  "title": "SHERO — Purple — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c6851e95-8885-485a-89b3-6cc18020e00a.jpg?v=1785528318"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541066191195",
+  "handle": "mask-ii-poster",
+  "title": "Mask — II — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0253c584-b093-4f99-a3b8-3340f1ada6a0.jpg?v=1784754458"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541078184283",
+  "handle": "solar-face-framed-print",
+  "title": "Solar Face — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/d9dad550-8c33-4e3b-9096-e71386f37b42.jpg?v=1784500856"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541079429467",
+  "handle": "mask-study-fine-art-print",
+  "title": "Mask Study — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/70f482ef-0abd-4934-89b4-0ee0f8f498e5.jpg?v=1784471317"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541115769179",
+  "handle": "mask-i-poster",
+  "title": "Mask — I — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/69d3286b-138f-4884-9fa0-45dcb10ad15d.jpg?v=1784754403"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541118161243",
+  "handle": "neko-pink-tank-top",
+  "title": "Neko — Pink — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/bf3242a0-61bd-41ad-a98f-e1f9ab03dcbd.jpg?v=1785527770"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541119045979",
+  "handle": "elsk-fine-art-print",
+  "title": "Elsk — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f58773d1-9cae-4154-aa6c-f7be91e2ed9a.jpg?v=1784753080"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541141754203",
+  "handle": "purple-flower-fine-art-print",
+  "title": "Purple Flower — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/07cea6f9-6702-4078-9223-59f32fe40bcb.jpg?v=1784753103"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541145424219",
+  "handle": "shero-purple-fine-art-print",
+  "title": "SHERO — Purple — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b5bd957d-c8d2-44f7-a916-9a6f411811cf.jpg?v=1784492534"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541152108891",
+  "handle": "floral-thing-fine-art-print",
+  "title": "Floral Thing — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/6594e8a6-09bd-4092-bc33-7532661fb809.jpg?v=1784753321"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541159350619",
+  "handle": "neko-paw-pink-framed-print",
+  "title": "Neko Paw — Pink — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2b4beca3-31ac-40b4-a6d6-55a2cbd5a06d.jpg?v=1784500925"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541161087323",
+  "handle": "mask-blase-framed-print",
+  "title": "Mask — Blasé — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/61d72b94-0b06-48c7-87cb-f769e15ccbed.jpg?v=1784500248"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541166133595",
+  "handle": "tourism-iii-fine-art-print",
+  "title": "Tourism — III — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c5550498-b67e-45bf-9df1-fe113cf8ff6e.jpg?v=1784752920"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541173997915",
+  "handle": "tourism-i-fine-art-print",
+  "title": "Tourism — I — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/ebf79477-1fb1-48d0-8cd2-3aaf09016e72.jpg?v=1784753188"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541192020315",
+  "handle": "purple-sun-postcard-landscape",
+  "title": "Purple Sun — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/4fee6163-aedb-4ee7-8ebe-450bc2114b13.jpg?v=1781911093"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541196509531",
+  "handle": "floral-thing-framed-print",
+  "title": "Floral Thing — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/bb8b0187-8644-4070-aa25-5616b4a39947.jpg?v=1784493554"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541201523035",
+  "handle": "taped-objects-framed-print",
+  "title": "Taped Objects — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/affd0ac0-d291-4e4b-921b-32b0dbccfd5e.jpg?v=1784749171"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541288325467",
+  "handle": "shero-indigo-fine-art-print",
+  "title": "SHERO — Indigo — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0929bd1e-86d5-4642-bd23-a2af6dcf49ce.jpg?v=1784752152"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541297008987",
+  "handle": "shero-indigo-tank-top",
+  "title": "SHERO — Indigo — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f6403fc3-e7a5-4099-a9fa-3735ccfe617f.jpg?v=1785528104"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541297271131",
+  "handle": "neko-paw-yellow-blue-framed-print",
+  "title": "Neko Paw — Yellow & Blue — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/71f35350-5221-4b5a-b709-9574dc53dd21.jpg?v=1784496993"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541340000603",
+  "handle": "shero-iii-postcard-landscape",
+  "title": "SHERO — III — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "shero"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/35662eb2-9f6b-4422-928f-9087214fe2d6.jpg?v=1781916790"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541342228827",
+  "handle": "neko-paw-yellow-neon-framed-print",
+  "title": "Neko Paw — Yellow Neon — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a8a66f2e-8772-4e7f-bfbe-a190fb884b2c.jpg?v=1784499030"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541347275099",
+  "handle": "vase-on-stool-fine-art-print",
+  "title": "Vase on Stool — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9681d438-aeaa-4fe8-ae9a-a1707c571ee9.jpg?v=1784753126"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541359366491",
+  "handle": "no-ordinary-stone-fine-art-print",
+  "title": "No Ordinary Stone — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/8553e878-ac1a-46fd-96b4-08ac7c9e65a7.jpg?v=1784752272"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541365461339",
+  "handle": "round-earth-fine-art-print",
+  "title": "Round Earth — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/043f2ba5-9dc1-4db7-9d9f-06e7d07c2e65.jpg?v=1784753270"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541378699611",
+  "handle": "shero-iii-fine-art-print",
+  "title": "SHERO — III — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/47d66819-eecd-4152-ab2a-d22d34607421.jpg?v=1784752055"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541378994523",
+  "handle": "tourism-iii-postcard-landscape",
+  "title": "Tourism — III — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1818a1b2-68ee-4ff9-8c86-2159bafd6d56.jpg?v=1781918728"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541384499547",
+  "handle": "sleeping-cat-postcard-landscape",
+  "title": "Sleeping Cat — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/e87a9558-30fc-44e8-a802-aba9950cdfc8.jpg?v=1781919025"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541390561627",
+  "handle": "neko-paw-lilac-tank-top",
+  "title": "Neko Paw — Lilac — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/4e38553d-4e20-4c6d-ab53-46e00f2d1633.jpg?v=1785527999"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541398065499",
+  "handle": "mask-conformist-postcard-landscape",
+  "title": "Mask — Conformist — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/bda9c536-b1e9-4988-80a1-b67a1ab0e3eb.jpg?v=1781919734"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541401932123",
+  "handle": "shero-indigo-postcard-landscape",
+  "title": "SHERO — Indigo — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "shero"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/cbde710b-b93d-4606-859e-b33bfaa8606c.jpg?v=1781919932"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541410058587",
+  "handle": "two-cats-postcard-landscape",
+  "title": "Two Cats — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/efe566af-9c23-44a3-9cad-528ee2c309f7.jpg?v=1781920327"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541410812251",
+  "handle": "shero-purple-greeting-card",
+  "title": "SHERO — Purple — Greeting Card",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a53228d9-ab89-49db-953f-6760cf95042f.jpg?v=1784994177"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541411107163",
+  "handle": "sea-monsters-cream-postcard-portrait",
+  "title": "Sea Monsters — Cream — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "sea-monsters"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/7d78017d-91f8-4758-b678-cb68dd4e62fc.jpg?v=1781920371"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541413925211",
+  "handle": "sri-lanka-masks-fine-art-print",
+  "title": "Sri Lanka Masks — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0b6d92c4-d9f8-404c-aa70-b633502e8b6c.jpg?v=1784752001"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541502202203",
+  "handle": "elephant-green-wood-print",
+  "title": "Elephant — Green — Wood Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2823c55c-1da1-4007-a908-becbab612f50.jpg?v=1784994475"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541503775067",
+  "handle": "elephant-lilac-tote-bag",
+  "title": "Elephant — Lilac — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/ad8a1e1e-4938-468e-9b98-15c662293307.jpg?v=1784994706"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541509738843",
+  "handle": "orange-sun-postcard-landscape",
+  "title": "Orange Sun — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/e9f49d9b-6f27-4f69-bfbf-6259d1bed5d1.jpg?v=1781924898"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541516882267",
+  "handle": "tourism-i-postcard-landscape",
+  "title": "Tourism — I — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/90291a81-4cb4-4ea1-a287-96139a944ade.jpg?v=1781925209"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541620330843",
+  "handle": "taped-objects-postcard-landscape",
+  "title": "Taped Objects — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/d376e3be-f4a9-4136-a94c-257359dff897.jpg?v=1781930125"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541644808539",
+  "handle": "elsk-postcard-landscape",
+  "title": "Elsk — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/e48c30b8-ae78-4926-8e2a-10f7a87939f9.jpg?v=1781931412"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541650674011",
+  "handle": "flowers-on-linen-greeting-card",
+  "title": "Flowers on Linen — Greeting Card",
+  "productType": "Greeting Card",
+  "status": "ACTIVE",
+  "tags": [
+   "floral",
+   "greeting-card"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/809e587e-8e62-40ec-925d-10362d4a4325.jpg?v=1781931720"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541651034459",
+  "handle": "elephant-lilac-wood-print",
+  "title": "Elephant — Lilac — Wood Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9a474e3f-5e6f-4716-9b19-4883b1e4f5b3.jpg?v=1783749331"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541658112347",
+  "handle": "neko-paw-yellow-blue-postcard-portrait",
+  "title": "Neko Paw — Yellow & Blue — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c2156338-eb96-4202-b2ca-3e7105e49119.jpg?v=1781932106"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541701300571",
+  "handle": "neko-human-ii-framed-print",
+  "title": "Neko Human II — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0041ce53-216f-4a81-a76f-17aa2523a8e1.jpg?v=1784499646"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541707952475",
+  "handle": "monsters-pattern-postcard-landscape",
+  "title": "Monsters — Pattern — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/8dcb9d68-1b69-4ed2-a1e5-d23e8d9cff12.jpg?v=1781934577"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541708411227",
+  "handle": "shero-iii-tank-top",
+  "title": "SHERO — III — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/02d228a3-116f-4959-a187-fcf57c0fb395.jpg?v=1785530155"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541722796379",
+  "handle": "elephant-red-wood-print",
+  "title": "Elephant — Red — Wood Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/d07ba71d-199e-4d6e-bd1c-9b795d3f6830.jpg?v=1783367102"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541725221211",
+  "handle": "elsk-greeting-card",
+  "title": "Elsk — Greeting Card",
+  "productType": "Greeting Card",
+  "status": "ACTIVE",
+  "tags": [
+   "greeting-card"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/30ecd690-3621-4ddc-985a-98b169e3fb68.jpg?v=1781935459"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541725417819",
+  "handle": "sea-monsters-blue-postcard-portrait",
+  "title": "Sea Monsters — Blue — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "sea-monsters"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f5a4d915-67e8-4ef4-95ee-1bd9692bd6c8.jpg?v=1781935471"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541726302555",
+  "handle": "mask-i-framed-print",
+  "title": "Mask — I — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/8fd72881-6432-4b5e-9aa6-9e2669b240dc.jpg?v=1784497198"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541726761307",
+  "handle": "tourism-iv-postcard-landscape",
+  "title": "Tourism — IV — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/39287608-3726-4c70-82be-c21517d93fe9.jpg?v=1781935534"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541776011611",
+  "handle": "mask-blase-tank-top",
+  "title": "Mask — Blasé — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f0c0e494-68a5-4134-8af2-1fcb4b9137c8.jpg?v=1785533026"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541776339291",
+  "handle": "monsters-pattern-postcard-portrait",
+  "title": "Monsters — Pattern — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/79de6665-8f41-4584-87bf-b2ca0107c83a.jpg?v=1781938866"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541776666971",
+  "handle": "elephant-green-greeting-card",
+  "title": "Elephant — Green — Greeting Card",
+  "productType": "Greeting Card",
+  "status": "ACTIVE",
+  "tags": [
+   "greeting-card"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/aee3cb0c-839c-46f9-a424-ee853d8dce91.jpg?v=1781939056"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541777355099",
+  "handle": "red-and-green-moss-postcard-portrait",
+  "title": "Red and Green Moss — Postcard (Portrait)",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": null,
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541777977691",
+  "handle": "red-and-green-moss-postcard-portrait-1",
+  "title": "Red and Green Moss — Postcard (Portrait)",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": null,
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541791019355",
+  "handle": "sommerby-framed-print",
+  "title": "Sommerby — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/d5632a1b-92dd-4fd2-b1a8-d30e385bdbcb.jpg?v=1784497817"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541791150427",
+  "handle": "sea-monsters-blue-postcard-landscape",
+  "title": "Sea Monsters — Blue — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "sea-monsters"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/86bfbd13-310e-43ba-ab87-a46995663a9f.jpg?v=1781942562"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541791215963",
+  "handle": "two-cats-framed-print",
+  "title": "Two Cats — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1673c296-28ca-421f-b992-7e9ed4b9156a.jpg?v=1784496816"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541837549915",
+  "handle": "neko-paw-yellow-neon-poster",
+  "title": "Neko Paw — Yellow Neon — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/4e286f72-52ea-44cd-be7b-3c575ecd101e.jpg?v=1783283455"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541873201499",
+  "handle": "neko-human-ii-poster",
+  "title": "Neko Human II — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c582605f-18b6-4e4e-bb60-b8d3d1cd5550.jpg?v=1784755260"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541887488347",
+  "handle": "neko-paw-blue-tote-bag",
+  "title": "Neko Paw — Blue — Tote Bag",
+  "productType": "Tote Bag",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "tote"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3d80933c-d6de-4f2d-bd11-4a8d4ec5aa51.jpg?v=1781947742"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541909311835",
+  "handle": "elephant-lilac-greeting-card",
+  "title": "Elephant — Lilac — Greeting Card",
+  "productType": "Greeting Card",
+  "status": "ACTIVE",
+  "tags": [
+   "greeting-card"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/367275df-c111-4be0-aeb9-fa2f23d7d24b.jpg?v=1781948518"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541909508443",
+  "handle": "mask-conformist-tank-top",
+  "title": "Mask — Conformist — Tank Top",
+  "productType": "Tank Top",
+  "status": "ACTIVE",
+  "tags": [
+   "apparel",
+   "faces"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/05aab012-c623-4325-a0b0-900153e000e6.jpg?v=1781948530"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541910786395",
+  "handle": "sommerby-poster",
+  "title": "Sommerby — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/04e2a4e0-b87d-4058-9368-78a817c73548.jpg?v=1784757201"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541911605595",
+  "handle": "elephant-lilac-framed-print",
+  "title": "Elephant — Lilac — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/320076f4-dd80-4afc-90a1-cedf3b3a04d8.jpg?v=1784494154"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541917536603",
+  "handle": "elephant-yellow-framed-print",
+  "title": "Elephant — Yellow — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/bd94a7c7-07fe-4714-b236-c0e36cbb6c06.jpg?v=1784496589"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541918290267",
+  "handle": "geometric-garden-postcard-landscape",
+  "title": "Geometric Garden — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "botanical",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1226a76c-cce8-4e99-b24c-caeecba79d6d.jpg?v=1781948931"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541951451483",
+  "handle": "neko-paw-yellow-tote-bag",
+  "title": "Neko Paw — Yellow — Tote Bag",
+  "productType": "Tote Bag",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "tote"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9d2f4f38-eb2a-41db-b86b-45b1513671e6.jpg?v=1781950375"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542003323227",
+  "handle": "neko-paw-red-tote-bag",
+  "title": "Neko Paw — Red — Tote Bag",
+  "productType": "Tote Bag",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "tote"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/db224be5-da50-4e8e-a971-b76c3d98f138.jpg?v=1781952666"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542020788571",
+  "handle": "shero-iii-greeting-card",
+  "title": "SHERO — III — Greeting Card",
+  "productType": "Greeting Card",
+  "status": "ACTIVE",
+  "tags": [
+   "greeting-card",
+   "shero"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/465ca9f0-805a-40ca-865c-609e4a824289.jpg?v=1781953306"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542025507163",
+  "handle": "shero-purple-tote-bag",
+  "title": "SHERO — Purple — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/912b86d9-cc45-46c7-aae8-02e2d29548b7.jpg?v=1785439958"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542034452827",
+  "handle": "elephant-yellow-greeting-card",
+  "title": "Elephant — Yellow — Greeting Card",
+  "productType": "Greeting Card",
+  "status": "ACTIVE",
+  "tags": [
+   "greeting-card"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/89fb45f9-18a5-445f-b096-ca437ba27d1b.jpg?v=1781954634"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542042972507",
+  "handle": "mask-blase-postcard-portrait",
+  "title": "Mask — Blasé — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/21cccbc5-d8e5-4ebf-8faf-fb2de23685be.jpg?v=1781956569"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542049788251",
+  "handle": "sea-monsters-cream-postcard-landscape",
+  "title": "Sea Monsters — Cream — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "sea-monsters"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5a1ae950-ed3a-43df-8334-1168d44039d7.jpg?v=1781957900"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542061650267",
+  "handle": "elephant-red-greeting-card",
+  "title": "Elephant — Red — Greeting Card",
+  "productType": "Greeting Card",
+  "status": "ACTIVE",
+  "tags": [
+   "greeting-card"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/7347a663-af33-4267-82ad-058e853ccd47.jpg?v=1781959798"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542065811803",
+  "handle": "neko-paw-black-white-wood-print",
+  "title": "Neko Paw — Black & White — Wood Print",
+  "productType": "Wood Print",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "wood-print"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/90052e32-b563-48ad-930b-8f5d3dffc1e4.jpg?v=1781960779"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542068433243",
+  "handle": "sea-monsters-steel-postcard-portrait",
+  "title": "Sea Monsters — Steel — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "sea-monsters"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b257134f-4f7d-44cc-af82-9acaf4f139f9.jpg?v=1781962106"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542069121371",
+  "handle": "neko-paw-yellow-neon-postcard-portrait",
+  "title": "Neko Paw — Yellow Neon — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b7e7800d-50de-4026-9cbb-645c07debc1b.jpg?v=1781962425"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542072791387",
+  "handle": "mask-iii-postcard-portrait",
+  "title": "Mask — III — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b8c080a7-19ba-425d-9e84-d6566ba994bc.jpg?v=1781962741"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542087962971",
+  "handle": "solar-face-postcard-portrait",
+  "title": "Solar Face — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c15f8afe-a074-42f3-9f23-91d99d71ec0f.jpg?v=1781965579"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542101070171",
+  "handle": "mask-conformist-tote-bag",
+  "title": "Mask — Conformist — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/255fd812-f059-42a6-abcc-e97b8e64b9a9.jpg?v=1783719237"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542152352091",
+  "handle": "sommerby-postcard-portrait",
+  "title": "Sommerby — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "sommerby"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3df91041-9023-4b18-aecc-56dbaf610e31.jpg?v=1781968728"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542153662811",
+  "handle": "mask-ii-postcard-portrait",
+  "title": "Mask — II — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0ece9a30-63e6-4902-adb0-aff47c2aa76c.jpg?v=1781969055"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542154678619",
+  "handle": "mask-i-postcard-portrait",
+  "title": "Mask — I — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/22e4d099-c440-4f26-a83d-bb0d4131c83a.jpg?v=1781969371"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542161559899",
+  "handle": "neko-paw-pink-postcard-portrait",
+  "title": "Neko Paw — Pink — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "neko",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/1355b096-c1a7-4e3b-8e27-7b48479c71c2.jpg?v=1781970981"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542175486299",
+  "handle": "elephant-yellow-postcard-landscape",
+  "title": "Elephant — Yellow — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3c3b0557-e365-403b-bb6b-d8d9e9db2987.jpg?v=1781972977"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542176797019",
+  "handle": "neko-paw-yellow-neon-tote-bag",
+  "title": "Neko Paw — Yellow Neon — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2ec342cc-2234-4d33-948b-f47c40f4d1c3.jpg?v=1785011565"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542176895323",
+  "handle": "elephant-yellow-tote-bag",
+  "title": "Elephant — Yellow — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 2
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a29ce7d7-02c3-486c-b3d7-dcc2a4f88f97.jpg?v=1784465704"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542178828635",
+  "handle": "neko-paw-yellow-ii-tank-top",
+  "title": "Neko Paw — Yellow II — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/73219061-db11-41b7-ae60-59fb6eb072c4.jpg?v=1785011673"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542180565339",
+  "handle": "neko-paw-lilac-tote-bag",
+  "title": "Neko Paw — Lilac — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/11521168-23af-404f-86ca-cb6fc574b946.jpg?v=1785014432"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542181482843",
+  "handle": "shero-indigo-greeting-card",
+  "title": "SHERO — Indigo — Greeting Card",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5b2d880c-ae99-4fa4-9d97-ff759b46196f.jpg?v=1785008396"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542186365275",
+  "handle": "moon-face-postcard-portrait",
+  "title": "Moon Face — Postcard (Portrait)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "faces",
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/e82b9d4e-eff3-45d6-a1bf-2026d5930a6d.jpg?v=1781975572"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542226473307",
+  "handle": "elephant-red-tank-top",
+  "title": "Elephant — Red — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a71d10ef-bd60-4440-9705-88f2c24dc387.jpg?v=1785532209"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542228504923",
+  "handle": "sea-monsters-steel-poster",
+  "title": "Sea Monsters — Steel — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b7b645d6-f745-40f9-9cce-7981a23dba0a.jpg?v=1784755415"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542232764763",
+  "handle": "neko-paw-yellow-blue-poster",
+  "title": "Neko Paw — Yellow & Blue — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2b9d6f16-181f-4db0-948d-108d950530e8.jpg?v=1784755343"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542233420123",
+  "handle": "purple-sun-framed-print",
+  "title": "Purple Sun — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9d686181-22b0-4489-b76a-ed1ed3b4e3e7.jpg?v=1784495386"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542249574747",
+  "handle": "elephant-green-tank-top",
+  "title": "Elephant — Green — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/e45ef534-9d94-4f8f-a741-f45cb9b80579.jpg?v=1785527878"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542249705819",
+  "handle": "elephant-red-tote-bag",
+  "title": "Elephant — Red — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f1df227b-3b15-4a08-a29d-152ec0c26396.jpg?v=1783720369"
+  },
+  "resourcePublicationsCount": {
+   "count": 0
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542255931739",
+  "handle": "neko-paw-red-tank-top",
+  "title": "Neko Paw — Red — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/13ff5294-2be7-436a-8633-8636b754949e.jpg?v=1785528244"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542259503451",
+  "handle": "sea-monsters-blue-fine-art-print",
+  "title": "Sea Monsters — Blue — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/cf8989a3-cc59-468d-b223-1de4970480fe.jpg?v=1784754032"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542259962203",
+  "handle": "neko-paw-blue-tank-top",
+  "title": "Neko Paw — Blue — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/fd2727b5-27e7-4db5-b45f-5192613e2d2e.jpg?v=1785527850"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542260781403",
+  "handle": "neko-paw-yellow-ii-tote-bag",
+  "title": "Neko Paw — Yellow II — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5b2457a4-e8a6-4458-958b-b30636b6ee68.jpg?v=1783719839"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542270808411",
+  "handle": "mask-iii-poster",
+  "title": "Mask — III — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/40b9df67-df16-4273-a403-8d345b51e786.jpg?v=1783719588"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542271660379",
+  "handle": "neko-paw-yellow-blue-tote-bag",
+  "title": "Neko Paw — Yellow & Blue — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/42825fe6-e61a-4e0b-bcec-41c46d3e6d36.jpg?v=1783719707"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542275952987",
+  "handle": "neko-paw-lilac-poster",
+  "title": "Neko Paw — Lilac — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b32e27c9-31e0-4e93-ae25-feb6c310b523.jpg?v=1783718573"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542290436443",
+  "handle": "purple-sun-fine-art-print",
+  "title": "Purple Sun — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/8e9f8505-ff04-4598-af49-8ae941ff9786.jpg?v=1784754101"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542290600283",
+  "handle": "sea-monsters-steel-postcard-landscape",
+  "title": "Sea Monsters — Steel — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard",
+   "sea-monsters"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c4fb498f-1706-4d69-bf3c-49c2a0b2f4c9.jpg?v=1781985868"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542290731355",
+  "handle": "elephant-red-postcard-landscape",
+  "title": "Elephant — Red — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c6327f9b-200f-4171-90f8-7fd9fbbe15bb.jpg?v=1781985909"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542290764123",
+  "handle": "elephant-green-framed-print",
+  "title": "Elephant — Green — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5a92849c-2273-4b12-898d-d6a0b2192bba.jpg?v=1784494784"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542291911003",
+  "handle": "shero-iii-tote-bag",
+  "title": "SHERO — III — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/e5833285-4b50-4916-a264-e1f125374aaa.jpg?v=1783718221"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542295417179",
+  "handle": "shero-indigo-tote-bag",
+  "title": "SHERO — Indigo — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c2178cc6-4bed-425b-a346-41ad811d87ed.jpg?v=1783717897"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542295810395",
+  "handle": "neko-paw-pink-poster",
+  "title": "Neko Paw — Pink — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 4
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/95bcec33-c313-4177-a9ed-d215ecb92e24.jpg?v=1782678558"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542304493915",
+  "handle": "flowers-on-linen-fine-art-print",
+  "title": "Flowers on Linen — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/812491d2-29d6-405b-bc0e-440fc27ede41.jpg?v=1784753287"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542317994331",
+  "handle": "neko-pink-poster",
+  "title": "Neko — Pink — Poster",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5b53c9bc-76c6-4ff1-a12d-131bf4f6100f.jpg?v=1784370242"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542319370587",
+  "handle": "elephant-yellow-tank-top",
+  "title": "Elephant — Yellow — Tank Top",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/60223a46-b3b4-4ade-b2c5-138f8dbc4361.jpg?v=1785529542"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542320025947",
+  "handle": "two-cats-fine-art-print",
+  "title": "Two Cats — Fine Art Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 3
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3a9912f9-5664-487f-8ce1-1c74bb05f515.jpg?v=1782938447"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542321533275",
+  "handle": "botanical-noir-tote-bag",
+  "title": "Botanical — Noir — Tote Bag",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": null,
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542322418011",
+  "handle": "kaninskoven-postcard-landscape",
+  "title": "Kaninskoven — Postcard (Landscape)",
+  "productType": "Postcard",
+  "status": "ACTIVE",
+  "tags": [
+   "postcard"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/40059c98-6fdb-4a6a-ab14-2753de3e9baa.jpg?v=1781992662"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542326022491",
+  "handle": "elephant-red-framed-print",
+  "title": "Elephants — 4x4 — Framed Print",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 9
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/bc0fbd72-2369-42b2-a0bb-90fedc86b43e.jpg?v=1782678243"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542329594203",
+  "handle": "rainbow-ii-framed-print",
+  "title": "Rainbow II — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/483e22cf-b848-4e1b-87b9-8baf723402e2.jpg?v=1784495987"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542330544475",
+  "handle": "elephant-green-tote-bag",
+  "title": "Elephant — Green — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b6fdd195-ce19-4163-a06b-2c9fa60304a3.jpg?v=1782507618"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542331232603",
+  "handle": "mask-blase-tote-bag",
+  "title": "Mask — Blasé — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/06e15641-76fd-4cab-8069-8c534cc52f29.jpg?v=1783719470"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542331429211",
+  "handle": "neko-paw-black-white-tank-top",
+  "title": "Tank Top – Neko Paw — Black & White",
+  "productType": "Tank Top",
+  "status": "ACTIVE",
+  "tags": [
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 6
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9296e6c8-6419-43ac-b725-f845fd87e8e7.jpg?v=1781996812"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542331461979",
+  "handle": "flowers-on-linen-framed-print",
+  "title": "Flowers on Linen — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c45a3a3b-b31c-43da-98d7-4a477e778ecb.jpg?v=1784749064"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542332248411",
+  "handle": "mask-calling-tote-bag",
+  "title": "Mask — Calling — Tote Bag",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9ec8262a-2330-4582-aa8d-6e75a2386aa6.jpg?v=1783719027"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542333362523",
+  "handle": "elsk-framed-print",
+  "title": "Elsk — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/aebd262e-5281-45bd-9a14-3d8e8b444267.jpg?v=1784492809"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542334935387",
+  "handle": "mask-ii-framed-print",
+  "title": "Mask — II — Framed Print",
+  "productType": "",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 12
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a2d1cd71-6472-4451-a9b2-7d462a88451e.jpg?v=1784749640"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10606307279195",
+  "handle": "rabbit-tote-bag",
+  "title": "Rabbit — Tote Bag",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b5c2a535-5902-49ca-8b37-da1a08c0efb7.jpg?v=1784468198"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10606350270811",
+  "handle": "rabbit-line-art-water-bottle",
+  "title": "Rabbit Line Art — Water Bottle",
+  "productType": "Print Material",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/eface268-6336-463f-a6de-34d8481352d6.jpg?v=1784478113"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10613750202715",
+  "handle": "neko-pink-1",
+  "title": "Mug — Neko — Pink",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/fc5bfab4-64c0-4be9-9d07-deb5ec1dbec1.jpg?v=1785440784"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10613750989147",
+  "handle": "neko-paw-lilac-1",
+  "title": "Mug — Neko Paw — Lilac",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "neko"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9fb6eeb5-5b27-455f-a3a4-2f190543cb03.jpg?v=1785438879"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10621155246427",
+  "handle": "mug-shero-purple",
+  "title": "Mug — SHERO — Purple",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "shero"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3805ed06-20a5-4c6c-afc5-28e2066061c7.jpg?v=1785442890"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10621186605403",
+  "handle": "mug-shero-teal",
+  "title": "Mug — SHERO — Teal",
+  "productType": "Mug",
+  "status": "ACTIVE",
+  "tags": [
+   "mug",
+   "shero"
+  ],
+  "totalInventory": 0,
+  "variantsCount": {
+   "count": 1
+  },
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3bc8af17-c5bb-4b79-9d99-a31be4440afd.jpg?v=1785444558"
+  },
+  "resourcePublicationsCount": {
+   "count": 1
+  }
+ }
+]
