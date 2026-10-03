@@ -1,0 +1,311 @@
+DD1 — Fine Art pass 2 — before -> after for every work touched (generated from git HEAD vs working tree)
+
+## purple-sun
+  before: Handhooking in mixed fibres — wool, cotton, silk, acrylic, and recycled cotton.
+  after:  Handhooking in mixed fibres. About a week of near-daily work. Made as a cushion for Stine's office chair; it now belongs to Ulrikke.
+
+## birds
+  before: A mixture of tufting and embroidery on canvas. Wool and cotton, with acrylic painting. Two birds.
+  after:  A mixture of tufting, embroidery and painting. Two birds.
+
+## fuck-alting
+  before: "Fuck everything" in Danish, stitched by hand. The tone is not angry — it is tired and specific. The slowness of embroidery makes the message stranger and more serious.
+  after:  "Fuck alting" — Danish for "fuck everything" — embroidered by hand. The small embroidered pieces shown below it are part of the work.
+
+## gud-har-meldt-afbud
+  before: "God has cancelled." One of the earliest text works. Made during a period when it felt exactly true. The stitch count is several hundred. Saying it this slowly changes what it means.
+  after:  "Gud har meldt afbud" — God has cancelled. Hand embroidery. There are more of them. More graphic than Gud Har Meldt Afbud II. Shown together with Gud Har Meldt Afbud II and Long Hair Don't Care as three standalone works.
+
+## elsk
+  before: The Danish word for love — "elsk" — stitched in hand embroidery and nothing else. No decoration. No frame of reference. Just the word, made slow, given weight.
+  after:  The Danish word "elsk" — "love" — embroidered by hand.
+
+## be-a-dragon
+  medium: -  ->  Hand embroidery on fabric
+  before: An instruction in hand embroidery on canvas. Not "be like a dragon" — the command is simpler than that. The invitation is open. What it means depends on who reads it.
+  after:  A quote from Game of Thrones, embroidered by hand.
+
+## theres-nothing-here
+  medium: -  ->  Hand embroidery on watercolour-painted fabric
+  hidden: False  ->  True
+  before: A statement stitched on fabric. It might be a refusal or a description — the text genuinely does not decide. Read it fast and it is dismissive. Read it slowly and something opens up.
+  after:  Hand embroidery on watercolour-painted fabric. Not finished yet — the photograph is a process shot. Hidden from the site until it is finished and photographed.
+
+## mariann
+  medium: -  ->  Hand embroidery on fabric
+  availability note: -  ->  Not for sale — hangs at Stine's parents'
+  before: A name stitched as portrait. To embroider a name is to insist it is here. Mariann exists in this piece in a way that does not require explanation or justification.
+  after:  One of a pair of embroideries made as 70th-birthday gifts — one for Stine's mother, one for her father. They hang at her parents' home.
+
+## 38-homes
+  medium: -  ->  Hand embroidery on fabric
+  before: Freehand embroidery — marks that follow their own logic without trying to arrive anywhere. Not sketches for something else. These lines are the destination.
+  after:  One work in about 15 parts. Stine counted every home she has lived in and made one piece per home. The parts belong together as one unit, and the work is open-ended. Only some of the parts are shown here.
+
+## collage-bw
+  title: Collage (Black & White)  ->  Collage
+  medium: Hand embroidery on linen, monochrome thread  ->  Hand embroidery on fabric
+  before: Hand embroidery on fabric in monochrome. 100×70 cm — the largest embroidery work. Collage logic in thread: cut from one reference, placed against another, the seams visible by design.
+  after:  Made at night, after waking up. A thread collage in monochrome and dark blue.
+
+## apple-scraps — REMOVED, redirect -> /works/fuck-alting
+  before: Apple Scraps | embroidery | Domestic remnants embroidered on fabric. The apple core, the peel, the ordinary aftermath of a meal. Embroidery is a practice that dignifies things — it takes time, and time makes objects matter.
+
+## perfidt-perfekt
+  medium: -  ->  Hand embroidery on fabric
+  before: "Perfectly perfidious" in Danish — the two words cancel each other and yet land together. Hand embroidery on canvas. A sentence from an argument Stine was in and couldn't let go of.
+  after:  "Perfidt perfekt" — hand embroidery on fabric. The last word is deliberately left unfinished: "perfekt" is not completed, so the work itself is imperfect.
+
+## ingenting
+  medium: -  ->  Hand embroidery on fabric
+  before: "Nothing" in Danish, stitched. The word for absence given material form. There is something satisfying about spending several hours making the word nothing. It resolves a contradiction.
+  after:  A detail of an embroidery reading "Her er ingenting" — "There is nothing here" in Danish.
+
+## gud-har-meldt-afbud-ii
+  medium: -  ->  Hand embroidery on cotton fabric painted with colour
+  before: The second version of "God has cancelled." The same sentence, differently stitched. One version was not enough — the phrase needed to be made twice to understand what it actually said the first time. A repetition that is not redundancy.
+  after:  Hand embroidery on cotton fabric painted with colour. The text is being overtaken by flowers: God can't be bothered any more, now it is up to us. The message is hidden, grown over organically. More floral than the first, which is more graphic. Shown together with Gud Har Meldt Afbud and Long Hair Don't Care as three standalone works.
+
+## long-hair-dont-care
+  medium: -  ->  Hand embroidery on a hand-embroidered tablecloth found at a flea market
+  before: Hand embroidery on canvas. A phrase that refuses to apologise for itself — not a political statement so much as a position. Took longer to stitch than to say. The time changes what it means: something casual made slow becomes something else.
+  after:  Embroidered on top of a hand-embroidered tablecloth found at a flea market. The point is swearing on top of someone's careful handwork. Shown together with the two Gud Har Meldt Afbud pieces as three standalone works.
+
+## fireworks
+  medium: -  ->  Hand embroidery on fabric — sampler
+  before: Five embroidered starbursts in gold, crimson, and lavender thread, scattered across deep teal fabric. Satin stitch radiating from a tight centre — the stitch direction does the same job a firework's trail of sparks does.
+  after:  A sampler (prøvestykke) for trying out embroidery techniques. Five starbursts in gold, crimson and lavender thread, scattered across deep teal fabric, worked in satin stitch.
+
+## det-er-bare-tanker
+  medium: -  ->  Hand embroidery on vintage floral fabric, framed
+  availability note: -  ->  Not for sale — with Ulrikke
+  before: Hand embroidery on vintage floral fabric, framed. Danish for "it's just thoughts" — stitched in a fading rainbow gradient, yellow into red. The busy printed rose fabric underneath does the opposite of quieting the text: it makes the thought feel like it interrupted something already in progress.
+  after:  Hand embroidery on vintage floral fabric, framed. "Det er bare tanker" — "it's just thoughts" — is a phrase from a psychologist, used against intrusive thoughts. Stitched in a fading rainbow gradient, yellow into red. Made for Ulrikke when she went to efterskole; Ulrikke has it.
+
+## red-to-blue-broderi
+  medium: -  ->  Hand embroidery on cotton fabric dyed with watercolour and ink
+  before: Hand embroidery on hand-dyed cotton, dip-dyed pink to purple to gold. A wave in beads, sequins, and thread breaks across one corner; loose French knots scatter across the dyed field like seed heads caught mid-drift.
+  after:  Made on Strynø, inspired by the sea and the sunset. Embroidery on cotton fabric dyed with watercolour and ink. A wave in beads, sequins and thread breaks across one corner; loose French knots are scattered across the dyed field.
+
+## universe-1
+  before: Acrylic and oil stick on canvas. The first in the Universe series — an ongoing investigation into scale, mark, and what a painted surface can hold. Started in 2019 and still not finished in the sense the series still continues.
+  after:  One of the three paintings in the Universe series. The photograph is a process photograph.
+
+## universe-2
+  before: Acrylic and oil stick on canvas. A different attempt at the same question as Universe I. Deeper ground colour, more layers scraped back. The question the series asks doesn't change — the answers keep changing.
+  after:  One of the three paintings in the Universe series. The photograph is a process photograph.
+
+## universe-3
+  before: Acrylic and oil stick on canvas. Third iteration. A darker palette than the first two — more purple, less ground visible. Worked on the studio floor; you can see the direction of the marks.
+  after:  One of the three paintings in the Universe series. The photograph is a process photograph.
+
+## blue-branch
+  medium: -  ->  Painted branch
+  availability note: -  ->  Temporary work — no longer exists
+  before: Acrylic on canvas. A branch painted in cadmium blue — the form is botanical, the temperature is wrong in an interesting way. It should be brown. It is blue. The wrongness is the painting.
+  after:  A painted branch, hung in the garden as a temporary artwork. It eventually broke — the work no longer exists.
+
+## person-walking -> untitled-watercolour (redirect)
+  title: Person Walking  ->  Untitled
+  medium: -  ->  Watercolour on paper
+  before: Acrylic on canvas. A figure in mid-stride — not a portrait, not an illustration. The movement is the subject. Everything else was removed.
+  after:  Watercolour on paper. Untitled. Several companion watercolours exist.
+
+## green-on-blue
+  medium: -  ->  Acrylic on canvas on wood
+  before: Acrylic on canvas. Green laid over blue — the boundary between them is where the painting lives. Each colour changes in contact with the other. A study in adjacency.
+  after:  Acrylic on canvas on wood. Kept in the basement; the photograph shows it as it is.
+
+## colour-study — REMOVED, redirect -> painting category
+  before: Colour Study | painting | Acrylic on canvas. Not a preliminary sketch — a finished inquiry into colour relationship. What happens between warm and cool on the same surface. This is the work, not a preparation for something else.
+
+## universe-collection
+  before: A group of Universe works photographed together as a single composition. The series in conversation with itself — each canvas a different answer, seen simultaneously.
+  after:  The three Universe paintings together. One of them hangs on the wall at home.
+
+## colour-study-blue
+  medium: -  ->  Ink on paper
+  before: Acrylic on canvas. Blue as the entire subject — not a colour in service of a subject, but the thing being studied. How many blues can occupy the same surface without cancelling each other.
+  after:  Ink on paper.
+
+## sri-lanka-masks
+  medium: Acrylic and mixed media on canvas  ->  Watercolour on paper
+  before: Acrylic and mixed media on canvas. Based on ceremonial masks encountered in Sri Lanka — the colour amplified past documentation into something invented. Where observation ends and response begins.
+  after:  Watercolours on paper — masks from Sri Lanka. They are stored in the basement. Stine loves them for their colours.
+
+## bird-man
+  category: painting  ->  digital
+  medium: -  ->  Digital drawing (Procreate)
+  availability note: -  ->  Not for sale as an original — available as a print
+  before: Ink and acrylic on paper. A figure standing at the intersection of human and bird — not a mythology, just a person who has decided. Made in a single session. The directness of the drawing is the work.
+  after:  A digital drawing, made in Procreate. Not for sale as an original; it works as an A4 print (perhaps A3).
+
+## vaginals
+  medium: -  ->  Watercolour on paper
+  before: Acrylic on canvas. A painting that names what it depicts, plainly. Made during a period of naming things as they are. Not intended to provoke — intended to be accurate. The title and the image are exactly the same statement.
+  after:  Watercolour on paper. Only one exists. Flower-like; made in a period when Stine was working on the idea of "Lady Gardens".
+
+## green-background — REMOVED, redirect -> painting category
+  before: Green Background | painting | Acrylic on canvas. A field of green — not botanical, not symbolic, just green as the full subject of a canvas. The question was what happens if you commit entirely to one colour. What you find is that one colour is never one thing.
+
+## seb-livingroom -> buddha (redirect)
+  title: Seb Livingroom  ->  Buddha
+  availability note: -  ->  Not for sale
+  before: Acrylic on canvas. A room painted from memory rather than observation — the forms are architectural but the proportions are felt, not measured. Painted from sitting in the room repeatedly until the image formed from what remained after the details fell away.
+  after:  Wrapped in plastic. The photograph is a process/detail photograph — no finished photograph of the work exists yet.
+
+## hc-andersen -> sri-lanka-study (redirect)
+  title: H.C. Andersen  ->  Sri Lanka Study
+  medium: -  ->  Watercolour on paper
+  before: Watercolour on paper. A small robed figure in a flame-coloured crown, planted among loose washes of grass and flowers. Named for the fairytale writer without illustrating any particular story of his — the reference is tone, not plot.
+  after:  Watercolour on paper, from Sri Lanka. A small robed figure in a flame-coloured crown, planted among loose washes of grass and flowers.
+
+## her-er-en-sandhed
+  medium: -  ->  Collage on a sketchbook page
+  before: Acrylic and collage on a sketchbook page. Danish text painted straight into the surface: "Her er en sandhed: det er nok at stå ud af søgen" — here is a truth, it is enough to stand outside the searching. A torn tea-packet illustration collaged in below it, sun rays drawn around it like something has just been poured.
+  after:  A small collage from a sketchbook. The text reads "det er nok at stå ud af sengen" — it is enough to get out of bed.
+
+## fantasy
+  medium: -  ->  Watercolour on paper (sketchbook)
+  before: Watercolour on paper. A small egg-shaped creature, eyes shut, a lit fuse curling out of its head. Somewhere between a fairytale character and something about to go off — the painting doesn't resolve which.
+  after:  A very small watercolour sketch from a sketchbook. It looks like something between a fairy and a bomb. Not a standalone piece — a sketchbook page.
+
+## blue-background-dayin
+  category: painting  ->  mixed
+  medium: -  ->  Digital collage over a photograph with a painted background
+  before: A pressed dandelion seed head and a decaying leaf on a wash of studio blue, with a torn scrap of pink fabric tucked beneath. The brand's name, hand-lettered into a painted ribbon, sits over the top — this is the original piece the site is named after.
+  after:  A digital collage over a photograph; the background is painted. It exists as a digital file.
+
+## view-from-the-studio
+  before: What the studio window holds — light at a specific time of day, the outside seen from inside the practice. Shot in Copenhagen. Archival inkjet on photo paper.
+  after:  Graphic, almost a collage — layers on layers. The studio no longer looks like this.
+
+## blue-flower-on-green-wood
+  before: A single blue flower laid against weathered green wood. Two specific colours, exactly right against each other. Colour study as still life; still life as composition. Archival inkjet print.
+  after:  An art photograph of a blue flower on green wood.
+
+## red-and-green-moss
+  before: Close-up of moss photographed at the moment where red and green meet. The scale makes the familiar unrecognisable. Shot in Gørlev on a phone — the camera decides what matters, even when you do. Archival inkjet print.
+  after:  Several photographs of red and green moss, including the tray. Part of Stine's interest in temporary artworks and transience.
+
+## no-ordinary-stone
+  before: A stone brought inside and examined at close range. The longer you look, the less ordinary it gets. That is not a metaphor — it is what happens when you look. Archival inkjet print.
+  after:  A photograph of a stone.
+
+## taped-objects
+  before: Domestic objects fixed in place with tape — the makeshift as formal decision. The tape shows. That is the point: provisional arrangements can also be compositions. Archival inkjet print.
+  after:  Objects fixed with tape, photographed in a graphic way. Several views.
+
+## flowers-on-linen
+  before: Flowers arranged on a ground of linen cloth — textile meeting botanical, two materials that know each other. The colour shifts of the linen behind the petals is what this photograph is actually about. Archival inkjet print.
+  after:  Flowers on linen. Stine singles this one out for its colours.
+
+## polaroids (photography) — MERGED into /works/polaroids (mixed); old photography entry removed
+  before: Polaroids | photography | A photograph of polaroid photographs — the medium turned back on itself, the image as object. The physical flatness of the polaroid is the subject. Archival inkjet print.
+
+## on-the-light-table
+  before: Objects placed on a light table — backlit, translucent, revealed differently. A method for looking at things that are usually opaque. Transparency as technique and as theme. Archival inkjet print.
+  after:  Flowers pressed in a laminator. The work was a hanging; this photograph is a deliberate excerpt that tells a story — the photograph is the work. Slightly eerie.
+
+## dead-flowers
+  before: Dried flowers photographed close up. After the bloom there is a different kind of beauty — drier, more structural, more architectural. This is a photograph of what remains. Archival inkjet print.
+  after:  A series over time: every bouquet Stine picked was allowed to wither and was photographed. More photographs exist. Stine wants these as large prints.
+
+## vase-on-stool — REMOVED, redirect -> photography category
+  before: Vase on Stool | photography | A single vase on a stool — the classic still life arrangement, seen straight on. Nothing rearranged. The interest is in the exactness of the ordinary: this vase, this stool, this light. Archival inkjet print.
+
+## purple-flower
+  before: One purple flower, photographed until the colour was right. Stine has been photographing single flowers since 2019 — each a study in how colour behaves when it has nothing to compete with. Archival inkjet print.
+  after:  A white flower, until Stine stood it in coloured water — now you can see all the colours. More shots exist.
+
+## linen-and-yellow-flower
+  before: A yellow flower laid on linen — two specific textures, one temperature contrast. The linen ground holds the colour differently than any other background would. Five photographs of the same still life, each finding something different.
+  after:  A yellow flower on linen. Almost a portrait of a day.
+
+## a-very-small-frog
+  before: Exactly what the title says — a very small frog, photographed close enough that the scale becomes strange. The eye is the sharpest thing in the frame. Stine finds animals worth as much attention as any other subject.
+  after:  A very small frog.
+
+## colourful-shadows
+  before: Shadows that are not grey — light through coloured objects, each shadow a different temperature. The image is about what happens between the object and the surface it casts onto. Archival inkjet print.
+  after:  Colourful shadows.
+
+## minnie-mouse-neko-cat -> neko-cat-and-another-character (redirect)
+  title: Minnie Mouse, Neko Cat  ->  Neko Cat and Another Character
+  before: A Minnie Mouse plush figure next to a NEKO cat artwork. Two cultural objects in the same frame — neither ironised, neither privileged. They just happened to be in the same room at the same time. The photograph noticed them.
+  after:  A Neko cat artwork photographed next to another character.
+
+## purple-fabric-in-garden
+  before: A length of purple fabric arranged in a Copenhagen garden — textile in outdoor light, the colours doing something they cannot do indoors. Shot in early spring before the garden woke up. The purple is the warmest thing in the frame.
+  after:  Laundry on the line — about colour and shadow.
+
+## smorrebrod
+  before: The Danish open sandwich as still life. Photographed as seriously as anything else in the studio — the composition held to the same standard as a painting. Food made from attention, photographed with the same attention. Archival inkjet print.
+  after:  Smørrebrød — the essence of Stine's everyday home art: food made like this.
+
+## yarn
+  before: A ball of yarn photographed close enough that the individual threads become visible. The raw material of tufting and weaving; the substance of the studio. A portrait of the material before it becomes something else. Archival inkjet print.
+  after:  Yarn bought at a weaving mill / fabric place on a trip with Stine's mother. Set up where they stayed, with wood placed in front. More set-ups exist.
+
+## office-shot
+  before: The working desk — papers, tools, the evidence of practice. Photographed without clearing anything away. A studio interior as document and as composition. The disorder is how it actually looks. Archival inkjet print.
+  after:  Taken in the former office: "our colourful chaos". A work in itself.
+
+## cat-doll
+  medium: Hand-sewn fabric, stuffing, embroidery  ->  Hand-sewn, hand-painted and embroidered fabric
+  before: A hand-sewn plush cat, embroidered face and markings. Soft sculpture rather than textile-on-a-wall — the same hand, a different kind of object.
+  after:  Sewn entirely by hand. Stine hand-painted the fabric and embroidered it. Made on Strynø. It has an anchor tattoo. A little rebel cat that just appeared — not planned. The photograph is a process shot.
+
+## pink-bag -> pussy-bag (redirect)
+  title: Pink Bag  ->  Pussy Bag
+  medium: Hand-painted burlap, tufted wool appliqué  ->  Hand-painted canvas shopping bag, hand-tufted
+  before: A burlap tote, hand-painted in washes of pink and white, with a small tufted patch appliquéd onto one face. A wearable object treated with the same attention as a wall piece.
+  after:  Hand-painted on a canvas shopping bag and hand-tufted, with the pussy on the outside. Usable, but meant to hang — it hangs in Stine's office. It had a small label that is now lost.
+
+## polaroids-on-fabrics -> polaroids (redirect)
+  title: Polaroids on Fabrics  ->  Polaroids
+  medium: Instant photographs on hand-dyed fabric  ->  Polaroids on a fabric background
+  before: Instant photographs — a beach, a tide pool, a sunset — laid directly on a hand-dyed fabric backdrop. The photograph and the dye bleed into the same soft, faded register.
+  after:  A set-up of polaroids on a fabric background. The work is the whole set-up. The fabric background no longer exists; the polaroids do. Stine would sell a reproduction as a print.
+
+## tufting-on-embroidered-background -> cut-out-face (redirect)
+  title: Tufting on Embroidered Background  ->  Cut-Out Face
+  medium: Wool tufting and hand embroidery, framed  ->  Cut-out part of a tufted work, behind glass
+  before: A high-pile tufted face sits beside a scatter of loose embroidered marks on kraft paper, framed together as one piece. Two techniques that don't usually share a frame, here sharing one.
+  after:  The face is cut out of a tufted work and pressed behind glass. The hair is cut.
+
+## laundry-bags
+  medium: Hand-woven textile  ->  Textile bags
+  before: Hand-woven textile bags in geometric and striped patterns — functional objects made on a loom rather than bought. Domestic use as a formal constraint, not a compromise.
+  after:  Laundry bags made from fabric that came from Stine's mother / a weaving mill. The fabric is gone, so they cannot be remade exactly. No finished photograph yet.
+
+
+60 works touched.
+
+========== PLUMBING ==========
+- lib/data.ts: WorkCategory += 'digital'; Work.hidden flag; `works` = allWorks minus hidden (grid, sitemap, search, static params).
+- next.config.ts: 12 new /works/ redirects (11 permanent, theres-nothing-here temporary -> embroidery grid).
+- app/fine-art/page.tsx: Digital filter + section + label; taglines de-invented; hero says works ship unframed (G1); office-shot unhidden (brief: "a work in itself"); green-background dropped from RECENTLY_ADDED.
+- app/works/[slug]/page.tsx: Digital label/medium; "ship unframed" in the PDP pricing note (G1).
+- app/about/page.tsx: Digital link in the category list.
+- "default" (listed in the task): no work with that slug exists in lib/data.ts — nothing to remove.
+
+========== FIVE CONFIRM ITEMS — left on defaults ==========
+1 collage-bw title: Stine's spoken title is garbled in the transcript ([00:00:17] "…monument"). Default: title "Collage" (the old "Black & White" is wrong — it is partly dark blue); slug collage-bw unchanged. Monument-series tag NOT applied (she didn't say which works belong).
+2 Mariann pair title ([05:20] "Til …s drøm"): not applied; piece keeps title "Mariann".
+3 Tufted face behind glass: working title "Cut-Out Face", slug cut-out-face, redirect from the old slug.
+4 vase-on-stool: removed (redirect -> photography category).
+5 Which tufting single leaves Art Prints: DD2 (shop), not touched here.
+
+========== JUDGMENT CALLS (not literally in the brief) ==========
+- mariann: availabilityNote "Not for sale — hangs at Stine's parents'" + sold:true (gift, hangs at parents'; same pattern as Ulrikke pieces).
+- minnie-mouse-neko-cat: slug also renamed to neko-cat-and-another-character (old slug carries the Minnie Mouse name); redirect added.
+- polaroids: survivor slug is /works/polaroids (category mixed, year 2020 from the mixed entry); gallery = fabric set-up shot + both old photography images.
+- Descriptions with no Stine fact behind them were cut to a bare factual line (elsk, no-ordinary-stone, a-very-small-frog, colourful-shadows, view-from-the-studio, blue-flower-on-green-wood). Photography descriptions no longer repeat "Archival inkjet print" (the medium row still shows it).
+- bird-man: the "Hangs at Rogerbakken" fact is NOT published (looks like a private address).
+- Digital category contains only Bird Man: Tourism and the Shiro/Neko drawings exist only as shop products, not as fine-art works; no works were invented.
+- Not touched: app/about/page.tsx body copy on painting ("Acrylic and oil stick, worked on the studio floor…") and the homepage blurb — outside the work records; flag for a later pass.
+
+========== NOT DONE HERE (needs files / other items) ==========
+PHOTO-NEEDED (G4): Mariann father's piece · Ingenting (better shot; now single image) · 38 Homes (other parts) · Universe I-III + Collection (finished shots; all current photos are process shots) · Untitled watercolour companions (3-4) · Buddha · tufted vagina/flower on wood · dead flowers (more) · purple flower (more) · yarn (more) · red & green moss (more, up to 5; blob has 4 images) · cat doll finished shot · laundry bags · purple-sun's sibling · the bather (large + small) · the painting for the girls · moonstones · works 2022+ · colour-study-blue (hero and gallery[0] are the same file; no other image on blob) · view-from-the-studio (odd crop is an image problem, needs the original) -> DD3 / Dropbox.
+Shop items S1-S7 -> DD2.

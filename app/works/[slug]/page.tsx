@@ -54,6 +54,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   photography: "Photography",
   mixed: "Mixed Media",
   handhooking: "Handhooking",
+  digital: "Digital",
 }
 
 const CATEGORY_MEDIUM: Record<string, string> = {
@@ -63,6 +64,7 @@ const CATEGORY_MEDIUM: Record<string, string> = {
   photography: "Archival inkjet print",
   mixed: "Mixed media",
   handhooking: "Mixed fibres",
+  digital: "Digital drawing",
 }
 
 const SERIES_SHOP_FILTERS: Array<{ pattern: RegExp; filter: string; label: string }> = [
@@ -182,7 +184,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             </div>
             <div className={styles.infoRight}>
               <p className={styles.pricingNote}>
-                Originals are individually priced.{' '}
+                Originals are individually priced and ship unframed.{' '}
                 <Link href="/practical">See the FAQ</Link> for typical price ranges.
               </p>
               <Button

@@ -14,6 +14,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   photography: "Photography",
   mixed: "Mixed Media",
   handhooking: "Handhooking",
+  digital: "Digital",
 };
 
 const CATEGORY_FILTERS = [
@@ -24,6 +25,7 @@ const CATEGORY_FILTERS = [
   { key: "photography", label: "Photography" },
   { key: "mixed", label: "Mixed Media" },
   { key: "handhooking", label: "Handhooking" },
+  { key: "digital", label: "Digital" },
 ];
 
 interface PageProps {
@@ -62,23 +64,22 @@ const artGalleryJsonLd = {
 
 const sections: { id: WorkCategory; label: string; tagline: string }[] = [
   { id: "tufting",     label: "Hand Tufting",  tagline: "Each piece takes days. The pile height, density, and texture chosen entirely by hand. No two are alike." },
-  { id: "embroidery",  label: "Embroidery",    tagline: "Needle and thread on canvas and linen. Where the work started and where it keeps returning." },
-  { id: "painting",    label: "Paintings",     tagline: "Acrylic and oil stick on canvas, worked on the studio floor. Layers built up and scraped back over multiple sessions." },
-  { id: "photography", label: "Photography",   tagline: "Shot on location across Denmark and beyond. Stillness, observation, the moment just after." },
+  { id: "embroidery",  label: "Embroidery",    tagline: "Needle and thread on fabric. Where the work started and where it keeps returning." },
+  { id: "painting",    label: "Paintings",     tagline: "Acrylic, watercolour and ink — on canvas and on paper." },
+  { id: "photography", label: "Photography",   tagline: "Art photographs — flowers, set-ups and everyday things." },
   { id: "mixed",       label: "Mixed Media",   tagline: "Where the mediums stop staying in their lanes — sewn, painted, woven, and assembled objects that don't fit the other categories." },
   { id: "handhooking", label: "Handhooking",   tagline: "A separate technique from tufting — worked in mixed fibres." },
+  { id: "digital",     label: "Digital",       tagline: "Drawings made on screen." },
 ];
 
 const FEATURED_SLUGS = ['orange-sun', 'fuck-alting', 'universe-3', 'taped-objects'];
 
-// Works hidden from the public archive (weak/placeholder shots)
-const HIDDEN_SLUGS = ['office-shot'];
 
 // Capped at 6 (2026-07-17, per Sebastian) — dropped Purple Fabric in Garden,
 // Seb Livingroom, Long Hair Don't Care. Uses the same tile component as the
 // homepage "Browse by Series" strip (SeriesTile), not a bespoke card.
 const RECENTLY_ADDED_SLUGS = [
-  'yarn', 'smorrebrod', 'you-and-i-and-the-universe', 'wallflower', 'stripes-on-beige', 'green-background',
+  'yarn', 'smorrebrod', 'you-and-i-and-the-universe', 'wallflower', 'stripes-on-beige',
 ];
 
 function ViewToggle({ view, category }: { view: 'list' | 'grid'; category: string }) {
@@ -130,8 +131,8 @@ export default async function FineArt({ searchParams }: PageProps) {
       <span className={styles.heroLabel}>Original Works</span>
       <h1>Fine Art</h1>
       <p className={styles.heroSub}>
-        Tufted textiles, embroidery, painting, and photography — made by hand in Copenhagen.
-        Each piece exists once and is available on direct enquiry.
+        Tufted textiles, embroidery, painting, photography and digital work — made in Copenhagen.
+        Each piece exists once and is available on direct enquiry. Works ship unframed — you frame or pin them yourself.
       </p>
       <p className={styles.heroCount}>
         {availableCount} of {totalCount} works currently available
@@ -274,7 +275,7 @@ export default async function FineArt({ searchParams }: PageProps) {
 
       {/* ── Sections ─────────────────────────────────────────── */}
       {visibleSections.map((section) => {
-        const categoryWorks = works.filter((w) => w.category === section.id && !HIDDEN_SLUGS.includes(w.slug));
+        const categoryWorks = works.filter((w) => w.category === section.id);
         return (
           <section key={section.id} id={section.id} className={styles.section}>
             <SectionHeading title={section.label} subtitle={section.tagline} />

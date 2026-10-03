@@ -134,6 +134,69 @@ const nextConfig: NextConfig = {
         destination: "/works/38-homes",
         permanent: true,
       },
+      // Fine Art pass 2, 2026-10-03 (Stine's recording): renames, merges and removals.
+      // Removed works redirect to their category; theres-nothing-here is hidden (unfinished) so its
+      // redirect is temporary — drop it when the work is photographed and un-hidden.
+      {
+        source: "/works/apple-scraps",
+        destination: "/works/fuck-alting",
+        permanent: true,
+      },
+      {
+        source: "/works/colour-study",
+        destination: "/fine-art?view=grid&category=painting",
+        permanent: true,
+      },
+      {
+        source: "/works/green-background",
+        destination: "/fine-art?view=grid&category=painting",
+        permanent: true,
+      },
+      {
+        source: "/works/vase-on-stool",
+        destination: "/fine-art?view=grid&category=photography",
+        permanent: true,
+      },
+      {
+        source: "/works/person-walking",
+        destination: "/works/untitled-watercolour",
+        permanent: true,
+      },
+      {
+        source: "/works/seb-livingroom",
+        destination: "/works/buddha",
+        permanent: true,
+      },
+      {
+        source: "/works/hc-andersen",
+        destination: "/works/sri-lanka-study",
+        permanent: true,
+      },
+      {
+        source: "/works/minnie-mouse-neko-cat",
+        destination: "/works/neko-cat-and-another-character",
+        permanent: true,
+      },
+      {
+        source: "/works/tufting-on-embroidered-background",
+        destination: "/works/cut-out-face",
+        permanent: true,
+      },
+      {
+        source: "/works/pink-bag",
+        destination: "/works/pussy-bag",
+        permanent: true,
+      },
+      {
+        source: "/works/polaroids-on-fabrics",
+        destination: "/works/polaroids",
+        permanent: true,
+      },
+      {
+        source: "/works/theres-nothing-here",
+        destination: "/fine-art?view=grid&category=embroidery",
+        permanent: false,
+      },
     ];
   },
   images: {
