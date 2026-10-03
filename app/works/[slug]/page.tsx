@@ -82,7 +82,9 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
   if (!work) notFound();
 
   const label = CATEGORY_LABELS[work.category] ?? work.category
-  const medium = work.materials ?? CATEGORY_MEDIUM[work.category] ?? work.description
+  // Paintings no longer fall back to a generic medium: Stine's pass showed they span acrylic, watercolour,
+  // ink and unknown — an unset `materials` hides the row rather than guessing.
+  const medium = work.materials ?? (work.category === 'painting' ? undefined : (CATEGORY_MEDIUM[work.category] ?? work.description))
 
   const seriesMatch = SERIES_SHOP_FILTERS.find(s => s.pattern.test(work.title))
   const shopHref = seriesMatch ? `/shop?filter=${seriesMatch.filter}` : '/shop'
@@ -195,10 +197,12 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                 {work.sold ? 'Enquire about similar work' : 'Enquire about price'}
               </Button>
               <div className={styles.meta}>
-                <div className={styles.metaRow}>
-                  <span className={styles.metaKey}>Medium</span>
-                  <span className={styles.metaVal}>{medium}</span>
-                </div>
+                {medium && (
+                  <div className={styles.metaRow}>
+                    <span className={styles.metaKey}>Medium</span>
+                    <span className={styles.metaVal}>{medium}</span>
+                  </div>
+                )}
                 <div className={styles.metaRow}>
                   <span className={styles.metaKey}>Year</span>
                   <span className={styles.metaVal}>{work.year}</span>
@@ -212,10 +216,6 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                 <div className={styles.metaRow}>
                   <span className={styles.metaKey}>Edition</span>
                   <span className={styles.metaVal}>Unique original</span>
-                </div>
-                <div className={styles.metaRow}>
-                  <span className={styles.metaKey}>Location</span>
-                  <span className={styles.metaVal}>Copenhagen, Denmark</span>
                 </div>
               </div>
             </div>
