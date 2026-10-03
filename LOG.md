@@ -7,10 +7,10 @@
 **Context:** the portfolio auditor had flagged "dayindayin and dayindayin-site are duplicate repos — pick one" for several runs. Cowork investigated: both were clones of the same GitHub repo (`flamant-studio/dayindayin.git`). `dayindayin/` was a stale checkout, 55 commits behind `dayindayin-site`'s `main`, zero unique commits or files. Sebastian approved deleting it plus a cleanup pass on this repo.
 
 **Done, in order:**
-1. Re-verified the ancestry/clean-status proof from the handover, then deleted `~/Documents/FLAMANT/dayindayin/` (1.7GB freed). Recoverable via `git clone` if ever needed.
+1. Re-verified the ancestry/clean-status proof from the handover, then deleted `~/Projects/FLAMANT/dayindayin/` (1.7GB freed). Recoverable via `git clone` if ever needed.
 2. Reviewed the 22 uncommitted files sitting in this repo (diagnostic scripts + assets from the framed-print variant fix, dad-cap audit, and Gelato `publishing_error` investigation). Committed 13 generic/reusable scripts + 3 SHERO clean-background PNGs + the Cowork handover doc (`8784856`). Gitignored 6 scripts hardcoded to now-resolved incident-specific product IDs (one-off canary/stuck-variant checks, not reusable).
 3. Pruned three stale `.claude/worktrees/agent-*` directories — all parked on old commit `056cf7c` with zero commits main lacked, and every file in their working-tree diffs already existed in an equivalent-or-newer form on `main`. Removed the worktrees and deleted the three orphaned `worktree-agent-*` branches.
-4. Updated `~/Documents/FLAMANT/CLAUDE.md` — removed the `dayindayin/` folder-tree line and its "sister repo" note.
+4. Updated `~/Projects/FLAMANT/CLAUDE.md` — removed the `dayindayin/` folder-tree line and its "sister repo" note.
 
 **Not touched:** `dev` branch on origin (320 commits behind `main`, nothing unique) — left for a later pass per the handover. `.env.local` — not read, moved, or copied.
 
@@ -566,3 +566,4 @@ Implemented Stine's confirmed edits to `lib/data.ts` for the tufting archive (re
 - Floral Thing's existing copy had no forbidden terms, judged factual/clean, kept as-is per the conditional instruction.
 
 Verified: `npx tsc --noEmit` clean, `next build` succeeded (97 static work pages), and spot-checked redirects + rendered pages on a local production server (wallflower, star, candy-9, jewel-hand, purple-sun's availability note, sitspot has zero "hand-tufted" occurrences, orange-sun ↔ green-earth companion links, handhooking category filter). Not yet pushed — Sebastian to review the judgment calls above before this goes live and breaks/redirects real URLs.
+2026-10-03 20:12 · DD1 · PASS · Fine Art pass 2 copy, titles, removals · _review/DD1/
