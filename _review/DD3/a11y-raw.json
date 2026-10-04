@@ -1,0 +1,450 @@
+[
+ {
+  "p": "/",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?view=grid",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=tufting",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=embroidery",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=painting",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=photography",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=mixed",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=handhooking",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=digital",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/the-bather",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/38-homes",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/universe-1",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/cat-doll",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/shop",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/shop/PRODUCT",
+  "vp": 390,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?view=grid",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=tufting",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=embroidery",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=painting",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=photography",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=mixed",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=handhooking",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=digital",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/the-bather",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/38-homes",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/universe-1",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/cat-doll",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/shop",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/shop/PRODUCT",
+  "vp": 390,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?view=grid",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=tufting",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=embroidery",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=painting",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=photography",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=mixed",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=handhooking",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=digital",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/the-bather",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/38-homes",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/universe-1",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/cat-doll",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/shop",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/shop/PRODUCT",
+  "vp": 1280,
+  "banner": true,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?view=grid",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=tufting",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=embroidery",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=painting",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=photography",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=mixed",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=handhooking",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/fine-art?category=digital",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/the-bather",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/38-homes",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/universe-1",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/works/cat-doll",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/shop",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ },
+ {
+  "p": "/shop/PRODUCT",
+  "vp": 1280,
+  "banner": false,
+  "axe": [],
+  "own": []
+ }
+]
