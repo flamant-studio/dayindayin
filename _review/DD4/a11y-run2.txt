@@ -1,0 +1,27 @@
+axe color-contrast a[href="/shop?filter=shero"] > .SeriesTile-module__tZG_bG__tileInfo > .SeriesTile-module__tZG_bG__tileLabel | 2 pages-vp
+contrast-px a.E0kJGG "See original works" 3.18 | 2 pages-vp
+contrast-px span.tZG_bG "SHERO" 4.11 | 4 pages-vp
+contrast-px span.MWZuKW "Orange Sun" 1.35 | 2 pages-vp
+contrast-px span.MWZuKW "Hand Tufting" 1.41 | 2 pages-vp
+contrast-px span.MWZuKW "Fuck Alting" 1.88 | 2 pages-vp
+contrast-px span.MWZuKW "2020" 1.96 | 2 pages-vp
+contrast-px span.MWZuKW "Universe III" 1.38 | 2 pages-vp
+contrast-px span.MWZuKW "2021" 1.37 | 2 pages-vp
+contrast-px span.MWZuKW "Taped Objects" 1.28 | 2 pages-vp
+contrast-px span.MWZuKW "2021" 1.43 | 2 pages-vp
+h-overflow html "" 416 | 2 pages-vp
+tap button.iGYW3q "FILTER & SORT
+▾" 41x390 | 2 pages-vp
+contrast-px span.E0kJGG "Copenhagen, Denmark" 4.38 | 2 pages-vp
+contrast-px a.E0kJGG "See original works" 3.11 | 1 pages-vp
+contrast-px span.MWZuKW "Orange Sun" 1.40 | 2 pages-vp
+contrast-px span.MWZuKW "Hand Tufting" 1.45 | 2 pages-vp
+contrast-px span.MWZuKW "Fuck Alting" 2.01 | 2 pages-vp
+contrast-px span.MWZuKW "2020" 2.06 | 2 pages-vp
+contrast-px span.MWZuKW "Universe III" 1.00 | 1 pages-vp
+contrast-px span.MWZuKW "Taped Objects" 1.42 | 2 pages-vp
+contrast-px span.MWZuKW "2021" 1.50 | 2 pages-vp
+contrast-px a.E0kJGG "See original works" 3.15 | 1 pages-vp
+contrast-px span.MWZuKW "Universe III" 3.23 | 1 pages-vp
+contrast-px span.MWZuKW "2021" 3.36 | 1 pages-vp
+DISTINCT_ISSUES 25

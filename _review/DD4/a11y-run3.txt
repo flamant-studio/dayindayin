@@ -1,0 +1,8 @@
+contrast-px a.E0kJGG "See original works" 1.74 | 4 pages-vp
+contrast-px span.MWZuKW "Orange Sun" 3.78 | 1 pages-vp
+contrast-px span.MWZuKW "Orange Sun" 3.50 | 1 pages-vp
+contrast-px span.E0kJGG "Copenhagen, Denmark" 3.88 | 1 pages-vp
+contrast-px span.MWZuKW "Orange Sun" 3.54 | 2 pages-vp
+contrast-px span.MWZuKW "Universe III" 1.00 | 1 pages-vp
+contrast-px span.E0kJGG "Copenhagen, Denmark" 3.90 | 1 pages-vp
+DISTINCT_ISSUES 7

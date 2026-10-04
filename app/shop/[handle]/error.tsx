@@ -16,13 +16,13 @@ export default function ProductError({ error, reset }: { error: Error & { digest
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         <button
           onClick={reset}
-          style={{ padding: '0.75rem 2rem', background: 'var(--c-text)', color: 'var(--c-white)', fontSize: '0.8125rem', fontWeight: 600, letterSpacing: '0.06em', border: 'none', cursor: 'pointer' }}
+          style={{ padding: '0.75rem 2rem', background: 'var(--c-text)', color: 'var(--c-white)', fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.06em', border: 'none', cursor: 'pointer' }}
         >
           Try again
         </button>
         <Link
           href="/shop"
-          style={{ padding: '0.75rem 2rem', border: '1px solid var(--c-border)', fontSize: '0.8125rem', fontWeight: 500, color: 'var(--c-muted)' }}
+          style={{ padding: '0.75rem 2rem', border: '1px solid var(--c-border)', fontSize: '0.875rem', fontWeight: 500, color: 'var(--c-muted)' }}
         >
           Back to shop
         </Link>

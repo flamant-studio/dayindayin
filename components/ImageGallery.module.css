@@ -109,3 +109,6 @@
     flex-shrink: 0;
   }
 }
+
+/* a11y: 44px tap targets */
+.mainArrow { min-width: 44px; min-height: 44px; }

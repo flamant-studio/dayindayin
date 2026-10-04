@@ -168,7 +168,7 @@
   right: -8px;
   background: var(--c-accent);
   color: #fff;
-  font-size: 10px;
+  font-size: var(--text-xs);
   font-weight: 700;
   line-height: 1;
   min-width: 16px;
@@ -282,3 +282,7 @@
   .dropTrigger::after { display: none; }
 }
 
+
+/* a11y: 44px tap targets */
+.cartBtn { min-width: 44px; min-height: 44px; justify-content: center; }
+.burger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }

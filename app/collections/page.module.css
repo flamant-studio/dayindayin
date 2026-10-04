@@ -78,7 +78,7 @@
 
 .cardCount {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 10px;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;

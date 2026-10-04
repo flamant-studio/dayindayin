@@ -1,0 +1,126 @@
+axe color-contrast .page-module__E0kJGG__editorialSeries | 2 pages-vp
+contrast span.E0kJGG "Copenhagen, Denmark" 1.00 | 4 pages-vp
+contrast h1.E0kJGG "Art made" 1.00 | 4 pages-vp
+contrast p.E0kJGG "Stine Weirsøe Flamant makes art with her" 1.00 | 4 pages-vp
+contrast a.E0kJGG "See original works" 1.00 | 4 pages-vp
+contrast span.E0kJGG "Tufting — from the studio" 4.37 | 4 pages-vp
+contrast a.E0kJGG "See the original →" 3.45 | 4 pages-vp
+contrast span.tZG_bG "SHERO" 4.11 | 4 pages-vp
+size span.9j1fXa "Masks" 12 | 4 pages-vp
+size span.9j1fXa "Framed Print" 12 | 4 pages-vp
+size span.9j1fXa "Art Print" 12 | 4 pages-vp
+size span.9j1fXa "NEKO" 12 | 6 pages-vp
+size span.9j1fXa "Poster" 12 | 4 pages-vp
+size span.9j1fXa "SHERO" 12 | 6 pages-vp
+size span.9j1fXa "Mug" 12 | 6 pages-vp
+size p.9etpq "We use cookies to keep your cart working" 12 | 12 pages-vp
+size a.9etpq "Privacy policy →" 12 | 12 pages-vp
+size button.9etpq "Decline" 12 | 12 pages-vp
+size button.9etpq "Accept" 12 | 12 pages-vp
+tap select.EuqHDa "DKK
+EUR
+GBP" 22x53 | 24 pages-vp
+tap button.kYo86W "Save Mask — II to wishlist" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Elsk to wishlist" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Two Cats to wishlist" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Neko — Pink to wishlist" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Flowers on Linen to wishl" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Neko Paw — Pink to wishli" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Mug — SHERO — Teal to wis" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Mug — SHERO — Purple to w" 30x30 | 12 pages-vp
+size a.MWZuKW "All" 12 | 18 pages-vp
+size a.MWZuKW "Tufting" 12 | 18 pages-vp
+size a.MWZuKW "Embroidery" 12 | 18 pages-vp
+size a.MWZuKW "Painting" 12 | 18 pages-vp
+size a.MWZuKW "Photography" 12 | 18 pages-vp
+size a.MWZuKW "Mixed Media" 12 | 18 pages-vp
+size a.MWZuKW "Handhooking" 12 | 18 pages-vp
+size a.MWZuKW "Digital" 12 | 18 pages-vp
+on-image span.MWZuKW "Orange Sun"  | 4 pages-vp
+on-image span.MWZuKW "Hand Tufting"  | 4 pages-vp
+on-image span.MWZuKW "Fuck Alting"  | 4 pages-vp
+on-image span.MWZuKW "2020"  | 4 pages-vp
+on-image span.MWZuKW "Universe III"  | 4 pages-vp
+on-image span.MWZuKW "2021"  | 4 pages-vp
+on-image span.MWZuKW "Taped Objects"  | 4 pages-vp
+size span.kjSaHq "Sold" 12 | 14 pages-vp
+h-overflow html "" 416 | 2 pages-vp
+HTTP 404 /works/monument | 
+HTTP 404 /mariann | 
+HTTP 404 /no-title-tufted-face | 
+HTTP 404 /vase-on-stool | 
+size span.iGYW3q "▾" 12 | 2 pages-vp
+size span.9j1fXa "Water Bottle" 12 | 2 pages-vp
+size span.9j1fXa "Tote Bag" 12 | 2 pages-vp
+size span.9j1fXa "Apparel" 12 | 2 pages-vp
+size span.9j1fXa "Postcard" 12 | 4 pages-vp
+size span.9j1fXa "Sea Monsters" 12 | 2 pages-vp
+size span.9j1fXa "Greeting Card" 12 | 4 pages-vp
+tap button.iGYW3q "FILTER & SORT
+▾" 41x390 | 2 pages-vp
+tap button.kYo86W "Save Mug — Neko Paw — Lilac to" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Mug — Neko — Pink to wish" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Rabbit Line Art to wishli" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Rabbit to wishlist" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Mask — Calling to wishlis" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Tank Top – Neko Paw — Bla" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Mask — Blasé to wishlist" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Elephant — Green to wishl" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Rainbow II to wishlist" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Elephants — 4x4 to wishli" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Kaninskoven (Landscape) t" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Elephant — Yellow to wish" 30x30 | 4 pages-vp
+tap button.kYo86W "Save SHERO — Indigo to wishlis" 30x30 | 8 pages-vp
+tap button.kYo86W "Save SHERO — III to wishlist" 30x30 | 8 pages-vp
+tap button.kYo86W "Save Elephant — Red (Landscape" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Sea Monsters — Steel (Lan" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Purple Sun to wishlist" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Neko Paw — Lilac to wishl" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Neko Paw — Yellow & Blue " 30x30 | 4 pages-vp
+tap button.kYo86W "Save Mask — III to wishlist" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Neko Paw — Yellow II to w" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Neko Paw — Blue to wishli" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Sea Monsters — Blue to wi" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Neko Paw — Red to wishlis" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Sea Monsters — Steel to w" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Moon Face (Portrait) to w" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Neko Paw — Yellow Neon to" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Elephant — Yellow (Landsc" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Neko Paw — Pink (Portrait" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Mask — I (Portrait) to wi" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Mask — II (Portrait) to w" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Sommerby (Portrait) to wi" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Solar Face (Portrait) to " 30x30 | 4 pages-vp
+axe aria-hidden-focus .StickyATC-module__dfuGsW__bar | 2 pages-vp
+size span.9j1fXa "Floral" 12 | 2 pages-vp
+tap button.grHWfG "‹" 42x35 | 4 pages-vp
+tap button.grHWfG "›" 42x35 | 4 pages-vp
+tap button.dfuGsW "Add to cart — 92 kr" 33x358 | 2 pages-vp
+tap button.kYo86W "Save SHERO — Indigo (Landscape" 30x30 | 4 pages-vp
+tap button.kYo86W "Save SHERO — III (Landscape) t" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Mug — SHERO — Indigo to w" 30x30 | 4 pages-vp
+tap button.kYo86W "Save Mug — Floating Poppies to" 30x30 | 4 pages-vp
+tap select.EuqHDa "DKK
+EUR
+GBP" 20x48 | 24 pages-vp
+axe color-contrast .ShopFilterNav-module__iGYW3q__subnavRow:nth-child(1) > .ShopFilterNav-module__iGYW3q__subnavLabel | 1 pages-vp
+contrast span.iGYW3q "Type" 2.54 | 2 pages-vp
+contrast span.iGYW3q "187" 3.07 | 2 pages-vp
+contrast span.iGYW3q "30" 3.07 | 2 pages-vp
+contrast span.iGYW3q "23" 3.07 | 2 pages-vp
+contrast span.iGYW3q "20" 3.07 | 2 pages-vp
+contrast span.iGYW3q "21" 3.07 | 2 pages-vp
+contrast span.iGYW3q "11" 3.07 | 2 pages-vp
+contrast span.iGYW3q "13" 3.07 | 2 pages-vp
+contrast span.iGYW3q "40" 3.07 | 2 pages-vp
+contrast span.iGYW3q "9" 3.07 | 2 pages-vp
+contrast span.iGYW3q "15" 3.07 | 2 pages-vp
+contrast span.iGYW3q "5" 3.07 | 2 pages-vp
+contrast span.iGYW3q "Series" 2.54 | 2 pages-vp
+contrast span.iGYW3q "16" 3.07 | 2 pages-vp
+contrast span.iGYW3q "53" 3.07 | 2 pages-vp
+contrast span.iGYW3q "10" 3.07 | 2 pages-vp
+contrast span.iGYW3q "31" 3.07 | 2 pages-vp
+contrast span.iGYW3q "7" 3.07 | 2 pages-vp
+tap button.dfuGsW "Add to cart — 92 kr" 33x189 | 2 pages-vp
+DISTINCT_ISSUES 120

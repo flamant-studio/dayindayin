@@ -173,3 +173,6 @@
     width: 100%;
   }
 }
+
+/* a11y: 44px tap targets */
+.btn, .minimalBtn { min-height: 44px; }

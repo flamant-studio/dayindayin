@@ -32,3 +32,6 @@
 }
 
 .btn:hover { color: var(--c-text); }
+
+/* a11y: 44px tap target */
+.btn { min-height: 44px; }

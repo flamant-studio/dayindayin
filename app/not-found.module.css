@@ -47,7 +47,7 @@
 .searchInput {
   flex: 1;
   padding: var(--sp-3) 1rem;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   border: none;
   outline: none;
   background: transparent;
@@ -120,5 +120,5 @@
 
 .alsoDot {
   color: var(--c-border);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
 }

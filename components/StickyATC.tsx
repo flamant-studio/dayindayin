@@ -36,7 +36,7 @@ export default function StickyATC({ title, imageUrl }: Props) {
   }
 
   return (
-    <div className={`${styles.bar} ${visible ? styles.barVisible : ''}`} aria-hidden={!visible}>
+    <div className={`${styles.bar} ${visible ? styles.barVisible : ''}`} aria-hidden={!visible} inert={!visible}>
       <div className={styles.inner}>
         <span className={styles.title}>{title}</span>
         <button

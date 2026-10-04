@@ -1,0 +1,68 @@
+▲ Next.js 16.2.4 (Turbopack)
+- Environments: .env.local
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 1568ms
+  Running TypeScript ...
+  Finished TypeScript in 1480ms ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/124) ...
+  Generating static pages using 9 workers (31/124) 
+  Generating static pages using 9 workers (62/124) 
+  Generating static pages using 9 workers (93/124) 
+✓ Generating static pages using 9 workers (124/124) in 1106ms
+  Finalizing page optimization ...
+
+Route (app)                     Revalidate  Expire
+┌ ○ /                                   1m      1y
+├ ○ /_not-found
+├ ○ /about
+├ ƒ /api/cart
+├ ƒ /api/contact
+├ ƒ /api/newsletter
+├ ƒ /api/notify
+├ ƒ /api/nudge
+├ ƒ /api/products
+├ ƒ /api/track
+├ ○ /apple-icon.png
+├ ○ /cart
+├ ○ /collections                        5m      1y
+├ ○ /commissions
+├ ○ /contact
+├ ƒ /fine-art
+├ ○ /icon.png
+├ ○ /icon.svg
+├ ○ /legal
+├ ○ /legal/copyright
+├ ○ /legal/privacy
+├ ○ /manifest.webmanifest
+├ ○ /motifs                             5m      1y
+├ ○ /opengraph-image
+├ ○ /order-confirmed
+├ ○ /practical
+├ ○ /preview-a                          5m      1y
+├ ○ /preview-b                          5m      1y
+├ ○ /preview-c                          5m      1y
+├ ○ /robots.txt
+├ ○ /saved
+├ ƒ /search
+├ ƒ /shop
+├ ƒ /shop/[handle]
+├ ƒ /shop/-/opengraph-image
+├ ƒ /shop/collections/[handle]
+├ ○ /sitemap.xml                        1h      1y
+├ ● /works/[slug]                       5m      1y
+│ ├ /works/purple-sun                   5m      1y
+│ ├ /works/candy-1                      5m      1y
+│ ├ /works/candy-2                      5m      1y
+│ └ [+88 more paths]
+└ ƒ /works/-/opengraph-image
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

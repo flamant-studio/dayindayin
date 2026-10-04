@@ -22,7 +22,7 @@ export default function CartDrawer() {
   return (
     <>
       {open && <div className={styles.overlay} onClick={closeCart} />}
-      <aside className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`} role="dialog" aria-modal={open} aria-label="Cart" aria-hidden={!open}>
+      <aside className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`} role="dialog" aria-modal={open} aria-label="Cart" aria-hidden={!open} inert={!open}>
         <div className={styles.header}>
           <h2 className={styles.title}>Your cart</h2>
           <button className={styles.close} onClick={closeCart} aria-label="Close cart">

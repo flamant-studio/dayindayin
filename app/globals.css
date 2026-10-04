@@ -7,7 +7,7 @@
   --c-bg:          #FFFFFF;   /* was #F0EBE3 chalk - rolled back to white 2026-07-04, palette rework in progress */
   --c-white:       #FFFFFF;
   --c-text:        #1A1714;
-  --c-muted:       #7A746F;
+  --c-muted:       #6A645F;   /* 5.7:1 on white (was #7A746F ~4.5) */
   --c-surface:     #FFFFFF;   /* was #E8E1D6 - rolled back to white 2026-07-04, see --c-bg note */
   --c-border:      #E2D8CE;
   --c-accent:      #95619B;   /* mauve — primary CTA. Was #D94F2C vermillion, replaced 2026-07-05 (palette rework, no reds on CTA per Sebastian). Pulled from Mask II / Purple Sun / Universe I. */
@@ -22,8 +22,8 @@
   --font-body:    var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Type scale */
-  --text-xs:   0.6875rem;
-  --text-sm:   0.8125rem;
+  --text-xs:   0.75rem;    /* 12px desktop; 14px under 640px (see media query below) */
+  --text-sm:   0.875rem;
   --text-base: 1rem;
   --text-lg:   1.125rem;
   --text-xl:   1.25rem;
@@ -62,6 +62,10 @@
   --ease: cubic-bezier(0.25, 0, 0, 1);
   --t-fast: 150ms;
   --t-base: 250ms;
+}
+
+@media (max-width: 640px) {
+  :root { --text-xs: 0.875rem; }
 }
 
 /* ─── Reset ────────────────────────────────────────────────────────────────── */
@@ -128,7 +132,7 @@ ul { list-style: none; }
   padding: 0.75rem 1.5rem;
   background: var(--c-accent);
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
   transition: transform 0.15s;
 }

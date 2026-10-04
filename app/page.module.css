@@ -29,9 +29,10 @@
   z-index: 1;
   background: linear-gradient(
     to top,
-    rgba(10, 8, 5, 0.88) 0%,
-    rgba(10, 8, 5, 0.35) 45%,
-    rgba(10, 8, 5, 0.08) 100%
+    rgba(10, 8, 5, 0.92) 0%,
+    rgba(10, 8, 5, 0.78) 45%,
+    rgba(10, 8, 5, 0.6) 70%,
+    rgba(10, 8, 5, 0.12) 100%
   );
 }
 
@@ -49,7 +50,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: var(--sp-4);
 }
 
@@ -67,7 +68,7 @@
   font-size: var(--text-lg);
   font-weight: 300;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.92);
   max-width: 520px;
   margin-bottom: var(--sp-8);
 }
@@ -100,8 +101,9 @@
   align-items: center;
   gap: var(--sp-2);
   padding: var(--sp-3) var(--sp-6);
-  border: 1px solid rgba(255,255,255,0.5);
-  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.75);
+  background: rgba(10, 8, 5, 0.8);
+  color: #fff;
   font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: 0.06em;
@@ -127,7 +129,7 @@
 }
 
 .heroTrustText {
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.06em;
   color: rgba(255,255,255,0.6);
@@ -201,7 +203,7 @@
   width: 100%;
   padding: var(--sp-2) 0;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -237,7 +239,7 @@
   position: absolute;
   top: var(--sp-2);
   left: var(--sp-2);
-  font-size: 9px;
+  font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -337,7 +339,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .editorialTitle {
@@ -353,7 +355,7 @@
   font-size: var(--text-base);
   font-weight: 300;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 420px;
 }
 
@@ -363,7 +365,7 @@
   font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--c-accent);
+  color: #D9B3DE;
   margin-top: var(--sp-3);
   transition: opacity var(--t-fast);
 }
@@ -759,6 +761,7 @@
 
 @media (max-width: 768px) {
   .hero { min-height: 80vh; }
+  .heroOverlay { background: linear-gradient(to top, rgba(10, 8, 5, 0.92) 0%, rgba(10, 8, 5, 0.78) 70%, rgba(10, 8, 5, 0.6) 100%); }
   .heroContent { padding: 0 var(--sp-5) var(--sp-10); }
   .heroTitle { font-size: clamp(2.8rem, 10vw, 4rem); }
   .heroCtas { flex-direction: column; gap: var(--sp-3); }
