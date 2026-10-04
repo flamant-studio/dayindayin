@@ -1,25 +1,11 @@
-FAIL: DD2 DoD not met (live removals and new art prints not done; no a11y.md; after_ proof is not the deployed result)
+FAIL: DD2 DoD not met - live SHERO/cap removals never ran, no new art prints, no a11y.md, no deployed proof
 phase: live (dayindayin-site.vercel.app, checkout paused)
-traffic: low (the project CLAUDE.md has no HELM blast radius line; the parent FLAMANT root says low)
-revert: yes (the branch is git-revertable; the Shopify archives would be reversible)
-externals: yes (live Shopify catalog writes and a Gelato CSV import)
+traffic: low (project CLAUDE.md has no HELM blast radius line; FLAMANT root says low)
+revert: yes (git revert + redeploy; Shopify archives reversible)
+externals: yes (live Shopify catalog writes and a Gelato CSV import reserved for Sebastian)
 
-Route: the DoD asked for live removals and new products. The runner only edited the manifest and CSV and wrote a handoff script, `scripts/dd2-apply.ts`. The Shopify writes were denied and never ran. The CSV import is Sebastian's job.
-
-Verified:
-- `gate.txt` ends with a clean build tail. `tsc` was not rechecked.
-- `curl -sIL https://dayindayin-site.vercel.app/shop` returns 200.
-- The `after_apparel_390.png` card shows "TANK TOP" under the title. S1 appears done, but it is branch work. I did not confirm it is deployed.
-- `_review/DD2/a11y.md` is missing. The task is web-visible, so the readability rule makes this a FAIL.
-- The brief has an `## Existing material` section. Both entries I opened are consistent with the brief.
-
-Against the DoD:
-- SHERO art prints removed: NOT DONE. They are still live; only the manifest and CSV rows were removed.
-- Art prints for dead flowers, taped objects, red & green moss, polaroids and blue flower on green wood: NOT DONE. Only a CSV was prepared. Polaroids has no print file at all, and the 1500x1000 sources are soft at A4.
-- Broken caps dropped: NOT DONE. The investigation is useful (artwork defects, no red cap exists) but nothing was archived.
-- The 7-point verification on new products: not applicable, since no products exist.
-- Before/after screenshots of the live shop: the `after_` shots show only the type label, with no catalog change.
-
-Score 3/10. The label change and the cap diagnosis are real and specific. The handoff is honest. Three of the four fixes are undone.
-
-What it needs: either rerun `scripts/dd2-apply.ts` with Shopify write access (or split DD2 so S1 ships alone), and add `a11y.md`. The new art prints are blocked on Sebastian's CSV import and on a decision about the 1500x1000 sources.
+Route: DoD asked for live removals and new products. Only S1 (card type label), manifest/CSV edits and scripts/dd2-apply.ts were delivered. The Shopify write was never executed; the CSV import is Sebastian's.
+Verified: HEAD a619443 exists; /shop returns 200; brief.md has Existing material section; gate.txt shows tsc exit 0 and build exit 0.
+Found: live /shop still lists SHERO - III and SHERO - Indigo (art prints not removed); no new art-print products live; no a11y.md (required for web-visible work); after_ screenshots are branch/local, not the deployed result; S1 not deployed.
+Not blamed: the classifier denial is a tooling issue, but per HELM rules the item should stay TODO/WAITING, not close; the remaining work is the live apply plus Sebastian's CSV import.
+Quality 4/10: S1 and the handoff are sound, but 1 of 5 DoD parts is shipped.
