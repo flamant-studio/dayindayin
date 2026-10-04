@@ -1,13 +1,16 @@
-FAIL: a11y.md says A11Y: FAIL (9 violations); HELM readability rule makes that a FAIL whatever else passed
-phase: live
-traffic: low (FLAMANT root HELM blast radius line says low; this project's CLAUDE.md has no HELM line, so assumed)
-revert: yes (git revert + Vercel redeploy; new blobs are additive at new paths)
-externals: no (images and copy only)
+PASS
+phase: live (dayindayin-site.vercel.app)
+traffic: low (dayindayin.dk not yet pointed; no HELM blast radius line in project CLAUDE.md, judged from its "domain not pointed" row)
+revert: yes (git revert + auto-redeploy; new Blob paths are additive, no old blob overwritten)
+externals: no
 
 Verified:
-- Content is ship-ready. The DoD is met: finds wired, no process shot as hero, gate green (gate.txt: tsc + next build), 390 and 1280 shots exist, Blob URLs return 200, commit 84fc48e exists, Existing-material section present. No design reference, so no fidelity.md is needed. Quality of the content work: 8/10.
-- The a11y violations do come from sitewide components and the shared work template. The DD3 diff against main touches only lib/data.ts (25 lines) plus _review files, so it cannot have introduced them. They would exist on main today.
-- Why this is still FAIL: the rule I apply says A11Y: FAIL means FAIL, and a reviewer cannot waive it. Excusing it as "pre-existing" would be a rule amendment, which only Sebastian or the constitution can make.
-- Your claim that a sitewide a11y item is already tracked is only partly true. QUEUE.md has no such item. DD1b is "Stine's answers to the five CONFIRM items", and it is FAIL for this same reason (QUEUE.md line 14 says "Needs a sitewide a11y item or rule amendment"). So the blocker is untracked.
-- Fix path, one of two: (a) add a sitewide a11y item (footer 11px, tap targets, availLabel 3.86:1 contrast, CartDrawer aria-hidden-focus), merge it, then re-review DD3, which should then PASS with no further content work; or (b) amend the rule so that a11y violations not in the diff are non-blocking, after which DD3 and DD1b become PASS.
-- Minor, not blocking: the bather hero is a tight crop and repeats as the first gallery tile. Live recheck after merge is still outstanding. The 6 works-2022plus shots are a justified follow-up (no title source).
+- Brief has Existing material, Deliver-in, Risk and Mandate. Method matches the DoD (Blob upload, lib/data.ts edit, local prod build for the "after" shots, as the brief said).
+- curl -sI on 42 Blob URLs from upload-map.json: all HTTP/2 200.
+- Gate: gate.txt shows a green next build (compiled, TypeScript finished, 125/125 pages, no errors). a11y.md first line is `A11Y: PASS`, 0 issues, re-run after merging DD4.
+- Diff vs main in lib/data.ts: every process-shot hero (universe 1/2/3, collection, vaginals, buddha, cat-doll, laundry-bags) is replaced by a finished shot. "Process photograph" wording is removed from the descriptions. One new work, The Bather, has a sourced title. No other-works/ digital pieces were added. The only TODOs left in data.ts were there before DD3.
+- Looked at after/the-bather-390, universe-1-1280 and cat-doll-390. The heroes are finished work, nothing is cropped or broken, and the galleries render. The cookie banner covering the title in the captures is the consent overlay, not a layout bug.
+- Scope is clean. The unsure MAYBE finds and the untitled Camera Uploads shots were deliberately skipped, and that is written down in brief.md.
+
+Note: live-page recheck can only happen after merge, as the brief stated.
+Quality 8/10. It is specific to Stine's actual work and honest about the gaps. The Bather's large/small size is unknown and left out, and the 6 untitled phone shots remain a follow-up.
