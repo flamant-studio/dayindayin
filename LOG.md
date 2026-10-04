@@ -576,3 +576,6 @@ Verified: `npx tsc --noEmit` clean, `next build` succeeded (97 static work pages
 2026-10-03 22:22 · DD2 · BLOCKED · Should the new fine-art prints be imported from the soft 150 · _review/DD2/
 2026-10-04 07:00 · DD2 · FAIL · S1 label done; live archive+new prints pending · _review/DD2/
 2026-10-04 07:30 · DD4 · PASS · sitewide a11y fixed, 0 violations 15 pages · _review/DD4/
+2026-10-04 07:19 · DD1b · PASS · Monument, drømmevæver, No title, vase kept · _review/DD1b/
+2026-10-04 07:20 · DD1b · PASS, not merged · rebase onto main conflicts — branch helm/DD1b + worktree l · _review/DD1b/
+2026-10-04 08:00 · DD3 · PASS · Dropbox photos wired, a11y fixed via DD4 · _review/DD3/

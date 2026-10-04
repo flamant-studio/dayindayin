@@ -11,7 +11,7 @@ DoD: tsc clean, next build green, pushed to main, live pages checked on https://
 Gate: npx tsc --noEmit; next build; reviewer verdict.
 
 ## DD1b — Stine's answers to the five CONFIRM items          `TODO`
-Status: TODO — re-review only (DD4 fixed the sitewide a11y blocker; merge DD4 first, then re-run reviewer on branch helm/DD1b; not auto-PASSed because reviewer must grade it). Was: FAIL — content done+gate green+local QA pass; 2 review rounds failed only on A11Y: FAIL (35 pre-existing sitewide violations: 11px footer/meta text, tap targets <44px, aside aria-hidden-focus). Needs a sitewide a11y item or rule amendment, then re-review. Branch helm/DD1b.
+Status: PASS, not merged rebase onto main conflicts — branch helm/DD1b + worktree left at .helm-wt/DD1b
 Size: S
 Source: Sebastian 2026-10-03 21:09, answering _memo/STINE_FINE_ART_BRIEF_2026-10-03.txt section CONFIRM.
 Fix: (1) collage-bw -> title "Monument" (slug monument, permanent redirect). (2) mariann -> title "I drømmevæverens værksted" (keep the Mariann pair note); add the companion work "Min far, kejseren" (for Torben) as its pair ONLY when a finished photo exists (DD3 / _memo/dropbox_finds/) — until then mention it in Mariann's copy, no empty work page. (3) The tufted face behind glass (was tufting-on-embroidered-background) -> title "No title", slug no-title-tufted-face, redirect. (4) vase-on-stool STAYS — restore it if DD1 removed it (and drop its redirect). (5) Tufted art prints all stay (see DD2).
@@ -27,7 +27,7 @@ DoD: live shop pages screenshot before/after; every new product passes Sebastian
 Gate: npx tsc --noEmit; next build; reviewer verdict.
 
 ## DD3 — wire the photos found in Dropbox          `TODO`
-Status: TODO — re-review only (DD4 fixed the sitewide a11y blocker; merge DD4 first, then re-run reviewer on branch helm/DD3). Was: FAIL — content done+gate green, reviewer FAIL only on sitewide a11y (nav/footer/cookie/work template, not in diff); re-review PASSes once a sitewide a11y item lands. Branch helm/DD3 d4a8e5e..HEAD. Not added: works-2022plus x6 (no title source).
+Status: PASS
 Size: M
 Source: _memo/DROPBOX_FINDS.txt + _memo/dropbox_finds/ (images staged by the cloud search); brief section PHOTO-NEEDED.
 Decision (Sebastian 2026-10-03): digital works in other-works/ (Neko paw, Untitled_Artwork, Maske Mod, Geometric garden) are already on-site as Gelato products - do NOT add them as works. Flickr finds come later, out of scope.
