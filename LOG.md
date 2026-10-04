@@ -567,3 +567,12 @@ Implemented Stine's confirmed edits to `lib/data.ts` for the tufting archive (re
 
 Verified: `npx tsc --noEmit` clean, `next build` succeeded (97 static work pages), and spot-checked redirects + rendered pages on a local production server (wallflower, star, candy-9, jewel-hand, purple-sun's availability note, sitspot has zero "hand-tufted" occurrences, orange-sun ↔ green-earth companion links, handhooking category filter). Not yet pushed — Sebastian to review the judgment calls above before this goes live and breaks/redirects real URLs.
 2026-10-03 20:12 · DD1 · PASS · Fine Art pass 2 copy, titles, removals · _review/DD1/
+2026-10-03 20:13 · DD1 · DONE · (runner-set status; post-run check: merged helm/DD1 → main · _review/DD1/
+2026-10-03 21:40 · DD1b · FAIL · content done, a11y sitewide blocks verdict · _review/DD1b/
+2026-10-03 21:50 · DD3 · INFO · Dropbox photo search done: _memo/DROPBOX_FINDS.txt + _memo/dropbox_finds/ (15 contact sheets; DD3 unparked to TODO)
+2026-10-03 22:30 · DD2 · FAIL · S1 done; live writes + CSV import pending · _review/DD2/
+2026-10-03 23:00 · DD3 · FAIL · photos wired, gate green, sitewide a11y blocks · _review/DD3/
+2026-10-03 22:21 · DD2 · FAIL · type label done; live archive/imports pending · _review/DD2/
+2026-10-03 22:22 · DD2 · BLOCKED · Should the new fine-art prints be imported from the soft 150 · _review/DD2/
+2026-10-04 07:00 · DD2 · FAIL · S1 label done; live archive+new prints pending · _review/DD2/
+2026-10-04 07:30 · DD4 · PASS · sitewide a11y fixed, 0 violations 15 pages · _review/DD4/
