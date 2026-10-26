@@ -1,0 +1,13 @@
+== tsc
+tsc exit=0
+== build
+build exit=0
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+== csv
+
+ALL PASS

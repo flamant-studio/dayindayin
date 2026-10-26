@@ -1,0 +1,30 @@
+PASS header identical to Gelato "export template.csv"
+PASS no BOM (matches existing working exports)
+PASS 4 data rows, all 5 columns
+PASS titles unique
+template 18600284 (Art Print Horizontal) live variants: 3
+  fine_arts_poster_geo_simplified_product_12-0_hor_a3_200-gsm-80lb-enhanced-uncoated
+  fine_arts_poster_geo_simplified_product_12-0_hor_a4-8x12-inch_200-gsm-80lb-enhanced-uncoated
+  fine_arts_poster_geo_simplified_product_12-0_hor_150x200-mm-6x8-inch_200-gsm-80lb-enhanced-uncoated
+PASS Blue Flower on Green Wood — Fine Art Print: UID in live horizontal template
+PASS Blue Flower on Green Wood — Fine Art Print: UID same as the 31 already-live horizontal art prints
+PASS Blue Flower on Green Wood — Fine Art Print: Should Publish = Yes
+PASS Blue Flower on Green Wood — Fine Art Print: description present
+PASS Blue Flower on Green Wood — Fine Art Print: URL 200 image/png (origin now serves 613059 B; local upscale 17915926 B)
+PASS Dead Flowers — Fine Art Print: UID in live horizontal template
+PASS Dead Flowers — Fine Art Print: UID same as the 31 already-live horizontal art prints
+PASS Dead Flowers — Fine Art Print: Should Publish = Yes
+PASS Dead Flowers — Fine Art Print: description present
+PASS Dead Flowers — Fine Art Print: URL 200 image/png (origin now serves 362487 B; local upscale 7197158 B)
+PASS Red and Green Moss — Fine Art Print: UID in live horizontal template
+PASS Red and Green Moss — Fine Art Print: UID same as the 31 already-live horizontal art prints
+PASS Red and Green Moss — Fine Art Print: Should Publish = Yes
+PASS Red and Green Moss — Fine Art Print: description present
+PASS Red and Green Moss — Fine Art Print: URL 200 image/png (origin now serves 904061 B; local upscale 27703039 B)
+PASS Taped Objects — Fine Art Print: UID in live horizontal template
+PASS Taped Objects — Fine Art Print: UID same as the 31 already-live horizontal art prints
+PASS Taped Objects — Fine Art Print: Should Publish = Yes
+PASS Taped Objects — Fine Art Print: description present
+PASS Taped Objects — Fine Art Print: URL 200 image/png (origin now serves 622230 B; local upscale 17594808 B)
+
+ALL PASS
