@@ -1,0 +1,251 @@
+{
+ "products": {
+  "nodes": [
+   {
+    "handle": "shero-cap-purple",
+    "title": "SHERO Cap — Purple",
+    "status": "ACTIVE",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/57659704607067",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5f487c13-b48b-4931-8cea-fa17dddb8f02.jpg?v=1783749622"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57659704639835",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b44c62dc-16ee-44eb-8c19-1c5e14ae2776.jpg?v=1783749621"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57659704672603",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/773243ee-bbd2-4cc9-940d-4ec152bd676b.jpg?v=1783749622"
+       }
+      }
+     ]
+    },
+    "variants": {
+     "nodes": [
+      {
+       "id": "gid://shopify/ProductVariant/53372481864027",
+       "title": "Default Title",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5f487c13-b48b-4931-8cea-fa17dddb8f02.jpg?v=1783749622"
+       },
+       "selectedOptions": [
+        {
+         "name": "Title",
+         "value": "Default Title"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "handle": "neko-paw-cap-blue",
+    "title": "Neko Paw Cap — Blue",
+    "status": "ACTIVE",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/57351652540763",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/d0bc565e-9f74-458e-8cf3-ee68b1db86cb.jpg?v=1781361838"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57351652573531",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/731633da-71e8-45b7-92cb-24c8d15a3924.jpg?v=1781361838"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57351652606299",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/86844443-0256-4af2-8f81-1c0fccbdb9f4.jpg?v=1781361837"
+       }
+      }
+     ]
+    },
+    "variants": {
+     "nodes": [
+      {
+       "id": "gid://shopify/ProductVariant/53372640133467",
+       "title": "Default Title",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/d0bc565e-9f74-458e-8cf3-ee68b1db86cb.jpg?v=1781361838"
+       },
+       "selectedOptions": [
+        {
+         "name": "Title",
+         "value": "Default Title"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "handle": "neko-paw-cap-lilac",
+    "title": "Neko Paw Cap — Lilac",
+    "status": "ACTIVE",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/57724899393883",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2b320230-79d1-482e-98ad-3e87c1273a51.jpg?v=1784322478"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57724899426651",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5505f63b-2679-435e-ab6b-c6b9aa7b198e.jpg?v=1784322478"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57724899459419",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/26262332-9889-458b-961a-c069daa3251c.jpg?v=1784322477"
+       }
+      }
+     ]
+    },
+    "variants": {
+     "nodes": [
+      {
+       "id": "gid://shopify/ProductVariant/53372747776347",
+       "title": "Default Title",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2b320230-79d1-482e-98ad-3e87c1273a51.jpg?v=1784322478"
+       },
+       "selectedOptions": [
+        {
+         "name": "Title",
+         "value": "Default Title"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "handle": "neko-paw-cap-pink",
+    "title": "Neko Paw Cap — Pink",
+    "status": "ACTIVE",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/57724927410523",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b6d4e9eb-1c62-468b-a638-ff4d2d991a65.jpg?v=1784322935"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57724927443291",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/efe2e15c-fda4-4635-9fc3-f1bef961dffe.jpg?v=1784322935"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57724927508827",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/7da41b64-7288-4eb4-a4be-5ed054880cc7.jpg?v=1784322934"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57724927476059",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/5c877683-d338-43c2-bec5-eb4f1dd81aaf.jpg?v=1784322935"
+       }
+      }
+     ]
+    },
+    "variants": {
+     "nodes": [
+      {
+       "id": "gid://shopify/ProductVariant/53614124040539",
+       "title": "Sand",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/efe2e15c-fda4-4635-9fc3-f1bef961dffe.jpg?v=1784322935"
+       },
+       "selectedOptions": [
+        {
+         "name": "Color",
+         "value": "Sand"
+        }
+       ]
+      },
+      {
+       "id": "gid://shopify/ProductVariant/53372750332251",
+       "title": "Graphite Grey",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/b6d4e9eb-1c62-468b-a638-ff4d2d991a65.jpg?v=1784322935"
+       },
+       "selectedOptions": [
+        {
+         "name": "Color",
+         "value": "Graphite Grey"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "handle": "neko-paw-cap-yellow",
+    "title": "Neko Paw Cap — Yellow",
+    "status": "ACTIVE",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/57492292993371",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0265cf4c-b7a6-4720-af50-af820af91784.jpg?v=1782573969"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57492293026139",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/bc9cd028-92af-4b34-ad89-b725d6d48d90.jpg?v=1782573969"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57492293058907",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/9802e85f-2655-4e4a-b8ac-70663444b2fc.jpg?v=1782573969"
+       }
+      },
+      {
+       "id": "gid://shopify/MediaImage/57492293091675",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/387a3219-3c66-4b94-9862-06999c2122fb.jpg?v=1782573968"
+       }
+      }
+     ]
+    },
+    "variants": {
+     "nodes": [
+      {
+       "id": "gid://shopify/ProductVariant/53372786639195",
+       "title": "Default Title",
+       "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/0265cf4c-b7a6-4720-af50-af820af91784.jpg?v=1782573969"
+       },
+       "selectedOptions": [
+        {
+         "name": "Title",
+         "value": "Default Title"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

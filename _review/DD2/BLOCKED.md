@@ -1,0 +1,5 @@
+Sebastian: the 4 new art prints are upscaled and ready — can you copy them into the artwork repo, push, and import the Gelato CSV (your step per the process contract)?
+
+Why it blocks: you approved "OK, all 4" (D2, 2026-10-04). Full EDSR x4 upscales (6000×4000 px, ~500 dpi at A4) are done in /tmp/sr/out/ (Blue Flower on Green Wood, Dead Flowers, Red and Green Moss, Taped Objects). Runners may not push, and the Gelato CSV import is yours.
+Steps: (1) copy each file over the same-named 1500×1000 original in `~/Projects/FLAMANT/dayindayin-site/DayInDayIn Images/{flowers,various}/` (CSV URLs already point at those names), commit + push the artwork repo `dayindayin` (files 12–34 MB, under the 95 MB limit); (2) import `DayInDayIn Images/gelato_dd2_new_art_prints_export.csv` in Gelato UI; (3) run the factory verification (7-point).
+Also pending, not a decision: live Shopify archive of SHERO — III/Indigo/Purple art prints + broken caps via scripts/dd2-apply.ts needs a session with Shopify write approval (classifier denied it); Polaroids skipped (no print file).

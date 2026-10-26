@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {
-  categoryLabel,
+  cardTypeLabel,
   seriesLabel,
   formatPrice,
   formatPriceLabel,
@@ -60,7 +60,7 @@ export default function ProductCard({
         </div>
         <div className={styles.cardInfo}>
           <span className={styles.cardTitle}>{displayTitle(p.title)}</span>
-          <span className={styles.cardType}>{categoryLabel(p)}</span>
+          <span className={styles.cardType}>{cardTypeLabel(p)}</span>
           <span className={styles.cardPrice}>{formatPriceLabel(p)}</span>
         </div>
       </Link>
