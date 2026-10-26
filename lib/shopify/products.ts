@@ -380,6 +380,20 @@ export function categoryLabel(product: Pick<NormalizedProduct, 'tags' | 'title'>
   return 'Art Print'
 }
 
+/**
+ * Product-type line shown on every product card. Same as categoryLabel except
+ * the vague "Apparel" is split into the actual garment (cap vs tank top), so a
+ * shopper can tell an art print from a postcard from a cap at a glance.
+ */
+export function cardTypeLabel(product: Pick<NormalizedProduct, 'tags' | 'title'>): string {
+  const label = categoryLabel(product)
+  if (label !== 'Apparel') return label
+  const t = product.title.toLowerCase()
+  if (/\bcap\b/.test(t)) return 'Dad Cap'
+  if (t.includes('tank top')) return 'Tank Top'
+  return label
+}
+
 const FALLBACK_DESC: Partial<Record<string, string>> = {
   'Art Print':     'Giclée art print on premium 200 gsm paper. Printed to order by Gelato and shipped within 3–7 business days.',
   'Framed Print':  'Art print in your choice of frame (black, white, or wood). Available in A4, A3, A2, and A1. Printed to order by Gelato.',
