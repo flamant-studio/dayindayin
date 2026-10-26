@@ -1,0 +1,13 @@
+before 1280 shop shero-iii-fine-art-print:absent shero-indigo-fine-art-print:absent shero-purple-fine-art-print:absent neko-paw-cap-blue:absent neko-paw-cap-lilac:absent neko-paw-cap-yellow:absent neko-paw-cap-pink:absent
+before 1280 shop-neko shero-iii-fine-art-print:absent shero-indigo-fine-art-print:absent shero-purple-fine-art-print:absent neko-paw-cap-blue:present neko-paw-cap-lilac:present neko-paw-cap-yellow:present neko-paw-cap-pink:present
+before 1280 shop-shero shero-iii-fine-art-print:present shero-indigo-fine-art-print:present shero-purple-fine-art-print:present neko-paw-cap-blue:absent neko-paw-cap-lilac:absent neko-paw-cap-yellow:absent neko-paw-cap-pink:absent
+before 390 shop shero-iii-fine-art-print:absent shero-indigo-fine-art-print:absent shero-purple-fine-art-print:absent neko-paw-cap-blue:absent neko-paw-cap-lilac:absent neko-paw-cap-yellow:absent neko-paw-cap-pink:absent
+before 390 shop-neko shero-iii-fine-art-print:absent shero-indigo-fine-art-print:absent shero-purple-fine-art-print:absent neko-paw-cap-blue:present neko-paw-cap-lilac:present neko-paw-cap-yellow:present neko-paw-cap-pink:present
+before 390 shop-shero shero-iii-fine-art-print:present shero-indigo-fine-art-print:present shero-purple-fine-art-print:present neko-paw-cap-blue:absent neko-paw-cap-lilac:absent neko-paw-cap-yellow:absent neko-paw-cap-pink:absent
+before pdp shero-iii-fine-art-print 200
+before pdp shero-indigo-fine-art-print 200
+before pdp shero-purple-fine-art-print 200
+before pdp neko-paw-cap-blue 200
+before pdp neko-paw-cap-lilac 200
+before pdp neko-paw-cap-yellow 200
+before pdp neko-paw-cap-pink 200
