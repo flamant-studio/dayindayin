@@ -1,0 +1,1 @@
+dead-flowers-fine-art-print: NEW product created 2026-10-26T17:22:19Z (after baseline, not by DD6; DD5 CSV import). Excluding it, before/after differ in exactly 6 statuses.

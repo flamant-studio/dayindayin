@@ -1,0 +1,27 @@
+GATE DD6: read-back diff must show exactly 6 status changes
+96,97c96,97
+< neko-paw-cap-blue	ACTIVE
+< neko-paw-cap-lilac	ACTIVE
+---
+> neko-paw-cap-blue	ARCHIVED
+> neko-paw-cap-lilac	ARCHIVED
+99c99
+< neko-paw-cap-yellow	ACTIVE
+---
+> neko-paw-cap-yellow	ARCHIVED
+163c163
+< shero-iii-fine-art-print	ACTIVE
+---
+> shero-iii-fine-art-print	ARCHIVED
+170c170
+< shero-indigo-fine-art-print	ACTIVE
+---
+> shero-indigo-fine-art-print	ARCHIVED
+176c176
+< shero-purple-fine-art-print	ACTIVE
+---
+> shero-purple-fine-art-print	ARCHIVED
+changed lines: 6
+note: dead-flowers-fine-art-print created 17:22:19Z by DD5 import, not DD6 (see diff_note.txt)
+ARCHIVED now: 6; ACTIVE: 198
+GATE GREEN
