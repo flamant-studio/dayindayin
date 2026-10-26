@@ -51,3 +51,11 @@ Fix: (1) confirm the full-size EDSR upscales of the 4 approved works exist and a
 DoD: IMPORT.md ≤ 1 phone screen; CSV validation proof and upscale dpi table in `_review/DD5/`; D3 no longer shown as open.
 Gate: npx tsc --noEmit; next build; reviewer verdict; RoboSeb launch gate passes.
 Do NOT: import into Gelato, change Shopify products, or touch Gelato templates (Sebastian owns them).
+
+## DD6 - archive the 6 products Sebastian approved (D4)          `TODO`
+Status: DONE
+Size: S
+Source: Sebastian 2026-10-26 18:14, DECISIONS_NEEDED.md D4: "yes, these all go." = SHERO — III / Indigo / Purple — Fine Art Print (shero-iii-fine-art-print, shero-indigo-fine-art-print, shero-purple-fine-art-print) and Neko Paw Cap — Blue / Lilac / Yellow (neko-paw-cap-blue|lilac|yellow). Script landed on main with DD5 (orchestrator 18:2x): scripts/dd2-apply.ts.
+Fix: run `npx tsx scripts/dd2-apply.ts` (dry-run first if it has one; read the script before running), which sets exactly those 6 to ARCHIVED. Nothing else: SHERO mugs/totes/cards and Neko Paw Cap — Pink stay ACTIVE; nothing deleted.
+DoD: Shopify Admin API read-back after: those 6 status ARCHIVED, every other product's status unchanged (diff of a before/after status list of all products in _review/DD6/); live shop screenshots (1280 + 390) of the shop page before/after showing they are gone; LOG.md line.
+Gate: the read-back diff shows exactly 6 changes.

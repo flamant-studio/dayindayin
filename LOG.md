@@ -585,3 +585,4 @@ Verified: `npx tsc --noEmit` clean, `next build` succeeded (97 static work pages
 2026-10-04 19:25 · DD2 · BLOCKED · upscales ready, awaiting Sebastian CSV import · _review/DD2/
 2026-10-26 08:10 · DD5 · PASS · upscales done, CSV validated, 1 upload left · _review/DD5/
 2026-10-26 07:57 · DD5 · PASS, not merged · merge of helm/DD5 into main failed: error: The following unt · _review/DD5/
+2026-10-26 18:29 · DD6 · PASS · 6 products archived, diff exactly 6 · _review/DD6/
