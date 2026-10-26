@@ -579,3 +579,9 @@ Verified: `npx tsc --noEmit` clean, `next build` succeeded (97 static work pages
 2026-10-04 07:19 · DD1b · PASS · Monument, drømmevæver, No title, vase kept · _review/DD1b/
 2026-10-04 07:20 · DD1b · PASS, not merged · rebase onto main conflicts — branch helm/DD1b + worktree l · _review/DD1b/
 2026-10-04 08:00 · DD3 · PASS · Dropbox photos wired, a11y fixed via DD4 · _review/DD3/
+2026-10-04 09:00 · DD2 · FAIL · S1 shipped; live archive+art prints still blocked · _review/DD2/
+2026-10-04 10:00 · DD2 · FAIL · S1 shipped; live writes+upscale still not possible · _review/DD2/
+2026-10-04 14:00 · DD2 · BLOCKED · upscale crops await Sebastian approval (D3) · _review/DD2/
+2026-10-04 19:25 · DD2 · BLOCKED · upscales ready, awaiting Sebastian CSV import · _review/DD2/
+2026-10-26 08:10 · DD5 · PASS · upscales done, CSV validated, 1 upload left · _review/DD5/
+2026-10-26 07:57 · DD5 · PASS, not merged · merge of helm/DD5 into main failed: error: The following unt · _review/DD5/

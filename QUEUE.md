@@ -11,7 +11,7 @@ DoD: tsc clean, next build green, pushed to main, live pages checked on https://
 Gate: npx tsc --noEmit; next build; reviewer verdict.
 
 ## DD1b — Stine's answers to the five CONFIRM items          `TODO`
-Status: PASS, not merged rebase onto main conflicts — branch helm/DD1b + worktree left at .helm-wt/DD1b
+Status: PASS, not merged swept 2026-10-04 08:25: branch helm/DD1b kept, worktree removed
 Size: S
 Source: Sebastian 2026-10-03 21:09, answering _memo/STINE_FINE_ART_BRIEF_2026-10-03.txt section CONFIRM.
 Fix: (1) collage-bw -> title "Monument" (slug monument, permanent redirect). (2) mariann -> title "I drømmevæverens værksted" (keep the Mariann pair note); add the companion work "Min far, kejseren" (for Torben) as its pair ONLY when a finished photo exists (DD3 / _memo/dropbox_finds/) — until then mention it in Mariann's copy, no empty work page. (3) The tufted face behind glass (was tufting-on-embroidered-background) -> title "No title", slug no-title-tufted-face, redirect. (4) vase-on-stool STAYS — restore it if DD1 removed it (and drop its redirect). (5) Tufted art prints all stay (see DD2).
@@ -19,7 +19,7 @@ DoD: live pages checked on https://dayindayin-site.vercel.app, redirects work; L
 Gate: npx tsc --noEmit; next build; reviewer verdict.
 
 ## DD2 — Shop tweaks from the same recording (S1–S7)          `TODO`
-Status: BLOCKED D2 — new art prints need Sebastian's Gelato CSV import (+ live archive via scripts/dd2-apply.ts)
+Status: BLOCKED D-DD2 (Sebastian: push upscales + Gelato CSV import)
 Size: M
 Source: brief section SHOP (S1–S7), transcript [52:59–62:11]; CLAUDE.md asset-flow + process contract (Sebastian owns Gelato templates — if a fix needs a template change, write it up for him instead of improvising).
 Fix: product type visible on every product card (art print vs postcard vs cap…); remove the SHERO art prints only (Sebastian 2026-10-03 21:09: "Shiro" in the brief = SHERO; remove only the art-print versions — SHERO — III, SHERO — Indigo, SHERO — Purple; SHERO mugs, totes, cards stay); KEEP all tufted art prints (Purple Sun, Round Earth, Floral Thing, Candy I — Sebastian: "Just leave the tufted ones in"); add art-print products for the fine-art photographs/paintings Stine confirmed (dead flowers, taped objects, red & green moss, polaroids, blue flower on green wood, Sri Lanka masks if file quality allows) via the existing manifest/Gelato pipeline; investigate the red/American Dad cap renders and drop the broken colourways if they can't be fixed by data.
@@ -42,3 +42,12 @@ Source: _review/DD1b/a11y.md and _review/DD3 — "A11Y: FAIL — 35 violations",
 Fix: fix every violation at its source (design tokens / shared components first, DESIGN_SYSTEM.md), not per page. Then re-run the same a11y check on the pages DD1b and DD3 touched and set DD1b and DD3 to PASS if that was their only failure (their content work is done and live).
 DoD: a11y check 0 violations on home, /fine-art (all categories), 3 work pages, /shop, 1 product page, mobile + desktop; gate green; reviewer verdict.
 Gate: npx tsc --noEmit; next build; a11y check; reviewer verdict.
+
+## DD5 — finish DD2 up to his single Gelato import action          `TODO`
+Status: PASS, not merged swept 2026-10-26 09:02: branch helm/DD5 kept, worktree removed
+Size: M
+Source: Sebastian 2026-10-26 (RoboSeb launch gate): manual launch steps at higher stakes stall ("This is why ie dayindayin or mikofu or Echo aren't properly launched"). DD2 is BLOCKED D-DD2 on "push upscales + Gelato CSV import". D3 was ANSWERED 2026-10-04 by Sebastian ("OK, all 4"), yet the D3 question is still listed in HELM/NEEDS-YOU.md.
+Fix: (1) confirm the full-size EDSR upscales of the 4 approved works exist and are print-ready at the sizes in the CSV (state dpi per size); if not, make them. (2) Validate `DayInDayIn Images/gelato_dd2_new_art_prints_export.csv` against Gelato's current import format (columns, image URLs reachable, sizes, prices) and fix what fails. (3) Write `_review/DD5/IMPORT.md`: his part as the fewest single actions (ideally one upload), each with "you should see: …". (4) The live SHERO/caps Shopify archive needs Shopify write approval: put it as ONE yes/no question with the exact list of products it touches. (5) Mark D3 resolved where it is still listed as open.
+DoD: IMPORT.md ≤ 1 phone screen; CSV validation proof and upscale dpi table in `_review/DD5/`; D3 no longer shown as open.
+Gate: npx tsc --noEmit; next build; reviewer verdict; RoboSeb launch gate passes.
+Do NOT: import into Gelato, change Shopify products, or touch Gelato templates (Sebastian owns them).
