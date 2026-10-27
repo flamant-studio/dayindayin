@@ -586,3 +586,5 @@ Verified: `npx tsc --noEmit` clean, `next build` succeeded (97 static work pages
 2026-10-26 08:10 · DD5 · PASS · upscales done, CSV validated, 1 upload left · _review/DD5/
 2026-10-26 07:57 · DD5 · PASS, not merged · merge of helm/DD5 into main failed: error: The following unt · _review/DD5/
 2026-10-26 18:29 · DD6 · PASS · 6 products archived, diff exactly 6 · _review/DD6/
+2026-10-26 18:29 · DD6 · DONE · (runner-set status; post-run check: merged helm/DD6 → main · _review/DD6/
+2026-10-27 08:45 · DD7 · PASS · 4 prints published, diff exactly 4; only A4 variant (6x8+A3 need Gelato) · _review/DD7/

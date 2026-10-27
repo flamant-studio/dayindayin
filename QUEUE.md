@@ -19,7 +19,7 @@ DoD: live pages checked on https://dayindayin-site.vercel.app, redirects work; L
 Gate: npx tsc --noEmit; next build; reviewer verdict.
 
 ## DD2 — Shop tweaks from the same recording (S1–S7)          `TODO`
-Status: BLOCKED D-DD2 (Sebastian: push upscales + Gelato CSV import)
+Status: PASS — Gelato import done 2026-10-26 18:21 (orchestrator in Sebastian's Chrome, bulk op 936a09f7, 4/4 completed, hidden from store); SHERO/caps archive done in DD6; publish + 7-point check continue in DD7
 Size: M
 Source: brief section SHOP (S1–S7), transcript [52:59–62:11]; CLAUDE.md asset-flow + process contract (Sebastian owns Gelato templates — if a fix needs a template change, write it up for him instead of improvising).
 Fix: product type visible on every product card (art print vs postcard vs cap…); remove the SHERO art prints only (Sebastian 2026-10-03 21:09: "Shiro" in the brief = SHERO; remove only the art-print versions — SHERO — III, SHERO — Indigo, SHERO — Purple; SHERO mugs, totes, cards stay); KEEP all tufted art prints (Purple Sun, Round Earth, Floral Thing, Candy I — Sebastian: "Just leave the tufted ones in"); add art-print products for the fine-art photographs/paintings Stine confirmed (dead flowers, taped objects, red & green moss, polaroids, blue flower on green wood, Sri Lanka masks if file quality allows) via the existing manifest/Gelato pipeline; investigate the red/American Dad cap renders and drop the broken colourways if they can't be fixed by data.
@@ -59,3 +59,12 @@ Source: Sebastian 2026-10-26 18:14, DECISIONS_NEEDED.md D4: "yes, these all go."
 Fix: run `npx tsx scripts/dd2-apply.ts` (dry-run first if it has one; read the script before running), which sets exactly those 6 to ARCHIVED. Nothing else: SHERO mugs/totes/cards and Neko Paw Cap — Pink stay ACTIVE; nothing deleted.
 DoD: Shopify Admin API read-back after: those 6 status ARCHIVED, every other product's status unchanged (diff of a before/after status list of all products in _review/DD6/); live shop screenshots (1280 + 390) of the shop page before/after showing they are gone; LOG.md line.
 Gate: the read-back diff shows exactly 6 changes.
+
+## DD7 - publish the 4 new art prints to the shop and verify them
+Status: PASS
+Size: S (about 15-30 min runner time)
+Source: DD5 IMPORT.md "After: I run the publish-to-Online-Store script and the 7-point check; you do nothing." Sebastian's Gelato import ran 2026-10-26 18:21 (orchestrator in his Chrome): Gelato bulk operation 936a09f7-1f60-4d8d-bdf9-00cd355d3342, 4/4 tasks completed; created HIDDEN from store visitors: Blue Flower on Green Wood, Dead Flowers, Red and Green Moss, Taped Objects (each "— Fine Art Print"). At 18:2x two still showed "Waiting to be published..." in Gelato.
+Fix: (1) Shopify Admin read: the 4 products exist, synced from Gelato, 3 sizes each (6x8 in, A4, A3), prices match the other horizontal fine art prints. (2) Publish them to the Online Store with the existing script (scripts/publish-to-online-store.ts — read it first, limit it to these 4 handles). (3) Run the 7-point "verified" definition from CLAUDE.md / _review/DD2/brief.md on each. (4) If any check fails, fix what is data, and list what needs Stine/Sebastian in ONE line.
+DoD: _review/DD7/: before/after status list of all products (exactly 4 changes), 7-point table per product, live shop screenshots (1280 + 390) showing the 4 prints with sharp images; LOG.md line.
+Gate: the read-back diff shows exactly 4 changes; reviewer verdict.
+Endings: PASS / FAIL. Do not message Sebastian.
