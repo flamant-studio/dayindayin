@@ -1,0 +1,19 @@
+GATE DD7: read-back diff (all 207 products, handle/status/Online Store) must show exactly 4 changes
+1c1
+< blue-flower-on-green-wood-fine-art-print	ACTIVE	unpublished
+---
+> blue-flower-on-green-wood-fine-art-print	ACTIVE	PUBLISHED
+5c5
+< dead-flowers-fine-art-print	ACTIVE	unpublished
+---
+> dead-flowers-fine-art-print	ACTIVE	PUBLISHED
+151c151
+< red-and-green-moss-fine-art-print	ACTIVE	unpublished
+---
+> red-and-green-moss-fine-art-print	ACTIVE	PUBLISHED
+194c194
+< taped-objects-fine-art-print	ACTIVE	unpublished
+---
+> taped-objects-fine-art-print	ACTIVE	PUBLISHED
+changes: 4
+GATE GREEN: exactly 4 changes (unpublished -> PUBLISHED)

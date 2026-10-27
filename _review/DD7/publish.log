@@ -1,0 +1,14 @@
+◇ injected env (18) from ../../.env.local // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+Fetching active products...
+Limited to 4 handles
+Total active: 201
+Already published to Online Store: 197
+Need to publish: 4
+
+Publishing...
+▸ Dead Flowers — Fine Art Print ... ✓
+▸ Red and Green Moss — Fine Art Print ... ✓
+▸ Taped Objects — Fine Art Print ... ✓
+▸ Blue Flower on Green Wood — Fine Art Print ... ✓
+
+Done. Published: 4, Failed: 0

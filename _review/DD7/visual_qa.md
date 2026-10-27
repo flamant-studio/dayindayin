@@ -1,0 +1,6 @@
+Blue Flower on Green Wood: visible, distinct; blue flower on peeling green/orange wood, matches title. Slightly soft/low-res on 1280 PDP (upscaled web export; mild blur, no heavy pixelation).
+Dead Flowers: visible, distinct; dried flowers in a vase on a stool, matches title. Sharp enough; image has a pale grey border/matte inside the frame (artwork itself is portrait in a landscape canvas).
+Red and Green Moss: visible, distinct; red + green moss on grey ground, matches title. Sharp/acceptable (slight JPEG softness).
+Taped Objects: visible, distinct; stones, driftwood, mesh and tape on paper, matches title. Sharp; PDP shows an extra "Also available as" accordion the other 3 lack (expected, not a bug).
+Grids: shop 1280 shows all 4 cards (Blue Flower, Taped Objects, Red/Green Moss, Dead Flowers) with images loaded; search 390 shows all 4 in a 2x2 with images (bottom row partly hidden by the cookie banner only).
+Layout: no overlap/overflow seen. Notes: landscape art is letterboxed with large white space in the card/PDP image box (consistent with other cards); PDP title is clipped at top of the 1280 viewport screenshot (capture scroll offset, not verified as a site bug). Cookie banner covers the lower viewport in all shots.
