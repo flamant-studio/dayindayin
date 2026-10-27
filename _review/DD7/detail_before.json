@@ -1,0 +1,538 @@
+[
+ {
+  "id": "gid://shopify/Product/10840601035099",
+  "handle": "blue-flower-on-green-wood-fine-art-print",
+  "title": "Blue Flower on Green Wood — Fine Art Print",
+  "status": "ACTIVE",
+  "productType": "Print Material",
+  "vendor": "Day In Day In",
+  "tags": [],
+  "templateSuffix": null,
+  "onlineStoreUrl": null,
+  "publishedOnPublication": false,
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/025c6548-6494-489f-b2ca-59b84fab3764.jpg?v=1793035603",
+   "width": 2048,
+   "height": 2048
+  },
+  "images": {
+   "edges": [
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/025c6548-6494-489f-b2ca-59b84fab3764.jpg?v=1793035603",
+      "width": 2048,
+      "height": 2048
+     }
+    }
+   ]
+  },
+  "options": [
+   {
+    "name": "Title",
+    "values": [
+     "Default Title"
+    ]
+   }
+  ],
+  "variants": {
+   "edges": [
+    {
+     "node": {
+      "title": "Default Title",
+      "sku": "bb08f987-5af2-487f-a84e-07e36ede29f3",
+      "price": "148.96",
+      "selectedOptions": [
+       {
+        "name": "Title",
+        "value": "Default Title"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/025c6548-6494-489f-b2ca-59b84fab3764.jpg?v=1793035603"
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10840590811483",
+  "handle": "dead-flowers-fine-art-print",
+  "title": "Dead Flowers — Fine Art Print",
+  "status": "ACTIVE",
+  "productType": "Print Material",
+  "vendor": "Day In Day In",
+  "tags": [],
+  "templateSuffix": null,
+  "onlineStoreUrl": null,
+  "publishedOnPublication": false,
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a9ef739a-0f3c-4b38-bbe6-235ef56eea22.jpg?v=1793035346",
+   "width": 2048,
+   "height": 2048
+  },
+  "images": {
+   "edges": [
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a9ef739a-0f3c-4b38-bbe6-235ef56eea22.jpg?v=1793035346",
+      "width": 2048,
+      "height": 2048
+     }
+    }
+   ]
+  },
+  "options": [
+   {
+    "name": "Title",
+    "values": [
+     "Default Title"
+    ]
+   }
+  ],
+  "variants": {
+   "edges": [
+    {
+     "node": {
+      "title": "Default Title",
+      "sku": "29a67fb6-fb45-4292-9d2a-7a0d280eef26",
+      "price": "148.96",
+      "selectedOptions": [
+       {
+        "name": "Title",
+        "value": "Default Title"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/a9ef739a-0f3c-4b38-bbe6-235ef56eea22.jpg?v=1793035346"
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10840595792219",
+  "handle": "red-and-green-moss-fine-art-print",
+  "title": "Red and Green Moss — Fine Art Print",
+  "status": "ACTIVE",
+  "productType": "Print Material",
+  "vendor": "Day In Day In",
+  "tags": [],
+  "templateSuffix": null,
+  "onlineStoreUrl": null,
+  "publishedOnPublication": false,
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f85a1f6a-0ce5-4c7a-8dc9-bfa4716c24aa.jpg?v=1793035429",
+   "width": 2048,
+   "height": 2048
+  },
+  "images": {
+   "edges": [
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f85a1f6a-0ce5-4c7a-8dc9-bfa4716c24aa.jpg?v=1793035429",
+      "width": 2048,
+      "height": 2048
+     }
+    }
+   ]
+  },
+  "options": [
+   {
+    "name": "Title",
+    "values": [
+     "Default Title"
+    ]
+   }
+  ],
+  "variants": {
+   "edges": [
+    {
+     "node": {
+      "title": "Default Title",
+      "sku": "ddf8206d-c295-42f9-93d5-43fe079f260f",
+      "price": "148.96",
+      "selectedOptions": [
+       {
+        "name": "Title",
+        "value": "Default Title"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f85a1f6a-0ce5-4c7a-8dc9-bfa4716c24aa.jpg?v=1793035429"
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10840599003483",
+  "handle": "taped-objects-fine-art-print",
+  "title": "Taped Objects — Fine Art Print",
+  "status": "ACTIVE",
+  "productType": "Print Material",
+  "vendor": "Day In Day In",
+  "tags": [],
+  "templateSuffix": null,
+  "onlineStoreUrl": null,
+  "publishedOnPublication": false,
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/8cba2192-a047-4e69-b4a0-7478de1831a2.jpg?v=1793035504",
+   "width": 2048,
+   "height": 2048
+  },
+  "images": {
+   "edges": [
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/8cba2192-a047-4e69-b4a0-7478de1831a2.jpg?v=1793035504",
+      "width": 2048,
+      "height": 2048
+     }
+    }
+   ]
+  },
+  "options": [
+   {
+    "name": "Title",
+    "values": [
+     "Default Title"
+    ]
+   }
+  ],
+  "variants": {
+   "edges": [
+    {
+     "node": {
+      "title": "Default Title",
+      "sku": "6fe74c03-797e-4c82-a498-9ccd38ed0897",
+      "price": "148.96",
+      "selectedOptions": [
+       {
+        "name": "Title",
+        "value": "Default Title"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/8cba2192-a047-4e69-b4a0-7478de1831a2.jpg?v=1793035504"
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541141754203",
+  "handle": "purple-flower-fine-art-print",
+  "title": "Purple Flower — Fine Art Print",
+  "status": "ACTIVE",
+  "productType": "",
+  "vendor": "dayindayin",
+  "tags": [],
+  "templateSuffix": null,
+  "onlineStoreUrl": null,
+  "publishedOnPublication": true,
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/07cea6f9-6702-4078-9223-59f32fe40bcb.jpg?v=1784753103",
+   "width": 2048,
+   "height": 2048
+  },
+  "images": {
+   "edges": [
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/07cea6f9-6702-4078-9223-59f32fe40bcb.jpg?v=1784753103",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f3247189-db33-439a-b5f3-d60af03ba6be.jpg?v=1784753103",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2ba20ced-b2ba-489f-822b-ad735a8d79bf.jpg?v=1784753103",
+      "width": 2048,
+      "height": 2048
+     }
+    }
+   ]
+  },
+  "options": [
+   {
+    "name": "Size",
+    "values": [
+     "15x20 cm / 6x8″",
+     "21x29.7 cm / 8x12\"",
+     "A3 (29.7 x 42  cm)"
+    ]
+   }
+  ],
+  "variants": {
+   "edges": [
+    {
+     "node": {
+      "title": "15x20 cm / 6x8″",
+      "sku": "687c85fb-d026-41f1-b63d-418cbe5f2848",
+      "price": "153.58",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "15x20 cm / 6x8″"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/2ba20ced-b2ba-489f-822b-ad735a8d79bf.jpg?v=1784753103"
+      }
+     }
+    },
+    {
+     "node": {
+      "title": "21x29.7 cm / 8x12\"",
+      "sku": "d8b1ecfa-9ad7-498f-bb31-3f4a1084e0f6",
+      "price": "148.96",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "21x29.7 cm / 8x12\""
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/f3247189-db33-439a-b5f3-d60af03ba6be.jpg?v=1784753103"
+      }
+     }
+    },
+    {
+     "node": {
+      "title": "A3 (29.7 x 42  cm)",
+      "sku": "2314499b-8bca-4482-9eb4-3104f0fb8d22",
+      "price": "195.82",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "A3 (29.7 x 42  cm)"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/07cea6f9-6702-4078-9223-59f32fe40bcb.jpg?v=1784753103"
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10542320025947",
+  "handle": "two-cats-fine-art-print",
+  "title": "Two Cats — Fine Art Print",
+  "status": "ACTIVE",
+  "productType": "",
+  "vendor": "dayindayin",
+  "tags": [],
+  "templateSuffix": null,
+  "onlineStoreUrl": null,
+  "publishedOnPublication": true,
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3a9912f9-5664-487f-8ce1-1c74bb05f515.jpg?v=1782938447",
+   "width": 2048,
+   "height": 2048
+  },
+  "images": {
+   "edges": [
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3a9912f9-5664-487f-8ce1-1c74bb05f515.jpg?v=1782938447",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c9b1630f-091b-4dd2-8f9f-e57d52c72747.jpg?v=1782938447",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/00678a1e-68b2-4292-be14-94ddb4e3b341.jpg?v=1782938446",
+      "width": 2048,
+      "height": 2048
+     }
+    }
+   ]
+  },
+  "options": [
+   {
+    "name": "Size",
+    "values": [
+     "21x29.7 cm / 8x12\"",
+     "A3 (29.7 x 42  cm)",
+     "A2 (42 x 59.4  cm)"
+    ]
+   }
+  ],
+  "variants": {
+   "edges": [
+    {
+     "node": {
+      "title": "21x29.7 cm / 8x12\"",
+      "sku": "73264f4e-d073-4b09-b0ca-b0ac06cc2e47",
+      "price": "148.96",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "21x29.7 cm / 8x12\""
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/c9b1630f-091b-4dd2-8f9f-e57d52c72747.jpg?v=1782938447"
+      }
+     }
+    },
+    {
+     "node": {
+      "title": "A3 (29.7 x 42  cm)",
+      "sku": "4029ac3b-a62c-465b-8f49-569664314f0f",
+      "price": "195.82",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "A3 (29.7 x 42  cm)"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/3a9912f9-5664-487f-8ce1-1c74bb05f515.jpg?v=1782938447"
+      }
+     }
+    },
+    {
+     "node": {
+      "title": "A2 (42 x 59.4  cm)",
+      "sku": "022ba942-8a63-41c2-8f2e-2125b060b200",
+      "price": "225.10",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "A2 (42 x 59.4  cm)"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/00678a1e-68b2-4292-be14-94ddb4e3b341.jpg?v=1782938446"
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "gid://shopify/Product/10541173997915",
+  "handle": "tourism-i-fine-art-print",
+  "title": "Tourism — I — Fine Art Print",
+  "status": "ACTIVE",
+  "productType": "",
+  "vendor": "dayindayin",
+  "tags": [],
+  "templateSuffix": null,
+  "onlineStoreUrl": null,
+  "publishedOnPublication": true,
+  "featuredImage": {
+   "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/ebf79477-1fb1-48d0-8cd2-3aaf09016e72.jpg?v=1784753188",
+   "width": 2048,
+   "height": 2048
+  },
+  "images": {
+   "edges": [
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/ebf79477-1fb1-48d0-8cd2-3aaf09016e72.jpg?v=1784753188",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/14ab6afb-b04a-4711-b36f-0ccbb3803867.jpg?v=1784753188",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "node": {
+      "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/7d6cf96a-dae0-45a1-928d-d66baee5113c.jpg?v=1784753188",
+      "width": 2048,
+      "height": 2048
+     }
+    }
+   ]
+  },
+  "options": [
+   {
+    "name": "Size",
+    "values": [
+     "15x20 cm / 6x8″",
+     "21x29.7 cm / 8x12\"",
+     "A3 (29.7 x 42  cm)"
+    ]
+   }
+  ],
+  "variants": {
+   "edges": [
+    {
+     "node": {
+      "title": "15x20 cm / 6x8″",
+      "sku": "b665a19d-653c-470f-9421-2e2be0fd506d",
+      "price": "153.58",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "15x20 cm / 6x8″"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/7d6cf96a-dae0-45a1-928d-d66baee5113c.jpg?v=1784753188"
+      }
+     }
+    },
+    {
+     "node": {
+      "title": "21x29.7 cm / 8x12\"",
+      "sku": "7cf36165-9c76-475c-be56-43f756bf4eb3",
+      "price": "148.96",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "21x29.7 cm / 8x12\""
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/14ab6afb-b04a-4711-b36f-0ccbb3803867.jpg?v=1784753188"
+      }
+     }
+    },
+    {
+     "node": {
+      "title": "A3 (29.7 x 42  cm)",
+      "sku": "140772c6-3eae-4a1e-8bf4-e1aa3632bfb6",
+      "price": "195.82",
+      "selectedOptions": [
+       {
+        "name": "Size",
+        "value": "A3 (29.7 x 42  cm)"
+       }
+      ],
+      "image": {
+       "url": "https://cdn.shopify.com/s/files/1/1013/4909/7819/files/ebf79477-1fb1-48d0-8cd2-3aaf09016e72.jpg?v=1784753188"
+      }
+     }
+    }
+   ]
+  }
+ }
+]

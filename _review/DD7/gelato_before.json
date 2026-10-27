@@ -1,0 +1,66 @@
+[
+ {
+  "id": "04311b63-75a9-46ab-9df8-cf1d7c37ae40",
+  "title": "Blue Flower on Green Wood — Fine Art Print",
+  "status": "active",
+  "externalId": "10840601035099",
+  "publishedAt": "2026-10-26T17:26:46+00:00",
+  "variants": [
+   {
+    "id": "bb08f987-5af2-487f-a84e-07e36ede29f3",
+    "title": "21x29.7 cm / 8x12\" - Horizontal",
+    "externalId": "54519822614875",
+    "connectionStatus": "connected",
+    "productUid": "fine_arts_poster_geo_simplified_product_12-0_hor_a4-8x12-inch_200-gsm-80lb-enhanced-uncoated"
+   }
+  ]
+ },
+ {
+  "id": "e32924af-1e6c-4923-90ef-4edf3a22dce9",
+  "title": "Taped Objects — Fine Art Print",
+  "status": "active",
+  "externalId": "10840599003483",
+  "publishedAt": "2026-10-26T17:26:15+00:00",
+  "variants": [
+   {
+    "id": "6fe74c03-797e-4c82-a498-9ccd38ed0897",
+    "title": "21x29.7 cm / 8x12\" - Horizontal",
+    "externalId": "54519819075931",
+    "connectionStatus": "connected",
+    "productUid": "fine_arts_poster_geo_simplified_product_12-0_hor_a4-8x12-inch_200-gsm-80lb-enhanced-uncoated"
+   }
+  ]
+ },
+ {
+  "id": "ddd9c817-0734-4b6a-a32b-60944cdbd26a",
+  "title": "Red and Green Moss — Fine Art Print",
+  "status": "active",
+  "externalId": "10840595792219",
+  "publishedAt": "2026-10-26T17:24:56+00:00",
+  "variants": [
+   {
+    "id": "ddf8206d-c295-42f9-93d5-43fe079f260f",
+    "title": "21x29.7 cm / 8x12\" - Horizontal",
+    "externalId": "54519814750555",
+    "connectionStatus": "connected",
+    "productUid": "fine_arts_poster_geo_simplified_product_12-0_hor_a4-8x12-inch_200-gsm-80lb-enhanced-uncoated"
+   }
+  ]
+ },
+ {
+  "id": "f12f56de-36c6-4000-a28a-ff91329885b7",
+  "title": "Dead Flowers — Fine Art Print",
+  "status": "active",
+  "externalId": "10840590811483",
+  "publishedAt": "2026-10-26T17:23:25+00:00",
+  "variants": [
+   {
+    "id": "29a67fb6-fb45-4292-9d2a-7a0d280eef26",
+    "title": "21x29.7 cm / 8x12\" - Horizontal",
+    "externalId": "54519808885083",
+    "connectionStatus": "connected",
+    "productUid": "fine_arts_poster_geo_simplified_product_12-0_hor_a4-8x12-inch_200-gsm-80lb-enhanced-uncoated"
+   }
+  ]
+ }
+]

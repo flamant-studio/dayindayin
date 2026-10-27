@@ -6,17 +6,20 @@
  *
  * Run: npx tsx scripts/publish-to-online-store.ts
  * Dry run: DRY_RUN=1 npx tsx scripts/publish-to-online-store.ts
+ * Limit to some products: HANDLES=handle-a,handle-b npx tsx scripts/publish-to-online-store.ts
+ * Env file: ENV_FILE=/abs/path/.env.local (default ./.env.local)
  */
 
 import * as dotenv from 'dotenv'
 import { resolve } from 'path'
 
-dotenv.config({ path: resolve(process.cwd(), '.env.local') })
+dotenv.config({ path: process.env.ENV_FILE || resolve(process.cwd(), '.env.local') })
 
 const DOMAIN = process.env.SHOPIFY_STORE_DOMAIN!
 const CLIENT_ID = process.env.SHOPIFY_CLIENT_ID!
 const CLIENT_SECRET = process.env.SHOPIFY_CLIENT_SECRET!
 const DRY_RUN = process.env.DRY_RUN === '1'
+const HANDLES = (process.env.HANDLES ?? '').split(',').map((h) => h.trim()).filter(Boolean)
 
 const ONLINE_STORE_PUBLICATION_ID = 'gid://shopify/Publication/337681482075'
 
@@ -50,6 +53,7 @@ async function graphql<T>(query: string, variables: Record<string, unknown> = {}
 
 interface ProductNode {
   id: string
+  handle: string
   title: string
   publishedOnPublication: boolean
 }
@@ -70,6 +74,7 @@ async function getActiveProducts(): Promise<ProductNode[]> {
           edges {
             node {
               id
+              handle
               title
               publishedOnPublication(publicationId: $pubId)
             }
@@ -110,7 +115,8 @@ async function main() {
 
   console.log('Fetching active products...')
   const products = await getActiveProducts()
-  const unpublished = products.filter((p) => !p.publishedOnPublication)
+  const unpublished = products.filter((p) => !p.publishedOnPublication && (HANDLES.length === 0 || HANDLES.includes(p.handle)))
+  if (HANDLES.length > 0) console.log(`Limited to ${HANDLES.length} handles`)
 
   console.log(`Total active: ${products.length}`)
   console.log(`Already published to Online Store: ${products.length - unpublished.length}`)
